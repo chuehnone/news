@@ -6,6 +6,9 @@
     python3 news.py add <file.json>    # 新增一筆評分結果（也可從 stdin 讀入：python3 news.py add -）
     python3 news.py list [--grade S]   # 快速列出資料庫內容
     python3 news.py serve [--port 8765]  # 啟動網頁介面
+    python3 news.py fetch [--feeds feeds.txt]  # 抓取 RSS，把新連結存入待評分清單
+    python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
+    python3 news.py skip <id...>       # 把待評分項目標為略過
 
 JSON 格式（/news-importance-score 的評分結果）：
 {
@@ -35,9 +38,14 @@ import argparse
 import json
 import sqlite3
 import sys
+import urllib.request
+import xml.etree.ElementTree as ET
+from datetime import datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 DB_PATH = Path(__file__).parent / "news.db"
+FEEDS_PATH = Path(__file__).parent / "feeds.txt"
 
 DIMENSIONS = [
     ("scope", "影響範圍", 25),
@@ -78,6 +86,17 @@ CREATE TABLE IF NOT EXISTS news (
 );
 CREATE INDEX IF NOT EXISTS idx_news_date ON news(news_date);
 CREATE INDEX IF NOT EXISTS idx_news_grade ON news(grade);
+
+CREATE TABLE IF NOT EXISTS pending (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    url TEXT NOT NULL UNIQUE,
+    source TEXT,
+    published TEXT,
+    status TEXT NOT NULL DEFAULT 'new',
+    fetched_at TEXT DEFAULT (datetime('now', 'localtime'))
+);
+CREATE INDEX IF NOT EXISTS idx_pending_status ON pending(status);
 """
 
 
@@ -158,6 +177,8 @@ def cmd_add(args):
     cols = ", ".join(row)
     placeholders = ", ".join(f":{k}" for k in row)
     cur = conn.execute(f"INSERT INTO news ({cols}) VALUES ({placeholders})", row)
+    if url:
+        conn.execute("UPDATE pending SET status = 'scored' WHERE url = ?", (url,))
     conn.commit()
     print(f"已新增 id={cur.lastrowid}：[{grade} 級 {total} 分] {data['title']}")
     conn.close()
@@ -186,6 +207,127 @@ def cmd_serve(args):
     run(port=args.port)
 
 
+def normalize_pub_date(raw):
+    if not raw:
+        return None
+    try:
+        return parsedate_to_datetime(raw).strftime("%Y-%m-%d")
+    except (TypeError, ValueError):
+        pass
+    try:
+        return datetime.fromisoformat(raw.replace("Z", "+00:00")).strftime("%Y-%m-%d")
+    except ValueError:
+        return raw[:10]
+
+
+def parse_feed(xml_bytes):
+    """解析 RSS 2.0 或 Atom，回傳 [(title, link, published), ...]。"""
+    # 防 XXE / billion-laughs：合法 feed 不需要 DTD，直接拒絕
+    if b"<!DOCTYPE" in xml_bytes or b"<!ENTITY" in xml_bytes:
+        raise ValueError("feed 含 DTD/ENTITY 宣告，拒絕解析")
+    root = ET.fromstring(xml_bytes)
+    items = []
+    for el in root.iter():
+        tag = el.tag.rsplit("}", 1)[-1]
+        if tag not in ("item", "entry"):
+            continue
+        title = link = pub = None
+        for child in el:
+            ctag = child.tag.rsplit("}", 1)[-1]
+            if ctag == "title":
+                title = "".join(child.itertext()).strip()
+            elif ctag == "link" and not link:
+                # RSS 的 link 是文字內容；Atom 的 link 是 href 屬性（只取 alternate）
+                if child.get("rel") in (None, "alternate"):
+                    link = (child.text or "").strip() or child.get("href")
+            elif ctag in ("pubDate", "published", "updated"):
+                pub = pub or (child.text or "").strip()
+        if title and link:
+            items.append((title, link, normalize_pub_date(pub)))
+    return items
+
+
+def read_feeds(path):
+    """feeds.txt 每行一個 feed：「來源名稱 網址」，# 開頭為註解。"""
+    feeds = []
+    for line in Path(path).read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = line.rsplit(None, 1)
+        name, url = (parts[0], parts[1]) if len(parts) == 2 else (parts[0], parts[0])
+        feeds.append((name, url))
+    return feeds
+
+
+def cmd_fetch(args):
+    feeds_path = Path(args.feeds)
+    if not feeds_path.exists():
+        sys.exit(f"錯誤：找不到 feed 清單 {feeds_path}，請先建立（每行「來源名稱 網址」）")
+    feeds = read_feeds(feeds_path)
+    if not feeds:
+        sys.exit(f"錯誤：{feeds_path} 內沒有任何 feed")
+
+    conn = connect()
+    total_new = 0
+    for name, feed_url in feeds:
+        try:
+            req = urllib.request.Request(feed_url, headers={"User-Agent": "Mozilla/5.0 (news-fetch)"})
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                items = parse_feed(resp.read())
+        except Exception as e:
+            print(f"[{name}] 抓取失敗：{e}")
+            continue
+        added = 0
+        for title, link, pub in items[: args.limit]:
+            if conn.execute("SELECT 1 FROM news WHERE url = ?", (link,)).fetchone():
+                continue
+            cur = conn.execute(
+                "INSERT OR IGNORE INTO pending (title, url, source, published) VALUES (?, ?, ?, ?)",
+                (title, link, name, pub),
+            )
+            added += cur.rowcount
+        conn.commit()
+        total_new += added
+        print(f"[{name}] 取得 {len(items)} 則，新增 {added} 則")
+
+    remaining = conn.execute("SELECT COUNT(*) FROM pending WHERE status = 'new'").fetchone()[0]
+    print(f"完成：本次新增 {total_new} 則，待評分共 {remaining} 則（python3 news.py pending 檢視）")
+    conn.close()
+
+
+def cmd_pending(args):
+    conn = connect()
+    sql = "SELECT id, source, published, status, title, url FROM pending"
+    if not args.all:
+        sql += " WHERE status = 'new'"
+    sql += " ORDER BY published DESC, id DESC"
+    if args.limit:
+        sql += f" LIMIT {int(args.limit)}"
+    rows = conn.execute(sql).fetchall()
+    if args.json:
+        print(json.dumps([dict(r) for r in rows], ensure_ascii=False, indent=2))
+        conn.close()
+        return
+    if not rows:
+        print("（待評分清單是空的，先跑 python3 news.py fetch）")
+        return
+    for r in rows:
+        mark = "" if r["status"] == "new" else f" [{r['status']}]"
+        print(f"{r['id']:>4}  {r['published'] or '----------'}  {r['source'] or '?'}{mark}  {r['title']}")
+        print(f"      {r['url']}")
+    conn.close()
+
+
+def cmd_skip(args):
+    conn = connect()
+    for pid in args.ids:
+        cur = conn.execute("UPDATE pending SET status = 'skipped' WHERE id = ? AND status = 'new'", (pid,))
+        print(f"id={pid}：{'已略過' if cur.rowcount else '找不到或已處理'}")
+    conn.commit()
+    conn.close()
+
+
 def main():
     parser = argparse.ArgumentParser(description="新聞重要性評分資料庫")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -202,8 +344,28 @@ def main():
     p_serve = sub.add_parser("serve", help="啟動網頁介面")
     p_serve.add_argument("--port", type=int, default=8765)
 
+    p_fetch = sub.add_parser("fetch", help="抓取 RSS，把新連結存入待評分清單")
+    p_fetch.add_argument("--feeds", default=str(FEEDS_PATH), help="feed 清單檔（預設 feeds.txt）")
+    p_fetch.add_argument("--limit", type=int, default=20, help="每個 feed 最多取幾則（預設 20）")
+
+    p_pending = sub.add_parser("pending", help="列出待評分清單")
+    p_pending.add_argument("--all", action="store_true", help="包含已評分的項目")
+    p_pending.add_argument("--json", action="store_true", help="以 JSON 輸出（給批次評分用）")
+    p_pending.add_argument("--limit", type=int, help="最多列出幾則")
+
+    p_skip = sub.add_parser("skip", help="把待評分項目標為略過")
+    p_skip.add_argument("ids", nargs="+", type=int)
+
     args = parser.parse_args()
-    {"init": cmd_init, "add": cmd_add, "list": cmd_list, "serve": cmd_serve}[args.command](args)
+    {
+        "init": cmd_init,
+        "add": cmd_add,
+        "list": cmd_list,
+        "serve": cmd_serve,
+        "fetch": cmd_fetch,
+        "pending": cmd_pending,
+        "skip": cmd_skip,
+    }[args.command](args)
 
 
 if __name__ == "__main__":

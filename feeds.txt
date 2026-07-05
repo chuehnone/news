@@ -1,0 +1,4 @@
+# RSS feed 清單：每行「來源名稱 網址」（以空白分隔），# 開頭為註解
+Google新聞台灣 https://news.google.com/rss?hl=zh-TW&gl=TW&ceid=TW:zh-Hant
+BBC中文 https://feeds.bbci.co.uk/zhongwen/trad/rss.xml
+中央社國際 https://feeds.feedburner.com/rsscna/intworld

@@ -47,10 +47,31 @@ python3 news.py init            # 建立資料庫（首次）
 python3 news.py add <file|->    # 寫入一筆評分
 python3 news.py list [--grade S]  # 快速列表
 python3 news.py serve [--port 8765]  # 網頁介面 http://127.0.0.1:8765
+python3 news.py fetch           # 抓取 feeds.txt 的 RSS，新連結存入 pending 表
+python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
+python3 news.py skip <id...>    # 把待評分項目標為略過
 ```
+
+## 批次評分
+
+使用者要求「批次評分」、「處理待評分清單」時，用 `/news-importance-score` 的批次模式：`pending --json` 取清單 → 依標題粗篩（不值得的用 `skip` 標掉）→ 逐則抓內文完整評分寫入 → 輸出總表。詳細流程見 skill 內的「批次模式」章節。
+
+## RSS 自動抓取
+
+- `feeds.txt` 每行「來源名稱 網址」，`#` 開頭為註解。
+- `fetch` 會跳過 `news` 表已有的連結；`pending` 表以 url 去重，重跑安全。
+- `add` 寫入評分後，會把 `pending` 中相同 url 的項目標成 `scored`。
+- 定時排程用 launchd：
+  ```bash
+  cp com.chinsheng.news-fetch.plist ~/Library/LaunchAgents/
+  launchctl load ~/Library/LaunchAgents/com.chinsheng.news-fetch.plist
+  ```
+  預設每天 08:00 執行，log 寫到 `fetch.log`。
 
 ## 架構
 
-- `news.py` — CLI（init / add / list / serve），schema 定義在此
+- `news.py` — CLI（init / add / list / serve / fetch / pending），schema 定義在此
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴
+- `feeds.txt` — RSS 來源清單
+- `com.chinsheng.news-fetch.plist` — launchd 排程範本（每日抓取）
 - `news.db` — SQLite 資料庫（不進版控）
