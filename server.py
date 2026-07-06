@@ -5,6 +5,7 @@
 """
 
 import json
+import re
 import sqlite3
 from html import escape
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -51,7 +52,13 @@ body {
 .wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
 h1 { font-size: 1.4rem; margin: 0 0 4px; }
 .sub { color: var(--muted); font-size: .85rem; margin-bottom: 20px; }
-.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 24px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.date-filter select {
+  padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text); font-size: .85rem;
+  font-family: inherit; cursor: pointer;
+}
 .tabs a {
   padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border);
   text-decoration: none; color: var(--text); font-size: .85rem; background: var(--card);
@@ -92,15 +99,20 @@ summary { cursor: pointer; font-size: .84rem; color: var(--muted); user-select: 
 """
 
 
-def query_news(grade=None):
+def query_news(grade=None, date=None):
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     try:  # 若尚未 init（table 不存在），回傳空列表而非噴錯
         sql = "SELECT * FROM news"
-        params = []
+        conds, params = [], []
         if grade:
-            sql += " WHERE grade = ?"
+            conds.append("grade = ?")
             params.append(grade)
+        if date:
+            conds.append("news_date = ?")
+            params.append(date)
+        if conds:
+            sql += " WHERE " + " AND ".join(conds)
         sql += " ORDER BY news_date DESC, total_score DESC, id DESC"
         rows = conn.execute(sql, params).fetchall()
     except sqlite3.OperationalError:
@@ -109,14 +121,34 @@ def query_news(grade=None):
     return rows
 
 
-def grade_counts():
+def grade_counts(date=None):
     conn = sqlite3.connect(DB_PATH)
     try:
-        rows = conn.execute("SELECT grade, COUNT(*) FROM news GROUP BY grade").fetchall()
+        sql = "SELECT grade, COUNT(*) FROM news"
+        params = []
+        if date:
+            sql += " WHERE news_date = ?"
+            params.append(date)
+        rows = conn.execute(sql + " GROUP BY grade", params).fetchall()
     except sqlite3.OperationalError:
         rows = []
     conn.close()
     return dict(rows)
+
+
+def date_counts():
+    """回傳 [(news_date, count), ...]，日期新到舊。"""
+    conn = sqlite3.connect(DB_PATH)
+    try:
+        rows = conn.execute(
+            "SELECT news_date, COUNT(*) FROM news"
+            " WHERE news_date IS NOT NULL AND news_date != ''"
+            " GROUP BY news_date ORDER BY news_date DESC"
+        ).fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    conn.close()
+    return rows
 
 
 def render_card(r):
@@ -179,16 +211,30 @@ def render_card(r):
     return "".join(parts)
 
 
-def render_page(grade=None):
-    rows = query_news(grade)
-    counts = grade_counts()
+def render_page(grade=None, date=None):
+    rows = query_news(grade, date)
+    counts = grade_counts(date)
     total = sum(counts.values())
 
-    tabs = [f'<a href="/" class="{"active" if not grade else ""}">全部 {total}</a>']
+    date_qs = f"&date={escape(date)}" if date else ""
+    tabs = [f'<a href="/?{date_qs.lstrip("&")}" class="{"active" if not grade else ""}">全部 {total}</a>']
     for g in "SABCD":
         n = counts.get(g, 0)
         active = "active" if grade == g else ""
-        tabs.append(f'<a href="/?grade={g}" class="{active}">{g} 級 {n}</a>')
+        tabs.append(f'<a href="/?grade={g}{date_qs}" class="{active}">{g} 級 {n}</a>')
+
+    # 日期下拉選單（選了自動送出，並保留 grade）
+    options = ['<option value="">全部日期</option>']
+    for d, n in date_counts():
+        selected = " selected" if d == date else ""
+        options.append(f'<option value="{escape(d)}"{selected}>{escape(d)}（{n}）</option>')
+    date_filter = [
+        '<form class="date-filter" method="get" action="/">',
+        f'<input type="hidden" name="grade" value="{escape(grade)}">' if grade else "",
+        f'<select name="date" onchange="this.form.submit()">{"".join(options)}</select>',
+        "<noscript><button type=\"submit\">篩選</button></noscript>",
+        "</form>",
+    ]
 
     body = []
     if not rows:
@@ -213,7 +259,7 @@ def render_page(grade=None):
 <div class="wrap">
 <h1>📰 每日新聞重要性評分</h1>
 <div class="sub">依 /news-importance-score 五面向評分（100 分制）整理的新聞資料庫</div>
-<div class="tabs">{"".join(tabs)}</div>
+<div class="filters"><div class="tabs">{"".join(tabs)}</div>{"".join(date_filter)}</div>
 {"".join(body)}
 </div>
 </body>
@@ -232,7 +278,10 @@ class Handler(BaseHTTPRequestHandler):
             grade = grade.upper()
             if grade not in "SABCD":
                 grade = None
-        html = render_page(grade)
+        date = qs.get("date", [None])[0]
+        if date and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+            date = None
+        html = render_page(grade, date)
         data = html.encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
