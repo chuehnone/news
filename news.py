@@ -113,6 +113,20 @@ def connect():
 TRACKING_PREFIXES = ("utm_", "at_")
 TRACKING_PARAMS = {"fbclid", "gclid", "igshid", "oc", "cmpid", "spm"}
 
+# 標題含這些詞的項目在 fetch 時直接標為 low（低優先），不進預設待評分清單。
+# 只放高置信度的雜訊詞（每日盤勢、天氣短訊、體育賽果、運勢彩券），
+# 寧可漏擋交給批次粗篩，也不要誤殺重要新聞。
+LOWPRIO_KEYWORDS = [
+    "盤前", "盤中", "收盤", "開盤", "早盤", "台指期", "台股盤",
+    "大雷雨", "豪雨特報", "天氣預報", "今日天氣",
+    "世界盃", "金靴", "英超", "中職", "日職", "MLB", "NBA",
+    "星座", "運勢", "統一發票", "威力彩", "大樂透",
+]
+
+
+def is_low_priority(title):
+    return any(kw in title for kw in LOWPRIO_KEYWORDS)
+
 
 def normalize_url(url):
     if not url:
@@ -205,7 +219,7 @@ def cmd_add(args):
     # pending 標題與評分標題相同，或僅多出「 - 媒體名」後綴，視為同一則
     title = data["title"]
     conn.execute(
-        "UPDATE pending SET status = 'scored' WHERE status = 'new' AND (title = ? OR title LIKE ?)",
+        "UPDATE pending SET status = 'scored' WHERE status IN ('new', 'low') AND (title = ? OR title LIKE ?)",
         (title, title + " - %"),
     )
     conn.commit()
@@ -307,19 +321,24 @@ def cmd_fetch(args):
         except Exception as e:
             print(f"[{name}] 抓取失敗：{e}")
             continue
-        added = 0
+        added = lowprio = 0
         for title, link, pub in items[: args.limit]:
             link = normalize_url(link)
             if conn.execute("SELECT 1 FROM news WHERE url = ?", (link,)).fetchone():
                 continue
+            status = "low" if is_low_priority(title) else "new"
             cur = conn.execute(
-                "INSERT OR IGNORE INTO pending (title, url, source, published) VALUES (?, ?, ?, ?)",
-                (title, link, name, pub),
+                "INSERT OR IGNORE INTO pending (title, url, source, published, status) VALUES (?, ?, ?, ?, ?)",
+                (title, link, name, pub, status),
             )
-            added += cur.rowcount
+            if cur.rowcount and status == "low":
+                lowprio += 1
+            else:
+                added += cur.rowcount
         conn.commit()
         total_new += added
-        print(f"[{name}] 取得 {len(items)} 則，新增 {added} 則")
+        low_note = f"，預過濾 {lowprio} 則" if lowprio else ""
+        print(f"[{name}] 取得 {len(items)} 則，新增 {added} 則{low_note}")
 
     remaining = conn.execute("SELECT COUNT(*) FROM pending WHERE status = 'new'").fetchone()[0]
     print(f"完成：本次新增 {total_new} 則，待評分共 {remaining} 則（python3 news.py pending 檢視）")
@@ -352,7 +371,7 @@ def cmd_pending(args):
 def cmd_skip(args):
     conn = connect()
     for pid in args.ids:
-        cur = conn.execute("UPDATE pending SET status = 'skipped' WHERE id = ? AND status = 'new'", (pid,))
+        cur = conn.execute("UPDATE pending SET status = 'skipped' WHERE id = ? AND status IN ('new', 'low')", (pid,))
         print(f"id={pid}：{'已略過' if cur.rowcount else '找不到或已處理'}")
     conn.commit()
     conn.close()
