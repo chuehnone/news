@@ -119,9 +119,10 @@ TRACKING_PARAMS = {"fbclid", "gclid", "igshid", "oc", "cmpid", "spm"}
 # 寧可漏擋交給批次粗篩，也不要誤殺重要新聞。
 LOWPRIO_KEYWORDS = [
     "盤前", "盤中", "收盤", "開盤", "早盤", "台指期", "台股盤",
+    "目標價", "焦點股",
     "大雷雨", "豪雨特報", "天氣預報", "今日天氣",
     "世界盃", "金靴", "英超", "中職", "日職", "MLB", "NBA",
-    "星座", "運勢", "統一發票", "威力彩", "大樂透",
+    "星座", "運勢", "統一發票", "威力彩", "大樂透", "今彩", "開獎", "頭獎",
 ]
 
 
@@ -425,7 +426,7 @@ def main():
 
     p_fetch = sub.add_parser("fetch", help="抓取 RSS，把新連結存入待評分清單")
     p_fetch.add_argument("--feeds", default=str(FEEDS_PATH), help="feed 清單檔（預設 feeds.txt）")
-    p_fetch.add_argument("--limit", type=int, default=20, help="每個 feed 最多取幾則（預設 20）")
+    p_fetch.add_argument("--limit", type=int, default=40, help="每個 feed 最多取幾則（預設 40）")
 
     p_pending = sub.add_parser("pending", help="列出待評分清單")
     p_pending.add_argument("--all", action="store_true", help="包含已評分的項目")
