@@ -59,8 +59,10 @@ python3 news.py skip <id...>    # 把待評分項目標為略過
 ## RSS 自動抓取
 
 - `feeds.txt` 每行「來源名稱 網址」，`#` 開頭為註解。
-- `fetch` 會跳過 `news` 表已有的連結；`pending` 表以 url 去重，重跑安全。
-- `add` 寫入評分後，會把 `pending` 中相同 url 的項目標成 `scored`。
+- 所有 url 存入與比對前都會經 `normalize_url()` 剝除追蹤參數（utm_*、at_* 等）。
+- `fetch` 會跳過 `news` 表已有的連結；`pending` 表以 url 去重，重跑安全。標題命中 `LOWPRIO_KEYWORDS`（盤勢／天氣／體育／彩券）的項目直接標 `low`，不進預設待評分清單（`pending --all` 可見）。
+- `add` 寫入評分後，會把 `pending` 中相同 url 或相同標題（含「 - 媒體名」後綴）的項目標成 `scored`。
+- WebFetch 被擋的網站（如 BBC）用 `python3 fetch_article.py <url>...` 抓內文。
 - 定時排程用 launchd：
   ```bash
   cp com.chinsheng.news-fetch.plist ~/Library/LaunchAgents/
@@ -72,6 +74,7 @@ python3 news.py skip <id...>    # 把待評分項目標為略過
 
 - `news.py` — CLI（init / add / list / serve / fetch / pending），schema 定義在此
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴
+- `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單
 - `com.chinsheng.news-fetch.plist` — launchd 排程範本（每日抓取）
 - `news.db` — SQLite 資料庫（不進版控）
