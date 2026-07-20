@@ -38,6 +38,7 @@ import argparse
 import json
 import sqlite3
 import sys
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -107,6 +108,27 @@ def connect():
     return conn
 
 
+# RSS 連結常帶追蹤參數（BBC 的 at_medium、Google News 的 oc 等），
+# 會讓 add 標記 pending、去重比對時對不上乾淨網址，一律先剝掉。
+TRACKING_PREFIXES = ("utm_", "at_")
+TRACKING_PARAMS = {"fbclid", "gclid", "igshid", "oc", "cmpid", "spm"}
+
+
+def normalize_url(url):
+    if not url:
+        return url
+    parts = urllib.parse.urlsplit(url.strip())
+    query = [
+        (k, v)
+        for k, v in urllib.parse.parse_qsl(parts.query, keep_blank_values=True)
+        if k not in TRACKING_PARAMS and not k.lower().startswith(TRACKING_PREFIXES)
+    ]
+    path = parts.path.rstrip("/") or "/"
+    return urllib.parse.urlunsplit(
+        (parts.scheme.lower(), parts.netloc.lower(), path, urllib.parse.urlencode(query), "")
+    )
+
+
 def grade_of(total):
     if total >= 85:
         return "S"
@@ -154,7 +176,7 @@ def cmd_add(args):
         watch = json.dumps(watch, ensure_ascii=False)
 
     conn = connect()
-    url = data.get("url")
+    url = normalize_url(data.get("url"))
     if url:
         dup = conn.execute("SELECT id, title FROM news WHERE url = ?", (url,)).fetchone()
         if dup and not args.force:
@@ -179,6 +201,13 @@ def cmd_add(args):
     cur = conn.execute(f"INSERT INTO news ({cols}) VALUES ({placeholders})", row)
     if url:
         conn.execute("UPDATE pending SET status = 'scored' WHERE url = ?", (url,))
+    # 轉址型連結（如 Google News）對不上原始網址，改用標題比對：
+    # pending 標題與評分標題相同，或僅多出「 - 媒體名」後綴，視為同一則
+    title = data["title"]
+    conn.execute(
+        "UPDATE pending SET status = 'scored' WHERE status = 'new' AND (title = ? OR title LIKE ?)",
+        (title, title + " - %"),
+    )
     conn.commit()
     print(f"已新增 id={cur.lastrowid}：[{grade} 級 {total} 分] {data['title']}")
     conn.close()
@@ -280,6 +309,7 @@ def cmd_fetch(args):
             continue
         added = 0
         for title, link, pub in items[: args.limit]:
+            link = normalize_url(link)
             if conn.execute("SELECT 1 FROM news WHERE url = ?", (link,)).fetchone():
                 continue
             cur = conn.execute(
