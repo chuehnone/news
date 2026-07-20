@@ -38,6 +38,7 @@ import argparse
 import json
 import sqlite3
 import sys
+import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -126,6 +127,17 @@ LOWPRIO_KEYWORDS = [
 
 def is_low_priority(title):
     return any(kw in title for kw in LOWPRIO_KEYWORDS)
+
+
+def normalize_title(title):
+    """去除空白與標點後的標題，用於跨來源重複比對。
+
+    同一則新聞在不同來源常只差全半形標點與空格（中央社用全形頓號、
+    科技新報用半形逗號加空格），正規化後全等即視為重複。
+    """
+    return "".join(
+        ch for ch in title if not ch.isspace() and not unicodedata.category(ch).startswith("P")
+    )
 
 
 def normalize_url(url):
@@ -219,7 +231,7 @@ def cmd_add(args):
     # pending 標題與評分標題相同，或僅多出「 - 媒體名」後綴，視為同一則
     title = data["title"]
     conn.execute(
-        "UPDATE pending SET status = 'scored' WHERE status IN ('new', 'low') AND (title = ? OR title LIKE ?)",
+        "UPDATE pending SET status = 'scored' WHERE status IN ('new', 'low', 'dup') AND (title = ? OR title LIKE ?)",
         (title, title + " - %"),
     )
     conn.commit()
@@ -312,6 +324,11 @@ def cmd_fetch(args):
         sys.exit(f"錯誤：{feeds_path} 內沒有任何 feed")
 
     conn = connect()
+    seen_titles = {
+        normalize_title(r[0])
+        for table in ("news", "pending")
+        for r in conn.execute(f"SELECT title FROM {table}").fetchall()
+    }
     total_new = 0
     for name, feed_url in feeds:
         try:
@@ -321,24 +338,37 @@ def cmd_fetch(args):
         except Exception as e:
             print(f"[{name}] 抓取失敗：{e}")
             continue
-        added = lowprio = 0
+        added = lowprio = dup = 0
         for title, link, pub in items[: args.limit]:
             link = normalize_url(link)
             if conn.execute("SELECT 1 FROM news WHERE url = ?", (link,)).fetchone():
                 continue
-            status = "low" if is_low_priority(title) else "new"
+            norm = normalize_title(title)
+            if norm in seen_titles:
+                status = "dup"
+            elif is_low_priority(title):
+                status = "low"
+            else:
+                status = "new"
             cur = conn.execute(
                 "INSERT OR IGNORE INTO pending (title, url, source, published, status) VALUES (?, ?, ?, ?, ?)",
                 (title, link, name, pub, status),
             )
-            if cur.rowcount and status == "low":
+            if not cur.rowcount:
+                continue
+            seen_titles.add(norm)
+            if status == "dup":
+                dup += 1
+            elif status == "low":
                 lowprio += 1
             else:
-                added += cur.rowcount
+                added += 1
         conn.commit()
         total_new += added
-        low_note = f"，預過濾 {lowprio} 則" if lowprio else ""
-        print(f"[{name}] 取得 {len(items)} 則，新增 {added} 則{low_note}")
+        notes = "".join(
+            f"，{label} {n} 則" for label, n in (("預過濾", lowprio), ("重複", dup)) if n
+        )
+        print(f"[{name}] 取得 {len(items)} 則，新增 {added} 則{notes}")
 
     remaining = conn.execute("SELECT COUNT(*) FROM pending WHERE status = 'new'").fetchone()[0]
     print(f"完成：本次新增 {total_new} 則，待評分共 {remaining} 則（python3 news.py pending 檢視）")
@@ -371,7 +401,7 @@ def cmd_pending(args):
 def cmd_skip(args):
     conn = connect()
     for pid in args.ids:
-        cur = conn.execute("UPDATE pending SET status = 'skipped' WHERE id = ? AND status IN ('new', 'low')", (pid,))
+        cur = conn.execute("UPDATE pending SET status = 'skipped' WHERE id = ? AND status IN ('new', 'low', 'dup')", (pid,))
         print(f"id={pid}：{'已略過' if cur.rowcount else '找不到或已處理'}")
     conn.commit()
     conn.close()
