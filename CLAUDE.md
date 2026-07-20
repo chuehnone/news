@@ -51,6 +51,7 @@ python3 news.py fetch           # 抓取 feeds.txt 的 RSS，新連結存入 pen
 python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
 python3 news.py skip <id...>    # 把待評分項目標為略過
 python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
+python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 ```
 
 ## 批次評分

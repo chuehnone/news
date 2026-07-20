@@ -450,6 +450,18 @@ def cmd_digest(args):
     print("\n".join(lines).rstrip())
 
 
+def cmd_prune(args):
+    conn = connect()
+    cur = conn.execute(
+        "DELETE FROM pending WHERE status != 'new' AND fetched_at < datetime('now', 'localtime', ?)",
+        (f"-{int(args.days)} days",),
+    )
+    conn.commit()
+    remaining = conn.execute("SELECT COUNT(*) FROM pending").fetchone()[0]
+    print(f"已清除 {cur.rowcount} 筆 {args.days} 天前的已處理項目，pending 表剩 {remaining} 筆")
+    conn.close()
+
+
 def cmd_skip(args):
     conn = connect()
     for pid in args.ids:
@@ -490,6 +502,9 @@ def main():
     p_digest = sub.add_parser("digest", help="輸出指定日期的每日摘要（markdown）")
     p_digest.add_argument("--date", help="YYYY-MM-DD，預設今天")
 
+    p_prune = sub.add_parser("prune", help="清除 pending 中過期的已處理項目")
+    p_prune.add_argument("--days", type=int, default=30, help="保留最近幾天（預設 30）")
+
     args = parser.parse_args()
     {
         "init": cmd_init,
@@ -500,6 +515,7 @@ def main():
         "pending": cmd_pending,
         "skip": cmd_skip,
         "digest": cmd_digest,
+        "prune": cmd_prune,
     }[args.command](args)
 
 
