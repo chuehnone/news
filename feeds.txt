@@ -1,4 +1,7 @@
 # RSS feed 清單：每行「來源名稱 網址」（以空白分隔），# 開頭為註解
-Google新聞台灣 https://news.google.com/rss?hl=zh-TW&gl=TW&ceid=TW:zh-Hant
+# 註：Google News 已移除——轉址網址（news.google.com/rss/articles/...）無法離線
+# 解出原文、內文抓不到，且內容多與直接來源重複；UDN RSS 對非瀏覽器請求回空 item。
 BBC中文 https://feeds.bbci.co.uk/zhongwen/trad/rss.xml
 中央社國際 https://feeds.feedburner.com/rsscna/intworld
+中央社財經 https://feeds.feedburner.com/rsscna/finance
+科技新報 https://technews.tw/feed/
