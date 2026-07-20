@@ -50,6 +50,7 @@ python3 news.py serve [--port 8765]  # 網頁介面 http://127.0.0.1:8765
 python3 news.py fetch           # 抓取 feeds.txt 的 RSS，新連結存入 pending 表
 python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
 python3 news.py skip <id...>    # 把待評分項目標為略過
+python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
 ```
 
 ## 批次評分

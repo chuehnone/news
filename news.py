@@ -399,6 +399,57 @@ def cmd_pending(args):
     conn.close()
 
 
+SECTION_ORDER = [
+    "今日最重要",
+    "影響未來的趨勢",
+    "跟生活決策有關",
+    "被忽略但重要",
+    "熱但未必重要",
+]
+
+
+def cmd_digest(args):
+    date = args.date or datetime.now().strftime("%Y-%m-%d")
+    conn = connect()
+    rows = conn.execute(
+        "SELECT * FROM news WHERE news_date = ? AND section != '不建議放入每日摘要' "
+        "ORDER BY total_score DESC",
+        (date,),
+    ).fetchall()
+    conn.close()
+    if not rows:
+        print(f"（{date} 沒有已評分的新聞，先跑批次評分）")
+        return
+
+    by_section = {}
+    for r in rows:
+        by_section.setdefault(r["section"] if r["section"] in SECTION_ORDER else "其他", []).append(r)
+
+    lines = [f"# 每日新聞摘要 {date}", ""]
+    for section in SECTION_ORDER + ["其他"]:
+        items = by_section.get(section)
+        if not items:
+            continue
+        lines += [f"## {section}", ""]
+        for r in items:
+            tag = f"[{r['grade']} {r['total_score']}]"
+            link = f"[{r['title']}]({r['url']})" if r["url"] else r["title"]
+            if r["grade"] in ("S", "A"):
+                lines += [f"### {tag} {link}", ""]
+                if r["one_line"]:
+                    lines += [f"**{r['one_line']}**", ""]
+                if r["why_important"]:
+                    lines += [r["why_important"], ""]
+            elif r["grade"] == "B":
+                one = f" — {r['one_line']}" if r["one_line"] else ""
+                lines.append(f"- **{tag}** {link}{one}")
+            else:
+                lines.append(f"- {tag} {link}")
+        if lines[-1] != "":
+            lines.append("")
+    print("\n".join(lines).rstrip())
+
+
 def cmd_skip(args):
     conn = connect()
     for pid in args.ids:
@@ -436,6 +487,9 @@ def main():
     p_skip = sub.add_parser("skip", help="把待評分項目標為略過")
     p_skip.add_argument("ids", nargs="+", type=int)
 
+    p_digest = sub.add_parser("digest", help="輸出指定日期的每日摘要（markdown）")
+    p_digest.add_argument("--date", help="YYYY-MM-DD，預設今天")
+
     args = parser.parse_args()
     {
         "init": cmd_init,
@@ -445,6 +499,7 @@ def main():
         "fetch": cmd_fetch,
         "pending": cmd_pending,
         "skip": cmd_skip,
+        "digest": cmd_digest,
     }[args.command](args)
 
 
