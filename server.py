@@ -583,13 +583,30 @@ def render_static_page():
 </html>"""
 
 
+def verify_html(html, expected):
+    """檢查產出的頁面確實含有 expected 張卡片。
+
+    export 最清楚自己生了什麼，故由這裡把關而非讓 CI 比對 HTML 字串——
+    CI 的比對條件會跟 markup 脫鉤（曾因卡片改成 class="card S" 而誤判成 0）。
+    回傳實際卡片數，不符則 raise。
+    """
+    found = len(re.findall(r'<div class="card[^"]*" data-grade=', html))
+    if found != expected:
+        raise SystemExit(
+            f"產出異常：頁面有 {found} 張卡片，但資料庫有 {expected} 筆。"
+            "（import 失敗或 render_card 壞掉時會出現）"
+        )
+    return found
+
+
 def export_static(out_dir):
     out_dir.mkdir(parents=True, exist_ok=True)
     index = out_dir / "index.html"
     html = render_static_page()
+    n = verify_html(html, len(query_news()))
     index.write_text(html, encoding="utf-8")
     kb = len(html.encode("utf-8")) / 1024
-    print(f"已輸出靜態網站到 {index}（{kb:.0f} KB）")
+    print(f"已輸出靜態網站到 {index}（{kb:.0f} KB、{n} 張卡片）")
 
 
 class Handler(BaseHTTPRequestHandler):
