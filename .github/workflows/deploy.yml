@@ -43,7 +43,8 @@ jobs:
       - name: 檢查產出正常
         run: |
           test -s dist/index.html || { echo "dist/index.html 是空的"; exit 1; }
-          n=$(grep -o 'class="card" data-grade' dist/index.html | wc -l)
+          # class 開頭比對到 card 即可，不綁後面的等級，卡片樣式改動才不會誤判成產出壞掉
+          n=$(grep -o 'class="card[^"]*" data-grade' dist/index.html | wc -l)
           echo "卡片數：$n"
           # 空頁面通常代表 import 失敗，不要把壞掉的站推上線
           [ "$n" -gt 0 ] || { echo "產出頁面沒有任何卡片"; exit 1; }
