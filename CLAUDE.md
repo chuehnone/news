@@ -106,6 +106,18 @@ CI 只負責把 JSON 轉成靜態站並上線。
   靜態站用 `<button data-*-pick>` 交給 `FILTER_JS`，動態站用 `<a href="/?...">`。
   動態頁面**完全沒有載入 JS**，沿用 button 的話會是一顆按了沒反應的死按鈕
   （標籤與分類都曾經如此）。由 `test_tag_and_section_are_clickable_in_both_modes` 守著。
+- **分享預覽（OG／description）**：貼連結到 Slack／Threads／LINE 時的呈現。
+  描述與預覽圖都由實際資料生成（筆數、S/A 級數、最新日期），不是固定文案。
+  - `og:image` 是 `export` 一併輸出的 `og.svg`，與 `index.html` 同層。
+    **必須是絕對網址**，相對路徑各平台一律抓不到圖，所以有 `SITE_URL` 常數
+    （換網域用環境變數 `NEWS_SITE_URL` 覆蓋，不必改程式碼）。
+  - SVG 的 `<text>` **不會自動換行**，超出畫布就直接被裁掉，改文案後要實際
+    轉圖看過（`qlmanage -t -s 1200 -o . og.svg`）。標題與標籤行都已按字數限長。
+  - 預覽圖不放 emoji：各平台 emoji 字型不一，轉點陣時容易變成豆腐字。
+  - 目前**只做分享預覽，沒有做 sitemap／robots**——這個站是自用與分享用途，
+    不主動求搜尋引擎索引。若哪天要流量，該做的是把每則新聞與每個標籤
+    拆成獨立頁面（現在全部擠在單一 1.6 MB 的 index.html，且標籤篩選是
+    hash，搜尋引擎不會當成獨立頁面）。
 - ⚠️ GitHub Pages 免費版一律 public，資料會公開。
 
 ## 已知陷阱
@@ -160,7 +172,7 @@ CI 只負責把 JSON 轉成靜態站並上線。
 - `news.py` — CLI（init / add / list / serve / fetch / pending / tags / tag / alias /
   export-json / import-json / export）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，52 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，57 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義；
   改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。

@@ -690,6 +690,64 @@ class TestTags(CLITestCase):
         self.assertIn("b", listed)
 
 
+class TestShareMetadata(CLITestCase):
+    """分享預覽（OG／description）——貼連結到 Slack／Threads 時的呈現。"""
+
+    def setUp(self):
+        super().setUp()
+        self.add(make_score("台積電法說", date.today().isoformat(),
+                            url="http://e.com/1", tags=["台積電"],
+                            scores=(24, 19, 19, 19, 14)))  # 95 → S
+
+    def test_head_has_share_metadata(self):
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            html = server.render_static_page()
+        head = html[:html.find("</head>")]
+        for tag in ('name="description"', 'property="og:title"',
+                    'property="og:description"', 'property="og:image"',
+                    'property="og:url"', 'rel="canonical"',
+                    'name="twitter:card"'):
+            self.assertIn(tag, head, f"<head> 缺少 {tag}")
+
+    def test_og_image_url_is_absolute(self):
+        """og:image 必須是絕對網址——相對路徑各平台一律抓不到圖。"""
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            html = server.render_static_page()
+        url = re.search(r'property="og:image" content="([^"]+)"', html).group(1)
+        self.assertRegex(url, r"^https?://", "og:image 不是絕對網址")
+        self.assertTrue(url.endswith(".svg"))
+
+    def test_description_reflects_real_counts(self):
+        """描述用實際數字而非固定文案，且長度要在平台截斷前。"""
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            rows = server.query_news()
+            desc = server.meta_description(rows, server.grade_counts(rows))
+        self.assertIn("1 則", desc, "描述應含實際筆數")
+        self.assertIn(date.today().isoformat(), desc, "描述應含最新日期")
+        self.assertLessEqual(len(desc), 90, f"描述過長會被截斷（{len(desc)} 字元）")
+
+    def test_export_writes_og_image(self):
+        """og.svg 要與 index.html 同層輸出，否則 og:image 指到 404。"""
+        self.run_cli("export", "--out", "d", check=True)
+        svg = self.dir / "d" / "og.svg"
+        self.assertTrue(svg.exists(), "export 沒有輸出 og.svg")
+        content = svg.read_text(encoding="utf-8")
+        self.assertTrue(content.startswith("<svg"))
+        self.assertIn("</svg>", content)
+
+    def test_og_image_survives_empty_db(self):
+        """空 db 也要能產圖（max() 對空序列會拋例外）。"""
+        conn = sqlite3.connect(self.dir / "news.db")
+        conn.execute("DELETE FROM news")
+        conn.commit()
+        conn.close()
+        r = self.run_cli("export", "--out", "d2")
+        self.assertEqual(r.returncode, 0, f"空 db 不該噴錯：{r.stderr}")
+
+
 class TestStaticOutput(CLITestCase):
     """靜態站產出的自我驗證。"""
 

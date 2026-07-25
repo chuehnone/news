@@ -5,6 +5,7 @@
 """
 
 import json
+import os
 import re
 import sqlite3
 # date 另取別名：query_news() 有個叫 date 的參數，直接 import date 會被遮蔽
@@ -313,6 +314,14 @@ def section_counts():
     conn.close()
     return rows
 
+
+# 靜態站的公開網址（結尾帶斜線）。og:image / og:url 必須是絕對網址，
+# 相對路徑在 Slack、Threads 等平台一律抓不到圖。
+# 換網域或改用他人的 fork 時用環境變數覆蓋，不必改程式碼。
+SITE_URL = os.environ.get("NEWS_SITE_URL", "http://chuehnone.viovie.co/news/")
+
+# 分享預覽圖的檔名（與 index.html 同層輸出）
+OG_IMAGE_NAME = "og.svg"
 
 # 一則新聞的「相關新聞」最多列幾則。列太多會把評分細節擠掉，
 # 且同標籤新聞本來就能用標籤篩選看全部。
@@ -716,6 +725,73 @@ FILTER_JS = """
 """
 
 
+SITE_TITLE = "每日新聞重要性評分"
+
+
+def meta_description(rows, counts):
+    """分享預覽與搜尋結果顯示的描述。
+
+    刻意用實際數字而非固定文案：貼到 Slack／Threads 時，
+    「323 則、S 級 3 則必讀」比「一個新聞評分網站」更能讓人判斷要不要點。
+
+    長度控制在 80 個字元以內——中文佔的視覺寬度是拉丁字母的兩倍，
+    各平台約在 70-90 字元截斷，寫太長等於把後半段浪費掉。
+    """
+    dates = [r["news_date"] for r in rows if r["news_date"]]
+    latest = max(dates) if dates else None
+    top = "／".join(
+        f"{g} 級 {counts[g]}" for g in ("S", "A") if counts.get(g)
+    )
+    desc = (
+        f"用五個面向為新聞評分（100 分制），篩掉噪音、留下值得追蹤的事。"
+        f"已收錄 {len(rows)} 則"
+    )
+    if top:
+        desc += f"，其中 {top} 則值得優先讀"
+    if latest:
+        desc += f"，更新至 {latest}"
+    return desc + "。"
+
+
+def render_og_image(rows, counts):
+    """分享預覽圖（SVG）。
+
+    用 SVG 而非 PNG：純文字排版不需要點陣圖，且不必引入繪圖套件
+    （本專案堅持零外部依賴）。主流平台都吃 SVG 的 og:image，
+    少數不吃的會退化成無圖預覽，仍有標題與描述。
+    """
+    dates = [r["news_date"] for r in rows if r["news_date"]]
+    latest = max(dates) if dates else "—"
+    # 標籤取前 5 個並限制總長：中文字寬約等於 font-size，超過畫布寬度會被裁掉
+    # （SVG 的 <text> 不會自動換行，這是實際渲染後才看得出來的問題）
+    tags, width = [], 0
+    for t, _ in tag_counts(rows):
+        if len(tags) >= 5 or width + len(t) + 2 > 34:
+            break
+        tags.append(t)
+        width += len(t) + 2
+    tag_line = "　".join(f"#{t}" for t in tags)
+    grade_line = "　".join(f"{g} {counts[g]}" for g in GRADES if counts.get(g))
+    # 不放 emoji：各平台的 emoji 字型不一，SVG 轉點陣時常變成豆腐字或缺字
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#111418"/>
+<rect x="0" y="0" width="1200" height="10" fill="#dc2626"/>
+<text x="80" y="170" fill="#e6e8ea" font-size="60" font-weight="700"
+ font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">{escape(SITE_TITLE)}</text>
+<text x="80" y="235" fill="#9aa3ad" font-size="30"
+ font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">五面向評分 · 100 分制 · 篩掉噪音</text>
+<text x="80" y="360" fill="#e6e8ea" font-size="52" font-weight="700"
+ font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">{len(rows)} 則已評分</text>
+<text x="80" y="425" fill="#fdba74" font-size="30"
+ font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">{escape(grade_line)}</text>
+<text x="80" y="510" fill="#7ab0ff" font-size="26"
+ font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">{escape(tag_line)}</text>
+<text x="80" y="570" fill="#6b7280" font-size="24"
+ font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">最新至 {escape(latest)}</text>
+</svg>
+"""
+
+
 def render_static_page():
     """輸出含全部卡片的單一頁面，篩選交給前端 JS。"""
     rows = query_news()
@@ -764,18 +840,33 @@ def render_static_page():
 
     empty_msg = "目前沒有符合條件的新聞。" if rows else "目前沒有新聞。"
     generated = datetime.now().strftime("%Y-%m-%d %H:%M")
+    desc = escape(meta_description(rows, counts))
+    og_image = SITE_URL.rstrip("/") + "/" + OG_IMAGE_NAME
 
     return f"""<!doctype html>
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>每日新聞重要性評分</title>
+<title>{escape(SITE_TITLE)}</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{escape(SITE_URL)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{escape(SITE_TITLE)}">
+<meta property="og:title" content="{escape(SITE_TITLE)}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{escape(SITE_URL)}">
+<meta property="og:image" content="{escape(og_image)}">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{escape(SITE_TITLE)}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{escape(og_image)}">
 <style>{STYLE}</style>
 </head>
 <body>
 <div class="wrap">
-<h1>📰 每日新聞重要性評分</h1>
+<h1>📰 {escape(SITE_TITLE)}</h1>
 <div class="sub">依 /news-importance-score 五面向評分（100 分制）整理的新聞資料庫｜更新於 {generated}</div>
 <div class="filters"><div class="tabs">{"".join(tabs)}</div></div>
 {controls}
@@ -829,6 +920,10 @@ def export_static(out_dir, retention=False, today=None):
         html = render_static_page()
         n = verify_html(html, len(rows))
         index.write_text(html, encoding="utf-8")
+        # 分享預覽圖與 index 同層，og:image 才對得上 SITE_URL + 檔名
+        (out_dir / OG_IMAGE_NAME).write_text(
+            render_og_image(rows, grade_counts(rows)), encoding="utf-8"
+        )
         kb = len(html.encode("utf-8")) / 1024
         print(f"已輸出靜態網站到 {index}（{kb:.0f} KB、{n} 張卡片）")
     finally:
