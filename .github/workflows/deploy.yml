@@ -10,6 +10,8 @@ on:
       - "server.py"
       - "news.py"
       - "test_news.py"
+      # 分享預覽圖是進版控的成品（CI 沒有中文字型無法生成），更新它也要重新部署
+      - "assets/**"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
 

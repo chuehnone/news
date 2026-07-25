@@ -757,6 +757,21 @@ def cmd_export(args):
     export_static(Path(args.out), retention=args.retention)
 
 
+def cmd_og(args):
+    """重產分享預覽圖（需要 ImageMagick 與系統中文字型）。
+
+    圖片進版控、由 export 直接複製，所以只有想更新圖上的數字時才需要跑這個。
+    """
+    from server import OG_IMAGE_SRC, build_og_image
+
+    out = Path(args.out) if args.out else OG_IMAGE_SRC
+    out.parent.mkdir(parents=True, exist_ok=True)
+    build_og_image(out)
+    kb = out.stat().st_size / 1024
+    print(f"已產生分享預覽圖 {out}（{kb:.0f} KB）")
+    print("記得 commit，靜態站是複製這份成品上線的")
+
+
 def cmd_prune(args):
     conn = connect()
     cur = conn.execute(
@@ -1008,6 +1023,9 @@ def main():
         help="套用保留期分層（近 30 天全部、30-90 天限 S/A、90 天以上不輸出）；CI 用",
     )
 
+    p_og = sub.add_parser("og", help="重產分享預覽圖（需 ImageMagick，圖片要 commit）")
+    p_og.add_argument("--out", help="輸出路徑（預設 assets/og.png）")
+
     args = parser.parse_args()
     {
         "init": cmd_init,
@@ -1026,6 +1044,7 @@ def main():
         "import-json": cmd_import_json,
         "schema": cmd_schema,
         "export": cmd_export,
+        "og": cmd_og,
     }[args.command](args)
 
 

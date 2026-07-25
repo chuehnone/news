@@ -7,11 +7,13 @@
 import json
 import os
 import re
+import shutil
 import sqlite3
 # date 另取別名：query_news() 有個叫 date 的參數，直接 import date 會被遮蔽
 from datetime import datetime, timedelta, date as date_cls
 from html import escape
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from pathlib import Path
 from urllib.parse import urlparse, parse_qs, quote
 # 常數一律取自 news.py，勿在此另存一份（見 TestNoDuplicateConstants）。
 # news.py 反向 import server 只發生在 cmd_serve / cmd_export 的函式內，故不成環。
@@ -320,8 +322,17 @@ def section_counts():
 # 換網域或改用他人的 fork 時用環境變數覆蓋，不必改程式碼。
 SITE_URL = os.environ.get("NEWS_SITE_URL", "http://chuehnone.viovie.co/news/")
 
-# 分享預覽圖的檔名（與 index.html 同層輸出）
-OG_IMAGE_NAME = "og.svg"
+# 分享預覽圖。刻意是「進版控的 PNG」而不是 export 當下生成的 SVG：
+#
+# SVG 的文字要靠**對方伺服器**有中文字型才畫得出來（Slack、Threads 等平台
+# 是在自己的機器上算縮圖），而它們沒有 PingFang／Noto Sans TC，結果是整張
+# 圖的中文全變成顯示 Unicode 碼位的豆腐方塊。本機用 qlmanage 預覽看不出來，
+# 因為那是拿自己的字型畫的。
+#
+# 所以改成本機把文字燒進 PNG（`news.py og`）、圖片進版控，export 只負責複製。
+# CI 的 Ubuntu runner 既沒有中文字型也不保證有繪圖工具，讓它生圖只會再壞一次。
+OG_IMAGE_NAME = "og.png"
+OG_IMAGE_SRC = Path(__file__).parent / "assets" / OG_IMAGE_NAME
 
 # 一則新聞的「相關新聞」最多列幾則。列太多會把評分細節擠掉，
 # 且同標籤新聞本來就能用標籤篩選看全部。
@@ -753,43 +764,75 @@ def meta_description(rows, counts):
     return desc + "。"
 
 
-def render_og_image(rows, counts):
-    """分享預覽圖（SVG）。
+def og_image_lines(rows, counts):
+    """預覽圖上的文字內容。抽出來讓 build 與測試共用同一份。
 
-    用 SVG 而非 PNG：純文字排版不需要點陣圖，且不必引入繪圖套件
-    （本專案堅持零外部依賴）。主流平台都吃 SVG 的 og:image，
-    少數不吃的會退化成無圖預覽，仍有標題與描述。
+    回傳 [(文字, 字級, 顏色, y 座標), ...]。
     """
     dates = [r["news_date"] for r in rows if r["news_date"]]
     latest = max(dates) if dates else "—"
-    # 標籤取前 5 個並限制總長：中文字寬約等於 font-size，超過畫布寬度會被裁掉
-    # （SVG 的 <text> 不會自動換行，這是實際渲染後才看得出來的問題）
+    # 標籤取前 5 個並限制總長：文字不會自動換行，超出畫布就被裁掉
     tags, width = [], 0
     for t, _ in tag_counts(rows):
         if len(tags) >= 5 or width + len(t) + 2 > 34:
             break
         tags.append(t)
         width += len(t) + 2
-    tag_line = "　".join(f"#{t}" for t in tags)
-    grade_line = "　".join(f"{g} {counts[g]}" for g in GRADES if counts.get(g))
-    # 不放 emoji：各平台的 emoji 字型不一，SVG 轉點陣時常變成豆腐字或缺字
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-<rect width="1200" height="630" fill="#111418"/>
-<rect x="0" y="0" width="1200" height="10" fill="#dc2626"/>
-<text x="80" y="170" fill="#e6e8ea" font-size="60" font-weight="700"
- font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">{escape(SITE_TITLE)}</text>
-<text x="80" y="235" fill="#9aa3ad" font-size="30"
- font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">五面向評分 · 100 分制 · 篩掉噪音</text>
-<text x="80" y="360" fill="#e6e8ea" font-size="52" font-weight="700"
- font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">{len(rows)} 則已評分</text>
-<text x="80" y="425" fill="#fdba74" font-size="30"
- font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">{escape(grade_line)}</text>
-<text x="80" y="510" fill="#7ab0ff" font-size="26"
- font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">{escape(tag_line)}</text>
-<text x="80" y="570" fill="#6b7280" font-size="24"
- font-family="'PingFang TC','Noto Sans TC','Hiragino Sans',sans-serif">最新至 {escape(latest)}</text>
-</svg>
-"""
+    grade_line = "   ".join(f"{g} {counts[g]}" for g in GRADES if counts.get(g))
+    return [
+        (SITE_TITLE, 60, "#e6e8ea", 150),
+        ("五面向評分 · 100 分制 · 篩掉噪音", 30, "#9aa3ad", 225),
+        (f"{len(rows)} 則已評分", 52, "#e6e8ea", 350),
+        (grade_line, 30, "#fdba74", 420),
+        ("   ".join(f"#{t}" for t in tags), 26, "#7ab0ff", 505),
+        (f"最新至 {latest}", 24, "#6b7280", 565),
+    ]
+
+
+# 產圖用的中文字型（macOS 內建）。找不到就中止並說明，不要默默畫出豆腐字。
+OG_FONT_CANDIDATES = [
+    "/System/Library/Fonts/PingFang.ttc",
+    "/System/Library/Fonts/STHeiti Medium.ttc",
+    "/System/Library/Fonts/Hiragino Sans GB.ttc",
+]
+
+
+def build_og_image(out_path):
+    """把文字燒進 PNG（需要 ImageMagick）。由 `news.py og` 呼叫。
+
+    產出的圖進版控，所以只有本機需要 ImageMagick 與中文字型，
+    CI 與其他機器直接用 repo 裡的成品。
+    """
+    import shutil
+    import subprocess
+
+    magick = shutil.which("magick") or shutil.which("convert")
+    if not magick:
+        raise SystemExit(
+            "找不到 ImageMagick（brew install imagemagick）。"
+            "預覽圖已進版控，沒有要改內容的話不需要重產。"
+        )
+    font = next((f for f in OG_FONT_CANDIDATES if Path(f).exists()), None)
+    if not font:
+        raise SystemExit(
+            "找不到中文字型，產出的圖會是豆腐字。"
+            f"預期路徑：{'、'.join(OG_FONT_CANDIDATES)}"
+        )
+
+    rows = query_news()
+    cmd = [
+        magick, "-size", "1200x630", "xc:#111418",
+        "-fill", "#dc2626", "-draw", "rectangle 0,0 1200,10",
+        "-font", font,
+    ]
+    for text, size, colour, y in og_image_lines(rows, grade_counts(rows)):
+        if not text:
+            continue
+        cmd += ["-fill", colour, "-pointsize", str(size),
+                "-annotate", f"+80+{y}", text]
+    cmd.append(str(out_path))
+    subprocess.run(cmd, check=True)
+    return out_path
 
 
 def render_static_page():
@@ -920,10 +963,14 @@ def export_static(out_dir, retention=False, today=None):
         html = render_static_page()
         n = verify_html(html, len(rows))
         index.write_text(html, encoding="utf-8")
-        # 分享預覽圖與 index 同層，og:image 才對得上 SITE_URL + 檔名
-        (out_dir / OG_IMAGE_NAME).write_text(
-            render_og_image(rows, grade_counts(rows)), encoding="utf-8"
-        )
+        # 分享預覽圖與 index 同層，og:image 才對得上 SITE_URL + 檔名。
+        # 複製進版控的成品而非當場生成——CI 沒有中文字型，生出來會是豆腐字。
+        if OG_IMAGE_SRC.exists():
+            shutil.copyfile(OG_IMAGE_SRC, out_dir / OG_IMAGE_NAME)
+        else:
+            # 少了圖只是沒有大圖預覽，標題與描述仍在，不值得中止整個部署
+            print(f"警告：找不到 {OG_IMAGE_SRC}，分享預覽將沒有圖"
+                  f"（用 `python3 news.py og` 產生）")
         kb = len(html.encode("utf-8")) / 1024
         print(f"已輸出靜態網站到 {index}（{kb:.0f} KB、{n} 張卡片）")
     finally:

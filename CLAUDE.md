@@ -45,6 +45,7 @@ python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
 python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控）
 python3 news.py import-json [--replace]  # 從 JSON 重建 news 表（CI 用）
 python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--retention 為 CI 用，見下）
+python3 news.py og              # 重產分享預覽圖 assets/og.png（需 ImageMagick，產完要 commit）
 python3 -m unittest test_news    # 跑回歸測試（CI 也會跑）
 ```
 
@@ -108,12 +109,19 @@ CI 只負責把 JSON 轉成靜態站並上線。
   （標籤與分類都曾經如此）。由 `test_tag_and_section_are_clickable_in_both_modes` 守著。
 - **分享預覽（OG／description）**：貼連結到 Slack／Threads／LINE 時的呈現。
   描述與預覽圖都由實際資料生成（筆數、S/A 級數、最新日期），不是固定文案。
-  - `og:image` 是 `export` 一併輸出的 `og.svg`，與 `index.html` 同層。
-    **必須是絕對網址**，相對路徑各平台一律抓不到圖，所以有 `SITE_URL` 常數
-    （換網域用環境變數 `NEWS_SITE_URL` 覆蓋，不必改程式碼）。
-  - SVG 的 `<text>` **不會自動換行**，超出畫布就直接被裁掉，改文案後要實際
-    轉圖看過（`qlmanage -t -s 1200 -o . og.svg`）。標題與標籤行都已按字數限長。
-  - 預覽圖不放 emoji：各平台 emoji 字型不一，轉點陣時容易變成豆腐字。
+  - **預覽圖必須是點陣圖（`assets/og.png`），而且要進版控**。曾經用 SVG，
+    結果整張圖的中文都變成顯示 Unicode 碼位的豆腐方塊——Slack／Threads 是在
+    **它們自己的伺服器**上算縮圖，那裡沒有 PingFang／Noto Sans TC。
+    本機用 `qlmanage` 預覽完全看不出來，因為那是拿自己的字型畫的。
+  - 改圖用 `python3 news.py og` 重產（需 ImageMagick 與系統中文字型），
+    **產完要 commit**；`export` 只負責把成品複製到輸出目錄。
+    CI 的 Ubuntu runner 既沒中文字型也不保證有繪圖工具，讓它生圖只會再壞一次。
+    因此 `deploy.yml` 的觸發路徑要包含 `assets/**`，只換圖也才會重新部署。
+  - `og:image` **必須是絕對網址**，相對路徑各平台一律抓不到圖，所以有
+    `SITE_URL` 常數（換網域用環境變數 `NEWS_SITE_URL` 覆蓋，不必改程式碼）。
+  - 圖上的文字**不會自動換行**，超出畫布就被裁掉，改文案後要實際開圖看過。
+    標題與標籤行都已按字數限長。
+  - 預覽圖不放 emoji：各平台 emoji 字型不一，容易變成豆腐字。
   - 目前**只做分享預覽，沒有做 sitemap／robots**——這個站是自用與分享用途，
     不主動求搜尋引擎索引。若哪天要流量，該做的是把每則新聞與每個標籤
     拆成獨立頁面（現在全部擠在單一 1.6 MB 的 index.html，且標籤篩選是
@@ -172,7 +180,7 @@ CI 只負責把 JSON 轉成靜態站並上線。
 - `news.py` — CLI（init / add / list / serve / fetch / pending / tags / tag / alias /
   export-json / import-json / export）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，57 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，59 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義；
   改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
@@ -180,5 +188,6 @@ CI 只負責把 JSON 轉成靜態站並上線。
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單
 - `data/news.json` — 進版控的資料來源（由 export-json 產生）
+- `assets/og.png` — 分享預覽圖，進版控的成品（由 `news.py og` 產生，export 複製上線）
 - `.github/workflows/deploy.yml` — 部署 GitHub Pages
 - `news.db` — SQLite 資料庫（不進版控，可由 import-json 重建）

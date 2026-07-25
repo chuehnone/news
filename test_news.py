@@ -715,9 +715,21 @@ class TestShareMetadata(CLITestCase):
         with load_modules(self.dir, "server") as (server,):
             server.DB_PATH = self.dir / "news.db"
             html = server.render_static_page()
+            name = server.OG_IMAGE_NAME
         url = re.search(r'property="og:image" content="([^"]+)"', html).group(1)
         self.assertRegex(url, r"^https?://", "og:image 不是絕對網址")
-        self.assertTrue(url.endswith(".svg"))
+        self.assertTrue(url.endswith(name))
+
+    def test_og_image_is_raster_not_svg(self):
+        """預覽圖必須是點陣圖。
+
+        迴歸：原本用 SVG，但 Slack／Threads 是在**它們的伺服器**上算縮圖，
+        那裡沒有中文字型，整張圖的中文都變成顯示 Unicode 碼位的豆腐方塊。
+        本機預覽看不出來（用的是自己的字型），是實際貼出去才發現的。
+        """
+        with load_modules(self.dir, "server") as (server,):
+            self.assertFalse(server.OG_IMAGE_NAME.endswith(".svg"),
+                             "SVG 的中文在對方伺服器上會變豆腐字，要用點陣圖")
 
     def test_description_reflects_real_counts(self):
         """描述用實際數字而非固定文案，且長度要在平台截斷前。"""
@@ -729,23 +741,41 @@ class TestShareMetadata(CLITestCase):
         self.assertIn(date.today().isoformat(), desc, "描述應含最新日期")
         self.assertLessEqual(len(desc), 90, f"描述過長會被截斷（{len(desc)} 字元）")
 
-    def test_export_writes_og_image(self):
-        """og.svg 要與 index.html 同層輸出，否則 og:image 指到 404。"""
-        self.run_cli("export", "--out", "d", check=True)
-        svg = self.dir / "d" / "og.svg"
-        self.assertTrue(svg.exists(), "export 沒有輸出 og.svg")
-        content = svg.read_text(encoding="utf-8")
-        self.assertTrue(content.startswith("<svg"))
-        self.assertIn("</svg>", content)
+    def test_export_copies_og_image(self):
+        """預覽圖要與 index.html 同層輸出，否則 og:image 指到 404。
 
-    def test_og_image_survives_empty_db(self):
-        """空 db 也要能產圖（max() 對空序列會拋例外）。"""
+        圖是進版控的成品、export 只負責複製——CI 沒有中文字型，
+        當場生成只會產出豆腐字。
+        """
+        with load_modules(self.dir, "server") as (server,):
+            name, src = server.OG_IMAGE_NAME, server.OG_IMAGE_SRC
+        # 暫存目錄沒有 assets/，複製一份真的圖進去模擬 repo 狀態
+        assets = self.dir / "assets"
+        assets.mkdir(exist_ok=True)
+        (assets / name).write_bytes(
+            src.read_bytes() if src.exists() else b"\x89PNG\r\n\x1a\n")
+        self.run_cli("export", "--out", "d", check=True)
+        out = self.dir / "d" / name
+        self.assertTrue(out.exists(), f"export 沒有輸出 {name}")
+        self.assertEqual(out.read_bytes()[:4], b"\x89PNG", "輸出的不是 PNG")
+
+    def test_export_survives_missing_og_image(self):
+        """缺圖只該警告不該中止——沒有大圖預覽，標題與描述仍在。"""
+        r = self.run_cli("export", "--out", "d2")
+        self.assertEqual(r.returncode, 0, f"缺預覽圖不該中止部署：{r.stderr}")
+        self.assertIn("警告", r.stdout + r.stderr)
+
+    def test_og_lines_survive_empty_db(self):
+        """空 db 也要能算出圖上的文字（max() 對空序列會拋例外）。"""
         conn = sqlite3.connect(self.dir / "news.db")
         conn.execute("DELETE FROM news")
         conn.commit()
         conn.close()
-        r = self.run_cli("export", "--out", "d2")
-        self.assertEqual(r.returncode, 0, f"空 db 不該噴錯：{r.stderr}")
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            rows = server.query_news()
+            lines = server.og_image_lines(rows, server.grade_counts(rows))
+        self.assertTrue(lines, "空 db 仍該回傳可畫的文字")
 
 
 class TestStaticOutput(CLITestCase):
