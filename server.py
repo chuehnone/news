@@ -97,6 +97,7 @@ summary { cursor: pointer; font-size: .84rem; color: var(--muted); user-select: 
 .dims th { font-size: .8rem; color: var(--muted); font-weight: 600; }
 .dims td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .empty { text-align: center; color: var(--muted); padding: 60px 0; }
+.footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 32px; }
 """
 
 
@@ -371,6 +372,7 @@ def render_static_page():
 <div class="filters"><div class="tabs">{"".join(tabs)}</div>{date_filter}</div>
 {"".join(body)}
 <div class="empty" id="empty" style="display:none">{empty_msg}</div>
+<div class="footer">共 {total} 則評分紀錄</div>
 </div>
 <script>{FILTER_JS}</script>
 </body>
