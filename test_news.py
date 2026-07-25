@@ -350,6 +350,35 @@ class TestSchemaCommand(CLITestCase):
         json.loads(m.group(0))  # 解析失敗即測試失敗
 
 
+class TestDigest(CLITestCase):
+    def test_includes_uncategorised(self):
+        """section 為空的項目要歸到「其他」，不能被靜默漏掉。
+
+        迴歸：原本寫 `section != '不建議放入每日摘要'`，但 SQL 的
+        NULL != '...' 結果是 NULL 而非 true，未分類的項目會整批消失。
+        """
+        d = date.today().isoformat()
+        self.add(make_score("有分類", d, url="http://e.com/1",
+                            section="今日最重要"))
+        p = make_score("沒分類", d, url="http://e.com/2")
+        p["section"] = None
+        self.add(p)
+        out = self.run_cli("digest", "--date", d, check=True).stdout
+        self.assertIn("有分類", out)
+        self.assertIn("沒分類", out, "未分類的項目被漏掉了")
+        self.assertIn("## 其他", out)
+
+    def test_excludes_not_recommended(self):
+        d = date.today().isoformat()
+        self.add(make_score("不該出現", d, url="http://e.com/3",
+                            section="不建議放入每日摘要"))
+        self.add(make_score("該出現", d, url="http://e.com/4",
+                            section="今日最重要"))
+        out = self.run_cli("digest", "--date", d, check=True).stdout
+        self.assertIn("該出現", out)
+        self.assertNotIn("不該出現", out)
+
+
 class TestStaticOutput(CLITestCase):
     """靜態站產出的自我驗證。"""
 

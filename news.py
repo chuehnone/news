@@ -423,7 +423,9 @@ def cmd_digest(args):
     date = args.date or datetime.now().strftime("%Y-%m-%d")
     conn = connect()
     rows = conn.execute(
-        "SELECT * FROM news WHERE news_date = ? AND section != '不建議放入每日摘要' "
+        # NULL != '...' 在 SQL 裡是 NULL 而非 true，直接寫 != 會把未分類的整批漏掉
+        "SELECT * FROM news WHERE news_date = ? "
+        "AND (section IS NULL OR section != '不建議放入每日摘要') "
         "ORDER BY total_score DESC",
         (date,),
     ).fetchall()
