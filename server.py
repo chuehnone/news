@@ -7,6 +7,7 @@
 import json
 import re
 import sqlite3
+from datetime import datetime
 from html import escape
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
@@ -159,7 +160,8 @@ def render_card(r):
         title_html = title
 
     parts = [
-        '<div class="card">',
+        # data-* 供靜態站的前端篩選使用（動態 server 端不需要，但無害）
+        f'<div class="card" data-grade="{escape(r["grade"])}" data-date="{escape(r["news_date"] or "")}">',
         '<div class="card-top">',
         f'<span class="badge {escape(r["grade"])}">{escape(r["grade"])} 級｜{GRADE_LABELS.get(r["grade"], "")}</span>',
         f'<span class="score">{r["total_score"]} / 100</span>',
@@ -264,6 +266,124 @@ def render_page(grade=None, date=None):
 </div>
 </body>
 </html>"""
+
+
+# 靜態站的前端篩選：伺服器端的 grade/date 篩選靠 query string，
+# 靜態主機沒有 server 可以處理，故改為一次輸出全部卡片、用 JS 切換顯示。
+FILTER_JS = """
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var heads = Array.prototype.slice.call(document.querySelectorAll('.date-head'));
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs a'));
+  var sel = document.getElementById('date-select');
+  var empty = document.getElementById('empty');
+  var grade = '';
+
+  function apply() {
+    var date = sel.value;
+    var shown = 0;
+    var perGrade = {};
+    cards.forEach(function (c) {
+      var g = c.dataset.grade, d = c.dataset.date;
+      var dateOk = !date || d === date;
+      if (dateOk) perGrade[g] = (perGrade[g] || 0) + 1;
+      var ok = dateOk && (!grade || g === grade);
+      c.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+    });
+    // 日期標題只在其底下還有可見卡片時顯示
+    heads.forEach(function (h) {
+      var any = cards.some(function (c) {
+        return c.dataset.date === h.dataset.date && c.style.display !== 'none';
+      });
+      h.style.display = any ? '' : 'none';
+    });
+    // 分頁計數隨日期篩選連動（與 server 端的 grade_counts(date) 行為一致）
+    var total = 0;
+    Object.keys(perGrade).forEach(function (k) { total += perGrade[k]; });
+    tabs.forEach(function (t) {
+      var g = t.dataset.grade;
+      var n = g ? (perGrade[g] || 0) : total;
+      t.textContent = (g ? g + ' 級 ' : '全部 ') + n;
+      t.classList.toggle('active', g === grade);
+    });
+    empty.style.display = shown ? 'none' : '';
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function (e) {
+      e.preventDefault();
+      grade = t.dataset.grade || '';
+      apply();
+    });
+  });
+  sel.addEventListener('change', apply);
+  apply();
+})();
+"""
+
+
+def render_static_page():
+    """輸出含全部卡片的單一頁面，篩選交給前端 JS。"""
+    rows = query_news()
+    counts = grade_counts()
+    total = sum(counts.values())
+
+    tabs = ['<a href="#" data-grade="" class="active">全部 %d</a>' % total]
+    for g in "SABCD":
+        tabs.append(f'<a href="#" data-grade="{g}">{g} 級 {counts.get(g, 0)}</a>')
+
+    options = ['<option value="">全部日期</option>']
+    for d, n in date_counts():
+        options.append(f'<option value="{escape(d)}">{escape(d)}（{n}）</option>')
+    date_filter = (
+        '<div class="date-filter">'
+        f'<select id="date-select">{"".join(options)}</select>'
+        "</div>"
+    )
+
+    body = []
+    current_date = object()
+    for r in rows:
+        if r["news_date"] != current_date:
+            current_date = r["news_date"]
+            body.append(
+                f'<div class="date-head" data-date="{escape(current_date or "")}">'
+                f'📅 {escape(current_date or "未標日期")}</div>'
+            )
+        body.append(render_card(r))
+
+    empty_msg = "目前沒有符合條件的新聞。" if rows else "目前沒有新聞。"
+    generated = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    return f"""<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日新聞重要性評分</title>
+<style>{STYLE}</style>
+</head>
+<body>
+<div class="wrap">
+<h1>📰 每日新聞重要性評分</h1>
+<div class="sub">依 /news-importance-score 五面向評分（100 分制）整理的新聞資料庫｜更新於 {generated}</div>
+<div class="filters"><div class="tabs">{"".join(tabs)}</div>{date_filter}</div>
+{"".join(body)}
+<div class="empty" id="empty" style="display:none">{empty_msg}</div>
+</div>
+<script>{FILTER_JS}</script>
+</body>
+</html>"""
+
+
+def export_static(out_dir):
+    out_dir.mkdir(parents=True, exist_ok=True)
+    index = out_dir / "index.html"
+    html = render_static_page()
+    index.write_text(html, encoding="utf-8")
+    kb = len(html.encode("utf-8")) / 1024
+    print(f"已輸出靜態網站到 {index}（{kb:.0f} KB）")
 
 
 class Handler(BaseHTTPRequestHandler):

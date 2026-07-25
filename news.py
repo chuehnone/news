@@ -48,6 +48,7 @@ from pathlib import Path
 
 DB_PATH = Path(__file__).parent / "news.db"
 FEEDS_PATH = Path(__file__).parent / "feeds.txt"
+DATA_JSON_PATH = Path(__file__).parent / "data" / "news.json"
 
 DIMENSIONS = [
     ("scope", "影響範圍", 25),
@@ -450,6 +451,61 @@ def cmd_digest(args):
     print("\n".join(lines).rstrip())
 
 
+# news.db 不進版控（二進位檔每次 commit 都是整檔快照，repo 會無上限膨脹）。
+# 改為匯出 JSON：git 能 diff、壓縮率高，CI 端再用 import-json 重建 db。
+NEWS_COLUMNS = [
+    "title", "url", "summary", "news_date", "total_score", "grade", "section",
+    "one_line", "why_important", "affected", "watch_next",
+    "scope_score", "scope_reason", "duration_score", "duration_reason",
+    "decision_score", "decision_reason", "structural_score", "structural_reason",
+    "credibility_score", "credibility_reason", "created_at",
+]
+
+
+def cmd_export_json(args):
+    conn = connect()
+    rows = conn.execute(
+        f"SELECT {', '.join(NEWS_COLUMNS)} FROM news ORDER BY news_date, id"
+    ).fetchall()
+    conn.close()
+    items = [{k: r[k] for k in NEWS_COLUMNS} for r in rows]
+    text = json.dumps(items, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(text, encoding="utf-8")
+    print(f"已匯出 {len(items)} 筆到 {out}")
+
+
+def cmd_import_json(args):
+    src = Path(args.file)
+    items = json.loads(src.read_text(encoding="utf-8"))
+    conn = connect()
+    if args.replace:
+        conn.execute("DELETE FROM news")
+    cols = ", ".join(NEWS_COLUMNS)
+    marks = ", ".join("?" * len(NEWS_COLUMNS))
+    added = 0
+    # JSON 是重建 db 的真實來源，不在此做 url 去重：news 表允許同一 url 有多筆
+    # （例如同篇文章重新評分過），去重是 add 指令的責任，import 只負責忠實還原。
+    # 需要覆蓋既有資料時用 --replace，否則重跑會疊加。
+    for it in items:
+        conn.execute(
+            f"INSERT INTO news ({cols}) VALUES ({marks})",
+            [it.get(k) for k in NEWS_COLUMNS],
+        )
+        added += 1
+    conn.commit()
+    total = conn.execute("SELECT COUNT(*) FROM news").fetchone()[0]
+    conn.close()
+    print(f"已匯入 {added} 筆（來源 {len(items)} 筆），news 表現有 {total} 筆")
+
+
+def cmd_export(args):
+    from server import export_static
+
+    export_static(Path(args.out))
+
+
 def cmd_prune(args):
     conn = connect()
     cur = conn.execute(
@@ -505,6 +561,16 @@ def main():
     p_prune = sub.add_parser("prune", help="清除 pending 中過期的已處理項目")
     p_prune.add_argument("--days", type=int, default=30, help="保留最近幾天（預設 30）")
 
+    p_ejson = sub.add_parser("export-json", help="把 news 表匯出成 JSON（進版控用）")
+    p_ejson.add_argument("--out", default=str(DATA_JSON_PATH), help="輸出路徑（預設 data/news.json）")
+
+    p_ijson = sub.add_parser("import-json", help="從 JSON 重建 news 表（CI 用）")
+    p_ijson.add_argument("file", nargs="?", default=str(DATA_JSON_PATH))
+    p_ijson.add_argument("--replace", action="store_true", help="先清空 news 表再匯入")
+
+    p_export = sub.add_parser("export", help="輸出靜態網站（GitHub Pages 用）")
+    p_export.add_argument("--out", default="dist", help="輸出目錄（預設 dist）")
+
     args = parser.parse_args()
     {
         "init": cmd_init,
@@ -516,6 +582,9 @@ def main():
         "skip": cmd_skip,
         "digest": cmd_digest,
         "prune": cmd_prune,
+        "export-json": cmd_export_json,
+        "import-json": cmd_import_json,
+        "export": cmd_export,
     }[args.command](args)
 
 

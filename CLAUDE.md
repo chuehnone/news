@@ -52,6 +52,9 @@ python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
 python3 news.py skip <id...>    # 把待評分項目標為略過
 python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
 python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
+python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控）
+python3 news.py import-json [--replace]  # 從 JSON 重建 news 表（CI 用）
+python3 news.py export [--out dist]      # 輸出靜態網站
 ```
 
 ## 批次評分
@@ -72,11 +75,31 @@ python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
   ```
   預設每天 08:00 執行，log 寫到 `fetch.log`。
 
+## 線上部署（GitHub Pages）
+
+靜態站部署，**本機是唯一資料寫入來源**：抓取（launchd）與評分（skill）都在本機，
+CI 只負責把 JSON 轉成靜態站並上線。
+
+- `data/news.json` 是進版控的資料來源；`news.db` 仍不進版控
+  （SQLite 是二進位檔，每次 commit 都是整檔快照，repo 會無上限膨脹）。
+- 評分完成後同步上線：
+  ```bash
+  python3 news.py export-json          # 更新 data/news.json
+  git add data/news.json && git commit -m "更新新聞資料" && git push
+  ```
+- push 後 `.github/workflows/deploy.yml` 自動 import-json → export → 部署 Pages。
+- 首次啟用：repo Settings → Pages → Source 選 **GitHub Actions**。
+- 網頁篩選在靜態站是**前端 JS**（`FILTER_JS`），動態 `serve` 仍走 server 端 query string，
+  兩者共用 `render_card`；改篩選邏輯時記得兩邊行為要一致。
+- ⚠️ GitHub Pages 免費版一律 public，資料會公開。
+
 ## 架構
 
-- `news.py` — CLI（init / add / list / serve / fetch / pending），schema 定義在此
+- `news.py` — CLI（init / add / list / serve / fetch / pending / export-json / import-json / export），schema 定義在此
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單
 - `com.chinsheng.news-fetch.plist` — launchd 排程範本（每日抓取）
-- `news.db` — SQLite 資料庫（不進版控）
+- `data/news.json` — 進版控的資料來源（由 export-json 產生）
+- `.github/workflows/deploy.yml` — 部署 GitHub Pages
+- `news.db` — SQLite 資料庫（不進版控，可由 import-json 重建）

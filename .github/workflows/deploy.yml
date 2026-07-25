@@ -1,0 +1,63 @@
+name: Deploy to Pages
+
+# data/news.json 是唯一資料來源（news.db 不進版控）。
+# 抓取與評分都在本機進行，CI 只負責「JSON → db → 靜態站 → Pages」。
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/news.json"
+      - "server.py"
+      - "news.py"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時只跑一個部署，新的 push 取代排隊中的舊任務
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 從 JSON 重建資料庫
+        run: |
+          python3 news.py init
+          python3 news.py import-json --replace
+
+      - name: 輸出靜態網站
+        run: python3 news.py export --out dist
+
+      - name: 檢查產出正常
+        run: |
+          test -s dist/index.html || { echo "dist/index.html 是空的"; exit 1; }
+          n=$(grep -o 'class="card" data-grade' dist/index.html | wc -l)
+          echo "卡片數：$n"
+          # 空頁面通常代表 import 失敗，不要把壞掉的站推上線
+          [ "$n" -gt 0 ] || { echo "產出頁面沒有任何卡片"; exit 1; }
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
