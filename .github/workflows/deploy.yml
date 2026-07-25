@@ -9,6 +9,7 @@ on:
       - "data/news.json"
       - "server.py"
       - "news.py"
+      - "test_news.py"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
