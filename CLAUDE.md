@@ -40,6 +40,13 @@
 
 `total_score` 與 `grade` 不用填，CLI 會自動由 dimensions 加總並判定等級（85+ S / 70+ A / 55+ B / 40+ C / 其餘 D）。相同 `url` 預設會拒絕重複寫入（`--force` 可覆寫）。
 
+`news_date` **會被強制驗證**，不合規會拒絕寫入：
+
+- 必須是補零的 `YYYY-MM-DD`（`2026-7-5` 會被擋，要寫 `2026-07-05`）——
+  保留期是拿它做字串字面比較，未補零會被歸到錯誤的層級。
+- 不接受不存在的日期（`2026-02-30`）與未來日期。
+- 可以留空或省略（代表日期不明），這類資料一律保留、不受保留期影響。
+
 ## 常用指令
 
 ```bash
@@ -88,22 +95,38 @@ CI 只負責把 JSON 轉成靜態站並上線。
   `--no-export` 旗標仍保留給大量匯入等想自行控制匯出時機的場景。
 - push 後 `.github/workflows/deploy.yml` 自動 import-json → export → 部署 Pages。
 - **保留期分層只在 CI 的 `export --retention` 套用**：近 30 天全部等級、
-  30-90 天只留 S/A、90 天以上不上站（常數在 `server.py` 的 `RECENT_DAYS` /
-  `ARCHIVE_DAYS`）。用意是讓靜態站不隨時間無上限成長。
-  `news.db` 與 `data/news.json` **都保有完整資料**，過期項目只是不出現在網站上；
-  因此 export-json 仍是 db 的完整鏡像、`import-json --replace` 不會掉資料，
-  本機 `serve` 與不帶旗標的 `export` 也都看得到全部資料。
-  若某次 CI 沒有任何一筆落在保留期內，`export` 會中止而非部署空站。
+  30-90 天只留 S/A、90 天以上不上站（常數見 `server.py` 的 `RECENT_DAYS` /
+  `ARCHIVE_DAYS`），用意是讓靜態站不隨時間無上限成長。
+  db 與 JSON 都保有完整資料，過期項目只是不上站；全部過期時 `export` 會中止而非部署空站。
 - 首次啟用：repo Settings → Pages → Source 選 **GitHub Actions**。
 - 網頁篩選在靜態站是**前端 JS**（`FILTER_JS`），動態 `serve` 仍走 server 端 query string，
-  兩者共用 `render_card`；改篩選邏輯時記得兩邊行為要一致。
+  兩者共用 `render_card`。兩邊行為必須一致，這件事由
+  `test_news.py` 的 `TestFilterParity` 把關（改任一邊而忘了另一邊會測試失敗），
+  不必靠人工記得。
 - ⚠️ GitHub Pages 免費版一律 public，資料會公開。
+
+## 已知陷阱
+
+實際踩過而且代價不小的，改動前先看這節：
+
+- **改卡片 markup 前先 `grep` 全 repo**：曾有 `deploy.yml` 用字串比對
+  `class="card"` 數卡片，卡片改成 `class="card S"` 後比對不到，部署整個中止。
+  現在改由 `export` 自檢（`server.py` 的 `verify_html`），但同類的隱形依賴
+  隨時可能再出現——動輸出格式前先確認誰在消費它。
+- **`data/news.json` 必須維持 db 的完整鏡像**：這是 `import-json --replace`
+  不會掉資料的前提。保留期一旦被挪到匯出階段套用，JSON 就變成子集，
+  回灌會永久刪掉只存在於 db 的資料（news.db 不進版控，沒有其他副本）。
+  這個保證由 `TestExportJsonIsFullMirror` 守著。
+- **`news_date` 是字串字面比較**：保留期直接比對字串大小，所以格式必須正規化。
+  驗證寫在 `add` 入口，`strptime` 本身擋不掉 `2026-7-5`（它會照樣 parse 成功），
+  需另外比對正規化後的字串是否相同。
 
 ## 架構
 
 - `news.py` — CLI（init / add / list / serve / fetch / pending / export-json / import-json / export），schema 定義在此
-- `test_news.py` — 回歸測試（標準庫 unittest）。涵蓋 news_date 格式驗證、
-  保留期分層、匯出／匯入 round-trip 無損；改這幾處的邏輯後務必跑過。
+- `test_news.py` — 回歸測試（標準庫 unittest，22 個）。涵蓋 news_date 格式驗證、
+  保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性；
+  改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單

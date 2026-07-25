@@ -22,16 +22,21 @@ from pathlib import Path
 REPO = Path(__file__).parent
 
 
-def make_score(title, news_date=None, url=None, scores=(10, 10, 10, 10, 9)):
-    """產生一筆符合 add 格式的評分 JSON。預設總分 49（C 級）。"""
+def make_score(title, news_date=None, url=None, scores=(10, 10, 10, 10, 9),
+               summary=None, one_line=None, section="影響未來的趨勢"):
+    """產生一筆符合 add 格式的評分 JSON。預設總分 49（C 級）。
+
+    summary / one_line 可個別指定：搜尋是跨這幾個欄位比對的，若全部用同一份
+    固定字串，測不出「某個欄位漏掉」這種單邊改動。
+    """
     keys = ["scope", "duration", "decision", "structural", "credibility"]
     return {
         "title": title,
         "url": url or f"http://example.com/{title}",
         "news_date": news_date,
-        "summary": "摘要",
-        "section": "影響未來的趨勢",
-        "one_line": "一句話判斷",
+        "summary": summary or f"{title}的摘要",
+        "section": section,
+        "one_line": one_line or f"{title}的判斷",
         "why_important": "原因",
         "affected": "對象",
         "watch_next": ["指標"],
@@ -207,6 +212,110 @@ class TestRetention(CLITestCase):
         self.assertIn("中止", r.stderr + r.stdout)
         self.assertFalse((self.dir / "d6" / "index.html").exists(),
                          "中止時不該留下產出")
+
+
+class TestFilterParity(CLITestCase):
+    """動態站（SQL 篩選）與靜態站（前端 JS 篩選）的行為必須一致。
+
+    兩者共用 render_card，但篩選各自實作：serve 走 query string 打 SQL，
+    靜態站一次輸出全部卡片、用 data-* 屬性在前端切換顯示。這裡把靜態站的
+    篩選條件用 Python 重跑一次，斷言它與 SQL 篩出來的結果相同——
+    避免「改了一邊忘了另一邊」只能靠註解提醒。
+    """
+
+    def setUp(self):
+        super().setUp()
+        today = date.today().isoformat()
+        old = (date.today() - timedelta(days=3)).isoformat()
+        # 涵蓋不同等級、日期、分類，讓各種篩選都有區辨力。
+        # 「僅摘要詞」「僅判斷詞」只出現在單一欄位，用來驗證搜尋確實跨欄位比對。
+        self.add(make_score("台積電法說會", today, url="http://e.com/1",
+                            scores=(20, 16, 15, 16, 12),
+                            summary="僅摘要詞 出現在這裡"))          # 79 → A
+        self.add(make_score("關稅生效", today, url="http://e.com/2",
+                            scores=(24, 19, 19, 19, 14),
+                            one_line="僅判斷詞 出現在這裡"))          # 95 → S
+        self.add(make_score("天氣預報", old, url="http://e.com/3",
+                            section="熱但未必重要"))                 # 49 → C
+        self.add(make_score("關稅談判", old, url="http://e.com/4",
+                            scores=(15, 12, 12, 12, 10)))          # 61 → B
+
+    def sql_filter(self, **kw):
+        """動態站的篩選結果（標題集合）。"""
+        sys.path.insert(0, str(self.dir))
+        try:
+            import importlib, server
+            importlib.reload(server)
+            server.DB_PATH = self.dir / "news.db"
+            return {r["title"] for r in server.query_news(**kw)}
+        finally:
+            sys.path.remove(str(self.dir))
+
+    def js_filter(self, grade=None, date_=None, section=None, q=None):
+        """複刻 FILTER_JS 的 apply()，對靜態站輸出的 data-* 做同樣篩選。"""
+        self.run_cli("export", "--out", "d", check=True)
+        html = (self.dir / "d" / "index.html").read_text(encoding="utf-8")
+        import re
+        titles = set()
+        for m in re.finditer(
+            r'data-grade="([^"]*)" data-date="([^"]*)" data-section="([^"]*)"'
+            r' data-text="([^"]*)">.*?<div class="title">(?:<a[^>]*>)?([^<]*)',
+            html, re.S,
+        ):
+            g, d, sec, text, title = m.groups()
+            # 與 FILTER_JS 的 base 條件逐項對應
+            if grade and g != grade:
+                continue
+            if date_ and d != date_:
+                continue
+            if section and sec != section:
+                continue
+            if q and q.lower() not in text:
+                continue
+            titles.add(title)
+        return titles
+
+    def assert_parity(self, **kw):
+        js_kw = {"grade": kw.get("grade"), "date_": kw.get("date"),
+                 "section": kw.get("section"), "q": kw.get("q")}
+        self.assertEqual(self.sql_filter(**kw), self.js_filter(**js_kw),
+                         f"動態站與靜態站篩選結果不一致：{kw}")
+
+    def test_no_filter(self):
+        self.assert_parity()
+
+    def test_by_grade(self):
+        for g in ("S", "A", "B", "C"):
+            with self.subTest(g):
+                self.assert_parity(grade=g)
+
+    def test_by_date(self):
+        self.assert_parity(date=date.today().isoformat())
+        self.assert_parity(date=(date.today() - timedelta(days=3)).isoformat())
+
+    def test_by_section(self):
+        self.assert_parity(section="影響未來的趨勢")
+
+    def test_by_search(self):
+        # 「關稅」同時命中 S 與 B 級，可驗證搜尋不受等級影響
+        self.assert_parity(q="關稅")
+        self.assert_parity(q="台積電")
+
+    def test_search_covers_every_field(self):
+        """搜尋須跨標題／一句話判斷／摘要，少比對任一欄位都要被抓到。"""
+        for q, expected in [
+            ("台積電法說會", {"台積電法說會"}),   # 命中標題
+            ("僅判斷詞", {"關稅生效"}),           # 只在 one_line
+            ("僅摘要詞", {"台積電法說會"}),        # 只在 summary
+        ]:
+            with self.subTest(q):
+                self.assertEqual(self.sql_filter(q=q), expected,
+                                 f"動態站搜尋「{q}」結果不如預期")
+                self.assert_parity(q=q)
+
+    def test_combined(self):
+        self.assert_parity(grade="S", q="關稅")
+        self.assert_parity(date=date.today().isoformat(), section="影響未來的趨勢")
 
 
 class TestStaticOutput(CLITestCase):
