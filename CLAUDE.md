@@ -86,8 +86,8 @@ CI 只負責把 JSON 轉成靜態站並上線。
   ```bash
   git add data/news.json && git commit -m "更新新聞資料" && git push
   ```
-  批次評分時每筆都重寫整份 JSON 是浪費，用 `add --no-export` 跳過，
-  全部評完再跑一次 `python3 news.py export-json` 補上。
+  批次評分也一樣，不需要特別處理（匯出實測約 5ms，相對抓內文的數秒是雜訊）。
+  `--no-export` 旗標仍保留給大量匯入等想自行控制匯出時機的場景。
 - push 後 `.github/workflows/deploy.yml` 自動 import-json → export → 部署 Pages。
 - 首次啟用：repo Settings → Pages → Source 選 **GitHub Actions**。
 - 網頁篩選在靜態站是**前端 JS**（`FILTER_JS`），動態 `serve` 仍走 server 端 query string，
