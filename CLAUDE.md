@@ -17,35 +17,14 @@
 
 ## JSON 格式
 
-```json
-{
-  "title": "新聞標題（必填）",
-  "url": "原始新聞連結",
-  "summary": "新聞摘要（2-3 句）",
-  "news_date": "YYYY-MM-DD（新聞日期，非今天日期）",
-  "section": "今日最重要 / 影響未來的趨勢 / 跟生活決策有關 / 被忽略但重要 / 熱但未必重要 / 不建議放入每日摘要",
-  "one_line": "一句話判斷",
-  "why_important": "為什麼重要",
-  "affected": "可能影響誰",
-  "watch_next": ["觀察指標 1", "觀察指標 2", "觀察指標 3"],
-  "dimensions": {
-    "scope":       {"score": 0, "reason": "影響範圍（0-25）理由"},
-    "duration":    {"score": 0, "reason": "影響時間（0-20）理由"},
-    "decision":    {"score": 0, "reason": "決策相關性（0-20）理由"},
-    "structural":  {"score": 0, "reason": "結構性意義（0-20）理由"},
-    "credibility": {"score": 0, "reason": "事實可信度（0-15）理由"}
-  }
-}
-```
+`python3 news.py schema` 輸出完整格式與驗證規則。那是唯一出處（由 `news.py` 的
+`DIMENSIONS` / `SECTIONS` 生成），不要在別處另抄一份——三處手抄的版本曾經各自漂移。
 
-`total_score` 與 `grade` 不用填，CLI 會自動由 dimensions 加總並判定等級（85+ S / 70+ A / 55+ B / 40+ C / 其餘 D）。相同 `url` 預設會拒絕重複寫入（`--force` 可覆寫）。
+會擋人的驗證，值得先知道：
 
-`news_date` **會被強制驗證**，不合規會拒絕寫入：
-
-- 必須是補零的 `YYYY-MM-DD`（`2026-7-5` 會被擋，要寫 `2026-07-05`）——
-  保留期是拿它做字串字面比較，未補零會被歸到錯誤的層級。
-- 不接受不存在的日期（`2026-02-30`）與未來日期。
-- 可以留空或省略（代表日期不明），這類資料一律保留、不受保留期影響。
+- `news_date` 必須是補零的 `YYYY-MM-DD`（`2026-7-5` 會被擋）。保留期拿它做字串
+  字面比較，未補零會被歸到錯誤的層級。不接受不存在的日期與未來日期；可留空。
+- 各面向分數超出上限、相同 `url` 重複寫入，都會拒絕（後者 `--force` 可覆寫）。
 
 ## 常用指令
 
@@ -59,6 +38,7 @@ python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
 python3 news.py skip <id...>    # 把待評分項目標為略過
 python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
 python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
+python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
 python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控）
 python3 news.py import-json [--replace]  # 從 JSON 重建 news 表（CI 用）
 python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--retention 為 CI 用，見下）

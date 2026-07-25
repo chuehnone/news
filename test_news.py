@@ -318,6 +318,38 @@ class TestFilterParity(CLITestCase):
         self.assert_parity(date=date.today().isoformat(), section="影響未來的趨勢")
 
 
+class TestSchemaCommand(CLITestCase):
+    """`news.py schema` 是 JSON 格式的唯一出處，必須由常數生成而非手抄。"""
+
+    def test_reflects_dimension_limits(self):
+        r = self.run_cli("schema", check=True)
+        sys.path.insert(0, str(self.dir))
+        try:
+            import importlib, news
+            importlib.reload(news)
+            for key, label, mx in news.DIMENSIONS:
+                self.assertIn(f"{label}（0-{mx}）", r.stdout,
+                              f"schema 未反映 {key} 的上限 {mx}")
+            for sec in news.SECTIONS:
+                self.assertIn(sec, r.stdout, f"schema 缺少 section「{sec}」")
+        finally:
+            sys.path.remove(str(self.dir))
+
+    def test_documents_validation_rules(self):
+        """schema 要講到實際會擋人的規則，否則使用者只能踩到才知道。"""
+        r = self.run_cli("schema", check=True)
+        for rule in ("補零", "未來日期", "--force"):
+            self.assertIn(rule, r.stdout, f"schema 未說明「{rule}」相關規則")
+
+    def test_output_is_valid_json_shape(self):
+        """輸出的範例必須是合法 JSON，否則照抄會失敗。"""
+        r = self.run_cli("schema", check=True)
+        import re
+        m = re.search(r"\{.*\}", r.stdout, re.S)
+        self.assertIsNotNone(m, "找不到 JSON 區塊")
+        json.loads(m.group(0))  # 解析失敗即測試失敗
+
+
 class TestStaticOutput(CLITestCase):
     """靜態站產出的自我驗證。"""
 

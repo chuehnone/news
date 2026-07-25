@@ -10,28 +10,8 @@
     python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
     python3 news.py skip <id...>       # 把待評分項目標為略過
 
-JSON 格式（/news-importance-score 的評分結果）：
-{
-  "title": "新聞標題",
-  "url": "https://...",
-  "summary": "新聞摘要",
-  "news_date": "2026-07-05",
-  "total_score": 82,
-  "grade": "A",
-  "section": "影響未來的趨勢",
-  "one_line": "一句話判斷",
-  "why_important": "為什麼重要",
-  "affected": "可能影響誰",
-  "watch_next": ["觀察指標 1", "觀察指標 2"],
-  "dimensions": {
-    "scope":       {"score": 20, "reason": "影響範圍理由"},
-    "duration":    {"score": 16, "reason": "影響時間理由"},
-    "decision":    {"score": 15, "reason": "決策相關性理由"},
-    "structural":  {"score": 16, "reason": "結構性意義理由"},
-    "credibility": {"score": 12, "reason": "事實可信度理由"}
-  }
-}
-total_score 與 grade 可省略，會自動由 dimensions 加總、依分級表判定。
+add 接受的 JSON 格式與驗證規則：python3 news.py schema
+（格式由本檔的 DIMENSIONS / SECTIONS 生成，不另外手抄一份以免漂移）
 """
 
 import argparse
@@ -66,6 +46,17 @@ GRADE_LABELS = {
     "C": "可簡短提及",
     "D": "多半是噪音",
 }
+
+# 評分結果可填的 section。digest 依這個順序分節輸出，
+# 「不建議放入每日摘要」是有效值但不進 digest。
+SECTIONS = [
+    "今日最重要",
+    "影響未來的趨勢",
+    "跟生活決策有關",
+    "被忽略但重要",
+    "熱但未必重要",
+    "不建議放入每日摘要",
+]
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS news (
@@ -424,13 +415,8 @@ def cmd_pending(args):
     conn.close()
 
 
-SECTION_ORDER = [
-    "今日最重要",
-    "影響未來的趨勢",
-    "跟生活決策有關",
-    "被忽略但重要",
-    "熱但未必重要",
-]
+# digest 不收「不建議放入每日摘要」，其餘沿用 SECTIONS 的順序
+SECTION_ORDER = [s for s in SECTIONS if s != "不建議放入每日摘要"]
 
 
 def cmd_digest(args):
@@ -532,6 +518,44 @@ def cmd_import_json(args):
     print(f"已匯入 {added} 筆（來源 {len(items)} 筆），news 表現有 {total} 筆")
 
 
+def cmd_schema(_args):
+    """輸出 add 接受的 JSON 格式。
+
+    這是格式的唯一出處：欄位上限、分級門檻、section 選項全部由本檔的常數生成，
+    所以不會像手抄一份說明那樣跟實作漂移（CLAUDE.md 與 skill 都指向這裡）。
+    """
+    dims = ",\n".join(
+        f'    "{k}":{" " * (12 - len(k))}{{"score": 0, "reason": "{label}（0-{mx}）理由"}}'
+        for k, label, mx in DIMENSIONS
+    )
+    thresholds = " / ".join(
+        f"{lo}+ {g}" for g, lo in [("S", 85), ("A", 70), ("B", 55), ("C", 40)]
+    )
+    print(f"""add 接受的 JSON 格式（/news-importance-score 的評分結果）：
+
+{{
+  "title": "新聞標題（必填）",
+  "url": "原始新聞連結",
+  "summary": "新聞摘要（2-3 句）",
+  "news_date": "YYYY-MM-DD（新聞事件發生日，非評分日）",
+  "section": "{" / ".join(SECTIONS)}",
+  "one_line": "一句話判斷",
+  "why_important": "為什麼重要",
+  "affected": "可能影響誰",
+  "watch_next": ["觀察指標 1", "觀察指標 2", "觀察指標 3"],
+  "dimensions": {{
+{dims}
+  }}
+}}
+
+規則：
+- total_score 與 grade 不用填，由 dimensions 加總並判定等級（{thresholds} / 其餘 D）。
+- 各面向分數不得超過上限，超出會拒絕寫入。
+- news_date 必須是補零的 YYYY-MM-DD（2026-7-5 會被擋），不接受不存在的日期
+  與未來日期；可留空表示日期不明。
+- 相同 url 預設拒絕重複寫入（--force 可覆寫）。""")
+
+
 def cmd_export(args):
     from server import export_static
 
@@ -604,6 +628,8 @@ def main():
     p_ijson.add_argument("file", nargs="?", default=str(DATA_JSON_PATH))
     p_ijson.add_argument("--replace", action="store_true", help="先清空 news 表再匯入")
 
+    sub.add_parser("schema", help="輸出 add 接受的 JSON 格式與規則")
+
     p_export = sub.add_parser("export", help="輸出靜態網站（GitHub Pages 用）")
     p_export.add_argument("--out", default="dist", help="輸出目錄（預設 dist）")
     p_export.add_argument(
@@ -625,6 +651,7 @@ def main():
         "prune": cmd_prune,
         "export-json": cmd_export_json,
         "import-json": cmd_import_json,
+        "schema": cmd_schema,
         "export": cmd_export,
     }[args.command](args)
 
