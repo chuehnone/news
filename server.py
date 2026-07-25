@@ -53,10 +53,33 @@ body {
   font-family: -apple-system, "PingFang TC", "Noto Sans TC", sans-serif;
   line-height: 1.6;
 }
-.wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px 16px 64px; }
 h1 { font-size: 1.4rem; margin: 0 0 4px; }
 .sub { color: var(--muted); font-size: .85rem; margin-bottom: 20px; }
-.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 10px; }
+/* 等級 tab 列 sticky：321 則的長列表滑到一半想換等級，不該逼使用者滑回頂端。
+   date-head 的 top 要讓開這一列，否則日期會鑽到 tab 底下（見 .date-head）。
+
+   --tabbar-h 必須等於這一列的實際高度，兩者一旦不同步，日期標題就會被蓋掉
+   （曾經寫死 46px，實測是 50px，每個斷點都疊到 4px）。故不寫死數字，
+   改由組成高度的兩個值算出來：上下 padding（--tabbar-pad）加內容行高（--tabbar-row）。
+   --tabbar-row 是 .tabs a 的高度：padding 5px×2 + border 1px×2 + .85rem 文字行高。
+
+   負 margin 讓 sticky 底色滿版；min-width: 0 是必要的——手機版 .tabs 改成
+   nowrap 水平捲動後，flex 子項的預設 min-width:auto 會把整列撐到內容寬度，
+   連帶把整頁撐寬，卡片右側（分數、標題）就被裁到畫面外。 */
+:root {
+  --tabbar-pad: 8px; --tabbar-row: 34px;
+  --tabbar-h: calc(var(--tabbar-row) + var(--tabbar-pad) * 2);
+}
+.filters {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+  position: sticky; top: 0; z-index: 10;
+  background: var(--sticky-bg); backdrop-filter: blur(6px);
+  margin: 0 -16px 10px; padding: var(--tabbar-pad) 16px;
+  min-width: 0;
+  /* 高度鎖定成與 --tabbar-h 相同的算式，排版與 date-head 的讓位量不會各走各的 */
+  min-height: var(--tabbar-h);
+}
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
 .date-filter select, .section-filter select, .tag-filter select, .search input {
   padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border);
@@ -77,9 +100,11 @@ h1 { font-size: 1.4rem; margin: 0 0 4px; }
   font-size: .8rem; font-family: inherit; cursor: pointer;
 }
 .density button.active { background: var(--text); color: var(--bg); }
+/* top 要讓開上方 sticky 的 .filters（tab 列），否則日期會鑽到 tab 底下被蓋住。
+   --tabbar-h 由 .filters 的 padding 與行高算出，不是寫死的數字——見上方說明 */
 .date-head {
   font-size: 1rem; color: var(--text); margin: 28px 0 10px; font-weight: 700;
-  position: sticky; top: 0; z-index: 5;
+  position: sticky; top: var(--tabbar-h); z-index: 5;
   background: var(--sticky-bg); backdrop-filter: blur(6px);
   padding: 6px 0; border-bottom: 1px solid var(--border);
 }
@@ -172,6 +197,48 @@ body.compact .meta, body.compact .tags, body.compact details { display: none; }
 body.compact .card { padding: 8px 14px; margin-bottom: 6px; }
 body.compact .title { font-size: .98rem; margin: 2px 0; }
 body.compact .card.C, body.compact .card.D { opacity: .7; }
+
+/* 手機：篩選區原本吃掉近半個首屏（6 顆 tab 換行成兩排 + 3 個 select 換行 + 搜尋框），
+   要滑一下才看得到第一則新聞。改為 tab 單行水平捲動、select 併排、字級與留白下修。 */
+@media (max-width: 600px) {
+  /* 只改 padding，--tabbar-h 會跟著 calc 自動縮小，不需要（也不該）另外寫死高度 */
+  :root { --tabbar-pad: 6px; }
+  .wrap { padding: 16px 12px 48px; }
+  h1 { font-size: 1.2rem; }
+  .sub { font-size: .8rem; margin-bottom: 14px; }
+  .filters { margin: 0 -12px 8px; padding: var(--tabbar-pad) 12px; }
+  /* 不 wrap，改水平捲動：6 顆 tab 恆為一排，省下第二排的高度。
+     -webkit-overflow-scrolling 讓 iOS Safari 有慣性捲動 */
+  /* min-width: 0 讓這個 flex 子項可以縮到比內容窄，捲動才被關在這一列裡；
+     少了它，nowrap 的 tab 會把 .filters 連同整頁一起撐寬，卡片右緣被裁掉 */
+  .tabs {
+    flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; width: 100%; min-width: 0;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs a { flex-shrink: 0; }
+  .toolbar { gap: 6px; margin-bottom: 16px; }
+  /* 三個 select 各佔約 1/3 排成一排，搜尋框與密度切換強制換到下一排。
+     flex-basis 用百分比而非 0——用 0 時剩餘空間會被同排的搜尋框搶走，
+     select 縮到只剩下拉箭頭、看不到「全部日期」等標籤。 */
+  .date-filter, .section-filter, .tag-filter { flex: 1 1 28%; min-width: 0; }
+  .date-filter select, .section-filter select, .tag-filter select {
+    width: 100%; padding: 5px 8px; font-size: .78rem;
+    /* 標籤名可能很長，寧可截斷也不要把 select 撐爆版面 */
+    text-overflow: ellipsis;
+  }
+  /* 佔滿整排，把搜尋框擠到 select 的下一行 */
+  .search { flex: 1 1 100%; min-width: 0; }
+  .density { flex: 0 0 auto; }
+  .card { padding: 14px 14px; }
+  .card.C, .card.D { padding: 11px 13px; }
+  .title { font-size: 1.15rem; }
+  .card.C .title, .card.D .title { font-size: 1.02rem; }
+  .one-line { font-size: .9rem; padding-left: 11px; }
+  .summary { font-size: .84rem; }
+  /* 評分細節的五面向表格在窄螢幕會被壓到換行難讀，縮字級並收窄內距 */
+  .dims th, .dims td { padding: 4px 5px; font-size: .82rem; }
+}
 """
 
 
@@ -730,8 +797,21 @@ FILTER_JS = """
     readHash(); syncControls(); apply();
   });
 
+  // 手機預設精簡模式：小螢幕上 300+ 則的列表，先掃標題才是合理的閱讀起點。
+  //
+  // 條件是「網址沒有明講 density」而非「網址沒有 hash」：分享出去的連結多半帶的是
+  // grade／tag 等篩選條件，若以整個 hash 為準，手機開任何一條分享連結都會退回完整模式。
+  // hash 裡出現 density= 才代表那是使用者自己的選擇，這時才不覆寫。
+  var hadDensity = /(^|&)density=/.test((location.hash || '').replace(/^#/, ''));
   readHash();
-  update();
+  var mobileDefault = !hadDensity
+    && window.matchMedia('(max-width: 600px)').matches;
+  if (mobileDefault) state.density = 'compact';
+  // 這個預設刻意不寫進 hash：它是「這台裝置的呈現偏好」而非使用者選的篩選條件，
+  // 寫進去會讓手機上複製的網址帶著 density=compact，在桌機打開也變精簡模式。
+  // 使用者一旦自己點過密度切換，就會走 update() 正常寫入 hash。
+  if (mobileDefault) { syncControls(); apply(); }
+  else { update(); }
 })();
 """
 
