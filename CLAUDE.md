@@ -68,16 +68,11 @@ python3 news.py export [--out dist]      # 輸出靜態網站
 - `fetch` 會跳過 `news` 表已有的連結；`pending` 表以 url 去重，重跑安全。標題命中 `LOWPRIO_KEYWORDS`（盤勢／天氣／體育／彩券）的項目直接標 `low`，不進預設待評分清單（`pending --all` 可見）。
 - `add` 寫入評分後，會把 `pending` 中相同 url 或相同標題（含「 - 媒體名」後綴）的項目標成 `scored`。
 - WebFetch 被擋的網站（如 BBC）用 `python3 fetch_article.py <url>...` 抓內文。
-- 定時排程用 launchd：
-  ```bash
-  cp com.chinsheng.news-fetch.plist ~/Library/LaunchAgents/
-  launchctl load ~/Library/LaunchAgents/com.chinsheng.news-fetch.plist
-  ```
-  預設每天 08:00 執行，log 寫到 `fetch.log`。
+- 目前沒有定時排程，`fetch` 由手動（或請 Claude Code）執行。
 
 ## 線上部署（GitHub Pages）
 
-靜態站部署，**本機是唯一資料寫入來源**：抓取（launchd）與評分（skill）都在本機，
+靜態站部署，**本機是唯一資料寫入來源**：抓取（`fetch`）與評分（skill）都在本機，
 CI 只負責把 JSON 轉成靜態站並上線。
 
 - `data/news.json` 是進版控的資料來源；`news.db` 仍不進版控
@@ -102,7 +97,6 @@ CI 只負責把 JSON 轉成靜態站並上線。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單
-- `com.chinsheng.news-fetch.plist` — launchd 排程範本（每日抓取）
 - `data/news.json` — 進版控的資料來源（由 export-json 產生）
 - `.github/workflows/deploy.yml` — 部署 GitHub Pages
 - `news.db` — SQLite 資料庫（不進版控，可由 import-json 重建）
