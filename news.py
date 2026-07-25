@@ -9,6 +9,9 @@
     python3 news.py fetch [--feeds feeds.txt]  # 抓取 RSS，把新連結存入待評分清單
     python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
     python3 news.py skip <id...>       # 把待評分項目標為略過
+    python3 news.py tags [標籤]        # 列出所有標籤／某標籤底下的新聞
+    python3 news.py tag <id> <標籤...>  # 修改某則新聞的標籤
+    python3 news.py alias [別名 正規名] # 管理標籤別名（輝達 → NVIDIA）
 
 add 接受的 JSON 格式與驗證規則：python3 news.py schema
 （格式由本檔的 DIMENSIONS / SECTIONS 生成，不另外手抄一份以免漂移）
@@ -65,6 +68,60 @@ ARCHIVE_GRADES = ("S", "A")
 # 與 ARCHIVE_GRADES 目前同值但語意不同，各自獨立調整。
 DIGEST_DETAILED_GRADES = ("S", "A")
 
+# 標籤別名的初始種子。同一個主題在不同新聞裡的寫法幾乎一定會漂
+# （輝達／NVIDIA、301 關稅／美國 301 關稅），分裂成多個標籤就失去
+# 「關聯新聞」的意義。
+#
+# 別名本身存在 db 的 tag_aliases 表（`news.py alias` 管理），這裡只是
+# init 時的種子，不是執行時的查詢來源——別名是會持續長出來的資料，
+# 每發現一組新寫法就要改一次原始碼並不合理。
+#
+# 正規化只發生在寫入時（db 內存的一律是正規名），所以 CI 從 JSON 重建
+# 靜態站時完全不需要這張表，它純粹是本機評分時的輔助資料。
+TAG_ALIAS_SEED = {
+    "nvidia": "NVIDIA",
+    "輝達": "NVIDIA",
+    "nvda": "NVIDIA",
+    "tsmc": "台積電",
+    "301關稅": "美國301關稅",
+    "美國301": "美國301關稅",
+    "301調查": "美國301關稅",
+    "chatgpt": "OpenAI",
+    "facebook": "Meta",
+    "微軟": "Microsoft",
+    "蘋果": "Apple",
+    "人工智慧": "AI",
+    "生成式ai": "AI",
+    "美中貿易戰": "美中貿易",
+    "中美貿易": "美中貿易",
+    "關稅戰": "關稅",
+    "央行": "貨幣政策",
+    "升息": "貨幣政策",
+    "降息": "貨幣政策",
+    "fed": "聯準會",
+    "台海": "台海情勢",
+    "兩岸": "台海情勢",
+    "烏克蘭": "俄烏戰爭",
+    "中東": "中東局勢",
+    "以色列": "中東局勢",
+    "淨零": "氣候變遷",
+    "缺電": "能源政策",
+    "核電": "能源政策",
+    "電價": "能源政策",
+    "少子化": "人口結構",
+    "高齡化": "人口結構",
+    "個資": "資安",
+    "駭客": "資安",
+    "房價": "房市",
+    "囤房稅": "房市",
+    "勞保": "年金制度",
+    "年金": "年金制度",
+}
+
+# 一則新聞最多幾個標籤。標籤是為了「找到相關的其他新聞」，
+# 掛太多會讓每個標籤都變得不具區辨力（極端情況：每則都掛「AI」）。
+MAX_TAGS = 5
+
 # 評分結果可填的 section。digest 依這個順序分節輸出，
 # 「不建議放入每日摘要」是有效值但不進 digest。
 SECTIONS = [
@@ -90,6 +147,7 @@ CREATE TABLE IF NOT EXISTS news (
     why_important TEXT,
     affected TEXT,
     watch_next TEXT,
+    tags TEXT,
     scope_score INTEGER, scope_reason TEXT,
     duration_score INTEGER, duration_reason TEXT,
     decision_score INTEGER, decision_reason TEXT,
@@ -110,6 +168,13 @@ CREATE TABLE IF NOT EXISTS pending (
     fetched_at TEXT DEFAULT (datetime('now', 'localtime'))
 );
 CREATE INDEX IF NOT EXISTS idx_pending_status ON pending(status);
+
+-- 標籤別名 → 正規名。alias 是已正規化的比對鍵（小寫、去空白），
+-- 由 alias_key() 產生，故 PRIMARY KEY 就足以保證不會有兩種寫法對到同一個鍵。
+CREATE TABLE IF NOT EXISTS tag_aliases (
+    alias TEXT PRIMARY KEY,
+    canonical TEXT NOT NULL
+);
 """
 
 
@@ -117,7 +182,33 @@ def connect():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.executescript(SCHEMA)
+    migrate(conn)
     return conn
+
+
+def migrate(conn):
+    """補上既有 db 缺少的欄位。
+
+    CREATE TABLE IF NOT EXISTS 對已存在的表完全不動，所以新增欄位時舊 db
+    不會自動跟上（news.db 不進版控，各機器的 db 是各自長出來的）。
+    比對實際欄位，缺的才補，重跑安全。
+
+    只處理「補上可為 NULL 的新欄位」這種最單純的情況。若哪天需要改名、
+    回填或跨表遷移，那是改用 PRAGMA user_version 分版本執行的時機，
+    不要把複雜的遷移塞進這裡。
+    """
+    have = {r["name"] for r in conn.execute("PRAGMA table_info(news)")}
+    if "tags" not in have:
+        conn.execute("ALTER TABLE news ADD COLUMN tags TEXT")
+
+    # 別名種子只在表是空的時候灌入。用 INSERT OR IGNORE 逐筆補會讓
+    # 「刻意刪掉某個種子別名」在下次連線時復活，等於刪不掉。
+    if not conn.execute("SELECT 1 FROM tag_aliases LIMIT 1").fetchone():
+        conn.executemany(
+            "INSERT OR IGNORE INTO tag_aliases (alias, canonical) VALUES (?, ?)",
+            [(alias_key(a), c) for a, c in TAG_ALIAS_SEED.items()],
+        )
+    conn.commit()
 
 
 # RSS 連結常帶追蹤參數（BBC 的 at_medium、Google News 的 oc 等），
@@ -150,6 +241,67 @@ def normalize_title(title):
     return "".join(
         ch for ch in title if not ch.isspace() and not unicodedata.category(ch).startswith("P")
     )
+
+
+def alias_key(tag):
+    """別名表的比對鍵：小寫、去掉所有空白。
+
+    讓「NVIDIA」「nvidia」「301 關稅」都收斂到同一個鍵，
+    別名表因此不必為大小寫與空格各存一列。
+    """
+    return "".join((tag or "").lower().split())
+
+
+def load_aliases(conn):
+    """讀出 {比對鍵: 正規名}。表不存在時回空 dict（舊 db 尚未 migrate）。"""
+    try:
+        return {r["alias"]: r["canonical"] for r in conn.execute(
+            "SELECT alias, canonical FROM tag_aliases")}
+    except sqlite3.OperationalError:
+        return {}
+
+
+def normalize_tag(tag, aliases):
+    """把一個標籤收斂成正規名；無法識別的原樣保留（只去頭尾空白）。
+
+    aliases 是 load_aliases() 的結果，由呼叫端讀一次後傳入。刻意不提供
+    「省略就自己開連線」的預設值：那會讓迴圈內的呼叫每筆開一次 db，
+    而且是寫起來最順手的那個寫法。
+    """
+    tag = (tag or "").strip()
+    return aliases.get(alias_key(tag), tag) if tag else ""
+
+
+def parse_tags(value, aliases):
+    """把 add 傳入的 tags（list 或逗號分隔字串）正規化成標籤 list。
+
+    去重時保留首次出現的順序（set 會讓每次寫入的排列不同，
+    導致 data/news.json 產生無意義的 diff）。
+    """
+    if not value:
+        return []
+    if isinstance(value, str):
+        raw = value.replace("，", ",").split(",")
+    else:
+        raw = list(value)
+    out = []
+    for item in raw:
+        tag = normalize_tag(str(item), aliases)
+        if tag and tag not in out:
+            out.append(tag)
+    return out
+
+
+def tags_of(row):
+    """讀出一筆資料的標籤 list。db 存的是 JSON 字串，空值一律回空 list。"""
+    raw = row["tags"] if "tags" in row.keys() else None
+    if not raw:
+        return []
+    try:
+        items = json.loads(raw)
+    except (json.JSONDecodeError, TypeError):
+        return []
+    return [str(i) for i in items] if isinstance(items, list) else []
 
 
 def normalize_url(url):
@@ -226,6 +378,11 @@ def cmd_add(args):
         watch = json.dumps(watch, ensure_ascii=False)
 
     conn = connect()
+    tags = parse_tags(data.get("tags"), load_aliases(conn))
+    if len(tags) > MAX_TAGS:
+        conn.close()
+        sys.exit(f"錯誤：標籤最多 {MAX_TAGS} 個，收到 {len(tags)} 個（{'、'.join(tags)}）")
+
     url = normalize_url(data.get("url"))
     if url:
         dup = conn.execute("SELECT id, title FROM news WHERE url = ?", (url,)).fetchone()
@@ -244,6 +401,7 @@ def cmd_add(args):
         "why_important": data.get("why_important"),
         "affected": data.get("affected"),
         "watch_next": watch,
+        "tags": json.dumps(tags, ensure_ascii=False) if tags else None,
         **dim_values,
     }
     cols = ", ".join(row)
@@ -259,7 +417,8 @@ def cmd_add(args):
         (title, title + " - %"),
     )
     conn.commit()
-    print(f"已新增 id={cur.lastrowid}：[{grade} 級 {total} 分] {data['title']}")
+    tag_note = f"　🏷 {'、'.join(tags)}" if tags else ""
+    print(f"已新增 id={cur.lastrowid}：[{grade} 級 {total} 分] {data['title']}{tag_note}")
     conn.close()
 
     # 順手同步 data/news.json，否則 db 更新了但進版控的資料沒動，靜態站不會變。
@@ -267,6 +426,12 @@ def cmd_add(args):
     # 跑一次 export-json 即可。
     if not args.no_export:
         export_news_json(DATA_JSON_PATH)
+
+
+def format_news_row(r):
+    """CLI 列表的一行。list 與 tags 共用同一種格式，避免兩處各印各的。"""
+    return (f"{r['id']:>4}  {r['news_date'] or '----------'}  "
+            f"{r['grade']} {r['total_score']:>3}  {r['title']}")
 
 
 def cmd_list(args):
@@ -282,7 +447,7 @@ def cmd_list(args):
         print("（資料庫內沒有符合的新聞）")
         return
     for r in rows:
-        print(f"{r['id']:>4}  {r['news_date'] or '----------'}  {r['grade']} {r['total_score']:>3}  {r['title']}")
+        print(format_news_row(r))
     conn.close()
 
 
@@ -484,7 +649,7 @@ def cmd_digest(args):
 # 匯入時該欄位會套用 schema 預設值（匯入當下時間），不影響任何功能。
 NEWS_COLUMNS = [
     "title", "url", "summary", "news_date", "total_score", "grade", "section",
-    "one_line", "why_important", "affected", "watch_next",
+    "one_line", "why_important", "affected", "watch_next", "tags",
     "scope_score", "scope_reason", "duration_score", "duration_reason",
     "decision_score", "decision_reason", "structural_score", "structural_reason",
     "credibility_score", "credibility_reason",
@@ -544,6 +709,14 @@ def cmd_schema(_args):
         for k, label, mx in DIMENSIONS
     )
     thresholds = " / ".join(f"{lo}+ {g}" for g, lo in GRADE_THRESHOLDS)
+    # 別名存在 db，取幾組實際的當範例（表是空的就退回種子），
+    # 讓人知道「會被收斂」這件事；完整清單用 `news.py alias` 看
+    conn = connect()
+    rows = conn.execute(
+        "SELECT alias, canonical FROM tag_aliases ORDER BY canonical LIMIT 4").fetchall()
+    conn.close()
+    pairs = [(r["alias"], r["canonical"]) for r in rows] or list(TAG_ALIAS_SEED.items())[:4]
+    alias_sample = "、".join(f"{a}→{c}" for a, c in pairs)
     print(f"""add 接受的 JSON 格式（/news-importance-score 的評分結果）：
 
 {{
@@ -552,6 +725,7 @@ def cmd_schema(_args):
   "summary": "新聞摘要（2-3 句）",
   "news_date": "YYYY-MM-DD（新聞事件發生日，非評分日）",
   "section": "{" / ".join(SECTIONS)}",
+  "tags": ["主題標籤 1", "主題標籤 2"],
   "one_line": "一句話判斷",
   "why_important": "為什麼重要",
   "affected": "可能影響誰",
@@ -566,7 +740,15 @@ def cmd_schema(_args):
 - 各面向分數不得超過上限，超出會拒絕寫入。
 - news_date 必須是補零的 YYYY-MM-DD（2026-7-5 會被擋），不接受不存在的日期
   與未來日期；可留空表示日期不明。
-- 相同 url 預設拒絕重複寫入（--force 可覆寫）。""")
+- 相同 url 預設拒絕重複寫入（--force 可覆寫）。
+- tags 是主題標籤，用來把講同一件事的新聞串起來（如 NVIDIA、美國301關稅）。
+  最多 {MAX_TAGS} 個，超過會拒絕；寫入時會套用別名表收斂成正規名
+  （{alias_sample} …），所以不必擔心大小寫或慣用寫法不同。
+  取「未來還會有後續報導」的主題（公司、政策、事件、地區），不要用
+  「重要」「值得關注」這種形容詞，也不要用只會出現一次的具體事件名。
+  已用過的標籤看 `news.py tags`，優先沿用既有的；別名表看 `news.py alias`，
+  發現同一主題分裂成兩個標籤時用 `news.py alias <別名> <正規名>` 收斂
+  （會一併修正既有資料）。""")
 
 
 def cmd_export(args):
@@ -585,6 +767,165 @@ def cmd_prune(args):
     remaining = conn.execute("SELECT COUNT(*) FROM pending").fetchone()[0]
     print(f"已清除 {cur.rowcount} 筆 {args.days} 天前的已處理項目，pending 表剩 {remaining} 筆")
     conn.close()
+
+
+def tag_counts(rows):
+    """回傳 [(tag, count), ...]，筆數多的在前、同筆數依標籤名排序。
+
+    吃已取回的 rows 而非自己查 db：CLI 要數全部，網頁只數保留期內的，
+    差別留給呼叫端決定。兩邊各抄一份實作的話，改了排序規則卻只改一邊
+    完全不會報錯——CLI 列表與網頁下拉選單就會靜默地不一致。
+
+    tags 存成 JSON 字串而非另開關聯表：一則最多 5 個標籤、總量是數百筆的
+    規模，SQL 端的 GROUP BY 省下來的時間遠不及多一張表的複雜度。
+    """
+    counts = {}
+    for r in rows:
+        for t in tags_of(r):
+            counts[t] = counts.get(t, 0) + 1
+    return sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
+
+
+def cmd_tags(args):
+    conn = connect()
+    if args.tag:
+        # 指定標籤時列出該標籤底下的新聞（這就是「關聯新聞」的 CLI 版）
+        target = normalize_tag(args.tag, load_aliases(conn))
+        items = [
+            r for r in conn.execute(
+                "SELECT id, news_date, grade, total_score, title, tags FROM news"
+                " ORDER BY news_date DESC, total_score DESC"
+            ) if target in tags_of(r)
+        ]
+        conn.close()
+        if not items:
+            print(f"（沒有標籤「{target}」的新聞）")
+            return
+        print(f"🏷 {target}（{len(items)} 則）")
+        for r in items:
+            print(format_news_row(r))
+        return
+    rows = tag_counts(conn.execute("SELECT tags FROM news"))
+    conn.close()
+    if not rows:
+        print("（目前沒有任何標籤，評分時在 JSON 加 tags 欄位即可）")
+        return
+    for tag, n in rows:
+        print(f"{n:>4}  {tag}")
+    print(f"\n共 {len(rows)} 個標籤（`news.py tags <標籤>` 列出該標籤的新聞）")
+
+
+def retag_existing(conn, aliases):
+    """把 news 表內已存的標籤重跑一次正規化，回傳異動筆數。
+
+    新增別名時，先前用舊寫法存進去的資料不會自己收斂——「輝達」與「NVIDIA」
+    仍是兩個標籤。這裡把既有資料一起帶過去，別名才真的有把新聞關聯起來。
+    """
+    changed = 0
+    for r in conn.execute("SELECT id, tags FROM news WHERE tags IS NOT NULL AND tags != ''"):
+        before = tags_of(r)
+        # 走 parse_tags 而非自己再寫一次正規化＋保序去重：兩份實作漂移時，
+        # add 寫入與 alias 收斂會產出不同結果，正是標籤分裂要防的事
+        after = parse_tags(before, aliases)
+        if after != before:
+            conn.execute(
+                "UPDATE news SET tags = ? WHERE id = ?",
+                (json.dumps(after, ensure_ascii=False) if after else None, r["id"]),
+            )
+            changed += 1
+    conn.commit()
+    return changed
+
+
+def cmd_alias(args):
+    """管理標籤別名（列出／新增／刪除）。"""
+    conn = connect()
+
+    if args.remove:
+        key = alias_key(args.remove)
+        cur = conn.execute("DELETE FROM tag_aliases WHERE alias = ?", (key,))
+        conn.commit()
+        conn.close()
+        print(f"{'已刪除別名' if cur.rowcount else '找不到別名'}：{args.remove}")
+        return
+
+    if args.alias:
+        if not args.canonical:
+            conn.close()
+            sys.exit("錯誤：新增別名需要兩個參數——`news.py alias <別名> <正規名>`")
+        key = alias_key(args.alias)
+        canonical = args.canonical.strip()
+        if not key or not canonical:
+            conn.close()
+            sys.exit("錯誤：別名與正規名都不能是空字串")
+        # 別名指向另一個別名會讓正規化結果取決於查表順序，直接擋掉；
+        # 使用者要的多半是「兩者都指向同一個正規名」。
+        existing = load_aliases(conn)
+        if alias_key(canonical) in existing and existing[alias_key(canonical)] != canonical:
+            target = existing[alias_key(canonical)]
+            conn.close()
+            sys.exit(
+                f"錯誤：「{canonical}」本身是「{target}」的別名，"
+                f"請直接指向正規名：news.py alias {args.alias} {target}"
+            )
+        conn.execute(
+            "INSERT INTO tag_aliases (alias, canonical) VALUES (?, ?)"
+            " ON CONFLICT(alias) DO UPDATE SET canonical = excluded.canonical",
+            (key, canonical),
+        )
+        conn.commit()
+        print(f"已設定別名：{args.alias} → {canonical}")
+        changed = retag_existing(conn, load_aliases(conn))
+        conn.close()
+        if changed:
+            print(f"已一併收斂 {changed} 筆既有新聞的標籤")
+            if not args.no_export:
+                export_news_json(DATA_JSON_PATH)
+        return
+
+    rows = conn.execute(
+        "SELECT alias, canonical FROM tag_aliases ORDER BY canonical, alias").fetchall()
+    conn.close()
+    if not rows:
+        print("（沒有任何別名）")
+        return
+    width = max(len(r["alias"]) for r in rows)
+    for r in rows:
+        print(f"{r['alias']:<{width}}  →  {r['canonical']}")
+    print(f"\n共 {len(rows)} 組別名（`news.py alias <別名> <正規名>` 新增）")
+
+
+def cmd_tag(args):
+    """手動修改既有新聞的標籤（補標、改標、清空）。"""
+    conn = connect()
+    row = conn.execute("SELECT id, title, tags FROM news WHERE id = ?", (args.id,)).fetchone()
+    if not row:
+        conn.close()
+        sys.exit(f"錯誤：找不到 id={args.id}")
+
+    aliases = load_aliases(conn)
+    before = tags_of(row)
+    if args.clear:
+        tags = []
+    elif args.add:
+        # before 已是正規名，再過一次 parse_tags 是無操作，順便共用保序去重
+        tags = parse_tags(before + args.add, aliases)
+    else:
+        tags = parse_tags(args.tags, aliases)
+    if len(tags) > MAX_TAGS:
+        conn.close()
+        sys.exit(f"錯誤：標籤最多 {MAX_TAGS} 個，會變成 {len(tags)} 個（{'、'.join(tags)}）")
+
+    conn.execute(
+        "UPDATE news SET tags = ? WHERE id = ?",
+        (json.dumps(tags, ensure_ascii=False) if tags else None, args.id),
+    )
+    conn.commit()
+    conn.close()
+    print(f"id={args.id}：{'、'.join(before) or '（無）'} → {'、'.join(tags) or '（無）'}")
+    print(f"  {row['title']}")
+    if not args.no_export:
+        export_news_json(DATA_JSON_PATH)
 
 
 def cmd_skip(args):
@@ -628,6 +969,22 @@ def main():
     p_skip = sub.add_parser("skip", help="把待評分項目標為略過")
     p_skip.add_argument("ids", nargs="+", type=int)
 
+    p_tags = sub.add_parser("tags", help="列出所有標籤；帶標籤名則列出該標籤的新聞")
+    p_tags.add_argument("tag", nargs="?", help="標籤名（省略則列出全部標籤與筆數）")
+
+    p_alias = sub.add_parser("alias", help="管理標籤別名（不帶參數則列出全部）")
+    p_alias.add_argument("alias", nargs="?", help="別名寫法（如 輝達）")
+    p_alias.add_argument("canonical", nargs="?", help="正規名（如 NVIDIA）")
+    p_alias.add_argument("--remove", help="刪除指定別名")
+    p_alias.add_argument("--no-export", action="store_true", help="不要順手更新 data/news.json")
+
+    p_tag = sub.add_parser("tag", help="修改某則新聞的標籤")
+    p_tag.add_argument("id", type=int)
+    p_tag.add_argument("tags", nargs="*", help="要設定的標籤（覆蓋原有）")
+    p_tag.add_argument("--add", nargs="+", help="附加標籤而非覆蓋")
+    p_tag.add_argument("--clear", action="store_true", help="清空標籤")
+    p_tag.add_argument("--no-export", action="store_true", help="不要順手更新 data/news.json")
+
     p_digest = sub.add_parser("digest", help="輸出指定日期的每日摘要（markdown）")
     p_digest.add_argument("--date", help="YYYY-MM-DD，預設今天")
 
@@ -660,6 +1017,9 @@ def main():
         "fetch": cmd_fetch,
         "pending": cmd_pending,
         "skip": cmd_skip,
+        "tags": cmd_tags,
+        "tag": cmd_tag,
+        "alias": cmd_alias,
         "digest": cmd_digest,
         "prune": cmd_prune,
         "export-json": cmd_export_json,

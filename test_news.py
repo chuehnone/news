@@ -26,7 +26,7 @@ REPO = Path(__file__).parent
 
 
 def make_score(title, news_date=None, url=None, scores=(10, 10, 10, 10, 9),
-               summary=None, one_line=None, section="影響未來的趨勢"):
+               summary=None, one_line=None, section="影響未來的趨勢", tags=None):
     """產生一筆符合 add 格式的評分 JSON。預設總分 49（C 級）。
 
     summary / one_line 可個別指定：搜尋是跨這幾個欄位比對的，若全部用同一份
@@ -39,6 +39,7 @@ def make_score(title, news_date=None, url=None, scores=(10, 10, 10, 10, 9),
         "news_date": news_date,
         "summary": summary or f"{title}的摘要",
         "section": section,
+        "tags": tags or [],
         "one_line": one_line or f"{title}的判斷",
         "why_important": "原因",
         "affected": "對象",
@@ -246,15 +247,20 @@ class TestFilterParity(CLITestCase):
         old = (date.today() - timedelta(days=3)).isoformat()
         # 涵蓋不同等級、日期、分類，讓各種篩選都有區辨力。
         # 「僅摘要詞」「僅判斷詞」只出現在單一欄位，用來驗證搜尋確實跨欄位比對。
+        # 標籤刻意設計成「AI」與「AI晶片」並存：整值比對若退化成子字串比對，
+        # 篩「AI」會多撈到「AI晶片」的那則，兩邊就會不一致。
         self.add(make_score("台積電法說會", today, url="http://e.com/1",
                             scores=(20, 16, 15, 16, 12),
+                            tags=["台積電", "AI晶片"],
                             summary="僅摘要詞 出現在這裡"))          # 79 → A
         self.add(make_score("關稅生效", today, url="http://e.com/2",
                             scores=(24, 19, 19, 19, 14),
+                            tags=["關稅", "AI"],
                             one_line="僅判斷詞 出現在這裡"))          # 95 → S
         self.add(make_score("天氣預報", old, url="http://e.com/3",
-                            section="熱但未必重要"))                 # 49 → C
+                            section="熱但未必重要"))                 # 49 → C（無標籤）
         self.add(make_score("關稅談判", old, url="http://e.com/4",
+                            tags=["關稅"],
                             scores=(15, 12, 12, 12, 10)))          # 61 → B
 
     def sql_filter(self, **kw):
@@ -263,23 +269,29 @@ class TestFilterParity(CLITestCase):
             server.DB_PATH = self.dir / "news.db"
             return {r["title"] for r in server.query_news(**kw)}
 
-    def js_filter(self, grade=None, date_=None, section=None, q=None):
+    def js_filter(self, grade=None, date_=None, section=None, q=None, tag=None):
         """複刻 FILTER_JS 的 apply()，對靜態站輸出的 data-* 做同樣篩選。"""
         self.run_cli("export", "--out", "d", check=True)
         html = (self.dir / "d" / "index.html").read_text(encoding="utf-8")
+        with load_modules(self.dir, "server") as (server,):
+            sep = server.TAG_SEP
         titles = set()
         for m in re.finditer(
             r'data-grade="([^"]*)" data-date="([^"]*)" data-section="([^"]*)"'
-            r' data-text="([^"]*)">.*?<div class="title">(?:<a[^>]*>)?([^<]*)',
+            r' data-tags="([^"]*)" data-text="([^"]*)">.*?'
+            r'<div class="title">(?:<a[^>]*>)?([^<]*)',
             html, re.S,
         ):
-            g, d, sec, text, title = m.groups()
+            g, d, sec, tags, text, title = m.groups()
             # 與 FILTER_JS 的 base 條件逐項對應
             if grade and g != grade:
                 continue
             if date_ and d != date_:
                 continue
             if section and sec != section:
+                continue
+            # 對應 JS 的 indexOf(SEP + tag + SEP)：整值比對而非子字串
+            if tag and (sep + tag + sep) not in tags:
                 continue
             if q and q.lower() not in text:
                 continue
@@ -288,7 +300,8 @@ class TestFilterParity(CLITestCase):
 
     def assert_parity(self, **kw):
         js_kw = {"grade": kw.get("grade"), "date_": kw.get("date"),
-                 "section": kw.get("section"), "q": kw.get("q")}
+                 "section": kw.get("section"), "q": kw.get("q"),
+                 "tag": kw.get("tag")}
         self.assertEqual(self.sql_filter(**kw), self.js_filter(**js_kw),
                          f"動態站與靜態站篩選結果不一致：{kw}")
 
@@ -324,9 +337,61 @@ class TestFilterParity(CLITestCase):
                                  f"動態站搜尋「{q}」結果不如預期")
                 self.assert_parity(q=q)
 
+    def test_by_tag(self):
+        for t in ("關稅", "台積電", "AI", "AI晶片"):
+            with self.subTest(t):
+                self.assert_parity(tag=t)
+
+    def test_tag_match_is_exact_not_substring(self):
+        """篩「AI」不得命中「AI晶片」——兩邊都必須是整值比對。
+
+        迴歸防線：SQL 端若圖方便改用 LIKE '%AI%'、前端若少了分隔字元，
+        這裡就會抓到（fixture 刻意讓兩個標籤有前綴包含關係）。
+        """
+        self.assertEqual(self.sql_filter(tag="AI"), {"關稅生效"})
+        self.assertEqual(self.js_filter(tag="AI"), {"關稅生效"})
+        self.assertEqual(self.sql_filter(tag="AI晶片"), {"台積電法說會"})
+        self.assertEqual(self.js_filter(tag="AI晶片"), {"台積電法說會"})
+
+    def test_tag_filter_is_pure_exact_match(self):
+        """query_news 只做整值比對，不自己收斂別名。
+
+        別名收斂屬於輸入處理層（Handler.do_GET），不是篩選層——篩選層若偷偷
+        多做一層，動態站就會比靜態站多認得一種寫法，而 assert_parity 兩邊
+        傳入同一個字串、發現不了「其中一邊多做了事」。
+        """
+        with load_modules(self.dir, "news", "server") as (news, server):
+            news.DB_PATH = self.dir / "news.db"
+            server.DB_PATH = self.dir / "news.db"
+            conn = news.connect()
+            conn.execute("INSERT OR REPLACE INTO tag_aliases (alias, canonical)"
+                         " VALUES (?, ?)", ("台積", "台積電"))
+            conn.commit()
+            conn.close()
+            self.assertEqual(server.query_news(tag="台積"), [],
+                             "篩選層不該自己套別名，否則與靜態站行為不一致")
+            self.assertEqual(
+                {r["title"] for r in server.query_news(tag="台積電")},
+                {"台積電法說會"})
+
+    def test_url_layer_resolves_alias(self):
+        """?tag=別名 仍要能用——收斂發生在 do_GET，而非篩選層。"""
+        with load_modules(self.dir, "news", "server") as (news, server):
+            news.DB_PATH = self.dir / "news.db"
+            server.DB_PATH = self.dir / "news.db"
+            conn = news.connect()
+            conn.execute("INSERT OR REPLACE INTO tag_aliases (alias, canonical)"
+                         " VALUES (?, ?)", ("台積", "台積電"))
+            conn.commit()
+            aliases = news.load_aliases(conn)
+            conn.close()
+            # do_GET 對 tag 做的處理就是這一步
+            self.assertEqual(news.normalize_tag("台積", aliases), "台積電")
+
     def test_combined(self):
         self.assert_parity(grade="S", q="關稅")
         self.assert_parity(date=date.today().isoformat(), section="影響未來的趨勢")
+        self.assert_parity(tag="關稅", grade="S")
 
 
 class TestSchemaCommand(CLITestCase):
@@ -398,6 +463,29 @@ class TestNoDuplicateConstants(CLITestCase):
             assigned & shared, set(),
             "server.py 自行定義了 news.py 已有的常數，應改為 import 自 news.py")
 
+    def test_server_defines_no_shadowing_function(self):
+        """同一條規則，但涵蓋函式。
+
+        迴歸：`tag_counts` 一度在 news.py 與 server.py 各有一份實作，兩邊
+        逐字相同、只差取資料的來源。上面那個測試只掃大寫的常數賦值，
+        重複的函式定義整個穿過去了——而函式比常數更容易悄悄漂移
+        （改了排序規則卻只改一邊，CLI 與網頁就會給出不同順序）。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            shared = {
+                n for n, v in vars(news).items()
+                if callable(v) and getattr(v, "__module__", None) == "news"
+            }
+        src = (self.dir / "server.py").read_text(encoding="utf-8")
+        defined = {
+            m.group(1)
+            for line in src.splitlines()
+            if (m := re.match(r"def ([a-zA-Z_][a-zA-Z0-9_]*)", line))
+        }
+        self.assertEqual(
+            defined & shared, set(),
+            "server.py 自行定義了 news.py 已有的函式，應改為 import 自 news.py")
+
     def test_grade_of_matches_thresholds(self):
         """門檻常數必須真的驅動 grade_of()，而不只是拿來印說明。"""
         with load_modules(self.dir, "news") as (news,):
@@ -451,6 +539,155 @@ class TestDigest(CLITestCase):
         out = self.run_cli("digest", "--date", d, check=True).stdout
         self.assertIn("該出現", out)
         self.assertNotIn("不該出現", out)
+
+
+class TestTags(CLITestCase):
+    """標籤：關聯新聞的鍵，正規化與比對出錯就會把同主題的新聞拆散。"""
+
+    def tags_of(self, *, id=None, title=None):
+        """查某筆的標籤。跨 import-json --replace 的比對要用 title——
+        重新匯入會配到新的 id（AUTOINCREMENT 不重用舊值）。"""
+        col, val = ("id", id) if id is not None else ("title", title)
+        conn = sqlite3.connect(self.dir / "news.db")
+        row = conn.execute(f"SELECT tags FROM news WHERE {col} = ?", (val,)).fetchone()
+        conn.close()
+        return json.loads(row[0]) if row and row[0] else []
+
+    def test_alias_normalized_on_write(self):
+        """別名寫法在寫入時就收斂，db 內只存正規名。"""
+        self.add(make_score("a", tags=["輝達", "TSMC"]))
+        self.assertEqual(self.tags_of(id=1), ["NVIDIA", "台積電"])
+
+    def test_alias_key_ignores_case_and_space(self):
+        """比對鍵會去大小寫與空白，別名表不必為每種寫法各存一列。"""
+        self.add(make_score("a", tags=["NVIDIA", "n v i d i a"], url="http://e.com/1"))
+        # 兩種寫法都收斂到 NVIDIA，去重後只剩一個
+        self.assertEqual(self.tags_of(id=1), ["NVIDIA"])
+
+    def test_unknown_tag_kept_as_is(self):
+        """不在別名表的標籤原樣保留——別名是收斂工具，不是白名單。"""
+        self.add(make_score("a", tags=["某個全新主題"]))
+        self.assertEqual(self.tags_of(id=1), ["某個全新主題"])
+
+    def test_duplicate_tags_deduped_preserving_order(self):
+        """去重要保留首次出現順序，否則每次寫入的排列不同會讓 JSON 產生雜訊 diff。"""
+        self.add(make_score("a", tags=["台積電", "AI", "輝達", "台積電"]))
+        self.assertEqual(self.tags_of(id=1), ["台積電", "AI", "NVIDIA"])
+
+    def test_rejects_too_many_tags(self):
+        with load_modules(self.dir, "news") as (news,):
+            limit = news.MAX_TAGS
+        r = self.add(make_score("a", tags=[f"標籤{i}" for i in range(limit + 1)]))
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("標籤最多", r.stderr + r.stdout)
+        self.assertEqual(self.db_count(), 0, "被拒絕的資料不該寫入 db")
+
+    def test_tags_survive_json_roundtrip(self):
+        """標籤必須進 data/news.json，否則 CI 從 JSON 重建時會整批消失。"""
+        self.add(make_score("a", tags=["台積電", "AI"]))
+        self.assertEqual(self.json_rows()[0].get("tags"), '["台積電", "AI"]')
+        self.run_cli("import-json", "--replace", check=True)
+        self.assertEqual(self.tags_of(title="a"), ["台積電", "AI"])
+
+    def test_alias_command_retags_existing_rows(self):
+        """新增別名要一併收斂既有資料，否則舊資料仍是分裂的兩個標籤。"""
+        self.add(make_score("a", tags=["晶圓代工"], url="http://e.com/1"))
+        self.add(make_score("b", tags=["台積電"], url="http://e.com/2"))
+        self.run_cli("alias", "晶圓代工", "台積電", check=True)
+        self.assertEqual(self.tags_of(id=1), ["台積電"])
+        self.assertEqual(self.json_rows()[0].get("tags"), '["台積電"]',
+                         "收斂後要同步更新 JSON")
+
+    def test_alias_rejects_chain(self):
+        """別名不得指向另一個別名，否則正規化結果取決於查表順序。"""
+        r = self.run_cli("alias", "台積", "輝達")  # 輝達本身是 NVIDIA 的別名
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("別名", r.stderr + r.stdout)
+
+    def test_alias_removal_is_not_resurrected(self):
+        """刪掉種子別名後不該在下次連線時復活（種子只在表空時灌）。"""
+        self.run_cli("alias", "--remove", "輝達", check=True)
+        self.run_cli("tags")  # 觸發一次 connect()/migrate()
+        out = self.run_cli("alias", check=True).stdout
+        self.assertNotIn("輝達", out, "已刪除的別名被種子重新灌回來了")
+
+    def test_tag_command_edits_tags(self):
+        self.add(make_score("a", tags=["AI"]))
+        self.run_cli("tag", "1", "台積電", "AI", check=True)
+        self.assertEqual(self.tags_of(id=1), ["台積電", "AI"])
+        self.run_cli("tag", "1", "--add", "輝達", check=True)
+        self.assertEqual(self.tags_of(id=1), ["台積電", "AI", "NVIDIA"])
+        self.run_cli("tag", "1", "--clear", check=True)
+        self.assertEqual(self.tags_of(id=1), [])
+
+    def test_migration_adds_column_to_existing_db(self):
+        """既有 db（沒有 tags 欄位）要能自動補上，不是重建才有。
+
+        CREATE TABLE IF NOT EXISTS 對已存在的表完全不動，
+        沒有 migrate 的話舊 db 會在 add 時噴 no such column。
+        """
+        conn = sqlite3.connect(self.dir / "news.db")
+        # 造出一個「舊版」db：把 tags 欄位拿掉（SQLite 3.35+ 支援 DROP COLUMN）
+        conn.execute("ALTER TABLE news DROP COLUMN tags")
+        conn.execute("DROP TABLE tag_aliases")
+        conn.commit()
+        conn.close()
+        r = self.add(make_score("a", tags=["AI"]))
+        self.assertEqual(r.returncode, 0, f"舊 db 應自動補欄位：{r.stderr}")
+        self.assertEqual(self.tags_of(id=1), ["AI"])
+
+    def test_related_news_shown_on_card(self):
+        """同標籤的新聞要在卡片的評分細節裡互相看得到。"""
+        self.add(make_score("台積電擴廠", url="http://e.com/1", tags=["台積電"]))
+        self.add(make_score("台積電法說", url="http://e.com/2", tags=["台積電"]))
+        self.add(make_score("無關新聞", url="http://e.com/3", tags=["體育"]))
+        self.run_cli("export", "--out", "d", check=True)
+        html = (self.dir / "d" / "index.html").read_text(encoding="utf-8")
+        self.assertEqual(html.count("相關新聞（同標籤）"), 2,
+                         "只有兩則同標籤的新聞該出現相關新聞區塊")
+
+    def test_related_excludes_self(self):
+        """相關新聞不能把自己列進去。"""
+        self.add(make_score("唯一一則", url="http://e.com/1", tags=["台積電"]))
+        self.run_cli("export", "--out", "d", check=True)
+        html = (self.dir / "d" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("相關新聞（同標籤）", html,
+                         "只有一則時不該有相關新聞區塊")
+
+    def test_tag_and_section_are_clickable_in_both_modes(self):
+        """兩種模式的標籤／分類都要能點。
+
+        迴歸：動態站原本沿用靜態站的 <button data-tag-pick>，但動態頁面
+        根本沒載入 FILTER_JS，那顆按鈕按了完全沒反應。動態站要改成帶
+        query string 的 <a>，靜態站才是 button。
+        """
+        self.add(make_score("a", tags=["台積電"], section="今日最重要"))
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+
+            dynamic = server.render_page()
+            self.assertIn('<a class="tag" href="/?tag=', dynamic,
+                          "動態站的標籤必須是可點的連結")
+            self.assertIn('<a class="section" href="/?section=', dynamic,
+                          "動態站的分類必須是可點的連結")
+            self.assertNotIn("data-tag-pick", dynamic,
+                             "動態站沒有 JS，不該輸出只有 JS 才能用的按鈕")
+
+            static = server.render_static_page()
+            self.assertIn("data-tag-pick", static,
+                          "靜態站的標籤由 FILTER_JS 處理，必須是 button")
+            self.assertNotIn('<a class="tag" href=', static,
+                             "靜態站沒有 server 可以處理 query string")
+
+    def test_tags_listing(self):
+        self.add(make_score("a", tags=["台積電", "AI"], url="http://e.com/1"))
+        self.add(make_score("b", tags=["台積電"], url="http://e.com/2"))
+        out = self.run_cli("tags", check=True).stdout
+        self.assertRegex(out, r"2\s+台積電")
+        self.assertRegex(out, r"1\s+AI")
+        listed = self.run_cli("tags", "台積電", check=True).stdout
+        self.assertIn("a", listed)
+        self.assertIn("b", listed)
 
 
 class TestStaticOutput(CLITestCase):

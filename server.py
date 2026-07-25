@@ -14,7 +14,10 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs, quote
 # 常數一律取自 news.py，勿在此另存一份（見 TestNoDuplicateConstants）。
 # news.py 反向 import server 只發生在 cmd_serve / cmd_export 的函式內，故不成環。
-from news import ARCHIVE_GRADES, DB_PATH, DIMENSIONS, GRADE_LABELS, GRADES
+from news import (
+    ARCHIVE_GRADES, DB_PATH, DIMENSIONS, GRADE_LABELS, GRADES,
+    load_aliases, normalize_tag, tag_counts, tags_of,
+)
 
 STYLE = """
 :root {
@@ -52,7 +55,7 @@ h1 { font-size: 1.4rem; margin: 0 0 4px; }
 .sub { color: var(--muted); font-size: .85rem; margin-bottom: 20px; }
 .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 10px; }
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-.date-filter select, .section-filter select, .search input {
+.date-filter select, .section-filter select, .tag-filter select, .search input {
   padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border);
   background: var(--card); color: var(--text); font-size: .85rem;
   font-family: inherit; cursor: pointer;
@@ -120,11 +123,34 @@ h1 { font-size: 1.4rem; margin: 0 0 4px; }
 .meta a { color: var(--link); text-decoration: none; }
 .meta a:hover { text-decoration: underline; }
 .meta .section { color: var(--muted); }
-.meta button.section {
+/* 靜態站是 button（JS 篩選）、動態站是 a（query string），兩者外觀要一致 */
+.meta button.section, .meta a.section {
   border: 0; background: none; padding: 0; font: inherit; font-size: .84rem;
   color: var(--muted); cursor: pointer; text-decoration: none;
 }
-.meta button.section:hover { text-decoration: underline; }
+.meta button.section:hover, .meta a.section:hover { text-decoration: underline; }
+/* 標籤：把講同一件事的新聞串起來，點一下就篩出同標籤的其他則。
+   視覺上刻意比 badge 輕（無底色飽和度），避免跟等級搶讀者的第一眼 */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+/* 靜態站是 button、動態站是 a（見 render_card 的 static 參數），樣式共用 */
+.tag {
+  display: inline-block;
+  font-size: .78rem; padding: 2px 10px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--bg); color: var(--muted);
+  font-family: inherit; cursor: pointer; line-height: 1.5;
+  text-decoration: none;
+}
+.tag:hover { border-color: var(--link); color: var(--link); text-decoration: none; }
+.tag.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+/* 同標籤的其他新聞：關聯的實際載體，收在評分細節裡不佔卡片版面 */
+.related { margin-top: 12px; }
+.related h4 { margin: 12px 0 4px; font-size: .84rem; color: var(--muted); }
+.related ul { margin: 4px 0; padding-left: 20px; }
+.related li { margin: 3px 0; }
+.related .rel-grade {
+  font-variant-numeric: tabular-nums; color: var(--muted); font-size: .8rem;
+  margin-right: 6px;
+}
 details { margin-top: 10px; }
 summary { cursor: pointer; font-size: .84rem; color: var(--muted); user-select: none; }
 .detail { font-size: .88rem; margin-top: 10px; }
@@ -139,7 +165,7 @@ summary { cursor: pointer; font-size: .84rem; color: var(--muted); user-select: 
 .footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 32px; }
 /* 精簡模式：一則一行，只留等級與標題 */
 body.compact .summary, body.compact .one-line,
-body.compact .meta, body.compact details { display: none; }
+body.compact .meta, body.compact .tags, body.compact details { display: none; }
 body.compact .card { padding: 8px 14px; margin-bottom: 6px; }
 body.compact .title { font-size: .98rem; margin: 2px 0; }
 body.compact .card.C, body.compact .card.D { opacity: .7; }
@@ -185,7 +211,23 @@ def query_news_all():
     return rows
 
 
-def query_news(grade=None, date=None, section=None, q=None):
+def filter_by_tag(rows, tag):
+    """留下掛了指定標籤的資料（整個標籤相等，不是子字串）。
+
+    刻意不在 SQL 用 LIKE '%NVIDIA%'：tags 存的是 JSON 陣列字串，
+    子字串比對會讓「NVIDIA」命中「NVIDIA供應鏈」，篩選結果就不精準了。
+    資料量是數百筆的規模，取回後在 Python 端精確比對足夠快。
+
+    這裡是純粹的整值比對，不碰別名——db 存的本來就是正規名（正規化只發生
+    在寫入路徑），而靜態站的前端沒有別名表可查。若這裡偷偷多做一層收斂，
+    動態站與靜態站對同一個 ?tag= 就會給出不同結果，而 TestFilterParity
+    只比對兩邊、不會發現其中一邊「多做了事」。
+    別名要收斂的是使用者手打的網址，那屬於輸入處理層（見 Handler.do_GET）。
+    """
+    return [r for r in rows if tag in tags_of(r)]
+
+
+def query_news(grade=None, date=None, section=None, q=None, tag=None):
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     try:  # 若尚未 init（table 不存在），回傳空列表而非噴錯
@@ -207,48 +249,33 @@ def query_news(grade=None, date=None, section=None, q=None):
         if q:
             conds.append(
                 "(LOWER(title) LIKE ? OR LOWER(COALESCE(one_line,'')) LIKE ?"
-                " OR LOWER(COALESCE(summary,'')) LIKE ?)"
+                " OR LOWER(COALESCE(summary,'')) LIKE ?"
+                " OR LOWER(COALESCE(tags,'')) LIKE ?)"
             )
-            params += [f"%{q.lower()}%"] * 3
+            params += [f"%{q.lower()}%"] * 4
         if conds:
             sql += " WHERE " + " AND ".join(conds)
         sql += " ORDER BY news_date DESC, total_score DESC, id DESC"
         rows = conn.execute(sql, params).fetchall()
+        if tag:
+            rows = filter_by_tag(rows, tag)
     except sqlite3.OperationalError:
         rows = []
     conn.close()
     return rows
 
 
-def grade_counts(date=None, section=None, q=None):
-    """等級以外的條件下各級筆數（與前端 apply() 的 perGrade 行為一致）。"""
-    conn = sqlite3.connect(DB_PATH)
-    try:
-        sql = "SELECT grade, COUNT(*) FROM news"
-        conds, params = [], []
-        rc, rp = retention_clause()
-        if rc:
-            conds.append(rc)
-            params += rp
-        if date:
-            conds.append("news_date = ?")
-            params.append(date)
-        if section:
-            conds.append("section = ?")
-            params.append(section)
-        if q:
-            conds.append(
-                "(LOWER(title) LIKE ? OR LOWER(COALESCE(one_line,'')) LIKE ?"
-                " OR LOWER(COALESCE(summary,'')) LIKE ?)"
-            )
-            params += [f"%{q.lower()}%"] * 3
-        if conds:
-            sql += " WHERE " + " AND ".join(conds)
-        rows = conn.execute(sql + " GROUP BY grade", params).fetchall()
-    except sqlite3.OperationalError:
-        rows = []
-    conn.close()
-    return dict(rows)
+def grade_counts(rows):
+    """各級筆數（與前端 apply() 的 perGrade 行為一致）。
+
+    吃已篩好的 rows 而非自己再查一次：篩選條件曾經是兩份各自維護的 WHERE
+    （加 tag 時就得改兩處，漏掉一處分頁計數就會與實際卡片數不符）。
+    傳入「等級以外的條件都套用過」的那份 rows，條件就永遠只有一份。
+    """
+    counts = {}
+    for r in rows:
+        counts[r["grade"]] = counts.get(r["grade"], 0) + 1
+    return counts
 
 
 def date_counts():
@@ -287,7 +314,65 @@ def section_counts():
     return rows
 
 
-def render_card(r):
+# 一則新聞的「相關新聞」最多列幾則。列太多會把評分細節擠掉，
+# 且同標籤新聞本來就能用標籤篩選看全部。
+RELATED_LIMIT = 5
+
+# data-tags 屬性裡夾住每個標籤的分隔字元，讓前端能做整值比對
+# （'|AI|' 不會命中 '|AI晶片|'）。用可列印字元而非 \x1f 之類的控制字元：
+# 控制字元寫進 HTML 屬性是不合法的，瀏覽器對它的處理沒有保證。
+# 標籤含 '|' 時會破壞編碼，故 render 前一律先剝掉（見 tag_attr_value）。
+TAG_SEP = "|"
+
+
+def tag_attr_value(tags):
+    """把標籤列表編成 data-tags 屬性值：|標籤1|標籤2|。
+
+    標籤本身若含分隔字元會讓整值比對錯亂，先剝掉再編。
+    """
+    safe = [t.replace(TAG_SEP, "") for t in tags]
+    return TAG_SEP + TAG_SEP.join(safe) + TAG_SEP if safe else ""
+
+
+def build_tag_index(rows):
+    """{標籤: [row, ...]}，供 related_of() 查表。
+
+    先建索引再逐張卡片查，而不是每張卡片重掃一次全部資料——
+    後者在數百筆的規模是 O(n²)，靜態站輸出會明顯變慢。
+    """
+    index = {}
+    for r in rows:
+        for t in tags_of(r):
+            index.setdefault(t, []).append(r)
+    return index
+
+
+def related_of(row, index, limit=RELATED_LIMIT):
+    """同標籤的其他新聞（依 rows 原本的排序，即日期新到舊）。
+
+    這是「關聯新聞」的實際載體：標籤只是把關聯建立起來的鍵，
+    真正有用的是在一則新聞旁邊直接看到同一主題的來龍去脈。
+    """
+    out, seen = [], {row["id"]}
+    for t in tags_of(row):
+        for r in index.get(t, []):
+            if r["id"] in seen:
+                continue
+            seen.add(r["id"])
+            out.append(r)
+            if len(out) >= limit:
+                return out
+    return out
+
+
+def render_card(r, related=None, static=True):
+    """一張卡片。
+
+    static=True 時分類與標籤是 <button>，由 FILTER_JS 在前端切換篩選；
+    static=False（動態 serve）時改成帶 query string 的 <a>，因為動態頁面
+    沒有載入 JS。兩者都要能點——曾經動態站直接沿用 button，結果是一顆
+    按了沒反應的死按鈕。
+    """
     title = escape(r["title"])
     if r["url"]:
         title_html = f'<a href="{escape(r["url"])}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">{title}</a>'
@@ -296,14 +381,19 @@ def render_card(r):
 
     grade = escape(r["grade"])
     section = r["section"] or ""
-    # 搜尋比對用的純文字（標題 + 一句話判斷 + 摘要），小寫化交給前端
-    haystack = " ".join(filter(None, [r["title"], r["one_line"], r["summary"], section]))
+    tags = tags_of(r)
+    # 搜尋比對用的純文字（標題 + 一句話判斷 + 摘要 + 分類 + 標籤），小寫化交給前端
+    haystack = " ".join(filter(None, [r["title"], r["one_line"], r["summary"], section, *tags]))
+    # 標籤以 TAG_SEP 夾住每一個值，讓前端能用 indexOf('|標籤|') 做整值比對
+    # （直接串接的話，篩「AI」會命中「AI晶片」）。
+    tag_attr = tag_attr_value(tags)
 
     parts = [
         # data-* 供靜態站的前端篩選使用（動態 server 端不需要，但無害）
         f'<div class="card {grade}" data-grade="{grade}"'
         f' data-date="{escape(r["news_date"] or "")}"'
         f' data-section="{escape(section)}"'
+        f' data-tags="{escape(tag_attr)}"'
         f' data-text="{escape(haystack.lower())}">',
         '<div class="card-top">',
         f'<span class="badge {grade}">{grade}</span>',
@@ -322,13 +412,32 @@ def render_card(r):
     if r["url"]:
         meta.append(f'<a href="{escape(r["url"])}" target="_blank" rel="noopener">原始新聞 ↗</a>')
     if section:
-        # 靜態站可點擊篩選；動態站沒有對應 handler，退化為純文字
-        meta.append(
-            f'<button type="button" class="section" data-section-pick="{escape(section)}">'
-            f"📂 {escape(section)}</button>"
-        )
+        if static:
+            meta.append(
+                f'<button type="button" class="section" data-section-pick="{escape(section)}">'
+                f"📂 {escape(section)}</button>"
+            )
+        else:
+            meta.append(
+                f'<a class="section" href="/?section={quote(section)}">'
+                f"📂 {escape(section)}</a>"
+            )
     if meta:
         parts.append(f'<div class="meta">{"".join(f"<span>{m}</span>" for m in meta)}</div>')
+
+    # 標籤：點一下即篩出同標籤的新聞
+    if tags:
+        if static:
+            chips = "".join(
+                f'<button type="button" class="tag" data-tag-pick="{escape(t)}">'
+                f"#{escape(t)}</button>"
+                for t in tags
+            )
+        else:
+            chips = "".join(
+                f'<a class="tag" href="/?tag={quote(t)}">#{escape(t)}</a>' for t in tags
+            )
+        parts.append(f'<div class="tags">{chips}</div>')
 
     # 詳細評分
     detail = ['<details><summary>評分細節</summary><div class="detail">']
@@ -356,16 +465,41 @@ def render_card(r):
                 detail.append(f"<p>{escape(str(items))}</p>")
         except (json.JSONDecodeError, TypeError):
             detail.append(f"<p>{escape(r['watch_next'])}</p>")
+
+    # 同標籤的其他新聞：讓一則新聞旁邊就能看到同主題的來龍去脈
+    if related:
+        detail.append('<div class="related"><h4>相關新聞（同標籤）</h4><ul>')
+        for rel in related:
+            rel_title = escape(rel["title"])
+            link = (
+                f'<a href="{escape(rel["url"])}" target="_blank" rel="noopener">{rel_title}</a>'
+                if rel["url"] else rel_title
+            )
+            detail.append(
+                f'<li><span class="rel-grade">{escape(rel["grade"])} {rel["total_score"]}</span>'
+                f'{link}<span class="rel-grade"> · {escape(rel["news_date"] or "未標日期")}</span></li>'
+            )
+        detail.append("</ul></div>")
+
     detail.append("</div></details>")
     parts.extend(detail)
     parts.append("</div>")
     return "".join(parts)
 
 
-def render_page(grade=None, date=None, section=None, q=None):
-    rows = query_news(grade, date, section, q)
-    counts = grade_counts(date, section, q)
-    total = sum(counts.values())
+def render_page(grade=None, date=None, section=None, q=None, tag=None):
+    # 全部資料查一次就好，其餘都從這份導出：每加一種計數就多打一次 db 的話，
+    # 一次 render 會變成四次全表掃描（分頁計數、標籤選單、關聯索引各一次）
+    all_rows = query_news()
+    # 等級以外的條件先套用，分頁計數才能反映「其他條件下各級有幾筆」
+    # （與前端 apply() 的 perGrade 同一套邏輯）
+    base_rows = query_news(date=date, section=section, q=q, tag=tag)
+    rows = [r for r in base_rows if not grade or r["grade"] == grade]
+    counts = grade_counts(base_rows)
+    total = len(base_rows)
+    # 相關新聞取自全部資料而非篩選結果：篩了標籤還只在結果內找關聯，
+    # 會看不到被目前條件排除、但確實同主題的新聞
+    index = build_tag_index(all_rows)
 
     keep = ""
     if date:
@@ -374,6 +508,8 @@ def render_page(grade=None, date=None, section=None, q=None):
         keep += f"&section={quote(section)}"
     if q:
         keep += f"&q={quote(q)}"
+    if tag:
+        keep += f"&tag={quote(tag)}"
     tabs = [f'<a href="/?{keep.lstrip("&")}" class="{"active" if not grade else ""}">全部 {total}</a>']
     for g in GRADES:
         n = counts.get(g, 0)
@@ -389,11 +525,16 @@ def render_page(grade=None, date=None, section=None, q=None):
     for s, n in section_counts():
         selected = " selected" if s == section else ""
         sec_options.append(f'<option value="{escape(s)}"{selected}>{escape(s)}（{n}）</option>')
+    tag_options = ['<option value="">全部標籤</option>']
+    for t, n in tag_counts(all_rows):
+        selected = " selected" if t == tag else ""
+        tag_options.append(f'<option value="{escape(t)}"{selected}>{escape(t)}（{n}）</option>')
     controls = [
         '<form class="toolbar" method="get" action="/">',
         f'<input type="hidden" name="grade" value="{escape(grade)}">' if grade else "",
         f'<div class="date-filter"><select name="date" onchange="this.form.submit()">{"".join(options)}</select></div>',
         f'<div class="section-filter"><select name="section" onchange="this.form.submit()">{"".join(sec_options)}</select></div>',
+        f'<div class="tag-filter"><select name="tag" onchange="this.form.submit()">{"".join(tag_options)}</select></div>',
         '<div class="search">'
         f'<input name="q" type="search" value="{escape(q or "")}"'
         ' placeholder="搜尋標題／判斷／摘要…" autocomplete="off"></div>',
@@ -410,7 +551,7 @@ def render_page(grade=None, date=None, section=None, q=None):
             if r["news_date"] != current_date:
                 current_date = r["news_date"]
                 body.append(f'<div class="date-head">📅 {escape(current_date or "未標日期")}</div>')
-            body.append(render_card(r))
+            body.append(render_card(r, related_of(r, index), static=False))
 
     return f"""<!doctype html>
 <html lang="zh-Hant">
@@ -436,15 +577,17 @@ def render_page(grade=None, date=None, section=None, q=None):
 # 靜態主機沒有 server 可以處理，故改為一次輸出全部卡片、用 JS 切換顯示。
 FILTER_JS = """
 (function () {
+  var SEP = '__TAG_SEP__';  // 由 render_static_page 換成 TAG_SEP，兩邊不會各寫一份
   var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   var heads = Array.prototype.slice.call(document.querySelectorAll('.date-head'));
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs a'));
   var dateSel = document.getElementById('date-select');
   var sectionSel = document.getElementById('section-select');
+  var tagSel = document.getElementById('tag-select');
   var searchBox = document.getElementById('search-box');
   var empty = document.getElementById('empty');
   var densityBtns = Array.prototype.slice.call(document.querySelectorAll('.density button'));
-  var state = { grade: '', date: '', section: '', q: '', density: '' };
+  var state = { grade: '', date: '', section: '', tag: '', q: '', density: '' };
 
   // 篩選狀態存進 hash，讓靜態站的篩選結果可分享、可用上一頁還原
   function readHash() {
@@ -471,10 +614,15 @@ FILTER_JS = """
   function syncControls() {
     if (dateSel) dateSel.value = state.date;
     if (sectionSel) sectionSel.value = state.section;
+    if (tagSel) tagSel.value = state.tag;
     if (searchBox) searchBox.value = state.q;
     document.body.classList.toggle('compact', state.density === 'compact');
     densityBtns.forEach(function (b) {
       b.classList.toggle('active', (b.dataset.density || '') === state.density);
+    });
+    // 卡片上的標籤反映目前選中的標籤，讓「這是我正在看的主題」有視覺回饋
+    Array.prototype.forEach.call(document.querySelectorAll('[data-tag-pick]'), function (b) {
+      b.classList.toggle('active', !!state.tag && b.dataset.tagPick === state.tag);
     });
   }
 
@@ -485,8 +633,12 @@ FILTER_JS = """
     cards.forEach(function (c) {
       var g = c.dataset.grade;
       // 等級以外的條件先算，才能讓分頁計數反映「其他條件下各級有幾筆」
+      // 標籤用 SEP 包住每個值做整值比對，避免篩「AI」時命中「AI晶片」
+      // （對應 server 端 filter_by_tag() 的精確比對）
       var base = (!state.date || c.dataset.date === state.date)
         && (!state.section || c.dataset.section === state.section)
+        && (!state.tag
+            || (c.dataset.tags || '').indexOf(SEP + state.tag + SEP) !== -1)
         && (!q || (c.dataset.text || '').indexOf(q) !== -1);
       if (base) perGrade[g] = (perGrade[g] || 0) + 1;
       var ok = base && (!state.grade || g === state.grade);
@@ -500,7 +652,7 @@ FILTER_JS = """
       });
       h.style.display = any ? '' : 'none';
     });
-    // 分頁計數隨其他篩選連動（與 server 端的 grade_counts(date) 行為一致）
+    // 分頁計數隨其他篩選連動（與 server 端的 grade_counts(base_rows) 行為一致）
     var total = 0;
     Object.keys(perGrade).forEach(function (k) { total += perGrade[k]; });
     tabs.forEach(function (t) {
@@ -527,6 +679,9 @@ FILTER_JS = """
   if (sectionSel) sectionSel.addEventListener('change', function () {
     state.section = sectionSel.value; update();
   });
+  if (tagSel) tagSel.addEventListener('change', function () {
+    state.tag = tagSel.value; update();
+  });
   if (searchBox) searchBox.addEventListener('input', function () {
     state.q = searchBox.value; update();
   });
@@ -535,12 +690,19 @@ FILTER_JS = """
       state.density = b.dataset.density || ''; update();
     });
   });
-  // 卡片上的分類可直接點成篩選條件
+  // 卡片上的分類與標籤都可直接點成篩選條件（再點一次取消）
   document.addEventListener('click', function (e) {
-    var btn = e.target.closest && e.target.closest('[data-section-pick]');
-    if (!btn) return;
-    var v = btn.dataset.sectionPick;
-    state.section = (state.section === v) ? '' : v;
+    if (!e.target.closest) return;
+    var secBtn = e.target.closest('[data-section-pick]');
+    var tagBtn = e.target.closest('[data-tag-pick]');
+    if (!secBtn && !tagBtn) return;
+    if (secBtn) {
+      var v = secBtn.dataset.sectionPick;
+      state.section = (state.section === v) ? '' : v;
+    } else {
+      var t = tagBtn.dataset.tagPick;
+      state.tag = (state.tag === t) ? '' : t;
+    }
     update();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -557,8 +719,8 @@ FILTER_JS = """
 def render_static_page():
     """輸出含全部卡片的單一頁面，篩選交給前端 JS。"""
     rows = query_news()
-    counts = grade_counts()
-    total = sum(counts.values())
+    counts = grade_counts(rows)
+    total = len(rows)
 
     tabs = ['<a href="#" data-grade="" class="active">全部 %d</a>' % total]
     for g in GRADES:
@@ -570,10 +732,14 @@ def render_static_page():
     sec_options = ['<option value="">全部分類</option>']
     for s, n in section_counts():
         sec_options.append(f'<option value="{escape(s)}">{escape(s)}（{n}）</option>')
+    tag_options = ['<option value="">全部標籤</option>']
+    for t, n in tag_counts(rows):
+        tag_options.append(f'<option value="{escape(t)}">{escape(t)}（{n}）</option>')
     controls = (
         '<div class="toolbar">'
         f'<div class="date-filter"><select id="date-select">{"".join(options)}</select></div>'
         f'<div class="section-filter"><select id="section-select">{"".join(sec_options)}</select></div>'
+        f'<div class="tag-filter"><select id="tag-select">{"".join(tag_options)}</select></div>'
         '<div class="search">'
         '<input id="search-box" type="search" placeholder="搜尋標題／判斷／摘要…" autocomplete="off">'
         "</div>"
@@ -586,6 +752,7 @@ def render_static_page():
 
     body = []
     current_date = object()
+    index = build_tag_index(rows)
     for r in rows:
         if r["news_date"] != current_date:
             current_date = r["news_date"]
@@ -593,7 +760,7 @@ def render_static_page():
                 f'<div class="date-head" data-date="{escape(current_date or "")}">'
                 f'📅 {escape(current_date or "未標日期")}</div>'
             )
-        body.append(render_card(r))
+        body.append(render_card(r, related_of(r, index)))
 
     empty_msg = "目前沒有符合條件的新聞。" if rows else "目前沒有新聞。"
     generated = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -616,7 +783,7 @@ def render_static_page():
 <div class="empty" id="empty" style="display:none">{empty_msg}</div>
 <div class="footer">共 {total} 則評分紀錄</div>
 </div>
-<script>{FILTER_JS}</script>
+<script>{FILTER_JS.replace("__TAG_SEP__", TAG_SEP)}</script>
 </body>
 </html>"""
 
@@ -684,8 +851,17 @@ class Handler(BaseHTTPRequestHandler):
         if date and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
             date = None
         section = qs.get("section", [None])[0] or None
+        tag = qs.get("tag", [None])[0] or None
+        if tag:
+            # 手打的網址可能用別名寫法（?tag=輝達），在這層收斂成正規名——
+            # 與上面的 grade.upper()、日期格式檢查同屬「清理使用者輸入」。
+            # 篩選本身一律用正規名做整值比對，靜態站才能有相同行為。
+            conn = sqlite3.connect(DB_PATH)
+            conn.row_factory = sqlite3.Row
+            tag = normalize_tag(tag, load_aliases(conn))
+            conn.close()
         q = qs.get("q", [None])[0] or None
-        html = render_page(grade, date, section, q)
+        html = render_page(grade, date, section, q, tag)
         data = html.encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
