@@ -32,6 +32,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: 跑測試
+        run: python3 -m unittest test_news
+
       - name: 從 JSON 重建資料庫
         run: |
           python3 news.py init

@@ -55,6 +55,7 @@ python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控）
 python3 news.py import-json [--replace]  # 從 JSON 重建 news 表（CI 用）
 python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--retention 為 CI 用，見下）
+python3 -m unittest test_news    # 跑回歸測試（CI 也會跑）
 ```
 
 ## 批次評分
@@ -101,6 +102,8 @@ CI 只負責把 JSON 轉成靜態站並上線。
 ## 架構
 
 - `news.py` — CLI（init / add / list / serve / fetch / pending / export-json / import-json / export），schema 定義在此
+- `test_news.py` — 回歸測試（標準庫 unittest）。涵蓋 news_date 格式驗證、
+  保留期分層、匯出／匯入 round-trip 無損；改這幾處的邏輯後務必跑過。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單

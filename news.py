@@ -42,7 +42,8 @@ import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime
+# date 取別名：cmd_digest 有個叫 date 的區域變數，直接 import date 容易誤用
+from datetime import datetime, date as date_cls
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
@@ -180,6 +181,23 @@ def cmd_add(args):
 
     if not data.get("title"):
         sys.exit("錯誤：缺少 title")
+
+    # news_date 會被靜態站的保留期以「字串字面」比較（'2026-7-5' 會大於
+    # '2026-06-25'），未補零或其他格式會被歸到錯誤的保留層級，故在入口擋掉。
+    news_date = data.get("news_date")
+    if news_date:
+        try:
+            parsed = datetime.strptime(news_date, "%Y-%m-%d").date()
+        except (ValueError, TypeError):
+            sys.exit(f"錯誤：news_date「{news_date}」格式不正確，須為 YYYY-MM-DD（月日要補零）")
+        # strptime 接受未補零的 '2026-7-5'，但那樣存進 db 會讓字面比較出錯，
+        # 故要求與正規化後的字串完全相同。
+        if parsed.isoformat() != news_date:
+            sys.exit(
+                f"錯誤：news_date「{news_date}」須補零寫成 {parsed.isoformat()}"
+            )
+        if parsed > date_cls.today():
+            sys.exit(f"錯誤：news_date「{news_date}」是未來日期，請確認是否誤植")
 
     dims = data.get("dimensions", {})
     dim_values = {}
