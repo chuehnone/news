@@ -11,7 +11,7 @@ from datetime import datetime
 from html import escape
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, quote
 
 DB_PATH = Path(__file__).parent / "news.db"
 
@@ -36,12 +36,24 @@ STYLE = """
   --bg: #f6f7f9; --card: #ffffff; --text: #1a1d21; --muted: #6b7280;
   --border: #e5e7eb; --link: #2563eb;
   --s: #dc2626; --a: #ea580c; --b: #ca8a04; --c: #6b7280; --d: #9ca3af;
+  /* badge 底色：低飽和色底 + 深色字，避免實心飽和色搶過標題 */
+  --s-bg: #fee2e2; --a-bg: #ffedd5; --b-bg: #fef3c7; --c-bg: #f3f4f6; --d-bg: #f3f4f6;
+  --s-fg: #991b1b; --a-fg: #9a3412; --b-fg: #854d0e; --c-fg: #4b5563; --d-fg: #6b7280;
+  /* one_line 細線色：淺色模式下與等級色同階即可 */
+  --s-line: #dc2626; --a-line: #ea580c; --b-line: #ca8a04; --c-line: #9ca3af; --d-line: #b6bcc4;
+  --sticky-bg: rgba(246, 247, 249, .92);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #111418; --card: #1b1f24; --text: #e6e8ea; --muted: #9aa3ad;
     --border: #2c3238; --link: #7ab0ff;
-    --s: #f87171; --a: #fb923c; --b: #facc15; --c: #9ca3af; --d: #6b7280;
+    /* B 級佔六成資料量，深色模式下把亮黃壓暗，避免整頁最常見元素最刺眼 */
+    --s: #f87171; --a: #fb923c; --b: #d4a017; --c: #9ca3af; --d: #6b7280;
+    --s-bg: #3f1d1d; --a-bg: #3d2411; --b-bg: #3a2f10; --c-bg: #262b31; --d-bg: #262b31;
+    --s-fg: #fca5a5; --a-fg: #fdba74; --b-fg: #e3c26b; --c-fg: #c2c8cf; --d-fg: #9aa3ad;
+    /* 暗背景上 2px 細線容易糊掉，故比等級色再亮一階 */
+    --s-line: #fca5a5; --a-line: #fdba74; --b-line: #e8c877; --c-line: #b6bdc5; --d-line: #8a939c;
+    --sticky-bg: rgba(17, 20, 24, .92);
   }
 }
 * { box-sizing: border-box; }
@@ -53,39 +65,81 @@ body {
 .wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
 h1 { font-size: 1.4rem; margin: 0 0 4px; }
 .sub { color: var(--muted); font-size: .85rem; margin-bottom: 20px; }
-.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 24px; }
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 10px; }
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-.date-filter select {
+.date-filter select, .section-filter select, .search input {
   padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border);
   background: var(--card); color: var(--text); font-size: .85rem;
   font-family: inherit; cursor: pointer;
 }
+.search { flex: 1 1 180px; min-width: 160px; }
+.search input { width: 100%; cursor: text; }
 .tabs a {
   padding: 5px 14px; border-radius: 999px; border: 1px solid var(--border);
   text-decoration: none; color: var(--text); font-size: .85rem; background: var(--card);
 }
 .tabs a.active { background: var(--text); color: var(--bg); border-color: var(--text); }
-.date-head { font-size: .9rem; color: var(--muted); margin: 28px 0 10px; font-weight: 600; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 24px; }
+.density { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+.density button {
+  padding: 4px 12px; border: 0; background: var(--card); color: var(--muted);
+  font-size: .8rem; font-family: inherit; cursor: pointer;
+}
+.density button.active { background: var(--text); color: var(--bg); }
+.date-head {
+  font-size: 1rem; color: var(--text); margin: 28px 0 10px; font-weight: 700;
+  position: sticky; top: 0; z-index: 5;
+  background: var(--sticky-bg); backdrop-filter: blur(6px);
+  padding: 6px 0; border-bottom: 1px solid var(--border);
+}
 .card {
   background: var(--card); border: 1px solid var(--border); border-radius: 12px;
   padding: 16px 18px; margin-bottom: 12px;
+  border-left: 4px solid var(--grade-color, var(--border));
 }
+/* 等級決定卡片視覺重量：S/A 加重，C/D 降權。
+   --grade-color 給左側色條，--accent 是亮一階的版本，供暗背景上的細線用 */
+.card.S { --grade-color: var(--s); --accent: var(--s-line); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.card.A { --grade-color: var(--a); --accent: var(--a-line); }
+.card.B { --grade-color: var(--b); --accent: var(--b-line); }
+.card.C { --grade-color: var(--c); --accent: var(--c-line); opacity: .78; padding: 12px 16px; }
+.card.D { --grade-color: var(--d); --accent: var(--d-line); opacity: .62; padding: 12px 16px; }
+.card.C .title, .card.D .title { font-size: 1.1rem; }
+.card.C .summary, .card.D .summary { display: none; }
+.card.C .score, .card.D .score { font-size: .95rem; color: var(--muted); }
 .card-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .badge {
-  font-weight: 700; font-size: .8rem; padding: 2px 10px; border-radius: 6px;
-  color: #fff; flex-shrink: 0;
+  font-weight: 700; font-size: .78rem; padding: 2px 9px; border-radius: 6px;
+  flex-shrink: 0; letter-spacing: .02em;
 }
-.badge.S { background: var(--s); } .badge.A { background: var(--a); }
-.badge.B { background: var(--b); color: #1a1d21; }
-.badge.C { background: var(--c); } .badge.D { background: var(--d); }
-.score { font-weight: 700; font-variant-numeric: tabular-nums; }
-.title { font-size: 1.05rem; font-weight: 650; margin: 6px 0 4px; }
-.summary { color: var(--text); font-size: .92rem; margin: 4px 0; }
-.one-line { color: var(--muted); font-size: .88rem; font-style: normal; margin: 6px 0 2px; }
-.meta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; font-size: .84rem; }
+.badge.S { background: var(--s-bg); color: var(--s-fg); }
+.badge.A { background: var(--a-bg); color: var(--a-fg); }
+.badge.B { background: var(--b-bg); color: var(--b-fg); }
+.badge.C { background: var(--c-bg); color: var(--c-fg); }
+.badge.D { background: var(--d-bg); color: var(--d-fg); }
+.grade-label { color: var(--muted); font-size: .8rem; }
+/* 分數是 100 檔的細粒度資訊（等級只有 5 檔），權重要高於 badge 與 label */
+.score {
+  font-weight: 700; font-variant-numeric: tabular-nums;
+  color: var(--text); font-size: 1.05rem; margin-left: auto;
+}
+.title { font-size: 1.32rem; font-weight: 680; line-height: 1.4; margin: 8px 0 6px; }
+/* one_line 是判斷而非複述，升格為卡片主角 */
+.one-line {
+  font-size: .95rem; color: var(--text); margin: 8px 0;
+  /* padding 要夠寬，折行的第二行才不會看起來懸空在細線旁 */
+  padding-left: 14px; border-left: 3px solid var(--accent, var(--border));
+}
+.summary { color: var(--muted); font-size: .88rem; margin: 6px 0; }
+.meta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 10px; font-size: .84rem; }
 .meta a { color: var(--link); text-decoration: none; }
 .meta a:hover { text-decoration: underline; }
 .meta .section { color: var(--muted); }
+.meta button.section {
+  border: 0; background: none; padding: 0; font: inherit; font-size: .84rem;
+  color: var(--muted); cursor: pointer; text-decoration: none;
+}
+.meta button.section:hover { text-decoration: underline; }
 details { margin-top: 10px; }
 summary { cursor: pointer; font-size: .84rem; color: var(--muted); user-select: none; }
 .detail { font-size: .88rem; margin-top: 10px; }
@@ -98,10 +152,16 @@ summary { cursor: pointer; font-size: .84rem; color: var(--muted); user-select: 
 .dims td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .empty { text-align: center; color: var(--muted); padding: 60px 0; }
 .footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 32px; }
+/* 精簡模式：一則一行，只留等級與標題 */
+body.compact .summary, body.compact .one-line,
+body.compact .meta, body.compact details { display: none; }
+body.compact .card { padding: 8px 14px; margin-bottom: 6px; }
+body.compact .title { font-size: .98rem; margin: 2px 0; }
+body.compact .card.C, body.compact .card.D { opacity: .7; }
 """
 
 
-def query_news(grade=None, date=None):
+def query_news(grade=None, date=None, section=None, q=None):
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     try:  # 若尚未 init（table 不存在），回傳空列表而非噴錯
@@ -113,6 +173,15 @@ def query_news(grade=None, date=None):
         if date:
             conds.append("news_date = ?")
             params.append(date)
+        if section:
+            conds.append("section = ?")
+            params.append(section)
+        if q:
+            conds.append(
+                "(LOWER(title) LIKE ? OR LOWER(COALESCE(one_line,'')) LIKE ?"
+                " OR LOWER(COALESCE(summary,'')) LIKE ?)"
+            )
+            params += [f"%{q.lower()}%"] * 3
         if conds:
             sql += " WHERE " + " AND ".join(conds)
         sql += " ORDER BY news_date DESC, total_score DESC, id DESC"
@@ -123,14 +192,26 @@ def query_news(grade=None, date=None):
     return rows
 
 
-def grade_counts(date=None):
+def grade_counts(date=None, section=None, q=None):
+    """等級以外的條件下各級筆數（與前端 apply() 的 perGrade 行為一致）。"""
     conn = sqlite3.connect(DB_PATH)
     try:
         sql = "SELECT grade, COUNT(*) FROM news"
-        params = []
+        conds, params = [], []
         if date:
-            sql += " WHERE news_date = ?"
+            conds.append("news_date = ?")
             params.append(date)
+        if section:
+            conds.append("section = ?")
+            params.append(section)
+        if q:
+            conds.append(
+                "(LOWER(title) LIKE ? OR LOWER(COALESCE(one_line,'')) LIKE ?"
+                " OR LOWER(COALESCE(summary,'')) LIKE ?)"
+            )
+            params += [f"%{q.lower()}%"] * 3
+        if conds:
+            sql += " WHERE " + " AND ".join(conds)
         rows = conn.execute(sql + " GROUP BY grade", params).fetchall()
     except sqlite3.OperationalError:
         rows = []
@@ -153,6 +234,21 @@ def date_counts():
     return rows
 
 
+def section_counts():
+    """回傳 [(section, count), ...]，筆數多的在前。"""
+    conn = sqlite3.connect(DB_PATH)
+    try:
+        rows = conn.execute(
+            "SELECT section, COUNT(*) c FROM news"
+            " WHERE section IS NOT NULL AND section != ''"
+            " GROUP BY section ORDER BY c DESC"
+        ).fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    conn.close()
+    return rows
+
+
 def render_card(r):
     title = escape(r["title"])
     if r["url"]:
@@ -160,25 +256,39 @@ def render_card(r):
     else:
         title_html = title
 
+    grade = escape(r["grade"])
+    section = r["section"] or ""
+    # 搜尋比對用的純文字（標題 + 一句話判斷 + 摘要），小寫化交給前端
+    haystack = " ".join(filter(None, [r["title"], r["one_line"], r["summary"], section]))
+
     parts = [
         # data-* 供靜態站的前端篩選使用（動態 server 端不需要，但無害）
-        f'<div class="card" data-grade="{escape(r["grade"])}" data-date="{escape(r["news_date"] or "")}">',
+        f'<div class="card {grade}" data-grade="{grade}"'
+        f' data-date="{escape(r["news_date"] or "")}"'
+        f' data-section="{escape(section)}"'
+        f' data-text="{escape(haystack.lower())}">',
         '<div class="card-top">',
-        f'<span class="badge {escape(r["grade"])}">{escape(r["grade"])} 級｜{GRADE_LABELS.get(r["grade"], "")}</span>',
-        f'<span class="score">{r["total_score"]} / 100</span>',
+        f'<span class="badge {grade}">{grade}</span>',
+        f'<span class="grade-label">{GRADE_LABELS.get(r["grade"], "")}</span>',
+        f'<span class="score">{r["total_score"]}</span>',
         "</div>",
         f'<div class="title">{title_html}</div>',
     ]
+    # one_line 是判斷、summary 是複述，故一句話判斷排在摘要之前
+    if r["one_line"]:
+        parts.append(f'<div class="one-line">{escape(r["one_line"])}</div>')
     if r["summary"]:
         parts.append(f'<div class="summary">{escape(r["summary"])}</div>')
-    if r["one_line"]:
-        parts.append(f'<div class="one-line">💡 {escape(r["one_line"])}</div>')
 
     meta = []
     if r["url"]:
         meta.append(f'<a href="{escape(r["url"])}" target="_blank" rel="noopener">原始新聞 ↗</a>')
-    if r["section"]:
-        meta.append(f'<span class="section">📂 {escape(r["section"])}</span>')
+    if section:
+        # 靜態站可點擊篩選；動態站沒有對應 handler，退化為純文字
+        meta.append(
+            f'<button type="button" class="section" data-section-pick="{escape(section)}">'
+            f"📂 {escape(section)}</button>"
+        )
     if meta:
         parts.append(f'<div class="meta">{"".join(f"<span>{m}</span>" for m in meta)}</div>')
 
@@ -214,28 +324,42 @@ def render_card(r):
     return "".join(parts)
 
 
-def render_page(grade=None, date=None):
-    rows = query_news(grade, date)
-    counts = grade_counts(date)
+def render_page(grade=None, date=None, section=None, q=None):
+    rows = query_news(grade, date, section, q)
+    counts = grade_counts(date, section, q)
     total = sum(counts.values())
 
-    date_qs = f"&date={escape(date)}" if date else ""
-    tabs = [f'<a href="/?{date_qs.lstrip("&")}" class="{"active" if not grade else ""}">全部 {total}</a>']
+    keep = ""
+    if date:
+        keep += f"&date={quote(date)}"
+    if section:
+        keep += f"&section={quote(section)}"
+    if q:
+        keep += f"&q={quote(q)}"
+    tabs = [f'<a href="/?{keep.lstrip("&")}" class="{"active" if not grade else ""}">全部 {total}</a>']
     for g in "SABCD":
         n = counts.get(g, 0)
         active = "active" if grade == g else ""
-        tabs.append(f'<a href="/?grade={g}{date_qs}" class="{active}">{g} 級 {n}</a>')
+        tabs.append(f'<a href="/?grade={g}{keep}" class="{active}">{g} 級 {n}</a>')
 
-    # 日期下拉選單（選了自動送出，並保留 grade）
+    # 篩選表單：任一欄位變動就送出，並以 hidden 欄位保留 grade
     options = ['<option value="">全部日期</option>']
     for d, n in date_counts():
         selected = " selected" if d == date else ""
         options.append(f'<option value="{escape(d)}"{selected}>{escape(d)}（{n}）</option>')
-    date_filter = [
-        '<form class="date-filter" method="get" action="/">',
+    sec_options = ['<option value="">全部分類</option>']
+    for s, n in section_counts():
+        selected = " selected" if s == section else ""
+        sec_options.append(f'<option value="{escape(s)}"{selected}>{escape(s)}（{n}）</option>')
+    controls = [
+        '<form class="toolbar" method="get" action="/">',
         f'<input type="hidden" name="grade" value="{escape(grade)}">' if grade else "",
-        f'<select name="date" onchange="this.form.submit()">{"".join(options)}</select>',
-        "<noscript><button type=\"submit\">篩選</button></noscript>",
+        f'<div class="date-filter"><select name="date" onchange="this.form.submit()">{"".join(options)}</select></div>',
+        f'<div class="section-filter"><select name="section" onchange="this.form.submit()">{"".join(sec_options)}</select></div>',
+        '<div class="search">'
+        f'<input name="q" type="search" value="{escape(q or "")}"'
+        ' placeholder="搜尋標題／判斷／摘要…" autocomplete="off"></div>',
+        '<button type="submit" style="display:none">篩選</button>',
         "</form>",
     ]
 
@@ -262,7 +386,8 @@ def render_page(grade=None, date=None):
 <div class="wrap">
 <h1>📰 每日新聞重要性評分</h1>
 <div class="sub">依 /news-importance-score 五面向評分（100 分制）整理的新聞資料庫</div>
-<div class="filters"><div class="tabs">{"".join(tabs)}</div>{"".join(date_filter)}</div>
+<div class="filters"><div class="tabs">{"".join(tabs)}</div></div>
+{"".join(controls)}
 {"".join(body)}
 </div>
 </body>
@@ -276,19 +401,57 @@ FILTER_JS = """
   var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
   var heads = Array.prototype.slice.call(document.querySelectorAll('.date-head'));
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs a'));
-  var sel = document.getElementById('date-select');
+  var dateSel = document.getElementById('date-select');
+  var sectionSel = document.getElementById('section-select');
+  var searchBox = document.getElementById('search-box');
   var empty = document.getElementById('empty');
-  var grade = '';
+  var densityBtns = Array.prototype.slice.call(document.querySelectorAll('.density button'));
+  var state = { grade: '', date: '', section: '', q: '', density: '' };
+
+  // 篩選狀態存進 hash，讓靜態站的篩選結果可分享、可用上一頁還原
+  function readHash() {
+    var h = (location.hash || '').replace(/^#/, '');
+    if (!h) return;
+    h.split('&').forEach(function (kv) {
+      var i = kv.indexOf('=');
+      if (i < 0) return;
+      var k = kv.slice(0, i), v = decodeURIComponent(kv.slice(i + 1));
+      if (k in state) state[k] = v;
+    });
+  }
+
+  function writeHash() {
+    var parts = [];
+    Object.keys(state).forEach(function (k) {
+      if (state[k]) parts.push(k + '=' + encodeURIComponent(state[k]));
+    });
+    var h = parts.join('&');
+    // replaceState 避免每次打字都塞一筆歷史紀錄
+    history.replaceState(null, '', h ? '#' + h : location.pathname);
+  }
+
+  function syncControls() {
+    if (dateSel) dateSel.value = state.date;
+    if (sectionSel) sectionSel.value = state.section;
+    if (searchBox) searchBox.value = state.q;
+    document.body.classList.toggle('compact', state.density === 'compact');
+    densityBtns.forEach(function (b) {
+      b.classList.toggle('active', (b.dataset.density || '') === state.density);
+    });
+  }
 
   function apply() {
-    var date = sel.value;
+    var q = state.q.trim().toLowerCase();
     var shown = 0;
     var perGrade = {};
     cards.forEach(function (c) {
-      var g = c.dataset.grade, d = c.dataset.date;
-      var dateOk = !date || d === date;
-      if (dateOk) perGrade[g] = (perGrade[g] || 0) + 1;
-      var ok = dateOk && (!grade || g === grade);
+      var g = c.dataset.grade;
+      // 等級以外的條件先算，才能讓分頁計數反映「其他條件下各級有幾筆」
+      var base = (!state.date || c.dataset.date === state.date)
+        && (!state.section || c.dataset.section === state.section)
+        && (!q || (c.dataset.text || '').indexOf(q) !== -1);
+      if (base) perGrade[g] = (perGrade[g] || 0) + 1;
+      var ok = base && (!state.grade || g === state.grade);
       c.style.display = ok ? '' : 'none';
       if (ok) shown++;
     });
@@ -299,27 +462,56 @@ FILTER_JS = """
       });
       h.style.display = any ? '' : 'none';
     });
-    // 分頁計數隨日期篩選連動（與 server 端的 grade_counts(date) 行為一致）
+    // 分頁計數隨其他篩選連動（與 server 端的 grade_counts(date) 行為一致）
     var total = 0;
     Object.keys(perGrade).forEach(function (k) { total += perGrade[k]; });
     tabs.forEach(function (t) {
       var g = t.dataset.grade;
       var n = g ? (perGrade[g] || 0) : total;
       t.textContent = (g ? g + ' 級 ' : '全部 ') + n;
-      t.classList.toggle('active', g === grade);
+      t.classList.toggle('active', g === state.grade);
     });
     empty.style.display = shown ? 'none' : '';
   }
 
+  function update() { syncControls(); apply(); writeHash(); }
+
   tabs.forEach(function (t) {
     t.addEventListener('click', function (e) {
       e.preventDefault();
-      grade = t.dataset.grade || '';
-      apply();
+      state.grade = t.dataset.grade || '';
+      update();
     });
   });
-  sel.addEventListener('change', apply);
-  apply();
+  if (dateSel) dateSel.addEventListener('change', function () {
+    state.date = dateSel.value; update();
+  });
+  if (sectionSel) sectionSel.addEventListener('change', function () {
+    state.section = sectionSel.value; update();
+  });
+  if (searchBox) searchBox.addEventListener('input', function () {
+    state.q = searchBox.value; update();
+  });
+  densityBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      state.density = b.dataset.density || ''; update();
+    });
+  });
+  // 卡片上的分類可直接點成篩選條件
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('[data-section-pick]');
+    if (!btn) return;
+    var v = btn.dataset.sectionPick;
+    state.section = (state.section === v) ? '' : v;
+    update();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  window.addEventListener('hashchange', function () {
+    readHash(); syncControls(); apply();
+  });
+
+  readHash();
+  update();
 })();
 """
 
@@ -337,9 +529,20 @@ def render_static_page():
     options = ['<option value="">全部日期</option>']
     for d, n in date_counts():
         options.append(f'<option value="{escape(d)}">{escape(d)}（{n}）</option>')
-    date_filter = (
-        '<div class="date-filter">'
-        f'<select id="date-select">{"".join(options)}</select>'
+    sec_options = ['<option value="">全部分類</option>']
+    for s, n in section_counts():
+        sec_options.append(f'<option value="{escape(s)}">{escape(s)}（{n}）</option>')
+    controls = (
+        '<div class="toolbar">'
+        f'<div class="date-filter"><select id="date-select">{"".join(options)}</select></div>'
+        f'<div class="section-filter"><select id="section-select">{"".join(sec_options)}</select></div>'
+        '<div class="search">'
+        '<input id="search-box" type="search" placeholder="搜尋標題／判斷／摘要…" autocomplete="off">'
+        "</div>"
+        '<div class="density">'
+        '<button type="button" data-density="" class="active">完整</button>'
+        '<button type="button" data-density="compact">精簡</button>'
+        "</div>"
         "</div>"
     )
 
@@ -369,7 +572,8 @@ def render_static_page():
 <div class="wrap">
 <h1>📰 每日新聞重要性評分</h1>
 <div class="sub">依 /news-importance-score 五面向評分（100 分制）整理的新聞資料庫｜更新於 {generated}</div>
-<div class="filters"><div class="tabs">{"".join(tabs)}</div>{date_filter}</div>
+<div class="filters"><div class="tabs">{"".join(tabs)}</div></div>
+{controls}
 {"".join(body)}
 <div class="empty" id="empty" style="display:none">{empty_msg}</div>
 <div class="footer">共 {total} 則評分紀錄</div>
@@ -403,7 +607,9 @@ class Handler(BaseHTTPRequestHandler):
         date = qs.get("date", [None])[0]
         if date and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
             date = None
-        html = render_page(grade, date)
+        section = qs.get("section", [None])[0] or None
+        q = qs.get("q", [None])[0] or None
+        html = render_page(grade, date, section, q)
         data = html.encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
