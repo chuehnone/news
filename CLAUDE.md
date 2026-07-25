@@ -100,14 +100,25 @@ CI 只負責把 JSON 轉成靜態站並上線。
 - **`news_date` 是字串字面比較**：保留期直接比對字串大小，所以格式必須正規化。
   驗證寫在 `add` 入口，`strptime` 本身擋不掉 `2026-7-5`（它會照樣 parse 成功），
   需另外比對正規化後的字串是否相同。
+- **schema 常數只能有 news.py 一份**：`server.py` 一律 import，不得各存一份。
+  兩份同值時完全不會報錯，只改一邊也不會——網頁只是靜默地按舊上限畫分數條。
+  同理 `GRADE_THRESHOLDS`：門檻曾經是 `grade_of()` 一份、`cmd_schema()` 手抄一份，
+  改門檻會讓對外說明與實際評分不一致。由 `TestNoDuplicateConstants` 守著：
+  除了比對身分（複製一份同值的也會失敗），還會掃描 `server.py` 有沒有定義
+  任何與 `news.py` 同名的常數，所以新增第五個共用常數時不必回頭補測試清單。
+- **等級集合用 `GRADES`，別寫 `"SABCD"`**：那是字串，`grade not in "SABCD"` 是
+  子字串比對，`?grade=AB` 會通過驗證。網頁 tab 順序、query 參數驗證都取 `GRADES`。
+  封存層級用 `ARCHIVE_GRADES`，digest 的詳列等級用 `DIGEST_DETAILED_GRADES`——
+  兩者目前同值（S/A）但語意不同，刻意分開命名以免日後改一個時誤動另一個。
 
 ## 架構
 
-- `news.py` — CLI（init / add / list / serve / fetch / pending / export-json / import-json / export），schema 定義在此
-- `test_news.py` — 回歸測試（標準庫 unittest，22 個）。涵蓋 news_date 格式驗證、
-  保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性；
-  改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
-- `server.py` — 網頁介面，Python 標準庫實作，無外部依賴
+- `news.py` — CLI（init / add / list / serve / fetch / pending / export-json / import-json / export）。
+  schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
+- `test_news.py` — 回歸測試（標準庫 unittest，32 個）。涵蓋 news_date 格式驗證、
+  保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
+  schema 常數不得重複定義；改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
+- `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單
 - `data/news.json` — 進版控的資料來源（由 export-json 產生）

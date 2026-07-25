@@ -11,26 +11,10 @@ import sqlite3
 from datetime import datetime, timedelta, date as date_cls
 from html import escape
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from pathlib import Path
 from urllib.parse import urlparse, parse_qs, quote
-
-DB_PATH = Path(__file__).parent / "news.db"
-
-DIMENSIONS = [
-    ("scope", "影響範圍", 25),
-    ("duration", "影響時間", 20),
-    ("decision", "決策相關性", 20),
-    ("structural", "結構性意義", 20),
-    ("credibility", "事實可信度", 15),
-]
-
-GRADE_LABELS = {
-    "S": "今日必讀",
-    "A": "重要新聞",
-    "B": "值得追蹤",
-    "C": "可簡短提及",
-    "D": "多半是噪音",
-}
+# 常數一律取自 news.py，勿在此另存一份（見 TestNoDuplicateConstants）。
+# news.py 反向 import server 只發生在 cmd_serve / cmd_export 的函式內，故不成環。
+from news import ARCHIVE_GRADES, DB_PATH, DIMENSIONS, GRADE_LABELS, GRADES
 
 STYLE = """
 :root {
@@ -182,10 +166,11 @@ def retention_clause():
     recent_from = (_RETENTION_TODAY - timedelta(days=RECENT_DAYS)).isoformat()
     archive_from = (_RETENTION_TODAY - timedelta(days=ARCHIVE_DAYS)).isoformat()
     # news_date 為空的資料無從判斷時效，一律保留，避免靜默遺失
+    placeholders = ",".join("?" * len(ARCHIVE_GRADES))
     return (
         "(news_date IS NULL OR news_date = '' OR news_date >= ?"
-        " OR (news_date >= ? AND grade IN ('S','A')))",
-        [recent_from, archive_from],
+        f" OR (news_date >= ? AND grade IN ({placeholders})))",
+        [recent_from, archive_from, *ARCHIVE_GRADES],
     )
 
 
@@ -390,7 +375,7 @@ def render_page(grade=None, date=None, section=None, q=None):
     if q:
         keep += f"&q={quote(q)}"
     tabs = [f'<a href="/?{keep.lstrip("&")}" class="{"active" if not grade else ""}">全部 {total}</a>']
-    for g in "SABCD":
+    for g in GRADES:
         n = counts.get(g, 0)
         active = "active" if grade == g else ""
         tabs.append(f'<a href="/?grade={g}{keep}" class="{active}">{g} 級 {n}</a>')
@@ -576,7 +561,7 @@ def render_static_page():
     total = sum(counts.values())
 
     tabs = ['<a href="#" data-grade="" class="active">全部 %d</a>' % total]
-    for g in "SABCD":
+    for g in GRADES:
         tabs.append(f'<a href="#" data-grade="{g}">{g} 級 {counts.get(g, 0)}</a>')
 
     options = ['<option value="">全部日期</option>']
@@ -693,7 +678,7 @@ class Handler(BaseHTTPRequestHandler):
         grade = qs.get("grade", [None])[0]
         if grade:
             grade = grade.upper()
-            if grade not in "SABCD":
+            if grade not in GRADES:
                 grade = None
         date = qs.get("date", [None])[0]
         if date and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):

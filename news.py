@@ -47,6 +47,24 @@ GRADE_LABELS = {
     "D": "多半是噪音",
 }
 
+# 等級門檻（分數下限，由高到低）。grade_of() 與 schema 的說明都由這裡生成，
+# 曾經是 grade_of() 一份、schema 輸出手抄一份，改門檻時會讓對外說明與實際評分不一致。
+# FALLBACK_GRADE 不列進門檻：D 是「其餘」而非某個分數帶，寫成 ("D", 0) 會讓
+# grade_of(-1) 落空，schema 也會印出無意義的「0+ D」。
+GRADE_THRESHOLDS = [("S", 85), ("A", 70), ("B", 55), ("C", 40)]
+FALLBACK_GRADE = "D"
+
+# 全部等級，由高到低。網頁的 tab 順序、grade 參數驗證、封存層級都取這份，
+# 不要再寫 "SABCD" 字面值——那是字串，`grade not in "SABCD"` 會讓 "AB" 通過驗證。
+GRADES = [g for g, _ in GRADE_THRESHOLDS] + [FALLBACK_GRADE]
+
+# 保留期第二層只留這些等級（近 30 天全留，30-90 天僅此，見 server.py 的 RECENT_DAYS）。
+ARCHIVE_GRADES = ("S", "A")
+
+# digest 裡展開完整段落（含一句話判斷與理由）的等級；其餘只列一行。
+# 與 ARCHIVE_GRADES 目前同值但語意不同，各自獨立調整。
+DIGEST_DETAILED_GRADES = ("S", "A")
+
 # 評分結果可填的 section。digest 依這個順序分節輸出，
 # 「不建議放入每日摘要」是有效值但不進 digest。
 SECTIONS = [
@@ -150,15 +168,10 @@ def normalize_url(url):
 
 
 def grade_of(total):
-    if total >= 85:
-        return "S"
-    if total >= 70:
-        return "A"
-    if total >= 55:
-        return "B"
-    if total >= 40:
-        return "C"
-    return "D"
+    for grade, low in GRADE_THRESHOLDS:
+        if total >= low:
+            return grade
+    return FALLBACK_GRADE
 
 
 def cmd_init(_args):
@@ -447,7 +460,7 @@ def cmd_digest(args):
         for r in items:
             tag = f"[{r['grade']} {r['total_score']}]"
             link = f"[{r['title']}]({r['url']})" if r["url"] else r["title"]
-            if r["grade"] in ("S", "A"):
+            if r["grade"] in DIGEST_DETAILED_GRADES:
                 lines += [f"### {tag} {link}", ""]
                 if r["one_line"]:
                     lines += [f"**{r['one_line']}**", ""]
@@ -530,9 +543,7 @@ def cmd_schema(_args):
         f'    "{k}":{" " * (12 - len(k))}{{"score": 0, "reason": "{label}（0-{mx}）理由"}}'
         for k, label, mx in DIMENSIONS
     )
-    thresholds = " / ".join(
-        f"{lo}+ {g}" for g, lo in [("S", 85), ("A", 70), ("B", 55), ("C", 40)]
-    )
+    thresholds = " / ".join(f"{lo}+ {g}" for g, lo in GRADE_THRESHOLDS)
     print(f"""add 接受的 JSON 格式（/news-importance-score 的評分結果）：
 
 {{
@@ -551,7 +562,7 @@ def cmd_schema(_args):
 }}
 
 規則：
-- total_score 與 grade 不用填，由 dimensions 加總並判定等級（{thresholds} / 其餘 D）。
+- total_score 與 grade 不用填，由 dimensions 加總並判定等級（{thresholds} / 其餘 {FALLBACK_GRADE}）。
 - 各面向分數不得超過上限，超出會拒絕寫入。
 - news_date 必須是補零的 YYYY-MM-DD（2026-7-5 會被擋），不接受不存在的日期
   與未來日期；可留空表示日期不明。

@@ -10,12 +10,15 @@
 - 靜態站產出的卡片數與資料筆數一致
 """
 
+import importlib
 import json
+import re
 import sqlite3
 import subprocess
 import sys
 import tempfile
 import unittest
+from contextlib import contextmanager
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -77,6 +80,21 @@ class CLITestCase(unittest.TestCase):
     def json_rows(self):
         p = self.dir / "data" / "news.json"
         return json.loads(p.read_text(encoding="utf-8")) if p.exists() else []
+
+
+@contextmanager
+def load_modules(directory, *names):
+    """import 指定目錄裡的模組，離開時還原 sys.path。
+
+    需要 reload 是因為 sys.modules 會快取前一個測試載入的同名模組；
+    直接 import 會拿到別的暫存目錄那份。finally 不可省——setUp 中途拋錯時
+    若沒還原 sys.path，後續測試會 import 到已刪除的暫存目錄。
+    """
+    sys.path.insert(0, str(directory))
+    try:
+        yield tuple(importlib.reload(importlib.import_module(n)) for n in names)
+    finally:
+        sys.path.remove(str(directory))
 
 
 class TestNewsDateValidation(CLITestCase):
@@ -194,7 +212,6 @@ class TestRetention(CLITestCase):
         """分頁計數與實際卡片數必須一致（四個查詢都要套用保留期）。"""
         self.run_cli("export", "--out", "d4", "--retention", check=True)
         html = (self.dir / "d4" / "index.html").read_text(encoding="utf-8")
-        import re
         total = re.search(r">全部 (\d+)<", html)
         self.assertIsNotNone(total)
         self.assertEqual(int(total.group(1)), self.cards_in("d4"))
@@ -242,20 +259,14 @@ class TestFilterParity(CLITestCase):
 
     def sql_filter(self, **kw):
         """動態站的篩選結果（標題集合）。"""
-        sys.path.insert(0, str(self.dir))
-        try:
-            import importlib, server
-            importlib.reload(server)
+        with load_modules(self.dir, "server") as (server,):
             server.DB_PATH = self.dir / "news.db"
             return {r["title"] for r in server.query_news(**kw)}
-        finally:
-            sys.path.remove(str(self.dir))
 
     def js_filter(self, grade=None, date_=None, section=None, q=None):
         """複刻 FILTER_JS 的 apply()，對靜態站輸出的 data-* 做同樣篩選。"""
         self.run_cli("export", "--out", "d", check=True)
         html = (self.dir / "d" / "index.html").read_text(encoding="utf-8")
-        import re
         titles = set()
         for m in re.finditer(
             r'data-grade="([^"]*)" data-date="([^"]*)" data-section="([^"]*)"'
@@ -323,17 +334,21 @@ class TestSchemaCommand(CLITestCase):
 
     def test_reflects_dimension_limits(self):
         r = self.run_cli("schema", check=True)
-        sys.path.insert(0, str(self.dir))
-        try:
-            import importlib, news
-            importlib.reload(news)
+        with load_modules(self.dir, "news") as (news,):
             for key, label, mx in news.DIMENSIONS:
                 self.assertIn(f"{label}（0-{mx}）", r.stdout,
                               f"schema 未反映 {key} 的上限 {mx}")
             for sec in news.SECTIONS:
                 self.assertIn(sec, r.stdout, f"schema 缺少 section「{sec}」")
-        finally:
-            sys.path.remove(str(self.dir))
+
+    def test_reflects_grade_thresholds(self):
+        """schema 印的門檻曾經是手抄的，改 grade_of() 不會同步到對外說明。"""
+        r = self.run_cli("schema", check=True)
+        with load_modules(self.dir, "news") as (news,):
+            for grade, low in news.GRADE_THRESHOLDS:
+                self.assertIn(f"{low}+ {grade}", r.stdout,
+                              f"schema 未反映 {grade} 級門檻 {low}")
+            self.assertIn(f"其餘 {news.FALLBACK_GRADE}", r.stdout)
 
     def test_documents_validation_rules(self):
         """schema 要講到實際會擋人的規則，否則使用者只能踩到才知道。"""
@@ -344,10 +359,69 @@ class TestSchemaCommand(CLITestCase):
     def test_output_is_valid_json_shape(self):
         """輸出的範例必須是合法 JSON，否則照抄會失敗。"""
         r = self.run_cli("schema", check=True)
-        import re
         m = re.search(r"\{.*\}", r.stdout, re.S)
         self.assertIsNotNone(m, "找不到 JSON 區塊")
         json.loads(m.group(0))  # 解析失敗即測試失敗
+
+
+class TestNoDuplicateConstants(CLITestCase):
+    """CLAUDE.md 保證 schema 常數只有 news.py 一份，這裡讓它變成會失敗的測試。
+
+    server.py 曾經自己抄一份 DIMENSIONS / GRADE_LABELS。兩份同值時一切正常，
+    只改其中一份也不會報錯——網頁只是靜默地按舊上限畫分數條，沒有東西會叫。
+    """
+
+    def test_server_shares_news_constants(self):
+        """比對身分而非值：抄一份同值的複本也要失敗，否則測不到真正的重複。"""
+        with load_modules(self.dir, "news", "server") as (news, server):
+            for name in ("DIMENSIONS", "GRADE_LABELS", "GRADES", "DB_PATH"):
+                self.assertIs(getattr(server, name), getattr(news, name),
+                              f"server.{name} 不是 news.{name}，應 import 而非另存一份")
+
+    def test_server_defines_no_shadowing_constant(self):
+        """規則本身：server.py 不得自行定義任何與 news.py 同名的常數。
+
+        上面那個測試只認得列舉出來的四個名字；新增第五個共用常數時，
+        那份手寫清單自己就會漂移——正是它要防的問題。改掃描原始碼，
+        任何未來的重複定義都會被擋下，不必記得回來補清單。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            shared = {n for n in vars(news) if n.isupper() and not n.startswith("_")}
+        src = (self.dir / "server.py").read_text(encoding="utf-8")
+        # 逐行比對而非 assertNotRegex：後者失敗時會把整個 server.py 印進錯誤訊息
+        assigned = {
+            m.group(1)
+            for line in src.splitlines()
+            if (m := re.match(r"([A-Z_][A-Z0-9_]*)\s*=", line))
+        }
+        self.assertEqual(
+            assigned & shared, set(),
+            "server.py 自行定義了 news.py 已有的常數，應改為 import 自 news.py")
+
+    def test_grade_of_matches_thresholds(self):
+        """門檻常數必須真的驅動 grade_of()，而不只是拿來印說明。"""
+        with load_modules(self.dir, "news") as (news,):
+            for grade, low in news.GRADE_THRESHOLDS:
+                self.assertEqual(news.grade_of(low), grade, f"總分 {low} 應為 {grade} 級")
+                self.assertNotEqual(news.grade_of(low - 1), grade,
+                                    f"總分 {low - 1} 不應仍是 {grade} 級")
+            # 門檻以下一律 fallback；grade_of 必須是全函數，負分也不能落空
+            lowest = news.GRADE_THRESHOLDS[-1][1]
+            self.assertEqual(news.grade_of(lowest - 1), news.FALLBACK_GRADE)
+            self.assertEqual(news.grade_of(-1), news.FALLBACK_GRADE)
+
+    def test_grades_cover_thresholds_and_labels(self):
+        """GRADES 是網頁 tab、參數驗證、封存層級的共同出處，三者不得各自漂移。"""
+        with load_modules(self.dir, "news") as (news,):
+            self.assertEqual(
+                news.GRADES,
+                [g for g, _ in news.GRADE_THRESHOLDS] + [news.FALLBACK_GRADE])
+            self.assertEqual(set(news.GRADES), set(news.GRADE_LABELS),
+                             "GRADE_LABELS 與 GRADES 不一致（新增等級忘了補標籤）")
+            self.assertLessEqual(set(news.ARCHIVE_GRADES), set(news.GRADES))
+            lows = [low for _, low in news.GRADE_THRESHOLDS]
+            self.assertEqual(lows, sorted(lows, reverse=True),
+                             "門檻必須由高到低，否則 grade_of() 會提早命中錯的等級")
 
 
 class TestDigest(CLITestCase):
