@@ -82,6 +82,8 @@ CI 只負責把 JSON 轉成靜態站並上線。
 
 - `data/news.json` 是進版控的資料來源；`news.db` 仍不進版控
   （SQLite 是二進位檔，每次 commit 都是整檔快照，repo 會無上限膨脹）。
+- 匯出**刻意不含 `created_at`**：repo 是 public，逐筆評分時間會洩漏作業時段等
+  行為 metadata，而網站只用 `news_date`。匯入時該欄位套用 schema 預設值。
 - `add` 寫入後會自動更新 `data/news.json`，所以評分完直接 commit push 即可：
   ```bash
   git add data/news.json && git commit -m "更新新聞資料" && git push

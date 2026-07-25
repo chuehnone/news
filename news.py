@@ -459,12 +459,16 @@ def cmd_digest(args):
 
 # news.db 不進版控（二進位檔每次 commit 都是整檔快照，repo 會無上限膨脹）。
 # 改為匯出 JSON：git 能 diff、壓縮率高，CI 端再用 import-json 重建 db。
+#
+# 刻意不含 created_at：repo 是 public，而逐筆的評分時間會洩漏作業時段等
+# 行為 metadata，對網站顯示又毫無用途（頁面只用 news_date）。import-json
+# 匯入時該欄位會套用 schema 預設值（匯入當下時間），不影響任何功能。
 NEWS_COLUMNS = [
     "title", "url", "summary", "news_date", "total_score", "grade", "section",
     "one_line", "why_important", "affected", "watch_next",
     "scope_score", "scope_reason", "duration_score", "duration_reason",
     "decision_score", "decision_reason", "structural_score", "structural_reason",
-    "credibility_score", "credibility_reason", "created_at",
+    "credibility_score", "credibility_reason",
 ]
 
 

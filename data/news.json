@@ -1,7 +1,6 @@
 [
  {
   "affected": "政府或政策制定者（官方溝通管道韌性）、企業經營者與品牌社群操盤者（單一平台依賴風險）、一般民眾（帳號誤停權的申訴無門感）",
-  "created_at": "2026-07-05 16:20:26",
   "credibility_reason": "來源明確（聯合新聞網具名編輯）、時間軸具體、有Meta官方聲明說明原因，事實與評論有區分；但缺乏受影響帳號總數等量化數據",
   "credibility_score": 11,
   "decision_reason": "對一般讀者幾乎不改變決策；對政府機關與品牌經營者有輕度提醒——官方溝通不應單押單一私人平台",
@@ -25,7 +24,6 @@
  },
  {
   "affected": "一般消費者（換機時點）、Apple 供應鏈相關產業與投資人、消費電子競爭對手",
-  "created_at": "2026-07-05 16:25:47",
   "credibility_reason": "來源為彭博 Mark Gurman 與 9to5mac，Gurman 準確度高，但全屬未經 Apple 證實的爆料，且本文為二手彙整報導",
   "credibility_score": 7,
   "decision_reason": "對換機消費者與供應鏈投資人有參考價值，但距產品發表逾一年，現在不需依此改變任何決策",
@@ -49,7 +47,6 @@
  },
  {
   "affected": "半導體產業與投資人、美國出口管制政策圈、中國半導體業、記憶體市場參與者",
-  "created_at": "2026-07-20 14:01:55",
   "credibility_reason": "海關數據、Wind價格、MERICS具名分析，量價拆解清楚",
   "credibility_score": 13,
   "decision_reason": "對半導體投資與政策判讀有直接的方法論價值",
@@ -73,7 +70,6 @@
  },
  {
   "affected": "投資人（AI 概念股與科技股持有者）、AI 產業（新創募資與估值定價）、國際市場（科技股情緒）、企業經營者（AI 相關布局的資本規劃）",
-  "created_at": "2026-07-05 16:31:28",
   "credibility_reason": "紐時、彭博、The Information 多方報導且 SEC 遞件可查，但延期本身仍是傳聞、無官方確認",
   "credibility_score": 10,
   "decision_reason": "影響機構與散戶對 AI 概念股的配置，以及 AI 新創的募資與估值定價",
@@ -97,7 +93,6 @@
  },
  {
   "affected": "政府或政策制定者、國際市場、南韓與日本民眾、國防產業",
-  "created_at": "2026-07-05 16:35:13",
   "credibility_reason": "僅北韓官媒 KCNA 單一來源，具宣傳性質，實際能力與時程無法獨立驗證",
   "credibility_score": 8,
   "decision_reason": "對一般讀者無直接決策影響，主要影響安全政策圈與國防產業判斷",
@@ -121,7 +116,6 @@
  },
  {
   "affected": "香港市民與公務員體系、在港外資與金融機構、關注一國兩制的台灣與國際社會、中國政策研究圈",
-  "created_at": "2026-07-05 17:29:06",
   "credibility_reason": "BBC 來源可靠且趨勢背景（李家超、鄧炳強等警察出身）可獨立驗證，但原文抓取失敗，無法確認文中具體論據與新事證，明確降分",
   "credibility_score": 6,
   "decision_reason": "對台灣讀者屬間接參考（觀察中國治理模式），對在港企業與專業人士的去留評估有實質意義",
@@ -145,7 +139,6 @@
  },
  {
   "affected": "日本女性公職人員與參政者、日本少子化政策圈、東亞各國（含台灣）的公職生育制度討論、地方治理研究者",
-  "created_at": "2026-07-05 17:29:32",
   "credibility_reason": "BBC、公視、NOWnews 等多方報導交叉一致，人物、數字（16週、90對70意見）具體明確",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者無立即行動，但對政策制定者與關注職場生育權者有制度參考價值",
@@ -169,7 +162,6 @@
  },
  {
   "affected": "國際市場、政府或政策制定者、投資人（避險資產與國防類股）、烏克蘭與歐洲民眾",
-  "created_at": "2026-07-05 16:34:50",
   "credibility_reason": "烏方與克宮雙邊皆證實通話，時間人物明確，中央社綜合報導",
   "credibility_score": 12,
   "decision_reason": "對一般讀者無直接決策影響，主要是國際情勢判讀與市場情緒層面",
@@ -193,7 +185,6 @@
  },
  {
   "affected": "黃金投資人（存摺/ETF/金礦股）、央行儲備管理者、珠寶與貴金屬產業、關注Fed政策路徑的整體金融市場",
-  "created_at": "2026-07-05 17:18:36",
   "credibility_reason": "多家媒體（工商、鉅亨、聯合）交叉報導，數字具體一致，唯屬預測性質而非既成事實",
   "credibility_score": 11,
   "decision_reason": "對黃金配置比例、進出場時點有直接參考價值，台灣黃金存摺與ETF投資族群廣",
@@ -217,7 +208,6 @@
  },
  {
   "affected": "俄烏兩國民眾、全球能源市場與油價、歐洲安全政策圈、航運與保險業（波羅的海航線風險）",
-  "created_at": "2026-07-05 17:19:24",
   "credibility_reason": "中央社、自由、聯合多方報導，含俄方市長說法與烏軍參謀總部聲明，唯戰損細節（海軍基地）雙方未證實",
   "credibility_score": 11,
   "decision_reason": "對一般讀者屬間接影響，主要透過油價與地緣風險情緒傳導至投資與能源成本",
@@ -241,7 +231,6 @@
  },
  {
   "affected": "台灣（國防與民防政策）、日本與菲律賓等第一島鏈國家、美國印太戰略圈、航運與保險業、關注台海風險的國際市場",
-  "created_at": "2026-07-05 17:22:41",
   "credibility_reason": "國安會秘書長具名說法、多家媒體報導、海巡署行動佐證，唯船艦數字為台方單方掌握，無獨立第三方驗證",
   "credibility_score": 11,
   "decision_reason": "一般民眾無立即行動，但影響政府國防決策、企業地緣風險評估與長期資產配置思考",
@@ -265,7 +254,6 @@
  },
  {
   "affected": "全台幼兒家長與幼教產業、幼兒園監管機關（教育部與各縣市）、教保人員（不適任查核制度）、基隆市政治問責",
-  "created_at": "2026-07-06 15:54:44",
   "credibility_reason": "監視器畫面為直接證據，市府公布處分與涉案人姓名，多家媒體一致報導",
   "credibility_score": 12,
   "decision_reason": "家長選園查核、要求調閱監視器等有直接行動意義，政策圈有修法壓力",
@@ -289,7 +277,6 @@
  },
  {
   "affected": "國際市場、投資人、能源與航運產業、政府或政策制定者、一般民眾（油價與物價間接受影響）",
-  "created_at": "2026-07-05 16:34:26",
   "credibility_reason": "具名大使在公開論壇發言、中央社報導，但制度細節未定案，仍屬政策宣示階段",
   "credibility_score": 11,
   "decision_reason": "直接影響能源、航運、保險業決策；對一般讀者透過油價與物價間接影響日常成本",
@@ -313,7 +300,6 @@
  },
  {
   "affected": "委內瑞拉民眾、拉美鄰國（難民壓力）、國際人道組織、關注委國石油供應的能源市場",
-  "created_at": "2026-07-05 16:59:54",
   "credibility_reason": "中央社報導，有官方死傷數字、具體時間地點與生還者具名案例，但委國官方數據透明度歷來有疑慮",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者的直接決策影響有限，主要是人道捐款與關注委國石油供應者",
@@ -337,7 +323,6 @@
  },
  {
   "affected": "全球能源市場與投資人、依賴進口能源的台灣（電價/油價/運輸成本）、航運業、各國央行與通膨敏感產業",
-  "created_at": "2026-07-05 17:00:18",
   "credibility_reason": "中央社報導、有瑞銀分析師具體預測與明確背景數據，但會議尚未定案，增產數字仍是預測",
   "credibility_score": 10,
   "decision_reason": "直接影響投資配置（能源股/債券利率預期）、企業能源成本規劃與運輸相關決策",
@@ -361,7 +346,6 @@
  },
  {
   "affected": "烏克蘭與歐洲安全秩序、國際市場（防務/能源）、關注俄烏停火談判的各國政府、台灣（民主陣營威懾力的參照）",
-  "created_at": "2026-07-05 17:00:46",
   "credibility_reason": "中央社報導但雙方說法完全矛盾、戰場迷霧濃厚，城市控制權目前無法獨立驗證",
   "credibility_score": 8,
   "decision_reason": "對一般讀者屬間接影響（能源、防務股、地緣風險情緒），少數產業與政策圈直接相關",
@@ -385,7 +369,6 @@
  },
  {
   "affected": "摩爾多瓦與俄羅斯雙邊關係、關注歐盟東擴與俄影響力的政策圈、聶斯特河沿岸親俄地區",
-  "created_at": "2026-07-05 17:01:09",
   "credibility_reason": "中央社報導，含摩、俄雙方說法與國會投票等具體事實，資訊完整",
   "credibility_score": 12,
   "decision_reason": "對一般讀者與台灣幾乎無直接決策相關性，僅政策研究與地緣分析圈關注",
@@ -409,7 +392,6 @@
  },
  {
   "affected": "所有智慧型手機重度使用者、長時間螢幕工作者、家長（兒童 3C 使用規範）、復健與眼科醫療體系",
-  "created_at": "2026-07-05 17:04:38",
   "credibility_reason": "BBC 來源可靠，但原文抓取失敗，無法確認內文具體研究與數據，僅能依標題與外部背景評估，明確降分",
   "credibility_score": 6,
   "decision_reason": "直接關係日常使用習慣、用眼與姿勢調整，屬可立即行動的生活決策資訊",
@@ -433,7 +415,6 @@
  },
  {
   "affected": "全台民眾（防颱/出行/航班）、農漁業（搶收）、營建與戶外工程、離島交通、電力與防救災體系",
-  "created_at": "2026-07-05 17:22:11",
   "credibility_reason": "氣象署官方預報加多家媒體交叉報導，數據具體；路徑不確定性為預報本質而非來源問題",
   "credibility_score": 12,
   "decision_reason": "直接影響全台防颱準備、行程與航班規劃，是可立即行動的決策資訊",
@@ -457,7 +438,6 @@
  },
  {
   "affected": "東南亞詐騙產業鏈與其受害者（含台灣）、日本移民與金融監管當局、跨國執法合作體系、利用投資移民管道的灰色資本",
-  "created_at": "2026-07-05 17:34:32",
   "credibility_reason": "NHK、朝日新聞、日本警方、美國財政部等多重明確來源，人物、時間、指控具體，部分嫌犯認罪",
   "credibility_score": 13,
   "decision_reason": "一般讀者無直接行動，對金融合規、執法與關注詐騙議題者有參考價值",
@@ -481,7 +461,6 @@
  },
  {
   "affected": "日本與美國支付產業（LINE雅虎、PayPay、銀行）、金融監管機構、X 用戶與內容創作者、金融科技投資人、台灣支付業者（趨勢參照）",
-  "created_at": "2026-07-05 17:34:59",
   "credibility_reason": "中央社報導，合作方（Visa、Cross River）與正反方意見具體，唯日本進軍時程未定、部分為公司說法",
   "credibility_score": 11,
   "decision_reason": "支付與金融業者需評估競爭回應，一般用戶未來面臨存款與支付工具的新選擇",
@@ -505,7 +484,6 @@
  },
  {
   "affected": "台股投資人（權值股與AI供應鏈）、全球AI基礎建設產業、鴻海供應鏈上下游、關注AI資本支出週期的市場分析者",
-  "created_at": "2026-07-05 17:35:40",
   "credibility_reason": "公司自結公告數字，多家媒體一致報導，數據完整可驗證",
   "credibility_score": 13,
   "decision_reason": "對台灣為數眾多的股市投資人與AI供應鏈布局判斷有直接參考價值",
@@ -529,7 +507,6 @@
  },
  {
   "affected": "以色列公民與司法體系、中東地緣政治觀察者、全球民主制度研究圈、關注「行政權擴張」議題的各國（含台灣）公民社會",
-  "created_at": "2026-07-06 15:50:18",
   "credibility_reason": "中央社耶路撒冷報導，裁決日期、決議內容、各方具名說法完整明確",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者幾乎無直接決策相關性，屬理解民主制度風險的參照案例",
@@ -553,7 +530,6 @@
  },
  {
   "affected": "全球能源市場與投資人、各國央行與通膨政策、台灣電價油價（中油/台電財務）、能源股與航空航運業、產油國財政",
-  "created_at": "2026-07-06 15:53:03",
   "credibility_reason": "OPEC+會議正式決議（非預測）、三大投行具名報告、具體價格數據，多方交叉一致",
   "credibility_score": 13,
   "decision_reason": "直接影響投資配置（能源股/債券）、企業能源成本規劃與對通膨利率的預期",
@@ -577,7 +553,6 @@
  },
  {
   "affected": "東亞青少年與家長、學校與教育主管機關、台灣毒品防制與海關單位、電子煙監管政策圈、社群平台",
-  "created_at": "2026-07-06 15:53:31",
   "credibility_reason": "BBC 原文未能直接讀取，但香港政府、警務處等官方資料完整佐證主要事實，扣分反映原文細節未確認",
   "credibility_score": 9,
   "decision_reason": "家長識別徵兆、學校防制與監管單位的列管決策都有直接參考價值",
@@ -601,7 +576,6 @@
  },
  {
   "affected": "131校學童與家長、全台團膳與食用油供應鏈、中聯油脂與下游品牌（福瑪、福壽、泰山）、食藥署與地方衛生局、學校午餐政策",
-  "created_at": "2026-07-06 15:55:19",
   "credibility_reason": "各市府與教育局公布具體校數與品牌、檢驗數據明確，多家媒體一致；惟超標原因尚在調查",
   "credibility_score": 12,
   "decision_reason": "家長需立即確認學校名單與家中油品，消費者的採購選擇直接受影響",
@@ -625,7 +599,6 @@
  },
  {
   "affected": "台灣與第一島鏈國家（日、菲）、美國印太戰略與核威懾政策圈、太平洋島國（巴紐等）、國際安全與軍控研究者、區域金融市場",
-  "created_at": "2026-07-06 15:49:54",
   "credibility_reason": "央視官方公布、多國政府證實接獲通知，事實明確；但彈種與具體參數僅有中方說法",
   "credibility_score": 11,
   "decision_reason": "一般讀者無立即行動，對國防政策、地緣風險評估與長期資產配置有間接意義",
@@ -649,7 +622,6 @@
  },
  {
   "affected": "歐洲各國財政與軍工產業、北約東翼國家（波蘭、波羅的海）、美國印太盟友（日、韓、台、菲）、全球防務市場投資人",
-  "created_at": "2026-07-06 15:50:48",
   "credibility_reason": "美國防長具名說法、撤軍數字與峰會時程具體，唯轉移方向與規模仍在審查中",
   "credibility_score": 11,
   "decision_reason": "對一般讀者間接，防務產業投資與歐洲政經觀察者有實質參考",
@@ -673,7 +645,6 @@
  },
  {
   "affected": "全台民眾（防颱/交通/航班）、離島居民與旅客、農漁業搶收、營建工地、電力與通訊業者、防救災體系",
-  "created_at": "2026-07-06 15:51:12",
   "credibility_reason": "實測風速數據、美屬島嶼災情通報與氣象署官方時程，資訊具體可信",
   "credibility_score": 13,
   "decision_reason": "海警倒數、船班已停，全台民眾的防颱整備與本週行程安排需立即行動",
@@ -697,7 +668,6 @@
  },
  {
   "affected": "暑期赴歐旅客（含台灣旅客）、航空公司與旅遊業、歐洲機場與邊境管理單位、規劃類似系統的各國政府",
-  "created_at": "2026-07-06 15:51:40",
   "credibility_reason": "IATA聯名信、歐盟官員具名說法與具體數據（1.1億人次、5小時），來源明確",
   "credibility_score": 12,
   "decision_reason": "暑期旅歐行程安排、轉機緩衝與機場時間規劃的直接參考",
@@ -721,7 +691,6 @@
  },
  {
   "affected": "台灣國防與能源安全（東部運補線）、國際航運與保險業（西太平洋航線）、美日安全規劃（馳援路徑）、台灣民眾的風險認知",
-  "created_at": "2026-07-06 15:54:09",
   "credibility_reason": "紐約時報報導、SeaLight具名專家與台灣海巡署官員證實艦位，多方來源一致",
   "credibility_score": 12,
   "decision_reason": "一般讀者無立即行動，但對政府決策、企業備援計畫與長期風險評估有實質意義",
@@ -745,7 +714,6 @@
  },
  {
   "affected": "加薩200多萬平民、以色列與區域安全、美國中東政策（川普和平框架）、阿拉伯國家與重建出資方、國際人道組織",
-  "created_at": "2026-07-06 22:22:19",
   "credibility_reason": "哈瑪斯官方聲明與具名發言人明確，但NCAG未進駐、武裝未解等關鍵變數使實際走向仍不確定",
   "credibility_score": 11,
   "decision_reason": "對台灣讀者無直接決策相關性，屬理解中東走向的關鍵事件",
@@ -769,7 +737,6 @@
  },
  {
   "affected": "伊朗9000萬民眾、中東區域安全（以色列、海灣國家）、全球能源市場（荷莫茲）、美國中東政策、中俄的區域布局",
-  "created_at": "2026-07-06 22:22:51",
   "credibility_reason": "BBC 現場報導但原文未直接讀取；穆吉塔巴傷勢等關鍵細節來自匿名消息人士，不確定性高，明確降分",
   "credibility_score": 8,
   "decision_reason": "對一般讀者屬間接（油價與地緣風險），能源與國際業務相關者需納入情境規劃",
@@ -793,7 +760,6 @@
  },
  {
   "affected": "廣西下游17萬居民、中國水利與應急管理體系、關注中國基礎設施風險與極端氣候的觀察者",
-  "created_at": "2026-07-06 22:23:29",
   "credibility_reason": "多家台港媒體報導且有影像，但官方「暫無傷亡」與現場居民證詞矛盾巨大，斷電斷訊下實際災情無法確認",
   "credibility_score": 8,
   "decision_reason": "對台灣讀者無直接決策相關性",
@@ -817,7 +783,6 @@
  },
  {
   "affected": "全球半導體與科技投資人、台灣半導體供應鏈（台積電/南亞科/模組廠）、消費電子品牌與消費者（漲價傳導）、韓國經濟、AI 基礎建設業者（成本上升）",
-  "created_at": "2026-07-06 22:23:55",
   "credibility_reason": "DS總裁具名說法加分析師共識預估，數據具體，惟全年數字仍屬預測",
   "credibility_score": 11,
   "decision_reason": "半導體投資配置、電子業成本規劃與消費者購機時點都有直接參考",
@@ -841,7 +806,6 @@
  },
  {
   "affected": "台海政策與國防規劃圈、日韓菲政府與企業（7550億美元曝險）、國際航運與保險業、依賴台海航線的全球供應鏈、中國自身經濟決策層",
-  "created_at": "2026-07-06 22:24:23",
   "credibility_reason": "CSIS具名報告、2024年貿易數據具體可查，方法透明；屬單一智庫觀點",
   "credibility_score": 12,
   "decision_reason": "對政策圈與企業風險規劃有參考價值，一般讀者屬認知更新",
@@ -865,7 +829,6 @@
  },
  {
   "affected": "美國國防供應鏈與軍工產業、稀土與關鍵礦物市場、馬來西亞稀土產業政策、澳洲礦業、關注供應鏈去中化的各國（含台灣科技業）",
-  "created_at": "2026-07-06 22:24:41",
   "credibility_reason": "協議金額、聽證日期、各方具名發言明確，中央社報導完整",
   "credibility_score": 12,
   "decision_reason": "對關鍵礦物與國防供應鏈相關產業有參考，一般讀者屬趨勢認知",
@@ -889,7 +852,6 @@
  },
  {
   "affected": "在台言論工作者與異議人士（人身安全）、台灣入境與港澳居民管理政策、日台關係（矢板為日籍）、香港居民來台便利政策、台灣社會的言論自由氛圍",
-  "created_at": "2026-07-07 08:46:11",
   "credibility_reason": "嫌犯落網、場勘與逃亡事實明確，陸委會具名定性；惟「境外指使」仍屬合理懷疑而非證實",
   "credibility_score": 12,
   "decision_reason": "言論工作者的安全評估、政府入境管理與要人保護政策有直接調整壓力",
@@ -913,7 +875,6 @@
  },
  {
   "affected": "全球科技業從業者與求職者、台灣科技人才市場、AI供應鏈（資本支出持續性）、科技股投資人、雲端服務客戶",
-  "created_at": "2026-07-07 08:46:39",
   "credibility_reason": "路透報導、裁員數字與支出金額具體，公司正式宣布",
   "credibility_score": 12,
   "decision_reason": "科技從業者的職涯風險評估與投資人對AI概念股的持股邏輯都需更新",
@@ -937,7 +898,6 @@
  },
  {
   "affected": "古巴1000萬民眾、美國移民政策（難民潮壓力）、拉美地緣（古巴政權穩定）、關注制裁效果與人道代價的政策圈",
-  "created_at": "2026-07-07 08:47:56",
   "credibility_reason": "UNE官方確認與影響規模明確，惟癱瘓具體原因仍在調查",
   "credibility_score": 11,
   "decision_reason": "對台灣讀者無直接決策相關性",
@@ -961,7 +921,6 @@
  },
  {
   "affected": "敘利亞重建市場與難民返鄉、法國與歐盟中東政策、能源與基建產業、黎巴嫩約旦土耳其等鄰國、在歐敘利亞難民政策",
-  "created_at": "2026-07-07 08:48:24",
   "credibility_reason": "路透與敘利亞國家通訊社報導，行程與隨行人員具體",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者屬趨勢認知，重建商機與台灣關聯低",
@@ -985,7 +944,6 @@
  },
  {
   "affected": "剛果東部民眾、WHO與國際公衛體系、周邊國家（烏干達、盧安達邊境）、全球疫情監測網絡",
-  "created_at": "2026-07-07 08:48:41",
   "credibility_reason": "衛生部官方數據與美聯社取得的聲明文件，數字具體",
   "credibility_score": 11,
   "decision_reason": "對台灣讀者無直接行動，公衛與國際醫療援助圈相關",
@@ -1009,7 +967,6 @@
  },
  {
   "affected": "德國憲政體制與選民、歐盟安全合作（機密共享）、北約情報體系、面臨類似極端政黨崛起的歐洲各國、關注民主防衛機制的台灣",
-  "created_at": "2026-07-07 08:46:59",
   "credibility_reason": "國防部長具名說法、民調數字與憲法保護局認定狀態具體明確",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者屬制度參照，無直接行動意義",
@@ -1033,7 +990,6 @@
  },
  {
   "affected": "長榮集團股東與員工、台灣資本市場投資人信心、金管會與司法體系（裁罰公信力）、家族企業治理研究、外資對台股治理評價",
-  "created_at": "2026-07-07 08:47:37",
   "credibility_reason": "北檢偵查行動、交保金額與涉案股數具體，多家媒體一致；惟屬偵查階段尚未起訴定罪",
   "credibility_score": 12,
   "decision_reason": "長榮股東與台股投資人的直接風險資訊，家族企業治理評估的重要案例",
@@ -1057,7 +1013,6 @@
  },
  {
   "affected": "全球農業與糧食市場、保險業、易受旱澇影響地區居民、大宗商品投資人、各國防災部門",
-  "created_at": "2026-07-08 13:30:15",
   "credibility_reason": "ECMWF 具名專家，所有模型一致，WMO 與多機構同步預警",
   "credibility_score": 13,
   "decision_reason": "影響糧價、保險、農業與防災準備等實際決策",
@@ -1081,7 +1036,6 @@
  },
  {
   "affected": "美土關係與北約、美國國會、希臘等區域鄰國、軍工產業",
-  "created_at": "2026-07-08 13:30:34",
   "credibility_reason": "川普公開談話與國會聯署信可查，但政策仍未定案",
   "credibility_score": 10,
   "decision_reason": "對一般讀者決策影響低，主要是政策圈與軍工相關者",
@@ -1105,7 +1059,6 @@
  },
  {
   "affected": "在美中資科技企業、美國電信供應鏈、兩國科技投資人",
-  "created_at": "2026-07-08 13:30:45",
   "credibility_reason": "FCC 官方行動與文件，事實明確",
   "credibility_score": 12,
   "decision_reason": "僅對相關產業與投資人有間接參考",
@@ -1129,7 +1082,6 @@
  },
  {
   "affected": "中國廣西湖北居民、中國防災與水利部門、關注氣候調適的政策圈",
-  "created_at": "2026-07-08 13:32:49",
   "credibility_reason": "BBC 報導含官方死亡數字，但細節仍在更新",
   "credibility_score": 11,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -1153,7 +1105,6 @@
  },
  {
   "affected": "全球半導體供應鏈與台韓競爭格局、科技投資人、消費電子買家、AI 基建業者",
-  "created_at": "2026-07-08 13:33:29",
   "credibility_reason": "公司正式業績指引，附 IDC 與 Counterpoint 具名分析",
   "credibility_score": 13,
   "decision_reason": "直接影響科技投資判斷與消費電子購買時點",
@@ -1177,7 +1128,6 @@
  },
  {
   "affected": "計畫赴美生子的台港中家庭、移民代辦與律師業、在美華人社群、美國憲政制度",
-  "created_at": "2026-07-08 13:33:43",
   "credibility_reason": "最高法院裁決為事實基礎，BBC 多方採訪業者與律師",
   "credibility_score": 13,
   "decision_reason": "對計畫赴美生子、留學、移民的家庭是直接決策資訊",
@@ -1201,7 +1151,6 @@
  },
  {
   "affected": "西非沿海數百萬居民、中國遠洋漁業形象與政策、全球漁業治理機制、歐洲面對的移民壓力",
-  "created_at": "2026-07-08 13:34:04",
   "credibility_reason": "BBC 實地採訪多名具名當事人，引 EJF 與 2024 全球報告數據",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者的直接決策影響低",
@@ -1225,7 +1174,6 @@
  },
  {
   "affected": "全球車廠與自駕業者（Waymo、Tesla）、運輸與計程車業勞工、各國交通監管者、相關供應鏈投資人",
-  "created_at": "2026-07-08 13:34:20",
   "credibility_reason": "BBC 具名採訪業者與智庫，屬分析報導而非硬事實",
   "credibility_score": 11,
   "decision_reason": "對科技投資與汽車產業從業者有中期參考",
@@ -1249,7 +1197,6 @@
  },
  {
   "affected": "全球 Windows 11 用戶（尤其 C 槽空間異常者）、企業 IT 部門",
-  "created_at": "2026-07-08 13:39:29",
   "credibility_reason": "微軟官方承認並發布修補編號，多家科技媒體證實",
   "credibility_score": 13,
   "decision_reason": "用戶可立即自查並釋放空間，直接可行動",
@@ -1273,7 +1220,6 @@
  },
  {
   "affected": "國際能源市場、航運與保險業、依賴進口能源的台灣等經濟體、投資人、美伊及波灣周邊國家",
-  "created_at": "2026-07-08 13:28:25",
   "credibility_reason": "法新社報導，美國官員、卡達與海事監控機構多方佐證",
   "credibility_score": 12,
   "decision_reason": "直接影響能源相關投資、企業避險與運輸成本判斷",
@@ -1297,7 +1243,6 @@
  },
  {
   "affected": "國際市場與油價、航運業、中東各國、美國與伊朗民眾、依賴中東能源的亞洲經濟體",
-  "created_at": "2026-07-08 13:28:38",
   "credibility_reason": "美軍中央司令部正式聲明，路透社與伊朗媒體多方報導",
   "credibility_score": 12,
   "decision_reason": "影響能源價格、市場避險與相關產業營運判斷",
@@ -1321,7 +1266,6 @@
  },
  {
   "affected": "北約成員國、歐洲防務產業、美國與英國軍方、關注跨大西洋關係的政策圈",
-  "created_at": "2026-07-08 13:28:57",
   "credibility_reason": "英國國防部正式宣布，北約高層具名發言",
   "credibility_score": 12,
   "decision_reason": "對一般讀者的直接決策影響低，主要是政策與防務圈參考",
@@ -1345,7 +1289,6 @@
  },
  {
   "affected": "台灣半導體產業與政策圈、美國國會與智庫、關注台海風險的投資人",
-  "created_at": "2026-07-08 13:29:10",
   "credibility_reason": "具名議員公開演說並引彭博評估，但屬單方觀點非新事實",
   "credibility_score": 10,
   "decision_reason": "無新政策，對讀者決策的增量資訊有限",
@@ -1369,7 +1312,6 @@
  },
  {
   "affected": "北約成員國、歐洲防務與製造產業、德國納稅人與財政政策、防務相關投資人",
-  "created_at": "2026-07-08 13:30:00",
   "credibility_reason": "北約官方統計數據，德通社報導，數字明確可查證",
   "credibility_score": 13,
   "decision_reason": "對防務產業與相關投資有參考價值，一般讀者間接",
@@ -1393,7 +1335,6 @@
  },
  {
   "affected": "俄烏戰局、克里米亞居民與俄軍後勤、國際航運與保險業、依賴影子艦隊出口的俄羅斯財政",
-  "created_at": "2026-07-08 13:30:58",
   "credibility_reason": "路透報導烏軍方聲明與具名指揮官，但屬單方戰報",
   "credibility_score": 10,
   "decision_reason": "對航運保險與能源市場相關者有參考，一般讀者間接",
@@ -1417,7 +1358,6 @@
  },
  {
   "affected": "印度與中國的地緣戰略布局、孟加拉經濟與民眾、南亞區域供應鏈與投資人",
-  "created_at": "2026-07-08 13:32:25",
   "credibility_reason": "BBC 具名採訪前外交官與多方分析人士",
   "credibility_score": 12,
   "decision_reason": "對一般讀者決策影響低，主要供地緣觀察",
@@ -1441,7 +1381,6 @@
  },
  {
   "affected": "法國選民、歐盟與北約、歐元區市場、烏克蘭援助前景、各國極右翼政黨",
-  "created_at": "2026-07-08 13:32:38",
   "credibility_reason": "本人公開宣布，附上訴法院判決與具體金額",
   "credibility_score": 13,
   "decision_reason": "對歐洲布局的企業與投資人有中期參考價值",
@@ -1465,7 +1404,6 @@
  },
  {
   "affected": "海外華人與留學生社群（尤其女性）、Telegram 等平台的監管壓力、德中司法合作、性暴力防治政策圈",
-  "created_at": "2026-07-08 13:33:14",
   "credibility_reason": "BBC 取得判決書、多法院審理紀錄與檢方回覆",
   "credibility_score": 13,
   "decision_reason": "對海外生活女性的自我保護與社群警覺有直接參考",
@@ -1489,7 +1427,6 @@
  },
  {
   "affected": "台股散戶與零股投資人、券商與交易系統業者、金管會與證交所政策走向",
-  "created_at": "2026-07-08 13:37:05",
   "credibility_reason": "金管會主委立院正式答詢與證交所官方宣布，多家媒體一致",
   "credibility_score": 14,
   "decision_reason": "直接改變投資人交易時點與方式的選擇",
@@ -1513,7 +1450,6 @@
  },
  {
   "affected": "台韓股市投資人（尤其槓桿 ETF 持有者）、半導體類股、兩地金融監理機關",
-  "created_at": "2026-07-08 13:37:24",
   "credibility_reason": "跌幅與募資數據明確，但歸因主要來自評論人觀點，待監管驗證",
   "credibility_score": 10,
   "decision_reason": "對持有槓桿 ETF 與半導體股的投資人是直接風險資訊",
@@ -1537,7 +1473,6 @@
  },
  {
   "affected": "北約成員國與歐洲安全架構、丹麥與格陵蘭、駐歐美軍相關部署、歐洲防務產業與市場",
-  "created_at": "2026-07-08 13:38:24",
   "credibility_reason": "北約峰會公開發言，丹麥總理具名回應，多家媒體一致",
   "credibility_score": 12,
   "decision_reason": "對一般讀者間接，主要影響政策圈與歐洲市場情緒",
@@ -1561,7 +1496,6 @@
  },
  {
   "affected": "全台民眾（防災、通勤、行程）、農漁業、航空與交通運輸、企業排班與供應鏈",
-  "created_at": "2026-07-08 13:38:42",
   "credibility_reason": "氣象署官方預報與多家媒體、專家一致",
   "credibility_score": 13,
   "decision_reason": "直接決定防災準備、行程、停班停課等即時行動",
@@ -1585,7 +1519,6 @@
  },
  {
   "affected": "全台超商消費者、7-ELEVEN 與聯華食品等下游業者、食藥署與食安治理、上游油脂供應商",
-  "created_at": "2026-07-08 13:39:58",
   "credibility_reason": "食藥署官方公布品項清單，衛福部下架命令，多方證實",
   "credibility_score": 14,
   "decision_reason": "消費者可立即對照清單避買、退款，高度可行動",
@@ -1609,7 +1542,6 @@
  },
  {
   "affected": "中國上訪民眾與基層政府、維穩體系、研究中國治理的政策圈",
-  "created_at": "2026-07-09 23:10:54",
   "credibility_reason": "官方文件為本，附具名學者與信訪當事人視角",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者決策影響很低",
@@ -1633,7 +1565,6 @@
  },
  {
   "affected": "美中戰略關係、印太各國安全政策、台灣安全環境、核軍控體系",
-  "created_at": "2026-07-09 23:13:57",
   "credibility_reason": "美國務院聲明經路透報導，中方回應與多國反應俱在",
   "credibility_score": 12,
   "decision_reason": "對一般讀者決策影響低",
@@ -1657,7 +1588,6 @@
  },
  {
   "affected": "台泥股東與客戶、在廣西的台商製造業、企業氣候風險管理實務",
-  "created_at": "2026-07-10 09:28:43",
   "credibility_reason": "公司正式公告，中央社等多家報導",
   "credibility_score": 13,
   "decision_reason": "對台泥投資人與供應鏈客戶有直接參考",
@@ -1681,7 +1611,6 @@
  },
  {
   "affected": "南太平洋島國、紐澳與中國的區域戰略、美國印太布局、區域內台灣的邦交與外交空間",
-  "created_at": "2026-07-09 23:06:29",
   "credibility_reason": "紐國總理與部長具名表態，但仍在「考慮」階段",
   "credibility_score": 11,
   "decision_reason": "對一般讀者決策影響低，屬地緣戰略觀察",
@@ -1705,7 +1634,6 @@
  },
  {
   "affected": "美伊衝突走向、波灣航運與能源市場、伊朗平民、國際人道法與聯合國體系",
-  "created_at": "2026-07-09 23:06:43",
   "credibility_reason": "伊朗官方單方數字，尚無獨立查證，需保留",
   "credibility_score": 9,
   "decision_reason": "對市場與能源相關決策間接，風險溢價已部分反映",
@@ -1729,7 +1657,6 @@
  },
  {
   "affected": "泰國移民與戶政制度、在泰中國社群、其他東南亞國家的類似漏洞、反洗錢體系",
-  "created_at": "2026-07-09 23:07:06",
   "credibility_reason": "泰警與內政部聯合公布，附逮捕人數與 DNA 檢驗佐證",
   "credibility_score": 13,
   "decision_reason": "對一般讀者決策影響很低",
@@ -1753,7 +1680,6 @@
  },
  {
   "affected": "日本壽險業與全體保戶、跨境醫療機構、其他面臨同樣落差的市場（含台灣保險業）",
-  "created_at": "2026-07-09 23:07:20",
   "credibility_reason": "朝日新聞取得業界具體數據，數字明確",
   "credibility_score": 12,
   "decision_reason": "對保險從業者與投保人有參考，一般讀者間接",
@@ -1777,7 +1703,6 @@
  },
  {
   "affected": "剛果與東非居民、WHO 與國際援助體系、鄰國邊境管制、全球公衛預警機制",
-  "created_at": "2026-07-09 23:07:58",
   "credibility_reason": "WHO 與剛果衛生當局官方統計，數據明確",
   "credibility_score": 13,
   "decision_reason": "對台灣讀者的直接決策影響目前很低",
@@ -1801,7 +1726,6 @@
  },
  {
   "affected": "德俄與北約東翼安全態勢、歐洲防務產業、美國軍工出口、俄羅斯的反應與部署",
-  "created_at": "2026-07-09 23:08:10",
   "credibility_reason": "德國總理峰會公開宣布，背景脈絡清楚",
   "credibility_score": 12,
   "decision_reason": "對一般讀者決策影響低",
@@ -1825,7 +1749,6 @@
  },
  {
   "affected": "歐盟成員國與移民政策、地中海沿線偷渡網絡、尋求庇護者、人權組織",
-  "created_at": "2026-07-09 23:08:21",
   "credibility_reason": "執委會主席具名聲明，路透報導",
   "credibility_score": 12,
   "decision_reason": "對一般讀者決策影響低",
@@ -1849,7 +1772,6 @@
  },
  {
   "affected": "廣西災民、中國水利與應急管理體系、氣候調適政策圈、各國防災預警設計者",
-  "created_at": "2026-07-09 23:10:00",
   "credibility_reason": "BBC 實地採訪災民並核對簡訊紀錄，附官方數字",
   "credibility_score": 13,
   "decision_reason": "對台灣讀者直接決策影響低，防災借鏡為間接價值",
@@ -1873,7 +1795,6 @@
  },
  {
   "affected": "全台消費者與學校、360 家下游業者、泰山福壽福懋等食品集團、食藥署與《食安法》修法",
-  "created_at": "2026-07-09 23:10:16",
   "credibility_reason": "食藥署官方數據與時間線完整，BBC 附專家修法建議",
   "credibility_score": 13,
   "decision_reason": "消費者避買對照與食安政策的直接參考",
@@ -1897,7 +1818,6 @@
  },
  {
   "affected": "中伊關係與伊朗重建、中美戰略互動、俄羅斯在中東的相對角色、波灣國家的避險策略",
-  "created_at": "2026-07-09 23:10:32",
   "credibility_reason": "外交規格比較有事實錨點，採訪多國專家，但屬解讀性分析",
   "credibility_score": 11,
   "decision_reason": "對一般讀者決策影響低，屬地緣判讀素材",
@@ -1921,7 +1841,6 @@
  },
  {
   "affected": "台灣育齡女性（尤其年輕、偏鄉、移工、性暴力受害者）、藥局與婦產科體系、食藥署藥政",
-  "created_at": "2026-07-09 23:11:11",
   "credibility_reason": "食藥署公告為本，BBC 採訪當事人與多方觀點",
   "credibility_score": 13,
   "decision_reason": "直接改變女性緊急避孕的取得方式與時效",
@@ -1945,7 +1864,6 @@
  },
  {
   "affected": "澳門公民社會與司法制度、香港的參照效應、歐盟與中國的人權交鋒、在澳外資與媒體",
-  "created_at": "2026-07-09 23:11:25",
   "credibility_reason": "法院正式聲明與官方文件，事實清楚",
   "credibility_score": 13,
   "decision_reason": "對一般讀者決策影響低",
@@ -1969,7 +1887,6 @@
  },
  {
   "affected": "台灣年輕閱聽人與輿論場、兩岸文化交流政策、來台中國創作者",
-  "created_at": "2026-07-09 23:11:56",
   "credibility_reason": "BBC 採訪粉絲與學者，現象描述完整、指控未證實",
   "credibility_score": 11,
   "decision_reason": "對讀者實際決策影響低",
@@ -1993,7 +1910,6 @@
  },
  {
   "affected": "美伊談判走向、能源市場預期、波灣盟國、關注中東的投資人",
-  "created_at": "2026-07-09 23:12:07",
   "credibility_reason": "含川普公開發言等事實，但整體屬記者分析評論",
   "credibility_score": 9,
   "decision_reason": "對風險評估有間接參考",
@@ -2017,7 +1933,6 @@
  },
  {
   "affected": "中英經貿與投資、英國對中政策圈、在英中資與港人社群",
-  "created_at": "2026-07-09 23:12:22",
   "credibility_reason": "具名學者分析與部分事實線索，惟高度推測性",
   "credibility_score": 10,
   "decision_reason": "對讀者決策影響低",
@@ -2041,7 +1956,6 @@
  },
  {
   "affected": "環球晶與台灣半導體材料業、美光與記憶體產業、美國供應鏈政策、相關投資人",
-  "created_at": "2026-07-09 23:13:38",
   "credibility_reason": "雙方正式公告，金額與條款明確，多家媒體一致",
   "credibility_score": 13,
   "decision_reason": "對半導體投資人與供應鏈從業者有直接參考",
@@ -2065,7 +1979,6 @@
  },
  {
   "affected": "赴中旅行/工作/探親的台灣民眾、公務人員與司法人員、兩岸交流政策、旅行業",
-  "created_at": "2026-07-09 23:14:53",
   "credibility_reason": "陸委會官方統計與具名發言，數字明確",
   "credibility_score": 13,
   "decision_reason": "直接影響赴中旅遊、探親、求職的風險評估",
@@ -2089,7 +2002,6 @@
  },
  {
   "affected": "波音與全球航太供應鏈（含台灣漢翔等）、航空公司購機成本、美歐貿易關係",
-  "created_at": "2026-07-10 09:26:19",
   "credibility_reason": "總統公告與商務部調查結論，官方文件明確",
   "credibility_score": 13,
   "decision_reason": "航太供應鏈與航空業相關者的參考資訊",
@@ -2113,7 +2025,6 @@
  },
  {
   "affected": "中國異見者與人權群體、韓國與加拿大庇護體系、兩岸與區域邊境管控",
-  "created_at": "2026-07-10 09:27:28",
   "credibility_reason": "BBC 本人專訪，中國外交部有回應，細節可信",
   "credibility_score": 12,
   "decision_reason": "對讀者決策幾無影響",
@@ -2137,7 +2048,6 @@
  },
  {
   "affected": "大立光與台灣光學/光通訊供應鏈、AI 資料中心業者、相關投資人",
-  "created_at": "2026-07-10 09:27:50",
   "credibility_reason": "董事長具名公開說明，惟時程仍屬公司預期",
   "credibility_score": 12,
   "decision_reason": "對科技股投資人有直接參考價值",
@@ -2161,7 +2071,6 @@
  },
  {
   "affected": "烏克蘭與歐洲安全、援烏各國財政、全球糧食與能源市場、台灣觀察的嚇阻信譽",
-  "created_at": "2026-07-10 09:29:14",
   "credibility_reason": "普丁公開發言+路透報導，戰況部分雙方說法相左",
   "credibility_score": 10,
   "decision_reason": "對一般讀者間接，影響能源與防務相關判斷",
@@ -2185,7 +2094,6 @@
  },
  {
   "affected": "海灣各國與駐軍、全球能源市場、航運與保險業、美伊談判前景",
-  "created_at": "2026-07-10 09:25:40",
   "credibility_reason": "法新社與多方官員報導，惟伊朗傷亡數字屬單方",
   "credibility_score": 11,
   "decision_reason": "能源與市場避險決策的直接變數",
@@ -2209,7 +2117,6 @@
  },
  {
   "affected": "全球能源市場與進口國（台日韓最敏感）、航運與保險業、依賴波灣出口的產油國、各國通膨與央行政策",
-  "created_at": "2026-07-10 09:25:55",
   "credibility_reason": "Kpler 船舶追蹤硬數據，法新社與業界具名分析",
   "credibility_score": 13,
   "decision_reason": "能源成本、避險與供應鏈決策的直接輸入",
@@ -2233,7 +2140,6 @@
  },
  {
   "affected": "西班牙與北約成員、美歐貿易關係、其他被要求提高軍費的美國盟友",
-  "created_at": "2026-07-10 09:26:08",
   "credibility_reason": "路透報導，雙方官方說法俱在",
   "credibility_score": 12,
   "decision_reason": "對一般讀者決策影響低",
@@ -2257,7 +2163,6 @@
  },
  {
   "affected": "全台民眾（尤其基隆、北海岸、桃園以北）、花蓮堰塞湖下游居民、交通運輸與零售、企業與學校",
-  "created_at": "2026-07-10 09:27:14",
   "credibility_reason": "氣象署官方警報與具名預報員、學者，資訊完整",
   "credibility_score": 14,
   "decision_reason": "停班課、撤離、備災、行程全是即時決策",
@@ -2281,7 +2186,6 @@
  },
  {
   "affected": "蘋果與 OpenAI 及其供應鏈（含台灣代工與零組件）、矽谷 AI 人才市場、消費電子競爭格局",
-  "created_at": "2026-07-11 11:42:42",
   "credibility_reason": "法院訴狀與雙方回應，美聯社報導",
   "credibility_score": 13,
   "decision_reason": "對科技投資人與供應鏈有參考價值",
@@ -2305,7 +2209,6 @@
  },
  {
   "affected": "美伊核談判、以色列的打擊決策、IAEA 核查體系、防擴散建制",
-  "created_at": "2026-07-11 11:42:55",
   "credibility_reason": "CNN 獨家衛星影像+獨立智庫分析，官方未證實",
   "credibility_score": 11,
   "decision_reason": "對一般讀者間接，影響風險評估",
@@ -2329,7 +2232,6 @@
  },
  {
   "affected": "Meta 與所有社群平台、歐盟 4.5 億用戶、家長與兒少、各國數位監管立法、廣告產業",
-  "created_at": "2026-07-11 11:43:46",
   "credibility_reason": "歐盟執委會正式初步意見，程序與罰則明確",
   "credibility_score": 13,
   "decision_reason": "家長與用戶的數位健康意識、平台相關產業合規",
@@ -2353,7 +2255,6 @@
  },
  {
   "affected": "新加坡華人社群與政府、中國統戰與影響力操作、區域華裔社會",
-  "created_at": "2026-07-11 11:43:58",
   "credibility_reason": "官員公開發言與具名學者分析，聯合早報報導",
   "credibility_score": 12,
   "decision_reason": "對讀者決策影響低",
@@ -2377,7 +2278,6 @@
  },
  {
   "affected": "OpenAI/Google 等 AI 公司、中國科技巨頭、美國出口管制體系、新加坡作為中企出海樞紐的角色",
-  "created_at": "2026-07-11 11:44:12",
   "credibility_reason": "金融時報調查報導，OpenAI 暫停措施可佐證",
   "credibility_score": 12,
   "decision_reason": "對 AI 產業與投資人有間接參考",
@@ -2401,7 +2301,6 @@
  },
  {
   "affected": "中國水庫下游居民、水利與應急體系、氣候調適政策、關注中國治理的分析圈",
-  "created_at": "2026-07-11 11:45:34",
   "credibility_reason": "BBC 以公開資料與工程分析為據，官方調查尚未定論",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -2425,7 +2324,6 @@
  },
  {
   "affected": "中國製鞋業工人與供應鏈、國際品牌的代工稽核、中國工安監管體系",
-  "created_at": "2026-07-11 11:45:49",
   "credibility_reason": "官方通報與央視細節完整，新京報補充現場脈絡",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -2449,7 +2347,6 @@
  },
  {
   "affected": "大立光等台灣光學廠、南韓手機品牌供應鏈、中國競爭對手（舜宇等）、台灣出口政策",
-  "created_at": "2026-07-11 11:46:36",
   "credibility_reason": "經濟部官方統計數據，數字明確可查",
   "credibility_score": 13,
   "decision_reason": "對光學股投資與產業從業者有參考價值",
@@ -2473,7 +2370,6 @@
  },
  {
   "affected": "台灣安全與能源航運生命線、國際航運與保險業、美日等印太盟友的應對政策、台灣民眾的風險認知",
-  "created_at": "2026-07-11 11:47:46",
   "credibility_reason": "RUSI 具名研究員評論，有巡查事實基礎但屬評估推論",
   "credibility_score": 11,
   "decision_reason": "對一般讀者間接，影響風險認知與政策圈",
@@ -2497,7 +2393,6 @@
  },
  {
   "affected": "音樂人與唱片產業、串流平台（Spotify 等）、其他創意產業的標準制定、AI 內容監管立法",
-  "created_at": "2026-07-11 23:38:46",
   "credibility_reason": "10 個產業組織聯合正式公布",
   "credibility_score": 13,
   "decision_reason": "對創作者與平台從業者有參考",
@@ -2521,7 +2416,6 @@
  },
  {
   "affected": "美伊談判走向、海灣調解國、能源市場預期",
-  "created_at": "2026-07-11 11:42:14",
   "credibility_reason": "兩國官方聲明與川普發文，法新社報導",
   "credibility_score": 12,
   "decision_reason": "影響能源避險節奏的間接參考",
@@ -2545,7 +2439,6 @@
  },
  {
   "affected": "北約與歐洲軍工產業、中國出口管制籌碼、稀土與關鍵礦產市場、台灣科技供應鏈",
-  "created_at": "2026-07-11 11:42:31",
   "credibility_reason": "義媒披露機密簡報內容，數據具體但屬單源轉述",
   "credibility_score": 10,
   "decision_reason": "對關鍵礦產與軍工投資有中期參考",
@@ -2569,7 +2462,6 @@
  },
  {
   "affected": "波音與 737 營運航空公司、歐洲廉航乘客、航空監管機構（EASA/FAA）",
-  "created_at": "2026-07-11 11:44:25",
   "credibility_reason": "多方目擊與領事館證實，惟原因調查未出爐",
   "credibility_score": 10,
   "decision_reason": "搭機安全關注與航空股的間接參考",
@@ -2593,7 +2485,6 @@
  },
  {
   "affected": "北部東部受災居民、花蓮撤離戶、全台消費者（菜價）、浙閩沿海數千萬人",
-  "created_at": "2026-07-11 11:46:05",
   "credibility_reason": "官方數據與兩岸氣象機構資訊，BBC 整理完整",
   "credibility_score": 13,
   "decision_reason": "撤離、出行、民生物資與菜價的直接決策資訊",
@@ -2617,7 +2508,6 @@
  },
  {
   "affected": "台日海上互動慣例、軍事觀察圈",
-  "created_at": "2026-07-11 11:47:24",
   "credibility_reason": "AIS 公開資料佐證，自由時報獨家報導",
   "credibility_score": 10,
   "decision_reason": "對讀者決策幾無影響",
@@ -2641,7 +2531,6 @@
  },
  {
   "affected": "日本與亞洲能源進口國（含台灣）、伊朗的海峽籌碼、國際海洋法秩序、航運業",
-  "created_at": "2026-07-11 23:36:41",
   "credibility_reason": "外務大臣正式宣布，日經報導",
   "credibility_score": 13,
   "decision_reason": "對一般讀者間接，能源政策圈直接相關",
@@ -2665,7 +2554,6 @@
  },
  {
   "affected": "伊朗執政層與金融體系、與伊朗交易的第三國企業、美伊談判籌碼結構",
-  "created_at": "2026-07-11 23:36:53",
   "credibility_reason": "美國財政部正式聲明，路透報導",
   "credibility_score": 13,
   "decision_reason": "對一般讀者決策影響低",
@@ -2689,7 +2577,6 @@
  },
  {
   "affected": "委內瑞拉災民與政局、拉美區域穩定、國際人道援助體系、石油市場（委國產能）",
-  "created_at": "2026-07-11 23:37:06",
   "credibility_reason": "委國國會議長官方數字，惟獨立查證受限",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者決策影響很低",
@@ -2713,7 +2600,6 @@
  },
  {
   "affected": "美伊談判前景、伊朗內部政局、區域安全預期",
-  "created_at": "2026-07-11 23:37:17",
   "credibility_reason": "書面聲明經路透法新社報導，文本明確",
   "credibility_score": 12,
   "decision_reason": "對讀者直接決策影響低",
@@ -2737,7 +2623,6 @@
  },
  {
   "affected": "伊朗政權穩定與繼承安排、美伊談判對象的有效性、革命衛隊權力、區域安全預期",
-  "created_at": "2026-07-11 23:38:09",
   "credibility_reason": "路透多位消息人士與民眾採訪，官方未證實傷勢",
   "credibility_score": 11,
   "decision_reason": "對讀者直接決策影響低",
@@ -2761,7 +2646,6 @@
  },
  {
   "affected": "俄羅斯民眾與經濟、俄軍後勤、普丁的戰爭決策、全球油品市場",
-  "created_at": "2026-07-11 23:38:23",
   "credibility_reason": "州政府公開文告與具體數據，路透報導",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -2785,7 +2669,6 @@
  },
  {
   "affected": "赴東南亞旅客（含台灣）、越南觀光業與監管、印度遊客社群",
-  "created_at": "2026-07-11 23:38:35",
   "credibility_reason": "越南官方與印度使館雙重證實",
   "credibility_score": 12,
   "decision_reason": "對東南亞旅遊者的安全參考",
@@ -2809,7 +2692,6 @@
  },
  {
   "affected": "美國新聞自由與媒體、洩密者與吹哨人保護、司法部規範、國安報導生態",
-  "created_at": "2026-07-11 23:38:58",
   "credibility_reason": "傳票為具體事實，紐時與司法部立場俱載",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -2833,7 +2715,6 @@
  },
  {
   "affected": "台積電與台灣半導體供應鏈、英特爾與美國晶片政策、AI 晶片客戶（輝達、蘋果）、相關投資人",
-  "created_at": "2026-07-11 23:40:06",
   "credibility_reason": "WSJ 具名報導含財務數據，多家台媒轉述一致",
   "credibility_score": 12,
   "decision_reason": "對半導體投資與供應鏈判斷有直接參考",
@@ -2857,7 +2738,6 @@
  },
  {
   "affected": "烏克蘭戰時治理與對美關係、援烏國家的信心、烏國內政治平衡",
-  "created_at": "2026-07-13 09:02:07",
   "credibility_reason": "澤倫斯基公開宣布，程序與推測分明",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -2881,7 +2761,6 @@
  },
  {
   "affected": "名單上政要與各國維安、歐洲反恐部署、美伊歐三方關係",
-  "created_at": "2026-07-13 09:02:17",
   "credibility_reason": "保守派報紙立場鮮明，非官方決策文件",
   "credibility_score": 8,
   "decision_reason": "對一般讀者決策影響低",
@@ -2905,7 +2784,6 @@
  },
  {
   "affected": "加薩 200 萬居民、以色列安全政策、美國與阿拉伯國家的重建方案、巴勒斯坦自治政府",
-  "created_at": "2026-07-13 09:03:18",
   "credibility_reason": "哈瑪斯宣布屬實，過渡安排細節仍未明朗；附一手專訪",
   "credibility_score": 10,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -2929,7 +2807,6 @@
  },
  {
   "affected": "美國 AI 企業與投資人、科技勞工、2026 期中選舉議程、各國 AI 利益分配政策討論",
-  "created_at": "2026-07-13 09:03:31",
   "credibility_reason": "具規模民調與具體法案，惟單一民調待複驗",
   "credibility_score": 11,
   "decision_reason": "對投資人的政策風險有間接參考",
@@ -2953,7 +2830,6 @@
  },
  {
   "affected": "南海主權聲索國、國際海洋法秩序、中歐關係、台海周邊海域的法理攻防",
-  "created_at": "2026-07-13 09:03:50",
   "credibility_reason": "官方聯合聲明與中方回應，文本明確",
   "credibility_score": 13,
   "decision_reason": "對一般讀者決策影響低",
@@ -2977,7 +2853,6 @@
  },
  {
   "affected": "全台消費者與餐飲業、泰山福壽福懋與下游 360 家業者、食藥署與食安修法",
-  "created_at": "2026-07-13 09:04:08",
   "credibility_reason": "食藥署與衛福部官方名單與裁罰，數字明確",
   "credibility_score": 14,
   "decision_reason": "家庭常用油品的避買與退貨直接參考",
@@ -3001,7 +2876,6 @@
  },
  {
   "affected": "全球能源市場與所有進口國（台日韓最脆弱）、海灣六國與駐軍、航運保險業、美伊政權、全球通膨與央行政策",
-  "created_at": "2026-07-13 09:00:23",
   "credibility_reason": "CENTCOM 與革命衛隊官方聲明、法新社實地記者，多方交叉",
   "credibility_score": 12,
   "decision_reason": "直接改變能源避險、供應鏈與通膨預期的決策基礎",
@@ -3025,7 +2899,6 @@
  },
  {
   "affected": "全球能源進口國、台灣中油電價與物價、運輸業、通膨與央行利率預期",
-  "created_at": "2026-07-13 09:00:35",
   "credibility_reason": "交易所公開報價，法新社報導",
   "credibility_score": 13,
   "decision_reason": "能源成本與通膨預期的直接決策輸入",
@@ -3049,7 +2922,6 @@
  },
  {
   "affected": "美國參院立法動能、援烏與對伊政策辯論、南卡州政治、共和黨內派系",
-  "created_at": "2026-07-13 09:00:47",
   "credibility_reason": "官方聲明與 CNN 報導，死因有醫療初判",
   "credibility_score": 13,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -3073,7 +2945,6 @@
  },
  {
   "affected": "泰國娛樂產業與消防監管、赴泰旅客（含台灣）、罹難者家屬",
-  "created_at": "2026-07-13 09:01:40",
   "credibility_reason": "官方確認死亡數字，泰國公視報導細節",
   "credibility_score": 12,
   "decision_reason": "赴泰旅客的場所安全意識提醒",
@@ -3097,7 +2968,6 @@
  },
  {
   "affected": "歐洲高齡人口與公衛體系、各國氣候調適政策、台灣等高齡化社會的參照、保險與能源需求",
-  "created_at": "2026-07-13 09:01:54",
   "credibility_reason": "EuroMOMO（ECDC/WHO 支持）官方監測數據，專家具名",
   "credibility_score": 13,
   "decision_reason": "高齡照護、旅歐安排與調適政策的參考",
@@ -3121,7 +2991,6 @@
  },
  {
   "affected": "派拉蒙與華納股東、好萊塢內容產業與勞工、串流訂閱用戶、美國反托拉斯執法格局",
-  "created_at": "2026-07-14 11:08:59",
   "credibility_reason": "訴狀與檢察長聲明，程序事實明確",
   "credibility_score": 13,
   "decision_reason": "對台灣讀者決策影響低，媒體投資人參考",
@@ -3145,7 +3014,6 @@
  },
  {
   "affected": "匈牙利憲政秩序、歐盟民主規範與資金機制、中東歐政治轉型的參照",
-  "created_at": "2026-07-14 11:09:10",
   "credibility_reason": "國會表決數字與各方表態明確",
   "credibility_score": 13,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -3169,7 +3037,6 @@
  },
  {
   "affected": "戲水與溫泉使用者（含台灣）、公衛監測體系、熱帶與亞熱帶國家、旅遊業",
-  "created_at": "2026-07-14 11:10:22",
   "credibility_reason": "BBC 引具名學者與病例數據，個案經家屬證實",
   "credibility_score": 12,
   "decision_reason": "戲水與溫泉活動的直接預防知識",
@@ -3193,7 +3060,6 @@
  },
  {
   "affected": "美中墨三邊關係與關稅談判、中國化工出口監管、美國鴉片類藥物危機、跨國執法合作",
-  "created_at": "2026-07-14 11:10:36",
   "credibility_reason": "BBC 取得集團內部訪談與司法部文件，被告方立場並陳",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -3217,7 +3083,6 @@
  },
  {
   "affected": "全台年輕世代與家庭、教育與托育體系、勞動市場與移民政策、健保年金財務、房市長期需求",
-  "created_at": "2026-07-14 11:11:55",
   "credibility_reason": "內政部官方統計，數字明確且多家媒體一致",
   "credibility_score": 14,
   "decision_reason": "教育、置產、職涯與政策規劃的長期參數",
@@ -3241,7 +3106,6 @@
  },
  {
   "affected": "美國財政與貿易政策、全球出口商（含台灣）、進口企業與消費者、後續關稅談判各方",
-  "created_at": "2026-07-14 11:07:18",
   "credibility_reason": "最高法院裁定與財政部預算數據，事實明確",
   "credibility_score": 14,
   "decision_reason": "出口商、進口企業與投資人的直接決策變數",
@@ -3265,7 +3129,6 @@
  },
  {
   "affected": "全球能源與航運業、亞洲進口國（台日韓）、海灣產油國、美國盟友的法理立場、全球通膨",
-  "created_at": "2026-07-14 11:07:34",
   "credibility_reason": "川普發文與 CENTCOM 新聞稿，徵費細節待演說確認",
   "credibility_score": 12,
   "decision_reason": "能源成本、航運與通膨預期的直接輸入",
@@ -3289,7 +3152,6 @@
  },
  {
   "affected": "美國憲政制衡、國會戰爭權、未來美國對外用兵的法律門檻、盟友對美承諾的評估",
-  "created_at": "2026-07-14 11:07:45",
   "credibility_reason": "路透取得信件副本，兩院決議為公開事實",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -3313,7 +3175,6 @@
  },
  {
   "affected": "國際航運與船員、阿聯與海灣國家立場、能源市場、印度（船員傷亡）與航運保險",
-  "created_at": "2026-07-14 11:07:57",
   "credibility_reason": "阿聯國防部與英國海事機構通報，傷亡明確",
   "credibility_score": 13,
   "decision_reason": "航運、保險與能源相關者的直接參考",
@@ -3337,7 +3198,6 @@
  },
  {
   "affected": "歐洲各國防務與預算、烏克蘭的戰後定位、歐洲飛彈防禦產業、俄羅斯的威懾計算",
-  "created_at": "2026-07-14 11:08:45",
   "credibility_reason": "澤倫斯基公開宣布與聯合聲明，細節待補",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -3361,7 +3221,6 @@
  },
  {
   "affected": "直布羅陀與西班牙邊境居民及勞工、英西關係、脫歐後英歐關係、其他飛地爭議的參照",
-  "created_at": "2026-07-14 11:10:07",
   "credibility_reason": "協議與實施日期明確，BBC 實地採訪",
   "credibility_score": 13,
   "decision_reason": "對台灣讀者決策影響低",
@@ -3385,7 +3244,6 @@
  },
  {
   "affected": "台股投資人（尤其半導體與槓桿 ETF 持有者）、退休金與基金、台灣出口與通膨",
-  "created_at": "2026-07-14 11:11:13",
   "credibility_reason": "市場公開數據，多家媒體一致",
   "credibility_score": 14,
   "decision_reason": "台灣投資人的部位與風險管理直接相關",
@@ -3409,7 +3267,6 @@
  },
  {
   "affected": "英國政治人物維安、改革黨與英國政局、反恐資源配置",
-  "created_at": "2026-07-16 11:53:38",
   "credibility_reason": "反恐警察正式接手為事實，動機仍未明",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者決策幾無影響",
@@ -3433,7 +3290,6 @@
  },
  {
   "affected": "中國高層政治格局、對中政策研究與情報圈、在中投資的企業（政策連續性風險）、兩岸關係觀察者",
-  "created_at": "2026-07-20 14:01:55",
   "credibility_reason": "官方公告事實明確，權力鬥爭詮釋部分屬分析推論",
   "credibility_score": 12,
   "decision_reason": "對一般讀者屬背景認知，對對中業務與研究者有判讀價值",
@@ -3457,7 +3313,6 @@
  },
  {
   "affected": "南海周邊國家、台灣（航道與地緣安全）、美中戰略競爭格局、國際海洋法秩序",
-  "created_at": "2026-07-20 14:01:55",
   "credibility_reason": "聯合聲明與各方立場明確，屬回顧分析性質",
   "credibility_score": 12,
   "decision_reason": "對一般讀者屬格局認知，對地緣風險評估有背景價值",
@@ -3481,7 +3336,6 @@
  },
  {
   "affected": "國際航運與船旗國、伊朗石油買家（中印）、海事保險、國際海洋法秩序",
-  "created_at": "2026-07-16 11:50:41",
   "credibility_reason": "CENTCOM 具名聲明含船名與武器細節",
   "credibility_score": 13,
   "decision_reason": "航運、保險與能源貿易的直接參考",
@@ -3505,7 +3359,6 @@
  },
  {
   "affected": "台美防衛合作、台灣國際參與、美國國會政治",
-  "created_at": "2026-07-16 11:50:51",
   "credibility_reason": "法案文本與表決紀錄明確",
   "credibility_score": 13,
   "decision_reason": "對一般讀者直接決策影響低",
@@ -3529,7 +3382,6 @@
  },
  {
   "affected": "法國重症患者與醫療體系、歐洲生命倫理立法、宗教團體、台灣等地的善終立法討論",
-  "created_at": "2026-07-16 11:52:03",
   "credibility_reason": "國會表決票數與法案條件明確",
   "credibility_score": 14,
   "decision_reason": "對台灣讀者屬價值與政策參照",
@@ -3553,7 +3405,6 @@
  },
  {
   "affected": "台灣對中出口與供應鏈、全球大宗商品需求、各國對中貿易政策、中國就業與社會穩定",
-  "created_at": "2026-07-16 11:52:46",
   "credibility_reason": "官方統計為基準，外界對數據品質存疑",
   "credibility_score": 11,
   "decision_reason": "對台灣出口企業與投資布局有實質參考",
@@ -3577,7 +3428,6 @@
  },
  {
   "affected": "美中科學交流、華裔科學家群體、赴中探親的敏感專業人士、美中領事談判",
-  "created_at": "2026-07-16 11:53:09",
   "credibility_reason": "家屬具名受訪、人質組織與中方回應俱在",
   "credibility_score": 12,
   "decision_reason": "對赴中科研與敏感背景人士的風險評估直接相關",
@@ -3601,7 +3451,6 @@
  },
  {
   "affected": "香港出版與書店業、公民社會與讀者、台灣出版品在港通路、國際對港評估",
-  "created_at": "2026-07-16 11:53:24",
   "credibility_reason": "警方聲明、法新社目擊與書店公開資訊",
   "credibility_score": 13,
   "decision_reason": "對台灣讀者直接決策影響低",
@@ -3625,7 +3474,6 @@
  },
  {
   "affected": "亞洲股市投資人（台韓日）、債券持有人與退休基金、各國央行利率政策、進口物價",
-  "created_at": "2026-07-16 11:54:27",
   "credibility_reason": "市場公開數據，多家媒體一致",
   "credibility_score": 14,
   "decision_reason": "投資部位、債券配置與通膨避險的直接參考",
@@ -3649,7 +3497,6 @@
  },
  {
   "affected": "首購族與換屋族、房仲與建商（總價帶產品策略）、銀行房貸業務、房市價格結構",
-  "created_at": "2026-07-16 11:54:45",
   "credibility_reason": "行政院正式拍板，條件細節明確",
   "credibility_score": 14,
   "decision_reason": "購屋資格、時點與標的選擇的直接決策資訊",
@@ -3673,7 +3520,6 @@
  },
  {
   "affected": "國防部與採購體系、重要設施防護、承包廠商、立法院監督",
-  "created_at": "2026-07-16 11:55:06",
   "credibility_reason": "立委具名爆料與媒體報導，國防部回應待補",
   "credibility_score": 10,
   "decision_reason": "對一般讀者直接決策影響低",
@@ -3697,7 +3543,6 @@
  },
  {
   "affected": "美伊戰局與兩國社會、全球能源市場、美軍與地區盟友、美國國內政治（戰爭權限爭議）",
-  "created_at": "2026-07-16 11:50:13",
   "credibility_reason": "WSJ 引多名官員，惟屬研議中選項、未定案",
   "credibility_score": 10,
   "decision_reason": "能源與市場風險評估的重大變數",
@@ -3721,7 +3566,6 @@
  },
  {
   "affected": "美伊兩國、海灣多國、全球能源與航運、談判斡旋方（埃及卡達）",
-  "created_at": "2026-07-16 11:50:27",
   "credibility_reason": "CENTCOM 聲明與伊朗官方發言，路透法新社報導",
   "credibility_score": 12,
   "decision_reason": "能源與避險決策的持續變數",
@@ -3745,7 +3589,6 @@
  },
  {
   "affected": "SpaceX 股東與馬斯克、太空產業融資環境、IPO 市場情緒、散戶投資人",
-  "created_at": "2026-07-16 11:52:16",
   "credibility_reason": "公開交易數據，法新社報導",
   "credibility_score": 13,
   "decision_reason": "對投資人的風險偏好判斷有參考",
@@ -3769,7 +3612,6 @@
  },
  {
   "affected": "美中外交競逐、全球南方國家的選邊策略、美國盟友體系、台灣的國際空間",
-  "created_at": "2026-07-16 11:52:32",
   "credibility_reason": "皮尤大樣本跨國調查，方法透明",
   "credibility_score": 14,
   "decision_reason": "對一般讀者直接決策影響低",
@@ -3793,7 +3635,6 @@
  },
  {
   "affected": "赴泰旅客（含大量台灣人）、泰國娛樂產業與觀光業、泰國監理與執法體系",
-  "created_at": "2026-07-20 14:01:55",
   "credibility_reason": "具名學者分析、三案數據對照、市長公開回應，事實紮實",
   "credibility_score": 13,
   "decision_reason": "對赴泰旅客的場所選擇與風險意識有實際參考",
@@ -3817,7 +3658,6 @@
  },
  {
   "affected": "台灣及東亞青少年與家長、學校與教育單位、衛福與緝毒單位、心理健康服務體系",
-  "created_at": "2026-07-20 09:21:23",
   "credibility_reason": "BBC專題報導、有專家說法與各地法規動態，惟影音報導未提供詳細統計數據",
   "credibility_score": 11,
   "decision_reason": "家長、學校與青少年可據此改變實際行為（辨識電子煙風險），行動指引明確",
@@ -3841,7 +3681,6 @@
  },
  {
   "affected": "台灣及各國赴美留學生與家庭、美國大學與研究體系、國際教育產業、美中關係與外國駐美媒體",
-  "created_at": "2026-07-20 09:21:23",
   "credibility_reason": "國土安全部官方公告、部長具名說法、NAFSA與中國外交部回應，多方佐證",
   "credibility_score": 13,
   "decision_reason": "對正在規劃赴美求學的學生與家庭是直接、須立即調整的決策依據",
@@ -3865,7 +3704,6 @@
  },
  {
   "affected": "中國海外投資者、英國鋼鐵業與北林肯郡就業、中英關係、各國關鍵基礎設施外資審查政策",
-  "created_at": "2026-07-20 09:21:23",
   "credibility_reason": "英國政府決議、中國商務部聲明、國家審計署數據與工會回應，多方具名佐證",
   "credibility_score": 13,
   "decision_reason": "影響跨國投資風險評估、供應鏈與產業政策決策",
@@ -3889,7 +3727,6 @@
  },
  {
   "affected": "香港出版與書店業、香港市民與作家、國際出版與言論自由組織、關注中國治理模式的研究者與各地華文出版",
-  "created_at": "2026-07-20 09:21:23",
   "credibility_reason": "BBC系統性梳理五年案例，引用明報數據、官員具名說法與當事書店負責人證言",
   "credibility_score": 13,
   "decision_reason": "對出版、書店業者與在港文化工作者有直接影響，對一般讀者屬理解層面",
@@ -3913,7 +3750,6 @@
  },
  {
   "affected": "全球AI產業與模型公司（OpenAI、Anthropic）、美國科技政策圈、全球南方國家、台灣AI供應鏈",
-  "created_at": "2026-07-20 14:01:55",
   "credibility_reason": "官方講話內容明確、多位分析人士具名，惟戰略意圖屬詮釋",
   "credibility_score": 11,
   "decision_reason": "對AI產業策略與投資判斷有背景價值，非直接行動項",
@@ -3937,7 +3773,6 @@
  },
  {
   "affected": "全球癌症與糖尿病防治研究、製藥產業、關注抗老與慢性病預防的一般大眾",
-  "created_at": "2026-07-20 09:19:41",
   "credibility_reason": "40年追蹤、22年世代數據、《科學》級研究與具名學者，證據紮實惟仍待人體療法驗證",
   "credibility_score": 13,
   "decision_reason": "現階段尚無可行療法，對個人決策影響有限，屬知識與趨勢層面",
@@ -3961,7 +3796,6 @@
  },
  {
   "affected": "天文學與太空科學界、關注地外生命議題的大眾、太空望遠鏡研究資源配置",
-  "created_at": "2026-07-20 09:19:41",
   "credibility_reason": "《科學》期刊發表、哈佛團隊具名、研究者審慎區分事實與推測，可信度高",
   "credibility_score": 14,
   "decision_reason": "對日常決策無影響，純屬知識與科學進展",
@@ -3985,7 +3819,6 @@
  },
  {
   "affected": "台灣出國旅客與旅遊保險保戶、產險業者、旅行社",
-  "created_at": "2026-07-20 12:57:50",
   "credibility_reason": "金管會與產險公會官方公告，數字與日期明確",
   "credibility_score": 13,
   "decision_reason": "對暑假與颱風季出國者是立即可用的權益資訊，行動指引具體",
@@ -4009,7 +3842,6 @@
  },
  {
   "affected": "全球數億經期App用戶、數位隱私倡議組織、健康科技業、關注數據治理的監管機關",
-  "created_at": "2026-07-20 14:01:55",
   "credibility_reason": "Mozilla具名研究、逐App具體發現、被點名公司回應俱呈",
   "credibility_score": 13,
   "decision_reason": "報告直接可據以更換App或調整設定，行動指引具體",
@@ -4033,7 +3865,6 @@
  },
  {
   "affected": "國際航運與保險業、穀物貿易商、土耳其與黑海沿岸國家、依賴烏克蘭糧食出口的市場",
-  "created_at": "2026-07-20 09:11:46",
   "credibility_reason": "有明確船名、傷亡數字與烏克蘭海軍聲明，但目前僅單方說法，俄方未回應",
   "credibility_score": 9,
   "decision_reason": "直接影響航運、保險、穀物貿易從業者決策；對一般讀者屬背景資訊",
@@ -4057,7 +3888,6 @@
  },
  {
   "affected": "日本中小商家、支付產業、金融監理機關、依賴第三方支付代收的各國商家",
-  "created_at": "2026-07-20 09:11:46",
   "credibility_reason": "有法院裁定、破產管理人說法與具體金額數據，來源明確",
   "credibility_score": 12,
   "decision_reason": "商家選擇支付服務商時的信用風險意識、監理機關的制度設計都會受此案影響",
@@ -4081,7 +3911,6 @@
  },
  {
   "affected": "美國選民與地方社區、AI與雲端產業（Meta、OpenAI、Google等）、社群平台治理、各國面對資訊戰的政府",
-  "created_at": "2026-07-20 09:11:46",
   "credibility_reason": "紐時報導、安全公司Alethea追蹤數據與蓋洛普民調，多方佐證",
   "credibility_score": 12,
   "decision_reason": "影響AI企業選址與公關策略、平台治理政策、投資人對AI基建阻力的評估",
@@ -4105,7 +3934,6 @@
  },
  {
   "affected": "日本能源與航運業、菲律賓印尼等合作國、依賴同一航道的台灣與韓國、區域地緣戰略格局",
-  "created_at": "2026-07-20 09:13:27",
   "credibility_reason": "具體海域名稱、經費數字與時程，來源為日本外務省規劃",
   "credibility_score": 12,
   "decision_reason": "對航運、能源業與地緣政策制定者有參考價值，一般讀者屬背景知識",
@@ -4129,7 +3957,6 @@
  },
  {
   "affected": "烏克蘭平民、歐洲安全格局、西方軍援決策、能源與defence類股市場",
-  "created_at": "2026-07-20 09:13:27",
   "credibility_reason": "澤倫斯基、基輔市長與CNN多方證實，數據明確",
   "credibility_score": 12,
   "decision_reason": "對一般讀者決策影響有限，主要影響地緣風險與軍援政策判斷",
@@ -4153,7 +3980,6 @@
  },
  {
   "affected": "美伊關係、中東局勢、全球能源市場、美國國安決策圈",
-  "created_at": "2026-07-20 09:13:28",
   "credibility_reason": "影片存在有多方確認，但意圖詮釋有空間、路線圖與實際不符，且處於資訊戰脈絡",
   "credibility_score": 9,
   "decision_reason": "對一般讀者決策影響低，主要影響地緣風險與能源市場判斷",
@@ -4177,7 +4003,6 @@
  },
  {
   "affected": "台灣與韓國勞工及投資人、半導體產業、兩國政府產業政策",
-  "created_at": "2026-07-20 09:13:28",
   "credibility_reason": "具體GDP數據與具名專家分析，惟部分為預估值",
   "credibility_score": 12,
   "decision_reason": "對台灣讀者的職涯選擇、投資配置有直接參考價值",
@@ -4201,7 +4026,6 @@
  },
  {
   "affected": "全球能源市場、購買俄伊石油的國家（中國、印度）、美國國會、油價相關產業",
-  "created_at": "2026-07-20 09:13:28",
   "credibility_reason": "發文內容屬實且法案存在，但後續發展高度不確定",
   "credibility_score": 10,
   "decision_reason": "能源與貿易相關者需納入情境規劃，一般讀者暫無行動必要",
@@ -4225,7 +4049,6 @@
  },
  {
   "affected": "歐洲消費者與電網、中國家電業（美的、格力、TCL）、日韓歐家電競爭者、能源與氣候政策制定者",
-  "created_at": "2026-07-20 09:15:08",
   "credibility_reason": "BBC多方採訪與企業聲明，惟部分銷量數字來自環球時報、美的拒絕向BBC證實",
   "credibility_score": 11,
   "decision_reason": "影響家電產業布局、相關投資判斷與歐洲消費者購買決策",
@@ -4249,7 +4072,6 @@
  },
  {
   "affected": "歐洲消費者與電網、中國家電廠（美的、格力、TCL）、歐洲本土家電業、能源與減碳政策",
-  "created_at": "2026-07-20 09:19:41",
   "credibility_reason": "多家廠商具體銷量、國際報告與具名受訪者，惟部分銷量數字廠商未向BBC證實",
   "credibility_score": 12,
   "decision_reason": "影響歐洲消費、能源政策與家電產業投資判斷",
@@ -4273,7 +4095,6 @@
  },
  {
   "affected": "朝鮮社會與脫北者、韓國文化外交、東亞地緣觀察者、關注威權資訊管制的研究者",
-  "created_at": "2026-07-20 09:19:41",
   "credibility_reason": "多名具名/化名脫北者證言與2023年調查數據，惟部分細節難以獨立查證",
   "credibility_score": 12,
   "decision_reason": "對讀者決策影響低，主要提供理解與判斷背景",
@@ -4297,7 +4118,6 @@
  },
  {
   "affected": "俄羅斯經濟與中小企業、俄政府財政、關注俄烏戰爭走向的分析者與市場、能源與制裁政策制定者",
-  "created_at": "2026-07-20 09:19:41",
   "credibility_reason": "BBC分析央行官方數據、Sberbank高管與研究機構具名評論，多方佐證",
   "credibility_score": 13,
   "decision_reason": "對一般讀者決策影響低，主要影響地緣與市場風險判斷",
@@ -4321,7 +4141,6 @@
  },
  {
   "affected": "美加貿易關係、加拿大木材業、美國東部受空污影響民眾、關注貿易政策的產業",
-  "created_at": "2026-07-20 09:21:23",
   "credibility_reason": "雙方具名發言與野火面積數據明確，惟關稅主張尚無具體政策文本",
   "credibility_score": 11,
   "decision_reason": "對木材業與美加貿易相關者有參考，一般讀者無行動必要",
@@ -4345,7 +4164,6 @@
  },
  {
   "affected": "鴻海與台灣AI伺服器供應鏈、台股投資人、NVIDIA生態系、全球資料中心產業",
-  "created_at": "2026-07-20 09:23:26",
   "credibility_reason": "訂單櫃數與金額多為法人估算、非雙方官方公告，工業富聯財測為公開數據，可信度中等",
   "credibility_score": 9,
   "decision_reason": "對台股投資人與科技產業從業者是明確的產業動能判斷依據",
@@ -4369,7 +4187,6 @@
  },
  {
   "affected": "韓國散戶與券商、台灣及亞洲槓桿投資人、記憶體與AI類股、金融監理機關",
-  "created_at": "2026-07-20 09:23:26",
   "credibility_reason": "融資餘額、帳戶數與跌幅有具體數據，但各家報導帳戶數字（32萬/36萬/46萬）不一致",
   "credibility_score": 11,
   "decision_reason": "對投資人的槓桿與部位管理是可立即行動的警示，決策相關性高",
@@ -4393,7 +4210,6 @@
  },
  {
   "affected": "烏克蘭政局與軍隊、西方軍援決策者、關注現代戰爭轉型的軍事觀察者、國防科技產業",
-  "created_at": "2026-07-20 09:23:26",
   "credibility_reason": "撤換與示威有多家媒體證實，但「撤換總司令」部分仍屬傳聞未經證實",
   "credibility_score": 11,
   "decision_reason": "對一般讀者決策影響低，主要影響地緣風險與國防產業判斷",
@@ -4417,7 +4233,6 @@
  },
  {
   "affected": "全球能源市場與消費者、依賴中東原油的亞洲國家（含台灣）、航運與航空業、各國央行與通膨政策",
-  "created_at": "2026-07-20 09:23:26",
   "credibility_reason": "油價數據明確、多家財經媒體交叉報導，但軍事行動細節與封鎖規模的獨立查證有限",
   "credibility_score": 11,
   "decision_reason": "直接影響能源成本、通膨預期與投資配置，對企業與個人皆有實際決策意義",
@@ -4441,7 +4256,6 @@
  },
  {
   "affected": "英國民眾與企業、歐盟與美國的外交對口、國際市場（英鎊與英債）、在英台商與留學生",
-  "created_at": "2026-07-20 09:11:46",
   "credibility_reason": "官方交接流程、時間人物明確，中央社綜合報導可信度高",
   "credibility_score": 13,
   "decision_reason": "影響對英貿易、投資與留學決策；對台灣讀者屬間接但明確的政策環境變化",
@@ -4465,7 +4279,6 @@
  },
  {
   "affected": "德國與歐洲製造業（化工、鋼鐵、能源）、依賴歐洲供應鏈的台灣企業、大宗商品與物流市場",
-  "created_at": "2026-07-20 09:11:46",
   "credibility_reason": "有具體水位數據、載貨量對比、企業與經濟學家具名說法",
   "credibility_score": 12,
   "decision_reason": "影響歐洲供應鏈採購、物流成本與化工原料價格判斷",
@@ -4489,7 +4302,6 @@
  },
  {
   "affected": "全球能源市場與航運保險業、依賴中東原油的亞洲國家（含台灣）、各國央行通膨決策、荷莫茲週邊國家",
-  "created_at": "2026-07-20 12:52:25",
   "credibility_reason": "UKMTO與英軍官方證實，惟起火原因尚未確認、是否為攻擊仍待查",
   "credibility_score": 12,
   "decision_reason": "直接影響能源成本、通膨預期、航運與投資配置決策",
@@ -4513,7 +4325,6 @@
  },
  {
   "affected": "美伊兩國與中東各國、全球能源市場、美國國內政治、駐中東美軍與僑民、國際航運",
-  "created_at": "2026-07-20 12:52:25",
   "credibility_reason": "美國中央司令部官方說法、傷亡數字明確，惟戰果描述來自單方",
   "credibility_score": 12,
   "decision_reason": "影響能源、避險資產配置與地緣風險評估；對一般讀者主要是間接傳導",
@@ -4537,7 +4348,6 @@
  },
  {
   "affected": "台積電與台灣半導體供應鏈、台股投資人、台灣經濟與地緣地位、美國製造業政策、競爭對手三星與英特爾",
-  "created_at": "2026-07-20 12:52:25",
   "credibility_reason": "財務長財報會議具名說法、投資數字明確，官方一手來源",
   "credibility_score": 13,
   "decision_reason": "對投資人、半導體從業者與供應鏈廠商是具體的中長期決策依據",
@@ -4561,7 +4371,6 @@
  },
  {
   "affected": "韓國電商與物流業、酷澎營運與商譽、周邊居民、各國倉儲消防監理單位",
-  "created_at": "2026-07-20 12:52:25",
   "credibility_reason": "韓國消防部門官方資訊、時間地點數據明確",
   "credibility_score": 12,
   "decision_reason": "對一般讀者決策影響低，對物流業者有借鏡價值",
@@ -4585,7 +4394,6 @@
  },
  {
   "affected": "中國海外投資者、澳洲礦業與稀土供應鏈、AUKUS成員國、各國外資審查政策、台灣關鍵產業的外資監理參照",
-  "created_at": "2026-07-20 12:52:25",
   "credibility_reason": "有法院罰款、股權比例等具體數據與部長具名說法，惟屬「擬議」階段",
   "credibility_score": 12,
   "decision_reason": "影響跨國投資與供應鏈風險評估，一般讀者屬背景趨勢",
@@ -4609,7 +4417,6 @@
  },
  {
   "affected": "台股投資人（尤其融資槓桿者）、記憶體/被動元件/載板等強勢族群持有者、金融監理機關",
-  "created_at": "2026-07-20 12:54:14",
   "credibility_reason": "賣超金額、指數與融資數據明確，經理人觀點具名但屬多頭立場",
   "credibility_score": 12,
   "decision_reason": "對槓桿管理、進出場時機是直接且急迫的決策依據",
@@ -4633,7 +4440,6 @@
  },
  {
   "affected": "AI模型公司與其投資人、半導體與AI基建供應鏈（台廠）、美股科技股投資人、開源AI生態",
-  "created_at": "2026-07-20 12:54:14",
   "credibility_reason": "評測數據與定價具體，多位具名分析師，惟市場詮釋成分高",
   "credibility_score": 11,
   "decision_reason": "對AI供應鏈vs模型層的投資配置判斷有直接意義",
@@ -4657,7 +4463,6 @@
  },
  {
   "affected": "台積電與台灣IC設計服務業（世芯、創意、智原）、NVIDIA與AMD、雲端巨頭、AI伺服器供應鏈",
-  "created_at": "2026-07-20 12:54:14",
   "credibility_reason": "資本支出數字明確、分析師具名，量產時程屬供應鏈消息",
   "credibility_score": 11,
   "decision_reason": "對台股AI族群與半導體從業者的中期布局有參考價值",
@@ -4681,7 +4486,6 @@
  },
  {
   "affected": "美股科技股與全球投資人、甲骨文/微軟/軟銀等OpenAI債權與股東、AI基建供應鏈（含台廠）、資料中心產業",
-  "created_at": "2026-07-20 12:54:14",
   "credibility_reason": "引用數據具體可查，但核心論斷是單一評論人的悲觀情境推演",
   "credibility_score": 9,
   "decision_reason": "對AI相關持股的風險管理與情境規劃有實質參考",
@@ -4705,7 +4509,6 @@
  },
  {
   "affected": "全球電子產品消費者（終端漲價）、PC與手機品牌、記憶體供應鏈、韓國半導體政策、台灣記憶體與模組廠",
-  "created_at": "2026-07-20 12:54:14",
   "credibility_reason": "集團會長公開記者會具名發言，需求預測為其單方判斷",
   "credibility_score": 12,
   "decision_reason": "影響電子業採購、消費者購機時機與記憶體相關投資判斷",
@@ -4729,7 +4532,6 @@
  },
  {
   "affected": "三星各事業部員工、韓國半導體人才市場、台積電與競爭格局、三星晶圓代工客戶",
-  "created_at": "2026-07-20 12:55:53",
   "credibility_reason": "調查樣本數與獎金數字具體，惟為內部調查、三星未正式回應",
   "credibility_score": 11,
   "decision_reason": "對半導體從業者與關注代工競爭格局的投資人有參考價值",
@@ -4753,7 +4555,6 @@
  },
  {
   "affected": "三星與SK海力士、美光、中國半導體產業、蘋果等品牌廠、台灣記憶體與封測供應鏈",
-  "created_at": "2026-07-20 12:55:53",
   "credibility_reason": "供應鏈傳聞性質（「傳」），蘋果合作未經證實，製程細節具體但來源非官方",
   "credibility_score": 9,
   "decision_reason": "對記憶體產業投資與供應鏈布局有中期參考價值",
@@ -4777,7 +4578,6 @@
  },
  {
   "affected": "Google與Android生態、OpenAI/Anthropic等AI公司、Android用戶（全球逾30億）、各國數位監管機關、手機品牌廠",
-  "created_at": "2026-07-20 12:55:53",
   "credibility_reason": "歐盟執委會正式命令、要求與期限明確，各方立場具名",
   "credibility_score": 12,
   "decision_reason": "影響AI產業策略與平台開發者，一般用戶屬未來選擇增加",
@@ -4801,7 +4601,6 @@
  },
  {
   "affected": "Palantir與美國防務科技業、歐洲國防產業（ChapsVision等）、NATO作戰體系、跨大西洋關係、各國軍事AI採購政策",
-  "created_at": "2026-07-20 12:55:53",
   "credibility_reason": "兩國元首聯合聲明、採購決策具體，NATO與Palantir方說法俱呈",
   "credibility_score": 12,
   "decision_reason": "對防務科技投資與地緣分析有參考，一般讀者屬格局認知",
@@ -4825,7 +4624,6 @@
  },
  {
   "affected": "俄羅斯農業與經濟、全球小麥與糧食進口國（中東、北非最脆弱）、大宗商品市場、烏克蘭戰爭走向",
-  "created_at": "2026-07-20 12:55:53",
   "credibility_reason": "運力、期貨價格等數據具體，多方事實可交叉驗證",
   "credibility_score": 12,
   "decision_reason": "對大宗商品與糧食相關產業有參考，一般讀者屬間接影響",
@@ -4849,7 +4647,6 @@
  },
  {
   "affected": "德國零售業與勞工、宗教與社會團體、歐洲電商格局、觀察德國經濟的投資人",
-  "created_at": "2026-07-20 12:57:50",
   "credibility_reason": "政策方向與各方立場明確，惟仍在評估階段、州政府態度分歧",
   "credibility_score": 11,
   "decision_reason": "對台灣讀者屬背景知識，對在德企業與零售投資有參考",
@@ -4873,7 +4670,6 @@
  },
  {
   "affected": "全球時尚品牌與快時尚業者、亞洲紡織供應鏈（含台灣）、歐洲消費者與二手市場、ESG投資人",
-  "created_at": "2026-07-20 12:57:50",
   "credibility_reason": "法規內容、門檻與數據明確，各方立場具名",
   "credibility_score": 12,
   "decision_reason": "對紡織供應鏈、ESG投資與品牌策略有實質影響",
@@ -4897,7 +4693,6 @@
  },
  {
   "affected": "建商與建築業、大型建物業主、太陽能供應鏈（元晶、聯合再生、安集、茂迪、聚恆）、能源政策與台電",
-  "created_at": "2026-07-20 12:57:50",
   "credibility_reason": "法規名稱、門檻、補助金額與施行日期明確，官方來源",
   "credibility_score": 12,
   "decision_reason": "對建商合規、業主申請補助、光電族群投資都是直接決策依據",
@@ -4921,7 +4716,6 @@
  },
  {
   "affected": "全球能源市場、伊朗的地緣籌碼、伊拉克與敘利亞經濟、波灣產油國、亞洲能源進口國（含台灣）",
-  "created_at": "2026-07-20 12:57:50",
   "credibility_reason": "協議簽署具體、美方見證，惟重建資金時程與敘利亞安全仍高度不確定",
   "credibility_score": 11,
   "decision_reason": "對能源產業與長期油價結構判斷有參考，一般讀者屬格局認知",
@@ -4945,7 +4739,6 @@
  },
  {
   "affected": "全球失智症患者與家庭、台灣生技產業與投資人、阿茲海默藥物研發格局",
-  "created_at": "2026-07-20 12:57:50",
   "credibility_reason": "公司於產業會議自行發表的期中數據，個案亮點突出但未經同行評審、樣本小",
   "credibility_score": 9,
   "decision_reason": "尚在二期，對患者家庭與投資人是追蹤項而非行動項",
@@ -4969,7 +4762,6 @@
  },
  {
   "affected": "日本社會與周邊國家（中韓台）、美日同盟核保護傘安排、東亞軍備格局、核不擴散體制",
-  "created_at": "2026-07-21 10:43:40",
   "credibility_reason": "防相發言屬實，惟為節目談話而非政策文件，政府內部意見分歧",
   "credibility_score": 11,
   "decision_reason": "對一般讀者屬格局認知，對地緣與防務分析有重要參考",
@@ -4993,7 +4785,6 @@
  },
  {
   "affected": "購屋與租屋族、建商與營建業、房市政策制定者、高雄等推案熱區屋主",
-  "created_at": "2026-07-21 10:46:51",
   "credibility_reason": "內政部官方統計，指標定義與歷史序列明確",
   "credibility_score": 13,
   "decision_reason": "對購屋時機、區域選擇與議價判斷有直接參考",
@@ -5017,7 +4808,6 @@
  },
  {
   "affected": "金門居民與台灣民眾、台灣國防與海巡、兩岸航空業、美日等關注台海的國家",
-  "created_at": "2026-07-21 10:43:40",
   "credibility_reason": "BBC實地採訪、官方規劃數據與具名軍事專家分析",
   "credibility_score": 13,
   "decision_reason": "牽動台灣國防部署、金門政策與航空管理，一般讀者屬重要認知",
@@ -5041,7 +4831,6 @@
  },
  {
   "affected": "日中關係、美日同盟、台灣（東海與台海連動）、東亞海上安全秩序",
-  "created_at": "2026-07-21 10:43:40",
   "credibility_reason": "日本防衛省官方偵獲資訊，時間地點艦型明確",
   "credibility_score": 12,
   "decision_reason": "對一般讀者屬地緣認知背景",
@@ -5065,7 +4854,6 @@
  },
  {
   "affected": "菲律賓與中國、美菲同盟、東協南海立場、台灣（南海航道與地緣連動）",
-  "created_at": "2026-07-21 10:43:40",
   "credibility_reason": "衝突事實確立但雙方說法對立，美方表態明確",
   "credibility_score": 11,
   "decision_reason": "對一般讀者屬地緣風險背景",
@@ -5089,7 +4877,6 @@
  },
  {
   "affected": "美中關係全局、台灣（峰會議程可能涉台）、全球市場、東亞各國外交布局",
-  "created_at": "2026-07-21 10:43:40",
   "credibility_reason": "國務卿具名公開表態，日期明確",
   "credibility_score": 12,
   "decision_reason": "對市場預期與政策判讀有指標意義",
@@ -5113,7 +4900,6 @@
  },
  {
   "affected": "加拿大出口商與經濟、美國進口商與消費者、USMCA架構、與美國有貿易協定或談判中的國家（含台灣）",
-  "created_at": "2026-07-21 10:45:16",
   "credibility_reason": "正式簽署的公告、條款與生效時程明確",
   "credibility_score": 12,
   "decision_reason": "對跨國貿易、供應鏈與談判中經濟體的風險評估有直接參考",
@@ -5137,7 +4923,6 @@
  },
  {
   "affected": "美國國防承包商、中國稀土產業、澳加等替代供應國、台灣國防與航太供應鏈廠商",
-  "created_at": "2026-07-21 10:45:17",
   "credibility_reason": "行政命令內容與時程明確，官方一手來源",
   "credibility_score": 12,
   "decision_reason": "對供應鏈廠商（含台灣）是具體合規預警",
@@ -5161,7 +4946,6 @@
  },
  {
   "affected": "美伊衝突走向、波灣航運與能源市場、以色列與區域國家、全球油價",
-  "created_at": "2026-07-21 10:45:17",
   "credibility_reason": "部署數據來自以色列消息人士與媒體，方向明確但細節未經官方全面證實",
   "credibility_score": 11,
   "decision_reason": "對能源與避險配置是領先指標",
@@ -5185,7 +4969,6 @@
  },
  {
   "affected": "台積電與台灣半導體業、台灣國安與司法體系、在陸台籍工程師、外資對台灣技術保護的信心",
-  "created_at": "2026-07-21 10:45:17",
   "credibility_reason": "高檢署偵結起訴的官方案情，文件數量與組織鏈明確",
   "credibility_score": 12,
   "decision_reason": "對半導體業內控、從業者法律風險意識有直接參考",
@@ -5209,7 +4992,6 @@
  },
  {
   "affected": "台積電與台灣半導體生態、日本半導體產業、設備與材料供應鏈、美日荷對華管制聯盟",
-  "created_at": "2026-07-21 10:45:17",
   "credibility_reason": "預算數字與投資計畫具體，量產時程屬目標值仍有執行風險",
   "credibility_score": 12,
   "decision_reason": "對半導體從業者、供應鏈布局與投資判斷有中期參考",
@@ -5233,7 +5015,6 @@
  },
  {
   "affected": "NVIDIA與AMD、雲端巨頭、台灣AI伺服器供應鏈（代工與零組件重新洗牌）、AI算力成本",
-  "created_at": "2026-07-21 10:46:51",
   "credibility_reason": "產品發表與客戶名單具體，市占預估屬研究機構推測",
   "credibility_score": 12,
   "decision_reason": "對AI硬體投資配置與供應鏈布局有直接參考",
@@ -5257,7 +5038,6 @@
  },
  {
   "affected": "阿里與中國跨境電商（Shein、Temu）、歐洲消費者與本土零售、各國平台監理機關、台灣跨境電商賣家",
-  "created_at": "2026-07-21 10:46:51",
   "credibility_reason": "執委會正式裁罰、金額與違規事項明確",
   "credibility_score": 12,
   "decision_reason": "對跨境電商業者與平台合規有參考價值",
@@ -5281,7 +5061,6 @@
  },
  {
   "affected": "德國製造業（汽車、機械）、歐中貿易政策、歐元區經濟、台灣對歐出口（部分替代機會）",
-  "created_at": "2026-07-21 10:46:51",
   "credibility_reason": "聯邦統計局官方數據，品項拆解具體；匯率低估說屬總理主張",
   "credibility_score": 12,
   "decision_reason": "對歐洲市場布局與歐中政策判讀有參考",
@@ -5305,7 +5084,6 @@
  },
  {
   "affected": "失智症家庭與照顧者、台灣長照政策、高齡醫學與公衛體系、長照與保險產業",
-  "created_at": "2026-07-21 10:46:51",
   "credibility_reason": "百萬人健保資料、JAMA系列期刊發表、多位具名專家審慎詮釋",
   "credibility_score": 13,
   "decision_reason": "照顧者自我健康管理與家庭安排有具體行動指引",
@@ -5329,7 +5107,6 @@
  },
  {
   "affected": "台股投資人、槓桿與ETF操作者、韓台科技股連動市場",
-  "created_at": "2026-07-22 10:43:04",
   "credibility_reason": "指數與籌碼數據明確，法人分析具名惟屬多頭視角",
   "credibility_score": 12,
   "decision_reason": "對部位管理與波動預期有直接參考，與前次暴跌構成完整案例",
@@ -5353,7 +5130,6 @@
  },
  {
   "affected": "晶片設計公司（NVIDIA、AMD、Apple）、終端消費者、台積電股東與台股、電子供應鏈成本結構",
-  "created_at": "2026-07-22 10:43:04",
   "credibility_reason": "供應鏈消息具體（時程、幅度），惟公司未正式公告，屬「傳」字輩",
   "credibility_score": 11,
   "decision_reason": "對半導體投資、電子業成本規劃與消費時機有參考",
@@ -5377,7 +5153,6 @@
  },
  {
   "affected": "全球AI產業與開源生態、台積電（雙向管制夾擊）、使用中國模型的各國開發者、美中科技政策",
-  "created_at": "2026-07-22 10:43:04",
   "credibility_reason": "FT與路透多方報導、與會企業具體，惟仍在「考慮」階段未成政策",
   "credibility_score": 10,
   "decision_reason": "對AI開發者選型與供應鏈合規有前瞻參考",
@@ -5401,7 +5176,6 @@
  },
  {
   "affected": "數學界與科研方法論、AI能力評估、科研資助與教育體系、AI公司競爭敘事",
-  "created_at": "2026-07-22 10:43:04",
   "credibility_reason": "當事人社群宣布+媒體轉述，未經同行評審與權威確認；瀏覽量非驗證，需明確保留",
   "credibility_score": 8,
   "decision_reason": "對一般讀者無行動意義，屬能力認知更新",
@@ -5425,7 +5199,6 @@
  },
  {
   "affected": "波灣六國民生與經濟、全球能源與航運、在中東外派人員與旅客、全球通膨",
-  "created_at": "2026-07-22 10:44:41",
   "credibility_reason": "多國官方回應與美軍聲明交叉佐證",
   "credibility_score": 12,
   "decision_reason": "旅遊警示、能源與避險配置有直接行動意義",
@@ -5449,7 +5222,6 @@
  },
  {
   "affected": "數十個出口導向國家、全球供應鏈與原產地規劃、美國進口商、台灣供應鏈的上游合規",
-  "created_at": "2026-07-22 10:46:30",
   "credibility_reason": "貿易代表具名受訪，惟清單與稅率尚未正式公布",
   "credibility_score": 11,
   "decision_reason": "對供應鏈合規與出口布局有前瞻參考",
@@ -5473,7 +5245,6 @@
  },
  {
   "affected": "中北部14縣市民眾、電信業者、台灣國防與數位韌性政策、關注台海的國際觀察者",
-  "created_at": "2026-07-22 10:46:30",
   "credibility_reason": "NCC與國防部官方規劃、日期範圍明確，多方立場俱呈",
   "credibility_score": 13,
   "decision_reason": "演習日程直接影響民眾，通訊備援準備有具體行動指引",
@@ -5497,7 +5268,6 @@
  },
  {
   "affected": "緯創與台灣AI伺服器供應鏈、美國製造業政策、德州就業、NVIDIA生態",
-  "created_at": "2026-07-22 10:44:41",
   "credibility_reason": "開幕典禮公開資訊、投資與產線數據具名明確",
   "credibility_score": 13,
   "decision_reason": "對供應鏈投資與台廠獲利結構判斷有參考",
@@ -5521,7 +5291,6 @@
  },
  {
   "affected": "NVIDIA與雲端巨頭的關係、台灣光通訊供應鏈、電信與光纖資產持有者、AI基建投資人",
-  "created_at": "2026-07-22 10:44:41",
   "credibility_reason": "Needham研究報告推估與市場消息，NVIDIA未正式公告",
   "credibility_score": 10,
   "decision_reason": "對光通訊族群投資與AI基建格局判斷有直接參考",
@@ -5545,7 +5314,6 @@
  },
  {
   "affected": "美國國防預算與軍備態勢、美國國內政治、美伊衝突走向、依賴美軍保護的盟國（含台灣的安全承諾容量）",
-  "created_at": "2026-07-22 10:44:41",
   "credibility_reason": "國會聽證的官方數字，時間序列明確",
   "credibility_score": 13,
   "decision_reason": "對防務政策與美國政治判讀有參考",
@@ -5569,7 +5337,6 @@
  },
  {
   "affected": "烏克蘭戰局與軍隊士氣、澤倫斯基的政治地位、西方軍援信心、俄烏戰爭走向",
-  "created_at": "2026-07-22 10:44:41",
   "credibility_reason": "官方任命與人物背景明確，多方報導一致",
   "credibility_score": 12,
   "decision_reason": "對一般讀者屬地緣背景",
@@ -5593,7 +5360,6 @@
  },
  {
   "affected": "法國青少年與家庭、社群平台（Meta、TikTok等）、歐盟數位政策、各國兒少保護立法（含台灣）",
-  "created_at": "2026-07-22 10:46:30",
   "credibility_reason": "參議院正式通過、生效日期與機制明確",
   "credibility_score": 13,
   "decision_reason": "對家長教養、平台合規與各國政策辯論有直接參考",
@@ -5617,7 +5383,6 @@
  },
  {
   "affected": "中國AI公司（月之暗面、阿里、DeepSeek）、美國AI公司、全球開源生態、美中談判議程",
-  "created_at": "2026-07-22 10:46:30",
   "credibility_reason": "財長具名表態、Anthropic指控具體，惟調查尚未啟動、浮水印證據未公開",
   "credibility_score": 11,
   "decision_reason": "對AI業者選型合規與政策判讀有參考",
@@ -5641,7 +5406,6 @@
  },
  {
   "affected": "歐洲發電商與電網營運商、儲能產業（全球性利多）、台灣能源政策與光電投資人、電價與碳目標",
-  "created_at": "2026-07-22 10:46:30",
   "credibility_reason": "發電佔比、儲能與負電價數據具體，多方具名",
   "credibility_score": 13,
   "decision_reason": "對儲能投資與台灣光電政策借鏡有實質參考",
@@ -5665,7 +5429,6 @@
  },
  {
   "affected": "美中關係、台灣（峰會涉台議程）、亞太外交格局、全球市場預期",
-  "created_at": "2026-07-23 09:29:58",
   "credibility_reason": "雙方官方會後表述，內容交叉可證",
   "credibility_score": 12,
   "decision_reason": "對政策與市場預期判讀有指標意義",
@@ -5689,7 +5452,6 @@
  },
  {
   "affected": "美烏軍事關係、全球無人機產業與軍備市場、傳統軍工大廠、台灣不對稱戰力規劃",
-  "created_at": "2026-07-23 09:31:22",
   "credibility_reason": "路透單一消息源、雙方官方未證實",
   "credibility_score": 10,
   "decision_reason": "對防務產業與政策研究有參考",
@@ -5713,7 +5475,6 @@
  },
  {
   "affected": "AI公司與安全評估體系、企業AI部署者、AI監管機關、開源平台",
-  "created_at": "2026-07-23 09:31:22",
   "credibility_reason": "雙方CEO具名回應、事件紀錄數據具體，惟動機詮釋來自OpenAI單方",
   "credibility_score": 12,
   "decision_reason": "對部署AI agent的企業有直接安全參考",
@@ -5737,7 +5498,6 @@
  },
  {
   "affected": "中國青年與社會穩定、中國內需與經濟政策、全球AI就業衝擊的政策參照、在中台商",
-  "created_at": "2026-07-23 09:32:37",
   "credibility_reason": "官方數據與多家外資具名預測，惟20%為推估",
   "credibility_score": 11,
   "decision_reason": "對政策研究與在中經營者有參考",
@@ -5761,7 +5521,6 @@
  },
  {
   "affected": "台灣慢性病患者與醫療體系、全球學名藥產業（印度為主）、台灣製藥業（國造商機）、健保財務",
-  "created_at": "2026-07-23 09:32:37",
   "credibility_reason": "關稅政策與台灣計畫皆官方公告，數據具體",
   "credibility_score": 12,
   "decision_reason": "對用藥者、製藥投資與政策追蹤有實質參考",
@@ -5785,7 +5544,6 @@
  },
  {
   "affected": "Temu、Shein與中國跨境電商、歐洲本土零售、小型跨境賣家（含台灣）、歐洲物流與報關業",
-  "created_at": "2026-07-23 09:32:37",
   "credibility_reason": "稅制內容與包裹量數據明確，企業因應具體",
   "credibility_score": 13,
   "decision_reason": "對跨境電商業者與物流投資有直接參考",
@@ -5809,7 +5567,6 @@
  },
  {
   "affected": "京東與中資海外併購、歐洲零售業、受國家補貼的各國企業（含享補助的台廠參照）、歐盟競爭政策",
-  "created_at": "2026-07-23 09:32:37",
   "credibility_reason": "路透知情人士報導，京東回應證實程序存在",
   "credibility_score": 11,
   "decision_reason": "對跨國併購與受補貼企業的合規有參考",
@@ -5833,7 +5590,6 @@
  },
  {
   "affected": "NVIDIA與AI晶片競爭格局、Anthropic與OpenAI的算力軍備、台灣AI伺服器供應鏈（Helios代工鏈）、AI資本市場",
-  "created_at": "2026-07-23 09:29:57",
   "credibility_reason": "雙方正式公告、金額與採購規模明確",
   "credibility_score": 12,
   "decision_reason": "對AI硬體投資配置與供應鏈判斷有直接參考",
@@ -5857,7 +5613,6 @@
  },
  {
   "affected": "月之暗面與中國AI公司、東南亞資料中心產業、NVIDIA的銷售合規、美中AI談判、Anthropic等被蒸餾方",
-  "created_at": "2026-07-23 09:29:57",
   "credibility_reason": "白宮官員具名指控且細節具體，惟為單方說法、當事方未回應",
   "credibility_score": 11,
   "decision_reason": "對AI業者合規與供應鏈規劃有前瞻參考",
@@ -5881,7 +5636,6 @@
  },
  {
   "affected": "華為中興與中國元件供應鏈、美國品牌商與進口商、台灣元件供應商（轉單與合規）、全球電子供應鏈",
-  "created_at": "2026-07-23 09:29:57",
   "credibility_reason": "FCC正式投票通過，規範內容明確",
   "credibility_score": 13,
   "decision_reason": "對電子業供應鏈管理與台廠布局有具體參考",
@@ -5905,7 +5659,6 @@
  },
  {
   "affected": "中東核秩序、以色列與伊朗、核不擴散體制、美國國會、鈾濃縮與核工業",
-  "created_at": "2026-07-23 09:29:57",
   "credibility_reason": "官方簽署事實明確，擴散疑慮為多方具名關切",
   "credibility_score": 12,
   "decision_reason": "對一般讀者屬格局認知",
@@ -5929,7 +5682,6 @@
  },
  {
   "affected": "全球與台灣民眾、醫療體系與健保、防癌篩檢與疫苗政策、製藥與醫材產業",
-  "created_at": "2026-07-23 09:31:22",
   "credibility_reason": "WHO官方預測與預防數據，來源權威",
   "credibility_score": 13,
   "decision_reason": "篩檢、疫苗、生活習慣有明確個人行動指引",
@@ -5953,7 +5705,6 @@
  },
  {
   "affected": "AI公司安全團隊、反恐與執法機關、AI治理政策制定者、開源模型社群",
-  "created_at": "2026-07-23 09:31:22",
   "credibility_reason": "27名前成員訪談具體，惟樣本侷限單一組織、資料略舊",
   "credibility_score": 11,
   "decision_reason": "對AI安全從業者與政策圈有參考，一般讀者屬認知",
@@ -5977,7 +5728,6 @@
  },
  {
   "affected": "一般民眾（油價、物價）、投資人、航運與製造業、各國央行與政府、國際市場",
-  "created_at": "2026-07-24 09:04:43",
   "credibility_reason": "中央社報導，有明確時間、市場數據可交叉驗證",
   "credibility_score": 13,
   "decision_reason": "油價破百改變企業成本、央行利率與家庭消費決策",
@@ -6001,7 +5751,6 @@
  },
  {
   "affected": "半導體與伺服器供應鏈、投資人、台積電與台灣代工廠、雲端業者",
-  "created_at": "2026-07-24 09:04:43",
   "credibility_reason": "公開大會發表、規格與出貨時程明確",
   "credibility_score": 12,
   "decision_reason": "牽動供應鏈接單、投資人配置與雲端業者採購決策",
@@ -6025,7 +5774,6 @@
  },
  {
   "affected": "國際市場、科技產業、政府與政策制定者",
-  "created_at": "2026-07-24 09:05:41",
   "credibility_reason": "川普公開發言、中央社報導，但細節有限",
   "credibility_score": 11,
   "decision_reason": "尚無可據以行動的內容，屬「先知道」層級",
@@ -6049,7 +5797,6 @@
  },
  {
   "affected": "AI產業（美中模型商）、開源社群、使用中國模型的企業、政府與政策制定者",
-  "created_at": "2026-07-24 09:05:41",
   "credibility_reason": "官方發言明確，但「浮水印證據」細節未公開，調查未定案",
   "credibility_score": 10,
   "decision_reason": "對選用中國模型的企業有評估必要，一般讀者暫屬觀察",
@@ -6073,7 +5820,6 @@
  },
  {
   "affected": "美國政局、國際市場（間接）、政府與政策制定者",
-  "created_at": "2026-07-24 09:05:41",
   "credibility_reason": "表決票數明確、多方可驗證",
   "credibility_score": 12,
   "decision_reason": "對讀者行動幾無直接影響，屬觀察訊號",
@@ -6097,7 +5843,6 @@
  },
  {
   "affected": "影視與串流產業、投資人、美國監管與司法體系",
-  "created_at": "2026-07-24 09:06:37",
   "credibility_reason": "歐盟正式決定、條件明確",
   "credibility_score": 12,
   "decision_reason": "除相關投資人與從業者外，決策相關性低",
@@ -6121,7 +5866,6 @@
  },
  {
   "affected": "科技平台業者、App開發商、廣告與旅遊業（搜尋導流）、美歐政府",
-  "created_at": "2026-07-24 09:06:37",
   "credibility_reason": "歐盟正式裁罰、金額與理由明確可驗證",
   "credibility_score": 13,
   "decision_reason": "對開發商與數位行銷業者有布局意義，一般讀者間接",
@@ -6145,7 +5889,6 @@
  },
  {
   "affected": "金融業、金管會、投資人（間接）",
-  "created_at": "2026-07-24 09:06:37",
   "credibility_reason": "金管會官方統計數據",
   "credibility_score": 12,
   "decision_reason": "對金融股投資人與業者風控有參考價值",
@@ -6169,7 +5912,6 @@
  },
  {
   "affected": "投資人、企業（資金成本）、購屋者與借款人、國際市場",
-  "created_at": "2026-07-24 09:06:37",
   "credibility_reason": "官方統計、數據明確且可交叉驗證",
   "credibility_score": 13,
   "decision_reason": "影響投資與利率預期判斷，非直接行動指令",
@@ -6193,7 +5935,6 @@
  },
  {
   "affected": "陸配群體、年底地方選舉參選人、政府與司法（釋憲可能）、兩岸關係",
-  "created_at": "2026-07-24 09:07:41",
   "credibility_reason": "官方說法、法條依據與反方觀點俱全",
   "credibility_score": 12,
   "decision_reason": "對當事群體與政黨提名有直接影響，一般讀者間接",
@@ -6217,7 +5958,6 @@
  },
  {
   "affected": "中東各國、國際防擴散體制、能源與核工產業、國際市場",
-  "created_at": "2026-07-24 09:07:41",
   "credibility_reason": "官方確認簽署，但關鍵濃縮條款仍靠媒體報導、文本未公開",
   "credibility_score": 11,
   "decision_reason": "對一般讀者屬地緣背景知識，非直接行動",
@@ -6241,7 +5981,6 @@
  },
  {
   "affected": "光通訊產業與台廠同業、港股與科技股投資人、AI資料中心供應鏈",
-  "created_at": "2026-07-24 09:07:41",
   "credibility_reason": "招股資訊與財務數據明確",
   "credibility_score": 12,
   "decision_reason": "對科技股投資人與同業供應鏈有評估價值",
@@ -6265,7 +6004,6 @@
  },
  {
   "affected": "投資人、購屋與借款人、企業財務、各國政府（發債成本）、國際市場",
-  "created_at": "2026-07-24 09:08:43",
   "credibility_reason": "市場數據明確，MoneyDJ整理多方來源",
   "credibility_score": 12,
   "decision_reason": "直接牽動投資配置、房貸與企業融資決策",
@@ -6289,7 +6027,6 @@
  },
  {
   "affected": "在中外資製造業、中國就業市場、東南亞承接地、供應鏈管理者",
-  "created_at": "2026-07-24 09:08:43",
   "credibility_reason": "公司公告與財務數據明確",
   "credibility_score": 12,
   "decision_reason": "對供應鏈布局者有參考，一般讀者無直接決策",
@@ -6313,7 +6050,6 @@
  },
  {
   "affected": "全球車廠與電池供應鏈、寧德時代等中國廠商、美國消費者（車價）、台灣車用電子供應鏈（轉單機會）",
-  "created_at": "2026-07-24 09:08:43",
   "credibility_reason": "法案已過參院屬實，但賓士個案細節多來自報導與遊說訊息",
   "credibility_score": 10,
   "decision_reason": "車廠與供應鏈須立即布局，一般讀者屬觀察",
@@ -6337,7 +6073,6 @@
  },
  {
   "affected": "青安申貸家庭、銀行（監控成本）、財政部與內政部、家暴受害者等弱勢配偶",
-  "created_at": "2026-07-24 09:08:43",
   "credibility_reason": "政策條文與統計數據明確，爭議影響屬推估",
   "credibility_score": 11,
   "decision_reason": "直接影響申貸決策與財務風險評估",
@@ -6361,7 +6096,6 @@
  },
  {
   "affected": "離岸風電開發商與供應鏈、台電與用電大戶（綠電需求企業）、能源政策部門",
-  "created_at": "2026-07-24 09:09:41",
   "credibility_reason": "官方公告契約條款，數字明確",
   "credibility_score": 13,
   "decision_reason": "開發商投資決策與企業購綠電規劃直接相關",
@@ -6385,7 +6119,6 @@
  },
  {
   "affected": "波音與航空供應鏈、美中貿易關係、航空公司",
-  "created_at": "2026-07-24 09:09:41",
   "credibility_reason": "彭博等外電報導，雙方官方未完整證實",
   "credibility_score": 10,
   "decision_reason": "對多數讀者屬情勢判讀素材，非直接行動",
@@ -6409,7 +6142,6 @@
  },
  {
   "affected": "台灣出口業者、製造業供應鏈、政府經貿部門、消費端（成本轉嫁）、國際市場",
-  "created_at": "2026-07-24 09:04:43",
   "credibility_reason": "USTR正式公告、稅率明確，中央社報導可驗證",
   "credibility_score": 12,
   "decision_reason": "出口業者定價、供應鏈布局與政府談判策略都須立即調整",
@@ -6433,7 +6165,6 @@
  },
  {
   "affected": "航運與貿易業、能源進口國、保險業、一般消費者（物價）、國際市場",
-  "created_at": "2026-07-24 09:04:43",
   "credibility_reason": "BBC分析，來源與地理數據明確，但情勢仍在變化",
   "credibility_score": 12,
   "decision_reason": "對航運、貿易、能源業者有直接決策意義，一般讀者屬背景知識",
@@ -6457,7 +6188,6 @@
  },
  {
   "affected": "台股投資人（尤其融資戶）、券商與銀行、金管會與央行",
-  "created_at": "2026-07-24 09:05:41",
   "credibility_reason": "央行公開數據與官員具名說法",
   "credibility_score": 12,
   "decision_reason": "直接關係投資人槓桿與部位管理決策",
@@ -6481,7 +6211,6 @@
  },
  {
   "affected": "年輕求職者與白領（軟體、金融、法律、創意）、企業人資、教育與政策制定者",
-  "created_at": "2026-07-24 09:07:40",
   "credibility_reason": "引用史丹佛、OECD具名研究，但學界對歸因仍有爭議",
   "credibility_score": 11,
   "decision_reason": "直接影響職涯選擇、技能投資與企業人力規劃",
@@ -6505,7 +6234,6 @@
  },
  {
   "affected": "半導體封測業（日月光、台積電）、AI晶片供應鏈、美國製造政策、投資人",
-  "created_at": "2026-07-24 09:09:42",
   "credibility_reason": "彭博報導、金額與市場反應明確",
   "credibility_score": 12,
   "decision_reason": "對封測供應鏈與相關投資人有評估意義",
@@ -6529,7 +6257,6 @@
  },
  {
   "affected": "台灣製造與機器人產業、產業政策部門、自動化供應鏈",
-  "created_at": "2026-07-24 09:09:42",
   "credibility_reason": "評論分析性質，政策數字有據但論點屬作者推論",
   "credibility_score": 8,
   "decision_reason": "對產業政策與自動化業者有策略參考",
@@ -6553,7 +6280,6 @@
  },
  {
   "affected": "台股投資人（尤其融資戶）、電子供應鏈、金融機構",
-  "created_at": "2026-07-24 17:53:27",
   "credibility_reason": "收盤數據明確、法人具名分析",
   "credibility_score": 13,
   "decision_reason": "融資高檔下的部位與風險管理決策迫在眉睫",
@@ -6577,7 +6303,6 @@
  },
  {
   "affected": "台灣能源供應（中油、台塑化）、政府能源安全部門、航運業、用油產業與消費者",
-  "created_at": "2026-07-24 17:53:27",
   "credibility_reason": "路透報導、航程與成本數據具體",
   "credibility_score": 12,
   "decision_reason": "政府儲油調度、油商採購與航運定價都須因應",
@@ -6601,7 +6326,6 @@
  },
  {
   "affected": "AI開發商（OpenAI、Anthropic、Google等）、企業AI使用者、網安產業、監管機構",
-  "created_at": "2026-07-24 17:53:28",
   "credibility_reason": "事件與法案屬實，但失控細節仍以媒體轉述為主",
   "credibility_score": 11,
   "decision_reason": "AI業者須評估合規，一般讀者屬認知更新",
@@ -6625,7 +6349,6 @@
  },
  {
   "affected": "電力公司與電網營運商、雲端業者（Amazon、Microsoft、Google）、資料中心供應鏈、監管機構",
-  "created_at": "2026-07-24 17:53:28",
   "credibility_reason": "PJM與Dominion事件細節明確、感測數據佐證",
   "credibility_score": 12,
   "decision_reason": "電力與雲端業者的規劃決策，一般讀者屬背景",
@@ -6649,7 +6372,6 @@
  },
  {
   "affected": "出口業者、美國進口商與消費者、各國貿易談判部門、投資人",
-  "created_at": "2026-07-24 17:54:27",
   "credibility_reason": "政策事實明確，通膨積壓屬合理推估",
   "credibility_score": 11,
   "decision_reason": "企業供應鏈與定價策略須以長期高關稅為前提",
@@ -6673,7 +6395,6 @@
  },
  {
   "affected": "全體民眾（物價、薪資）、企業（規劃基準）、央行與財政部、投資人",
-  "created_at": "2026-07-24 17:54:27",
   "credibility_reason": "具公信力智庫正式預測、數據完整",
   "credibility_score": 13,
   "decision_reason": "牽動央行利率、企業投資與家庭消費理財判斷",
@@ -6697,7 +6418,6 @@
  },
  {
   "affected": "製造業與服務業經營者、勞工（產業別薪資差距）、產業政策部門",
-  "created_at": "2026-07-24 17:54:27",
   "credibility_reason": "中經院正式調查、數據具體",
   "credibility_score": 12,
   "decision_reason": "企業轉型投資與求職者產業選擇的參考",
@@ -6721,7 +6441,6 @@
  },
  {
   "affected": "烏克蘭與歐洲安全、G7制裁政策、能源市場、國際市場",
-  "created_at": "2026-07-24 17:54:27",
   "credibility_reason": "路透估算、預算數據明確，但屬推估性質",
   "credibility_score": 11,
   "decision_reason": "對一般讀者屬地緣判讀素材",
@@ -6745,7 +6464,6 @@
  },
  {
   "affected": "國際市場、能源與航運業、美國政局、各國政府",
-  "created_at": "2026-07-24 17:55:26",
   "credibility_reason": "WSJ引述多名官員，但屬匿名內幕報導",
   "credibility_score": 11,
   "decision_reason": "提供油價與風險資產的前提判斷，非直接行動",
@@ -6769,7 +6487,6 @@
  },
  {
   "affected": "半導體與國防產業、日本經濟安保政策、中國稀土業、電動車與科技供應鏈",
-  "created_at": "2026-07-24 17:55:26",
   "credibility_reason": "官方探測數據與明確時程",
   "credibility_score": 12,
   "decision_reason": "供應鏈與資源政策層面的長期參考",
@@ -6793,7 +6510,6 @@
  },
  {
   "affected": "美國家庭與消費市場、全球投資人、聯準會（財富效果考量）、依賴美國消費的出口國",
-  "created_at": "2026-07-24 17:55:26",
   "credibility_reason": "高盛報告、歷史比較數據明確",
   "credibility_score": 12,
   "decision_reason": "投資人資產配置與風險評估的重要背景",
@@ -6817,7 +6533,6 @@
  },
  {
   "affected": "客服與行政職勞工、平台企業、勞動政策部門、AI工具供應商",
-  "created_at": "2026-07-24 17:55:26",
   "credibility_reason": "公司公開說法、規模數字明確",
   "credibility_score": 12,
   "decision_reason": "相關職能勞工的職涯調整參考",
@@ -6841,7 +6556,6 @@
  },
  {
   "affected": "AI模型供應商、雲端業者、AI應用開發商、投資人",
-  "created_at": "2026-07-24 17:56:28",
   "credibility_reason": "內部文件與消息人士報導，公司未完整證實",
   "credibility_score": 10,
   "decision_reason": "對AI產業從業者與投資人有評估意義",
@@ -6865,7 +6579,6 @@
  },
  {
   "affected": "不動產持有者與購屋族、都市規劃與住宅政策部門、保險業、弱勢租屋族",
-  "created_at": "2026-07-24 17:56:28",
   "credibility_reason": "引述研究但多屬趨勢推估，時間尺度長",
   "credibility_score": 10,
   "decision_reason": "購屋選址與長期持有的參考變數",
@@ -6889,7 +6602,6 @@
  },
  {
   "affected": "年輕族群（尤其女性）、家長、公衛與健保部門、醫療體系",
-  "created_at": "2026-07-24 17:56:28",
   "credibility_reason": "帝國學院研究、NHS官方數據",
   "credibility_score": 12,
   "decision_reason": "個人健康行為、篩檢與家庭飲食的直接參考",
@@ -6913,7 +6625,6 @@
  },
  {
   "affected": "Mac用戶（尤其開發者）、企業IT管理者、資安產業",
-  "created_at": "2026-07-24 17:56:28",
   "credibility_reason": "研究細節與蘋果回應明確，尚無實際攻擊案例",
   "credibility_score": 11,
   "decision_reason": "直接改變安裝來源與權限授予的使用決策",
@@ -6937,7 +6648,6 @@
  },
  {
   "affected": "香港讀者與書店經營者、華文出版業與書商（含台灣繁體出版市場）、記者與研究者、關注言論自由的公民社會與國際人權組織、在港經營文化事業的企業",
-  "created_at": "2026-07-25 15:53:54",
   "credibility_reason": "BBC 具名記者製作、事件有明確日期、書店名稱與拘捕人數，並附多則相關報導可交叉查證；但本篇為影片形式的整理回顧，文字細節與官方回應較簡略",
   "credibility_score": 12,
   "decision_reason": "改變出版商、書商與研究者的營運與寄送決策，也影響在港文化事業的風險評估；對一般讀者主要是理解而非行動",
@@ -6961,7 +6671,6 @@
  },
  {
   "affected": "投資人與持有外幣資產者、出口業者（匯率對報價與獲利的影響）、有海外留學或旅遊支出的家庭、央行與財經政策制定者、進口商與消費者（進口物價）",
-  "created_at": "2026-07-25 15:56:23",
   "credibility_reason": "依據美國財政部正式報告，三項標準的數據與門檻明確可對照，央行具名回應，事實與立場清楚區分",
   "credibility_score": 14,
   "decision_reason": "影響外幣資產配置、出口報價與避險決策，以及有海外支出家庭的換匯時機；但多數人不需立即行動",
@@ -6985,7 +6694,6 @@
  },
  {
   "affected": "無人機商業從業者（空拍、測繪、農噴、巡檢）、無人機愛好者、國安與民航主管機關、國內無人機製造與供應鏈業者、關注空域治理與正當程序的公民",
-  "created_at": "2026-07-25 15:59:50",
   "credibility_reason": "有明確法規名稱、具體公里數與日期、陳情事件與民航局回應，並附中日美俄四國制度對照與ICAO框架，資訊完整可查證",
   "credibility_score": 13,
   "decision_reason": "商業空拍、測繪、農噴業者需依禁航區調整作業與機型採購決策，愛好者的飛行規劃直接受影響",
@@ -7009,7 +6717,6 @@
  },
  {
   "affected": "一般民眾（油價、物價、利率）、投資人（能源、航運、債市殖利率）、航運與製造業（荷莫茲海峽航線、原物料成本）、各國央行與政策制定者（通膨與利率決策）、國際市場整體",
-  "created_at": "2026-07-25 15:51:12",
   "credibility_reason": "中央社編譯外電，有明確時間、地點、川普具名發言與具體打擊目標清單；但戰場傷亡與部分軍事細節依賴交戰方說法，難完全獨立驗證",
   "credibility_score": 13,
   "decision_reason": "油價破百、通膨升溫、高利率延長，直接改變多數人的消費、投資與企業成本決策，航運與製造業需重新規劃航線與庫存",
@@ -7033,7 +6740,6 @@
  },
  {
   "affected": "國際能源與航運市場、投資人（原油、航運、國防類股）、波灣各國政府與駐當地企業、在中東經商或工作的外籍人士、各國外交與安全政策制定者",
-  "created_at": "2026-07-25 15:51:38",
   "credibility_reason": "WSJ 具名報導且有阿聯官方表態佐證，但當事兩國一方否認、一方不回應，核心事實尚未獲交戰國確認，屬單一媒體獨家",
   "credibility_score": 11,
   "decision_reason": "改變能源、航運、國防投資與跨國企業的區域風險評估；對一般讀者則主要透過油價間接影響",
@@ -7057,7 +6763,6 @@
  },
  {
   "affected": "國際能源與航運市場、投資人（原油、航運、保險）、依賴中東進口原油的製造業與台灣等能源進口國、沙烏地與葉門當地居民、各國能源安全政策制定者",
-  "created_at": "2026-07-25 15:52:03",
   "credibility_reason": "有具名地點、具體攻擊目標與沙烏地民防警告佐證，但攻擊成果主要來自青年運動與聯軍雙方自述，戰損無獨立查證",
   "credibility_score": 11,
   "decision_reason": "改變航運業航線與保險決策、能源進口國採購與庫存策略；對一般讀者透過油價與物價間接影響",
@@ -7081,7 +6786,6 @@
  },
  {
   "affected": "台灣出口製造業與貿易商、企業經營者（定價、供應鏈與合規成本）、投資人（出口導向類股）、美國進口商與終端消費者、政府貿易談判與政策制定者、供應鏈上的勞工",
-  "created_at": "2026-07-25 15:52:30",
   "credibility_reason": "依據美國聯邦公報正式文件，有明確生效時間、稅率規則、豁免條款與課稅理由，可交叉驗證且區分事實與分析",
   "credibility_score": 14,
   "decision_reason": "出口商必須立即重新計算成本、調整定價與產品組合，並啟動供應鏈勞動合規舉證；投資人須重估出口類股，屬明確且立即的行動需求",
@@ -7105,7 +6809,6 @@
  },
  {
   "affected": "投資人（記憶體、封測、電源與散熱供應鏈）、台灣半導體封測業者、AI基礎設施與資料中心業者、電力與能源政策制定者、韓國與台灣的產業政策部門",
-  "created_at": "2026-07-25 15:52:58",
   "credibility_reason": "雙方正式宣布並有具體金額、規模、技術平台與時程，來源清楚；但5,000億美元屬總體規劃數字，實際投入節奏與細目尚待驗證",
   "credibility_score": 13,
   "decision_reason": "改變半導體投資人與供應鏈廠商的布局判斷，也影響電力與產業政策規劃；但對一般讀者的直接行動意義有限",
@@ -7129,7 +6832,6 @@
  },
  {
   "affected": "一般消費者（外送使用者）、外送員與零工經濟勞工、餐飲業者與店家、外送平台業者、勞動與公平競爭政策制定者",
-  "created_at": "2026-07-25 15:53:26",
   "credibility_reason": "有明確法規名稱與上路日期、平台具名成本評估、公平會官方推估數字與西雅圖對照案例；部分預測（精品市場說）屬業界受訪者觀點而非事實",
   "credibility_score": 13,
   "decision_reason": "消費者的外食與外送習慣、店家的定價與通路選擇、外送員的工作安排都必須立即調整，行動指引明確",
@@ -7153,7 +6855,6 @@
  },
  {
   "affected": "巴西出口業者與勞工、美國進口商與終端消費者、與巴西競爭同類品項的供應國業者（含台灣木材家具、機械業）、投資人（原物料、糖、農產）、國際貿易法與政策制定者",
-  "created_at": "2026-07-25 15:54:25",
   "credibility_reason": "有USTR正式宣布日期、具體稅率、受影響品項與金額、金融時報分析數據及巴西官員具名說法，事實與立場區分清楚",
   "credibility_score": 13,
   "decision_reason": "改變巴西出口商、美國進口商與競爭供應國業者的採購與布局決策；對一般讀者主要透過商品價格間接影響",
@@ -7177,7 +6878,6 @@
  },
  {
   "affected": "一般民眾（物價、利率、薪資與消費信心）、投資人（台股、AI供應鏈與資產配置）、企業經營者（資本支出與擴產決策）、央行與財經政策制定者、房貸與借貸族",
-  "created_at": "2026-07-25 15:54:56",
   "credibility_reason": "主計總處官員具名確認、有明確發布日期與原始預測數字，並附中經院、台經院兩家智庫可對照的獨立預估，事實與預測區分清楚",
   "credibility_score": 14,
   "decision_reason": "直接影響投資配置、企業資本支出、借貸與消費時機的判斷，官方點出的兩大風險提供明確的情境規劃依據",
@@ -7201,7 +6901,6 @@
  },
  {
   "affected": "AI開發者與新創（模型取用成本與選擇）、投資人（晶片、雲端、AI應用類股）、企業技術決策者（自建或採用模型的策略）、美國與各國AI政策制定者、開源社群",
-  "created_at": "2026-07-25 15:55:25",
   "credibility_reason": "有具名聯署企業、明確訴求內容與可對照的中國模型背景，且清楚指出誰未加入；但聯署全文與政策細節未完整呈現，屬產業表態階段",
   "credibility_score": 11,
   "decision_reason": "影響企業與開發者的模型選擇與自建策略、投資人對AI類股的判斷；但因政策未定案，多數人尚無立即行動依據",
@@ -7225,7 +6924,6 @@
  },
  {
   "affected": "台灣封測與先進封裝業者及其員工、投資人（封測、記憶體、半導體供應鏈類股）、台灣產業政策與經濟部門、半導體設備與材料供應商、韓國半導體業者",
-  "created_at": "2026-07-25 15:55:53",
   "credibility_reason": "有具名分析師（孫旖彤、歐唐納爾）、具體市占數據與時點（2026年Q1），並保留互補性的平衡判斷；但核心論點屬前瞻推論而非既成事實",
   "credibility_score": 13,
   "decision_reason": "改變半導體投資人的關注焦點與台灣封測業者、產業政策的布局決策；對一般讀者的直接行動意義有限",
@@ -7249,7 +6947,6 @@
  },
  {
   "affected": "企業技術與IT決策者、顧問與系統整合業者、AI／軟體工程師（職涯與技能方向）、投資人（AI服務化的獲利模式與毛利結構）、資料治理與法遵人員",
-  "created_at": "2026-07-25 15:56:52",
   "credibility_reason": "有具名企業、具體投資金額與人力規模，並引用麥肯錫調查數據；但各家投入金額多來自公司宣布，實際執行規模尚待驗證",
   "credibility_score": 12,
   "decision_reason": "明確改變企業AI導入策略、顧問業競爭應對與工程師技能投資方向，行動指引清楚",
@@ -7273,7 +6970,6 @@
  },
  {
   "affected": "數學與基礎科學研究社群、高教與科研政策制定者、關注人才培育與流動的教育界、中國與各國的科研聲望競逐、對AI與人類智識關係感興趣的一般讀者",
-  "created_at": "2026-07-25 15:57:28",
   "credibility_reason": "有明確頒獎日期、得獎人姓名年齡任職機構、破解問題的具體來源與年份、丘成桐與馬克宏具名反應，事實完整可交叉驗證",
   "credibility_score": 14,
   "decision_reason": "主要影響科研政策與教育資源配置的判斷，對絕大多數讀者屬「知道」而非可行動的資訊",
@@ -7297,7 +6993,6 @@
  },
  {
   "affected": "歐洲國防與工業企業、從事中國製兩用品項轉售的第三國貿易商（含台灣）、供應鏈法遵人員、投資人（歐洲國防與工業類股）、歐中經貿政策制定者",
-  "created_at": "2026-07-25 15:57:55",
   "credibility_reason": "有完整企業名單與所屬國家、明確制裁內容、當事企業具名回應與歐盟第21輪制裁的對照背景，事實清楚",
   "credibility_score": 13,
   "decision_reason": "轉售中國製兩用品的貿易商與法遵人員需調整查核流程；但對一般讀者與多數企業無立即行動需求",
@@ -7321,7 +7016,6 @@
  },
  {
   "affected": "投資人（地緣風險溢價、能源與國防）、關注戰爭走向與大國關係的政策研究者、國際安全與外交政策制定者、一般讀者（判斷戰事延續性與升級風險）",
-  "created_at": "2026-07-25 15:58:23",
   "credibility_reason": "川普發文與赫格塞斯參議院證詞皆有明確來源與具名，矛盾本身即報導重點；但習近平、普丁的承諾內容僅由川普轉述，未經當事方確認",
   "credibility_score": 12,
   "decision_reason": "影響地緣風險評估與投資人的風險溢價判斷；對多數讀者是理解戰爭性質的背景資訊而非行動依據",
@@ -7345,7 +7039,6 @@
  },
  {
   "affected": "投資人（能源與地緣風險）、國際外交與安全政策研究者、依賴中東能源的國家與產業、關注美中俄在中東角力的政策制定者",
-  "created_at": "2026-07-25 15:58:51",
   "credibility_reason": "中央社報導有明確時間、地點、雙方外長具名發言與具體內容；但雙方說法皆為官方立場陳述，且諒解備忘錄細節未公開",
   "credibility_score": 12,
   "decision_reason": "對能源與地緣風險評估提供前瞻訊號，但無明確可行動的指引，多數讀者屬理解層面",
@@ -7369,7 +7062,6 @@
  },
  {
   "affected": "投資人（電源、散熱、功率半導體、被動元件供應鏈）、台灣電源與散熱業者（台達電、光寶科等）、資料中心與雲端業者、電力與能源政策制定者、AI基礎設施採購決策者",
-  "created_at": "2026-07-25 15:59:20",
   "credibility_reason": "有具名廠商、明確產品型號、完整功耗與PUE數據及跨世代對照表，來源為正式產品發表；下一代平台數字屬規劃預估",
   "credibility_score": 13,
   "decision_reason": "明確影響供應鏈投資標的選擇、資料中心採購與選址決策、電源業者的產品規劃；對一般讀者行動意義有限",
@@ -7393,7 +7085,6 @@
  },
  {
   "affected": "一般消費者（筆電、手機、SSD購買時機與價格）、投資人（記憶體、儲存與模組類股）、企業IT採購與資料中心儲存規劃者、記憶體與模組廠業者、PC與手機品牌廠",
-  "created_at": "2026-07-25 16:00:18",
   "credibility_reason": "TrendForce具名研究機構報告，有明確供給比重、時程與需求趨勢數據；但屬預測性分析，多數數字為推估而非既成事實",
   "credibility_score": 12,
   "decision_reason": "提供消費者購買時機、企業儲存採購與投資人配置的具體判斷依據，行動指引明確",
@@ -7417,7 +7108,6 @@
  },
  {
   "affected": "投資人（台股電子與AI供應鏈的評價邏輯）、企業經營者與策略規劃者（價值鏈上移的路徑）、台灣產業政策制定者、科技業從業者與求職者、人才與移民政策決策者",
-  "created_at": "2026-07-25 16:00:47",
   "credibility_reason": "簡立峰具名發言、有市值排名與具體公司舉例；但核心論點為個人分析框架，毛利率提升幅度等關鍵數據未提供，屬觀點而非事實查證",
   "credibility_score": 11,
   "decision_reason": "提供投資人評價電子股的篩選視角與企業轉型的策略參照；但缺乏具體行動門檻或時程",
