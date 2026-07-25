@@ -44,7 +44,7 @@
 
 ```bash
 python3 news.py init            # 建立資料庫（首次）
-python3 news.py add <file|->    # 寫入一筆評分
+python3 news.py add <file|->    # 寫入一筆評分（順手更新 data/news.json）
 python3 news.py list [--grade S]  # 快速列表
 python3 news.py serve [--port 8765]  # 網頁介面 http://127.0.0.1:8765
 python3 news.py fetch           # 抓取 feeds.txt 的 RSS，新連結存入 pending 表
@@ -82,11 +82,12 @@ CI 只負責把 JSON 轉成靜態站並上線。
 
 - `data/news.json` 是進版控的資料來源；`news.db` 仍不進版控
   （SQLite 是二進位檔，每次 commit 都是整檔快照，repo 會無上限膨脹）。
-- 評分完成後同步上線：
+- `add` 寫入後會自動更新 `data/news.json`，所以評分完直接 commit push 即可：
   ```bash
-  python3 news.py export-json          # 更新 data/news.json
   git add data/news.json && git commit -m "更新新聞資料" && git push
   ```
+  批次評分時每筆都重寫整份 JSON 是浪費，用 `add --no-export` 跳過，
+  全部評完再跑一次 `python3 news.py export-json` 補上。
 - push 後 `.github/workflows/deploy.yml` 自動 import-json → export → 部署 Pages。
 - 首次啟用：repo Settings → Pages → Source 選 **GitHub Actions**。
 - 網頁篩選在靜態站是**前端 JS**（`FILTER_JS`），動態 `serve` 仍走 server 端 query string，

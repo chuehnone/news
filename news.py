@@ -240,6 +240,12 @@ def cmd_add(args):
     print(f"已新增 id={cur.lastrowid}：[{grade} 級 {total} 分] {data['title']}")
     conn.close()
 
+    # 順手同步 data/news.json，否則 db 更新了但進版控的資料沒動，靜態站不會變。
+    # 批次評分時每筆都重寫整份 JSON 是浪費，用 --no-export 跳過，最後再手動
+    # 跑一次 export-json 即可。
+    if not args.no_export:
+        export_news_json(DATA_JSON_PATH)
+
 
 def cmd_list(args):
     conn = connect()
@@ -462,7 +468,7 @@ NEWS_COLUMNS = [
 ]
 
 
-def cmd_export_json(args):
+def export_news_json(out):
     conn = connect()
     rows = conn.execute(
         f"SELECT {', '.join(NEWS_COLUMNS)} FROM news ORDER BY news_date, id"
@@ -470,10 +476,14 @@ def cmd_export_json(args):
     conn.close()
     items = [{k: r[k] for k in NEWS_COLUMNS} for r in rows]
     text = json.dumps(items, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
-    out = Path(args.out)
+    out = Path(out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text, encoding="utf-8")
     print(f"已匯出 {len(items)} 筆到 {out}")
+
+
+def cmd_export_json(args):
+    export_news_json(args.out)
 
 
 def cmd_import_json(args):
@@ -536,6 +546,10 @@ def main():
     p_add = sub.add_parser("add", help="新增一筆評分結果（JSON 檔或 - 表示 stdin）")
     p_add.add_argument("file")
     p_add.add_argument("--force", action="store_true", help="允許重複連結")
+    p_add.add_argument(
+        "--no-export", action="store_true",
+        help="不要順手更新 data/news.json（批次評分時用，最後再跑一次 export-json）",
+    )
 
     p_list = sub.add_parser("list", help="列出新聞")
     p_list.add_argument("--grade", help="只列出指定等級（S/A/B/C/D）")
