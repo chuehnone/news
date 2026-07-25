@@ -7,7 +7,8 @@
 import json
 import re
 import sqlite3
-from datetime import datetime
+# date 另取別名：query_news() 有個叫 date 的參數，直接 import date 會被遮蔽
+from datetime import datetime, timedelta, date as date_cls
 from html import escape
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
@@ -161,12 +162,54 @@ body.compact .card.C, body.compact .card.D { opacity: .7; }
 """
 
 
+# 保留期分層：只在輸出靜態站時套用（`news.py export --retention`，由 CI 使用）。
+# 新聞評分的價值隨時間衰減，舊的低分新聞不會有人回頭看，卻會讓靜態站無上限成長。
+#
+# 刻意不套用在 export-json／add：data/news.json 必須維持 db 的完整鏡像，
+# 否則 import-json --replace 會毀掉資料、且匯出結果會隨執行日期而變動。
+# 過濾只發生在「產生網站」這一步，不影響任何資料寫入路徑。
+RECENT_DAYS = 30      # 近 30 天：全部等級
+ARCHIVE_DAYS = 90     # 30-90 天：只留 S/A；超過 90 天不輸出
+
+# 由 export_static() 設定；None 代表不過濾（本機 serve/export 的預設）
+_RETENTION_TODAY = None
+
+
+def retention_clause():
+    """回傳 (sql_fragment, params)；未啟用保留期時為空條件。"""
+    if _RETENTION_TODAY is None:
+        return "", []
+    recent_from = (_RETENTION_TODAY - timedelta(days=RECENT_DAYS)).isoformat()
+    archive_from = (_RETENTION_TODAY - timedelta(days=ARCHIVE_DAYS)).isoformat()
+    # news_date 為空的資料無從判斷時效，一律保留，避免靜默遺失
+    return (
+        "(news_date IS NULL OR news_date = '' OR news_date >= ?"
+        " OR (news_date >= ? AND grade IN ('S','A')))",
+        [recent_from, archive_from],
+    )
+
+
+def query_news_all():
+    """不套用保留期的完整筆數，供 export 比對用。"""
+    conn = sqlite3.connect(DB_PATH)
+    try:
+        rows = conn.execute("SELECT id FROM news").fetchall()
+    except sqlite3.OperationalError:
+        rows = []
+    conn.close()
+    return rows
+
+
 def query_news(grade=None, date=None, section=None, q=None):
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     try:  # 若尚未 init（table 不存在），回傳空列表而非噴錯
         sql = "SELECT * FROM news"
         conds, params = [], []
+        rc, rp = retention_clause()
+        if rc:
+            conds.append(rc)
+            params += rp
         if grade:
             conds.append("grade = ?")
             params.append(grade)
@@ -198,6 +241,10 @@ def grade_counts(date=None, section=None, q=None):
     try:
         sql = "SELECT grade, COUNT(*) FROM news"
         conds, params = [], []
+        rc, rp = retention_clause()
+        if rc:
+            conds.append(rc)
+            params += rp
         if date:
             conds.append("news_date = ?")
             params.append(date)
@@ -223,10 +270,13 @@ def date_counts():
     """回傳 [(news_date, count), ...]，日期新到舊。"""
     conn = sqlite3.connect(DB_PATH)
     try:
+        rc, rp = retention_clause()
         rows = conn.execute(
             "SELECT news_date, COUNT(*) FROM news"
             " WHERE news_date IS NOT NULL AND news_date != ''"
-            " GROUP BY news_date ORDER BY news_date DESC"
+            + (f" AND {rc}" if rc else "")
+            + " GROUP BY news_date ORDER BY news_date DESC",
+            rp,
         ).fetchall()
     except sqlite3.OperationalError:
         rows = []
@@ -238,10 +288,13 @@ def section_counts():
     """回傳 [(section, count), ...]，筆數多的在前。"""
     conn = sqlite3.connect(DB_PATH)
     try:
+        rc, rp = retention_clause()
         rows = conn.execute(
             "SELECT section, COUNT(*) c FROM news"
             " WHERE section IS NOT NULL AND section != ''"
-            " GROUP BY section ORDER BY c DESC"
+            + (f" AND {rc}" if rc else "")
+            + " GROUP BY section ORDER BY c DESC",
+            rp,
         ).fetchall()
     except sqlite3.OperationalError:
         rows = []
@@ -599,14 +652,35 @@ def verify_html(html, expected):
     return found
 
 
-def export_static(out_dir):
-    out_dir.mkdir(parents=True, exist_ok=True)
-    index = out_dir / "index.html"
-    html = render_static_page()
-    n = verify_html(html, len(query_news()))
-    index.write_text(html, encoding="utf-8")
-    kb = len(html.encode("utf-8")) / 1024
-    print(f"已輸出靜態網站到 {index}（{kb:.0f} KB、{n} 張卡片）")
+def export_static(out_dir, retention=False, today=None):
+    """輸出靜態站。retention=True 時套用保留期分層（CI 用）。
+
+    today 可帶入固定日期讓輸出可重現（測試用），預設為今天。
+    """
+    global _RETENTION_TODAY
+    _RETENTION_TODAY = (today or date_cls.today()) if retention else None
+    try:
+        total = len(query_news_all())
+        rows = query_news()
+        if retention:
+            # 全部資料都過期時輸出空站沒有意義，且多半代表 RECENT_DAYS 設錯
+            # 或久未評分，中止讓人工確認，而不是靜默上線一個空網站。
+            if total and not rows:
+                raise SystemExit(
+                    f"中止輸出：db 有 {total} 筆，但沒有任何一筆落在保留期內"
+                    f"（近 {RECENT_DAYS} 天全部、{RECENT_DAYS}-{ARCHIVE_DAYS} 天限 S/A）。"
+                )
+            print(f"套用保留期：{len(rows)} / {total} 筆進入靜態站")
+
+        out_dir.mkdir(parents=True, exist_ok=True)
+        index = out_dir / "index.html"
+        html = render_static_page()
+        n = verify_html(html, len(rows))
+        index.write_text(html, encoding="utf-8")
+        kb = len(html.encode("utf-8")) / 1024
+        print(f"已輸出靜態網站到 {index}（{kb:.0f} KB、{n} 張卡片）")
+    finally:
+        _RETENTION_TODAY = None  # 不留狀態給後續呼叫（serve 與測試會重複進出）
 
 
 class Handler(BaseHTTPRequestHandler):

@@ -517,7 +517,7 @@ def cmd_import_json(args):
 def cmd_export(args):
     from server import export_static
 
-    export_static(Path(args.out))
+    export_static(Path(args.out), retention=args.retention)
 
 
 def cmd_prune(args):
@@ -588,6 +588,11 @@ def main():
 
     p_export = sub.add_parser("export", help="輸出靜態網站（GitHub Pages 用）")
     p_export.add_argument("--out", default="dist", help="輸出目錄（預設 dist）")
+    p_export.add_argument(
+        "--retention",
+        action="store_true",
+        help="套用保留期分層（近 30 天全部、30-90 天限 S/A、90 天以上不輸出）；CI 用",
+    )
 
     args = parser.parse_args()
     {

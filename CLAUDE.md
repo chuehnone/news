@@ -54,7 +54,7 @@ python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdow
 python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控）
 python3 news.py import-json [--replace]  # 從 JSON 重建 news 表（CI 用）
-python3 news.py export [--out dist]      # 輸出靜態網站
+python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--retention 為 CI 用，見下）
 ```
 
 ## 批次評分
@@ -86,6 +86,13 @@ CI 只負責把 JSON 轉成靜態站並上線。
   批次評分也一樣，不需要特別處理（匯出實測約 5ms，相對抓內文的數秒是雜訊）。
   `--no-export` 旗標仍保留給大量匯入等想自行控制匯出時機的場景。
 - push 後 `.github/workflows/deploy.yml` 自動 import-json → export → 部署 Pages。
+- **保留期分層只在 CI 的 `export --retention` 套用**：近 30 天全部等級、
+  30-90 天只留 S/A、90 天以上不上站（常數在 `server.py` 的 `RECENT_DAYS` /
+  `ARCHIVE_DAYS`）。用意是讓靜態站不隨時間無上限成長。
+  `news.db` 與 `data/news.json` **都保有完整資料**，過期項目只是不出現在網站上；
+  因此 export-json 仍是 db 的完整鏡像、`import-json --replace` 不會掉資料，
+  本機 `serve` 與不帶旗標的 `export` 也都看得到全部資料。
+  若某次 CI 沒有任何一筆落在保留期內，`export` 會中止而非部署空站。
 - 首次啟用：repo Settings → Pages → Source 選 **GitHub Actions**。
 - 網頁篩選在靜態站是**前端 JS**（`FILTER_JS`），動態 `serve` 仍走 server 端 query string，
   兩者共用 `render_card`；改篩選邏輯時記得兩邊行為要一致。

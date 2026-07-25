@@ -38,7 +38,8 @@ jobs:
           python3 news.py import-json --replace
 
       - name: 輸出靜態網站
-        run: python3 news.py export --out dist
+        # --retention 只在此處使用：JSON 保有完整資料，過期項目僅不上站
+        run: python3 news.py export --out dist --retention
 
       - name: 檢查產出正常
         run: |
