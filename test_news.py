@@ -486,6 +486,38 @@ class TestNoDuplicateConstants(CLITestCase):
             defined & shared, set(),
             "server.py 自行定義了 news.py 已有的函式，應改為 import 自 news.py")
 
+    def test_no_naive_now_or_today(self):
+        """時間一律走 now_local()／today_local()（台北時間），不得用執行環境時區。
+
+        迴歸：export 有兩種執行環境——本機（CST）與 CI 的 Ubuntu runner（UTC）。
+        `datetime.now()` 在兩邊給出不同基準，網頁的「更新於」因此一下 CST
+        一下 UTC，看起來像時間倒退（本機 15:36 的下一版是 CI 的 22:52，
+        實際是隔天早上 6:52）。`date.today()` 更麻煩：它是保留期的基準日，
+        台灣上午 8 點前跑 CI 會拿到「昨天」，30 天界線整個挪一天。
+
+        掃描原始碼而非行為比對——這種錯誤是「寫了就壞」，要擋在寫入當下。
+        """
+        banned = ("datetime.now()", "date_cls.today()", "datetime.utcnow()")
+        for fname in ("news.py", "server.py"):
+            src = (self.dir / fname).read_text(encoding="utf-8")
+            for lineno, line in enumerate(src.splitlines(), 1):
+                code = line.split("#", 1)[0]  # 註解裡提到這些名字是說明，不算違規
+                for bad in banned:
+                    self.assertNotIn(
+                        bad, code,
+                        f"{fname}:{lineno} 使用了 {bad}，應改用 news.now_local()"
+                        "／news.today_local()（台北時間）")
+
+    def test_local_time_is_taipei(self):
+        """now_local()／today_local() 必須真的是 UTC+8，而非只是換個名字。"""
+        with load_modules(self.dir, "news") as (news,):
+            now = news.now_local()
+            self.assertIsNotNone(now.tzinfo, "now_local() 應回傳帶時區的時間")
+            self.assertEqual(now.utcoffset(), timedelta(hours=8),
+                             "now_local() 應為台北時間（UTC+8）")
+            # today_local() 要跟 now_local() 同基準，不能一個台北一個本地
+            self.assertEqual(news.today_local(), now.date())
+
     def test_grade_of_matches_thresholds(self):
         """門檻常數必須真的驅動 grade_of()，而不只是拿來印說明。"""
         with load_modules(self.dir, "news") as (news,):

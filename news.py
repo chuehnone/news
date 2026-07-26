@@ -25,14 +25,35 @@ import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-# date 取別名：cmd_digest 有個叫 date 的區域變數，直接 import date 容易誤用
-from datetime import datetime, date as date_cls
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 DB_PATH = Path(__file__).parent / "news.db"
 FEEDS_PATH = Path(__file__).parent / "feeds.txt"
 DATA_JSON_PATH = Path(__file__).parent / "data" / "news.json"
+
+# 一律以台北時間為準，不使用 datetime.now()／date.today() 的執行環境時區。
+#
+# 這個站的讀者與新聞的 news_date 都在台灣，但 export 有兩種執行環境：
+# 本機（CST）與 CI 的 Ubuntu runner（UTC）。兩者混用時，同一個「更新於」
+# 欄位會一下 CST 一下 UTC——曾經上一版顯示 15:36（本機）、下一版顯示
+# 22:52（CI 的 UTC，實際是隔天早上 6:52），看起來像時間倒退或沒更新。
+#
+# 保留期的基準日（export --retention）同樣受影響：UTC 比台北慢 8 小時，
+# 台灣時間上午 8 點前跑 CI，date.today() 會拿到「昨天」，30 天的界線
+# 因此整個往前挪一天。
+TZ_TAIPEI = timezone(timedelta(hours=8))
+
+
+def now_local():
+    """現在時刻（台北時間）。所有對外顯示的時間都應該經過這裡。"""
+    return datetime.now(TZ_TAIPEI)
+
+
+def today_local():
+    """今天的日期（台北時間）。保留期與 digest 的預設日期都用這個。"""
+    return now_local().date()
 
 DIMENSIONS = [
     ("scope", "影響範圍", 25),
@@ -352,7 +373,9 @@ def cmd_add(args):
             sys.exit(
                 f"錯誤：news_date「{news_date}」須補零寫成 {parsed.isoformat()}"
             )
-        if parsed > date_cls.today():
+        # 用台北時間判斷：news_date 填的是台灣的日期，若拿 UTC 比對，
+        # 台灣上午 8 點前寫入今天的新聞會被誤判成「未來日期」而擋下
+        if parsed > today_local():
             sys.exit(f"錯誤：news_date「{news_date}」是未來日期，請確認是否誤植")
 
     dims = data.get("dimensions", {})
@@ -598,7 +621,7 @@ SECTION_ORDER = [s for s in SECTIONS if s != "不建議放入每日摘要"]
 
 
 def cmd_digest(args):
-    date = args.date or datetime.now().strftime("%Y-%m-%d")
+    date = args.date or today_local().isoformat()
     conn = connect()
     rows = conn.execute(
         # NULL != '...' 在 SQL 裡是 NULL 而非 true，直接寫 != 會把未分類的整批漏掉

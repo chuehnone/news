@@ -9,8 +9,9 @@ import os
 import re
 import shutil
 import sqlite3
-# date 另取別名：query_news() 有個叫 date 的參數，直接 import date 會被遮蔽
-from datetime import datetime, timedelta, date as date_cls
+# 只需要 timedelta：所有「現在時刻／今天」一律走 news.py 的 now_local()／
+# today_local()（台北時間），不要在這裡改用 datetime.now() 或 date.today()
+from datetime import timedelta
 from html import escape
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
@@ -19,7 +20,7 @@ from urllib.parse import urlparse, parse_qs, quote
 # news.py 反向 import server 只發生在 cmd_serve / cmd_export 的函式內，故不成環。
 from news import (
     ARCHIVE_GRADES, DB_PATH, DIMENSIONS, GRADE_LABELS, GRADES,
-    load_aliases, normalize_tag, tag_counts, tags_of,
+    load_aliases, normalize_tag, now_local, tag_counts, tags_of, today_local,
 )
 
 STYLE = """
@@ -962,7 +963,7 @@ def render_static_page():
         body.append(render_card(r, related_of(r, index)))
 
     empty_msg = "目前沒有符合條件的新聞。" if rows else "目前沒有新聞。"
-    generated = datetime.now().strftime("%Y-%m-%d %H:%M")
+    generated = now_local().strftime("%Y-%m-%d %H:%M")
     desc = escape(meta_description(rows, counts))
     og_image = SITE_URL.rstrip("/") + "/" + OG_IMAGE_NAME
 
@@ -1024,7 +1025,9 @@ def export_static(out_dir, retention=False, today=None):
     today 可帶入固定日期讓輸出可重現（測試用），預設為今天。
     """
     global _RETENTION_TODAY
-    _RETENTION_TODAY = (today or date_cls.today()) if retention else None
+    # 基準日用台北時間：CI 的 runner 是 UTC，台灣上午 8 點前跑會拿到「昨天」，
+    # 30 天的保留界線因此整個往前挪一天（見 news.py 的 TZ_TAIPEI 說明）
+    _RETENTION_TODAY = (today or today_local()) if retention else None
     try:
         total = len(query_news_all())
         rows = query_news()
