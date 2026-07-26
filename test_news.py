@@ -781,6 +781,24 @@ class TestShareMetadata(CLITestCase):
             self.assertIn(f"'{written}'", html,
                           "頁面內嵌的 build id 與 build.txt 不一致，會立刻誤報有更新")
 
+    def test_build_id_survives_json_roundtrip(self):
+        """build id 必須撐過 export-json → import-json --replace。
+
+        CI 是從 `data/news.json` 重建 db 才產站的，而 JSON 刻意不含 id，
+        重建時會重新編號。build id 若取自 id，本機與 CI 就會算出不同的值，
+        且刪掉中間任何一則都會讓其後每一筆位移——內容沒變也被判定成新版。
+        """
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            before = server.build_id_of(server.query_news())
+        self.run_cli("export-json", check=True)
+        self.run_cli("import-json", "--replace", check=True)
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            after = server.build_id_of(server.query_news())
+        self.assertEqual(before, after,
+                         "build id 撐不過 JSON round-trip，CI 產出的值會與本機不同")
+
     def test_build_id_changes_when_data_changes(self):
         """新增一則評分後 build id 必須改變，否則提示永遠不會觸發。"""
         with load_modules(self.dir, "server") as (server,):

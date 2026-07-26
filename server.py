@@ -430,10 +430,15 @@ def build_id_of(rows):
 
     刻意取自資料而非時間戳：CI 可能因為不相干的改動而重跑，若用時間戳，
     每次重建都會讓所有開著的分頁跳出「有新資料」，但實際上一則都沒變。
-    取 id 與分數的組合即可——新增、刪除、改分都會讓它變。
+
+    **不能用 r["id"]**：`data/news.json` 刻意不含 id，CI 的
+    `import-json --replace` 會重新編號。目前的 id 剛好照插入順序連號而顯得
+    穩定，但只要刪掉中間任何一則，其後每一筆的 id 都會位移，於是明明內容
+    沒變的頁面也會被判定成新版。改用真正會 round-trip 的欄位。
     """
     payload = ";".join(
-        f"{r['id']}:{r['total_score']}:{r['grade']}" for r in rows
+        f"{r['news_date']}|{r['title']}|{r['total_score']}|{r['grade']}"
+        for r in rows
     )
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]
 OG_IMAGE_SRC = Path(__file__).parent / "assets" / OG_IMAGE_NAME
