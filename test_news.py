@@ -757,6 +757,43 @@ class TestShareMetadata(CLITestCase):
         self.assertIn("update-bar", server.STYLE, "更新提示的樣式應在共用 STYLE 中")
         self.assertNotIn("watchForUpdates", dynamic,
                          "動態站沒有載入 JS，不該含更新檢查")
+        self.assertNotIn("__BUILD_ID__", static,
+                         "build id 佔位字串沒有被取代，前端會拿它去比對而永遠不相等")
+
+    def test_build_id_tracks_data_not_time(self):
+        """build id 必須由資料算出，且與 build.txt 一致。
+
+        取自時間戳的話，CI 因不相干改動重跑就會讓所有開著的分頁跳出
+        「有新資料」，但實際一則都沒變——提示會變成雜訊而被忽略。
+        """
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            rows = server.query_news()
+            first = server.build_id_of(rows)
+            # 同一份資料重算必須相同（時間流逝不影響）
+            self.assertEqual(first, server.build_id_of(server.query_news()),
+                             "同一份資料的 build id 應穩定不變")
+            # 頁面內嵌的值要跟 build.txt 寫出的值一致，否則一載入就誤報
+            out = self.dir / "dist_buildid"
+            server.export_static(out)
+            written = (out / server.BUILD_ID_NAME).read_text(encoding="utf-8").strip()
+            html = (out / "index.html").read_text(encoding="utf-8")
+            self.assertIn(f"'{written}'", html,
+                          "頁面內嵌的 build id 與 build.txt 不一致，會立刻誤報有更新")
+
+    def test_build_id_changes_when_data_changes(self):
+        """新增一則評分後 build id 必須改變，否則提示永遠不會觸發。"""
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            before = server.build_id_of(server.query_news())
+            conn = sqlite3.connect(self.dir / "news.db")
+            conn.execute(
+                "INSERT INTO news (title, news_date, total_score, grade) "
+                "VALUES ('新增測試', '2026-07-26', 90, 'S')")
+            conn.commit()
+            conn.close()
+            after = server.build_id_of(server.query_news())
+        self.assertNotEqual(before, after, "資料變了但 build id 沒變")
 
     def test_og_image_url_is_absolute_https(self):
         """og:image 必須是 https 絕對網址。

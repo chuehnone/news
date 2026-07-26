@@ -4,6 +4,7 @@
 啟動：python3 news.py serve [--port 8765]
 """
 
+import hashlib
 import json
 import os
 import re
@@ -418,6 +419,23 @@ SITE_URL = os.environ.get("NEWS_SITE_URL", "https://chuehnone.viovie.co/news/")
 # 所以改成本機把文字燒進 PNG（`news.py og`）、圖片進版控，export 只負責複製。
 # CI 的 Ubuntu runner 既沒有中文字型也不保證有繪圖工具，讓它生圖只會再壞一次。
 OG_IMAGE_NAME = "og.png"
+
+# 建置識別碼檔名。頁面把自己的 build id 內嵌在 JS 裡，前端拿這支檔案比對，
+# 不同就提示有新資料（見 FILTER_JS 的 watchForUpdates）。
+BUILD_ID_NAME = "build.txt"
+
+
+def build_id_of(rows):
+    """由資料內容算出建置識別碼。
+
+    刻意取自資料而非時間戳：CI 可能因為不相干的改動而重跑，若用時間戳，
+    每次重建都會讓所有開著的分頁跳出「有新資料」，但實際上一則都沒變。
+    取 id 與分數的組合即可——新增、刪除、改分都會讓它變。
+    """
+    payload = ";".join(
+        f"{r['id']}:{r['total_score']}:{r['grade']}" for r in rows
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]
 OG_IMAGE_SRC = Path(__file__).parent / "assets" / OG_IMAGE_NAME
 
 # 一則新聞的「相關新聞」最多列幾則。列太多會把評分細節擠掉，
@@ -832,14 +850,19 @@ FILTER_JS = """
   if (mobileDefault) { syncControls(); apply(); }
   else { update(); }
 
-  // 更新提示：GitHub Pages 給 HTML 的是 max-age=600，開著不動的分頁在十分鐘內
-  // 不會去問伺服器，評分完上線後這個分頁仍停在舊資料且沒有任何跡象。
+  // 更新提示：GitHub Pages 給 HTML 的是 max-age=600，在這段期間瀏覽器完全
+  // 不會問伺服器——連重開分頁都直接讀本機快取（實測 0 個網路請求），
+  // 所以新資料上線後，使用者可能持續看到舊頁面而毫無跡象。
   //
-  // 用 HEAD 比對 ETag 而非直接重新整理：頁面有 1.8 MB，而且使用者可能正在
-  // 讀某一則或已經設好篩選條件，不該擅自把它捲掉——由使用者決定何時重載。
-  // 沒變更時伺服器回 304、幾乎零成本，所以只在分頁真的被看著時才檢查。
+  // 基準值取自頁面內嵌的 BUILD_ID 而非「第一次 HEAD 問到的 ETag」：後者在
+  // 快取命中時會問到伺服器的**新**值，於是舊頁面把新版當成自己的基準，
+  // 從此永遠比對不出差異——正是這個提示最該作用的場景。
+  //
+  // 用 HEAD 比對而非直接重新整理：頁面有 1.8 MB，且使用者可能正在讀某一則
+  // 或已設好篩選條件，不該擅自把它捲掉——由使用者決定何時重載。
   (function watchForUpdates() {
-    var seen = null;      // 目前這份頁面的 ETag，第一次檢查時記下
+    // 這份 HTML 產出時的識別碼，隨每次 export 改變
+    var seen = '__BUILD_ID__';
     var checking = false; // 避免 visibilitychange 連續觸發時重複發出請求
     var banner = null;
 
@@ -853,16 +876,18 @@ FILTER_JS = """
       document.body.appendChild(banner);
     }
 
+    // 抓 build.txt 而非比對主頁的 ETag：那份檔案只有幾十個位元組，
+    // 且 GitHub Pages 對壓縮與否會回不同形式的 ETag（W/"abc" 與 "abc"），
+    // 拿來比字串本身就不可靠。
     function check() {
       if (checking || document.hidden) return;
       checking = true;
-      // cache: 'no-store' 讓這個請求本身不被快取，否則問到的是快取裡的舊 ETag
-      fetch(location.pathname, { method: 'HEAD', cache: 'no-store' })
-        .then(function (r) {
-          var tag = r.headers.get('ETag') || r.headers.get('Last-Modified');
-          if (!tag) return;              // 伺服器沒給就放棄，不做無謂的猜測
-          if (seen === null) { seen = tag; return; }
-          if (tag !== seen) show();
+      // cache: 'no-store' 讓這個請求本身不被快取，否則讀到的是快取裡的舊值
+      fetch('build.txt', { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.text() : null; })
+        .then(function (id) {
+          if (!id) return;               // 拿不到就放棄，不做無謂的猜測
+          if (id.trim() !== seen) show();
         })
         .catch(function () { /* 離線或請求失敗：靜默略過，下次可見時再試 */ })
         .then(function () { checking = false; });
@@ -1026,6 +1051,7 @@ def render_static_page():
     generated = now_local().strftime("%Y-%m-%d %H:%M")
     desc = escape(meta_description(rows, counts))
     og_image = SITE_URL.rstrip("/") + "/" + OG_IMAGE_NAME
+    build_id = build_id_of(rows)
 
     return f"""<!doctype html>
 <html lang="zh-Hant">
@@ -1058,7 +1084,7 @@ def render_static_page():
 <div class="empty" id="empty" style="display:none">{empty_msg}</div>
 <div class="footer">共 {total} 則評分紀錄</div>
 </div>
-<script>{FILTER_JS.replace("__TAG_SEP__", TAG_SEP)}</script>
+<script>{FILTER_JS.replace("__TAG_SEP__", TAG_SEP).replace("__BUILD_ID__", build_id)}</script>
 </body>
 </html>"""
 
@@ -1106,6 +1132,9 @@ def export_static(out_dir, retention=False, today=None):
         html = render_static_page()
         n = verify_html(html, len(rows))
         index.write_text(html, encoding="utf-8")
+        # 前端拿這支檔案跟自己內嵌的 build id 比對，不同就提示有新資料。
+        # 必須與 index.html 同層，頁面用相對路徑 'build.txt' 取用。
+        (out_dir / BUILD_ID_NAME).write_text(build_id_of(rows), encoding="utf-8")
         # 分享預覽圖與 index 同層，og:image 才對得上 SITE_URL + 檔名。
         # 複製進版控的成品而非當場生成——CI 沒有中文字型，生出來會是豆腐字。
         if OG_IMAGE_SRC.exists():
