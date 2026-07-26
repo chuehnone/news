@@ -190,6 +190,19 @@ summary { cursor: pointer; font-size: .84rem; color: var(--muted); user-select: 
 .dims th, .dims td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
 .dims th { font-size: .8rem; color: var(--muted); font-weight: 600; }
 .dims td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* 更新提示：固定在底部中央，不擋住卡片內容也不需要使用者捲到特定位置。
+   只有 JS 偵測到 ETag 變動時才會被插入 DOM，動態站不會出現 */
+.update-bar {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: 20px; z-index: 20;
+  padding: 9px 18px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--text); color: var(--bg);
+  font: inherit; font-size: .85rem; font-weight: 600; cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+  /* 不換行：折成兩行的膠囊在手機上很擠，寧可縮字級也要維持單行 */
+  white-space: nowrap;
+  max-width: calc(100vw - 24px);
+}
 .empty { text-align: center; color: var(--muted); padding: 60px 0; }
 .footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 32px; }
 /* 精簡模式：一則一行，只留等級與標題 */
@@ -239,6 +252,7 @@ body.compact .card.C, body.compact .card.D { opacity: .7; }
   .summary { font-size: .84rem; }
   /* 評分細節的五面向表格在窄螢幕會被壓到換行難讀，縮字級並收窄內距 */
   .dims th, .dims td { padding: 4px 5px; font-size: .82rem; }
+  .update-bar { font-size: .8rem; padding: 8px 14px; bottom: 16px; }
 }
 """
 
@@ -388,7 +402,11 @@ def section_counts():
 # 靜態站的公開網址（結尾帶斜線）。og:image / og:url 必須是絕對網址，
 # 相對路徑在 Slack、Threads 等平台一律抓不到圖。
 # 換網域或改用他人的 fork 時用環境變數覆蓋，不必改程式碼。
-SITE_URL = os.environ.get("NEWS_SITE_URL", "http://chuehnone.viovie.co/news/")
+#
+# 必須是 https：這個網址會變成 og:image 與 canonical。該網域的 http 不會
+# 自動轉址（直接回 200），所以填 http 的話，分享出去的預覽圖網址就是 http，
+# 有些平台會因混合內容而不抓圖，搜尋引擎也會把兩種 scheme 視為不同頁面。
+SITE_URL = os.environ.get("NEWS_SITE_URL", "https://chuehnone.viovie.co/news/")
 
 # 分享預覽圖。刻意是「進版控的 PNG」而不是 export 當下生成的 SVG：
 #
@@ -813,6 +831,48 @@ FILTER_JS = """
   // 使用者一旦自己點過密度切換，就會走 update() 正常寫入 hash。
   if (mobileDefault) { syncControls(); apply(); }
   else { update(); }
+
+  // 更新提示：GitHub Pages 給 HTML 的是 max-age=600，開著不動的分頁在十分鐘內
+  // 不會去問伺服器，評分完上線後這個分頁仍停在舊資料且沒有任何跡象。
+  //
+  // 用 HEAD 比對 ETag 而非直接重新整理：頁面有 1.8 MB，而且使用者可能正在
+  // 讀某一則或已經設好篩選條件，不該擅自把它捲掉——由使用者決定何時重載。
+  // 沒變更時伺服器回 304、幾乎零成本，所以只在分頁真的被看著時才檢查。
+  (function watchForUpdates() {
+    var seen = null;      // 目前這份頁面的 ETag，第一次檢查時記下
+    var checking = false; // 避免 visibilitychange 連續觸發時重複發出請求
+    var banner = null;
+
+    function show() {
+      if (banner) return;  // 已經提示過就不再重複插入
+      banner = document.createElement('button');
+      banner.className = 'update-bar';
+      banner.type = 'button';
+      banner.textContent = '有新的評分資料　點此更新';
+      banner.addEventListener('click', function () { location.reload(); });
+      document.body.appendChild(banner);
+    }
+
+    function check() {
+      if (checking || document.hidden) return;
+      checking = true;
+      // cache: 'no-store' 讓這個請求本身不被快取，否則問到的是快取裡的舊 ETag
+      fetch(location.pathname, { method: 'HEAD', cache: 'no-store' })
+        .then(function (r) {
+          var tag = r.headers.get('ETag') || r.headers.get('Last-Modified');
+          if (!tag) return;              // 伺服器沒給就放棄，不做無謂的猜測
+          if (seen === null) { seen = tag; return; }
+          if (tag !== seen) show();
+        })
+        .catch(function () { /* 離線或請求失敗：靜默略過，下次可見時再試 */ })
+        .then(function () { checking = false; });
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) check();
+    });
+    check();  // 開頁時先記下目前的 ETag 當基準
+  })();
 })();
 """
 

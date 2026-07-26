@@ -742,15 +742,47 @@ class TestShareMetadata(CLITestCase):
                     'name="twitter:card"'):
             self.assertIn(tag, head, f"<head> 缺少 {tag}")
 
-    def test_og_image_url_is_absolute(self):
-        """og:image 必須是絕對網址——相對路徑各平台一律抓不到圖。"""
+    def test_update_check_only_in_static_page(self):
+        """更新提示只屬於靜態站。
+
+        動態 serve 完全沒有載入 JS，插了也不會執行；而靜態站的分頁若開著
+        不動，GitHub Pages 的 max-age=600 會讓它十分鐘內完全不問伺服器，
+        評分上線後沒有任何跡象。相關 CSS 則共用（兩邊同一份 STYLE）。
+        """
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            static = server.render_static_page()
+            dynamic = server.render_page(grade="", date="", section="", q="", tag="")
+        self.assertIn("watchForUpdates", static, "靜態站應含更新檢查")
+        self.assertIn("update-bar", server.STYLE, "更新提示的樣式應在共用 STYLE 中")
+        self.assertNotIn("watchForUpdates", dynamic,
+                         "動態站沒有載入 JS，不該含更新檢查")
+
+    def test_og_image_url_is_absolute_https(self):
+        """og:image 必須是 https 絕對網址。
+
+        絕對網址：相對路徑各平台一律抓不到圖。
+        https：SITE_URL 一度填成 http，而該網域的 http 不會自動轉址（直接回
+        200），所以預覽圖網址就真的是 http——有些平台會因混合內容不抓圖，
+        搜尋引擎也會把兩種 scheme 當成不同頁面。
+        """
         with load_modules(self.dir, "server") as (server,):
             server.DB_PATH = self.dir / "news.db"
             html = server.render_static_page()
             name = server.OG_IMAGE_NAME
         url = re.search(r'property="og:image" content="([^"]+)"', html).group(1)
-        self.assertRegex(url, r"^https?://", "og:image 不是絕對網址")
+        self.assertRegex(url, r"^https://", "og:image 應為 https 絕對網址")
         self.assertTrue(url.endswith(name))
+
+    def test_canonical_url_is_https(self):
+        """canonical 與 og:url 同樣不該是 http（理由同 og:image）。"""
+        with load_modules(self.dir, "server") as (server,):
+            server.DB_PATH = self.dir / "news.db"
+            html = server.render_static_page()
+        for pat in (r'<link rel="canonical" href="([^"]+)"',
+                    r'property="og:url" content="([^"]+)"'):
+            url = re.search(pat, html).group(1)
+            self.assertRegex(url, r"^https://", f"{pat} 應為 https")
 
     def test_og_image_is_raster_not_svg(self):
         """預覽圖必須是點陣圖。
