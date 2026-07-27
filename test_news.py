@@ -973,6 +973,65 @@ class TestReviewCalibration(CLITestCase):
         self.assertIn("窗口未滿", r.stdout,
                       "應明確告知有多少則因窗口未滿而未納入")
 
+    def test_median_ties_excluded_from_both_groups(self):
+        """等於中位數的則不歸入任一組。
+
+        分數是整數且高度集中（實際資料有 51 則同為 13 分）。若用 >= 切組，
+        同分者會全被塞進高分組，讓該組混入大量中間值而稀釋對比——測出來的
+        差距會低於真實鑑別力。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            rows = [{"id": i, f"duration_score": s, "structural_score": s}
+                    for i, s in enumerate([1, 2, 2, 2, 3])]
+            # 用 dict 當 row：dimension_calibration 只讀 id 與 <key>_score
+            stats = {i: {"excess": 1.0} for i in range(5)}
+            cal = news.dimension_calibration(rows, stats)
+        c = cal["duration"]
+        self.assertEqual(c["median"], 2)
+        self.assertEqual(c["ties"], 3, "三則同為中位數 2 分")
+        self.assertEqual(c["high_n"], 1, "高分組只該有 >2 的那一則")
+        self.assertEqual(c["low_n"], 1, "低分組只該有 <2 的那一則")
+
+    def test_optimized_stats_match_naive_computation(self):
+        """前綴和最佳化的結果必須與逐筆比對的天真算法一致。
+
+        followup_stats 為了效能改用日期索引與前綴和（原本 O(n²)，4300 筆
+        要 12 秒）。這類最佳化最容易在邊界（窗口起訖日）算錯，故用天真
+        實作當對照組驗證等價。
+        """
+        # 邊界要有資料才測得到 off-by-one：對 A 而言 1/31 是窗口最後一天
+        # （第 30 天）、2/01 是剛好落在窗口外的第 31 天。少了這兩筆，
+        # 窗口算成 29 天或 31 天都不會被發現。
+        spec = [("A", "2026-01-01", ["X"]), ("B", "2026-01-05", ["X", "Y"]),
+                ("C", "2026-01-20", ["Y"]),
+                ("邊界內", "2026-01-31", ["X"]), ("邊界外", "2026-02-01", ["X"]),
+                ("D", "2026-02-10", ["X"])]
+        stats, rows = self._stats(spec)
+
+        # 天真實作：對每則掃過全部資料，逐筆比對日期
+        def naive(rows, window):
+            from datetime import datetime
+            def days(a, b):
+                fmt = "%Y-%m-%d"
+                return (datetime.strptime(b, fmt) - datetime.strptime(a, fmt)).days
+            out = {}
+            for r in rows:
+                ts = set(json.loads(r["tags"] or "[]"))
+                if not ts:
+                    continue
+                hits = sum(
+                    1 for o in rows
+                    if 0 < days(r["news_date"], o["news_date"]) <= window
+                    and ts & set(json.loads(o["tags"] or "[]"))
+                )
+                out[r["id"]] = hits
+            return out
+
+        expected = naive(rows, 30)
+        for rid, hits in expected.items():
+            self.assertEqual(stats[rid]["followups"], hits,
+                             f"id={rid} 的後續數與天真算法不符")
+
     def test_only_verifiable_dimensions_are_calibrated(self):
         """只校準 duration 與 structural——其餘三個面向與後續數無邏輯關聯。
 

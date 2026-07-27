@@ -71,6 +71,15 @@ python3 -m unittest test_news    # 跑回歸測試（CI 也會跑）
 - **只校準 duration 與 structural**：其餘三個面向（影響範圍、決策相關性、
   事實可信度）評的是新聞當下的性質，與後續數沒有邏輯關聯，硬套會產出
   看似有據的假結論。這條由 `test_only_verifiable_dimensions_are_calibrated` 守著。
+- **中位數切組要排除同分者**：分數是整數且高度集中（實際有 51 則同為 13 分），
+  用 `>=` 切會把同分者全塞進高分組、稀釋對比。改用 `>` 並在報表標示排除幾則後，
+  實測鑑別力從 +0.41 升到 +0.53——原本的寫法是在低估自己的判讀能力。
+- **成熟判定的基準是「資料中最新的評分日」而非今天**：後續只在有評分時才累積，
+  若停評一個月，用今天判斷會把那個月的則全標成成熟，但它們的後續根本沒機會發生。
+- `followup_stats` 用日期索引與前綴和，不要改回逐筆比對日期的寫法——那是 O(n²)，
+  實測 4300 筆要 12 秒且資料每天在長。等價性由
+  `test_optimized_stats_match_naive_computation` 以天真實作當對照組守著
+  （fixture 刻意在窗口首末日各放一筆，否則測不到 off-by-one）。
 - 樣本少於 20 則會印出警告。資料要累積過一個完整窗口才有參考價值，
   想早點看到訊號可以用較短的窗口（`--window 7`）。
 
@@ -205,7 +214,7 @@ CI 只負責把 JSON 轉成靜態站並上線。
 - `news.py` — CLI（init / add / list / serve / fetch / pending / review / tags / tag /
   alias / export-json / import-json / export）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，70 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，72 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
   回顧校準的兩項偏誤修正；改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。

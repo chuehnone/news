@@ -25,7 +25,7 @@ import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -1029,31 +1029,53 @@ def followup_stats(rows, window_days=REVIEW_WINDOW_DAYS):
             tag_total[t] += 1
     base_rate = {t: n / total for t, n in tag_total.items()}
 
-    # 依日期分組，方便算窗口內的量體
-    by_date = defaultdict(list)
-    for r in dated:
-        by_date[r["news_date"]].append(r)
-
-    # 資料庫裡最新的評分日。窗口尚未走完的則要標記出來——它們的後續數
-    # 天生被截斷（今天評的則後續必為 0），拿去跟窗口完整的則比較毫無意義。
+    # 依「距最早日期的天數」建索引，讓窗口查詢變成陣列切片而非逐筆比對日期。
+    # 直接對每一則掃過全部資料是 O(n²)——實測 4300 筆要 12 秒，且資料是
+    # 每天增加的，天真寫法會越用越慢。
+    origin = min(r["news_date"] for r in dated)
     latest = max(r["news_date"] for r in dated)
+    span = _days_between(origin, latest)
+
+    # day_rows[d] = 第 d 天所有則的標籤集合；day_count[d] = 該天則數
+    day_rows = [[] for _ in range(span + 1)]
+    day_count = [0] * (span + 1)
+    for r in dated:
+        d = _days_between(origin, r["news_date"])
+        day_rows[d].append(set(tags_of(r)))
+        day_count[d] += 1
+
+    # 前綴和讓「窗口內共有幾則」變成 O(1) 相減，取代原本的逐筆日期比對
+    prefix_count = [0] * (span + 2)
+    for d in range(span + 1):
+        prefix_count[d + 1] = prefix_count[d] + day_count[d]
 
     out = {}
     for r in dated:
         my_tags = set(tags_of(r))
         if not my_tags:
             continue  # 沒有標籤就沒有後續訊號可算，略過而非給 0
-        window = [
-            other
-            for d, items in by_date.items()
-            if 0 < _days_between(r["news_date"], d) <= window_days
-            for other in items
-        ]
-        hits = sum(1 for o in window if my_tags & set(tags_of(o)))
+        d0 = _days_between(origin, r["news_date"])
+        lo, hi = d0 + 1, min(d0 + window_days, span)  # 只看「之後」，故從 d0+1 起
+        if hi < lo:
+            window_total = hits = 0
+        else:
+            window_total = prefix_count[hi + 1] - prefix_count[lo]
+            # 命中以「聯集」計：一則後續沾到任一標籤就算一次，不因掛多個
+            # 標籤而重複計算——否則 hits 可能超過窗口總數讓 excess 虛高。
+            # 只掃窗口內的日子，不再對每則掃過全部資料。
+            hits = sum(
+                1
+                for dd in range(lo, hi + 1)
+                for other_tags in day_rows[dd]
+                if my_tags & other_tags
+            )
         # 用該則標籤的平均基準率——取平均而非總和，避免掛越多標籤期望值越高
         rate = sum(base_rate.get(t, 0) for t in my_tags) / len(my_tags)
-        expected = rate * len(window)
-        # 窗口是否已走完：距今不足 window_days 的則，後續還沒機會發生完
+        expected = rate * window_total
+        # 窗口是否已走完。基準刻意用「資料中最新的評分日」而非今天：後續資料
+        # 只在有評分時才會累積，若停評一個月，用今天判斷會把那個月的則全部
+        # 標記成成熟，但它們的後續其實根本沒機會發生。用資料自己的時間軸，
+        # 停評期間就只是不再產生新的成熟項，不會製造假成熟。
         elapsed = _days_between(r["news_date"], latest)
         out[r["id"]] = {
             "followups": hits,
@@ -1090,15 +1112,22 @@ def dimension_calibration(rows, stats):
             continue
         # 以該面向給分的中位數切成高分組與低分組，比較兩組的後續表現。
         # 用中位數而非固定門檻，量表不同的面向才能一致處理。
+        #
+        # 分數是整數且高度集中（結構性意義有 51 則同為 13 分），若用 s >= mid
+        # 切組，所有同分者會全被歸到高分組，讓「高分組」混入大量中間值而稀釋
+        # 對比。故改為排除等於中位數的則——寧可少用一些樣本，也不要讓兩組的
+        # 界線模糊到測不出鑑別力。
         scores = sorted(s for s, _ in pairs)
         mid = scores[len(scores) // 2]
-        high = [e for s, e in pairs if s >= mid]
+        high = [e for s, e in pairs if s > mid]
         low = [e for s, e in pairs if s < mid]
+        ties = sum(1 for s, _ in pairs if s == mid)
         result[key] = {
             "label": label,
             "limit": limit,
             "n": len(pairs),
             "median": mid,
+            "ties": ties,
             "high_n": len(high),
             "low_n": len(low),
             "high_excess": (sum(high) / len(high)) if high else None,
@@ -1126,13 +1155,15 @@ def cmd_review(args):
         if r["id"] in stats and stats[r["id"]]["mature"]
         and stats[r["id"]]["excess"] is not None
     ]
-    if args.since:
-        mature = [r for r in mature if r["news_date"] >= args.since]
     immature = sum(1 for r in rows if r["id"] in stats and not stats[r["id"]]["mature"])
-
     print(f"評分回顧：觀察窗口 {args.window} 天，"
           f"已走完窗口的有 {len(mature)} 則"
           f"（另有 {immature} 則窗口未滿，不納入）")
+    # --since 的過濾要在報完全體數字之後——否則標頭的「已走完 N 則」是篩過的
+    # 子集，而「另有 M 則未滿」是全體，兩個數字基準不同卻並列在同一句話裡。
+    if args.since:
+        mature = [r for r in mature if r["news_date"] >= args.since]
+        print(f"　　　　　{args.since} 起：{len(mature)} 則")
     if not mature:
         print(f"\n（沒有滿足條件的資料——最早的評分距今可能還不到 {args.window} 天。"
               f"\n  這個工具要等資料累積過一個完整窗口才有意義。）")
@@ -1173,7 +1204,8 @@ def cmd_review(args):
         gap = hi - lo
         # 給高分的那組，後續本來就該比低分組多。差距越大代表這個面向越有鑑別力。
         verdict = "有鑑別力" if gap > 0.3 else ("鑑別力偏弱" if gap > 0 else "方向相反⚠️")
-        print(f"  {c['label']}（滿分 {c['limit']}，以 {c['median']} 分切組）")
+        tie_note = f"，{c['ties']} 則同為 {c['median']} 分未列入" if c.get("ties") else ""
+        print(f"  {c['label']}（滿分 {c['limit']}，以 {c['median']} 分切組{tie_note}）")
         print(f"    高分組 {c['high_n']:>3} 則 → 平均超額 ×{hi:.2f}")
         print(f"    低分組 {c['low_n']:>3} 則 → 平均超額 ×{lo:.2f}")
         print(f"    差距 {gap:+.2f} → {verdict}")
