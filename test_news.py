@@ -121,7 +121,12 @@ class TestNewsDateValidation(CLITestCase):
                 self.assertEqual(self.db_count(), 0)
 
     def test_rejects_future_date(self):
-        future = (date.today() + timedelta(days=1)).isoformat()
+        # 基準必須用台北時間，不能用 date.today()（取執行環境時區）。
+        # 迴歸：CI 的 runner 是 UTC，台灣時間上午 8 點前跑時「UTC 的明天」
+        # 其實已經是「台北的今天」，驗證正確放行卻讓測試誤判失敗。
+        # 加 2 天而非 1 天，讓測試在任何時區下都明確落在未來。
+        with load_modules(self.dir, "news") as (news,):
+            future = (news.today_local() + timedelta(days=2)).isoformat()
         r = self.add(make_score("t", future))
         self.assertNotEqual(r.returncode, 0)
         self.assertIn("未來日期", r.stderr + r.stdout)
