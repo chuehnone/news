@@ -914,6 +914,93 @@ class TestStaticOutput(CLITestCase):
         self.assertEqual(r.returncode, 0, "空 db 不該噴錯")
 
 
+class TestDriftDetection(CLITestCase):
+    """漂移偵測必須能區分「標準鬆動」與「主題組成改變」。
+
+    少了主題控制，只要當期湧入重大主題就會誤報——工具會很快被當成
+    狼來了而忽略，那比沒有工具更糟。
+    """
+
+    def _add_batch(self, prefix, dates_scores, tags):
+        """dates_scores: [(日期, decision 分數)]，其餘面向固定。"""
+        for i, (d, dec) in enumerate(dates_scores):
+            self.add(make_score(f"{prefix}{i}", d, url=f"http://e.com/{prefix}{i}",
+                                scores=(10, 10, dec, 10, 9), tags=tags))
+
+    def test_detects_real_drift_within_same_tag(self):
+        """同一標籤內分數上升 → 應判定為標準鬆動。"""
+        self._add_batch("早", [("2026-01-01", 5)] * 6, ["主題A"])
+        self._add_batch("晚", [("2026-03-01", 15)] * 6, ["主題A"])
+        with load_modules(self.dir, "news") as (news,):
+            conn = sqlite3.connect(self.dir / "news.db")
+            conn.row_factory = sqlite3.Row
+            rows = list(conn.execute("SELECT * FROM news"))
+            conn.close()
+            early = [r for r in rows if r["news_date"] <= "2026-01-31"]
+            late = [r for r in rows if r["news_date"] > "2026-01-31"]
+            within = news.drift_within_tags(early, late, "decision")
+        self.assertEqual(len(within), 1, "主題A 前後期都達門檻，應被納入")
+        self.assertAlmostEqual(within[0]["delta"], 10.0, delta=0.1,
+                               msg="同標籤內的漲幅應被如實反映")
+
+    def test_topic_mix_change_is_not_reported_as_drift(self):
+        """整體平均上升但各標籤內不變 → 是主題組成改變，不該被當成漂移。
+
+        迴歸情境：前期都是低分主題、後期湧入高分主題，整體平均自然上升。
+        若不控制主題，這會被誤報成標準鬆動。
+        """
+        # 前期：低分主題；後期：換成另一個天生高分的主題，但兩者各自穩定
+        self._add_batch("低", [("2026-01-01", 5)] * 6, ["低分主題"])
+        self._add_batch("低後", [("2026-03-01", 5)] * 6, ["低分主題"])
+        self._add_batch("高", [("2026-03-02", 18)] * 6, ["高分主題"])
+        with load_modules(self.dir, "news") as (news,):
+            conn = sqlite3.connect(self.dir / "news.db")
+            conn.row_factory = sqlite3.Row
+            rows = list(conn.execute("SELECT * FROM news"))
+            conn.close()
+            early = [r for r in rows if r["news_date"] <= "2026-01-31"]
+            late = [r for r in rows if r["news_date"] > "2026-01-31"]
+            overall = news.drift_by_dimension(early, late)["decision"]
+            within = news.drift_within_tags(early, late, "decision")
+        # 整體平均確實上升（高分主題灌進來）
+        self.assertGreater(overall["delta"], 3,
+                           "整體平均應因主題組成改變而上升")
+        # 但唯一能前後對照的標籤沒有變化 → 不是標準鬆動
+        self.assertEqual(len(within), 1, "只有低分主題在前後期都達門檻")
+        self.assertAlmostEqual(within[0]["delta"], 0.0, delta=0.1,
+                               msg="同標籤內沒有變化，不該被當成漂移")
+
+    def test_small_tags_excluded_from_verification(self):
+        """樣本不足的標籤不納入複驗，避免個別極端值主導結論。"""
+        self._add_batch("多", [("2026-01-01", 5)] * 6, ["夠多"])
+        self._add_batch("多後", [("2026-03-01", 5)] * 6, ["夠多"])
+        self._add_batch("少", [("2026-01-01", 20)] * 2, ["太少"])
+        self._add_batch("少後", [("2026-03-01", 0)] * 2, ["太少"])
+        with load_modules(self.dir, "news") as (news,):
+            conn = sqlite3.connect(self.dir / "news.db")
+            conn.row_factory = sqlite3.Row
+            rows = list(conn.execute("SELECT * FROM news"))
+            conn.close()
+            early = [r for r in rows if r["news_date"] <= "2026-01-31"]
+            late = [r for r in rows if r["news_date"] > "2026-01-31"]
+            within = news.drift_within_tags(early, late, "decision")
+        tags = {w["tag"] for w in within}
+        self.assertIn("夠多", tags)
+        self.assertNotIn("太少", tags, "每期不足 5 則的標籤不該納入")
+
+    def test_drift_runs_on_real_shaped_data(self):
+        """CLI 能跑完並輸出各面向與等級分布。"""
+        # 需 20 則以上才會實際計算（少於此的樣本判不出漂移）
+        for i in range(24):
+            d = "2026-01-01" if i < 12 else "2026-03-01"
+            self.add(make_score(f"n{i}", d, url=f"http://e.com/d{i}",
+                                scores=(10, 10, 5 if i < 12 else 15, 10, 9),
+                                tags=["T"]))
+        r = self.run_cli("drift", check=True)
+        self.assertIn("決策相關性", r.stdout)
+        self.assertIn("等級分布", r.stdout)
+
+
 class TestReviewCalibration(CLITestCase):
     """評分回顧的後續指標必須修掉兩個偏誤，否則測到的是雜訊而非判讀準確度。
 

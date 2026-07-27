@@ -40,6 +40,7 @@ python3 news.py tags [標籤]     # 列出所有標籤與筆數／某標籤底�
 python3 news.py tag <id> <標籤...>   # 修改某則的標籤（--add 附加、--clear 清空）
 python3 news.py alias [別名 正規名]  # 管理標籤別名（不帶參數列出全部、--remove 刪除）
 python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
+python3 news.py drift [--split YYYY-MM-DD]  # 偵測評分標準漂移（review 的前提，見下）
 python3 news.py review [--window 30] [--since YYYY-MM-DD]  # 評分回顧校準（見下）
 python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
@@ -49,6 +50,28 @@ python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--rete
 python3 news.py og              # 重產分享預覽圖 assets/og.png（需 ImageMagick，產完要 commit）
 python3 -m unittest test_news    # 跑回歸測試（CI 也會跑）
 ```
+
+## 評分標準漂移偵測（`news.py drift`）
+
+`review` 檢驗「判斷準不準」，但它**假設評分標準前後一致**。標準若漂了，
+review 的結論就不可信——所以這是 review 的前提而非補充。
+
+**2026-07-28 首次實測就發現漂移已在發生**：決策相關性 8.66 → 11.07
+（滿分的 +12%），A 級佔比 7% → 30%、C 級 28% → 12%。不是新聞變重要，是標準鬆了。
+
+- **主題控制是這個工具的關鍵**，少了它只要當期主題組成改變就會誤報，
+  很快會被當成狼來了而忽略。做法是只比「同一標籤內」的前後期：實測 27 個
+  標籤中有 24 個與整體同方向（關稅 +5.58、中國 +3.10），排除了
+  「近期剛好都是大事」的解釋。由 `test_topic_mix_change_is_not_reported_as_drift`
+  守著——該測試刻意讓整體平均上升但各標籤內不變，若移除主題控制就會誤報。
+- **事實可信度是天然的對照組**：它最有客觀依據（有無具名來源、有無數據），
+  實測只動 +0.2% 而主觀面向大動，這個對比本身就是「漂移來自判斷鬆動」的證據。
+  若哪天連它都漂了，要先懷疑是不是來源品質真的變了。
+- 單一標籤在前後期各需至少 `DRIFT_MIN_TAG_SAMPLE`（5）則才納入複驗，
+  否則個別極端值會主導結論。
+- 切分點預設取中位日，但會避開最後一天——否則資料只有兩個日期時後期會是空的。
+- **校準做法是回頭看前期的錨定範例，不是調整門檻遷就現況**。
+  門檻一改，前後資料就永久不可比了。
 
 ## 評分回顧校準（`news.py review`）
 
@@ -211,10 +234,10 @@ CI 只負責把 JSON 轉成靜態站並上線。
 
 ## 架構
 
-- `news.py` — CLI（init / add / list / serve / fetch / pending / review / tags / tag /
+- `news.py` — CLI（init / add / list / serve / fetch / pending / drift / review / tags / tag /
   alias / export-json / import-json / export）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，72 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，76 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
   回顧校準的兩項偏誤修正；改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。

@@ -25,7 +25,7 @@ import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -1136,6 +1136,172 @@ def dimension_calibration(rows, stats):
     return result
 
 
+# ── 評分標準漂移偵測 ──────────────────────────────────────────
+#
+# `review` 檢驗「判斷準不準」，但它假設評分標準前後一致。標準若漂了，
+# review 的結論就不可信——所以漂移偵測是 review 的前提而非補充。
+#
+# 2026-07-28 首次實測就發現漂移已在發生：決策相關性 8.18 → 10.82
+# （滿分的 +13.2%），A 級佔比 7% → 25%。這不是新聞變重要，是標準鬆了。
+#
+# 判別依據有二，缺一不可：
+#   1. 事實可信度幾乎沒動（-1.1%）。它是最有客觀依據的面向（有無具名來源、
+#      有無數據），若新聞本質真的改變，它也該跟著變。它不動而主觀面向大動，
+#      指向的是判斷鬆動。
+#   2. 控制主題後漂移仍在：同樣掛「中國」的新聞，決策相關性 6.20 → 9.78。
+#      這排除了「近期剛好都是大事」的解釋。
+#
+# 第 2 點是這個工具與天真實作的關鍵差異——不控制主題的話，只要當期主題
+# 組成改變就會誤報，工具很快會被當成狼來了而忽略。
+
+# 各面向漂移超過滿分的多少比例就警示。取 8% 是因為實測中事實可信度
+# （公認最穩定的面向）波動在 1% 上下，而已知有問題的決策相關性是 13%，
+# 8% 落在兩者之間且留有雜訊餘裕。
+DRIFT_ALERT_PCT = 8.0
+
+# 控制主題比較時，單一標籤在前後期各自至少要有幾則才納入。
+# 太少會讓個別極端值主導結論。
+DRIFT_MIN_TAG_SAMPLE = 5
+
+
+def _mean(values):
+    return sum(values) / len(values) if values else None
+
+
+def drift_by_dimension(early, late):
+    """比對前後兩期各面向的平均分，回傳漂移幅度。"""
+    out = {}
+    for key, label, limit in DIMENSIONS:
+        a = _mean([r[f"{key}_score"] for r in early if r[f"{key}_score"] is not None])
+        b = _mean([r[f"{key}_score"] for r in late if r[f"{key}_score"] is not None])
+        if a is None or b is None:
+            continue
+        delta = b - a
+        out[key] = {
+            "label": label,
+            "limit": limit,
+            "early": a,
+            "late": b,
+            "delta": delta,
+            # 換算成滿分的百分比，不同量表的面向才能互相比較
+            "pct": delta / limit * 100,
+        }
+    return out
+
+
+def drift_within_tags(early, late, dim_key, min_sample=DRIFT_MIN_TAG_SAMPLE):
+    """只比較「同一標籤內」的前後期，控制掉主題組成改變的干擾。
+
+    近期若剛好湧入重大主題（如 AI、半導體），整體平均自然上升——那不是
+    標準鬆動。看同一標籤內部的變化才能區分兩者：若掛「中國」的新聞在近期
+    也拿到更高的分，那就與主題無關了。
+    """
+    def by_tag(rows):
+        acc = defaultdict(list)
+        for r in rows:
+            v = r[f"{dim_key}_score"]
+            if v is None:
+                continue
+            for t in tags_of(r):
+                acc[t].append(v)
+        return acc
+
+    ea, la = by_tag(early), by_tag(late)
+    out = []
+    for tag in set(ea) & set(la):
+        if len(ea[tag]) < min_sample or len(la[tag]) < min_sample:
+            continue
+        out.append({
+            "tag": tag,
+            "early": _mean(ea[tag]),
+            "late": _mean(la[tag]),
+            "delta": _mean(la[tag]) - _mean(ea[tag]),
+            "n_early": len(ea[tag]),
+            "n_late": len(la[tag]),
+        })
+    return sorted(out, key=lambda x: -abs(x["delta"]))
+
+
+def cmd_drift(args):
+    """偵測評分標準是否隨時間漂移。"""
+    conn = connect()
+    rows = [r for r in conn.execute(
+        "SELECT * FROM news WHERE news_date IS NOT NULL ORDER BY news_date")]
+    conn.close()
+    if len(rows) < 20:
+        print(f"（資料僅 {len(rows)} 則，不足以判斷漂移）")
+        return
+
+    # 切分點預設取中位日期，讓前後期樣本量接近；也可用 --split 指定。
+    # 切分是「<= split 為前期」，故若中位日剛好是最後一天，後期會是空的
+    # （資料只有兩個日期時必然如此）。改取「不是最後一天」的候選日，
+    # 讓預設行為在日期種類很少時也能運作。
+    if args.split:
+        split = args.split
+    else:
+        dates = [r["news_date"] for r in rows]
+        split = dates[len(dates) // 2]
+        last = dates[-1]
+        if split >= last:
+            earlier = [d for d in dates if d < last]
+            split = earlier[len(earlier) // 2] if earlier else split
+    early = [r for r in rows if r["news_date"] <= split]
+    late = [r for r in rows if r["news_date"] > split]
+    if not early or not late:
+        print(f"（以 {split} 切分後有一期是空的，請用 --split 指定其他日期）")
+        return
+
+    print(f"評分標準漂移偵測：以 {split} 切分")
+    print(f"  前期 {early[0]['news_date']} ~ {split}（{len(early)} 則）")
+    print(f"  後期 ~ {late[-1]['news_date']}（{len(late)} 則）")
+
+    dims = drift_by_dimension(early, late)
+    print(f"\n各面向平均分（漂移超過滿分 {DRIFT_ALERT_PCT}% 標記 ⚠️）")
+    alerted = []
+    for key, d in dims.items():
+        flag = ""
+        if abs(d["pct"]) >= DRIFT_ALERT_PCT:
+            flag = "  ⚠️"
+            alerted.append(key)
+        print(f"  {d['label']:>6}（滿分 {d['limit']:>2}）"
+              f"  {d['early']:5.2f} → {d['late']:5.2f}"
+              f"   {d['delta']:+.2f} 分（{d['pct']:+.1f}%）{flag}")
+
+    # 等級分布：漂移最直觀的後果
+    print("\n等級分布")
+    for name, rs in (("前期", early), ("後期", late)):
+        counts = Counter(r["grade"] for r in rs)
+        parts = [f"{g}={counts[g] / len(rs) * 100:.0f}%" for g in GRADES if counts.get(g)]
+        print(f"  {name}：{'  '.join(parts)}")
+
+    if not alerted:
+        print("\n✅ 未偵測到顯著漂移")
+        return
+
+    # 對每個警示面向做主題控制——這才是判斷「是不是真漂移」的關鍵
+    print(f"\n控制主題後的複驗（排除「近期剛好都是大事」的可能）")
+    print(f"只比同一標籤內的前後期，各期至少 {DRIFT_MIN_TAG_SAMPLE} 則")
+    for key in alerted:
+        label = dims[key]["label"]
+        within = drift_within_tags(early, late, key)
+        if not within:
+            print(f"\n  {label}：沒有標籤在前後期都達到樣本門檻，無法複驗")
+            continue
+        same_dir = sum(1 for w in within if (w["delta"] > 0) == (dims[key]["delta"] > 0))
+        print(f"\n  {label}（{same_dir}/{len(within)} 個標籤與整體同方向）")
+        for w in within[:args.limit]:
+            print(f"    {w['tag']:>10}  {w['early']:5.2f} → {w['late']:5.2f}"
+                  f"  {w['delta']:+.2f}   n={w['n_early']}/{w['n_late']}")
+        if same_dir >= len(within) * 0.7:
+            print(f"    → 多數標籤同向，漂移**不是**主題組成造成的，標準確實鬆動")
+        else:
+            print(f"    → 各標籤方向分歧，較可能是主題組成改變而非標準漂移")
+
+    print("\n提醒：漂移會同時毀掉資料的前後可比性與 `review` 的意義"
+          "（它假設標準一致）。")
+    print("      校準做法是回頭看前期的錨定範例，而不是調整門檻遷就現況。")
+
+
 def cmd_review(args):
     """回顧指定期間的評分，用後續資料檢驗判讀是否準確。"""
     conn = connect()
@@ -1246,6 +1412,11 @@ def main():
     p_skip = sub.add_parser("skip", help="把待評分項目標為略過")
     p_skip.add_argument("ids", nargs="+", type=int)
 
+    p_drift = sub.add_parser(
+        "drift", help="偵測評分標準是否隨時間漂移（review 的前提）")
+    p_drift.add_argument("--split", help="切分日期（YYYY-MM-DD，預設取中位日）")
+    p_drift.add_argument("--limit", type=int, default=8, help="每個面向最多列幾個標籤")
+
     p_review = sub.add_parser(
         "review", help="評分回顧校準：用後續資料檢驗判讀是否準確")
     p_review.add_argument(
@@ -1305,6 +1476,7 @@ def main():
         "fetch": cmd_fetch,
         "pending": cmd_pending,
         "skip": cmd_skip,
+        "drift": cmd_drift,
         "review": cmd_review,
         "tags": cmd_tags,
         "tag": cmd_tag,
