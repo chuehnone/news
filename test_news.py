@@ -914,5 +914,75 @@ class TestStaticOutput(CLITestCase):
         self.assertEqual(r.returncode, 0, "空 db 不該噴錯")
 
 
+class TestReviewCalibration(CLITestCase):
+    """評分回顧的後續指標必須修掉兩個偏誤，否則測到的是雜訊而非判讀準確度。
+
+    這兩項修正是整個功能的核心：少了任何一個，指標都會退化成
+    「標籤有多大 × 評得多晚」，看起來有數字但完全測不到評分準不準。
+    """
+
+    def _stats(self, rows_spec):
+        """rows_spec: [(title, date, tags)] → 寫入後回傳 followup_stats。"""
+        for i, (title, d, tags) in enumerate(rows_spec):
+            self.add(make_score(title, d, url=f"http://e.com/{i}", tags=tags))
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            conn = sqlite3.connect(self.dir / "news.db")
+            conn.row_factory = sqlite3.Row
+            rows = list(conn.execute("SELECT * FROM news"))
+            conn.close()
+            return news.followup_stats(rows, window_days=30), rows
+
+    def test_corrects_big_tag_bias(self):
+        """掛熱門標籤不該讓超額倍數變高——那是標籤大，不是這則重要。
+
+        迴歸情境：「中國」有 60 則而「儲能」只有 1 則，若直接比後續次數，
+        所有掛「中國」的新聞都會顯得判斷精準。
+        """
+        spec = [("熱門A", "2026-01-01", ["熱門"]), ("冷門A", "2026-01-01", ["冷門"])]
+        # 讓「熱門」標籤在後續大量出現，「冷門」只出現一次
+        spec += [(f"熱門後續{i}", "2026-01-10", ["熱門"]) for i in range(9)]
+        spec += [("冷門後續", "2026-01-10", ["冷門"])]
+        stats, rows = self._stats(spec)
+        by_title = {r["title"]: stats[r["id"]] for r in rows if r["id"] in stats}
+        hot, cold = by_title["熱門A"], by_title["冷門A"]
+        # 原始後續數必然是熱門遠多（這正是偏誤來源）
+        self.assertGreater(hot["followups"], cold["followups"])
+        # 但修正後，兩者都只是「符合各自標籤的常態」，超額倍數應接近
+        self.assertAlmostEqual(
+            hot["excess"], cold["excess"], delta=0.5,
+            msg="大標籤偏誤未修正：熱門標籤的超額倍數不該高於冷門")
+
+    def test_marks_immature_rows(self):
+        """窗口未走完的則必須標記，否則會被誤報成「高估」。
+
+        今天評的新聞後續必為 0，混進報表就是假警訊。
+        """
+        spec = [("舊聞", "2026-01-01", ["X"]), ("新聞", "2026-03-01", ["X"])]
+        stats, rows = self._stats(spec)
+        by_title = {r["title"]: stats[r["id"]] for r in rows if r["id"] in stats}
+        self.assertTrue(by_title["舊聞"]["mature"], "距最新日超過窗口的應為成熟")
+        self.assertFalse(by_title["新聞"]["mature"], "最新的一則窗口未走完")
+
+    def test_review_excludes_immature_from_report(self):
+        """報表只能納入窗口走完的則，且要說明排除了幾則。"""
+        for i in range(3):
+            self.add(make_score(f"新{i}", date.today().isoformat(),
+                                url=f"http://e.com/n{i}", tags=["X"]))
+        r = self.run_cli("review", check=True)
+        self.assertIn("窗口未滿", r.stdout,
+                      "應明確告知有多少則因窗口未滿而未納入")
+
+    def test_only_verifiable_dimensions_are_calibrated(self):
+        """只校準 duration 與 structural——其餘三個面向與後續數無邏輯關聯。
+
+        影響範圍、決策相關性、事實可信度評的是新聞當下的性質，硬用後續數
+        檢驗會產生看似有據的假結論。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            keys = set(news.dimension_calibration([], {}).keys())
+        self.assertEqual(keys, {"duration", "structural"})
+
+
 if __name__ == "__main__":
     unittest.main()

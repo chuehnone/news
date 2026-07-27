@@ -25,6 +25,7 @@ import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -975,6 +976,212 @@ def cmd_skip(args):
     conn.close()
 
 
+# ── 評分回顧校準 ──────────────────────────────────────────────
+#
+# 「影響時間」與「結構性意義」是評分中最像預測的兩個面向：它們宣稱這則新聞
+# 之後還會有後續、還值得追蹤。這裡回頭用實際資料驗證那個宣稱。
+#
+# 訊號是「後續關聯度」：一則評分後，它的標籤在往後的日子裡又出現幾次。
+# 但原始次數不能直接用，有兩個會讓指標退化成雜訊的偏誤：
+#
+#   1. 標籤規模差異：「中國」有 62 則、「儲能」只有 1 則。掛大標籤的新聞
+#      天生後續多，與它本身重不重要無關。
+#   2. 每日評分量差異：6/22 只評 2 則、7/27 評 49 則。晚期評的新聞
+#      天生有更多後續機會。
+#
+# 兩者都修正後，指標才反映「這則的後續是否超出它所屬主題與時期的常態」。
+
+# 回顧窗口：評分後觀察多少天的後續。與 server.py 的 RECENT_DAYS 無關——
+# 那是網站的保留期，這是判斷「後續是否發生」的觀察期，語意不同故各自定義。
+REVIEW_WINDOW_DAYS = 30
+
+
+def _days_between(earlier, later):
+    """兩個 YYYY-MM-DD 字串相差幾天。"""
+    a = datetime.strptime(earlier, "%Y-%m-%d").date()
+    b = datetime.strptime(later, "%Y-%m-%d").date()
+    return (b - a).days
+
+
+def followup_stats(rows, window_days=REVIEW_WINDOW_DAYS):
+    """算出每則的「超額後續」——後續密度相對於同主題、同時期常態的倍數。
+
+    回傳 {news_id: {"followups": 實際後續數, "expected": 期望值, "excess": 超額倍數}}。
+
+    expected 的算法把兩個偏誤一起處理：
+      期望值 = 該則所有標籤的平均基準率 × 窗口內的總評分量
+    其中基準率 = 該標籤的總出現數 / 全部則數，代表「隨機抓一則有多大機會
+    掛到這個標籤」。乘上窗口內的總量，就是「若這則毫不特別，預期會有幾則後續」。
+
+    excess = 實際 / 期望。大於 1 代表後續比同類新聞的常態更密集。
+    期望值為 0（窗口內沒有任何新評分）時回傳 None，代表無從判斷而非表現差——
+    這兩者混為一談會讓最近評的新聞全被誤判成高估。
+    """
+    dated = [r for r in rows if r["news_date"]]
+    total = len(dated)
+    if not total:
+        return {}
+
+    # 各標籤的基準出現率
+    tag_total = Counter()
+    for r in dated:
+        for t in tags_of(r):
+            tag_total[t] += 1
+    base_rate = {t: n / total for t, n in tag_total.items()}
+
+    # 依日期分組，方便算窗口內的量體
+    by_date = defaultdict(list)
+    for r in dated:
+        by_date[r["news_date"]].append(r)
+
+    # 資料庫裡最新的評分日。窗口尚未走完的則要標記出來——它們的後續數
+    # 天生被截斷（今天評的則後續必為 0），拿去跟窗口完整的則比較毫無意義。
+    latest = max(r["news_date"] for r in dated)
+
+    out = {}
+    for r in dated:
+        my_tags = set(tags_of(r))
+        if not my_tags:
+            continue  # 沒有標籤就沒有後續訊號可算，略過而非給 0
+        window = [
+            other
+            for d, items in by_date.items()
+            if 0 < _days_between(r["news_date"], d) <= window_days
+            for other in items
+        ]
+        hits = sum(1 for o in window if my_tags & set(tags_of(o)))
+        # 用該則標籤的平均基準率——取平均而非總和，避免掛越多標籤期望值越高
+        rate = sum(base_rate.get(t, 0) for t in my_tags) / len(my_tags)
+        expected = rate * len(window)
+        # 窗口是否已走完：距今不足 window_days 的則，後續還沒機會發生完
+        elapsed = _days_between(r["news_date"], latest)
+        out[r["id"]] = {
+            "followups": hits,
+            "expected": expected,
+            "excess": (hits / expected) if expected > 0 else None,
+            "mature": elapsed >= window_days,
+            "elapsed": elapsed,
+        }
+    return out
+
+
+def dimension_calibration(rows, stats):
+    """比對各面向的給分與實際後續，找出系統性偏高或偏低。
+
+    只檢驗 duration（影響時間）與 structural（結構性意義）——這兩個面向
+    本質是對未來的預測，可以用後續資料驗證。其餘三個面向（影響範圍、
+    決策相關性、事實可信度）評的是新聞當下的性質，後續數多寡與它們是否
+    評得準沒有邏輯關聯，硬套只會產生看似有據的假結論。
+    """
+    verifiable = ("duration", "structural")
+    result = {}
+    for key in verifiable:
+        label = next(lb for k, lb, _ in DIMENSIONS if k == key)
+        limit = next(mx for k, _, mx in DIMENSIONS if k == key)
+        # 只取算得出 excess 的（窗口內有評分量）
+        pairs = [
+            (r[f"{key}_score"], stats[r["id"]]["excess"])
+            for r in rows
+            if r["id"] in stats and stats[r["id"]]["excess"] is not None
+            and r[f"{key}_score"] is not None
+        ]
+        if len(pairs) < 2:
+            result[key] = {"label": label, "limit": limit, "n": len(pairs)}
+            continue
+        # 以該面向給分的中位數切成高分組與低分組，比較兩組的後續表現。
+        # 用中位數而非固定門檻，量表不同的面向才能一致處理。
+        scores = sorted(s for s, _ in pairs)
+        mid = scores[len(scores) // 2]
+        high = [e for s, e in pairs if s >= mid]
+        low = [e for s, e in pairs if s < mid]
+        result[key] = {
+            "label": label,
+            "limit": limit,
+            "n": len(pairs),
+            "median": mid,
+            "high_n": len(high),
+            "low_n": len(low),
+            "high_excess": (sum(high) / len(high)) if high else None,
+            "low_excess": (sum(low) / len(low)) if low else None,
+        }
+    return result
+
+
+def cmd_review(args):
+    """回顧指定期間的評分，用後續資料檢驗判讀是否準確。"""
+    conn = connect()
+    rows = list(conn.execute("SELECT * FROM news"))
+    conn.close()
+    if not rows:
+        print("（資料庫沒有評分紀錄）")
+        return
+
+    stats = followup_stats(rows, args.window)
+
+    # 只回顧窗口已走完的則。成熟與否由 followup_stats 判定（以資料中最新的
+    # 評分日為基準），不在這裡另算一次日期——兩份判斷漂移時，報表會納入
+    # 窗口未滿的則，它們的後續天生偏低而被誤報成「高估」。
+    mature = [
+        r for r in rows
+        if r["id"] in stats and stats[r["id"]]["mature"]
+        and stats[r["id"]]["excess"] is not None
+    ]
+    if args.since:
+        mature = [r for r in mature if r["news_date"] >= args.since]
+    immature = sum(1 for r in rows if r["id"] in stats and not stats[r["id"]]["mature"])
+
+    print(f"評分回顧：觀察窗口 {args.window} 天，"
+          f"已走完窗口的有 {len(mature)} 則"
+          f"（另有 {immature} 則窗口未滿，不納入）")
+    if not mature:
+        print(f"\n（沒有滿足條件的資料——最早的評分距今可能還不到 {args.window} 天。"
+              f"\n  這個工具要等資料累積過一個完整窗口才有意義。）")
+        return
+    if len(mature) < 20:
+        print(f"⚠️  樣本僅 {len(mature)} 則，結論參考價值有限（建議 20 則以上）")
+
+    ranked = sorted(mature, key=lambda r: stats[r["id"]]["excess"])
+
+    over = [r for r in ranked if r["total_score"] >= 70 and stats[r["id"]]["excess"] < 1]
+    if over:
+        print(f"\n▼ 可能高估（A 級以上但後續低於同類常態）")
+        for r in over[:args.limit]:
+            s = stats[r["id"]]
+            print(f"  {r['news_date']} {r['grade']}{r['total_score']:>3}  "
+                  f"後續 {s['followups']:>3} 則（期望 {s['expected']:.1f}）"
+                  f" ×{s['excess']:.2f}  {r['title'][:32]}")
+
+    under = [r for r in reversed(ranked)
+             if r["total_score"] < 55 and stats[r["id"]]["excess"] >= 1.5]
+    if under:
+        print(f"\n▲ 可能低估（C 級以下但後續遠超同類常態）")
+        for r in under[:args.limit]:
+            s = stats[r["id"]]
+            print(f"  {r['news_date']} {r['grade']}{r['total_score']:>3}  "
+                  f"後續 {s['followups']:>3} 則（期望 {s['expected']:.1f}）"
+                  f" ×{s['excess']:.2f}  {r['title'][:32]}")
+
+    print("\n面向校準（只驗可用後續檢證的兩個面向）")
+    for key, c in dimension_calibration(mature, stats).items():
+        if c.get("n", 0) < 2:
+            print(f"  {c['label']}：樣本不足（{c.get('n', 0)} 則）")
+            continue
+        hi, lo = c["high_excess"], c["low_excess"]
+        if hi is None or lo is None:
+            print(f"  {c['label']}：分組後樣本不足")
+            continue
+        gap = hi - lo
+        # 給高分的那組，後續本來就該比低分組多。差距越大代表這個面向越有鑑別力。
+        verdict = "有鑑別力" if gap > 0.3 else ("鑑別力偏弱" if gap > 0 else "方向相反⚠️")
+        print(f"  {c['label']}（滿分 {c['limit']}，以 {c['median']} 分切組）")
+        print(f"    高分組 {c['high_n']:>3} 則 → 平均超額 ×{hi:.2f}")
+        print(f"    低分組 {c['low_n']:>3} 則 → 平均超額 ×{lo:.2f}")
+        print(f"    差距 {gap:+.2f} → {verdict}")
+
+    print("\n說明：「超額」是後續數相對於同標籤、同時期常態的倍數。")
+    print("      ×1 表示與常態相同；已修正大標籤與每日評分量的偏誤。")
+
+
 def main():
     parser = argparse.ArgumentParser(description="新聞重要性評分資料庫")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -1006,6 +1213,14 @@ def main():
 
     p_skip = sub.add_parser("skip", help="把待評分項目標為略過")
     p_skip.add_argument("ids", nargs="+", type=int)
+
+    p_review = sub.add_parser(
+        "review", help="評分回顧校準：用後續資料檢驗判讀是否準確")
+    p_review.add_argument(
+        "--window", type=int, default=REVIEW_WINDOW_DAYS,
+        help=f"觀察窗口天數（預設 {REVIEW_WINDOW_DAYS}）")
+    p_review.add_argument("--since", help="只回顧此日期之後評的（YYYY-MM-DD）")
+    p_review.add_argument("--limit", type=int, default=10, help="每個清單最多列幾則")
 
     p_tags = sub.add_parser("tags", help="列出所有標籤；帶標籤名則列出該標籤的新聞")
     p_tags.add_argument("tag", nargs="?", help="標籤名（省略則列出全部標籤與筆數）")
@@ -1058,6 +1273,7 @@ def main():
         "fetch": cmd_fetch,
         "pending": cmd_pending,
         "skip": cmd_skip,
+        "review": cmd_review,
         "tags": cmd_tags,
         "tag": cmd_tag,
         "alias": cmd_alias,

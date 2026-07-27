@@ -40,6 +40,7 @@ python3 news.py tags [標籤]     # 列出所有標籤與筆數／某標籤底�
 python3 news.py tag <id> <標籤...>   # 修改某則的標籤（--add 附加、--clear 清空）
 python3 news.py alias [別名 正規名]  # 管理標籤別名（不帶參數列出全部、--remove 刪除）
 python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
+python3 news.py review [--window 30] [--since YYYY-MM-DD]  # 評分回顧校準（見下）
 python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
 python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控）
@@ -48,6 +49,30 @@ python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--rete
 python3 news.py og              # 重產分享預覽圖 assets/og.png（需 ImageMagick，產完要 commit）
 python3 -m unittest test_news    # 跑回歸測試（CI 也會跑）
 ```
+
+## 評分回顧校準（`news.py review`）
+
+「影響時間」與「結構性意義」這兩個面向本質是**預測**——它們宣稱這則之後還會有
+後續、還值得追蹤。`review` 回頭用實際資料檢驗那個宣稱，是校準評分標準的工具，
+不是給訪客看的內容（所以只有 CLI，沒有網頁）。
+
+訊號是「後續關聯度」：一則評分後，它的標籤在往後 N 天內又出現幾次。
+
+- **兩個偏誤必須修正，否則指標退化成雜訊**（`followup_stats` 的核心）：
+  1. **標籤規模**：「中國」62 則、「儲能」1 則，掛大標籤的天生後續多。
+     故用標籤的基準出現率當分母，算「超額倍數」而非絕對次數。
+  2. **每日評分量**：6/22 評 2 則、7/27 評 49 則，晚期的天生有更多後續機會。
+     故期望值要乘上窗口內的實際評分量。
+  少了任一項，測到的就只是「標籤有多大 × 評得多晚」。由
+  `TestReviewCalibration` 守著（蓄意移除修正會讓測試失敗）。
+- **窗口未走完的則不納入報表**：今天評的後續必為 0，混進去就是假警訊。
+  成熟與否由 `followup_stats` 以「資料中最新的評分日」判定，`cmd_review`
+  直接取用該旗標而不自己再算一次日期——兩份判斷漂移時會靜默納入未成熟的則。
+- **只校準 duration 與 structural**：其餘三個面向（影響範圍、決策相關性、
+  事實可信度）評的是新聞當下的性質，與後續數沒有邏輯關聯，硬套會產出
+  看似有據的假結論。這條由 `test_only_verifiable_dimensions_are_calibrated` 守著。
+- 樣本少於 20 則會印出警告。資料要累積過一個完整窗口才有參考價值，
+  想早點看到訊號可以用較短的窗口（`--window 7`）。
 
 ## 關聯新聞（標籤）
 
@@ -177,13 +202,13 @@ CI 只負責把 JSON 轉成靜態站並上線。
 
 ## 架構
 
-- `news.py` — CLI（init / add / list / serve / fetch / pending / tags / tag / alias /
-  export-json / import-json / export）。
+- `news.py` — CLI（init / add / list / serve / fetch / pending / review / tags / tag /
+  alias / export-json / import-json / export）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，59 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，70 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
-  標籤正規化與整值比對、schema 常數與函式不得重複定義；
-  改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
+  標籤正規化與整值比對、schema 常數與函式不得重複定義、
+  回顧校準的兩項偏誤修正；改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單
