@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 fetch.log
 dist/
+# 本機筆記：專案的方向決策與操作前提。repo 是 public，
+# 策略思考不需要對外揭露，故只留在本機。
+NOTES.local.md
