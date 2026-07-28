@@ -1,5 +1,189 @@
 [
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
+  "idx": 0,
+  "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
+  "note": "布蘭特非但未跌破70美元，反因美伊衝突一路走高：7/12漲至78.86、7/14單日暴漲逾9%、7/19逼近86、7/20破90、7/22突破111美元。方向完全相反",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
+  "note": "窗口內未見OPEC+月度會議報導。增產與否的議題被美伊衝突推升油價的走勢完全蓋過，供給過剩的前提消失，會議動向已非市場焦點",
+  "verdict": "moot",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
+  "note": "前提是低油價下的頁岩油反應，但實際油價暴漲至111美元，前提消失故無從判斷（與#1同理，改判moot）",
+  "verdict": "moot",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202607260008.aspx",
+  "idx": 3,
+  "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
+  "note": "通膨與央行時點明確發生但方向相反：7/26聯準會因油價推升通膨隱憂而按兵不動(連5次維持3.50-3.75%)、7/27新加坡收緊貨幣政策應對輸入型通膨。指標本身命中，只是走向與當初預期的降息相反",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 4,
+  "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
+  "note": "窗口內無沙俄財政壓力或相應地緣動作的報導。該指標同樣建立在低油價假設上，但油價上漲反而紓解產油國財政",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c3v0x30ny39o/trad",
+  "note": "窗口內無航路劃設或飛安協調的報導。年底通航尚未到期，但7天以上窗口內連相關進展都未見",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c3v0x30ny39o/trad",
+  "note": "窗口內無中國海警在金門外海巡弋頻率的報導。台海情勢標籤的5則後續全數是南海(仁愛暗沙)、中日外長、美歐軍力與美軍彈藥，無一涉及金門",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c3v0x30ny39o/trad",
+  "note": "窗口內無台灣對禁限制水域執法應對的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c3v0x30ny39o/trad",
+  "note": "窗口內無廈金大橋工程進展的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 4,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c3v0x30ny39o/trad",
+  "note": "窗口內無金門地方對專用通道反應的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202607200062.aspx",
+  "note": "窗口內無亞利桑那各期廠實際量產時程的報導。加碼投資金額有揭露，但分期量產時間表未見",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/07/27/tsmc-2t",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202607200062.aspx",
+  "note": "7/27法說會揭露資本支出上修至最高640億美元(約2兆台幣)、美國廠加碼1000億美元；競爭壓力(英特爾18A良率升至85%、Nova Lake轉回自家)構成配置背景",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/21/tsmc-2027-price",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202607200062.aspx",
+  "note": "成本結構影響明確傳導：傳2027年先進與成熟製程漲5-10%、HPC追加訂單加收10-15%溢價，理由明列海外建廠與地緣政治成本；高通因2奈米報價3萬美元而9月起全面雙位數調漲",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202607200062.aspx",
+  "note": "窗口內無先進製程留台比例的政策討論。有台積電營業秘密外流案與熊本布局報導，但未觸及留台比例的政策層面",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607250012.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
+  "note": "60天免費期屆滿後未見伊朗公布正式收費規範或費率。實際走向是7/14川普宣布對經海峽貨物徵20%補償費(美方而非伊朗收費)，伊朗端則轉為以攔截、襲擊迫使船隻改道並付費換安全通行，未走向制度化收費",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280012.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
+  "note": "7/08美財政部撤銷伊朗石油臨時制裁豁免(原訂延至8/21)；7/28川普證實美伊談判以重啟荷莫茲通道為焦點、阿曼主導斡旋，攻防與制裁皆發生",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280251.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
+  "note": "7/27伊朗外交部證實與阿曼就荷莫茲海峽管理進行雙邊會談且仍在進行中；7/28阿拉奇與阿曼外長通話討論海峽議題。框架內容尚未公開但協調機制已明確存在",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
+  "note": "油價明確反應：7/14布蘭特漲至83美元、7/20升破90創6月來新高、7月週漲逾15%。航運端7/10通行量降至承平時期約1/3(Kpler)",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607110020.aspx",
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
+  "note": "窗口內未見伊朗公布友好國名單。收費構想本身未制度化(見#0)，故名單無從產生；日本反而7/11明確反對徵費並改認定為國際海峽",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/07/24/tariff-301",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140027.aspx",
+  "note": "指標問的是「國會立法」重建關稅權，實際走的是行政路徑：改依301條款(既有授權)對60經濟體課稅取代被否決的IEEPA。關稅權確實被重建但非透過立法，故指標本身落空——改判miss(原誤記hit為證據遷就)",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140027.aspx",
+  "note": "窗口內無退稅範圍擴及其他關稅項目的報導。焦點迅速轉向301新關稅的建立，2.6兆退稅的後續執行未見著墨",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140027.aspx",
+  "note": "窗口內無赤字或美債殖利率對此判決反應的報導。市場注意力被301新關稅與美伊衝突推升的油價通膨蓋過",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/07/27/301-tariff-tiers",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140027.aspx",
+  "note": "談判姿態變化明確：台灣獲10%不疊加(僅台歐2個經濟體)、2231項豁免，優於日韓12.5%；巴西、泰國、越南、澳洲均在窗口內公開反制或要求談判。7/27報導完整揭露四層級稅率的談判邏輯",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607280236.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202607210027.aspx",
