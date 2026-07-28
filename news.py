@@ -1630,6 +1630,24 @@ def cmd_watch_verify(args):
     if not 0 <= args.idx < len(items):
         conn.close()
         sys.exit(f"idx 超出範圍：該則有 {len(items)} 條 watch_next（0-{len(items) - 1}）")
+    # 佐證必須是資料庫裡真實存在的評分連結。
+    #
+    # 2026-07-28 踩過：判定時憑印象拼湊網址（technews.tw/2026/07/27/<自己造的 slug>），
+    # 37 條佐證裡 24 條指向不存在的頁面、其餘 13 條格式對但編號撞到別篇無關報導，
+    # 沒有一條可信，而它們正掛在一個宣稱「判斷可信」的網站上。
+    # 允許自由填寫等於允許編造，故限定只能引用已在庫的報導。
+    if args.evidence:
+        ev = conn.execute(
+            "SELECT title FROM news WHERE url = ?", (args.evidence,)
+        ).fetchone()
+        if not ev:
+            conn.close()
+            sys.exit(
+                f"佐證連結不在資料庫：{args.evidence}\n"
+                "  佐證只能引用已評分的報導（用 news.py list 或 tags <標籤> 找出正確網址），\n"
+                "  不要自行拼湊網址——實測憑印象組的網址幾乎全是死連結或指到別篇。\n"
+                "  找不到合適的已評分報導時，就省略 --evidence，把依據寫進 --note。"
+            )
     today = today_local().isoformat()
     conn.execute(
         "INSERT OR REPLACE INTO watch_verify "

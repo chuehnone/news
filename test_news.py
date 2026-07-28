@@ -1283,6 +1283,40 @@ class TestWatchVerification(CLITestCase):
                          "重建 news 表後判定仍要對得上原本那則")
 
 
+class TestWatchEvidenceMustExist(CLITestCase):
+    """佐證連結必須是庫內真實存在的報導。
+
+    迴歸情境：判定時憑印象拼湊網址，37 條佐證裡 24 條指向不存在的頁面、
+    其餘 13 條格式對但編號撞到別篇無關報導（「布蘭特油價站穩85美元」的
+    佐證變成「萊茵河水位降至新低」）。沒有一條可信，而它們掛在一個
+    宣稱「判斷可信」的網站上。
+    """
+
+    def test_fabricated_evidence_url_is_rejected(self):
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a",
+                            tags=["X"], watch_next=["指標"]))
+        r = self.run_cli("watch-verify", "http://e.com/a", "0", "hit",
+                         "--evidence", "http://e.com/does-not-exist")
+        self.assertNotEqual(r.returncode, 0, "不存在的佐證網址必須被擋下")
+        self.assertIn("佐證連結不在資料庫", r.stdout + r.stderr)
+
+    def test_real_evidence_url_is_accepted(self):
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a",
+                            tags=["X"], watch_next=["指標"]))
+        self.add(make_score("B", "2026-01-05", url="http://e.com/b", tags=["X"]))
+        r = self.run_cli("watch-verify", "http://e.com/a", "0", "hit",
+                         "--evidence", "http://e.com/b", check=True)
+        self.assertEqual(r.returncode, 0)
+
+    def test_evidence_is_optional(self):
+        """找不到合適的已評分報導時可以省略，依據寫進 note 即可。"""
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a",
+                            tags=["X"], watch_next=["指標"]))
+        r = self.run_cli("watch-verify", "http://e.com/a", "0", "hit",
+                         "--note", "依據寫在這裡", check=True)
+        self.assertEqual(r.returncode, 0)
+
+
 class TestWatchHitsOnCard(CLITestCase):
     """卡片上的 watch_next 命中標示。
 
