@@ -7,6 +7,8 @@ on:
     branches: [main]
     paths:
       - "data/news.json"
+      # watch_next 的判定結果會渲染成卡片上的 ✓，只更新判定也要重新部署
+      - "data/watch_verify.json"
       - "server.py"
       - "news.py"
       - "test_news.py"
