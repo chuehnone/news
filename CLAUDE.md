@@ -75,6 +75,17 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 - 切分點預設取中位日，但會避開最後一天——否則資料只有兩個日期時後期會是空的。
 - **校準做法是回頭看前期的錨定範例，不是調整門檻遷就現況**。
   門檻一改，前後資料就永久不可比了。
+- **固定錨點是絕對門檻的基準**（`news.py anchors` 重新產生）。取
+  `ANCHOR_START`～`ANCHOR_END`（2026-06-22～07-10）的實際評分算出各分數段的
+  面向中位數，寫進 `/news-importance-score` skill 供評分時對照。
+  期間**刻意寫死日期而非「最近 N 則」**：錨點若隨資料滾動，標準會跟著近期
+  評分一起漂，等於沒有錨點。由 `TestAnchorsAreFixed` 守著。
+  關鍵數字：**A 級的決策相關性中位數是 12**，`≥15` 前期只出現在颱風登陸台灣
+  （全民當天要改變行動）。**不要因為近期新聞看起來更重要而更新錨點**——那正是漂移。
+- **漂移的典型長相是「同主題逐日墊高」**：前期「荷莫茲船隻遇襲＋美撤銷制裁豁免」
+  評 A70／決策 12，後期「伊朗攔截 4 艘船（未遂）」卻評 A76／決策 15——後者量級
+  更小分數卻更高。中東、關稅、AI 這類連續報導的主題最容易發生，看多了會把
+  「又一則」當成「更嚴重」。
 
 ## 評分回顧校準（`news.py review`）
 
@@ -320,14 +331,15 @@ CI 只負責把 JSON 轉成靜態站並上線。
 ## 架構
 
 - `news.py` — CLI（init / add / list / serve / fetch / pending / drift / review /
-  watch / watch-verify / watch-stats / tags / tag / alias / export-json /
+  watch / watch-verify / watch-stats / anchors / tags / tag / alias / export-json /
   import-json / export）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，88 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，93 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
   回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意、
-  卡片只標命中且必附分母；改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
+  卡片只標命中且必附分母、錨點期間不得隨資料滾動；
+  改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單

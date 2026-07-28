@@ -27,6 +27,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from bisect import bisect_left, bisect_right
 from collections import Counter, defaultdict
+from statistics import median
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from pathlib import Path
@@ -1327,6 +1328,67 @@ def drift_within_tags(early, late, dim_key, min_sample=DRIFT_MIN_TAG_SAMPLE):
     return sorted(out, key=lambda x: -abs(x["delta"]))
 
 
+# 錨點期間：評分標準的基準區間。skill 的「固定錨點」表由這段資料算出。
+#
+# 刻意寫死日期而非「最早 N 則」：錨點的意義就在於它固定不動。若隨資料
+# 滾動，標準會跟著近期評分一起漂，等於沒有錨點——而漂移正是要防的事。
+ANCHOR_START = "2026-06-22"
+ANCHOR_END = "2026-07-10"
+
+# 分數段的切法，與 skill 的錨點表一致
+ANCHOR_BANDS = [
+    (70, 100, "A 70+"),
+    (65, 69, "B 65-69"),
+    (60, 64, "B 60-64"),
+    (55, 59, "B 55-59"),
+    (48, 54, "C 48-54"),
+    (40, 47, "C 40-47"),
+]
+
+
+def anchor_table(rows, start=ANCHOR_START, end=ANCHOR_END):
+    """算出錨點期間各分數段的面向中位數。
+
+    回傳 [{"label":..., "n":..., "scope":..., "decision":...}]。
+    skill 的「固定錨點」表就是這個輸出，`news.py anchors` 可重新產生它核對。
+    """
+    early = [
+        r for r in rows
+        if r["news_date"] and start <= r["news_date"] <= end
+    ]
+    out = []
+    for lo, hi, label in ANCHOR_BANDS:
+        g = [r for r in early if lo <= r["total_score"] <= hi]
+        if not g:
+            continue
+        out.append({
+            "label": label,
+            "n": len(g),
+            "scope": median([r["scope_score"] for r in g]),
+            "decision": median([r["decision_score"] for r in g]),
+        })
+    return out
+
+
+def cmd_anchors(_args):
+    """重新產生 skill 的「固定錨點」表，用來核對它有沒有跟資料脫節。"""
+    conn = connect()
+    rows = list(conn.execute("SELECT * FROM news"))
+    conn.close()
+    table = anchor_table(rows)
+    if not table:
+        print(f"錨點期間（{ANCHOR_START} ~ {ANCHOR_END}）沒有評分資料")
+        return
+    total = sum(t["n"] for t in table)
+    print(f"固定錨點：{ANCHOR_START} ~ {ANCHOR_END}（{total} 則）\n")
+    print("| 分數段 | n | 影響範圍 | 決策相關性 |")
+    print("|--------|---|---------|-----------|")
+    for t in table:
+        print(f"| {t['label']} | {t['n']} | {t['scope']:g} | {t['decision']:g} |")
+    print("\n這張表是評分的絕對門檻基準，skill 的「固定錨點」章節應與此一致。")
+    print("**不要因為近期新聞看起來更重要而更新它**——那正是漂移本身。")
+
+
 def cmd_drift(args):
     """偵測評分標準是否隨時間漂移。"""
     conn = connect()
@@ -1869,6 +1931,9 @@ def main():
 
     p_ws = sub.add_parser("watch-stats", help="watch_next 命中率統計")
 
+    sub.add_parser(
+        "anchors", help="重新產生評分的固定錨點表（核對 skill 是否脫節）")
+
     p_tags = sub.add_parser("tags", help="列出所有標籤；帶標籤名則列出該標籤的新聞")
     p_tags.add_argument("tag", nargs="?", help="標籤名（省略則列出全部標籤與筆數）")
 
@@ -1925,6 +1990,7 @@ def main():
         "watch": cmd_watch,
         "watch-verify": cmd_watch_verify,
         "watch-stats": cmd_watch_stats,
+        "anchors": cmd_anchors,
         "tags": cmd_tags,
         "tag": cmd_tag,
         "alias": cmd_alias,

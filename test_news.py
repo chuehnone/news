@@ -1283,6 +1283,36 @@ class TestWatchVerification(CLITestCase):
                          "重建 news 表後判定仍要對得上原本那則")
 
 
+class TestAnchorsAreFixed(CLITestCase):
+    """錨點是評分的絕對門檻基準，它的意義就在於固定不動。
+
+    若錨點隨資料滾動（例如取「最近 100 則」），標準會跟著近期評分一起漂，
+    等於沒有錨點——而漂移正是要防的事。2026-07-28 實測決策相關性一個月內
+    從 8.74 飄到 11.09，就是缺少固定基準的結果。
+    """
+
+    def test_anchor_period_is_a_fixed_date_range(self):
+        with load_modules(self.dir, "news") as (news,):
+            self.assertRegex(news.ANCHOR_START, r"^\d{4}-\d{2}-\d{2}$")
+            self.assertRegex(news.ANCHOR_END, r"^\d{4}-\d{2}-\d{2}$")
+            self.assertLess(news.ANCHOR_START, news.ANCHOR_END)
+
+    def test_anchor_ignores_rows_outside_the_period(self):
+        """期間外的評分不得影響錨點——否則新資料會把基準拉高。"""
+        with load_modules(self.dir, "news") as (news,):
+            def row(date, total, scope, dec):
+                return {"news_date": date, "total_score": total,
+                        "scope_score": scope, "decision_score": dec}
+            inside = [row(news.ANCHOR_START, 72, 20, 12) for _ in range(3)]
+            # 期間之後的一批極高分，若被納入會把 A 段中位數拉高
+            outside = [row("2099-01-01", 72, 25, 20) for _ in range(9)]
+            t = news.anchor_table(inside + outside)
+            a = next(x for x in t if x["label"] == "A 70+")
+            self.assertEqual(a["n"], 3, "只該納入錨點期間內的則")
+            self.assertEqual(a["decision"], 12,
+                             "期間外的高分不得拉高錨點的決策相關性中位數")
+
+
 class TestWatchEvidenceMustExist(CLITestCase):
     """佐證連結必須是庫內真實存在的報導。
 
