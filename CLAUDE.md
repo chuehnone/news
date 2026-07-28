@@ -145,10 +145,19 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 - **判定以 `news_url` 關聯而非 `id`**：CI 的 `import-json --replace` 會重建
   news 表、id 由 AUTOINCREMENT 重新配發，存 id 會在重建後全部對錯人。
   由 `test_verify_survives_import_json_replace` 守著。
-- **判定另存 `data/watch_verify.json` 並進版控**：它不是網站資料（靜態站不用），
-  但 `news.db` 不進版控，只存 db 裡的話重新 clone 就全沒了，而這是要累積
-  數月才有意義的資料。刻意不併進 `data/news.json`——後者的「完整鏡像」保證
-  只涵蓋 news 表，混進別的表會讓 `import-json --replace` 的語意變模糊。
+- **判定另存 `data/watch_verify.json` 並進版控**：`news.db` 不進版控，只存 db
+  裡的話重新 clone 就全沒了，而這是要累積數月才有意義的資料。刻意不併進
+  `data/news.json`——後者的「完整鏡像」保證只涵蓋 news 表，混進別的表會讓
+  `import-json --replace` 的語意變模糊。
+  網頁端讀這個 JSON 而非 db（`load_hits_from_json`），因為 CI 建站時沒有
+  `news.db`；它也在 `deploy.yml` 的觸發路徑內，只更新判定同樣會重新部署。
+- **卡片上只標命中，不標 miss**（`render_card` 的 `hits` 參數）：已判定的則
+  僅約佔全站 5%，若把 miss 也標出來，「未判定」與「已驗證未發生」在視覺上
+  難以區分，訪客會把前者誤讀成後者。
+  但只標 ✓ 會讓人以為全部命中（實際 37 hit / 68 miss），所以清單下方**必須**
+  附「已回頭驗證 N 條、上方標示成真的 M 條」——分母含 miss、排除 moot。
+  拿掉那一行就變成選擇性揭露，由 `test_hit_summary_states_the_denominator` 守著。
+  整體命中率一律看 CLI 的 `watch-stats`，網頁不做統計數字。
 - 真正要看的是**依等級的命中率**：高分級若低於低分級，代表高分那些
   「還會有後續」的宣稱撐不住，是評分過鬆的直接證據，比 `drift` 更難辯駁。
 
@@ -308,11 +317,11 @@ CI 只負責把 JSON 轉成靜態站並上線。
   watch / watch-verify / watch-stats / tags / tag / alias / export-json /
   import-json / export）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，83 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，88 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
-  回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意；
-  改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
+  回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意、
+  卡片只標命中且必附分母；改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單
