@@ -25,6 +25,7 @@ import unicodedata
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from bisect import bisect_left, bisect_right
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
@@ -1008,10 +1009,18 @@ def followup_stats(rows, window_days=REVIEW_WINDOW_DAYS):
 
     回傳 {news_id: {"followups": 實際後續數, "expected": 期望值, "excess": 超額倍數}}。
 
-    expected 的算法把兩個偏誤一起處理：
-      期望值 = 該則所有標籤的平均基準率 × 窗口內的總評分量
-    其中基準率 = 該標籤的總出現數 / 全部則數，代表「隨機抓一則有多大機會
-    掛到這個標籤」。乘上窗口內的總量，就是「若這則毫不特別，預期會有幾則後續」。
+    expected 的算法把三個偏誤一起處理：
+      期望值 = 該則所有標籤在「窗口當期」的平均出現率 × 窗口內的總評分量
+    其中出現率 = 該標籤在窗口內的出現數 / 窗口內的總則數，代表「這段期間隨機
+    抓一則有多大機會掛到這個標籤」。乘上窗口內的總量，就是「若這則毫不特別，
+    預期會有幾則後續」。
+
+    基準率刻意取「窗口當期」而非全期平均。全期平均會讓正在延燒的主題虛高：
+    廣西水災在六月完全沒出現、七月連日洗版，用全期算基準會低估它的當期常態，
+    於是那幾則的超額倍數衝到 ×3 以上被誤報為「低估」。但後續多是主題在延燒，
+    不是當初判斷精準——這兩者混為一談，報表會反覆建議調高災害類的分數。
+    改用當期基準後，主題自己延燒時基準也跟著抬高，超額倍數才回到常態，
+    留下的高倍數才是真訊號。由 test_burst_topic_is_not_reported_as_underestimated 守著。
 
     excess = 實際 / 期望。大於 1 代表後續比同類新聞的常態更密集。
     期望值為 0（窗口內沒有任何新評分）時回傳 None，代表無從判斷而非表現差——
@@ -1021,13 +1030,6 @@ def followup_stats(rows, window_days=REVIEW_WINDOW_DAYS):
     total = len(dated)
     if not total:
         return {}
-
-    # 各標籤的基準出現率
-    tag_total = Counter()
-    for r in dated:
-        for t in tags_of(r):
-            tag_total[t] += 1
-    base_rate = {t: n / total for t, n in tag_total.items()}
 
     # 依「距最早日期的天數」建索引，讓窗口查詢變成陣列切片而非逐筆比對日期。
     # 直接對每一則掃過全部資料是 O(n²)——實測 4300 筆要 12 秒，且資料是
@@ -1049,6 +1051,22 @@ def followup_stats(rows, window_days=REVIEW_WINDOW_DAYS):
     for d in range(span + 1):
         prefix_count[d + 1] = prefix_count[d] + day_count[d]
 
+    # 每個標籤各自的日期前綴和，讓「窗口內這個標籤出現幾次」同樣是 O(1)。
+    # 只為實際出現過的標籤配置，且僅在其出現的日子累加——直接對每個標籤
+    # 都開一條 span 長度的陣列，在標籤數量成長後會變成記憶體與時間的浪費。
+    tag_days = defaultdict(list)
+    for d in range(span + 1):
+        for other_tags in day_rows[d]:
+            for t in other_tags:
+                tag_days[t].append(d)
+
+    def tag_count_in(t, lo, hi):
+        """標籤 t 在第 lo..hi 天（含）的出現次數。tag_days[t] 已依日期遞增。"""
+        days_sorted = tag_days.get(t)
+        if not days_sorted:
+            return 0
+        return bisect_right(days_sorted, hi) - bisect_left(days_sorted, lo)
+
     out = {}
     for r in dated:
         my_tags = set(tags_of(r))
@@ -1069,8 +1087,14 @@ def followup_stats(rows, window_days=REVIEW_WINDOW_DAYS):
                 for other_tags in day_rows[dd]
                 if my_tags & other_tags
             )
-        # 用該則標籤的平均基準率——取平均而非總和，避免掛越多標籤期望值越高
-        rate = sum(base_rate.get(t, 0) for t in my_tags) / len(my_tags)
+        # 用該則標籤在「窗口當期」的平均出現率——取平均而非總和，避免掛越多
+        # 標籤期望值越高。當期而非全期，是為了不讓延燒中的主題虛高（見 docstring）。
+        if window_total > 0:
+            rate = sum(
+                tag_count_in(t, lo, hi) / window_total for t in my_tags
+            ) / len(my_tags)
+        else:
+            rate = 0
         expected = rate * window_total
         # 窗口是否已走完。基準刻意用「資料中最新的評分日」而非今天：後續資料
         # 只在有評分時才會累積，若停評一個月，用今天判斷會把那個月的則全部

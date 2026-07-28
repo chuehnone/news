@@ -1084,6 +1084,33 @@ class TestReviewCalibration(CLITestCase):
         self.assertEqual(c["high_n"], 1, "高分組只該有 >2 的那一則")
         self.assertEqual(c["low_n"], 1, "低分組只該有 <2 的那一則")
 
+    def test_burst_topic_is_not_reported_as_underestimated(self):
+        """正在延燒的主題不該因為「後續多」就被判為低估。
+
+        迴歸情境：廣西水災連三則被評 C 44-48，超額倍數卻高達 ×3.0-3.4，
+        報表把它們列為「可能低估」。但災害報導本來就會連續多天出現，
+        後續多是主題在延燒，不是當初判斷精準——這個訊號指向的是
+        「事件持續發酵」而非「評分準確」，兩者混為一談會讓報表反覆
+        建議調高災害類的分數。
+
+        基準率若用全期平均，六月安靜、七月爆發的主題會拿到過低的期望值，
+        於是七月那幾則全部虛高。正確做法是用「窗口當期」的實際出現率當
+        基準：主題自己在延燒時，基準也跟著抬高，超額倍數才會回到常態。
+        """
+        # 「水災」全期只佔少數（前段 20 天完全沒有），但在窗口內天天出現
+        spec = [(f"背景{i}", f"2026-01-{i + 1:02d}", ["其他"]) for i in range(20)]
+        spec += [("水災主則", "2026-01-21", ["水災"])]
+        spec += [(f"水災後續{i}", f"2026-01-{22 + i:02d}", ["水災"]) for i in range(8)]
+        stats, rows = self._stats(spec)
+        by_title = {r["title"]: stats[r["id"]] for r in rows if r["id"] in stats}
+        excess = by_title["水災主則"]["excess"]
+        self.assertIsNotNone(excess)
+        # 該則的後續密度與同期同標籤常態相同，超額倍數應接近 1 而非數倍
+        self.assertLess(
+            excess, 1.6,
+            f"延燒中的主題被誤報為低估（excess={excess:.2f}）："
+            "基準率必須取窗口當期而非全期平均")
+
     def test_optimized_stats_match_naive_computation(self):
         """前綴和最佳化的結果必須與逐筆比對的天真算法一致。
 
