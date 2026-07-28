@@ -1,5 +1,77 @@
 [
  {
+  "evidence_url": "https://technews.tw/2026/07/27/nvidia-openai-guarantee",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/20/ai-critic-ed-zitron-warns-openai-collapse-could-crash-markets",
+  "note": "融資時程有重大進展：7/27輝達洽談為OpenAI提供2500億美元擔保(租用軟銀能源子公司10GW專案)，已投資300億並洽談最高3500億晶片採購融資；外界對循環融資疑慮正是指標關切",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/07/25/ai-power-cost",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/07/20/ai-critic-ed-zitron-warns-openai-collapse-could-crash-markets",
+  "note": "甲骨文信用與現金流壓力明確：7/20報導已被標普降至最低投資等級(為OpenAI承諾投資3400億建資料中心)；7/25另見其規劃2.5GW燃料電池自建發電",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/07/20/ai-critic-ed-zitron-warns-openai-collapse-could-crash-markets",
+  "note": "窗口內無OpenAI營收成長數字的更新。僅見7/20引述的2025年營收130.7億、淨損385億，屬事件本身而非後續",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/07/20/ai-critic-ed-zitron-warns-openai-collapse-could-crash-markets",
+  "note": "窗口內無軟銀300億美元分批投入進度的報導。有軟銀能源子公司開發俄亥俄10GW專案，但屬另一件事",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://money.udn.com/money/story/5599/9591511",
+  "note": "窗口內無OpenAI或投銀正式確認IPO延期與新時程的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://money.udn.com/money/story/5599/9591511",
+  "note": "窗口內無SEC申請案補件或估值區間修改的後續報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://money.udn.com/money/story/5612/9615000",
+  "idx": 2,
+  "news_url": "https://money.udn.com/money/story/5599/9591511",
+  "note": "SpaceX作為巨型私有科技公司上市前例的走勢明確：7/16跌破135美元IPO發行價至133.35、較高點225回落逾40%，IPO集資逾850億美元創史上最大",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://money.udn.com/money/story/5599/9591511",
+  "note": "窗口內無Anthropic、xAI募資估值下修的報導。反而見Anthropic出資15億成立Ode、獲Blackstone與Goldman支持，方向相反",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 4,
+  "news_url": "https://money.udn.com/money/story/5599/9591511",
+  "note": "窗口內無NASDAQ或費半波動度的持續報導。有7/14費半重挫近5%的單日事件，但非波動度趨勢的追蹤",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
   "idx": 0,
   "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
@@ -36,6 +108,158 @@
   "idx": 4,
   "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
   "note": "窗口內無沙俄財政壓力或相應地緣動作的報導。該指標同樣建立在低油價假設上，但油價上漲反而紓解產油國財政",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE53cUJSYjFzdGZLWXIzZWJxaExvd01MWEc3T0NadmxVMFlOQlJ0SzJtS0I0eFVXR3daRVkyMnFTM2Y1U1pjdlRUUlRXeFAtdmNKTWNwS1RTc2VxQUpXNWpJ",
+  "note": "窗口內無第一島鏈部署艘數的後續統計。有東部海域巡邏的質性描述，但未見是否維持百艘以上的量化追蹤",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aipl/202607100120.aspx",
+  "idx": 1,
+  "news_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE53cUJSYjFzdGZLWXIzZWJxaExvd01MWEc3T0NadmxVMFlOQlJ0SzJtS0I0eFVXR3daRVkyMnFTM2Y1U1pjdlRUUlRXeFAtdmNKTWNwS1RTc2VxQUpXNWpJ",
+  "note": "海警在台灣東部海域巡查的頻率與範圍明確擴大：7/06紐時載海警秀山艦崇明艦進入台東外海80-140英里巡邏(專家稱巨蟒勒台進入太平洋)；7/10英智庫RUSI指連續數天執法巡查、攔檢盤問國際船舶，形同巴士海峽突破",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607260010.aspx",
+  "idx": 2,
+  "news_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE53cUJSYjFzdGZLWXIzZWJxaExvd01MWEc3T0NadmxVMFlOQlJ0SzJtS0I0eFVXR3daRVkyMnFTM2Y1U1pjdlRUUlRXeFAtdmNKTWNwS1RTc2VxQUpXNWpJ",
+  "note": "美日菲聯合回應明確：7/21-25美日菲在南海進行5天海上聯合演習(軍艦、海巡艦艇、偵察機、戰鬥機)；7/12另有14國就南海仲裁10週年發表聯合聲明",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE53cUJSYjFzdGZLWXIzZWJxaExvd01MWEc3T0NadmxVMFlOQlJ0SzJtS0I0eFVXR3daRVkyMnFTM2Y1U1pjdlRUUlRXeFAtdmNKTWNwS1RTc2VxQUpXNWpJ",
+  "note": "窗口內無台灣國防預算或不對稱戰力採購進度的正面報導。僅見7/15立委爆料9.8億無人機反制系統三次驗收未過，屬採購失利而非進度",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 4,
+  "news_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE53cUJSYjFzdGZLWXIzZWJxaExvd01MWEc3T0NadmxVMFlOQlJ0SzJtS0I0eFVXR3daRVkyMnFTM2Y1U1pjdlRUUlRXeFAtdmNKTWNwS1RTc2VxQUpXNWpJ",
+  "note": "窗口內無國際航運或保險對台海航線風險定價的報導。與其他保費類指標同樣落空——來源不涵蓋",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607110015.aspx",
+  "idx": 0,
+  "news_url": "https://news.google.com/rss/articles/CBMipgNBVV95cUxNXzNyMV82LTVmdDBZZkFxWkMxaGlzZDh2dGdSVmxHQTdwbFc4WlFPX2t4aEY0THdXOUVWWllzeF8wenZsbUc3S1RnRmM0aVM3a0RySDRjbktPaW4tOUszVnRkVmlEN2xub0xvX0RHWEdwZzFjWTNFckJvQy1lZ0tUNC1NQUw2NnhPeXlLYzFoWWNmWTJQM0Z6dnU5aENDOUhrenhKMGdRcDVpNU1jZW1ULTlZM1ExMHRLR29HNHlYQjJ1dFZtdnEzYWo3d0pxSXh4ZmN6bjJ2NDR1Vy1PeDMwNmtDUGNQZFM0Ti1xVkFXNWlVcXk5ZW1BV0pvT3g5dmthamdCRzN1cnU5c01GSWRkT1VmQUZHTjBNVnNWQjMyNkxnaGZJLUdKLXhlYmdRR2FVZ2pqaTZaWm1SNlVEMDF0NFFLRkpBQV9JM2x2enp3Tzc5dDFZeW9ZNy1NTkNNMjdULVNlc1VlcmYxOW9Rc3M2clNYMXM1M29RZWVtTWxvWHhQRTJHVHlZdzQ4cllqVFV0TFJJTUhsb1RUT3M3WWwyT0VDWGJqQQ",
+  "note": "煉油產能受損與燃料短缺明確擴大：7/08擊中12艘影子艦隊油輪致克里米亞燃料短缺進入緊急狀態；7/11襲鄂木斯克州(俄產能最大煉油廠之一)後，6月以來逾9成地區短缺，新西伯利亞州籲遠距工作少開車",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://news.google.com/rss/articles/CBMipgNBVV95cUxNXzNyMV82LTVmdDBZZkFxWkMxaGlzZDh2dGdSVmxHQTdwbFc4WlFPX2t4aEY0THdXOUVWWllzeF8wenZsbUc3S1RnRmM0aVM3a0RySDRjbktPaW4tOUszVnRkVmlEN2xub0xvX0RHWEdwZzFjWTNFckJvQy1lZ0tUNC1NQUw2NnhPeXlLYzFoWWNmWTJQM0Z6dnU5aENDOUhrenhKMGdRcDVpNU1jZW1ULTlZM1ExMHRLR29HNHlYQjJ1dFZtdnEzYWo3d0pxSXh4ZmN6bjJ2NDR1Vy1PeDMwNmtDUGNQZFM0Ti1xVkFXNWlVcXk5ZW1BV0pvT3g5dmthamdCRzN1cnU5c01GSWRkT1VmQUZHTjBNVnNWQjMyNkxnaGZJLUdKLXhlYmdRR2FVZ2pqaTZaWm1SNlVEMDF0NFFLRkpBQV9JM2x2enp3Tzc5dDFZeW9ZNy1NTkNNMjdULVNlc1VlcmYxOW9Rc3M2clNYMXM1M29RZWVtTWxvWHhQRTJHVHlZdzQ4cllqVFV0TFJJTUhsb1RUT3M3WWwyT0VDWGJqQQ",
+  "note": "窗口內無俄國石油出口量數據。油價走勢有完整記錄但主因是美伊衝突而非俄國出口，無法歸因至本指標",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607190008.aspx",
+  "idx": 2,
+  "news_url": "https://news.google.com/rss/articles/CBMipgNBVV95cUxNXzNyMV82LTVmdDBZZkFxWkMxaGlzZDh2dGdSVmxHQTdwbFc4WlFPX2t4aEY0THdXOUVWWllzeF8wenZsbUc3S1RnRmM0aVM3a0RySDRjbktPaW4tOUszVnRkVmlEN2xub0xvX0RHWEdwZzFjWTNFckJvQy1lZ0tUNC1NQUw2NnhPeXlLYzFoWWNmWTJQM0Z6dnU5aENDOUhrenhKMGdRcDVpNU1jZW1ULTlZM1ExMHRLR29HNHlYQjJ1dFZtdnEzYWo3d0pxSXh4ZmN6bjJ2NDR1Vy1PeDMwNmtDUGNQZFM0Ti1xVkFXNWlVcXk5ZW1BV0pvT3g5dmthamdCRzN1cnU5c01GSWRkT1VmQUZHTjBNVnNWQjMyNkxnaGZJLUdKLXhlYmdRR2FVZ2pqaTZaWm1SNlVEMDF0NFFLRkpBQV9JM2x2enp3Tzc5dDFZeW9ZNy1NTkNNMjdULVNlc1VlcmYxOW9Rc3M2clNYMXM1M29RZWVtTWxvWHhQRTJHVHlZdzQ4cllqVFV0TFJJTUhsb1RUT3M3WWwyT0VDWGJqQQ",
+  "note": "俄方報復規模明確：7/19夜間對基輔發射41枚各型飛彈、為開戰以來最大規模彈道飛彈攻擊之一，1死16傷。烏方防空缺口則見7/14與9國組彈道飛彈防禦聯盟",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://news.google.com/rss/articles/CBMipgNBVV95cUxNXzNyMV82LTVmdDBZZkFxWkMxaGlzZDh2dGdSVmxHQTdwbFc4WlFPX2t4aEY0THdXOUVWWllzeF8wenZsbUc3S1RnRmM0aVM3a0RySDRjbktPaW4tOUszVnRkVmlEN2xub0xvX0RHWEdwZzFjWTNFckJvQy1lZ0tUNC1NQUw2NnhPeXlLYzFoWWNmWTJQM0Z6dnU5aENDOUhrenhKMGdRcDVpNU1jZW1ULTlZM1ExMHRLR29HNHlYQjJ1dFZtdnEzYWo3d0pxSXh4ZmN6bjJ2NDR1Vy1PeDMwNmtDUGNQZFM0Ti1xVkFXNWlVcXk5ZW1BV0pvT3g5dmthamdCRzN1cnU5c01GSWRkT1VmQUZHTjBNVnNWQjMyNkxnaGZJLUdKLXhlYmdRR2FVZ2pqaTZaWm1SNlVEMDF0NFFLRkpBQV9JM2x2enp3Tzc5dDFZeW9ZNy1NTkNNMjdULVNlc1VlcmYxOW9Rc3M2clNYMXM1M29RZWVtTWxvWHhQRTJHVHlZdzQ4cllqVFV0TFJJTUhsb1RUT3M3WWwyT0VDWGJqQQ",
+  "note": "窗口內無波羅的海航運或保險費率的報導。與美伊那批的保費指標同樣落空——來源不涵蓋航運保險數據",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 4,
+  "news_url": "https://news.google.com/rss/articles/CBMipgNBVV95cUxNXzNyMV82LTVmdDBZZkFxWkMxaGlzZDh2dGdSVmxHQTdwbFc4WlFPX2t4aEY0THdXOUVWWllzeF8wenZsbUc3S1RnRmM0aVM3a0RySDRjbktPaW4tOUszVnRkVmlEN2xub0xvX0RHWEdwZzFjWTNFckJvQy1lZ0tUNC1NQUw2NnhPeXlLYzFoWWNmWTJQM0Z6dnU5aENDOUhrenhKMGdRcDVpNU1jZW1ULTlZM1ExMHRLR29HNHlYQjJ1dFZtdnEzYWo3d0pxSXh4ZmN6bjJ2NDR1Vy1PeDMwNmtDUGNQZFM0Ti1xVkFXNWlVcXk5ZW1BV0pvT3g5dmthamdCRzN1cnU5c01GSWRkT1VmQUZHTjBNVnNWQjMyNkxnaGZJLUdKLXhlYmdRR2FVZ2pqaTZaWm1SNlVEMDF0NFFLRkpBQV9JM2x2enp3Tzc5dDFZeW9ZNy1NTkNNMjdULVNlc1VlcmYxOW9Rc3M2clNYMXM1M29RZWVtTWxvWHhQRTJHVHlZdzQ4cllqVFV0TFJJTUhsb1RUT3M3WWwyT0VDWGJqQQ",
+  "note": "窗口內無此升級模式對停火談判影響的報導。烏俄談判本身在窗口內未見進展，7/28澤倫斯基將會川普屬另一線",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://tech.udn.com/tech/story/123151/9580110",
+  "note": "指標指向9月Ternus接任後，事件本身尚未到期，非預測落空——改判moot(窗口內無從判斷)",
+  "verdict": "moot",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://tech.udn.com/tech/story/123151/9580110",
+  "note": "指標指向2026秋季發表，事件尚未到期，窗口內無從判斷——改判moot",
+  "verdict": "moot",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/27/iphone18-panel",
+  "idx": 2,
+  "news_url": "https://tech.udn.com/tech/story/123151/9580110",
+  "note": "台灣供應鏈出現對應訊號：7/27傳蘋果因iPhone 18成本壓力轉向面板廠砍價20%，屬指標所列面板環節的備貨/議價訊號",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://tech.udn.com/tech/story/123151/9580110",
+  "note": "窗口內無Apple對20週年機型的官方確認訊息",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://tech.udn.com/tech/story/123154/9580357",
+  "note": "窗口內無Meta公布受影響帳號規模或技術說明的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://tech.udn.com/tech/story/123154/9580357",
+  "note": "窗口內無台灣政府機關檢討官方帳號多平台備援策略的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://tech.udn.com/tech/story/123154/9580357",
+  "note": "窗口內無Meta年齡驗證系統再次大規模誤判的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607220015.aspx",
+  "idx": 3,
+  "news_url": "https://tech.udn.com/tech/story/123154/9580357",
+  "note": "青少年網路保護法規進度明確：7/10歐盟認定臉書IG設計具成癮性、要求Meta修改否則重罰；7/22法國參議院通過禁15歲以下兒童使用社群媒體法案。平台年齡驗證的法規壓力確實升高",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 4,
+  "news_url": "https://tech.udn.com/tech/story/123154/9580357",
+  "note": "窗口內無帳號未自動恢復需人工申訴的後續案例報導",
   "verdict": "miss",
   "verified_date": "2026-07-28"
  },
@@ -146,6 +370,70 @@
  {
   "evidence_url": null,
   "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cg4w2n5ql32o/trad",
+  "note": "窗口內無存儲價格回落後中國出口額變化的報導。實際情況相反：記憶體價格因AI資料中心吸走產能而大漲，指標前提未出現",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/27/china-duv",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cg4w2n5ql32o/trad",
+  "note": "中國先進製程進展有具體訊號：7/27 The Information報導中國已著手生產自研DUV曝光機、今年交付中芯國際華虹長鑫，ASML股價應聲跌4.6%。設備自主是先進製程的關鍵瓶頸",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cg4w2n5ql32o/trad",
+  "note": "窗口內無美國管制擴及成熟製程的報導。有美光反對蘋果採購長鑫記憶體的遊說(7/27)，但屬企業行為非管制範圍調整",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/28/cxmt-bytedance",
+  "idx": 3,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cg4w2n5ql32o/trad",
+  "note": "長鑫產能與技術節點進展完整：7/20傳搶先布局DDR6(2028-29商業化)、7/27掛牌籌資666億人民幣市占率3%→8%躍全球第四、7/28獲字節70億美元五年大單，預測2027市占12%",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cj9g4pj4n0go/trad",
+  "note": "窗口內無日本修法明定民選公職產育假制度的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cj9g4pj4n0go/trad",
+  "note": "窗口內無川田產假期間市政代理運作情況的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cj9g4pj4n0go/trad",
+  "note": "窗口內無其他地方首長或議員跟進的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cj9g4pj4n0go/trad",
+  "note": "窗口內無此案對日本女性參政意願或少子化論述影響的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202607200062.aspx",
   "note": "窗口內無亞利桑那各期廠實際量產時程的報導。加碼投資金額有揭露，但分期量產時間表未見",
   "verdict": "miss",
@@ -212,6 +500,62 @@
   "idx": 4,
   "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
   "note": "窗口內未見伊朗公布友好國名單。收費構想本身未制度化(見#0)，故名單無從產生；日本反而7/11明確反對徵費並改認定為國際海峽",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607110030.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050060.aspx",
+  "note": "死亡數字明確修正：7/11報導強震死亡人數升至逾4000人(原2954)，家屬仍在廢墟間尋親",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050060.aspx",
+  "note": "窗口內無委內瑞拉新一波難民外流的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050060.aspx",
+  "note": "窗口內無馬杜洛政府救災失能引發政治動盪的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050060.aspx",
+  "note": "窗口內無國際援助規模或委國開放外援管道的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050067.aspx",
+  "note": "窗口內無摩爾多瓦2030入歐進程實質進展的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050067.aspx",
+  "note": "窗口內無聶斯特河沿岸另設俄文化中心的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050067.aspx",
+  "note": "窗口內無俄羅斯對摩爾多瓦報復手段(能源/資訊戰)的報導",
   "verdict": "miss",
   "verified_date": "2026-07-28"
  },
@@ -308,6 +652,70 @@
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202607100013.aspx",
   "note": "替代路線確實啟動：伊拉克與敘利亞7/18在華府簽署重建基爾庫克-地中海管線(日輸70萬桶、美能源部長見證)，沙烏地也考慮擴建紅海管線。指標問的是「是否啟動替代管線」，括號內兩條僅為舉例，行為本身已發生——改判hit",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/24/ai-kill-switch",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607100253.aspx",
+  "note": "指標問的是「是否把模型API納入出口管制」，窗口內未發生。有蒸餾調查(7/22)與AI Kill Switch法案(7/24)等鄰近政策動作，但都不是把API納入出口管制——改判miss(原判hit為證據遷就)",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607100253.aspx",
+  "note": "窗口內無1260H清單擴充的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/25/open-weight-letter",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607100253.aspx",
+  "note": "自主限制措施已發生並持續：7/10 OpenAI已因疑慮暫停阿里巴巴用戶API存取；7/25開放權重聯署中OpenAI後加入、Anthropic與Google未加入，顯示各家對模型開放的自主界線分歧",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607100253.aspx",
+  "note": "窗口內無中企海外子公司替代取得路徑的後續報導。7/10已載透過新加坡子公司取得，之後未見新的路徑揭露",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607110026.aspx",
+  "note": "窗口內無OpenAI硬體裝置發表時程受訴訟影響的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607110026.aspx",
+  "note": "窗口內無此訴訟對蘋果與OpenAI整合合作衝擊的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607110026.aspx",
+  "note": "窗口內無禁制令相關報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/22/bessent-ai-distillation",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607110026.aspx",
+  "note": "類似的科技巨頭間智財爭議明確增加：7/22美財長貝森特宣布調查中國AI模型「蒸餾」竊取美企技術並可能制裁，Anthropic指控阿里發動已知規模最大的蒸餾攻擊",
   "verdict": "hit",
   "verified_date": "2026-07-28"
  },
