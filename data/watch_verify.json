@@ -128,6 +128,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202607290004.aspx",
+  "idx": 0,
+  "news_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1Od3ZXLVphX1cwbVFGNU1pN0xJQlVYcFBPbXpUTkpsT3lWLXBFZThaV094UnZuSENEalR3ZVExODlnYnBZUGp5WVFRZllhZXp4amVnYXVReDhQR015anhV0gFkQVVfeXFMUGMzcUxFdk5vdk1XVE9yT0d3TzVjZ3B6YUtuLWxYbk9UbzJRSm9LQ0Qtd18wcDFmWUVvblNYekRGSi1VVWtwVHJuczhHRGFKQW1MdnJ3Zm5UejNqVjdkckNiQUdlOA",
+  "note": "布蘭特7/22曾突破111美元但未站穩：7/29創2020年以來最大三日跌幅、回落至84.09美元，未能維持110以上",
+  "verdict": "miss",
+  "verified_date": "2026-07-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202607280309.aspx",
   "idx": 3,
   "news_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1Od3ZXLVphX1cwbVFGNU1pN0xJQlVYcFBPbXpUTkpsT3lWLXBFZThaV094UnZuSENEalR3ZVExODlnYnBZUGp5WVFRZllhZXp4amVnYXVReDhQR015anhV0gFkQVVfeXFMUGMzcUxFdk5vdk1XVE9yT0d3TzVjZ3B6YUtuLWxYbk9UbzJRSm9LQ0Qtd18wcDFmWUVvblNYekRGSi1VVWtwVHJuczhHRGFKQW1MdnJ3Zm5UejNqVjdkckNiQUdlOA",
@@ -608,6 +616,30 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202607290004.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050079.aspx",
+  "note": "指標問的是「跌破戰前水準並引發OPEC+改變策略」，兩者皆未發生：7/29雖創2020年來最大三日跌幅，但布蘭特84.09美元仍高於戰前，窗口內亦無OPEC+策略調整報導——改判miss（原判hit為證據遷就）",
+  "verdict": "miss",
+  "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280356.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607060371.aspx",
+  "note": "窗口內 Google、Apple 均未跟進裁員。同期裁員者為支付業（Visa 2600人、萬事達4%、Block 4000人），非指標所列的科技巨頭",
+  "verdict": "miss",
+  "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280321.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607060371.aspx",
+  "note": "AI資本支出增速的警訊明確浮現：7/28科技業發債預估由2500億增至4000億美元、雲端商債券利差擴大至121個基點、蘋果以不自建策略market cap超車重資本投入同業",
+  "verdict": "hit",
+  "verified_date": "2026-07-29"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607080010.aspx",
@@ -806,6 +838,14 @@
   "note": "替代路線啟用：伊拉克/敘利亞7/18簽署重建基爾庫克-地中海管線(日輸70萬桶)，沙烏地考慮擴建紅海管線",
   "verdict": "hit",
   "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202607290004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607130012.aspx",
+  "note": "布蘭特站上並突破 80/90：7/19逼近86、7/20破90、7/22突破111美元；7/29回落至84.09美元仍在80以上",
+  "verdict": "hit",
+  "verified_date": "2026-07-29"
  },
  {
   "evidence_url": null,
