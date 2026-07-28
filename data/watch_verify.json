@@ -72,6 +72,22 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280321.aspx",
+  "idx": 1,
+  "news_url": "https://news.cnyes.com/news/id/6262332",
+  "note": "7/28三星電子跌13%、鎧俠挫18%，SK海力士過去12個月漲逾500%後面臨AI過熱質疑；基本面與股價的背離明確浮現",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202607280309.aspx",
+  "idx": 2,
+  "news_url": "https://news.cnyes.com/news/id/6262332",
+  "note": "7/28台股重挫2030點(史上第三大跌點)，金管會公布整戶擔保維持率175.12%、遠高於130%追繳門檻，證交所稱融資斷頭風險可控——斷頭壓力有明確的量化追蹤",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
   "idx": 0,
   "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
@@ -109,6 +125,14 @@
   "news_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKcFZ0eFBQN202YzY2cDFKWWlkUnpmOExONjl3RWRWWnBycnNJZWlrSzJUTlFOT3doQzNDdXAzckFYZUlPYU1tWW5tNFZCaW11MFBXNGZ5NDRvQdIBX0FVX3lxTFBsaEdfZUZkV0xnTnRjbHEwVjlBYnpDMGQtQy1Vb1k3Vjhjb01oNFFJb0NvZGFJVjlDZHZmSHVmVDFBSXk4YzJNRTdrLXVyRE44UWljem41S1U3aUlGUUdV",
   "note": "窗口內無沙俄財政壓力或相應地緣動作的報導。該指標同樣建立在低油價假設上，但油價上漲反而紓解產油國財政",
   "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202607280309.aspx",
+  "idx": 3,
+  "news_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1Od3ZXLVphX1cwbVFGNU1pN0xJQlVYcFBPbXpUTkpsT3lWLXBFZThaV094UnZuSENEalR3ZVExODlnYnBZUGp5WVFRZllhZXp4amVnYXVReDhQR015anhV0gFkQVVfeXFMUGMzcUxFdk5vdk1XVE9yT0d3TzVjZ3B6YUtuLWxYbk9UbzJRSm9LQ0Qtd18wcDFmWUVvblNYekRGSi1VVWtwVHJuczhHRGFKQW1MdnJ3Zm5UejNqVjdkckNiQUdlOA",
+  "note": "7/28金管會與證交所雙雙表態：整戶擔保維持率175.12%、融資斷頭風險可控、籲投資人理性面對波動，正是指標所問的金管會表態",
+  "verdict": "hit",
   "verified_date": "2026-07-28"
  },
  {
@@ -260,6 +284,30 @@
   "idx": 4,
   "news_url": "https://tech.udn.com/tech/story/123154/9580357",
   "note": "窗口內無帳號未自動恢復需人工申訴的後續案例報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/20/cxmt-supply-chain-to-witness-major-process-transition-to-seize-ddr6-opportunity-before-commercialization",
+  "note": "窗口內蘋果與長鑫合作未獲證實。7/27僅見美光遊說反對蘋果採購長鑫記憶體，顯示仍在角力階段",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/20/cxmt-supply-chain-to-witness-major-process-transition-to-seize-ddr6-opportunity-before-commercialization",
+  "note": "窗口內無長鑫DDR6樣品時程的具體資訊",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/07/20/cxmt-supply-chain-to-witness-major-process-transition-to-seize-ddr6-opportunity-before-commercialization",
+  "note": "窗口內未見美國擴大對長鑫的出口管制。7/28的發展是中國DUV設備交付消息引發市場反應，屬中國端進展而非美方管制動作",
   "verdict": "miss",
   "verified_date": "2026-07-28"
  },
@@ -820,6 +868,14 @@
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202607140027.aspx",
   "note": "談判姿態變化明確：台灣獲10%不疊加(僅台歐2個經濟體)、2231項豁免，優於日韓12.5%；巴西、泰國、越南、澳洲均在窗口內公開反制或要求談判。7/27報導完整揭露四層級稅率的談判邏輯",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280341.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607190158.aspx",
+  "note": "野火規模明確擴大：7/28法西撤離逾30萬人、歐盟啟動歐洲民事保護機制跨國調派7國飛機直升機；波爾多PM2.5超過WHO標準6倍",
   "verdict": "hit",
   "verified_date": "2026-07-28"
  },
