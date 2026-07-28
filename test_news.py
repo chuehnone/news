@@ -1316,6 +1316,38 @@ class TestStickyControls(CLITestCase):
         self.assertIn("flex-wrap: nowrap", filters_css.group(0),
                       ".filters 必須鎖成一排，寬度不足時由 .tabs 水平捲動吸收")
 
+    def test_compact_cards_have_expand_button(self):
+        """精簡模式下標題本身是外部連結，沒有展開鈕就無法在站內先看評分。"""
+        html = self._html()
+        self.assertIn('class="expand"', html, "每張卡片都要有展開鈕")
+        self.assertEqual(
+            html.count('class="expand"'), html.count('<div class="card '),
+            "展開鈕數量應與卡片數一致")
+        self.assertIn("body.compact .card.expanded", html,
+                      "要有 .expanded 的還原規則，否則按了不會展開")
+
+    def test_expanded_restores_flex_layout_explicitly(self):
+        """.meta/.tags 原本是 flex，還原時不能用 revert。
+
+        revert 會還原成瀏覽器預設（block）而非本表設定的 flex，
+        meta 列與標籤列的排版會壞掉。
+        """
+        html = self._html()
+        m = re.search(r'body\.compact \.card\.expanded \.meta[^{]*\{([^}]*)\}', html)
+        self.assertIsNotNone(m, "找不到 .meta 的還原規則")
+        self.assertIn("flex", m.group(1))
+        self.assertNotIn("revert", m.group(1))
+
+    def test_dynamic_page_has_no_expand_button(self):
+        """動態站沒有 JS 也沒有精簡模式，展開鈕會是死按鈕。"""
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a", tags=["X"]))
+        with load_modules(self.dir, "news", "server") as (news, server):
+            news.DB_PATH = self.dir / "news.db"
+            server.DB_PATH = self.dir / "news.db"
+            page = server.render_page()
+        self.assertNotIn('class="expand"', page,
+                         "動態站不該有展開鈕——沒有 JS 可以處理")
+
     def test_dynamic_page_has_no_density_toggle(self):
         """動態站沒有載入 JS，放密度切換會是按了沒反應的死按鈕。
 

@@ -232,6 +232,30 @@ body.compact .card { padding: 8px 14px; margin-bottom: 6px; }
 body.compact .title { font-size: .98rem; margin: 2px 0; }
 body.compact .card.C, body.compact .card.D { opacity: .7; }
 
+/* 逐張展開：精簡模式下，標題本身是外部連結（點了就離站），
+   沒有展開鈕的話就無法在站內先看評分再決定要不要讀原文。
+   .expanded 只是把該張卡片的隱藏區塊還原，故用同一組選擇器加高權重覆蓋。 */
+/* 明確寫回各自的原始 display（.meta/.tags 是 flex，其餘是 block），
+   不用 revert——它會還原成瀏覽器預設值而非本表的設定，flex 版面會壞掉 */
+body.compact .card.expanded .summary, body.compact .card.expanded .one-line,
+body.compact .card.expanded details { display: block; }
+body.compact .card.expanded .meta, body.compact .card.expanded .tags { display: flex; }
+body.compact .card.expanded { padding: 14px 16px; margin-bottom: 12px; }
+body.compact .card.expanded .title { font-size: 1.2rem; }
+body.compact .card.expanded.C, body.compact .card.expanded.D { opacity: 1; }
+/* 展開鈕只在精簡模式出現：完整模式下所有內容本來就都看得到 */
+.expand { display: none; }
+body.compact .expand {
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-left: auto; flex-shrink: 0;
+  width: 26px; height: 26px; padding: 0;
+  border: 1px solid var(--border); border-radius: 999px;
+  background: var(--card); color: var(--muted);
+  font-size: .9rem; font-family: inherit; line-height: 1; cursor: pointer;
+}
+body.compact .expand:hover { border-color: var(--link); color: var(--link); }
+body.compact .card.expanded .expand { transform: rotate(180deg); }
+
 /* 手機：篩選區原本吃掉近半個首屏（6 顆 tab 換行成兩排 + 3 個 select 換行 + 搜尋框），
    要滑一下才看得到第一則新聞。改為 tab 單行水平捲動、select 併排、字級與留白下修。 */
 @media (max-width: 600px) {
@@ -579,6 +603,11 @@ def render_card(r, related=None, static=True, hits=None, verified=None):
         f'<span class="badge {grade}">{grade}</span>',
         f'<span class="grade-label">{GRADE_LABELS.get(r["grade"], "")}</span>',
         f'<span class="score">{r["total_score"]}</span>',
+        # 精簡模式下逐張展開。只在靜態站輸出：動態站沒有 JS，
+        # 也沒有精簡模式（density 是純前端狀態），放了會是死按鈕。
+        # 平時（完整模式）以 CSS 隱藏，不佔版面也不干擾閱讀。
+        ('<button type="button" class="expand" aria-expanded="false"'
+         ' aria-label="展開評分細節">⌄</button>' if static else ""),
         "</div>",
         f'<div class="title">{title_html}</div>',
     ]
@@ -830,6 +859,8 @@ FILTER_JS = """
     densityBtns.forEach(function (b) {
       b.classList.toggle('active', (b.dataset.density || '') === state.density);
     });
+    // .expanded 刻意不在切換密度時清掉：它只在精簡模式看得見，
+    // 保留著代表「切到完整再切回精簡」時，原本展開的那幾張還是開的。
     // 卡片上的標籤反映目前選中的標籤，讓「這是我正在看的主題」有視覺回饋
     Array.prototype.forEach.call(document.querySelectorAll('[data-tag-pick]'), function (b) {
       b.classList.toggle('active', !!state.tag && b.dataset.tagPick === state.tag);
@@ -899,6 +930,18 @@ FILTER_JS = """
     b.addEventListener('click', function () {
       state.density = b.dataset.density || ''; update();
     });
+  });
+  // 精簡模式下逐張展開。用事件委派而非逐張綁定：卡片有 500+ 張，
+  // 且篩選時不會重建 DOM（只切 display），綁定一次就夠。
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) return;
+    var btn = e.target.closest('.expand');
+    if (!btn) return;
+    var card = btn.closest('.card');
+    if (!card) return;
+    var open = card.classList.toggle('expanded');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? '收合評分細節' : '展開評分細節');
   });
   // 卡片上的分類與標籤都可直接點成篩選條件（再點一次取消）
   document.addEventListener('click', function (e) {
