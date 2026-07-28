@@ -1283,6 +1283,53 @@ class TestWatchVerification(CLITestCase):
                          "重建 news 表後判定仍要對得上原本那則")
 
 
+class TestStickyControls(CLITestCase):
+    """捲動時仍需操作的控制項必須留在 sticky 列裡。
+
+    等級 tab 當初 sticky 的理由是「滑到一半想換等級不該逼使用者滑回頂端」，
+    完整／精簡切換是同一種操作（改變檢視方式而非內容），故同列。
+    """
+
+    def _html(self):
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a", tags=["X"]))
+        out = self.dir / "dist"
+        self.run_cli("export", "--out", str(out), check=True)
+        return (out / "index.html").read_text(encoding="utf-8")
+
+    def test_density_toggle_is_inside_sticky_filters(self):
+        html = self._html()
+        m = re.search(r'<div class="filters">.*?</div>\s*<div class="toolbar"',
+                      html, re.S)
+        self.assertIsNotNone(m, "找不到 filters 列")
+        self.assertIn('class="density"', m.group(0),
+                      "密度切換必須在 sticky 的 .filters 列內，否則捲動後就消失")
+
+    def test_filters_row_never_wraps(self):
+        """.filters 折成兩排會超過 --tabbar-h，日期列讓位不足而被蓋住。
+
+        --tabbar-h 是「單排」高度的算式（padding×2 + 行高），date-head 用它
+        當 top 偏移。這一列若因為塞不下而 wrap，實際高度就大於該值。
+        """
+        html = self._html()
+        filters_css = re.search(r'\.filters \{[^}]*\}', html, re.S)
+        self.assertIsNotNone(filters_css)
+        self.assertIn("flex-wrap: nowrap", filters_css.group(0),
+                      ".filters 必須鎖成一排，寬度不足時由 .tabs 水平捲動吸收")
+
+    def test_dynamic_page_has_no_density_toggle(self):
+        """動態站沒有載入 JS，放密度切換會是按了沒反應的死按鈕。
+
+        標籤與分類都曾經犯過這個錯（見 render_card 的 static 參數）。
+        """
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a", tags=["X"]))
+        with load_modules(self.dir, "news", "server") as (news, server):
+            news.DB_PATH = self.dir / "news.db"
+            server.DB_PATH = self.dir / "news.db"
+            page = server.render_page()
+        self.assertNotIn('class="density"', page,
+                         "動態站不該有密度切換——它沒有 JS 可以處理")
+
+
 class TestAnchorsAreFixed(CLITestCase):
     """錨點是評分的絕對門檻基準，它的意義就在於固定不動。
 

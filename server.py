@@ -75,7 +75,12 @@ h1 { font-size: 1.4rem; margin: 0 0 4px; }
   --tabbar-h: calc(var(--tabbar-row) + var(--tabbar-pad) * 2);
 }
 .filters {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+  display: flex; align-items: center; gap: 8px 16px;
+  /* nowrap：這一列一旦折成兩排，實際高度就超過 --tabbar-h（單排高度的算式），
+     date-head 的讓位量不足、日期會被蓋住。密度切換移進這一列後，
+     wrap 的風險從「tab 太多」變成「tab + 切換太寬」，故明確鎖成一排，
+     由 .tabs 自己水平捲動吸收寬度。 */
+  flex-wrap: nowrap;
   position: sticky; top: 0; z-index: 10;
   background: var(--sticky-bg); backdrop-filter: blur(6px);
   margin: 0 -16px 10px; padding: var(--tabbar-pad) 16px;
@@ -83,7 +88,13 @@ h1 { font-size: 1.4rem; margin: 0 0 4px; }
   /* 高度鎖定成與 --tabbar-h 相同的算式，排版與 date-head 的讓位量不會各走各的 */
   min-height: var(--tabbar-h);
 }
-.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+/* 桌機寬度足夠時 tab 不需捲動，但仍要能在空間不足時讓出寬度給密度切換 */
+.tabs {
+  display: flex; flex-wrap: nowrap; gap: 8px;
+  overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 0 1 auto;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.filters .density { flex: 0 0 auto; margin-left: auto; }
 .date-filter select, .section-filter select, .tag-filter select, .search input {
   padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border);
   background: var(--card); color: var(--text); font-size: .85rem;
@@ -229,14 +240,22 @@ body.compact .card.C, body.compact .card.D { opacity: .7; }
   .wrap { padding: 16px 12px 48px; }
   h1 { font-size: 1.2rem; }
   .sub { font-size: .8rem; margin-bottom: 14px; }
-  .filters { margin: 0 -12px 8px; padding: var(--tabbar-pad) 12px; }
+  /* nowrap：這一列必須恆為一排，否則實際高度會超過 --tabbar-h 的算式，
+     日期列讓位不足而被蓋住（--tabbar-h 是單排高度，見上方 :root 的說明） */
+  .filters { margin: 0 -12px 8px; padding: var(--tabbar-pad) 12px; flex-wrap: nowrap; }
+  /* 密度切換不參與壓縮，寬度固定；被壓縮時「完整／精簡」會被截字 */
+  .filters .density { flex: 0 0 auto; }
   /* 不 wrap，改水平捲動：6 顆 tab 恆為一排，省下第二排的高度。
      -webkit-overflow-scrolling 讓 iOS Safari 有慣性捲動 */
   /* min-width: 0 讓這個 flex 子項可以縮到比內容窄，捲動才被關在這一列裡；
-     少了它，nowrap 的 tab 會把 .filters 連同整頁一起撐寬，卡片右緣被裁掉 */
+     少了它，nowrap 的 tab 會把 .filters 連同整頁一起撐寬，卡片右緣被裁掉。
+     flex: 1 1 0 取代 width: 100%：密度切換與 tab 同列後，tab 若堅持佔滿
+     整排會把切換擠到第二排，.filters 變兩排高而 --tabbar-h 仍以一排計算，
+     日期列的讓位量就不夠、被蓋住。改成可伸縮後 tab 讓出切換所需的寬度，
+     自己在剩餘空間內水平捲動。 */
   .tabs {
     flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; width: 100%; min-width: 0;
+    scrollbar-width: none; flex: 1 1 0; min-width: 0;
   }
   .tabs::-webkit-scrollbar { display: none; }
   .tabs a { flex-shrink: 0; }
@@ -460,6 +479,21 @@ RELATED_LIMIT = 5
 # 控制字元寫進 HTML 屬性是不合法的，瀏覽器對它的處理沒有保證。
 # 標籤含 '|' 時會破壞編碼，故 render 前一律先剝掉（見 tag_attr_value）。
 TAG_SEP = "|"
+
+# 完整／精簡切換。放在 sticky 的 .filters 列裡（與等級 tab 同列）而非
+# .toolbar：捲到列表中段想切換檢視密度時，不該逼使用者滑回頂端——
+# 這與等級 tab 當初 sticky 的理由相同。日期列的 top 由 --tabbar-h 算出，
+# 會自動跟著這一列的高度走，不需要另外調整。
+#
+# **只用於靜態站**：density 是純前端狀態（body.compact 由 FILTER_JS 切換），
+# 而動態 serve 完全沒有載入 JS。動態站沿用這串 markup 會得到一組按了
+# 沒反應的死按鈕——標籤與分類都曾經如此（見 render_card 的 static 參數）。
+DENSITY_TOGGLE = (
+    '<div class="density">'
+    '<button type="button" data-density="" class="active">完整</button>'
+    '<button type="button" data-density="compact">精簡</button>'
+    "</div>"
+)
 
 
 def tag_attr_value(tags):
@@ -1080,10 +1114,6 @@ def render_static_page():
         '<div class="search">'
         '<input id="search-box" type="search" placeholder="搜尋標題／判斷／摘要…" autocomplete="off">'
         "</div>"
-        '<div class="density">'
-        '<button type="button" data-density="" class="active">完整</button>'
-        '<button type="button" data-density="compact">精簡</button>'
-        "</div>"
         "</div>"
     )
 
@@ -1136,7 +1166,7 @@ def render_static_page():
 <div class="wrap">
 <h1>📰 {escape(SITE_TITLE)}</h1>
 <div class="sub">依 /news-importance-score 五面向評分（100 分制）整理的新聞資料庫｜更新於 {generated}</div>
-<div class="filters"><div class="tabs">{"".join(tabs)}</div></div>
+<div class="filters"><div class="tabs">{"".join(tabs)}</div>{DENSITY_TOGGLE}</div>
 {controls}
 {"".join(body)}
 <div class="empty" id="empty" style="display:none">{empty_msg}</div>
