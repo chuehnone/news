@@ -40,6 +40,38 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607270020.aspx",
+  "idx": 0,
+  "news_url": "https://udn.com/news/story/7238/9624933",
+  "note": "海峽實際中斷：7/13伊朗宣布關閉、7/25攔4艘、7/27阻6船並稱維持關閉；通行量7/10已降至承平時期約1/3",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
+  "idx": 1,
+  "news_url": "https://udn.com/news/story/7238/9624933",
+  "note": "布蘭特站穩85以上並續攻：7/19逼近86、7/20破90、7/22突破111美元",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280012.aspx",
+  "idx": 2,
+  "news_url": "https://udn.com/news/story/7238/9624933",
+  "note": "7/28川普接受Axios訪問證實美伊談判進行中，焦點為重啟荷莫茲通道與核子協議，阿曼主導斡旋、特使魏科夫與庫許納參與",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://udn.com/news/story/7238/9624933",
+  "note": "窗口內無台灣油電價格調整或輸入性通膨數據的報導。有央行7/28 CPI預估1.93%但未連結至油價傳導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.bbc.com/zhongwen/articles/c3v0x30ny39o/trad",
@@ -76,6 +108,38 @@
   "idx": 4,
   "news_url": "https://www.bbc.com/zhongwen/articles/c3v0x30ny39o/trad",
   "note": "窗口內無金門地方對專用通道反應的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cedj1qld27yo/trad",
+  "note": "窗口內無敬業集團求償金額或提起國際仲裁的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cedj1qld27yo/trad",
+  "note": "窗口內中國確有對歐盟企業的出口管制擴大(7/25新增14家歐盟企業)，但名單為捷克、德國、義大利、波蘭、荷蘭業者，未見針對英國的對等反制",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/27/uk-ai-minister",
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cedj1qld27yo/trad",
+  "note": "對中政策開始定調：7/27 AI副大臣納拉揚(職位經柏南提升至內閣層級、直接向首相報告)明言晶片製造與硬體是再工業化核心、要本土生產AI晶片，以Arm為例說明「歡迎外資但期望經濟與戰略價值留在英國」——正是國有化爭議的政策延伸",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cedj1qld27yo/trad",
+  "note": "窗口內無斯肯索普高爐營運或電弧爐轉型的後續報導。7/27僅見以「中國鋼鐵摧毀美國產業」為類比討論記憶體，非本案後續",
   "verdict": "miss",
   "verified_date": "2026-07-28"
  },
@@ -152,6 +216,174 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607080010.aspx",
+  "note": "通行量有(7/10降至承平時期約1/3、Kpler)但戰爭險保費在76則後續中完全未見報導；指標兩個部分只命中一半，保費部分無資料",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607080010.aspx",
+  "note": "布蘭特走勢明確：7/12 78.86→7/14 83(單日+9%)→7/19逼近86→7/20破90→7/22突破111美元",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280012.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607080010.aspx",
+  "note": "兩者皆發生：軍事先升級(7/13美襲葛希姆島、伊朗攻5國美軍基地；7/14恢復海上封鎖)，7/28川普證實美伊談判由阿曼主導斡旋",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607080010.aspx",
+  "note": "窗口內無卡達等波灣產氣國表態或出口調度的報導。僅7/08提及卡達LNG船遇襲，屬事件本身而非後續表態",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607080025.aspx",
+  "note": "窗口內無ONI或任何聖嬰指標數值的報導。氣候後續報導集中在災害本身(野火、熱浪)而非驅動指標",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607080025.aspx",
+  "note": "窗口內無澳洲或東南亞旱象、糧食出口限制的報導",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607080025.aspx",
+  "note": "窗口內無小麥、棕櫚油、咖啡等大宗農產品價格的報導。僅見烏軍攻勢衝擊俄農業(小麥)與巴西咖啡獲關稅豁免，皆非價格走勢",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607080025.aspx",
+  "note": "窗口內無秘魯厄瓜多洪災或亞馬遜野火的報導。野火後續全部集中在法國、西班牙、加拿大",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607270020.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607100013.aspx",
+  "note": "進一步萎縮並升級為實質封鎖：7/13伊朗革命衛隊宣布海峽關閉、7/25攔截4艘、7/27阻6船並稱海峽維持關閉",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607100013.aspx",
+  "note": "繞道成本有具體數據：沙烏地油輪改走蘇伊士、地中海、直布羅陀再繞好望角，運抵台灣從19天拉長至48天，單趟燃料126萬→287萬美元。惟戰爭險保費部分仍無報導",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607100013.aspx",
+  "note": "布蘭特有完整走勢，但LNG現貨價在76則後續中未見任何報價或走勢報導；指標的LNG部分無資料",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/20/iraq-syria-pipeline",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607100013.aspx",
+  "note": "替代路線確實啟動：伊拉克與敘利亞7/18在華府簽署重建基爾庫克-地中海管線(日輸70萬桶、美能源部長見證)，沙烏地也考慮擴建紅海管線。指標問的是「是否啟動替代管線」，括號內兩條僅為舉例，行為本身已發生——改判hit",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607270020.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607130003.aspx",
+  "note": "封鎖執行程度明確：7/14川普恢復海上封鎖(首輪曾改變逾140艘船航線)、7/25攔截4艘、7/27阻6船，伊朗稱海峽維持關閉至7/28，持續逾兩週。佈雷未見報導但攔截手段有完整記錄",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280012.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607130003.aspx",
+  "note": "窗口內未見美方升級至打擊政權目標或登陸行動。走向相反：7/28川普表示暫停攻擊以保留談判機會",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280012.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607130003.aspx",
+  "note": "海灣國家轉為斡旋角色：7/27伊朗與阿曼雙邊會談荷莫茲管理、7/28阿拉奇與阿曼沙烏地外長通話，川普證實談判由阿曼主導、卡達等參與。未被迫參戰但斡旋明確發生",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607130003.aspx",
+  "note": "油價有完整走勢，但LNG現貨價與戰爭險費率在76則後續中皆無報導；三項中僅一項有資料",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/20/iraq-syria-pipeline",
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607130003.aspx",
+  "note": "替代路線啟用：伊拉克/敘利亞7/18簽署重建基爾庫克-地中海管線(日輸70萬桶)，沙烏地考慮擴建紅海管線",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140008.aspx",
+  "note": "窗口內無7/16全國演說內容或政策細節的報導。演說本身是否舉行都未見後續著墨",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140008.aspx",
+  "note": "窗口內無20%徵費法律依據或執行方式的報導。該構想在後續中未再出現，實際走向是攔截逼船改道付費",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140008.aspx",
+  "note": "窗口內無歐盟、印度、中國對美國封鎖或徵費的反應報導。僅見日本7/11反對伊朗徵費(對象是伊朗而非美方措施)",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140008.aspx",
+  "note": "油價與運費持續走高：布蘭特7/19逼近86、7/20破90、7/22突破111美元；運費有繞道好望角的具體成本(單趟燃料126萬→287萬美元)",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/07/24/tariff-301",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607140027.aspx",
@@ -180,6 +412,46 @@
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202607140027.aspx",
   "note": "談判姿態變化明確：台灣獲10%不疊加(僅台歐2個經濟體)、2231項豁免，優於日韓12.5%；巴西、泰國、越南、澳洲均在窗口內公開反制或要求談判。7/27報導完整揭露四層級稅率的談判邏輯",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607200032.aspx",
+  "note": "窗口內無該次(7/20阿曼庫姆扎爾外海)船隻起火原因的調查結果報導，UKMTO當時即稱原因未確認，後續未見釐清",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607250012.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607200032.aspx",
+  "note": "商船確實繞行與拒航：沙烏地油輪改繞好望角(運抵台灣19→48天)；7/25伊朗攔截後船舶改變航線、迫使改走伊朗沿岸航線付費通行",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607200032.aspx",
+  "note": "布蘭特站穩並突破90：7/20升破90創6月來新高、7/22突破111美元",
+  "verdict": "hit",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607200032.aspx",
+  "note": "航運保險費率在76則後續報導中完全未見。這是本批反覆落空的同一類指標——保費資料不在我的來源涵蓋範圍內",
+  "verdict": "miss",
+  "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280012.aspx",
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607200032.aspx",
+  "note": "7/28川普證實美伊談判，由阿曼主導、卡達巴基斯坦埃及參與，焦點為重啟荷莫茲通道",
   "verdict": "hit",
   "verified_date": "2026-07-28"
  },
