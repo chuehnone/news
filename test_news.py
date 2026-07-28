@@ -1316,6 +1316,25 @@ class TestStickyControls(CLITestCase):
         self.assertIn("flex-wrap: nowrap", filters_css.group(0),
                       ".filters 必須鎖成一排，寬度不足時由 .tabs 水平捲動吸收")
 
+    def test_density_control_is_narrow(self):
+        """密度切換必須是單顆鈕，不能是兩顆文字鈕。
+
+        迴歸情境：兩顆「完整／精簡」文字鈕約佔 130px，手機 390px 寬時
+        等級 tab 只剩 220px——B 級被切一半、C/D 完全看不到，而捲軸是
+        隱藏的，使用者不會知道右邊還有東西可捲。
+        """
+        html = self._html()
+        m = re.search(r'<div class="density">(.*?)</div>', html, re.S)
+        self.assertIsNotNone(m, "找不到密度切換")
+        self.assertEqual(m.group(1).count("<button"), 1,
+                         "密度切換要壓成單顆鈕，兩顆文字鈕會把等級 tab 擠掉")
+
+    def test_overflowing_tabs_get_scroll_hint(self):
+        """tab 溢出時要有淡出提示——捲軸是隱藏的，否則使用者不知道可捲。"""
+        html = self._html()
+        self.assertIn(".tabs.scrollable", html, "要有溢出時的淡出樣式")
+        self.assertIn("syncScrollHint", html, "要有量測是否溢出的邏輯")
+
     def test_compact_cards_have_expand_button(self):
         """精簡模式下標題本身是外部連結，沒有展開鈕就無法在站內先看評分。"""
         html = self._html()

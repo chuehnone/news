@@ -91,10 +91,35 @@ h1 { font-size: 1.4rem; margin: 0 0 4px; }
 /* 桌機寬度足夠時 tab 不需捲動，但仍要能在空間不足時讓出寬度給密度切換 */
 .tabs {
   display: flex; flex-wrap: nowrap; gap: 8px;
-  overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 0 1 auto;
+  overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1 1 auto;
+}
+/* 右緣淡出，暗示還有 tab 可以往右捲。捲軸被隱藏（見上），少了這個提示
+   使用者會以為 tab 只有看得到的那幾顆——實測手機 390px 寬只放得下約
+   3.7 顆，被切一半的那顆看起來像壞掉而非可捲。
+   只在真的溢出時才套用（.scrollable 由 JS 量測後加上），否則桌機
+   放得下 6 顆時最後一顆會平白被淡化。 */
+.tabs.scrollable {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
 }
 .tabs::-webkit-scrollbar { display: none; }
-.filters .density { flex: 0 0 auto; margin-left: auto; }
+/* 密度切換壓縮成單顆鈕：等級 tab 有 6 顆且會隨等級增加，兩者並排時
+   tab 必然被擠掉——實測手機版 B 級被切一半、C/D 完全看不到，
+   而捲軸是隱藏的，使用者不會知道右邊還有東西可捲。
+   單顆鈕把佔用寬度從約 130px 降到 44px，tab 拿回整列。 */
+.filters .density { flex: 0 0 auto; }
+.density {
+  border: 1px solid var(--border); border-radius: 999px; overflow: hidden;
+}
+.density button {
+  width: 44px; height: 30px; padding: 0;
+  border: 0; background: var(--card); color: var(--muted);
+  font-size: .95rem; font-family: inherit; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.density button:hover { color: var(--link); }
+/* 精簡模式時鈕顯示為 active，讓「目前是精簡」有明確的視覺狀態 */
+.density button.active { background: var(--text); color: var(--bg); }
 .date-filter select, .section-filter select, .tag-filter select, .search input {
   padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border);
   background: var(--card); color: var(--text); font-size: .85rem;
@@ -231,6 +256,12 @@ body.compact .meta, body.compact .tags, body.compact details { display: none; }
 body.compact .card { padding: 8px 14px; margin-bottom: 6px; }
 body.compact .title { font-size: .98rem; margin: 2px 0; }
 body.compact .card.C, body.compact .card.D { opacity: .7; }
+/* 精簡模式隱藏等級文字標籤：badge 已經說了 A/B/C，「重要新聞」是同一件事
+   講第二次，卻佔掉標題旁最顯眼的位置。完整模式版面寬鬆才保留它。 */
+body.compact .grade-label { display: none; }
+/* 分數靠右貼齊展開鈕，不再置中懸空——左 badge、右（分數＋鈕）兩個群組，
+   比原本三個各自為政的區塊好掃視 */
+body.compact .score { margin-left: auto; }
 
 /* 逐張展開：精簡模式下，標題本身是外部連結（點了就離站），
    沒有展開鈕的話就無法在站內先看評分再決定要不要讀原文。
@@ -247,11 +278,12 @@ body.compact .card.expanded.C, body.compact .card.expanded.D { opacity: 1; }
 .expand { display: none; }
 body.compact .expand {
   display: inline-flex; align-items: center; justify-content: center;
-  margin-left: auto; flex-shrink: 0;
-  width: 26px; height: 26px; padding: 0;
-  border: 1px solid var(--border); border-radius: 999px;
-  background: var(--card); color: var(--muted);
-  font-size: .9rem; font-family: inherit; line-height: 1; cursor: pointer;
+  flex-shrink: 0;
+  /* 44×44 是觸控目標的下限（原本 26px 太小不好按）。用負 margin 讓
+     視覺留白不因為加大熱區而變胖——按得到的範圍比看起來的大。 */
+  width: 44px; height: 44px; margin: -9px -9px -9px 4px; padding: 0;
+  border: 0; background: none; color: var(--muted);
+  font-size: 1.1rem; font-family: inherit; line-height: 1; cursor: pointer;
 }
 body.compact .expand:hover { border-color: var(--link); color: var(--link); }
 body.compact .card.expanded .expand { transform: rotate(180deg); }
@@ -514,8 +546,8 @@ TAG_SEP = "|"
 # 沒反應的死按鈕——標籤與分類都曾經如此（見 render_card 的 static 參數）。
 DENSITY_TOGGLE = (
     '<div class="density">'
-    '<button type="button" data-density="" class="active">完整</button>'
-    '<button type="button" data-density="compact">精簡</button>'
+    '<button type="button" id="density-toggle" aria-pressed="false"'
+    ' title="切換精簡／完整檢視" aria-label="切換精簡／完整檢視">☰</button>'
     "</div>"
 )
 
@@ -825,7 +857,7 @@ FILTER_JS = """
   var tagSel = document.getElementById('tag-select');
   var searchBox = document.getElementById('search-box');
   var empty = document.getElementById('empty');
-  var densityBtns = Array.prototype.slice.call(document.querySelectorAll('.density button'));
+  var densityBtn = document.getElementById('density-toggle');
   var state = { grade: '', date: '', section: '', tag: '', q: '', density: '' };
 
   // 篩選狀態存進 hash，讓靜態站的篩選結果可分享、可用上一頁還原
@@ -856,9 +888,11 @@ FILTER_JS = """
     if (tagSel) tagSel.value = state.tag;
     if (searchBox) searchBox.value = state.q;
     document.body.classList.toggle('compact', state.density === 'compact');
-    densityBtns.forEach(function (b) {
-      b.classList.toggle('active', (b.dataset.density || '') === state.density);
-    });
+    if (densityBtn) {
+      var isCompact = state.density === 'compact';
+      densityBtn.classList.toggle('active', isCompact);
+      densityBtn.setAttribute('aria-pressed', isCompact ? 'true' : 'false');
+    }
     // .expanded 刻意不在切換密度時清掉：它只在精簡模式看得見，
     // 保留著代表「切到完整再切回精簡」時，原本展開的那幾張還是開的。
     // 卡片上的標籤反映目前選中的標籤，讓「這是我正在看的主題」有視覺回饋
@@ -926,11 +960,12 @@ FILTER_JS = """
   if (searchBox) searchBox.addEventListener('input', function () {
     state.q = searchBox.value; update();
   });
-  densityBtns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      state.density = b.dataset.density || ''; update();
+  if (densityBtn) {
+    densityBtn.addEventListener('click', function () {
+      state.density = state.density === 'compact' ? '' : 'compact';
+      update();
     });
-  });
+  }
   // 精簡模式下逐張展開。用事件委派而非逐張綁定：卡片有 500+ 張，
   // 且篩選時不會重建 DOM（只切 display），綁定一次就夠。
   document.addEventListener('click', function (e) {
@@ -989,6 +1024,19 @@ FILTER_JS = """
   //
   // 用 HEAD 比對而非直接重新整理：頁面有 1.8 MB，且使用者可能正在讀某一則
   // 或已設好篩選條件，不該擅自把它捲掉——由使用者決定何時重載。
+  // tab 列真的溢出時才加淡出提示（見 .tabs.scrollable 的說明）。
+  // 用 ResizeObserver 而非只算一次：轉向、視窗縮放都會改變是否溢出。
+  var tabsEl = document.querySelector('.tabs');
+  if (tabsEl) {
+    var syncScrollHint = function () {
+      tabsEl.classList.toggle(
+        'scrollable', tabsEl.scrollWidth > tabsEl.clientWidth + 1);
+    };
+    syncScrollHint();
+    if (window.ResizeObserver) new ResizeObserver(syncScrollHint).observe(tabsEl);
+    window.addEventListener('resize', syncScrollHint);
+  }
+
   (function watchForUpdates() {
     // 這份 HTML 產出時的識別碼，隨每次 export 改變
     var seen = '__BUILD_ID__';
