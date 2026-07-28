@@ -26,7 +26,8 @@ REPO = Path(__file__).parent
 
 
 def make_score(title, news_date=None, url=None, scores=(10, 10, 10, 10, 9),
-               summary=None, one_line=None, section="影響未來的趨勢", tags=None):
+               summary=None, one_line=None, section="影響未來的趨勢", tags=None,
+               watch_next=None):
     """產生一筆符合 add 格式的評分 JSON。預設總分 49（C 級）。
 
     summary / one_line 可個別指定：搜尋是跨這幾個欄位比對的，若全部用同一份
@@ -43,7 +44,7 @@ def make_score(title, news_date=None, url=None, scores=(10, 10, 10, 10, 9),
         "one_line": one_line or f"{title}的判斷",
         "why_important": "原因",
         "affected": "對象",
-        "watch_next": ["指標"],
+        "watch_next": watch_next or ["指標"],
         "dimensions": {
             k: {"score": s, "reason": "理由"} for k, s in zip(keys, scores)
         },
@@ -1160,6 +1161,126 @@ class TestReviewCalibration(CLITestCase):
         with load_modules(self.dir, "news") as (news,):
             keys = set(news.dimension_calibration([], {}).keys())
         self.assertEqual(keys, {"duration", "structural"})
+
+
+class TestWatchVerification(CLITestCase):
+    """watch_next 逐條驗證：這是唯一能直接檢驗「判斷準不準」的機制，
+    但它只有在候選清單可信、判定語意清楚時才有價值。"""
+
+    def _rows(self, news):
+        conn = sqlite3.connect(self.dir / "news.db")
+        conn.row_factory = sqlite3.Row
+        rows = list(conn.execute("SELECT * FROM news"))
+        verified = news.load_verified(conn)
+        conn.close()
+        return rows, verified
+
+    def test_broad_shared_tag_is_not_a_candidate(self):
+        """只共用寬標籤不算線索——那會把整份清單灌成雜訊。
+
+        迴歸情境：「台灣防空演習」與「綜所稅退稅」都掛「台灣政策」，
+        於是退稅新聞被列為「海纜備援建設進度」的線索。實測這種配對
+        讓候選暴增到 881 條且幾乎全不可用，人根本讀不完也不會信。
+        """
+        # 「寬」標籤要夠多則才會超過佔比門檻，故灌一批背景資料
+        for i in range(30):
+            self.add(make_score(f"背景{i}", "2026-01-01", url=f"http://e.com/b{i}",
+                                tags=["寬標籤"]))
+        self.add(make_score("舊則", "2026-01-01", url="http://e.com/old",
+                            tags=["寬標籤", "窄標籤"], watch_next=["某個指標"]))
+        # 當天新聞只與舊則共用寬標籤
+        self.add(make_score("今日無關", "2026-02-01", url="http://e.com/new1",
+                            tags=["寬標籤"]))
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            rows, verified = self._rows(news)
+            cands = news.watch_candidates(rows, verified, "2026-02-01")
+        self.assertEqual(
+            cands, [],
+            "只共用寬標籤不該成為候選——這正是讓清單退化成雜訊的原因")
+
+    def test_narrow_shared_tag_is_a_candidate(self):
+        """共用窄標籤才算線索，且要標示是哪個標籤讓它們相關。"""
+        for i in range(30):
+            self.add(make_score(f"背景{i}", "2026-01-01", url=f"http://e.com/b{i}",
+                                tags=["寬標籤"]))
+        self.add(make_score("舊則", "2026-01-01", url="http://e.com/old",
+                            tags=["寬標籤", "窄標籤"], watch_next=["某個指標"]))
+        self.add(make_score("今日相關", "2026-02-01", url="http://e.com/new2",
+                            tags=["窄標籤"]))
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            rows, verified = self._rows(news)
+            cands = news.watch_candidates(rows, verified, "2026-02-01")
+        self.assertEqual(len(cands), 1, "共用窄標籤應成為候選")
+        self.assertEqual(cands[0]["key_tags"], ["窄標籤"],
+                         "要標示是哪個標籤構成線索，否則無從判斷可信度")
+
+    def test_too_recent_indicators_are_not_listed(self):
+        """未滿 min_age 的不列出——太早看什麼都還沒發生。
+
+        把「時候未到」記成 miss 會污染命中率，而 miss 是要用來
+        檢討評分的訊號，不能混入雜訊。
+        """
+        self.add(make_score("昨天", "2026-01-31", url="http://e.com/y",
+                            tags=["窄標籤"], watch_next=["某個指標"]))
+        self.add(make_score("今日", "2026-02-01", url="http://e.com/t",
+                            tags=["窄標籤"]))
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            rows, verified = self._rows(news)
+            cands = news.watch_candidates(rows, verified, "2026-02-01", min_age=7)
+        self.assertEqual(cands, [], "只放了 1 天的指標不該被要求判定")
+
+    def test_verified_items_are_not_listed_again(self):
+        """判定過的不再出現，否則每天都要重看同一批。"""
+        self.add(make_score("舊則", "2026-01-01", url="http://e.com/old",
+                            tags=["窄標籤"], watch_next=["指標A", "指標B"]))
+        self.add(make_score("今日", "2026-02-01", url="http://e.com/new",
+                            tags=["窄標籤"]))
+        self.run_cli("watch-verify", "http://e.com/old", "0", "hit", check=True)
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            rows, verified = self._rows(news)
+            cands = news.watch_candidates(rows, verified, "2026-02-01")
+        self.assertEqual([c["idx"] for c in cands], [1],
+                         "已判定的 #0 不該再列出，未判定的 #1 要留著")
+
+    def test_moot_excluded_from_hit_rate(self):
+        """moot 不列入分母——它是「無從判斷」，不是「預測錯」。
+
+        混為一談會系統性低估命中率，而這兩者對校準的意涵完全不同：
+        miss 該檢討判斷，moot 只是世界變了。
+        """
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a",
+                            tags=["X"], watch_next=["i0", "i1", "i2"]))
+        self.run_cli("watch-verify", "http://e.com/a", "0", "hit", check=True)
+        self.run_cli("watch-verify", "http://e.com/a", "1", "miss", check=True)
+        self.run_cli("watch-verify", "http://e.com/a", "2", "moot", check=True)
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            rows, verified = self._rows(news)
+            acc = news.watch_accuracy(rows, verified)
+        self.assertAlmostEqual(acc["overall"]["rate"], 0.5,
+                               msg="命中率應為 1/(1+1)，moot 不進分母")
+
+    def test_verify_survives_import_json_replace(self):
+        """判定資料必須熬過 CI 的 import-json --replace。
+
+        該指令會重建 news 表、id 由 AUTOINCREMENT 重新配發。判定若以 id
+        關聯就會全部對錯人；以 url 關聯才穩。這也是判定要另存 JSON 的原因——
+        news.db 不進版控，重新 clone 後只剩 JSON。
+        """
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a",
+                            tags=["X"], watch_next=["指標"]))
+        self.run_cli("watch-verify", "http://e.com/a", "0", "hit", check=True)
+        self.run_cli("import-json", "--replace", check=True)
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            rows, verified = self._rows(news)
+            acc = news.watch_accuracy(rows, verified)
+        self.assertEqual(acc["overall"]["counts"]["hit"], 1,
+                         "重建 news 表後判定仍要對得上原本那則")
 
 
 if __name__ == "__main__":

@@ -42,6 +42,9 @@ python3 news.py alias [別名 正規名]  # 管理標籤別名（不帶參數列
 python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
 python3 news.py drift [--split YYYY-MM-DD]  # 偵測評分標準漂移（review 的前提，見下）
 python3 news.py review [--window 30] [--since YYYY-MM-DD]  # 評分回顧校準（見下）
+python3 news.py watch [--date YYYY-MM-DD] [--json]  # 列出當天新聞可能命中的舊 watch_next
+python3 news.py watch-verify <url> <idx> <hit|miss|moot> [--note ...] [--evidence ...]
+python3 news.py watch-stats    # watch_next 命中率統計
 python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
 python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控）
@@ -117,6 +120,38 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 - 樣本少於 20 則會印出警告。資料要累積過一個完整窗口才有參考價值，
   想早點看到訊號可以用較短的窗口（`--window 7`）。
 
+## watch_next 逐條驗證（`news.py watch` / `watch-verify` / `watch-stats`）
+
+`review` 用「標籤後續數」當代理訊號，永遠分不清「事件在延燒」與「判斷正確」。
+逐條驗證直接檢驗當初寫的觀察指標有沒有發生，是唯一能回答「判斷準不準」的機制。
+
+**做法是每日批次時順手回顧**，不另外安排回溯工程：`watch` 列出當天新聞可能
+命中的舊指標，判讀後用 `watch-verify` 記錄。過去累積的條目補不回來是刻意的
+取捨——久遠的條目只能靠標籤撈到的內容判讀，品質不會比當下讀新聞時好。
+
+- **候選配對只用標籤交集，且只採「窄標籤」**（佔比 < `WATCH_TAG_MAX_SHARE`
+  或出現數 ≤ `WATCH_TAG_MIN_ABS`）。共用「台灣政策」這種寬標籤完全不構成
+  線索——實測會讓「綜所稅退稅」被列為「海纜備援進度」的線索，候選暴增到
+  881 條且幾乎全不可用。由 `test_broad_shared_tag_is_not_a_candidate` 守著。
+- **刻意不做語意比對或自動判定**。目的只是把候選縮到人能讀完的範圍，
+  判定要由讀的人下。自動判定會產出大量似是而非的 hit，而這張表的全部價值
+  就在於判定可信。
+- **`moot` 必須與 `miss` 分開**：前提消失（談判取消、政策撤回）是「無從判斷」，
+  不是「預測錯」。混為一談會系統性低估命中率，且兩者對校準的意涵不同——
+  miss 該檢討判斷，moot 只是世界變了。moot 不列入命中率分母，由
+  `test_moot_excluded_from_hit_rate` 守著。
+- **未滿 `WATCH_MIN_AGE_DAYS`（7 天）的指標不列出**：太早看什麼都還沒發生，
+  會把「時候未到」記成 miss 而污染命中率。
+- **判定以 `news_url` 關聯而非 `id`**：CI 的 `import-json --replace` 會重建
+  news 表、id 由 AUTOINCREMENT 重新配發，存 id 會在重建後全部對錯人。
+  由 `test_verify_survives_import_json_replace` 守著。
+- **判定另存 `data/watch_verify.json` 並進版控**：它不是網站資料（靜態站不用），
+  但 `news.db` 不進版控，只存 db 裡的話重新 clone 就全沒了，而這是要累積
+  數月才有意義的資料。刻意不併進 `data/news.json`——後者的「完整鏡像」保證
+  只涵蓋 news 表，混進別的表會讓 `import-json --replace` 的語意變模糊。
+- 真正要看的是**依等級的命中率**：高分級若低於低分級，代表高分那些
+  「還會有後續」的宣稱撐不住，是評分過鬆的直接證據，比 `drift` 更難辯駁。
+
 ## 關聯新聞（標籤）
 
 同一件事會分很多天、多則報導（301 關稅、NVIDIA、中東局勢），標籤把它們串起來：
@@ -136,6 +171,14 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 ## 批次評分
 
 使用者要求「批次評分」、「處理待評分清單」時，用 `/news-importance-score` 的批次模式：`pending --json` 取清單 → 依標題粗篩（不值得的用 `skip` 標掉）→ 逐則抓內文完整評分寫入 → 輸出總表。詳細流程見 skill 內的「批次模式」章節。
+
+兩件必須順手做的事（分開做就不會做）：
+
+1. **評分前先讀前期錨定範例**（見「評分標準漂移偵測」）。2026-07-28 實測：
+   未校準的兩批 A 級佔 32-43%、決策相關性平均 11.1；讀完前期範例後的那批
+   降到 8.7% 與 9.91，回到前期水準。差別只在有沒有先看。
+2. **評分後跑 `news.py watch`**，判讀當天新聞命中了哪些舊指標。剛讀完當日
+   新聞的當下是判讀品質最高的時刻，錯過就只能靠標籤事後撈。
 
 ## RSS 自動抓取
 
@@ -245,17 +288,20 @@ CI 只負責把 JSON 轉成靜態站並上線。
 
 ## 架構
 
-- `news.py` — CLI（init / add / list / serve / fetch / pending / drift / review / tags / tag /
-  alias / export-json / import-json / export）。
+- `news.py` — CLI（init / add / list / serve / fetch / pending / drift / review /
+  watch / watch-verify / watch-stats / tags / tag / alias / export-json /
+  import-json / export）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，76 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，83 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
-  回顧校準的兩項偏誤修正；改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
+  回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意；
+  改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
 - `feeds.txt` — RSS 來源清單
 - `data/news.json` — 進版控的資料來源（由 export-json 產生）
+- `data/watch_verify.json` — watch_next 判定結果，進版控（非網站資料，但 db 不進版控）
 - `assets/og.png` — 分享預覽圖，進版控的成品（由 `news.py og` 產生，export 複製上線）
 - `.github/workflows/deploy.yml` — 部署 GitHub Pages
 - `news.db` — SQLite 資料庫（不進版控，可由 import-json 重建）

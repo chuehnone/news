@@ -34,6 +34,10 @@ from pathlib import Path
 DB_PATH = Path(__file__).parent / "news.db"
 FEEDS_PATH = Path(__file__).parent / "feeds.txt"
 DATA_JSON_PATH = Path(__file__).parent / "data" / "news.json"
+# watch_next 的驗證結果。與 news.json 分開存：它不是網站資料（靜態站不用它），
+# 但必須進版控——news.db 不進版控，只存在 db 裡的話一次重新 clone 就全沒了，
+# 而這是要累積數月才有意義的校準資料。
+WATCH_VERIFY_JSON = Path(__file__).parent / "data" / "watch_verify.json"
 
 # 一律以台北時間為準，不使用 datetime.now()／date.today() 的執行環境時區。
 #
@@ -197,6 +201,21 @@ CREATE INDEX IF NOT EXISTS idx_pending_status ON pending(status);
 CREATE TABLE IF NOT EXISTS tag_aliases (
     alias TEXT PRIMARY KEY,
     canonical TEXT NOT NULL
+);
+
+-- watch_next 的逐條驗證結果。idx 是該則 watch_next 陣列中的位置，
+-- 故 (news_id, idx) 唯一。verdict 見 WATCH_VERDICTS。
+-- 刻意用 news_url 而非只存 news_id 當關聯鍵：CI 的 import-json --replace
+-- 會整個重建 news 表，id 由 AUTOINCREMENT 重新配發，只存 id 會在重建後
+-- 全部對錯人。url 是評分資料裡穩定且唯一的識別。
+CREATE TABLE IF NOT EXISTS watch_verify (
+    news_url TEXT NOT NULL,
+    idx INTEGER NOT NULL,
+    verdict TEXT NOT NULL,
+    note TEXT,
+    evidence_url TEXT,
+    verified_date TEXT NOT NULL,
+    PRIMARY KEY (news_url, idx)
 );
 """
 
@@ -695,8 +714,53 @@ def export_news_json(out):
     print(f"已匯出 {len(items)} 筆到 {out}")
 
 
+WATCH_VERIFY_COLUMNS = [
+    "news_url", "idx", "verdict", "note", "evidence_url", "verified_date",
+]
+
+
+def export_watch_verify(out, quiet=True):
+    """把 watch_verify 表寫進版控用的 JSON。
+
+    與 export_news_json 分開：news.json 的完整鏡像保證只涵蓋 news 表，
+    把別的表混進去會讓 import-json --replace 的語意變模糊。
+    """
+    conn = connect()
+    rows = conn.execute(
+        f"SELECT {', '.join(WATCH_VERIFY_COLUMNS)} FROM watch_verify "
+        "ORDER BY news_url, idx"
+    ).fetchall()
+    conn.close()
+    items = [{k: r[k] for k in WATCH_VERIFY_COLUMNS} for r in rows]
+    text = json.dumps(items, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
+    out = Path(out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(text, encoding="utf-8")
+    if not quiet:
+        print(f"已匯出 {len(items)} 筆判定到 {out}")
+
+
+def import_watch_verify(path):
+    """從 JSON 回灌 watch_verify（重新 clone 後重建 db 用）。"""
+    path = Path(path)
+    if not path.exists():
+        return 0
+    items = json.loads(path.read_text(encoding="utf-8"))
+    conn = connect()
+    conn.executemany(
+        f"INSERT OR REPLACE INTO watch_verify "
+        f"({', '.join(WATCH_VERIFY_COLUMNS)}) "
+        f"VALUES ({', '.join('?' * len(WATCH_VERIFY_COLUMNS))})",
+        [tuple(it.get(k) for k in WATCH_VERIFY_COLUMNS) for it in items],
+    )
+    conn.commit()
+    conn.close()
+    return len(items)
+
+
 def cmd_export_json(args):
     export_news_json(args.out)
+    export_watch_verify(WATCH_VERIFY_JSON)
 
 
 def cmd_import_json(args):
@@ -721,6 +785,11 @@ def cmd_import_json(args):
     total = conn.execute("SELECT COUNT(*) FROM news").fetchone()[0]
     conn.close()
     print(f"已匯入 {added} 筆（來源 {len(items)} 筆），news 表現有 {total} 筆")
+    # watch_verify 以 url 關聯 news，重建後 id 會變但 url 不變，故可獨立回灌。
+    # 重新 clone 後只跑 import-json 也能把判定資料一起帶回來。
+    n = import_watch_verify(WATCH_VERIFY_JSON)
+    if n:
+        print(f"另回灌 {n} 筆 watch_next 判定")
 
 
 def cmd_schema(_args):
@@ -995,6 +1064,18 @@ def cmd_skip(args):
 # 回顧窗口：評分後觀察多少天的後續。與 server.py 的 RECENT_DAYS 無關——
 # 那是網站的保留期，這是判斷「後續是否發生」的觀察期，語意不同故各自定義。
 REVIEW_WINDOW_DAYS = 30
+
+# watch_next 逐條驗證的判定。
+#   hit    ——指標明確發生了，且有後續報導佐證
+#   miss   ——窗口已走完但沒發生（這是真訊號：當初的預測落空）
+#   moot   ——前提本身消失，指標變得無從判斷（如「觀察某談判進展」但談判取消）
+# moot 必須與 miss 分開：把「無從判斷」算成「預測錯」會系統性低估命中率，
+# 而這兩者對評分校準的意涵完全不同——miss 該檢討判斷，moot 只是世界變了。
+WATCH_VERDICTS = ("hit", "miss", "moot")
+
+# 一條 watch_next 至少要等這麼多天才值得判定。太早看什麼都還沒發生，
+# 會把「時候未到」誤記成 miss，而 miss 是要用來檢討判斷的訊號。
+WATCH_MIN_AGE_DAYS = 7
 
 
 def _days_between(earlier, later):
@@ -1326,6 +1407,253 @@ def cmd_drift(args):
     print("      校準做法是回頭看前期的錨定範例，而不是調整門檻遷就現況。")
 
 
+# 共用標籤要夠「窄」才算得上線索。「台灣政策」有 29 則、幾乎與所有內政新聞
+# 相交，共用它完全不代表某條具體指標發生了；「荷莫茲海峽」只有 13 則，共用它
+# 就相當有指向性。門檻取佔比而非絕對則數，資料量成長時才不會失效。
+WATCH_TAG_MAX_SHARE = 0.05
+# 但佔比在資料少時會失真：只有 30 則時，一個只出現 2 次的標籤就佔了 6.7%，
+# 明明夠窄卻被擋掉。故另給絕對則數的下限，兩者取寬鬆者。
+WATCH_TAG_MIN_ABS = 3
+
+
+def watch_candidates(rows, verified, on_date, min_age=WATCH_MIN_AGE_DAYS):
+    """列出「當天的新聞可能命中哪些舊的 watch_next」。
+
+    回傳 [{"row": 舊則, "idx": 條目序號, "text": 指標文字, "age": 天數,
+           "related": [...], "key_tags": [共用的窄標籤]}]，依線索強度排序。
+
+    配對只靠標籤交集，刻意不做語意比對——這裡的目的是把候選縮到人能讀完的
+    範圍，最終判定由讀的人下。用關鍵字或相似度自動判定「指標是否發生」會產出
+    大量似是而非的 hit，而這張表的全部價值就在於判定是可信的。
+
+    但光有交集不夠：只共用寬標籤（「台灣政策」「美國」）的配對是雜訊，
+    實測會讓「綜所稅退稅」被列為「海纜備援進度」的線索。故只採共用標籤中
+    佔比低於 WATCH_TAG_MAX_SHARE 的那些，並以最窄的共用標籤決定排序。
+
+    已判定過的 (url, idx) 不再列出；未滿 min_age 的也不列，太早看什麼都還沒
+    發生，會把「時候未到」誤記成 miss。
+    """
+    dated = [r for r in rows if r["news_date"]]
+    if not dated:
+        return []
+    tag_share = Counter()
+    for r in dated:
+        for t in tags_of(r):
+            tag_share[t] += 1
+    total = len(dated)
+    narrow = {
+        t for t, n in tag_share.items()
+        if n / total < WATCH_TAG_MAX_SHARE or n <= WATCH_TAG_MIN_ABS
+    }
+
+    on_rows = [(r, set(tags_of(r))) for r in rows if r["news_date"] == on_date]
+    if not on_rows:
+        return []
+
+    out = []
+    for r in rows:
+        if not r["news_date"] or r["news_date"] >= on_date:
+            continue  # 只回顧比當天更早的則
+        age = _days_between(r["news_date"], on_date)
+        if age < min_age:
+            continue
+        my_tags = set(tags_of(r))
+        if not my_tags:
+            continue
+        # 只保留「共用了窄標籤」的當日新聞，並記下是哪些標籤讓它們相關
+        related, key_tags = [], set()
+        for other, other_tags in on_rows:
+            shared = my_tags & other_tags & narrow
+            if shared:
+                related.append(other)
+                key_tags |= shared
+        if not related:
+            continue
+        # 線索強度＝最窄的共用標籤（佔比越低越有指向性）
+        strength = min(tag_share[t] for t in key_tags)
+        for idx, text in enumerate(watch_list_of(r)):
+            if (r["url"], idx) in verified:
+                continue
+            out.append({
+                "row": r, "idx": idx, "text": text, "age": age,
+                "related": related, "key_tags": sorted(key_tags),
+                "strength": strength,
+            })
+    # 窄標籤優先，其次新的在前——最有指向性的線索要出現在清單頂端
+    out.sort(key=lambda c: (c["strength"], -_days_between("2000-01-01",
+                                                          c["row"]["news_date"]),
+                            c["idx"]))
+    return out
+
+
+def watch_list_of(row):
+    """取出某則的 watch_next 陣列。存的是 JSON 字串，壞掉時回空陣列而非炸開。"""
+    raw = row["watch_next"]
+    if not raw:
+        return []
+    if isinstance(raw, list):
+        return raw
+    try:
+        val = json.loads(raw)
+    except (json.JSONDecodeError, TypeError):
+        return []
+    return val if isinstance(val, list) else []
+
+
+def load_verified(conn):
+    """回傳 {(news_url, idx): row}，供 watch_candidates 排除已判定的條目。"""
+    return {
+        (r["news_url"], r["idx"]): r
+        for r in conn.execute("SELECT * FROM watch_verify")
+    }
+
+
+def cmd_watch(args):
+    """列出當天新聞可能命中的舊 watch_next，供批次評分時順手判定。"""
+    conn = connect()
+    rows = list(conn.execute("SELECT * FROM news"))
+    verified = load_verified(conn)
+    conn.close()
+    if not rows:
+        print("（資料庫沒有評分紀錄）")
+        return
+
+    on_date = args.date or max(
+        (r["news_date"] for r in rows if r["news_date"]), default=None)
+    if not on_date:
+        print("（沒有任何帶日期的評分）")
+        return
+
+    cands = watch_candidates(rows, verified, on_date, args.min_age)
+    if args.json:
+        print(json.dumps([
+            {
+                "news_url": c["row"]["url"],
+                "idx": c["idx"],
+                "text": c["text"],
+                "source_title": c["row"]["title"],
+                "source_date": c["row"]["news_date"],
+                "source_grade": c["row"]["grade"],
+                "age_days": c["age"],
+                "key_tags": c["key_tags"],
+                "related_titles": [x["title"] for x in c["related"]],
+            }
+            for c in cands[:args.limit]
+        ], ensure_ascii=False, indent=1))
+        return
+
+    if not cands:
+        print(f"{on_date}：沒有可判定的 watch_next 候選"
+              f"（已判定的不再列出，未滿 {args.min_age} 天的也不列）")
+        return
+
+    print(f"{on_date} 的新聞可能命中以下舊指標（共 {len(cands)} 條，"
+          f"顯示前 {min(args.limit, len(cands))} 條）")
+    print(f"判定後用：news.py watch-verify <url> <idx> <hit|miss|moot> [--note ...]\n")
+    for c in cands[:args.limit]:
+        r = c["row"]
+        print(f"[{r['news_date']} {r['grade']}{r['total_score']} "
+              f"{c['age']}天前] {r['title'][:44]}")
+        print(f"  #{c['idx']} {c['text']}")
+        print(f"     共用標籤：{'、'.join(c['key_tags'])}")
+        for other in c["related"][:3]:
+            print(f"     ↳ 今日相關：{other['title'][:40]}")
+        print(f"     url={r['url']}")
+        print()
+
+
+def cmd_watch_verify(args):
+    """記錄一條 watch_next 的判定結果。"""
+    if args.verdict not in WATCH_VERDICTS:
+        sys.exit(f"verdict 必須是 {'/'.join(WATCH_VERDICTS)} 之一")
+    conn = connect()
+    row = conn.execute("SELECT * FROM news WHERE url = ?", (args.url,)).fetchone()
+    if not row:
+        conn.close()
+        sys.exit(f"找不到 url={args.url} 的評分")
+    items = watch_list_of(row)
+    if not 0 <= args.idx < len(items):
+        conn.close()
+        sys.exit(f"idx 超出範圍：該則有 {len(items)} 條 watch_next（0-{len(items) - 1}）")
+    today = today_local().isoformat()
+    conn.execute(
+        "INSERT OR REPLACE INTO watch_verify "
+        "(news_url, idx, verdict, note, evidence_url, verified_date) "
+        "VALUES (?, ?, ?, ?, ?, ?)",
+        (args.url, args.idx, args.verdict, args.note, args.evidence, today),
+    )
+    conn.commit()
+    conn.close()
+    export_watch_verify(WATCH_VERIFY_JSON)
+    print(f"已記錄 [{args.verdict}] {items[args.idx][:50]}")
+
+
+def watch_accuracy(rows, verified):
+    """彙總命中率。回傳 {"overall": {...}, "by_grade": {...}}。
+
+    moot 一律排除在分母外——它代表「無從判斷」而非「預測錯」，
+    算進去會系統性低估命中率（見 WATCH_VERDICTS 的說明）。
+    """
+    by_url = {r["url"]: r for r in rows if r["url"]}
+    overall = Counter()
+    by_grade = defaultdict(Counter)
+    for (url, _idx), v in verified.items():
+        row = by_url.get(url)
+        if not row:
+            continue  # 該則已被刪除或 url 改過，無從歸類
+        overall[v["verdict"]] += 1
+        by_grade[row["grade"]][v["verdict"]] += 1
+
+    def rate(c):
+        judged = c["hit"] + c["miss"]
+        return (c["hit"] / judged) if judged else None
+
+    return {
+        "overall": {"counts": overall, "rate": rate(overall)},
+        "by_grade": {
+            g: {"counts": c, "rate": rate(c)} for g, c in by_grade.items()
+        },
+    }
+
+
+def cmd_watch_stats(args):
+    """顯示 watch_next 的命中率統計。"""
+    conn = connect()
+    rows = list(conn.execute("SELECT * FROM news"))
+    verified = load_verified(conn)
+    conn.close()
+    if not verified:
+        print("（還沒有任何 watch_next 判定紀錄，用 news.py watch 開始）")
+        return
+
+    acc = watch_accuracy(rows, verified)
+    o = acc["overall"]
+    c = o["counts"]
+    judged = c["hit"] + c["miss"]
+    print(f"watch_next 命中率：已判定 {sum(c.values())} 條"
+          f"（hit {c['hit']}、miss {c['miss']}、moot {c['moot']}）")
+    if o["rate"] is None:
+        print("  尚無可計算命中率的條目（moot 不列入分母）")
+    else:
+        print(f"  命中率 {o['rate']:.0%}（{c['hit']}/{judged}，moot 不列入分母）")
+    if judged < 20:
+        print(f"  ⚠️  樣本僅 {judged} 條，結論參考價值有限（建議 20 條以上）")
+
+    if acc["by_grade"]:
+        print("\n依等級")
+        for g in GRADES:
+            if g not in acc["by_grade"]:
+                continue
+            gc = acc["by_grade"][g]
+            gj = gc["counts"]["hit"] + gc["counts"]["miss"]
+            if not gj:
+                continue
+            print(f"  {g} 級  命中率 {gc['rate']:.0%}"
+                  f"（{gc['counts']['hit']}/{gj}）")
+        print("\n  高分級的命中率若低於低分級，代表高分那些「還會有後續」的")
+        print("  宣稱撐不住，是評分過鬆的直接證據。")
+
+
 def cmd_review(args):
     """回顧指定期間的評分，用後續資料檢驗判讀是否準確。"""
     conn = connect()
@@ -1449,6 +1777,25 @@ def main():
     p_review.add_argument("--since", help="只回顧此日期之後評的（YYYY-MM-DD）")
     p_review.add_argument("--limit", type=int, default=10, help="每個清單最多列幾則")
 
+    p_watch = sub.add_parser(
+        "watch", help="列出當天新聞可能命中的舊 watch_next（批次評分時順手判定）")
+    p_watch.add_argument("--date", help="以哪天的新聞回頭比對（預設取最新評分日）")
+    p_watch.add_argument(
+        "--min-age", type=int, default=WATCH_MIN_AGE_DAYS, dest="min_age",
+        help=f"指標至少要放多少天才列出（預設 {WATCH_MIN_AGE_DAYS}）")
+    p_watch.add_argument("--limit", type=int, default=15, help="最多列幾條")
+    p_watch.add_argument("--json", action="store_true", help="輸出 JSON")
+
+    p_wv = sub.add_parser("watch-verify", help="記錄一條 watch_next 的判定結果")
+    p_wv.add_argument("url", help="該則新聞的 url")
+    p_wv.add_argument("idx", type=int, help="watch_next 陣列中的序號（0 起算）")
+    p_wv.add_argument("verdict", choices=WATCH_VERDICTS,
+                      help="hit=發生了／miss=窗口過了沒發生／moot=前提消失無從判斷")
+    p_wv.add_argument("--note", help="判定說明")
+    p_wv.add_argument("--evidence", help="佐證報導的網址")
+
+    p_ws = sub.add_parser("watch-stats", help="watch_next 命中率統計")
+
     p_tags = sub.add_parser("tags", help="列出所有標籤；帶標籤名則列出該標籤的新聞")
     p_tags.add_argument("tag", nargs="?", help="標籤名（省略則列出全部標籤與筆數）")
 
@@ -1502,6 +1849,9 @@ def main():
         "skip": cmd_skip,
         "drift": cmd_drift,
         "review": cmd_review,
+        "watch": cmd_watch,
+        "watch-verify": cmd_watch_verify,
+        "watch-stats": cmd_watch_stats,
         "tags": cmd_tags,
         "tag": cmd_tag,
         "alias": cmd_alias,
