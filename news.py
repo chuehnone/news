@@ -1508,6 +1508,61 @@ def load_verified(conn):
     }
 
 
+def load_hits_from_json(path=None):
+    """從 data/watch_verify.json 讀出「命中」的判定，供靜態站標示 ✓。
+
+    回傳 {news_url: {idx: row}}，只含 verdict == "hit" 的條目。
+
+    刻意讀 JSON 而非 db：CI 建站時只有版控裡的 JSON，沒有 news.db。
+    這也是判定資料要另存 JSON 並進版控的原因之一。
+
+    只回傳 hit 是網頁端的呈現決定（見 render_card 的說明），不是資料本身
+    的過濾——命中率統計一律用 watch-stats，那裡 miss 與 moot 都在。
+    """
+    path = Path(path or WATCH_VERIFY_JSON)
+    if not path.exists():
+        return {}
+    try:
+        items = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+    out = {}
+    for it in items:
+        if it.get("verdict") != "hit":
+            continue
+        url = it.get("news_url")
+        if url is None or it.get("idx") is None:
+            continue
+        out.setdefault(url, {})[it["idx"]] = it
+    return out
+
+
+def verified_counts_from_json(path=None):
+    """回傳 {news_url: (hit數, 已判定總數)}，用來標示「N 條中 M 條成真」。
+
+    分母含 miss 但排除 moot——moot 是「無從判斷」不是判錯，
+    放進分母會讓比例失真（與 watch_accuracy 的處理一致）。
+    """
+    path = Path(path or WATCH_VERIFY_JSON)
+    if not path.exists():
+        return {}
+    try:
+        items = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+    out = {}
+    for it in items:
+        v = it.get("verdict")
+        if v == "moot" or v not in WATCH_VERDICTS:
+            continue
+        url = it.get("news_url")
+        if url is None:
+            continue
+        h, t = out.get(url, (0, 0))
+        out[url] = (h + (1 if v == "hit" else 0), t + 1)
+    return out
+
+
 def cmd_watch(args):
     """列出當天新聞可能命中的舊 watch_next，供批次評分時順手判定。"""
     conn = connect()

@@ -21,7 +21,8 @@ from urllib.parse import urlparse, parse_qs, quote
 # news.py 反向 import server 只發生在 cmd_serve / cmd_export 的函式內，故不成環。
 from news import (
     ARCHIVE_GRADES, DB_PATH, DIMENSIONS, GRADE_LABELS, GRADES,
-    load_aliases, normalize_tag, now_local, tag_counts, tags_of, today_local,
+    load_aliases, load_hits_from_json, normalize_tag, now_local, tag_counts,
+    tags_of, today_local, verified_counts_from_json,
 )
 
 STYLE = """
@@ -187,6 +188,13 @@ summary { cursor: pointer; font-size: .84rem; color: var(--muted); user-select: 
 .detail h4 { margin: 12px 0 4px; font-size: .84rem; color: var(--muted); }
 .detail p { margin: 2px 0; }
 .detail ul { margin: 4px 0; padding-left: 20px; }
+/* 已回頭驗證且成真的觀察指標。只標命中，未判定與未發生一律維持原樣
+   （見 render_card 的說明），所以 ✓ 是加分標記而非狀態欄。 */
+.wn-hit { color: #16a34a; font-weight: 700; margin-left: -14px; margin-right: 4px; }
+.wn-done { list-style: none; }
+.wn-ev { font-size: .8rem; margin-left: 4px; white-space: nowrap; }
+.wn-summary { margin-top: 6px !important; font-size: .8rem; color: var(--muted); }
+@media (prefers-color-scheme: dark) { .wn-hit { color: #4ade80; } }
 .dims { width: 100%; border-collapse: collapse; margin-top: 6px; }
 .dims th, .dims td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
 .dims th { font-size: .8rem; color: var(--muted); font-weight: 600; }
@@ -494,13 +502,22 @@ def related_of(row, index, limit=RELATED_LIMIT):
     return out
 
 
-def render_card(r, related=None, static=True):
+def render_card(r, related=None, static=True, hits=None, verified=None):
     """一張卡片。
 
     static=True 時分類與標籤是 <button>，由 FILTER_JS 在前端切換篩選；
     static=False（動態 serve）時改成帶 query string 的 <a>，因為動態頁面
     沒有載入 JS。兩者都要能點——曾經動態站直接沿用 button，結果是一顆
     按了沒反應的死按鈕。
+
+    hits: {idx: 判定row}，只含 verdict == "hit" 的 watch_next 條目，
+    用來在該條前標 ✓ 並附佐證連結。**刻意只標命中、不標 miss**：
+    已判定的則僅佔全站約 5%，若把 miss 也標出來，未判定與「已驗證未發生」
+    在視覺上難以區分，訪客會把前者誤讀成後者。整體命中率一律看 CLI 的
+    `news.py watch-stats`（那裡 miss 與 moot 都在），網頁不做選擇性統計。
+
+    verified: (hit數, 已判定數)，用來在清單下方標「已回頭驗證 N 條、
+    上方標示成真的 M 條」。有這行才不會讓只標 ✓ 讀起來像「全部命中」。
     """
     title = escape(r["title"])
     if r["url"]:
@@ -589,7 +606,32 @@ def render_card(r, related=None, static=True):
         try:
             items = json.loads(r["watch_next"])
             if isinstance(items, list):
-                detail.append("<ul>" + "".join(f"<li>{escape(str(i))}</li>" for i in items) + "</ul>")
+                lis = []
+                for i, text in enumerate(items):
+                    hit = hits.get(i) if hits else None
+                    if hit:
+                        # 只標命中：miss 與未判定在視覺上一律維持原樣，避免
+                        # 把「還沒回頭看」誤讀成「沒發生」——已判定的僅佔全站約 5%。
+                        note = hit.get("note") or ""
+                        ev = hit.get("evidence_url") or ""
+                        mark = '<span class="wn-hit" title="'
+                        mark += escape(note) + '">✓</span>'
+                        body_txt = escape(str(text))
+                        if ev:
+                            body_txt += (
+                                f' <a class="wn-ev" href="{escape(ev)}" '
+                                f'target="_blank" rel="noopener">佐證 ↗</a>'
+                            )
+                        lis.append(f'<li class="wn-done">{mark}{body_txt}</li>')
+                    else:
+                        lis.append(f"<li>{escape(str(text))}</li>")
+                detail.append("<ul>" + "".join(lis) + "</ul>")
+                if verified:
+                    h, t = verified
+                    detail.append(
+                        f'<p class="wn-summary">已回頭驗證 {t} 條觀察指標，'
+                        f'上方標示成真的 {h} 條。</p>'
+                    )
             else:
                 detail.append(f"<p>{escape(str(items))}</p>")
         except (json.JSONDecodeError, TypeError):
@@ -672,6 +714,8 @@ def render_page(grade=None, date=None, section=None, q=None, tag=None):
     ]
 
     body = []
+    all_hits = load_hits_from_json()
+    all_verified = verified_counts_from_json()
     if not rows:
         body.append('<div class="empty">目前沒有新聞。用 <code>/news-importance-score</code> 評分後，執行 <code>python3 news.py add</code> 寫入。</div>')
     else:
@@ -680,7 +724,10 @@ def render_page(grade=None, date=None, section=None, q=None, tag=None):
             if r["news_date"] != current_date:
                 current_date = r["news_date"]
                 body.append(f'<div class="date-head">📅 {escape(current_date or "未標日期")}</div>')
-            body.append(render_card(r, related_of(r, index), static=False))
+            body.append(render_card(
+                r, related_of(r, index), static=False,
+                hits=all_hits.get(r["url"]), verified=all_verified.get(r["url"]),
+            ))
 
     return f"""<!doctype html>
 <html lang="zh-Hant">
@@ -1043,6 +1090,9 @@ def render_static_page():
     body = []
     current_date = object()
     index = build_tag_index(rows)
+    # 判定資料讀版控裡的 JSON：CI 建站時沒有 news.db
+    all_hits = load_hits_from_json()
+    all_verified = verified_counts_from_json()
     for r in rows:
         if r["news_date"] != current_date:
             current_date = r["news_date"]
@@ -1050,7 +1100,10 @@ def render_static_page():
                 f'<div class="date-head" data-date="{escape(current_date or "")}">'
                 f'📅 {escape(current_date or "未標日期")}</div>'
             )
-        body.append(render_card(r, related_of(r, index)))
+        body.append(render_card(
+            r, related_of(r, index),
+            hits=all_hits.get(r["url"]), verified=all_verified.get(r["url"]),
+        ))
 
     empty_msg = "目前沒有符合條件的新聞。" if rows else "目前沒有新聞。"
     generated = now_local().strftime("%Y-%m-%d %H:%M")

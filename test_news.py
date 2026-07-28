@@ -1283,5 +1283,84 @@ class TestWatchVerification(CLITestCase):
                          "重建 news 表後判定仍要對得上原本那則")
 
 
+class TestWatchHitsOnCard(CLITestCase):
+    """卡片上的 watch_next 命中標示。
+
+    網頁刻意只標命中：已判定的則僅約佔全站 5%，若把 miss 也標出來，
+    「未判定」與「已驗證未發生」在視覺上難以區分，訪客會把前者誤讀成後者。
+    """
+
+    def _render(self, verify_items, static=True):
+        import json as _json
+        self.add(make_score("A", "2026-01-01", url="http://e.com/a",
+                            tags=["X"], watch_next=["指標甲", "指標乙", "指標丙"]))
+        vp = self.dir / "wv.json"
+        vp.write_text(_json.dumps(verify_items, ensure_ascii=False), encoding="utf-8")
+        with load_modules(self.dir, "news", "server") as (news, server):
+            news.DB_PATH = self.dir / "news.db"
+            conn = sqlite3.connect(self.dir / "news.db")
+            conn.row_factory = sqlite3.Row
+            row = conn.execute("SELECT * FROM news").fetchone()
+            conn.close()
+            hits = news.load_hits_from_json(vp)
+            counts = news.verified_counts_from_json(vp)
+            return server.render_card(
+                row, static=static,
+                hits=hits.get(row["url"]), verified=counts.get(row["url"]))
+
+    def test_miss_is_not_marked_on_card(self):
+        """miss 不得出現任何標記——否則與未判定的指標無從區分。"""
+        html = self._render([
+            {"news_url": "http://e.com/a", "idx": 0, "verdict": "hit",
+             "note": "成真了", "evidence_url": "http://e.com/ev", "verified_date": "2026-02-01"},
+            {"news_url": "http://e.com/a", "idx": 1, "verdict": "miss",
+             "note": "沒發生", "evidence_url": None, "verified_date": "2026-02-01"},
+        ])
+        self.assertIn("指標甲", html)
+        self.assertIn("✓", html, "hit 應標示 ✓")
+        self.assertNotIn("✗", html, "miss 不該有標記")
+        self.assertNotIn("沒發生", html, "miss 的判定說明不該外洩到網頁")
+
+    def test_hit_summary_states_the_denominator(self):
+        """只標 ✓ 時必須同時說明已驗證幾條，否則讀起來像全部命中。"""
+        html = self._render([
+            {"news_url": "http://e.com/a", "idx": 0, "verdict": "hit",
+             "note": "", "evidence_url": None, "verified_date": "2026-02-01"},
+            {"news_url": "http://e.com/a", "idx": 1, "verdict": "miss",
+             "note": "", "evidence_url": None, "verified_date": "2026-02-01"},
+        ])
+        self.assertIn("已回頭驗證 2 條", html,
+                      "分母要含 miss，否則選擇性呈現會讓訪客高估準確率")
+        self.assertIn("成真的 1 條", html)
+
+    def test_moot_excluded_from_denominator(self):
+        """moot 是「無從判斷」，不進分母（與 watch_accuracy 一致）。"""
+        html = self._render([
+            {"news_url": "http://e.com/a", "idx": 0, "verdict": "hit",
+             "note": "", "evidence_url": None, "verified_date": "2026-02-01"},
+            {"news_url": "http://e.com/a", "idx": 1, "verdict": "moot",
+             "note": "", "evidence_url": None, "verified_date": "2026-02-01"},
+        ])
+        self.assertIn("已回頭驗證 1 條", html, "moot 不該進分母")
+
+    def test_unverified_card_is_unchanged(self):
+        """沒有判定資料的卡片維持原樣——全站約 95% 是這種。"""
+        html = self._render([])
+        self.assertIn("指標甲", html)
+        self.assertNotIn("✓", html)
+        self.assertNotIn("已回頭驗證", html)
+
+    def test_marking_is_identical_in_both_modes(self):
+        """動態站與靜態站的命中標示必須一致（同 TestFilterParity 的精神）。"""
+        items = [{"news_url": "http://e.com/a", "idx": 0, "verdict": "hit",
+                  "note": "n", "evidence_url": "http://e.com/ev",
+                  "verified_date": "2026-02-01"}]
+        static_html = self._render(items, static=True)
+        dynamic_html = self._render(items, static=False)
+        for frag in ("✓", "佐證 ↗", "已回頭驗證 1 條"):
+            self.assertIn(frag, static_html, f"靜態站缺少 {frag}")
+            self.assertIn(frag, dynamic_html, f"動態站缺少 {frag}")
+
+
 if __name__ == "__main__":
     unittest.main()
