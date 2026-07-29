@@ -1006,5 +1006,21 @@
   "note": "7/28 報導僅載 26 艘中國船艦持續在菲聲索海域，未見馬德雷山號補給行動或相關衝突；窗口內無此事件",
   "verdict": "miss",
   "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607230374.aspx",
+  "note": "7/30 FOMC 決議維持利率 3.5%-3.75%，出現 9:3 罕見分歧，三位地區總裁主張升息一碼。決議已如期發生並含明確政策訊號。",
+  "verdict": "hit",
+  "verified_date": "2026-07-30"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607230374.aspx",
+  "note": "7/30 報導 30 年期公債殖利率突破 5.2%（盤中飆升 11.5 個基點至 5.211%），創 2007 年以來最高，走勢明確且為當日市場主軸。",
+  "verdict": "hit",
+  "verified_date": "2026-07-30"
  }
 ]
