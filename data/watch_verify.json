@@ -184,6 +184,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
+  "idx": 4,
+  "news_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0zNWZ1bWhmTWJJYjdlamVwT0dWWm9sdlRUR0RkTDRpNDlFT1ZNd2tSUndvT0hYYVZ0eENzNEpqWmFZSHhzQ0lZR1VLM000M2hNZW9BdWtEdndYeE1yQVE2X1lYRVZOeEJQR2dzb2lPRUU",
+  "note": "記憶體成本對手機售價的傳導明確量化：2026Q2手機記憶體價格季增逾80%，低階機型年增70%（幾乎全由記憶體驅動）、中階52%（記憶體佔總成本40%）、旗艦近50%且DRAM首次超越處理器成最貴零件",
+  "verdict": "hit",
+  "verified_date": "2026-07-29"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://news.google.com/rss/articles/CBMipgNBVV95cUxNXzNyMV82LTVmdDBZZkFxWkMxaGlzZDh2dGdSVmxHQTdwbFc4WlFPX2t4aEY0THdXOUVWWllzeF8wenZsbUc3S1RnRmM0aVM3a0RySDRjbktPaW4tOUszVnRkVmlEN2xub0xvX0RHWEdwZzFjWTNFckJvQy1lZ0tUNC1NQUw2NnhPeXlLYzFoWWNmWTJQM0Z6dnU5aENDOUhrenhKMGdRcDVpNU1jZW1ULTlZM1ExMHRLR29HNHlYQjJ1dFZtdnEzYWo3d0pxSXh4ZmN6bjJ2NDR1Vy1PeDMwNmtDUGNQZFM0Ti1xVkFXNWlVcXk5ZW1BV0pvT3g5dmthamdCRzN1cnU5c01GSWRkT1VmQUZHTjBNVnNWQjMyNkxnaGZJLUdKLXhlYmdRR2FVZ2pqaTZaWm1SNlVEMDF0NFFLRkpBQV9JM2x2enp3Tzc5dDFZeW9ZNy1NTkNNMjdULVNlc1VlcmYxOW9Rc3M2clNYMXM1M29RZWVtTWxvWHhQRTJHVHlZdzQ4cllqVFV0TFJJTUhsb1RUT3M3WWwyT0VDWGJqQQ",
@@ -320,6 +328,30 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280321.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/07/20/is-moonshot-ais-kimi-k3-led-semis-selloff-warranted-of-a-deepseek-2-0-panic",
+  "note": "半導體股未收復跌幅、反而續跌：7/28三星跌13%、鎧俠挫18%、台積電跌3%、韓股跌10.64%；7/29台股再跌1564點、38檔千金股10檔跌停",
+  "verdict": "miss",
+  "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/20/sk-chey-tae-won-memory-too-expensive-considering-us-factory-pressure",
+  "note": "合約價走勢明確：2026Q2智慧手機記憶體價格季增逾80%，且業界預估DRAM供應吃緊延續至2027上半年",
+  "verdict": "hit",
+  "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/07/20/sk-chey-tae-won-memory-too-expensive-considering-us-factory-pressure",
+  "note": "終端漲價傳導已具體發生：Counterpoint報告顯示手機各價位成本年增50-70%，旗艦DRAM首次超越處理器成最貴零件，並開始減緩螢幕與影像技術的導入節奏",
+  "verdict": "hit",
+  "verified_date": "2026-07-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -350,6 +382,14 @@
   "note": "窗口內無台灣油電價格調整或輸入性通膨數據的報導。有央行7/28 CPI預估1.93%但未連結至油價傳導",
   "verdict": "miss",
   "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c1jy100x235o/trad",
+  "note": "記憶體現貨價與消費電子調價的傳導完整浮現：2026Q2手機記憶體價格季增逾80%，各價位機型成本年增50-70%，中低階已面臨獲利承壓甚至虧損風險",
+  "verdict": "hit",
+  "verified_date": "2026-07-29"
  },
  {
   "evidence_url": null,
