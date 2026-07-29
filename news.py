@@ -224,7 +224,11 @@ CREATE TABLE IF NOT EXISTS watch_verify (
 def connect():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    conn.executescript(SCHEMA)
+    # 投資觀察的表定義在檔案後段（緊鄰它的邏輯），故分兩段建立。
+    # 外鍵約束要逐連線開啟，SQLite 預設是關的——predictions 的
+    # ON DELETE CASCADE 少了這行不會生效，刪 position 會留下孤兒預測。
+    conn.executescript(SCHEMA + POSITIONS_SCHEMA)
+    conn.execute("PRAGMA foreign_keys = ON")
     migrate(conn)
     return conn
 
@@ -362,6 +366,33 @@ def normalize_url(url):
     )
 
 
+def validate_date_string(value, field="date", allow_future=False):
+    """檢查日期是補零的 YYYY-MM-DD，不合格就中止。
+
+    日期會被拿去做「字串字面」比較（保留期分層、到期判定），
+    '2026-7-5' 會大於 '2026-06-25'，未補零會被歸到錯誤的層級，故在入口擋掉。
+
+    allow_future 給 due_date 用——預測的到期日本來就在未來，
+    但 news_date 填到未來幾乎一定是誤植。
+
+    這是唯一出處：news_date 與投資線的日期共用同一套規則，
+    各驗一次遲早會有一邊漏掉補零檢查（那正是這個函式存在的原因）。
+    """
+    try:
+        parsed = datetime.strptime(value, "%Y-%m-%d").date()
+    except (ValueError, TypeError):
+        sys.exit(f"錯誤：{field}「{value}」格式不正確，須為 YYYY-MM-DD（月日要補零）")
+    # strptime 接受未補零的 '2026-7-5'，但那樣存進 db 會讓字面比較出錯，
+    # 故要求與正規化後的字串完全相同。
+    if parsed.isoformat() != value:
+        sys.exit(f"錯誤：{field}「{value}」須補零寫成 {parsed.isoformat()}")
+    # 用台北時間判斷：日期填的是台灣的日期，若拿 UTC 比對，
+    # 台灣上午 8 點前寫入今天的資料會被誤判成「未來日期」而擋下
+    if not allow_future and parsed > today_local():
+        sys.exit(f"錯誤：{field}「{value}」是未來日期，請確認是否誤植")
+    return parsed
+
+
 def grade_of(total):
     for grade, low in GRADE_THRESHOLDS:
         if total >= low:
@@ -381,24 +412,9 @@ def cmd_add(args):
     if not data.get("title"):
         sys.exit("錯誤：缺少 title")
 
-    # news_date 會被靜態站的保留期以「字串字面」比較（'2026-7-5' 會大於
-    # '2026-06-25'），未補零或其他格式會被歸到錯誤的保留層級，故在入口擋掉。
     news_date = data.get("news_date")
     if news_date:
-        try:
-            parsed = datetime.strptime(news_date, "%Y-%m-%d").date()
-        except (ValueError, TypeError):
-            sys.exit(f"錯誤：news_date「{news_date}」格式不正確，須為 YYYY-MM-DD（月日要補零）")
-        # strptime 接受未補零的 '2026-7-5'，但那樣存進 db 會讓字面比較出錯，
-        # 故要求與正規化後的字串完全相同。
-        if parsed.isoformat() != news_date:
-            sys.exit(
-                f"錯誤：news_date「{news_date}」須補零寫成 {parsed.isoformat()}"
-            )
-        # 用台北時間判斷：news_date 填的是台灣的日期，若拿 UTC 比對，
-        # 台灣上午 8 點前寫入今天的新聞會被誤判成「未來日期」而擋下
-        if parsed > today_local():
-            sys.exit(f"錯誤：news_date「{news_date}」是未來日期，請確認是否誤植")
+        validate_date_string(news_date, field="news_date")
 
     dims = data.get("dimensions", {})
     dim_values = {}
@@ -1078,6 +1094,67 @@ WATCH_VERDICTS = ("hit", "miss", "moot")
 # 會把「時候未到」誤記成 miss，而 miss 是要用來檢討判斷的訊號。
 WATCH_MIN_AGE_DAYS = 7
 
+# ── 投資觀察（positions）────────────────────────────────────────────
+#
+# 與新聞評分共用 WATCH_VERDICTS 的判定語意（hit/miss/moot），刻意不另立一套：
+# 「無從判斷 ≠ 判斷錯」這條規則在兩邊完全相同，各存一份遲早會漂。
+#
+# 但**不共用評分面向**：新聞的 5 個面向評的是「值不值得被理解」，
+# 投資觀察評的是「這個推論成不成立」，硬套會讓兩邊的統計都失去意義。
+# 投資線刻意沒有分數與等級——它的品質由命中率直接衡量，不需要事前打分。
+
+# 一次觀點底下的預測分類。命中率要**依類型分開看**：
+# 三類的可驗證程度天差地別（fundamental 有客觀數字、market 受雜訊影響大），
+# 混在一起算總命中率會得到一個無法行動的數字，那正是 review 的失敗模式。
+PREDICTION_KINDS = [
+    ("fundamental", "基本面", "公司自己會揭露的數字（營收、財報、產能、訂單）"),
+    ("market", "市場", "價格或相對表現（須指明比較基準與時間窗）"),
+    ("structural", "結構", "產業或政策事件本身是否發生"),
+]
+PREDICTION_KIND_KEYS = tuple(k for k, _, _ in PREDICTION_KINDS)
+
+# 一條投資預測至少要放這麼多天才值得判定。比新聞的 7 天長，因為
+# 基本面預測的驗證點（月營收、財報）本來就以月為單位，太早看必然是「還沒發生」。
+POSITION_MIN_AGE_DAYS = 14
+
+POSITIONS_SCHEMA = """
+-- 一次「觀點」：某個時點對某個標的的判斷，含推論與依據。
+-- 同一標的可以有多次觀點，形成時間序列——這是刻意的：事後檢討時最想知道的
+-- 不是「猜錯了」而是「當時為什麼那樣想」，而看法的演變本身就是資料。
+CREATE TABLE IF NOT EXISTS positions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ticker TEXT NOT NULL,
+    name TEXT,
+    market TEXT,
+    obs_date TEXT NOT NULL,
+    thesis TEXT NOT NULL,
+    rationale TEXT,
+    source_url TEXT,
+    tags TEXT,
+    created_at TEXT DEFAULT (datetime('now', 'localtime'))
+);
+CREATE INDEX IF NOT EXISTS idx_positions_ticker ON positions(ticker);
+CREATE INDEX IF NOT EXISTS idx_positions_date ON positions(obs_date);
+
+-- 一次觀點底下的可驗證預測。kind 見 PREDICTION_KINDS。
+-- verdict 為 NULL 代表尚未判定；已判定的值域同 WATCH_VERDICTS。
+--
+-- 這裡用 position_id 當外鍵（而非像 watch_verify 用 url）：positions 不進版控、
+-- 沒有 import-json --replace 那種「整表重建、id 重配」的流程，
+-- id 是穩定的。若哪天投資線也要進版控重建，這裡要跟著改成穩定鍵。
+CREATE TABLE IF NOT EXISTS predictions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    position_id INTEGER NOT NULL REFERENCES positions(id) ON DELETE CASCADE,
+    kind TEXT NOT NULL,
+    text TEXT NOT NULL,
+    due_date TEXT,
+    verdict TEXT,
+    note TEXT,
+    verified_date TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_predictions_position ON predictions(position_id);
+"""
+
 
 def _days_between(earlier, later):
     """兩個 YYYY-MM-DD 字串相差幾天。"""
@@ -1723,32 +1800,52 @@ def cmd_watch_verify(args):
     print(f"已記錄 [{args.verdict}] {items[args.idx][:50]}")
 
 
-def watch_accuracy(rows, verified):
-    """彙總命中率。回傳 {"overall": {...}, "by_grade": {...}}。
+def hit_rate(counts):
+    """由 {verdict: 次數} 算命中率。沒有可判定的條目時回 None。
 
     moot 一律排除在分母外——它代表「無從判斷」而非「預測錯」，
     算進去會系統性低估命中率（見 WATCH_VERDICTS 的說明）。
+    新聞線與投資線共用這條規則，兩邊各算一次遲早會漂。
     """
-    by_url = {r["url"]: r for r in rows if r["url"]}
+    judged = counts["hit"] + counts["miss"]
+    return (counts["hit"] / judged) if judged else None
+
+
+def accuracy_by(verified, key_of, group_of):
+    """通用的命中率彙總：新聞線與投資線共用。
+
+    verified 是 {(關聯鍵, idx): 判定 row}；key_of 從判定 row 取出關聯鍵，
+    group_of 把關聯鍵映射到分組名（新聞是等級、投資是預測類型），
+    回傳 None 代表該條無從歸類（來源已刪除或鍵改過）而略過。
+
+    刻意不讓這個函式自己查 db：取資料的範圍要留給呼叫端決定
+    （與 tag_counts 同一個理由，見 CLAUDE.md 的「schema 常數只能有一份」）。
+    """
     overall = Counter()
-    by_grade = defaultdict(Counter)
-    for (url, _idx), v in verified.items():
-        row = by_url.get(url)
-        if not row:
-            continue  # 該則已被刪除或 url 改過，無從歸類
+    by_group = defaultdict(Counter)
+    for k, v in verified.items():
+        group = group_of(key_of(k, v))
+        if group is None:
+            continue
         overall[v["verdict"]] += 1
-        by_grade[row["grade"]][v["verdict"]] += 1
-
-    def rate(c):
-        judged = c["hit"] + c["miss"]
-        return (c["hit"] / judged) if judged else None
-
+        by_group[group][v["verdict"]] += 1
     return {
-        "overall": {"counts": overall, "rate": rate(overall)},
-        "by_grade": {
-            g: {"counts": c, "rate": rate(c)} for g, c in by_grade.items()
+        "overall": {"counts": overall, "rate": hit_rate(overall)},
+        "by_group": {
+            g: {"counts": c, "rate": hit_rate(c)} for g, c in by_group.items()
         },
     }
+
+
+def watch_accuracy(rows, verified):
+    """彙總新聞線的命中率。回傳 {"overall": {...}, "by_grade": {...}}。"""
+    by_url = {r["url"]: r for r in rows if r["url"]}
+    acc = accuracy_by(
+        verified,
+        key_of=lambda k, _v: k[0],
+        group_of=lambda url: by_url[url]["grade"] if url in by_url else None,
+    )
+    return {"overall": acc["overall"], "by_grade": acc["by_group"]}
 
 
 def cmd_watch_stats(args):
@@ -1787,6 +1884,322 @@ def cmd_watch_stats(args):
                   f"（{gc['counts']['hit']}/{gj}）")
         print("\n  高分級的命中率若低於低分級，代表高分那些「還會有後續」的")
         print("  宣稱撐不住，是評分過鬆的直接證據。")
+
+
+# ── 投資觀察指令 ────────────────────────────────────────────────────
+
+def normalize_ticker(raw):
+    """標的代號一律轉大寫去空白。
+
+    台股代號是數字（2330）、美股是字母（TSM），統一大寫讓 tsm/TSM 不會分裂成
+    兩個標的——這與標籤別名是同一類問題，但代號的收斂規則單純到不需要別名表。
+    """
+    return "".join((raw or "").split()).upper()
+
+
+def validate_position_payload(data, aliases):
+    """檢查 add-position 的 JSON 並回傳正規化後的欄位。
+
+    驗證集中在這裡（與 add 的作法一致）：欄位散落各處各驗一次，
+    遲早會有一條路徑漏驗。
+    """
+    ticker = normalize_ticker(data.get("ticker"))
+    if not ticker:
+        sys.exit("ticker 不可為空")
+
+    thesis = (data.get("thesis") or "").strip()
+    if not thesis:
+        sys.exit("thesis 不可為空——沒有推論的預測事後無從檢討，那正是這條線要避免的")
+
+    obs_date = (data.get("obs_date") or "").strip() or today_local().isoformat()
+    validate_date_string(obs_date, field="obs_date")
+
+    preds = data.get("predictions") or []
+    if not isinstance(preds, list) or not preds:
+        sys.exit("至少要有一條 predictions——觀點沒有可驗證的預測就只是感想")
+
+    out_preds = []
+    for i, p in enumerate(preds):
+        if not isinstance(p, dict):
+            sys.exit(f"predictions[{i}] 必須是物件")
+        kind = (p.get("kind") or "").strip()
+        if kind not in PREDICTION_KIND_KEYS:
+            sys.exit(
+                f"predictions[{i}].kind 必須是 "
+                f"{'/'.join(PREDICTION_KIND_KEYS)} 之一（收到 {kind!r}）")
+        text = (p.get("text") or "").strip()
+        if not text:
+            sys.exit(f"predictions[{i}].text 不可為空")
+        due = (p.get("due_date") or "").strip() or None
+        if due:
+            validate_date_string(due, field=f"predictions[{i}].due_date",
+                                 allow_future=True)
+        out_preds.append({"kind": kind, "text": text, "due_date": due})
+
+    return {
+        "ticker": ticker,
+        "name": (data.get("name") or "").strip() or None,
+        "market": (data.get("market") or "").strip() or None,
+        "obs_date": obs_date,
+        "thesis": thesis,
+        "rationale": (data.get("rationale") or "").strip() or None,
+        "source_url": normalize_url(data.get("source_url")) or None,
+        "tags": parse_tags(data.get("tags"), aliases),
+        "predictions": out_preds,
+    }
+
+
+def cmd_add_position(args):
+    """新增一次投資觀點（JSON 檔或 - 表示 stdin）。"""
+    raw = sys.stdin.read() if args.file == "-" else Path(args.file).read_text(encoding="utf-8")
+    data = json.loads(raw)
+    conn = connect()
+    payload = validate_position_payload(data, load_aliases(conn))
+
+    cur = conn.execute(
+        "INSERT INTO positions "
+        "(ticker, name, market, obs_date, thesis, rationale, source_url, tags) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        (payload["ticker"], payload["name"], payload["market"], payload["obs_date"],
+         payload["thesis"], payload["rationale"], payload["source_url"],
+         json.dumps(payload["tags"], ensure_ascii=False) if payload["tags"] else None),
+    )
+    pid = cur.lastrowid
+    conn.executemany(
+        "INSERT INTO predictions (position_id, kind, text, due_date) VALUES (?, ?, ?, ?)",
+        [(pid, p["kind"], p["text"], p["due_date"]) for p in payload["predictions"]],
+    )
+    conn.commit()
+    conn.close()
+    print(f"已寫入 #{pid} {payload['ticker']} {payload['obs_date']}"
+          f"（{len(payload['predictions'])} 條預測）")
+    print(f"  {payload['thesis'][:60]}")
+
+
+def load_positions(conn, ticker=None, pending_only=False):
+    """讀出觀點與其預測，回傳 [(position_row, [prediction_row, ...]), ...]。
+
+    一次撈完再在 Python 側分組，不逐筆查 predictions——資料量雖小，
+    但 N+1 查詢是那種寫起來最順手、之後才發現要改的寫法。
+    """
+    sql = "SELECT * FROM positions"
+    params = []
+    if ticker:
+        sql += " WHERE ticker = ?"
+        params.append(normalize_ticker(ticker))
+    sql += " ORDER BY obs_date DESC, id DESC"
+    positions = list(conn.execute(sql, params))
+
+    by_pos = defaultdict(list)
+    for p in conn.execute("SELECT * FROM predictions ORDER BY id"):
+        by_pos[p["position_id"]].append(p)
+
+    out = [(pos, by_pos.get(pos["id"], [])) for pos in positions]
+    if pending_only:
+        out = [(pos, ps) for pos, ps in out if any(p["verdict"] is None for p in ps)]
+    return out
+
+
+def cmd_positions(args):
+    """列出投資觀點與其預測狀態。"""
+    conn = connect()
+    items = load_positions(conn, args.ticker, args.pending)
+    conn.close()
+    if not items:
+        print("（沒有符合的投資觀點，用 news.py add-position 新增）")
+        return
+
+    mark = {"hit": "✓", "miss": "✗", "moot": "—", None: "·"}
+    kind_label = {k: label for k, label, _ in PREDICTION_KINDS}
+    for pos, preds in items[:args.limit]:
+        head = f"#{pos['id']} {pos['ticker']}"
+        if pos["name"]:
+            head += f"（{pos['name']}）"
+        print(f"{head}  {pos['obs_date']}")
+        print(f"  {pos['thesis']}")
+        if args.verbose and pos["rationale"]:
+            print(f"  依據：{pos['rationale']}")
+        for p in preds:
+            due = f" [{p['due_date']} 前]" if p["due_date"] else ""
+            print(f"   {mark[p['verdict']]} #{p['id']} "
+                  f"[{kind_label.get(p['kind'], p['kind'])}] {p['text']}{due}")
+            if args.verbose and p["note"]:
+                print(f"       ↳ {p['note']}")
+        tags = tags_of(pos)
+        if tags:
+            print(f"  標籤：{'、'.join(tags)}")
+        print()
+
+    if len(items) > args.limit:
+        print(f"（另有 {len(items) - args.limit} 筆未顯示，用 --limit 調整）")
+
+
+def cmd_position_due(args):
+    """列出到期該判定的預測。
+
+    兩種到期：明確標了 due_date 且已過，或放超過 POSITION_MIN_AGE_DAYS。
+    後者是保底——沒填 due_date 的預測若不主動列出，就會永遠停在未判定，
+    而未判定的預測不進命中率，等於默默地把不利的結果排除在統計外。
+    """
+    conn = connect()
+    items = load_positions(conn, args.ticker, pending_only=True)
+    conn.close()
+    today = today_local().isoformat()
+
+    due = []
+    for pos, preds in items:
+        for p in preds:
+            if p["verdict"] is not None:
+                continue
+            age = _days_between(pos["obs_date"], today)
+            by_date = p["due_date"] and p["due_date"] <= today
+            if by_date or age >= args.min_age:
+                due.append((pos, p, age, bool(by_date)))
+
+    if not due:
+        print(f"（沒有到期的預測；未滿 {args.min_age} 天且未標到期日的不列出）")
+        return
+
+    due.sort(key=lambda x: (not x[3], -x[2]))
+    kind_label = {k: label for k, label, _ in PREDICTION_KINDS}
+    print(f"到期待判定 {len(due)} 條")
+    print("判定後用：news.py position-verify <預測id> <hit|miss|moot> [--note ...]\n")
+    for pos, p, age, by_date in due[:args.limit]:
+        why = f"到期日 {p['due_date']}" if by_date else f"已放 {age} 天"
+        print(f"#{p['id']} {pos['ticker']} [{kind_label.get(p['kind'], p['kind'])}] ({why})")
+        print(f"   {p['text']}")
+        print(f"   觀點 #{pos['id']}（{pos['obs_date']}）：{pos['thesis'][:50]}")
+        print()
+
+
+def cmd_position_verify(args):
+    """記錄一條投資預測的判定結果。"""
+    conn = connect()
+    row = conn.execute(
+        "SELECT p.*, o.ticker, o.obs_date FROM predictions p "
+        "JOIN positions o ON o.id = p.position_id WHERE p.id = ?",
+        (args.pred_id,),
+    ).fetchone()
+    if not row:
+        conn.close()
+        sys.exit(f"找不到 id={args.pred_id} 的預測（用 news.py position-due 查看）")
+    if row["verdict"] is not None and not args.force:
+        conn.close()
+        sys.exit(
+            f"#{args.pred_id} 已判定為 {row['verdict']}"
+            f"（{row['verified_date']}）\n"
+            "  改判定要加 --force。事後改判定會讓命中率失去意義，"
+            "只在確認當初判錯時才用。"
+        )
+    conn.execute(
+        "UPDATE predictions SET verdict = ?, note = ?, verified_date = ? WHERE id = ?",
+        (args.verdict, args.note, today_local().isoformat(), args.pred_id),
+    )
+    conn.commit()
+    conn.close()
+    print(f"已記錄 [{args.verdict}] {row['ticker']} #{args.pred_id} {row['text'][:50]}")
+
+
+def position_accuracy(conn):
+    """投資預測的命中率，依預測類型分組。
+
+    分組刻意用 kind 而非標的或等級：三類的可驗證程度差異極大
+    （見 PREDICTION_KINDS 的說明），混算會得到無法行動的數字。
+    """
+    preds = list(conn.execute(
+        "SELECT id, kind, verdict FROM predictions WHERE verdict IS NOT NULL"))
+    verified = {(p["id"], 0): p for p in preds}
+    kind_by_id = {p["id"]: p["kind"] for p in preds}
+    acc = accuracy_by(
+        verified,
+        key_of=lambda k, _v: k[0],
+        group_of=lambda pid: kind_by_id.get(pid),
+    )
+    return {"overall": acc["overall"], "by_kind": acc["by_group"]}
+
+
+def cmd_position_stats(_args):
+    """投資預測的命中率統計。"""
+    conn = connect()
+    acc = position_accuracy(conn)
+    pending = conn.execute(
+        "SELECT COUNT(*) FROM predictions WHERE verdict IS NULL").fetchone()[0]
+    conn.close()
+
+    c = acc["overall"]["counts"]
+    total = sum(c.values())
+    if not total:
+        print("（還沒有任何投資預測判定，用 news.py position-due 開始）")
+        if pending:
+            print(f"  目前有 {pending} 條預測尚未判定")
+        return
+
+    judged = c["hit"] + c["miss"]
+    print(f"投資預測命中率：已判定 {total} 條"
+          f"（hit {c['hit']}、miss {c['miss']}、moot {c['moot']}）")
+    if acc["overall"]["rate"] is None:
+        print("  尚無可計算命中率的條目（moot 不列入分母）")
+    else:
+        print(f"  命中率 {acc['overall']['rate']:.0%}"
+              f"（{c['hit']}/{judged}，moot 不列入分母）")
+    if judged < 20:
+        print(f"  ⚠️  樣本僅 {judged} 條，結論參考價值有限（建議 20 條以上）")
+    if pending:
+        print(f"  另有 {pending} 條尚未判定")
+
+    if acc["by_kind"]:
+        print("\n依預測類型")
+        for k, label, _desc in PREDICTION_KINDS:
+            if k not in acc["by_kind"]:
+                continue
+            kc = acc["by_kind"][k]
+            kj = kc["counts"]["hit"] + kc["counts"]["miss"]
+            if not kj:
+                continue
+            print(f"  {label}  命中率 {kc['rate']:.0%}（{kc['counts']['hit']}/{kj}）")
+        print("\n  三類要分開看：基本面有客觀數字、市場受雜訊影響大。")
+        print("  基本面 hit 但市場 miss，代表資訊正確但已被 price in。")
+
+
+def cmd_position_schema(_args):
+    """輸出 add-position 接受的 JSON 格式。
+
+    與 cmd_schema 同一個理由：格式由常數生成，不另抄一份說明。
+    """
+    kinds = "\n".join(
+        f'    "{k}"{" " * (12 - len(k))}— {label}：{desc}'
+        for k, label, desc in PREDICTION_KINDS)
+    print(f"""add-position 接受的 JSON：
+
+{{
+  "ticker":     "TSM",              // 必填。自動轉大寫（台股用代號如 "2330"）
+  "name":       "台積電",            // 選填
+  "market":     "US",               // 選填（US / TW）
+  "obs_date":   "{today_local().isoformat()}",       // 選填，預設今天。YYYY-MM-DD 補零
+  "thesis":     "一句話的判斷",        // 必填。沒有推論的預測事後無從檢討
+  "rationale":  "為什麼這樣想",        // 選填但強烈建議：這是事後檢討時最有價值的欄位
+  "source_url": "https://...",      // 選填，觸發這個判斷的資料來源
+  "tags":       ["台積電", "CoWoS"],  // 選填，最多 {MAX_TAGS} 個，套用與新聞相同的別名表
+  "predictions": [                  // 必填，至少一條
+    {{
+      "kind":     "fundamental",    // 必填，見下
+      "text":     "8 月營收年增 >30%",  // 必填。要寫成能明確判定 hit/miss 的形式
+      "due_date": "2026-09-10"      // 選填。沒填則放滿 {POSITION_MIN_AGE_DAYS} 天後列入待判定
+    }}
+  ]
+}}
+
+predictions.kind 的三類：
+{kinds}
+
+判定值域：{'/'.join(WATCH_VERDICTS)}（與新聞線共用）
+  hit  — 明確發生了
+  miss — 到期但沒發生
+  moot — 前提消失，無從判斷（不列入命中率分母）
+
+寫預測的原則（沿用 watch_next 的實測結果）：
+  可驗證性比精確度重要。「營收年增 >30%」可判定，「營收表現不錯」不可判定。
+  市場類必須指明**比較基準與時間窗**，否則事後怎麼算都對。""")
 
 
 def cmd_review(args):
@@ -1973,6 +2386,34 @@ def main():
         help="套用保留期分層（近 30 天全部、30-90 天限 S/A、90 天以上不輸出）；CI 用",
     )
 
+    # ── 投資觀察 ──
+    p_ap = sub.add_parser(
+        "add-position", help="新增一次投資觀點（JSON 檔或 - 表示 stdin）")
+    p_ap.add_argument("file")
+
+    p_pos = sub.add_parser("positions", help="列出投資觀點與預測狀態")
+    p_pos.add_argument("ticker", nargs="?", help="只看某個標的")
+    p_pos.add_argument("--pending", action="store_true", help="只列出還有未判定預測的")
+    p_pos.add_argument("--limit", type=int, default=20, help="最多列幾筆（預設 20）")
+    p_pos.add_argument("-v", "--verbose", action="store_true", help="顯示推論依據與判定說明")
+
+    p_pdue = sub.add_parser("position-due", help="列出到期該判定的投資預測")
+    p_pdue.add_argument("ticker", nargs="?", help="只看某個標的")
+    p_pdue.add_argument(
+        "--min-age", type=int, default=POSITION_MIN_AGE_DAYS, dest="min_age",
+        help=f"沒標到期日的至少放幾天才列出（預設 {POSITION_MIN_AGE_DAYS}）")
+    p_pdue.add_argument("--limit", type=int, default=20, help="最多列幾條")
+
+    p_pv = sub.add_parser("position-verify", help="記錄一條投資預測的判定")
+    p_pv.add_argument("pred_id", type=int, help="預測 id（position-due 會顯示）")
+    p_pv.add_argument("verdict", choices=WATCH_VERDICTS,
+                      help="hit=發生了 / miss=沒發生 / moot=前提消失")
+    p_pv.add_argument("--note", help="判定說明")
+    p_pv.add_argument("--force", action="store_true", help="覆寫已有的判定")
+
+    sub.add_parser("position-stats", help="投資預測命中率統計")
+    sub.add_parser("position-schema", help="輸出 add-position 的 JSON 格式")
+
     p_og = sub.add_parser("og", help="重產分享預覽圖（需 ImageMagick，圖片要 commit）")
     p_og.add_argument("--out", help="輸出路徑（預設 assets/og.png）")
 
@@ -2001,6 +2442,12 @@ def main():
         "schema": cmd_schema,
         "export": cmd_export,
         "og": cmd_og,
+        "add-position": cmd_add_position,
+        "positions": cmd_positions,
+        "position-due": cmd_position_due,
+        "position-verify": cmd_position_verify,
+        "position-stats": cmd_position_stats,
+        "position-schema": cmd_position_schema,
     }[args.command](args)
 
 

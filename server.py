@@ -21,7 +21,8 @@ from urllib.parse import urlparse, parse_qs, quote
 # news.py 反向 import server 只發生在 cmd_serve / cmd_export 的函式內，故不成環。
 from news import (
     ARCHIVE_GRADES, DB_PATH, DIMENSIONS, GRADE_LABELS, GRADES,
-    load_aliases, load_hits_from_json, normalize_tag, now_local, tag_counts,
+    PREDICTION_KINDS, hit_rate, load_aliases, load_hits_from_json,
+    load_positions, normalize_tag, now_local, position_accuracy, tag_counts,
     tags_of, today_local, verified_counts_from_json,
 )
 
@@ -338,6 +339,40 @@ body.compact .card.expanded .expand { transform: rotate(180deg); }
   .dims th, .dims td { padding: 4px 5px; font-size: .82rem; }
   .update-bar { font-size: .8rem; padding: 8px 14px; bottom: 16px; }
 }
+
+/* ── positions 頁專用（本機 serve，不上靜態站）───────────────────── */
+.nav { display: flex; gap: 14px; margin: 0 0 16px; font-size: .92rem; }
+.nav a { color: var(--muted); text-decoration: none; padding: 4px 0;
+         border-bottom: 2px solid transparent; }
+.nav a.active { color: var(--text); font-weight: 600; border-bottom-color: var(--link); }
+.pos { background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+       padding: 16px 18px; margin-bottom: 14px; }
+.pos-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ticker { font-weight: 700; font-size: 1.12rem; letter-spacing: .02em; }
+.pos-date { color: var(--muted); font-size: .84rem; }
+.thesis { font-size: 1.02rem; margin: 8px 0 4px; line-height: 1.5; }
+.rationale { color: var(--muted); font-size: .88rem; line-height: 1.6;
+             padding-left: 11px; border-left: 2px solid var(--border); margin: 8px 0 12px; }
+.preds { list-style: none; padding: 0; margin: 10px 0 0; }
+.preds li { display: flex; gap: 8px; align-items: flex-start; padding: 6px 0;
+            border-top: 1px dashed var(--border); font-size: .92rem; line-height: 1.5; }
+.verdict { flex: 0 0 auto; width: 1.4em; text-align: center; font-weight: 700; }
+.v-hit { color: #16a34a; }
+.v-miss { color: #dc2626; }
+.v-moot { color: var(--muted); }
+.v-open { color: var(--muted); opacity: .55; }
+.kind { flex: 0 0 auto; font-size: .74rem; padding: 1px 7px; border-radius: 999px;
+        background: var(--c-bg); color: var(--c-fg); white-space: nowrap; margin-top: 1px; }
+.pred-body { flex: 1 1 auto; min-width: 0; }
+.pred-note { color: var(--muted); font-size: .82rem; margin-top: 2px; }
+.due { color: var(--muted); font-size: .8rem; white-space: nowrap; }
+.due.over { color: #dc2626; }
+.stats { background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+         padding: 14px 18px; margin-bottom: 18px; }
+.stats-row { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 8px; }
+.stat b { font-size: 1.3rem; }
+.stat span { color: var(--muted); font-size: .82rem; display: block; }
+.caveat { color: var(--muted); font-size: .82rem; margin-top: 10px; line-height: 1.6; }
 """
 
 
@@ -836,6 +871,7 @@ def render_page(grade=None, date=None, section=None, q=None, tag=None):
 <div class="wrap">
 <h1>📰 每日新聞重要性評分</h1>
 <div class="sub">依 /news-importance-score 五面向評分（100 分制）整理的新聞資料庫</div>
+{render_nav("news")}
 <div class="filters"><div class="tabs">{"".join(tabs)}</div></div>
 {"".join(controls)}
 {"".join(body)}
@@ -1268,6 +1304,166 @@ def render_static_page():
 </html>"""
 
 
+# 投資觀察頁刻意只在本機 serve 提供，不進 export_static：
+# repo 是 public，投資判斷公開會改變書寫方式（會不自覺寫得容易命中），
+# 而這條線的全部價值就在於記錄真實的判斷。資料同理只在 news.db，不匯出 JSON。
+NAV = """<div class="nav">
+<a href="/"{news_active}>📰 新聞評分</a>
+<a href="/positions"{pos_active}>📈 投資觀察</a>
+</div>"""
+
+
+def render_nav(current):
+    return NAV.format(
+        news_active=' class="active"' if current == "news" else "",
+        pos_active=' class="active"' if current == "positions" else "",
+    )
+
+
+def render_prediction(p, today):
+    """一條預測。未判定且已過期的到期日標紅——那是「該去判定了」的提示。
+
+    未判定不畫成 miss：兩者在統計上意義完全不同（未判定不進分母），
+    視覺上混淆會讓人以為預測已經失敗。與新聞卡片只標 hit 是同一個考量。
+    """
+    verdict = p["verdict"]
+    mark = {"hit": "✓", "miss": "✗", "moot": "—"}.get(verdict, "·")
+    cls = {"hit": "v-hit", "miss": "v-miss", "moot": "v-moot"}.get(verdict, "v-open")
+    labels = {k: label for k, label, _ in PREDICTION_KINDS}
+    due = ""
+    if p["due_date"]:
+        over = " over" if verdict is None and p["due_date"] <= today else ""
+        due = f'<span class="due{over}">{escape(p["due_date"])} 前</span>'
+    note = f'<div class="pred-note">{escape(p["note"])}</div>' if p["note"] else ""
+    return (
+        f'<li><span class="verdict {cls}">{mark}</span>'
+        f'<span class="kind">{escape(labels.get(p["kind"], p["kind"]))}</span>'
+        f'<span class="pred-body">{escape(p["text"])}{note}</span>{due}</li>'
+    )
+
+
+def render_position(pos, preds, today):
+    name = f'<span class="pos-date">{escape(pos["name"])}</span>' if pos["name"] else ""
+    src = (f' · <a href="{escape(pos["source_url"])}" target="_blank" rel="noopener">來源</a>'
+           if pos["source_url"] else "")
+    rationale = (f'<div class="rationale">{escape(pos["rationale"])}</div>'
+                 if pos["rationale"] else "")
+    tags = tags_of(pos)
+    tag_html = ""
+    if tags:
+        picks = "".join(
+            f'<a class="tag" href="/positions?tag={quote(t)}">{escape(t)}</a>' for t in tags)
+        tag_html = f'<div class="tags">{picks}</div>'
+    items = "".join(render_prediction(p, today) for p in preds)
+    return (
+        f'<div class="pos">'
+        f'<div class="pos-head"><span class="ticker">{escape(pos["ticker"])}</span>{name}'
+        f'<span class="pos-date">{escape(pos["obs_date"])}{src}</span></div>'
+        f'<div class="thesis">{escape(pos["thesis"])}</div>'
+        f'{rationale}<ul class="preds">{items}</ul>{tag_html}</div>'
+    )
+
+
+def render_positions_page(ticker=None, tag=None, pending=False):
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    items = load_positions(conn, ticker, pending_only=pending)
+    acc = position_accuracy(conn)
+    open_count = conn.execute(
+        "SELECT COUNT(*) FROM predictions WHERE verdict IS NULL").fetchone()[0]
+    conn.close()
+
+    if tag:
+        items = [(p, ps) for p, ps in items if tag in tags_of(p)]
+
+    today = today_local().isoformat()
+    c = acc["overall"]["counts"]
+    judged = c["hit"] + c["miss"]
+    rate = acc["overall"]["rate"]
+
+    # 依類型的命中率是這頁真正要看的東西：三類的可驗證程度差很多，
+    # 只看總命中率會得到一個無法行動的數字（見 PREDICTION_KINDS）。
+    by_kind = []
+    for k, label, _desc in PREDICTION_KINDS:
+        kc = acc["by_kind"].get(k)
+        if not kc:
+            continue
+        kj = kc["counts"]["hit"] + kc["counts"]["miss"]
+        if not kj:
+            continue
+        by_kind.append(
+            f'<div class="stat"><b>{kc["rate"]:.0%}</b>'
+            f'<span>{escape(label)}（{kc["counts"]["hit"]}/{kj}）</span></div>')
+
+    overall_html = (
+        f'<div class="stat"><b>{rate:.0%}</b>'
+        f'<span>整體（{c["hit"]}/{judged}）</span></div>' if rate is not None else "")
+    warn = (f'<div class="caveat">⚠️ 樣本僅 {judged} 條，結論參考價值有限（建議 20 條以上）。</div>'
+            if 0 < judged < 20 else "")
+    stats = (
+        f'<div class="stats"><b>命中率</b>'
+        f'<div class="stats-row">{overall_html}{"".join(by_kind)}'
+        f'<div class="stat"><b>{open_count}</b><span>尚未判定</span></div></div>'
+        f'{warn}'
+        f'<div class="caveat">moot（前提消失）不列入分母。三類要分開看：'
+        f'基本面有客觀數字、市場受雜訊影響大——基本面 hit 但市場 miss，'
+        f'代表資訊正確但已被 price in。</div></div>'
+    ) if (judged or open_count) else ""
+
+    tickers = sorted({p["ticker"] for p, _ in load_positions_all()})
+    opts = ['<option value="">全部標的</option>']
+    for t in tickers:
+        sel = " selected" if t == ticker else ""
+        opts.append(f'<option value="{escape(t)}"{sel}>{escape(t)}</option>')
+    controls = (
+        '<form class="toolbar" method="get" action="/positions">'
+        f'<div class="tag-filter"><select name="ticker" onchange="this.form.submit()">'
+        f'{"".join(opts)}</select></div>'
+        f'<label style="font-size:.88rem;color:var(--muted)">'
+        f'<input type="checkbox" name="pending" value="1" onchange="this.form.submit()"'
+        f'{" checked" if pending else ""}> 只看未判定完的</label>'
+        '</form>'
+    )
+
+    if items:
+        body = "".join(render_position(p, ps, today) for p, ps in items)
+    else:
+        body = ('<div class="empty">還沒有投資觀察。用 '
+                '<code>python3 news.py add-position</code> 新增'
+                '（格式見 <code>news.py position-schema</code>）。</div>')
+
+    filtered = f"（篩選：{escape(ticker or tag)}）" if (ticker or tag) else ""
+    return f"""<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>投資觀察</title>
+<style>{STYLE}</style>
+</head>
+<body>
+<div class="wrap">
+<h1>📈 投資觀察</h1>
+<div class="sub">每次觀點含推論與可驗證預測，到期後逐條判定{escape(filtered)}｜僅本機可見</div>
+{render_nav("positions")}
+{stats}
+{controls}
+{body}
+</div>
+</body>
+</html>"""
+
+
+def load_positions_all():
+    """取全部觀點（供標的下拉選單用）。分開一支避免篩選後選單只剩當前標的。"""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    items = load_positions(conn)
+    conn.close()
+    return items
+
+
 def verify_html(html, expected):
     """檢查產出的頁面確實含有 expected 張卡片。
 
@@ -1331,6 +1527,14 @@ def export_static(out_dir, retention=False, today=None):
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
+        if parsed.path == "/positions":
+            qs = parse_qs(parsed.query)
+            self.respond(render_positions_page(
+                ticker=(qs.get("ticker", [None])[0] or None),
+                tag=(qs.get("tag", [None])[0] or None),
+                pending=bool(qs.get("pending", [None])[0]),
+            ))
+            return
         if parsed.path != "/":
             self.send_error(404)
             return
@@ -1354,7 +1558,9 @@ class Handler(BaseHTTPRequestHandler):
             tag = normalize_tag(tag, load_aliases(conn))
             conn.close()
         q = qs.get("q", [None])[0] or None
-        html = render_page(grade, date, section, q, tag)
+        self.respond(render_page(grade, date, section, q, tag))
+
+    def respond(self, html):
         data = html.encode("utf-8")
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")

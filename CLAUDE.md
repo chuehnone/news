@@ -47,6 +47,12 @@ python3 news.py watch-verify <url> <idx> <hit|miss|moot> [--note ...] [--evidenc
 python3 news.py watch-stats    # watch_next 命中率統計
 python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
+python3 news.py add-position <file|->   # 新增一次投資觀點（格式見 position-schema）
+python3 news.py positions [標的] [--pending] [-v]  # 列出投資觀點與預測狀態
+python3 news.py position-due [標的]     # 列出到期該判定的預測
+python3 news.py position-verify <預測id> <hit|miss|moot> [--note ...]
+python3 news.py position-stats  # 投資預測命中率（依類型分組）
+python3 news.py position-schema # 輸出 add-position 的 JSON 格式
 python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控）
 python3 news.py import-json [--replace]  # 從 JSON 重建 news 表（CI 用）
 python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--retention 為 CI 用，見下）
@@ -194,6 +200,43 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
   找不到合適的已評分報導時就省略，把依據寫進 `--note`——note 會顯示在網頁的
   hover 提示，本來就是主要的說明管道。由 `TestWatchEvidenceMustExist` 守著。
 
+## 投資觀察（`add-position` / `positions` / `position-due` / `position-verify` / `position-stats`）
+
+2026-07-29 新增的第二條線。**動機是 watch_next 的實測結論**：那套機制證明了
+「寫下可驗證預測 → 到期逐條判定 → 統計命中率」是唯一能回答「判斷準不準」的做法，
+但新聞題材的驗證品質受限於來源（見「來源不涵蓋型僅 15%」那條）。投資標的的驗證
+乾淨得多——營收年增就是一個數字，沒有「這算不算命中」的判讀空間。
+
+**換的是題材，不是機制**。判定值域（`WATCH_VERDICTS`）與 moot 語意兩邊共用，
+`hit_rate` / `accuracy_by` 是抽出來給兩邊用的，各存一份遲早會漂。
+
+- **資料粒度是「一次觀點」而非「一個標的」**：`positions` 存某時點對某標的的判斷
+  （thesis + rationale），底下掛多條 `predictions`。同標的多次觀點形成時間序列。
+  刻意不做成「標的持續追蹤」——那樣所有預測混在同一個標的底下，
+  三個月後看到「8 月營收年增 >30%」卻不知道當時為什麼那樣想，
+  **而那正是事後檢討時唯一有價值的部分**。`thesis` 因此是必填。
+- **預測分三類（`PREDICTION_KINDS`）且命中率必須分開看**：基本面有客觀數字、
+  市場受雜訊影響大、結構是事件本身。混算會得到一個無法行動的總命中率——
+  那正是 `review` 的失敗模式（測得出數字但無法轉成改進）。
+  由 `test_hit_rate_is_reported_per_kind` 守著。
+  **基本面 hit 但市場 miss 是最有價值的訊號**：資訊正確但已被 price in。
+- **未判定不等於 miss**：新增的預測 `verdict` 為 NULL，不進命中率分母。
+  若預設成任何一種判定，命中率會從一開始就被系統性扭曲。
+  由 `test_verdict_defaults_to_unjudged` 守著。
+  但未判定也不能無限累積——`position-due` 會把放滿 `POSITION_MIN_AGE_DAYS`（14 天）
+  的列出來，否則不利的預測會默默停在未判定，等於排除在統計外。
+- **改判定要 `--force`**：事後改判定會讓命中率失去意義。
+- **`POSITION_MIN_AGE_DAYS` 比新聞的 7 天長**：基本面預測的驗證點（月營收、財報）
+  本來就以月為單位，太早看必然是「還沒發生」。
+- **資料只存 `news.db`，不進版控、不上靜態站**（`TestPositionsStayLocal` 守著）。
+  理由不是技術性的：repo 是 public，而**公開投資判斷會改變書寫方式**——
+  會不自覺寫得保守、寫得容易命中，而這條線的全部價值就在於記錄真實的判斷。
+  呈現只走本機 `news.py serve` 的 `/positions`（頁面帶 `noindex`）。
+  代價是 db 沒有副本，備份要自己處理。
+- **`validate_date_string` 是兩條線共用的日期驗證**：news_date 與 obs_date／due_date
+  都做字串字面比較，補零規則必須一致。`allow_future` 是唯一的差別——
+  預測的到期日本來就在未來。
+
 ## 關聯新聞（標籤）
 
 同一件事會分很多天、多則報導（301 關稅、NVIDIA、中東局勢），標籤把它們串起來：
@@ -332,13 +375,15 @@ CI 只負責把 JSON 轉成靜態站並上線。
 
 - `news.py` — CLI（init / add / list / serve / fetch / pending / drift / review /
   watch / watch-verify / watch-stats / anchors / tags / tag / alias / export-json /
-  import-json / export）。
+  import-json / export；投資線見 add-position / positions / position-due /
+  position-verify / position-stats / position-schema）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，93 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，118 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
   回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意、
-  卡片只標命中且必附分母、錨點期間不得隨資料滾動；
+  卡片只標命中且必附分母、錨點期間不得隨資料滾動、
+  投資觀察不得外洩到靜態站或版控；
   改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`
 - `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）

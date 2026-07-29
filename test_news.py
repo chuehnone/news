@@ -1524,5 +1524,206 @@ class TestWatchHitsOnCard(CLITestCase):
             self.assertIn(frag, dynamic_html, f"動態站缺少 {frag}")
 
 
+_DEFAULT_PREDICTIONS = [{"kind": "fundamental", "text": "8 月營收年增 >30%"}]
+
+
+def make_position(ticker="TSM", obs_date="2026-01-01", thesis="論點",
+                  predictions=_DEFAULT_PREDICTIONS, **kw):
+    """產生一筆符合 add-position 格式的 JSON。
+
+    predictions 用哨兵預設值而非 `or`：空陣列是要測的合法輸入之一，
+    用 `predictions or [...]` 會把它靜默換成預設值，測試就永遠測不到那條驗證。
+    """
+    return {
+        "ticker": ticker,
+        "obs_date": obs_date,
+        "thesis": thesis,
+        "predictions": list(predictions),
+        **kw,
+    }
+
+
+class TestPositions(CLITestCase):
+    """投資觀察線：與新聞線共用判定語意，但不共用評分與公開範圍。"""
+
+    def add_position(self, payload, check=True):
+        return self.run_cli("add-position", "-",
+                            stdin=json.dumps(payload), check=check)
+
+    def test_thesis_is_required(self):
+        """沒有推論的預測事後無從檢討，那正是這條線要避免的失敗模式。"""
+        r = self.add_position(make_position(thesis=""), check=False)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("thesis", r.stdout + r.stderr)
+
+    def test_at_least_one_prediction_is_required(self):
+        """觀點沒有可驗證的預測就只是感想，命中率無從累積。"""
+        r = self.add_position(make_position(predictions=[]), check=False)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("predictions", r.stdout + r.stderr)
+
+    def test_invalid_kind_is_rejected(self):
+        """kind 是統計的分組鍵，自由填寫會讓依類型的命中率失去意義。"""
+        r = self.add_position(
+            make_position(predictions=[{"kind": "guess", "text": "x"}]), check=False)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("fundamental", r.stdout + r.stderr)
+
+    def test_obs_date_must_be_zero_padded(self):
+        """日期做字串字面比較（到期判定），未補零會排錯序。
+
+        與 news_date 共用 validate_date_string，這個測試同時守著
+        「兩條線的日期規則沒有各自漂掉」。
+        """
+        r = self.add_position(make_position(obs_date="2026-1-5"), check=False)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("2026-01-05", r.stdout + r.stderr)
+
+    def test_due_date_may_be_in_the_future(self):
+        """預測的到期日本來就在未來，不可套用 news_date 的未來日期檢查。"""
+        future = (date.today() + timedelta(days=90)).isoformat()
+        r = self.add_position(make_position(
+            predictions=[{"kind": "market", "text": "x", "due_date": future}]),
+            check=False)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_ticker_is_normalized_to_uppercase(self):
+        """tsm 與 TSM 不該分裂成兩個標的。"""
+        self.add_position(make_position(ticker="tsm"))
+        out = self.run_cli("positions").stdout
+        self.assertIn("TSM", out)
+
+    def test_verdict_defaults_to_unjudged(self):
+        """新增的預測必須是「未判定」而非任何一種判定。
+
+        未判定不進命中率分母；若預設成 miss，命中率會從一開始就被系統性壓低。
+        """
+        self.add_position(make_position())
+        out = self.run_cli("position-stats").stdout
+        self.assertIn("還沒有任何投資預測判定", out)
+        self.assertIn("1 條預測尚未判定", out)
+
+    def test_moot_excluded_from_hit_rate(self):
+        """moot 是「前提消失」不是「預測錯」，與新聞線同一條規則。"""
+        self.add_position(make_position(predictions=[
+            {"kind": "fundamental", "text": "a"},
+            {"kind": "fundamental", "text": "b"},
+        ]))
+        self.run_cli("position-verify", "1", "hit", check=True)
+        self.run_cli("position-verify", "2", "moot", check=True)
+        out = self.run_cli("position-stats").stdout
+        self.assertIn("100%", out, "moot 進了分母會變成 50%")
+        self.assertIn("1/1", out)
+
+    def test_hit_rate_is_reported_per_kind(self):
+        """三類的可驗證程度差很多，只看總命中率得到的是無法行動的數字。"""
+        self.add_position(make_position(predictions=[
+            {"kind": "fundamental", "text": "a"},
+            {"kind": "market", "text": "b"},
+        ]))
+        self.run_cli("position-verify", "1", "hit", check=True)
+        self.run_cli("position-verify", "2", "miss", check=True)
+        out = self.run_cli("position-stats").stdout
+        self.assertIn("基本面", out)
+        self.assertIn("市場", out)
+        self.assertRegex(out, r"基本面\s+命中率 100%")
+        self.assertRegex(out, r"市場\s+命中率 0%")
+
+    def test_reverdict_requires_force(self):
+        """事後改判定會讓命中率失去意義，必須明示。"""
+        self.add_position(make_position())
+        self.run_cli("position-verify", "1", "hit", check=True)
+        r = self.run_cli("position-verify", "1", "miss")
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("--force", r.stdout + r.stderr)
+        self.assertEqual(
+            self.run_cli("position-verify", "1", "miss", "--force").returncode, 0)
+
+    def test_due_lists_only_matured_predictions(self):
+        """太早判定會把「時候未到」記成 miss，污染命中率。"""
+        today = date.today()
+        self.add_position(make_position(
+            ticker="NEW", obs_date=today.isoformat()))
+        self.add_position(make_position(
+            ticker="OLD", obs_date=(today - timedelta(days=60)).isoformat()))
+        out = self.run_cli("position-due").stdout
+        self.assertIn("OLD", out)
+        self.assertNotIn("NEW", out, "剛寫的預測不該列入待判定")
+
+    def test_due_date_overrides_min_age(self):
+        """明確標了到期日就以它為準，不必等滿 min-age。"""
+        today = date.today()
+        self.add_position(make_position(
+            obs_date=(today - timedelta(days=3)).isoformat(),
+            predictions=[{"kind": "market", "text": "x",
+                          "due_date": (today - timedelta(days=1)).isoformat()}]))
+        out = self.run_cli("position-due").stdout
+        self.assertIn("到期日", out)
+
+    def test_deleting_position_removes_its_predictions(self):
+        """外鍵 CASCADE 要真的生效——SQLite 預設關閉外鍵，少了 PRAGMA
+        會留下孤兒預測，而孤兒預測仍會被算進命中率。"""
+        self.add_position(make_position())
+        conn = sqlite3.connect(self.dir / "news.db")
+        conn.execute("PRAGMA foreign_keys = ON")
+        conn.execute("DELETE FROM positions WHERE id = 1")
+        conn.commit()
+        left = conn.execute("SELECT COUNT(*) FROM predictions").fetchone()[0]
+        conn.close()
+        self.assertEqual(left, 0, "刪除觀點後預測沒被連帶刪除")
+
+
+class TestPositionsStayLocal(CLITestCase):
+    """投資觀察刻意不上靜態站也不進版控——repo 是 public。
+
+    公開投資判斷會改變書寫方式（不自覺寫得容易命中），而這條線的
+    全部價值就在於記錄真實的判斷。這幾個測試守著那個決定不被誤改。
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.run_cli("add", "-", stdin=json.dumps(
+            make_score("新聞", news_date="2026-01-01")), check=True)
+        self.run_cli("add-position", "-", stdin=json.dumps(make_position(
+            ticker="SECRET", thesis="不該出現在靜態站的判斷")), check=True)
+
+    def test_static_export_contains_no_positions(self):
+        self.run_cli("export", "--out", "dist", check=True)
+        html = (self.dir / "dist" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn("SECRET", html)
+        self.assertNotIn("不該出現在靜態站的判斷", html)
+        # 導覽連結也不該外洩：它會指向一個靜態站上不存在的頁面，
+        # 更重要的是它宣告了「有另一個頁面」這件事本身。
+        self.assertNotIn("/positions", html)
+
+    def test_export_json_contains_no_positions(self):
+        """data/news.json 是 db 的完整鏡像，但那個保證只涵蓋 news 表。"""
+        self.run_cli("export-json", check=True)
+        text = (self.dir / "data" / "news.json").read_text(encoding="utf-8")
+        self.assertNotIn("SECRET", text)
+
+    def test_no_positions_json_is_written(self):
+        """投資資料只存 db。任何自動寫出的 JSON 都會進到 public repo。"""
+        self.run_cli("add-position", "-", stdin=json.dumps(
+            make_position(ticker="X")), check=True)
+        written = [p.name for p in (self.dir / "data").glob("*.json")] \
+            if (self.dir / "data").exists() else []
+        self.assertNotIn("positions.json", written)
+
+    def test_dynamic_page_links_to_positions(self):
+        """本機 serve 要看得到——這是這條線唯一的呈現管道。"""
+        sys.path.insert(0, str(self.dir))
+        try:
+            server = importlib.import_module("server")
+            importlib.reload(server)
+            server.DB_PATH = self.dir / "news.db"
+            self.assertIn("/positions", server.render_page())
+            page = server.render_positions_page()
+            self.assertIn("SECRET", page)
+            self.assertIn("noindex", page, "本機頁面不該被索引")
+        finally:
+            sys.path.remove(str(self.dir))
+
+
 if __name__ == "__main__":
     unittest.main()
