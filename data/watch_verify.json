@@ -352,6 +352,14 @@
   "verified_date": "2026-07-29"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/07/30/qualcomm-2026-q3-financial-report",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/21/tsmc-raise-chipmaking-prices",
+  "note": "高通 7/30 宣布自 9/1 起調漲產品價格，執行長 Amon 明言反映供應鏈成本上升並將與客戶個別協商；同期三星手機部門因零組件成本首度單季虧損。主要客戶的成本轉嫁動作已具體發生。",
+  "verdict": "hit",
+  "verified_date": "2026-07-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
