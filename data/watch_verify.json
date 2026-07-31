@@ -33,6 +33,14 @@
  },
  {
   "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/07/23/us-30-year-treasury-yield-logs-longest-5-streak-since-financial-crisis",
+  "note": "7/30 FOMC 決議維持 3.5%-3.75%，出現 9:3 罕見分歧（克里夫蘭、明尼阿波利斯、達拉斯主張升息一碼），為 2016 年 9 月以來首見。會議已如期舉行並產出明確政策訊號。",
+  "verdict": "hit",
+  "verified_date": "2026-07-31"
+ },
+ {
+  "evidence_url": null,
   "idx": 0,
   "news_url": "https://money.udn.com/money/story/5599/9591511",
   "note": "窗口內無OpenAI或投銀正式確認IPO延期與新時程的報導",
@@ -352,6 +360,14 @@
   "verified_date": "2026-07-29"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/07/31/tsmc-q2-earnings-call-observations-capex-revised-upwards-second-time-64-billion-boosting-advanced-process-global-expansion",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/21/tsmc-raise-chipmaking-prices",
+  "note": "7/31 法說會公布：Q2 毛利率 67.7% 創歷史新高，2026 全年美元營收成長預估上修至超過 40%，CapEx 二度上修至 640 億美元。財測與毛利率指引均已明確給出。",
+  "verdict": "hit",
+  "verified_date": "2026-07-31"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/07/30/qualcomm-2026-q3-financial-report",
   "idx": 1,
   "news_url": "https://technews.tw/2026/07/21/tsmc-raise-chipmaking-prices",
@@ -566,6 +582,22 @@
   "note": "窗口內無先進製程留台比例的政策討論。有台積電營業秘密外流案與熊本布局報導，但未觸及留台比例的政策層面",
   "verdict": "miss",
   "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/07/31/amazon-cloud-performance-shines-apple-revenue-slows-awaiting-siri-ai",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202607240170.aspx",
+  "note": "科技巨頭財報陸續公布且都給出 AI 資本支出說法：亞馬遜今年 2000 億、將增至 2200 億；Meta 上調至 1300-1450 億；台積電 CapEx 640 億。",
+  "verdict": "hit",
+  "verified_date": "2026-07-31"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/07/31/tsmc-q2-earnings-call-observations-capex-revised-upwards-second-time-64-billion-boosting-advanced-process-global-expansion",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202607240170.aspx",
+  "note": "7/31 台積電法說會舉行，HPC 營收占比達 66%、CapEx 二度上修至 640 億美元投入 2 奈米與先進封裝，AI 訂單能見度資訊已具體公布。",
+  "verdict": "hit",
+  "verified_date": "2026-07-31"
  },
  {
   "evidence_url": null,
