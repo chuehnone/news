@@ -32,6 +32,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/07/31/tsmc-q2-earnings-call-observations-capex-revised-upwards-second-time-64-billion-boosting-advanced-process-global-expansion",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/07/20/structural-profit",
+  "note": "台積電 7/31 法說會公布毛利率 67.7% 創高、CapEx 上修至 640 億、全年營收成長上修破 40%。隔日台股飆 3186 點創史上最大漲點，台積電在 113 檔漲停個股之列，總市值單日增逾 10 兆。法說後確實止穩。",
+  "verdict": "hit",
+  "verified_date": "2026-08-01"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/07/23/us-30-year-treasury-yield-logs-longest-5-streak-since-financial-crisis",
