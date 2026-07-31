@@ -376,6 +376,14 @@
   "verified_date": "2026-07-30"
  },
  {
+  "evidence_url": "https://technews.tw/2026/07/31/google-ai-chip-production-surpass-nvidia",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/22/nvidia-dark-fiber-taiwan-stock",
+  "note": "Google TPU v9 規劃 2028 年部署 1200-1500 萬顆，與分析師預估輝達同年資料中心 GPU 出貨 1240 萬顆相當；並傳英特爾已獲逾 300 萬顆 TPU 代工訂單。雲端巨頭的自研晶片規模已到能與輝達比肩的量級。",
+  "verdict": "hit",
+  "verified_date": "2026-07-31"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -702,6 +710,14 @@
   "note": "指標問的是「跌破戰前水準並引發OPEC+改變策略」，兩者皆未發生：7/29雖創2020年來最大三日跌幅，但布蘭特84.09美元仍高於戰前，窗口內亦無OPEC+策略調整報導——改判miss（原判hit為證據遷就）",
   "verdict": "miss",
   "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/07/31/microsoft-market-cap-surges-14-5-trillion-breaking-nvidia-record-largest-single-day-gain",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607060371.aspx",
+  "note": "7/31 微軟財報公布：Azure 預估成長 45%（高於分析師預期的 40.92%），資本支出維持 2026 全年 1750 億美元、2027 財年 Q1 500 億。四巨頭合計 7450 億 capex 與合併自由現金流 70 億的數據同日揭露。AI 營收與資本支出指引均已明確給出。",
+  "verdict": "hit",
+  "verified_date": "2026-07-31"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607280356.aspx",
