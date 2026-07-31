@@ -1910,6 +1910,39 @@ class TestVoidVerdict(CLITestCase):
         self.assertIn("⊘", out)
 
 
+class TestServeBindDoesNotHangOnDNS(CLITestCase):
+    """server_bind 不得做反向 DNS 查詢。
+
+    2026-07-31 實測：綁 Tailscale 位址（100.68.159.41）時，
+    HTTPServer.server_bind() 內的 socket.getfqdn() 不回應也不超時，
+    程序活著但 8765 從未開始監聽——看起來像「啟動成功但連不到」，
+    極難診斷（最後靠 faulthandler 設逾時才抓到堆疊）。
+
+    查來的值只填進 server_name（產生 Server 標頭用），對這個服務毫無用途。
+    """
+
+    def test_server_bind_skips_getfqdn(self):
+        with load_modules(self.dir, "news", "server") as (news, server):
+            called = []
+            with mock.patch.object(server.socket, "getfqdn",
+                                   side_effect=lambda *a: called.append(a) or "x"):
+                srv = server.Server(("127.0.0.1", 0), server.Handler)
+                try:
+                    self.assertEqual(called, [], "server_bind 不該呼叫 getfqdn")
+                finally:
+                    srv.server_close()
+
+    def test_server_name_is_the_bound_address(self):
+        """跳過 getfqdn 後 server_name 仍要有值，否則 BaseHTTPRequestHandler 會炸。"""
+        with load_modules(self.dir, "news", "server") as (news, server):
+            srv = server.Server(("127.0.0.1", 0), server.Handler)
+            try:
+                self.assertEqual(srv.server_name, "127.0.0.1")
+                self.assertIsInstance(srv.server_port, int)
+            finally:
+                srv.server_close()
+
+
 class TestServeBindsLocalByDefault(CLITestCase):
     """serve 預設只綁 127.0.0.1。
 
@@ -1920,14 +1953,14 @@ class TestServeBindsLocalByDefault(CLITestCase):
 
     def test_default_host_is_loopback(self):
         with load_modules(self.dir, "news", "server") as (news, server):
-            with mock.patch.object(server, "HTTPServer") as H:
+            with mock.patch.object(server, "Server") as H:
                 H.return_value.serve_forever.side_effect = KeyboardInterrupt
                 server.run(port=1)
                 self.assertEqual(H.call_args[0][0][0], "127.0.0.1")
 
     def test_explicit_host_is_honoured(self):
         with load_modules(self.dir, "news", "server") as (news, server):
-            with mock.patch.object(server, "HTTPServer") as H:
+            with mock.patch.object(server, "Server") as H:
                 H.return_value.serve_forever.side_effect = KeyboardInterrupt
                 server.run(port=1, host="0.0.0.0")
                 self.assertEqual(H.call_args[0][0][0], "0.0.0.0")
@@ -1935,7 +1968,7 @@ class TestServeBindsLocalByDefault(CLITestCase):
     def test_exposed_mode_warns(self):
         """對外開放時必須警告——不然會忘記自己開著。"""
         with load_modules(self.dir, "news", "server") as (news, server):
-            with mock.patch.object(server, "HTTPServer") as H:
+            with mock.patch.object(server, "Server") as H:
                 H.return_value.serve_forever.side_effect = KeyboardInterrupt
                 buf = io.StringIO()
                 with contextlib.redirect_stdout(buf):
@@ -1946,7 +1979,7 @@ class TestServeBindsLocalByDefault(CLITestCase):
 
     def test_local_mode_does_not_warn(self):
         with load_modules(self.dir, "news", "server") as (news, server):
-            with mock.patch.object(server, "HTTPServer") as H:
+            with mock.patch.object(server, "Server") as H:
                 H.return_value.serve_forever.side_effect = KeyboardInterrupt
                 buf = io.StringIO()
                 with contextlib.redirect_stdout(buf):

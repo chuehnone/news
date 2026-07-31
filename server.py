@@ -10,7 +10,9 @@ import os
 import re
 import shutil
 import socket
+import socketserver
 import sqlite3
+import subprocess
 # 只需要 timedelta：所有「現在時刻／今天」一律走 news.py 的 now_local()／
 # today_local()（台北時間），不要在這裡改用 datetime.now() 或 date.today()
 from datetime import timedelta
@@ -1605,24 +1607,74 @@ def lan_ip():
         s.close()
 
 
+class Server(HTTPServer):
+    """跳過 server_bind 的反向 DNS 查詢。
+
+    HTTPServer.server_bind() 會呼叫 socket.getfqdn() 取主機名，而綁到
+    Tailscale 位址（100.x.x.x）時那個查詢不會回應也不會超時——實測綁
+    100.68.159.41 會永遠卡在 getfqdn，程序活著但 8765 從未開始監聽。
+    查來的值只填進 server_name（產生 Server 標頭用），對這個服務毫無用途。
+    """
+
+    def server_bind(self):
+        socketserver.TCPServer.server_bind(self)
+        self.server_name = self.server_address[0]
+        self.server_port = self.server_address[1]
+
+
+def tailscale_ip():
+    """本機的 Tailscale IPv4 位址，未安裝或未登入時回 None。
+
+    直接讀 `tailscale ip -4` 而非猜位址：那串 100.x.x.x 是 Tailscale
+    配發的，只有它自己知道。
+    """
+    for exe in ("tailscale", "/Applications/Tailscale.app/Contents/MacOS/Tailscale"):
+        try:
+            out = subprocess.run([exe, "ip", "-4"], capture_output=True,
+                                 text=True, timeout=5)
+        except (FileNotFoundError, subprocess.SubprocessError):
+            continue
+        ip = (out.stdout or "").strip().splitlines()
+        if out.returncode == 0 and ip:
+            return ip[0].strip()
+    return None
+
+
 def run(port=8765, host="127.0.0.1"):
     """啟動網頁介面。
 
-    預設綁 127.0.0.1（只有本機連得到），要用手機看才傳 host="0.0.0.0"。
+    預設綁 127.0.0.1（只有本機連得到），要用手機看才傳 host="0.0.0.0"，
+    或綁 Tailscale 位址（只有自己的 tailnet 裝置連得到，比 0.0.0.0 安全）。
     **預設值刻意不改**：綁 0.0.0.0 等於把頁面公開給同網段的所有裝置，
     而 /positions 是投資判斷——那正是刻意不上公開站的內容。
     風險應該由使用者決定何時承擔，不是由預設值替他決定。
     """
-    server = HTTPServer((host, port), Handler)
+    # --host tailscale 自動查出那串 100.x.x.x，省得每次手動記
+    if host == "tailscale":
+        host = tailscale_ip()
+        if not host:
+            raise SystemExit(
+                "找不到 Tailscale 位址。請確認 Tailscale 已安裝並登入"
+                "（用 `tailscale status` 檢查），或直接用 --host <位址>。")
+    server = Server((host, port), Handler)
     exposed = host not in ("127.0.0.1", "localhost")
     print(f"新聞評分網頁介面：http://127.0.0.1:{port}（Ctrl+C 結束）")
     if exposed:
-        ip = lan_ip()
-        if ip:
-            print(f"  手機／同網段裝置：http://{ip}:{port}")
-        print(f"  ⚠️  已對外開放（{host}）——同一個 Wi-Fi 下的任何裝置都看得到，")
-        print("     包含 /positions 的投資判斷，且沒有密碼保護。")
-        print("     在咖啡廳、公司等共用網路請用完就關掉。")
+        # 綁 Tailscale 位址（100.64.0.0/10，CGNAT 段）時風險與 0.0.0.0 完全不同：
+        # 只有自己 tailnet 內的裝置連得到，同一個 Wi-Fi 的其他人看不到。
+        # 兩者印同一段警告會讓人以為一樣危險，反而降低警告的可信度。
+        via_tailscale = host.startswith("100.") and host != "100.0.0.0"
+        if via_tailscale:
+            print(f"  手機／自己的裝置：http://{host}:{port}")
+            print("  ✅ 綁在 Tailscale 位址，只有你 tailnet 內的裝置連得到")
+            print("     （即使在公共 Wi-Fi，同網段的其他人也看不到）。")
+        else:
+            ip = lan_ip()
+            if ip:
+                print(f"  手機／同網段裝置：http://{ip}:{port}")
+            print(f"  ⚠️  已對外開放（{host}）——同一個 Wi-Fi 下的任何裝置都看得到，")
+            print("     包含 /positions 的投資判斷，且沒有密碼保護。")
+            print("     在咖啡廳、公司等共用網路請用完就關掉。")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

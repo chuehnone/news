@@ -2576,7 +2576,8 @@ def main():
     # 那會讓同網段的所有裝置都能開啟，包含 /positions 的投資判斷。
     p_serve.add_argument(
         "--host", default="127.0.0.1",
-        help="綁定位址。預設只有本機可連；用手機看請設 0.0.0.0（同網段皆可見）")
+        help="綁定位址。預設只有本機可連；用手機看建議設 tailscale"
+             "（只有自己的裝置連得到），或 0.0.0.0（同網段皆可見）")
 
     p_fetch = sub.add_parser("fetch", help="抓取 RSS，把新連結存入待評分清單")
     p_fetch.add_argument("--feeds", default=str(FEEDS_PATH), help="feed 清單檔（預設 feeds.txt）")
