@@ -12,6 +12,7 @@
 
 import importlib
 import json
+import math
 import re
 import sqlite3
 import subprocess
@@ -1409,6 +1410,130 @@ class TestAnchorsAreFixed(CLITestCase):
             self.assertEqual(a["n"], 3, "只該納入錨點期間內的則")
             self.assertEqual(a["decision"], 12,
                              "期間外的高分不得拉高錨點的決策相關性中位數")
+
+
+class TestCalibrate(CLITestCase):
+    """calibrate 是漂移的日常粗篩：比「這批」與固定錨點，不與昨天比。
+
+    存在的理由是 2026-07-31 發現的循環論證——每日回報「與前期一致」時
+    拿今天跟昨天比，兩天都在已墊高的區間裡，所以永遠測不出逐日墊高。
+    實測 A 級佔比從錨點期 5.7% 升到 7/25-7/28 的 28-48% 而未被發現。
+    """
+
+    def _rows(self, dates_grades):
+        """(日期, 總分) 序列 → 可傳給 calibration_report 的 row dict。"""
+        return [
+            {"news_date": d, "total_score": t, "grade": None,
+             "scope_score": 14, "duration_score": 12, "decision_score": 8,
+             "structural_score": 12, "credibility_score": 12}
+            for d, t in dates_grades
+        ]
+
+    def test_baseline_is_computed_from_the_anchor_period(self):
+        """基準必須來自錨點期間，不得被期間外的資料影響。
+
+        這是整個機制的前提：基準一旦隨資料滾動，就回到「拿今天比昨天」
+        的循環論證，等於沒有校準。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            rows = self._rows(
+                # 錨點期內：1 則 A（72）、9 則 C（50）→ 10%
+                [(news.ANCHOR_START, 72)] + [(news.ANCHOR_START, 50)] * 9
+                # 期間外的一批全 A，若被納入會把基準拉到 50% 以上
+                + [("2099-01-01", 90)] * 20
+            )
+            for r in rows:
+                r["grade"] = news.grade_of(r["total_score"])
+            self.assertAlmostEqual(news.anchor_sa_rate(rows), 0.1, places=6)
+
+    def test_warns_when_sa_ratio_exceeds_threshold(self):
+        with load_modules(self.dir, "news") as (news,):
+            anchor = self._rows([(news.ANCHOR_START, 50)] * 19
+                                + [(news.ANCHOR_START, 72)])  # 5% S/A
+            batch = self._rows([("2026-08-01", 72)] * 6
+                               + [("2026-08-01", 50)] * 6)     # 50% S/A
+            for r in anchor + batch:
+                r["grade"] = news.grade_of(r["total_score"])
+            rep = news.calibration_report(anchor + batch, batch)
+            self.assertTrue(rep["warn"])
+            self.assertGreaterEqual(rep["ratio"], news.CALIBRATE_SA_MULTIPLE)
+
+    def test_does_not_warn_on_normal_variation(self):
+        """10-12% 這種正常波動不該示警——1.5x/2x 門檻會讓半數批次都警告，
+        那等於沒有警告（實測觸發率 50%/41%）。"""
+        with load_modules(self.dir, "news") as (news,):
+            anchor = self._rows([(news.ANCHOR_START, 50)] * 19
+                                + [(news.ANCHOR_START, 72)])  # 5%
+            batch = self._rows([("2026-08-01", 72)]
+                               + [("2026-08-01", 50)] * 9)     # 10% = 2.0x
+            for r in anchor + batch:
+                r["grade"] = news.grade_of(r["total_score"])
+            rep = news.calibration_report(anchor + batch, batch)
+            self.assertFalse(rep["warn"], "2.0x 不應觸發 2.5x 的門檻")
+
+    def test_small_batch_is_skipped(self):
+        """樣本太小佔比不穩定：實測 7/13、7/14 各 10 則卻都達 20%。"""
+        with load_modules(self.dir, "news") as (news,):
+            anchor = self._rows([(news.ANCHOR_START, 50)] * 20)
+            batch = self._rows([("2026-08-01", 72)] * 3)  # 100% 但只有 3 則
+            for r in anchor + batch:
+                r["grade"] = news.grade_of(r["total_score"])
+            rep = news.calibration_report(anchor + batch, batch)
+            self.assertFalse(rep["warn"])
+            self.assertIn("不檢查", rep["skipped"])
+
+    def test_zero_baseline_does_not_print_inf(self):
+        """錨點為 0% 時倍數是無限大，輸出不得出現 inf——那讀起來像壞掉。
+
+        真實資料不會走到（實測錨點 5.7%），但 fixture 與未來資料都可能。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            anchor = self._rows([(news.ANCHOR_START, 50)] * 20)  # 0% S/A
+            batch = self._rows([("2026-08-01", 72)] * 12)        # 100%
+            for r in anchor + batch:
+                r["grade"] = news.grade_of(r["total_score"])
+            rep = news.calibration_report(anchor + batch, batch)
+            self.assertTrue(rep["warn"])
+            self.assertFalse(math.isfinite(rep["ratio"]))
+
+    def test_dimension_medians_expose_which_dimension_moved(self):
+        """輔助診斷要能看出是哪個面向在推高分數。
+
+        實測 7/25 那批五個面向有四個同步上升、只有事實可信度不動，
+        正是「漂移來自主觀判斷鬆動」的證據（見 CLAUDE.md 的天然對照組）。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            rows = self._rows([("2026-08-01", 60)] * 3)
+            for i, r in enumerate(rows):
+                r["decision_score"] = 8 + i  # 8, 9, 10 → 中位數 9
+            dims = news.dimension_medians(rows)
+            self.assertEqual(dims["decision"], 9)
+            self.assertEqual(dims["credibility"], 12)
+
+
+class TestCalibrateBaseline(CLITestCase):
+    """錨點期的 S/A 佔比是 calibrate 的基準，它變動就代表錨點資料被動過。
+
+    基準刻意即時從 db 算而非寫死常數（寫死會與實際資料靜默脫鉤），
+    改由這個測試守住實測值——失敗時要先確認錨點期的評分是否被改動，
+    而不是直接把期望值改成新數字。
+    """
+
+    def test_anchor_sa_rate_matches_measured_value(self):
+        db = REPO / "news.db"
+        if not db.exists():
+            self.skipTest("本機沒有 news.db（CI 由 import-json 重建後才有意義）")
+        with load_modules(self.dir, "news") as (news,):
+            conn = sqlite3.connect(db)
+            conn.row_factory = sqlite3.Row
+            rows = list(conn.execute("SELECT * FROM news"))
+            conn.close()
+            rate = news.anchor_sa_rate(rows)
+            self.assertIsNotNone(rate, "錨點期間應有評分資料")
+            self.assertAlmostEqual(
+                rate, 0.057, places=3,
+                msg="錨點期的 S/A 佔比變了——先確認那段期間的評分是否被改動，"
+                    "不要直接改這個期望值（那會讓基準跟著資料漂）")
 
 
 class TestWatchEvidenceMustExist(CLITestCase):

@@ -40,6 +40,7 @@ python3 news.py tags [標籤]     # 列出所有標籤與筆數／某標籤底�
 python3 news.py tag <id> <標籤...>   # 修改某則的標籤（--add 附加、--clear 清空）
 python3 news.py alias [別名 正規名]  # 管理標籤別名（不帶參數列出全部、--remove 刪除）
 python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
+python3 news.py calibrate [--date YYYY-MM-DD]  # 比對某日評分與錨點期（每批評完必跑，見下）
 python3 news.py drift [--split YYYY-MM-DD]  # 偵測評分標準漂移（review 的前提，見下）
 python3 news.py review [--window 30] [--since YYYY-MM-DD]  # 評分回顧校準（見下）
 python3 news.py watch [--date YYYY-MM-DD] [--json]  # 列出當天新聞可能命中的舊 watch_next
@@ -59,6 +60,46 @@ python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--rete
 python3 news.py og              # 重產分享預覽圖 assets/og.png（需 ImageMagick，產完要 commit）
 python3 -m unittest test_news    # 跑回歸測試（CI 也會跑）
 ```
+
+## 每批評完的校準粗篩（`news.py calibrate`）
+
+**2026-07-31 發現的循環論證**：每日批次評完後回報「與前期水準一致，無漂移」，
+但那個檢查是拿**今天跟昨天**比，而兩天都落在已經墊高的區間裡——用逐日比較
+去驗證有沒有逐日墊高，方法上不成立。實測 A 級佔比從錨點期的 5.7% 一路升到
+7/25-7/28 的 **28-48%**，而每天都回報「一致」。
+
+`drift` 當時也沒報警：它的切分點取中位日（7/25），前後期都在墊高後的區間，
+且 8% 門檻對 +4.8% 放行。
+
+- **基準一律是固定錨點，不與昨天比**。`anchor_sa_rate` 即時從 db 的
+  `ANCHOR_START`~`ANCHOR_END` 算出（實測 5.7%）。刻意不寫死常數——寫死的
+  數字與實際資料脫鉤後沒有任何機制會發現；改由 `TestCalibrateBaseline`
+  斷言它等於 0.057，錨點期資料若被改動測試會失敗。
+  **那個測試失敗時要先查錨點期的評分是不是被動過，不要直接改期望值**。
+- **主判準是 S/A 佔比，不是單一面向**。實測決策相關性完全沒漂（錨點中位 8，
+  近期 8/8/8.5），漂的是總分層面——五個面向各自的小幅上升加總後把等級推高。
+  五個面向的中位數留作**輔助診斷**，用來看是哪個面向在推。
+- **門檻 `CALIBRATE_SA_MULTIPLE` = 2.5x**。用全部 22 個批次實測觸發率：
+  1.5x → 50%、2x → 41%、2.5x → 32%、3x → 27%。取 2.5x 是因為它精準命中
+  7/25-7/28 的異常區間，同時放行 7/20、7/30 這類 10-12% 的正常波動。
+  **1.5x 與 2x 會讓半數批次都示警，那等於沒有警告**（由
+  `test_does_not_warn_on_normal_variation` 守著）。
+- **少於 `CALIBRATE_MIN_BATCH`（10）則不檢查**：10 則裡有 2 則 A 就是 20%，
+  佔比本身不穩定。實測 7/13、7/14 各只有 10 則卻都達 20%，正是這種誤觸發。
+- **這個指標分不出「標準鬆了」與「當期新聞真的更重要」**，報表必須明說這點。
+  每批只有 10-20 則，湊不出主題控制需要的樣本（`drift` 要求前後期各 5 則），
+  所以 calibrate 只做「要不要停下來看一眼」的粗篩，**區分兩者一律看 `drift`**。
+- **`add` 寫入後會對當日累計做一行紅線提醒**（`_warn_if_batch_drifts`）。
+  只印一行、只在超過門檻時印：評分當下看到長篇分析也來不及改，作用只是讓人
+  停下來。這一層存在的理由是「分開做就不會做」——單靠記得跑 calibrate 已經
+  證明會漏掉整整四天。檢查範圍是**當日累計**而非單一批次，因為 `add` 沒有
+  批次概念（7/30 分三批評分別是 12%/15%/0%，只看得到合計的 10%）。
+- 錨點為 0% 時倍數是無限大，輸出改印「遠高於」而非 `inf`——後者讀起來像壞掉
+  而不像訊息。由 `test_zero_baseline_does_not_print_inf` 守著。
+
+**輔助診斷的實測價值**：7/25 那批五個面向有四個同步上升（決策相關性
+8 → 12.5 最劇烈），只有**事實可信度不動**。這正是「事實可信度是天然對照組」
+的再次驗證——推力來自主觀判斷鬆動，不是來源品質改變。
 
 ## 評分標準漂移偵測（`news.py drift`）
 
@@ -257,12 +298,16 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 
 使用者要求「批次評分」、「處理待評分清單」時，用 `/news-importance-score` 的批次模式：`pending --json` 取清單 → 依標題粗篩（不值得的用 `skip` 標掉）→ 逐則抓內文完整評分寫入 → 輸出總表。詳細流程見 skill 內的「批次模式」章節。
 
-兩件必須順手做的事（分開做就不會做）：
+三件必須順手做的事（分開做就不會做）：
 
-1. **評分前先讀前期錨定範例**（見「評分標準漂移偵測」）。2026-07-28 實測：
+1. **評分前先讀前期錨定範例**（`news.py anchors`）。2026-07-28 實測：
    未校準的兩批 A 級佔 32-43%、決策相關性平均 11.1；讀完前期範例後的那批
    降到 8.7% 與 9.91，回到前期水準。差別只在有沒有先看。
-2. **評分後跑 `news.py watch`**，判讀當天新聞命中了哪些舊指標。剛讀完當日
+2. **評分後跑 `news.py calibrate`** 驗算這批與錨點的差距。
+   ⚠️ **不要用「跟昨天比」代替這一步**——那是循環論證，已經漏掉整整四天的
+   漂移（見「每批評完的校準粗篩」）。`add` 會在超標時印一行提醒，但那只是
+   紅線，完整診斷要跑 `calibrate`。
+3. **評分後跑 `news.py watch`**，判讀當天新聞命中了哪些舊指標。剛讀完當日
    新聞的當下是判讀品質最高的時刻，錯過就只能靠標籤事後撈。
 
 ## RSS 自動抓取
@@ -373,16 +418,17 @@ CI 只負責把 JSON 轉成靜態站並上線。
 
 ## 架構
 
-- `news.py` — CLI（init / add / list / serve / fetch / pending / drift / review /
-  watch / watch-verify / watch-stats / anchors / tags / tag / alias / export-json /
-  import-json / export；投資線見 add-position / positions / position-due /
-  position-verify / position-stats / position-schema）。
+- `news.py` — CLI（init / add / list / serve / fetch / pending / calibrate / drift /
+  review / watch / watch-verify / watch-stats / anchors / tags / tag / alias /
+  export-json / import-json / export；投資線見 add-position / positions /
+  position-due / position-verify / position-stats / position-schema）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，118 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，125 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
   回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意、
   卡片只標命中且必附分母、錨點期間不得隨資料滾動、
+  calibrate 的基準不得滾動與門檻不得誤報、
   投資觀察不得外洩到靜態站或版控；
   改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`

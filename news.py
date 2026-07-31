@@ -19,6 +19,7 @@ add 接受的 JSON 格式與驗證規則：python3 news.py schema
 
 import argparse
 import json
+import math
 import sqlite3
 import sys
 import unicodedata
@@ -480,6 +481,16 @@ def cmd_add(args):
     conn.commit()
     tag_note = f"　🏷 {'、'.join(tags)}" if tags else ""
     print(f"已新增 id={cur.lastrowid}：[{grade} 級 {total} 分] {data['title']}{tag_note}")
+
+    # 寫入後對「當日累計」做最粗的紅線提醒。
+    #
+    # 只印一行、只在超過門檻時印：細節交給 `news.py calibrate`。
+    # 這一層存在的理由是「分開做就不會做」——單靠記得跑 calibrate 已經
+    # 證明會漏（2026-07-25~28 那四天 S/A 衝到 28-48% 而每天都回報「一致」）。
+    # 檢查範圍是當日累計而非單一批次：add 沒有批次概念，同一天分多批評分時
+    # 只看得到合計值。
+    if news_date:
+        _warn_if_batch_drifts(conn, news_date)
     conn.close()
 
     # 順手同步 data/news.json，否則 db 更新了但進版控的資料沒動，靜態站不會變。
@@ -1447,6 +1458,170 @@ def anchor_table(rows, start=ANCHOR_START, end=ANCHOR_END):
     return out
 
 
+# calibrate 的警告門檻：本批 S/A 佔比達錨點期的幾倍才示警。
+#
+# 2026-07-31 用全部 22 個批次實測各門檻的觸發率：
+#   1.5x → 50%、2x → 41%、2.5x → 32%、3x → 27%
+# 取 2.5x 是因為它精準命中 7/25-7/28 那段真正異常的區間（S/A 28-48%），
+# 同時放行 7/20、7/30 這類 10-12% 的正常波動。1.5x 與 2x 會讓半數批次
+# 都示警，那等於沒有警告；3x 則會漏掉 7/28 的 28%。
+CALIBRATE_SA_MULTIPLE = 2.5
+
+# 批次小於這個數就不檢查：10 則裡有 2 則 A 就是 20%，佔比本身不穩定。
+# 實測 7/13、7/14 各只有 10 則卻都達 20%，正是這種誤觸發。
+CALIBRATE_MIN_BATCH = 10
+
+
+def sa_rate(rows):
+    """S/A 佔比。空集合回 None 而非 0——「沒有資料」與「都不是 S/A」不同。"""
+    rows = [r for r in rows if r["grade"]]
+    if not rows:
+        return None
+    return sum(1 for r in rows if r["grade"] in ARCHIVE_GRADES) / len(rows)
+
+
+def anchor_sa_rate(rows, start=ANCHOR_START, end=ANCHOR_END):
+    """錨點期間的 S/A 佔比，calibrate 的比較基準。
+
+    刻意即時從 db 算而非寫死常數：寫死的數字與實際資料脫鉤後沒有任何
+    機制會發現。改由 TestCalibrateBaseline 斷言它等於實測值，
+    錨點期資料若被改動測試會失敗——那件事本身就該被知道。
+    """
+    return sa_rate([
+        r for r in rows
+        if r["news_date"] and start <= r["news_date"] <= end
+    ])
+
+
+def calibration_report(rows, batch):
+    """比對一批評分與錨點期的標準。
+
+    回傳 {"baseline":…, "batch_rate":…, "ratio":…, "warn":…, "dims":…}；
+    batch 太小或錨點無資料時 warn 為 False 並附上 skipped 原因。
+
+    只做「這批有沒有異常」的粗篩，刻意不做主題控制——每批 10-20 則湊不出
+    足夠的同標籤樣本（drift 要求前後期各 5 則）。代價是分不出「標準鬆了」
+    與「新聞真的變重要」，這點由報表明說，主題控制交給 drift。
+    """
+    base = anchor_sa_rate(rows)
+    rate = sa_rate(batch)
+    out = {
+        "baseline": base, "batch_rate": rate, "n": len(batch),
+        "ratio": None, "warn": False, "skipped": None,
+        "dims": dimension_medians(batch),
+        "anchor_dims": dimension_medians([
+            r for r in rows
+            if r["news_date"] and ANCHOR_START <= r["news_date"] <= ANCHOR_END
+        ]),
+    }
+    if base is None:
+        out["skipped"] = f"錨點期間（{ANCHOR_START} ~ {ANCHOR_END}）沒有評分資料"
+    elif rate is None:
+        out["skipped"] = "這批沒有可比對的評分"
+    elif len(batch) < CALIBRATE_MIN_BATCH:
+        out["skipped"] = (f"樣本僅 {len(batch)} 則"
+                          f"（少於 {CALIBRATE_MIN_BATCH} 則不檢查，佔比不穩定）")
+    else:
+        # 基準為 0 時任何 S/A 都算偏離，用無限大表示而非除以零
+        out["ratio"] = (rate / base) if base else (float("inf") if rate else 1.0)
+        out["warn"] = out["ratio"] >= CALIBRATE_SA_MULTIPLE
+    return out
+
+
+def _warn_if_batch_drifts(conn, on_date):
+    """add 寫入後的紅線提醒：當日累計的 S/A 佔比超過門檻就印一行。
+
+    刻意只印一行而非完整報表：評分當下看到長篇分析也來不及改，
+    這裡的作用只是讓人停下來，細節用 `news.py calibrate` 看。
+    """
+    rows = list(conn.execute("SELECT * FROM news"))
+    batch = [r for r in rows if r["news_date"] == on_date]
+    rep = calibration_report(rows, batch)
+    if not rep["warn"]:
+        return
+    # 錨點為 0% 時倍數是無限大，印「inf 倍」讀起來像壞掉而不像訊息。
+    # 真實資料不會走到這條（實測錨點 5.7%），但 fixture 與未來的資料都可能。
+    ratio = (f"{rep['ratio']:.1f} 倍" if math.isfinite(rep["ratio"])
+             else "遠高於")
+    print(f"  ⚠️  {on_date} 累計 {rep['n']} 則，S/A 佔比 {rep['batch_rate']:.0%}"
+          f"　{ratio}錨點（{rep['baseline']:.0%}）"
+          f"　→ python3 news.py calibrate")
+
+
+def dimension_medians(rows):
+    """各面向的中位數，供 calibrate 診斷「是哪個面向在推高分數」。"""
+    if not rows:
+        return {}
+    return {
+        key: median([r[f"{key}_score"] for r in rows
+                     if r[f"{key}_score"] is not None])
+        for key, _label, _mx in DIMENSIONS
+        if any(r[f"{key}_score"] is not None for r in rows)
+    }
+
+
+def cmd_calibrate(args):
+    """比對指定日期的評分與錨點期的標準（漂移的日常粗篩）。
+
+    與 drift 的分工：drift 跑全量資料且做主題控制，回答「標準有沒有鬆」；
+    calibrate 只看一批，回答「今天這批要不要停下來看一眼」。
+    """
+    conn = connect()
+    rows = list(conn.execute("SELECT * FROM news"))
+    conn.close()
+    if not rows:
+        print("（資料庫沒有評分紀錄）")
+        return
+
+    on_date = args.date or max(
+        (r["news_date"] for r in rows if r["news_date"]), default=None)
+    if not on_date:
+        print("（沒有任何帶日期的評分）")
+        return
+    batch = [r for r in rows if r["news_date"] == on_date]
+
+    rep = calibration_report(rows, batch)
+    print(f"評分校準：{on_date}（{rep['n']} 則）"
+          f" vs 錨點 {ANCHOR_START} ~ {ANCHOR_END}\n")
+
+    if rep["baseline"] is None:
+        print(f"  {rep['skipped']}")
+        return
+    print(f"  S/A 佔比   錨點 {rep['baseline']:.1%}"
+          f"　本批 {rep['batch_rate']:.1%}", end="")
+    if rep["ratio"] is None:
+        print()
+    elif math.isfinite(rep["ratio"]):
+        print(f"（{rep['ratio']:.1f}x）")
+    else:
+        print("（錨點為 0%，無法計算倍數）")
+
+    if rep["dims"]:
+        print("\n  各面向中位數（錨點 → 本批）")
+        for key, label, _mx in DIMENSIONS:
+            if key not in rep["dims"]:
+                continue
+            a = rep["anchor_dims"].get(key)
+            b = rep["dims"][key]
+            flag = "" if a is None or b <= a else "  ↑"
+            base_txt = f"{a:g}" if a is not None else "—"
+            print(f"    {label:<12} {base_txt:>4} → {b:g}{flag}")
+
+    print()
+    if rep["skipped"]:
+        print(f"  ⏭  {rep['skipped']}")
+    elif rep["warn"]:
+        over = (f"達錨點的 {rep['ratio']:.1f} 倍（門檻 {CALIBRATE_SA_MULTIPLE}x）"
+                if math.isfinite(rep["ratio"]) else "遠高於錨點（錨點為 0%）")
+        print(f"  ⚠️  S/A 佔比{over}，回頭核對錨定範例再確認這批。")
+        print("     注意：這個指標分不出「標準鬆了」與「當期新聞真的更重要」。")
+        print("     要區分兩者看 `news.py drift`（它做主題控制，只比同標籤內的前後期）。")
+    else:
+        print("  ✅ 未達警告門檻。")
+        print("     但這只是粗篩：單批樣本小、且分不出標準鬆動與主題組成改變，")
+        print("     真正的漂移判斷仍以 `news.py drift` 為準。")
+
+
 def cmd_anchors(_args):
     """重新產生 skill 的「固定錨點」表，用來核對它有沒有跟資料脫節。"""
     conn = connect()
@@ -2325,6 +2500,10 @@ def main():
     p_review.add_argument("--since", help="只回顧此日期之後評的（YYYY-MM-DD）")
     p_review.add_argument("--limit", type=int, default=10, help="每個清單最多列幾則")
 
+    p_cal = sub.add_parser(
+        "calibrate", help="比對某日評分與錨點期的標準（漂移的日常粗篩）")
+    p_cal.add_argument("--date", help="要檢查的日期（預設取最新評分日）")
+
     p_watch = sub.add_parser(
         "watch", help="列出當天新聞可能命中的舊 watch_next（批次評分時順手判定）")
     p_watch.add_argument("--date", help="以哪天的新聞回頭比對（預設取最新評分日）")
@@ -2432,6 +2611,7 @@ def main():
         "watch-verify": cmd_watch_verify,
         "watch-stats": cmd_watch_stats,
         "anchors": cmd_anchors,
+        "calibrate": cmd_calibrate,
         "tags": cmd_tags,
         "tag": cmd_tag,
         "alias": cmd_alias,
