@@ -32,7 +32,7 @@
 python3 news.py init            # 建立資料庫（首次）
 python3 news.py add <file|->    # 寫入一筆評分（順手更新 data/news.json）
 python3 news.py list [--grade S]  # 快速列表
-python3 news.py serve [--port 8765]  # 網頁介面 http://127.0.0.1:8765
+python3 news.py serve [--port 8765] [--host 0.0.0.0]  # 網頁介面（--host 見下，預設只有本機可連）
 python3 news.py fetch           # 抓取 feeds.txt 的 RSS，新連結存入 pending 表
 python3 news.py pending [--all] [--json] [--limit N]  # 列出待評分清單
 python3 news.py skip <id...>    # 把待評分項目標為略過
@@ -300,6 +300,12 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
   會不自覺寫得保守、寫得容易命中，而這條線的全部價值就在於記錄真實的判斷。
   呈現只走本機 `news.py serve` 的 `/positions`（頁面帶 `noindex`）。
   代價是 db 沒有副本，備份要自己處理。
+- **`serve` 預設綁 `127.0.0.1`，改動預設值要是刻意的**
+  （由 `TestServeBindsLocalByDefault` 守著）。要用手機看時加 `--host 0.0.0.0`，
+  它會印出區網網址與警告。綁 `0.0.0.0` 等於把 `/positions` 公開給同網段的
+  所有裝置且沒有密碼——在共用 Wi-Fi 下就是把投資判斷攤開給旁人看，
+  而那正是這條線刻意不上公開站的內容。**風險由使用者決定何時承擔，
+  不由預設值替他決定**，所以不要為了方便把預設值改成 `0.0.0.0`。
 - **`validate_date_string` 是兩條線共用的日期驗證**：news_date 與 obs_date／due_date
   都做字串字面比較，補零規則必須一致。`allow_future` 是唯一的差別——
   預測的到期日本來就在未來。
@@ -449,13 +455,14 @@ CI 只負責把 JSON 轉成靜態站並上線。
   export-json / import-json / export；投資線見 add-position / positions /
   position-due / position-verify / position-stats / position-schema）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，134 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，138 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
   回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意、
   卡片只標命中且必附分母、錨點期間不得隨資料滾動、
   calibrate 的基準不得滾動與門檻不得誤報、
   投資預測必填 source_hint 且市場類不得復活、void 與 moot 的統計處理不同、
+  serve 預設不得對外開放、
   投資觀察不得外洩到靜態站或版控；
   改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`

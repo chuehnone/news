@@ -10,7 +10,9 @@
 - 靜態站產出的卡片數與資料筆數一致
 """
 
+import contextlib
 import importlib
+import io
 import json
 import math
 import re
@@ -20,6 +22,7 @@ import sys
 import tempfile
 import unittest
 from contextlib import contextmanager
+from unittest import mock
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -1905,6 +1908,50 @@ class TestVoidVerdict(CLITestCase):
         out = self.run_cli("positions").stdout
         self.assertIn("#1", out)
         self.assertIn("⊘", out)
+
+
+class TestServeBindsLocalByDefault(CLITestCase):
+    """serve 預設只綁 127.0.0.1。
+
+    綁 0.0.0.0 會讓同網段的所有裝置都看得到 /positions 的投資判斷，
+    而那正是刻意不上公開站的內容。風險應由使用者決定何時承擔，
+    不是由預設值替他決定——所以預設值改動要是刻意的，不能順手改掉。
+    """
+
+    def test_default_host_is_loopback(self):
+        with load_modules(self.dir, "news", "server") as (news, server):
+            with mock.patch.object(server, "HTTPServer") as H:
+                H.return_value.serve_forever.side_effect = KeyboardInterrupt
+                server.run(port=1)
+                self.assertEqual(H.call_args[0][0][0], "127.0.0.1")
+
+    def test_explicit_host_is_honoured(self):
+        with load_modules(self.dir, "news", "server") as (news, server):
+            with mock.patch.object(server, "HTTPServer") as H:
+                H.return_value.serve_forever.side_effect = KeyboardInterrupt
+                server.run(port=1, host="0.0.0.0")
+                self.assertEqual(H.call_args[0][0][0], "0.0.0.0")
+
+    def test_exposed_mode_warns(self):
+        """對外開放時必須警告——不然會忘記自己開著。"""
+        with load_modules(self.dir, "news", "server") as (news, server):
+            with mock.patch.object(server, "HTTPServer") as H:
+                H.return_value.serve_forever.side_effect = KeyboardInterrupt
+                buf = io.StringIO()
+                with contextlib.redirect_stdout(buf):
+                    server.run(port=1, host="0.0.0.0")
+                out = buf.getvalue()
+                self.assertIn("已對外開放", out)
+                self.assertIn("positions", out, "警告要點名投資判斷會外流")
+
+    def test_local_mode_does_not_warn(self):
+        with load_modules(self.dir, "news", "server") as (news, server):
+            with mock.patch.object(server, "HTTPServer") as H:
+                H.return_value.serve_forever.side_effect = KeyboardInterrupt
+                buf = io.StringIO()
+                with contextlib.redirect_stdout(buf):
+                    server.run(port=1)
+                self.assertNotIn("已對外開放", buf.getvalue())
 
 
 class TestPositionsStayLocal(CLITestCase):

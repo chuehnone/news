@@ -9,6 +9,7 @@ import json
 import os
 import re
 import shutil
+import socket
 import sqlite3
 # 只需要 timedelta：所有「現在時刻／今天」一律走 news.py 的 now_local()／
 # today_local()（台北時間），不要在這裡改用 datetime.now() 或 date.today()
@@ -1587,9 +1588,41 @@ class Handler(BaseHTTPRequestHandler):
         pass  # 安靜模式
 
 
-def run(port=8765):
-    server = HTTPServer(("127.0.0.1", port), Handler)
+def lan_ip():
+    """本機在區網的位址，抓不到時回 None。
+
+    用 UDP socket「連」到一個外部位址來問作業系統會從哪張網卡出去——
+    UDP 不會真的送出封包，所以離線時也只是拋錯而非卡住。
+    比 gethostbyname(gethostname()) 可靠：後者在 macOS 常回 127.0.0.1。
+    """
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(("192.0.2.1", 1))  # TEST-NET-1，保證不存在的位址
+        return s.getsockname()[0]
+    except OSError:
+        return None
+    finally:
+        s.close()
+
+
+def run(port=8765, host="127.0.0.1"):
+    """啟動網頁介面。
+
+    預設綁 127.0.0.1（只有本機連得到），要用手機看才傳 host="0.0.0.0"。
+    **預設值刻意不改**：綁 0.0.0.0 等於把頁面公開給同網段的所有裝置，
+    而 /positions 是投資判斷——那正是刻意不上公開站的內容。
+    風險應該由使用者決定何時承擔，不是由預設值替他決定。
+    """
+    server = HTTPServer((host, port), Handler)
+    exposed = host not in ("127.0.0.1", "localhost")
     print(f"新聞評分網頁介面：http://127.0.0.1:{port}（Ctrl+C 結束）")
+    if exposed:
+        ip = lan_ip()
+        if ip:
+            print(f"  手機／同網段裝置：http://{ip}:{port}")
+        print(f"  ⚠️  已對外開放（{host}）——同一個 Wi-Fi 下的任何裝置都看得到，")
+        print("     包含 /positions 的投資判斷，且沒有密碼保護。")
+        print("     在咖啡廳、公司等共用網路請用完就關掉。")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
