@@ -1649,7 +1649,8 @@ class TestWatchHitsOnCard(CLITestCase):
             self.assertIn(frag, dynamic_html, f"動態站缺少 {frag}")
 
 
-_DEFAULT_PREDICTIONS = [{"kind": "fundamental", "text": "8 月營收年增 >30%"}]
+_DEFAULT_PREDICTIONS = [{"kind": "fundamental", "text": "8 月營收年增 >30%",
+                         "source_hint": "公開資訊觀測站月營收"}]
 
 
 def make_position(ticker="TSM", obs_date="2026-01-01", thesis="論點",
@@ -1708,7 +1709,8 @@ class TestPositions(CLITestCase):
         """預測的到期日本來就在未來，不可套用 news_date 的未來日期檢查。"""
         future = (date.today() + timedelta(days=90)).isoformat()
         r = self.add_position(make_position(
-            predictions=[{"kind": "market", "text": "x", "due_date": future}]),
+            predictions=[{"kind": "structural", "text": "x",
+                          "source_hint": "法說會簡報", "due_date": future}]),
             check=False)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
@@ -1731,8 +1733,8 @@ class TestPositions(CLITestCase):
     def test_moot_excluded_from_hit_rate(self):
         """moot 是「前提消失」不是「預測錯」，與新聞線同一條規則。"""
         self.add_position(make_position(predictions=[
-            {"kind": "fundamental", "text": "a"},
-            {"kind": "fundamental", "text": "b"},
+            {"kind": "fundamental", "text": "a", "source_hint": "財報毛利率"},
+            {"kind": "fundamental", "text": "b", "source_hint": "財報營收"},
         ]))
         self.run_cli("position-verify", "1", "hit", check=True)
         self.run_cli("position-verify", "2", "moot", check=True)
@@ -1743,16 +1745,16 @@ class TestPositions(CLITestCase):
     def test_hit_rate_is_reported_per_kind(self):
         """三類的可驗證程度差很多，只看總命中率得到的是無法行動的數字。"""
         self.add_position(make_position(predictions=[
-            {"kind": "fundamental", "text": "a"},
-            {"kind": "market", "text": "b"},
+            {"kind": "fundamental", "text": "a", "source_hint": "財報毛利率"},
+            {"kind": "structural", "text": "b", "source_hint": "官方公告"},
         ]))
         self.run_cli("position-verify", "1", "hit", check=True)
         self.run_cli("position-verify", "2", "miss", check=True)
         out = self.run_cli("position-stats").stdout
         self.assertIn("基本面", out)
-        self.assertIn("市場", out)
+        self.assertIn("結構", out)
         self.assertRegex(out, r"基本面\s+命中率 100%")
-        self.assertRegex(out, r"市場\s+命中率 0%")
+        self.assertRegex(out, r"結構\s+命中率 0%")
 
     def test_reverdict_requires_force(self):
         """事後改判定會讓命中率失去意義，必須明示。"""
@@ -1780,7 +1782,8 @@ class TestPositions(CLITestCase):
         today = date.today()
         self.add_position(make_position(
             obs_date=(today - timedelta(days=3)).isoformat(),
-            predictions=[{"kind": "market", "text": "x",
+            predictions=[{"kind": "structural", "text": "x",
+                          "source_hint": "官方公告",
                           "due_date": (today - timedelta(days=1)).isoformat()}]))
         out = self.run_cli("position-due").stdout
         self.assertIn("到期日", out)
@@ -1796,6 +1799,112 @@ class TestPositions(CLITestCase):
         left = conn.execute("SELECT COUNT(*) FROM predictions").fetchone()[0]
         conn.close()
         self.assertEqual(left, 0, "刪除觀點後預測沒被連帶刪除")
+
+
+class TestPredictionsMustBeVerifiable(CLITestCase):
+    """預測必須寫成「用現有資料源查得到」的形式。
+
+    2026-07-31 的教訓：7 條市場類預測寫得很工整（都指明了比較基準與時間窗），
+    卻全部無法判定——feeds.txt 只有中央社／BBC／科技新報，價格資訊不在系統裡。
+    它們不會 miss，只會永遠掛在未判定，連分母都進不去。
+    根因是寫的當下沒人問過「這個數字從哪來」。
+    """
+
+    def add_position(self, payload, check=True):
+        return self.run_cli("add-position", "-",
+                            stdin=json.dumps(payload), check=check)
+
+    def test_no_market_prediction_kind(self):
+        """市場類已廢除，不得因為「補回來比較完整」而復活。
+
+        廢除的理由不只是沒資料源，更根本的是它測不出判斷力——股價結果混雜
+        利率、地緣、大盤情緒，推論正確與否只佔很小部分（同 review 用標籤
+        後續數當代理訊號的病）。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            self.assertNotIn("market", news.PREDICTION_KIND_KEYS)
+            self.assertEqual(len(news.PREDICTION_KINDS), 2)
+
+    def test_market_kind_is_rejected(self):
+        r = self.add_position(make_position(predictions=[
+            {"kind": "market", "text": "報酬率落後大盤逾 5%",
+             "source_hint": "股價"}]), check=False)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("fundamental", r.stdout + r.stderr)
+
+    def test_source_hint_is_required(self):
+        """必填，因為「寫指引期待下次記得」已證明無效——現行 schema 就有
+        寫預測的原則，那 7 條照樣寫出來了。"""
+        r = self.add_position(make_position(predictions=[
+            {"kind": "fundamental", "text": "Q3 毛利率低於 47%"}]), check=False)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("source_hint", r.stdout + r.stderr)
+
+    def test_vague_source_hint_is_rejected(self):
+        """填「財報」等於沒填——它指不出到期時該打開哪一份資料。"""
+        for vague in ("財報", "新聞", "股價"):
+            r = self.add_position(make_position(
+                ticker=f"T{len(vague)}",
+                predictions=[{"kind": "fundamental", "text": "x",
+                              "source_hint": vague}]), check=False)
+            self.assertNotEqual(r.returncode, 0, f"「{vague}」應被擋下")
+            self.assertIn("模糊", r.stdout + r.stderr)
+
+    def test_specific_source_hint_is_accepted(self):
+        r = self.add_position(make_position(predictions=[
+            {"kind": "fundamental", "text": "Q3 毛利率低於 47%",
+             "source_hint": "聯發科法說會簡報的毛利率數字"}]), check=False)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+
+class TestVoidVerdict(CLITestCase):
+    """void（作廢）與 moot（前提消失）刻意分開，差別在歸因。
+
+    moot 是世界變了（談判取消），void 是我當初設計了無法驗證的指標。
+    混用會讓 moot 失去診斷價值——那正是 CLAUDE.md 堅持 moot 與 miss
+    分開的同一個理由。
+    """
+
+    def setUp(self):
+        super().setUp()
+        self.run_cli("add-position", "-", stdin=json.dumps(make_position(
+            predictions=[
+                {"kind": "fundamental", "text": "a", "source_hint": "財報毛利率"},
+                {"kind": "fundamental", "text": "b", "source_hint": "財報營收"},
+                {"kind": "structural", "text": "c", "source_hint": "官方公告"},
+            ])), check=True)
+
+    def test_void_is_accepted_as_a_verdict(self):
+        self.assertEqual(self.run_cli("position-verify", "1", "void").returncode, 0)
+
+    def test_void_is_excluded_from_stats_entirely(self):
+        """void 連 counts 都不進——它不是一種判定結果。
+
+        對比 moot：moot 仍計入 counts 但不進分母，因為「前提消失」本身是
+        關於世界的資訊，值得看見。
+        """
+        self.run_cli("position-verify", "1", "hit", check=True)
+        self.run_cli("position-verify", "2", "void", check=True)
+        out = self.run_cli("position-stats").stdout
+        self.assertIn("100%", out, "void 進了分母會變成 50%")
+        self.assertIn("1/1", out)
+        self.assertIn("作廢", out, "void 數量仍要顯示，藏起來就是選擇性揭露")
+
+    def test_void_is_not_moot(self):
+        """兩者不得混為一談：統計上的處理不同，語意上的歸因也不同。"""
+        with load_modules(self.dir, "news") as (news,):
+            self.assertIn("void", news.POSITION_VERDICTS)
+            self.assertIn("moot", news.POSITION_VERDICTS)
+            self.assertNotIn("void", news.WATCH_VERDICTS,
+                             "新聞線不該有 void——它不依賴外部資料源，"
+                             "多餘的選項會被誤用")
+
+    def test_voided_predictions_remain_visible(self):
+        """作廢不等於刪除：記錄「我曾經寫了無法驗證的預測」是校準的一部分。"""
+        self.run_cli("position-verify", "1", "void", check=True)
+        out = self.run_cli("positions").stdout
+        self.assertIn("#1", out)
+        self.assertIn("⊘", out)
 
 
 class TestPositionsStayLocal(CLITestCase):

@@ -249,6 +249,12 @@ def migrate(conn):
     if "tags" not in have:
         conn.execute("ALTER TABLE news ADD COLUMN tags TEXT")
 
+    # predictions 的 source_hint 於 2026-07-31 加入，既有 db 要補上
+    # （CREATE TABLE IF NOT EXISTS 對已存在的表完全不動）。
+    have_p = {r["name"] for r in conn.execute("PRAGMA table_info(predictions)")}
+    if have_p and "source_hint" not in have_p:
+        conn.execute("ALTER TABLE predictions ADD COLUMN source_hint TEXT")
+
     # 別名種子只在表是空的時候灌入。用 INSERT OR IGNORE 逐筆補會讓
     # 「刻意刪掉某個種子別名」在下次連線時復活，等於刪不掉。
     if not conn.execute("SELECT 1 FROM tag_aliases LIMIT 1").fetchone():
@@ -1115,14 +1121,44 @@ WATCH_MIN_AGE_DAYS = 7
 # 投資線刻意沒有分數與等級——它的品質由命中率直接衡量，不需要事前打分。
 
 # 一次觀點底下的預測分類。命中率要**依類型分開看**：
-# 三類的可驗證程度天差地別（fundamental 有客觀數字、market 受雜訊影響大），
+# 兩類的可驗證程度不同（fundamental 有客觀數字、structural 要人判讀事件是否發生），
 # 混在一起算總命中率會得到一個無法行動的數字，那正是 review 的失敗模式。
+#
+# **刻意沒有「市場類」（價格或相對表現）**，2026-07-31 廢除，理由有二：
+#   1. 沒有資料源。feeds.txt 只有中央社／BBC／科技新報，且 LOWPRIO_KEYWORDS
+#      還主動過濾「收盤／盤中／盤前」——價格資訊本來就不在這個系統裡。
+#      實測 7 條市場類預測全部無法判定，連 miss 都算不上（進不了分母）。
+#   2. **更根本的是它測不出判斷力**。「Meta 落後標普 8 個百分點」的結果混雜
+#      利率、地緣、大盤情緒，推論正確與否只佔很小部分——與 review 用「標籤
+#      後續數」當代理訊號是同一種病（分不清事件延燒與判斷正確）。
+# 原本想測的「資訊是否已被 price in」，用基本面預測加新聞就能觀察
+#（例：台積電毛利率創高的同時股價表現如何，新聞會報導）。
+# 由 test_no_market_prediction_kind 守著，避免日後「補回來比較完整」而復活。
 PREDICTION_KINDS = [
     ("fundamental", "基本面", "公司自己會揭露的數字（營收、財報、產能、訂單）"),
-    ("market", "市場", "價格或相對表現（須指明比較基準與時間窗）"),
     ("structural", "結構", "產業或政策事件本身是否發生"),
 ]
 PREDICTION_KIND_KEYS = tuple(k for k, _, _ in PREDICTION_KINDS)
+
+# 投資線的判定值域 = 新聞線的三種，外加 void。
+#
+# void（作廢）與 moot（前提消失）刻意分開，**差別在歸因**：
+#   moot ——世界變了（談判取消、政策撤回），不是我判斷錯
+#   void ——我當初設計了無法驗證的指標，是我的問題
+# 混用會讓 moot 失去診斷價值（同 CLAUDE.md 對 moot/miss 分開的堅持）。
+# 兩者都不進命中率分母，但 void 額外代表「這條當初就不該這樣寫」。
+#
+# 只給投資線：新聞線的 watch_next 不依賴外部資料源，沒有這個問題，
+# 加進去只會多一個永遠用不到的選項，而多餘的選項會被誤用。
+POSITION_VERDICTS = WATCH_VERDICTS + ("void",)
+
+# source_hint 填這些等於沒填——它們指不出到期時該打開哪一份資料。
+# 刻意只擋最明顯的幾個而非做語意判斷：這道檢查的目的是讓人停下來想
+# 「到底去哪查」，不是要精準攔截所有敷衍。填得出具體來源的人不會被擋到。
+VAGUE_SOURCE_HINTS = frozenset({
+    "財報", "新聞", "市場數據", "公司公告", "官方資料", "報導",
+    "財報數字", "市場", "股價", "價格", "資料", "公開資訊",
+})
 
 # 一條投資預測至少要放這麼多天才值得判定。比新聞的 7 天長，因為
 # 基本面預測的驗證點（月營收、財報）本來就以月為單位，太早看必然是「還沒發生」。
@@ -1148,7 +1184,11 @@ CREATE INDEX IF NOT EXISTS idx_positions_ticker ON positions(ticker);
 CREATE INDEX IF NOT EXISTS idx_positions_date ON positions(obs_date);
 
 -- 一次觀點底下的可驗證預測。kind 見 PREDICTION_KINDS。
--- verdict 為 NULL 代表尚未判定；已判定的值域同 WATCH_VERDICTS。
+-- verdict 為 NULL 代表尚未判定；已判定的值域見 POSITION_VERDICTS。
+--
+-- source_hint 是必填的「這條要去哪裡查」，不是備註。2026-07-31 加入，
+-- 因為 7 條市場類預測寫得很工整卻沒有任何資料源可驗證——寫的當下沒人問過
+-- 「這個數字從哪來」。填不出具體來源，代表這條預測當下就該重寫。
 --
 -- 這裡用 position_id 當外鍵（而非像 watch_verify 用 url）：positions 不進版控、
 -- 沒有 import-json --replace 那種「整表重建、id 重配」的流程，
@@ -1158,6 +1198,7 @@ CREATE TABLE IF NOT EXISTS predictions (
     position_id INTEGER NOT NULL REFERENCES positions(id) ON DELETE CASCADE,
     kind TEXT NOT NULL,
     text TEXT NOT NULL,
+    source_hint TEXT,
     due_date TEXT,
     verdict TEXT,
     note TEXT,
@@ -2105,11 +2146,26 @@ def validate_position_payload(data, aliases):
         text = (p.get("text") or "").strip()
         if not text:
             sys.exit(f"predictions[{i}].text 不可為空")
+        # source_hint 必填：擋的是「寫得很工整但沒人問過資料從哪來」。
+        # 2026-07-31 有 7 條市場類預測就是這樣寫出來的，全部無法判定。
+        hint = (p.get("source_hint") or "").strip()
+        if not hint:
+            sys.exit(
+                f"predictions[{i}].source_hint 不可為空——要寫「這條到期時去哪裡查」。\n"
+                "  可執行的例子：台積電法說會簡報／公開資訊觀測站月營收／"
+                "三星財報 DS 部門別數字\n"
+                "  太模糊而等於沒填：財報、新聞、市場數據\n"
+                "  寫不出具體來源，代表這條預測現在就該重寫（見 position-schema）。")
+        if hint in VAGUE_SOURCE_HINTS:
+            sys.exit(
+                f"predictions[{i}].source_hint「{hint}」太模糊，要指名到可執行的來源。\n"
+                "  例：不是「財報」而是「三星財報 DS 部門別營業利益」。")
         due = (p.get("due_date") or "").strip() or None
         if due:
             validate_date_string(due, field=f"predictions[{i}].due_date",
                                  allow_future=True)
-        out_preds.append({"kind": kind, "text": text, "due_date": due})
+        out_preds.append({"kind": kind, "text": text,
+                          "source_hint": hint, "due_date": due})
 
     return {
         "ticker": ticker,
@@ -2141,8 +2197,10 @@ def cmd_add_position(args):
     )
     pid = cur.lastrowid
     conn.executemany(
-        "INSERT INTO predictions (position_id, kind, text, due_date) VALUES (?, ?, ?, ?)",
-        [(pid, p["kind"], p["text"], p["due_date"]) for p in payload["predictions"]],
+        "INSERT INTO predictions (position_id, kind, text, source_hint, due_date) "
+        "VALUES (?, ?, ?, ?, ?)",
+        [(pid, p["kind"], p["text"], p["source_hint"], p["due_date"])
+         for p in payload["predictions"]],
     )
     conn.commit()
     conn.close()
@@ -2175,6 +2233,16 @@ def load_positions(conn, ticker=None, pending_only=False):
     return out
 
 
+def verdict_mark(verdict):
+    """判定的單字元標記。三個指令共用，各存一份遲早會漂。"""
+    return {"hit": "✓", "miss": "✗", "moot": "—", "void": "⊘"}.get(verdict, "·")
+
+
+def kind_label_of(kind):
+    """預測類型的中文標籤。查不到就原樣回傳（例如已廢除的 market）。"""
+    return {k: label for k, label, _ in PREDICTION_KINDS}.get(kind, kind)
+
+
 def cmd_positions(args):
     """列出投資觀點與其預測狀態。"""
     conn = connect()
@@ -2184,8 +2252,6 @@ def cmd_positions(args):
         print("（沒有符合的投資觀點，用 news.py add-position 新增）")
         return
 
-    mark = {"hit": "✓", "miss": "✗", "moot": "—", None: "·"}
-    kind_label = {k: label for k, label, _ in PREDICTION_KINDS}
     for pos, preds in items[:args.limit]:
         head = f"#{pos['id']} {pos['ticker']}"
         if pos["name"]:
@@ -2196,8 +2262,10 @@ def cmd_positions(args):
             print(f"  依據：{pos['rationale']}")
         for p in preds:
             due = f" [{p['due_date']} 前]" if p["due_date"] else ""
-            print(f"   {mark[p['verdict']]} #{p['id']} "
-                  f"[{kind_label.get(p['kind'], p['kind'])}] {p['text']}{due}")
+            print(f"   {verdict_mark(p['verdict'])} #{p['id']} "
+                  f"[{kind_label_of(p['kind'])}] {p['text']}{due}")
+            if args.verbose and p["source_hint"]:
+                print(f"       查：{p['source_hint']}")
             if args.verbose and p["note"]:
                 print(f"       ↳ {p['note']}")
         tags = tags_of(pos)
@@ -2236,13 +2304,15 @@ def cmd_position_due(args):
         return
 
     due.sort(key=lambda x: (not x[3], -x[2]))
-    kind_label = {k: label for k, label, _ in PREDICTION_KINDS}
     print(f"到期待判定 {len(due)} 條")
-    print("判定後用：news.py position-verify <預測id> <hit|miss|moot> [--note ...]\n")
+    print(f"判定後用：news.py position-verify <預測id> "
+          f"<{'|'.join(POSITION_VERDICTS)}> [--note ...]\n")
     for pos, p, age, by_date in due[:args.limit]:
         why = f"到期日 {p['due_date']}" if by_date else f"已放 {age} 天"
-        print(f"#{p['id']} {pos['ticker']} [{kind_label.get(p['kind'], p['kind'])}] ({why})")
+        print(f"#{p['id']} {pos['ticker']} [{kind_label_of(p['kind'])}] ({why})")
         print(f"   {p['text']}")
+        if p["source_hint"]:
+            print(f"   查：{p['source_hint']}")
         print(f"   觀點 #{pos['id']}（{pos['obs_date']}）：{pos['thesis'][:50]}")
         print()
 
@@ -2278,11 +2348,18 @@ def cmd_position_verify(args):
 def position_accuracy(conn):
     """投資預測的命中率，依預測類型分組。
 
-    分組刻意用 kind 而非標的或等級：三類的可驗證程度差異極大
+    分組刻意用 kind 而非標的或等級：各類的可驗證程度差異極大
     （見 PREDICTION_KINDS 的說明），混算會得到無法行動的數字。
+
+    **void 完全排除在統計外**（連 counts 都不進）——它代表「這條當初就不該
+    這樣寫」，留在報表裡只會讓人以為那是一種判定結果。moot 則仍計入 counts
+    但不進分母，因為「前提消失」本身是關於世界的資訊，值得看見。
     """
-    preds = list(conn.execute(
-        "SELECT id, kind, verdict FROM predictions WHERE verdict IS NOT NULL"))
+    preds = [
+        p for p in conn.execute(
+            "SELECT id, kind, verdict FROM predictions WHERE verdict IS NOT NULL")
+        if p["verdict"] != "void"
+    ]
     verified = {(p["id"], 0): p for p in preds}
     kind_by_id = {p["id"]: p["kind"] for p in preds}
     acc = accuracy_by(
@@ -2290,7 +2367,9 @@ def position_accuracy(conn):
         key_of=lambda k, _v: k[0],
         group_of=lambda pid: kind_by_id.get(pid),
     )
-    return {"overall": acc["overall"], "by_kind": acc["by_group"]}
+    voided = conn.execute(
+        "SELECT COUNT(*) FROM predictions WHERE verdict = 'void'").fetchone()[0]
+    return {"overall": acc["overall"], "by_kind": acc["by_group"], "void": voided}
 
 
 def cmd_position_stats(_args):
@@ -2303,15 +2382,19 @@ def cmd_position_stats(_args):
 
     c = acc["overall"]["counts"]
     total = sum(c.values())
+    void_note = (f"　另有 {acc['void']} 條作廢（void，不列入統計）"
+                 if acc["void"] else "")
     if not total:
         print("（還沒有任何投資預測判定，用 news.py position-due 開始）")
         if pending:
             print(f"  目前有 {pending} 條預測尚未判定")
+        if acc["void"]:
+            print(f"  {acc['void']} 條已作廢（當初寫成無法驗證的形式）")
         return
 
     judged = c["hit"] + c["miss"]
     print(f"投資預測命中率：已判定 {total} 條"
-          f"（hit {c['hit']}、miss {c['miss']}、moot {c['moot']}）")
+          f"（hit {c['hit']}、miss {c['miss']}、moot {c['moot']}）{void_note}")
     if acc["overall"]["rate"] is None:
         print("  尚無可計算命中率的條目（moot 不列入分母）")
     else:
@@ -2332,8 +2415,8 @@ def cmd_position_stats(_args):
             if not kj:
                 continue
             print(f"  {label}  命中率 {kc['rate']:.0%}（{kc['counts']['hit']}/{kj}）")
-        print("\n  三類要分開看：基本面有客觀數字、市場受雜訊影響大。")
-        print("  基本面 hit 但市場 miss，代表資訊正確但已被 price in。")
+        print("\n  兩類要分開看：基本面有客觀數字可查，結構要人判讀事件是否發生。")
+        print("  基本面命中但結構落空，代表數字對了但推論的機制沒發生。")
 
 
 def cmd_position_schema(_args):
@@ -2357,24 +2440,39 @@ def cmd_position_schema(_args):
   "tags":       ["台積電", "CoWoS"],  // 選填，最多 {MAX_TAGS} 個，套用與新聞相同的別名表
   "predictions": [                  // 必填，至少一條
     {{
-      "kind":     "fundamental",    // 必填，見下
-      "text":     "8 月營收年增 >30%",  // 必填。要寫成能明確判定 hit/miss 的形式
-      "due_date": "2026-09-10"      // 選填。沒填則放滿 {POSITION_MIN_AGE_DAYS} 天後列入待判定
+      "kind":        "fundamental",  // 必填，見下
+      "text":        "8 月營收年增 >30%",   // 必填。要能明確判定 hit/miss
+      "source_hint": "公開資訊觀測站月營收",  // 必填！見下
+      "due_date":    "2026-09-10"    // 選填。沒填則放滿 {POSITION_MIN_AGE_DAYS} 天後列入待判定
     }}
   ]
 }}
 
-predictions.kind 的三類：
+predictions.kind 的兩類：
 {kinds}
 
-判定值域：{'/'.join(WATCH_VERDICTS)}（與新聞線共用）
+  ⚠️ 刻意沒有「市場類」（股價、相對報酬）。2026-07-31 廢除：
+     (1) 沒有資料源——feeds.txt 只有中央社／BBC／科技新報，價格資訊不在系統裡，
+         實測 7 條市場類預測全部無法判定，連 miss 都算不上；
+     (2) 更根本的是它測不出判斷力——股價結果混雜利率、地緣、大盤情緒，
+         推論正確與否只佔很小部分。
+     想測「資訊是否已被 price in」，用基本面預測搭配新聞觀察即可。
+
+source_hint（必填）：這條到期時**去哪裡查**。
+  可執行：台積電法說會簡報／公開資訊觀測站月營收／三星財報 DS 部門別營業利益
+  等於沒填：財報、新聞、市場數據（CLI 會擋下）
+  **寫不出具體來源，代表這條預測現在就該重寫**——那 7 條被廢除的市場類
+  預測寫得很工整，問題正是沒人在寫的當下問過「這個數字從哪來」。
+
+判定值域：{'/'.join(POSITION_VERDICTS)}
   hit  — 明確發生了
   miss — 到期但沒發生
-  moot — 前提消失，無從判斷（不列入命中率分母）
+  moot — 前提消失，無從判斷（不列入分母，但仍顯示——那是關於世界的資訊）
+  void — 當初就寫成無法驗證的形式（完全排除在統計外，是我的問題不是世界的）
 
 寫預測的原則（沿用 watch_next 的實測結果）：
   可驗證性比精確度重要。「營收年增 >30%」可判定，「營收表現不錯」不可判定。
-  市場類必須指明**比較基準與時間窗**，否則事後怎麼算都對。""")
+  實測「機制延續型」命中率 48%、「特定事件型」29%、「來源不涵蓋型」僅 15%。""")
 
 
 def cmd_review(args):
@@ -2585,8 +2683,9 @@ def main():
 
     p_pv = sub.add_parser("position-verify", help="記錄一條投資預測的判定")
     p_pv.add_argument("pred_id", type=int, help="預測 id（position-due 會顯示）")
-    p_pv.add_argument("verdict", choices=WATCH_VERDICTS,
-                      help="hit=發生了 / miss=沒發生 / moot=前提消失")
+    p_pv.add_argument("verdict", choices=POSITION_VERDICTS,
+                      help="hit=發生了 / miss=沒發生 / moot=前提消失 / "
+                           "void=當初寫成無法驗證的形式")
     p_pv.add_argument("--note", help="判定說明")
     p_pv.add_argument("--force", action="store_true", help="覆寫已有的判定")
 

@@ -21,9 +21,10 @@ from urllib.parse import urlparse, parse_qs, quote
 # news.py 反向 import server 只發生在 cmd_serve / cmd_export 的函式內，故不成環。
 from news import (
     ARCHIVE_GRADES, DB_PATH, DIMENSIONS, GRADE_LABELS, GRADES,
-    PREDICTION_KINDS, hit_rate, load_aliases, load_hits_from_json,
-    load_positions, normalize_tag, now_local, position_accuracy, tag_counts,
-    tags_of, today_local, verified_counts_from_json,
+    PREDICTION_KINDS, hit_rate, kind_label_of, load_aliases,
+    load_hits_from_json, load_positions, normalize_tag, now_local,
+    position_accuracy, tag_counts, tags_of, today_local, verdict_mark,
+    verified_counts_from_json,
 )
 
 STYLE = """
@@ -360,7 +361,10 @@ body.compact .card.expanded .expand { transform: rotate(180deg); }
 .v-hit { color: #16a34a; }
 .v-miss { color: #dc2626; }
 .v-moot { color: var(--muted); }
+/* void 比 moot 更淡：它不是一種判定結果，是「這條當初就不該這樣寫」 */
+.v-void { color: var(--muted); opacity: .4; }
 .v-open { color: var(--muted); opacity: .55; }
+.pred-hint { color: var(--muted); font-size: .78rem; margin-top: 2px; opacity: .85; }
 .kind { flex: 0 0 auto; font-size: .74rem; padding: 1px 7px; border-radius: 999px;
         background: var(--c-bg); color: var(--c-fg); white-space: nowrap; margin-top: 1px; }
 .pred-body { flex: 1 1 auto; min-width: 0; }
@@ -1327,18 +1331,23 @@ def render_prediction(p, today):
     視覺上混淆會讓人以為預測已經失敗。與新聞卡片只標 hit 是同一個考量。
     """
     verdict = p["verdict"]
-    mark = {"hit": "✓", "miss": "✗", "moot": "—"}.get(verdict, "·")
-    cls = {"hit": "v-hit", "miss": "v-miss", "moot": "v-moot"}.get(verdict, "v-open")
-    labels = {k: label for k, label, _ in PREDICTION_KINDS}
+    # 標記與標籤一律取自 news.py：兩邊各存一份會在改了其中一邊時靜默漂移
+    # （tag_counts 曾經如此，見 CLAUDE.md 的「函式比常數更容易悄悄漂移」）。
+    mark = verdict_mark(verdict)
+    cls = {"hit": "v-hit", "miss": "v-miss",
+           "moot": "v-moot", "void": "v-void"}.get(verdict, "v-open")
     due = ""
     if p["due_date"]:
         over = " over" if verdict is None and p["due_date"] <= today else ""
         due = f'<span class="due{over}">{escape(p["due_date"])} 前</span>'
     note = f'<div class="pred-note">{escape(p["note"])}</div>' if p["note"] else ""
+    # source_hint 是「到期時去哪查」，顯示在預測底下讓判定時不必回頭找
+    hint = (f'<div class="pred-hint">查：{escape(p["source_hint"])}</div>'
+            if p["source_hint"] else "")
     return (
         f'<li><span class="verdict {cls}">{mark}</span>'
-        f'<span class="kind">{escape(labels.get(p["kind"], p["kind"]))}</span>'
-        f'<span class="pred-body">{escape(p["text"])}{note}</span>{due}</li>'
+        f'<span class="kind">{escape(kind_label_of(p["kind"]))}</span>'
+        f'<span class="pred-body">{escape(p["text"])}{hint}{note}</span>{due}</li>'
     )
 
 
@@ -1400,15 +1409,21 @@ def render_positions_page(ticker=None, tag=None, pending=False):
         f'<span>整體（{c["hit"]}/{judged}）</span></div>' if rate is not None else "")
     warn = (f'<div class="caveat">⚠️ 樣本僅 {judged} 條，結論參考價值有限（建議 20 條以上）。</div>'
             if 0 < judged < 20 else "")
+    # void 單獨列出而非藏起來：它記錄「我曾經寫了無法驗證的預測」，
+    # 那是校準的一部分，藏起來就變成選擇性揭露（同新聞卡片必附分母的理由）。
+    void_html = (f'<div class="stat"><b>{acc["void"]}</b><span>已作廢</span></div>'
+                 if acc.get("void") else "")
     stats = (
         f'<div class="stats"><b>命中率</b>'
         f'<div class="stats-row">{overall_html}{"".join(by_kind)}'
-        f'<div class="stat"><b>{open_count}</b><span>尚未判定</span></div></div>'
+        f'<div class="stat"><b>{open_count}</b><span>尚未判定</span></div>'
+        f'{void_html}</div>'
         f'{warn}'
-        f'<div class="caveat">moot（前提消失）不列入分母。三類要分開看：'
-        f'基本面有客觀數字、市場受雜訊影響大——基本面 hit 但市場 miss，'
-        f'代表資訊正確但已被 price in。</div></div>'
-    ) if (judged or open_count) else ""
+        f'<div class="caveat">moot（前提消失）不列入分母，void（當初寫成無法'
+        f'驗證的形式）完全排除在統計外。兩類要分開看：基本面有客觀數字可查、'
+        f'結構要人判讀事件是否發生——基本面命中但結構落空，代表數字對了'
+        f'但推論的機制沒發生。</div></div>'
+    ) if (judged or open_count or acc.get("void")) else ""
 
     tickers = sorted({p["ticker"] for p, _ in load_positions_all()})
     opts = ['<option value="">全部標的</option>']
