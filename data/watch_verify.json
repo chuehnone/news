@@ -40,6 +40,14 @@
   "verified_date": "2026-08-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202608010021.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/07/21/kospi-circuit-breaker",
+  "note": "7/30 FOMC 決議維持 3.50%-3.75%，出現 9:3 罕見分歧。8/1 三位異議總裁具名闡述理由（克里夫蘭漢麥克、明尼阿波利斯卡西卡里、達拉斯羅根），主張升息一碼、理由是通膨居高不下時間過長。決策與後續論述均已明確。",
+  "verdict": "hit",
+  "verified_date": "2026-08-01"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/07/23/us-30-year-treasury-yield-logs-longest-5-streak-since-financial-crisis",
@@ -598,6 +606,14 @@
   "note": "窗口內無先進製程留台比例的政策討論。有台積電營業秘密外流案與熊本布局報導，但未觸及留台比例的政策層面",
   "verdict": "miss",
   "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/08/01/wistron-us-factory",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202607220019.aspx",
+  "note": "緯創董事長林憲銘 8/1 公開說明轉美建廠考量：達拉斯地區可能有 3-4 座廠、面臨龐大資本支出；坦承對美墨關係判斷錯誤，USMCA 遭推翻致緯穎墨國廠須繳巨額稅款；並指台灣土地與電力取得困難是推力。美國製造的成本結構已有具名說明。",
+  "verdict": "hit",
+  "verified_date": "2026-08-01"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/07/31/amazon-cloud-performance-shines-apple-revenue-slows-awaiting-siri-ai",
