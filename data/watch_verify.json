@@ -1080,6 +1080,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/acn/202608010129.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607210008.aspx",
+  "note": "中國買家 7/31 採購至少 14 艘船、逾 84 萬公噸美國大豆（10-11 月付運），近期累計採購已超過 300 萬公噸。此為 9 月習近平訪美前的具體善意動作。但買家均為政府機構、商業進口商仍傾向南美，屬政治履約性質。",
+  "verdict": "hit",
+  "verified_date": "2026-08-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607280236.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202607210027.aspx",
