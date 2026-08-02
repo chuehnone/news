@@ -1910,6 +1910,58 @@ class TestVoidVerdict(CLITestCase):
         self.assertIn("⊘", out)
 
 
+class TestThinBatchWarning(CLITestCase):
+    """fetch 新增太少時要提示，因為那是跑完才知道的。
+
+    2026-08-02 實測：距上次抓取僅數小時就再跑，只新增 5 則且 4 則是社會事件，
+    最後只評到 1 則。抓內文與評分是整個流程最貴的步驟，值得在最前面就給出
+    「這輪划不划算」的訊號。
+    """
+
+    def _seed(self, news, conn, n_old, n_new):
+        rows = [(f"舊{i}", f"http://e.com/o{i}", "X", None, "new",
+                 "2026-08-02 09:00:00") for i in range(n_old)]
+        rows += [(f"新{i}", f"http://e.com/n{i}", "X", None, "new",
+                  "2026-08-02 14:00:00") for i in range(n_new)]
+        conn.executemany(
+            "INSERT INTO pending (title,url,source,published,status,fetched_at) "
+            "VALUES (?,?,?,?,?,?)", rows)
+        conn.commit()
+
+    def test_warns_when_batch_is_thin(self):
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            conn = news.connect()
+            self._seed(news, conn, 20, 3)
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                news.warn_if_thin_batch(conn, 3)
+            conn.close()
+            self.assertIn("新增偏少", buf.getvalue())
+
+    def test_does_not_warn_on_normal_batch(self):
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            conn = news.connect()
+            self._seed(news, conn, 20, 30)
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                news.warn_if_thin_batch(conn, 30)
+            conn.close()
+            self.assertEqual(buf.getvalue(), "",
+                             "正常批次不該提示——常態化的提示會被忽略")
+
+    def test_warning_is_advisory_not_blocking(self):
+        """只是提示不是阻擋：使用者可能就是想看有沒有新東西。"""
+        with load_modules(self.dir, "news") as (news,):
+            news.DB_PATH = self.dir / "news.db"
+            conn = news.connect()
+            self._seed(news, conn, 5, 1)
+            with contextlib.redirect_stdout(io.StringIO()):
+                news.warn_if_thin_batch(conn, 1)  # 不得拋出
+            conn.close()
+
+
 class TestServeBindDoesNotHangOnDNS(CLITestCase):
     """server_bind 不得做反向 DNS 查詢。
 

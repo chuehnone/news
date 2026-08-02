@@ -287,6 +287,13 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
   `void` 只在 `POSITION_VERDICTS`，不進 `WATCH_VERDICTS`——新聞線的 watch_next
   不依賴外部資料源，沒有這個問題，多餘的選項會被誤用。
   作廢不等於刪除：記錄「我曾經寫了無法驗證的預測」是校準的一部分。
+- **新增觀點的門檻是「出現能改變既有判斷的新資訊」，不是每天都要寫**。
+  刻意不設數量規則（「每天最多 N 則」會讓真正該記的時候不敢記）。實測
+  2026-07-31 至 08-02 分別寫了 4／4／1 則，08-03 第二批寫 0 則——那天唯一
+  評到的是撤回性質的新聞（葉門否認收費指控），不構成新判斷依據，不寫是對的。
+  **最有價值的是修正自己的觀點**：#10 修正 #8 修正 #3、#14 修正 #12、
+  #13 承認 #1 的門檻設得太寬鬆（寫下時實際值已在門檻之下）。這類條目
+  記錄的是判斷如何演變，比新開一個標的更能反映校準過程。
 - **未判定不等於 miss**：新增的預測 `verdict` 為 NULL，不進命中率分母。
   若預設成任何一種判定，命中率會從一開始就被系統性扭曲。
   由 `test_verdict_defaults_to_unjudged` 守著。
@@ -337,6 +344,18 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 ## 批次評分
 
 使用者要求「批次評分」、「處理待評分清單」時，用 `/news-importance-score` 的批次模式：`pending --json` 取清單 → 依標題粗篩（不值得的用 `skip` 標掉）→ 逐則抓內文完整評分寫入 → 輸出總表。詳細流程見 skill 內的「批次模式」章節。
+
+**抓內文一律用 `pending --json` 給的 url，不要憑標題拼湊**。2026-08-01 與
+08-02 連續兩次踩到：依標題猜 `technews.tw/2026/07/31/qualcomm-...` 與中央社
+`202608020042`，全部 404，每次都要多一輪查詢才拿到真網址。`pending --json`
+的輸出本來就含 url，直接用即可。（同 `watch-verify --evidence` 的教訓，
+但那條只涵蓋佐證連結，不含抓內文。）
+
+**`fetch` 新增少於 `THIN_BATCH_THRESHOLD`（10）則會提示可稍後再跑**。
+2026-08-02 實測：距上次抓取僅數小時就再跑，只新增 5 則、最後評到 1 則——
+但那是跑完才知道的。三天實測 fetch→評分的轉換率約 16-27%，10 則大約對應
+2-3 則可評，低於這個數不值得走完整套流程。只是提示不阻擋
+（由 `TestThinBatchWarning` 守著，含「正常批次不得提示」——常態化的提示會被忽略）。
 
 三件必須順手做的事（分開做就不會做）：
 
@@ -463,14 +482,14 @@ CI 只負責把 JSON 轉成靜態站並上線。
   export-json / import-json / export；投資線見 add-position / positions /
   position-due / position-verify / position-stats / position-schema）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，140 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest，143 個）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
   回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意、
   卡片只標命中且必附分母、錨點期間不得隨資料滾動、
   calibrate 的基準不得滾動與門檻不得誤報、
   投資預測必填 source_hint 且市場類不得復活、void 與 moot 的統計處理不同、
-  serve 預設不得對外開放且 bind 不得卡在 DNS、
+  serve 預設不得對外開放且 bind 不得卡在 DNS、fetch 產出過低要提示、
   投資觀察不得外洩到靜態站或版控；
   改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`

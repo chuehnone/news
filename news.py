@@ -588,6 +588,45 @@ def read_feeds(path):
     return feeds
 
 
+# 一次 fetch 新增少於這個數就提示「可考慮稍後再評」。
+#
+# 2026-08-02 實測：距上次抓取僅數小時就再跑一次，只新增 5 則且 4 則是社會
+# 事件，最後只評到 1 則——但那是跑完 fetch 才知道的。抓內文與評分是整個
+# 流程最貴的步驟，值得在最前面就給出「這輪划不划算」的訊號。
+#
+# 門檻取 10：三天實測 fetch→評分的轉換率約 16-27%，10 則大約對應 2-3 則
+# 可評，低於這個數就不值得走完整套流程（讀錨點、抓內文、校準、watch）。
+THIN_BATCH_THRESHOLD = 10
+
+
+def warn_if_thin_batch(conn, total_new):
+    """新增太少時提示可以稍後再跑，並附上距上次抓取的間隔。
+
+    只是提示不是阻擋——使用者可能就是想看有沒有新東西。
+    """
+    if total_new >= THIN_BATCH_THRESHOLD:
+        return
+    row = conn.execute(
+        "SELECT MAX(fetched_at) AS t FROM pending WHERE fetched_at IS NOT NULL"
+    ).fetchone()
+    gap = ""
+    prev = conn.execute(
+        "SELECT fetched_at FROM pending WHERE fetched_at IS NOT NULL "
+        "ORDER BY fetched_at DESC LIMIT 1 OFFSET ?", (max(total_new, 1),)
+    ).fetchone()
+    if prev and row and row["t"]:
+        try:
+            a = datetime.strptime(prev["fetched_at"][:19], "%Y-%m-%d %H:%M:%S")
+            b = datetime.strptime(row["t"][:19], "%Y-%m-%d %H:%M:%S")
+            hours = (b - a).total_seconds() / 3600
+            if hours >= 0:
+                gap = f"（距上一批約 {hours:.0f} 小時）"
+        except ValueError:
+            pass
+    print(f"  ℹ️  本次新增偏少{gap}。抓內文與評分是最貴的步驟，"
+          f"若非特意查看可考慮稍後再跑。")
+
+
 def cmd_fetch(args):
     feeds_path = Path(args.feeds)
     if not feeds_path.exists():
@@ -645,6 +684,7 @@ def cmd_fetch(args):
 
     remaining = conn.execute("SELECT COUNT(*) FROM pending WHERE status = 'new'").fetchone()[0]
     print(f"完成：本次新增 {total_new} 則，待評分共 {remaining} 則（python3 news.py pending 檢視）")
+    warn_if_thin_batch(conn, total_new)
     conn.close()
 
 
