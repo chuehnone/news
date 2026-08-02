@@ -416,12 +416,12 @@
   "verified_date": "2026-07-28"
  },
  {
-  "evidence_url": "https://www.cna.com.tw/news/aopl/202607280003.aspx",
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cly97n5k6j6o/trad",
   "idx": 2,
   "news_url": "https://udn.com/news/story/7238/9624933",
-  "note": "7/28川普接受Axios訪問證實美伊談判進行中，焦點為重啟荷莫茲通道與核子協議，阿曼主導斡旋、特使魏科夫與庫許納參與",
+  "note": "川普 8/2 宣布取消對伊朗打擊，稱應伊朗及其他中東國家要求暫緩以爭取談判時間，並稱「協議的框架已經達成一致」，內容含立即開放荷莫茲海峽與消除核威脅。談判確實重啟。註：伊朗官方尚未回應，目前僅為美方單邊說法。",
   "verdict": "hit",
-  "verified_date": "2026-07-28"
+  "verified_date": "2026-08-02"
  },
  {
   "evidence_url": null,
@@ -1030,6 +1030,22 @@
   "note": "談判姿態變化明確：台灣獲10%不疊加(僅台歐2個經濟體)、2231項豁免，優於日韓12.5%；巴西、泰國、越南、澳洲均在窗口內公開反制或要求談判。7/27報導完整揭露四層級稅率的談判邏輯",
   "verdict": "hit",
   "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cly97n5k6j6o/trad",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607160043.aspx",
+  "note": "川普 8/2 稱應伊朗及其他中東國家要求取消打擊、爭取達成協議的時間，並稱框架已達成一致。伊朗確實回到談判桌，但官方尚未公開證實。",
+  "verdict": "hit",
+  "verified_date": "2026-08-02"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cly97n5k6j6o/trad",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607160044.aspx",
+  "note": "當初評「與美陷入生死存亡之戰」時預期談判管道可能徹底斷絕，實際上 8/2 川普宣布應伊朗要求取消打擊、稱協議框架已達成一致——管道不僅未斷絕且重新開啟。判斷方向錯誤。",
+  "verdict": "miss",
+  "verified_date": "2026-08-02"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607280341.aspx",
