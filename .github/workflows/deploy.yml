@@ -12,6 +12,10 @@ on:
       - "server.py"
       - "news.py"
       - "test_news.py"
+      # 關稅比較頁：資料由本機 tariff.py fetch 更新後進版控，CI 只讀 JSON
+      - "data/tariff.json"
+      - "tariff.py"
+      - "tariff_page.py"
       # 分享預覽圖是進版控的成品（CI 沒有中文字型無法生成），更新它也要重新部署
       - "assets/**"
       - ".github/workflows/deploy.yml"
@@ -38,7 +42,7 @@ jobs:
           python-version: "3.12"
 
       - name: 跑測試
-        run: python3 -m unittest test_news
+        run: python3 -m unittest test_news test_tariff
 
       - name: 從 JSON 重建資料庫
         run: |

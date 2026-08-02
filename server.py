@@ -1300,6 +1300,10 @@ def render_static_page():
 <div class="wrap">
 <h1>📰 {escape(SITE_TITLE)}</h1>
 <div class="sub">依 /news-importance-score 五面向評分（100 分制）整理的新聞資料庫｜更新於 {generated}</div>
+<div class="nav">
+<a href="./" class="active">📰 新聞評分</a>
+<a href="tariff.html">🧾 關稅比較</a>
+</div>
 <div class="filters"><div class="tabs">{"".join(tabs)}</div>{DENSITY_TOGGLE}</div>
 {controls}
 {"".join(body)}
@@ -1538,6 +1542,19 @@ def export_static(out_dir, retention=False, today=None):
                   f"（用 `python3 news.py og` 產生）")
         kb = len(html.encode("utf-8")) / 1024
         print(f"已輸出靜態網站到 {index}（{kb:.0f} KB、{n} 張卡片）")
+
+        # 關稅比較頁是獨立工具，資料另存 data/tariff.json。
+        #
+        # 任何失敗都只跳過這一頁而非中止——新聞站是主體，不該被附屬工具拖累。
+        # 要接 ImportError：測試把 news.py/server.py 複製到暫存目錄執行，
+        # tariff_page.py 不在那裡，只接 SystemExit 會讓 32 個既有測試爆掉。
+        try:
+            from tariff_page import render_page as render_tariff
+            t_html = render_tariff()
+            (out_dir / "tariff.html").write_text(t_html, encoding="utf-8")
+            print(f"已輸出關稅比較頁（{len(t_html.encode('utf-8'))/1024:.0f} KB）")
+        except (ImportError, SystemExit, OSError) as e:
+            print(f"略過關稅比較頁：{e}")
     finally:
         _RETENTION_TODAY = None  # 不留狀態給後續呼叫（serve 與測試會重複進出）
 

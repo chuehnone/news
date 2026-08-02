@@ -1,0 +1,382 @@
+{
+ "additional_duties": {
+  "Algeria": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Algeria, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.20",
+    "rate": 12.5
+   }
+  ],
+  "Angola": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Angola, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.21",
+    "rate": 12.5
+   }
+  ],
+  "Argentina": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.06.10–9903.06.11, articles the product of Argentina, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.22",
+    "rate": 10.0
+   }
+  ],
+  "Australia": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Australia, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.23",
+    "rate": 12.5
+   }
+  ],
+  "Bahamas": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of the Bahamas, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.24",
+    "rate": 12.5
+   }
+  ],
+  "Bahrain": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Bahrain, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.25",
+    "rate": 12.5
+   }
+  ],
+  "Bangladesh": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.06.12–9903.06.13, articles the product of Bangladesh, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.26",
+    "rate": 10.0
+   }
+  ],
+  "Brazil": [
+   {
+    "desc": "Except for products described in headings 9903.05.02–9903.05.09, articles the product of Brazil, as provided for in subdivision (a) of U.S. note 50 to this subchapter",
+    "hts": "9903.05.01",
+    "rate": 25.0
+   },
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Brazil, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.27",
+    "rate": 12.5
+   }
+  ],
+  "Cambodia": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.06.02–9903.06.03, articles the product of Cambodia, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.28",
+    "rate": 10.0
+   }
+  ],
+  "Canada": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.93, articles the product of Canada, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.29",
+    "rate": 10.0
+   }
+  ],
+  "Chile": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Chile, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.30",
+    "rate": 12.5
+   }
+  ],
+  "China": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of China, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.31",
+    "rate": 12.5
+   }
+  ],
+  "Colombia": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Colombia, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.32",
+    "rate": 12.5
+   }
+  ],
+  "Costa Rica": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.05.95, articles the product of Costa Rica, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.33",
+    "rate": 12.5
+   }
+  ],
+  "Dominican Republic": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.05.95, articles the product of Dominican Republic, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.34",
+    "rate": 12.5
+   }
+  ],
+  "Ecuador": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.06.18–9903.06.19, articles the product of Ecuador, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.35",
+    "rate": 10.0
+   }
+  ],
+  "Egypt": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Egypt, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.36",
+    "rate": 12.5
+   }
+  ],
+  "El Salvador": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, 9903.05.95 and 9903.06.07–9903.06.09, articles the product of El Salvador, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.37",
+    "rate": 10.0
+   }
+  ],
+  "Guatemala": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, 9903.05.95 and 9903.06.04–9903.06.06, articles the product of Guatemala, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.40",
+    "rate": 10.0
+   }
+  ],
+  "Guyana": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Guyana, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.41",
+    "rate": 12.5
+   }
+  ],
+  "Honduras": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.05.95, articles the product of Honduras, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.42",
+    "rate": 10.0
+   }
+  ],
+  "India": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of India, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.44",
+    "rate": 10.0
+   }
+  ],
+  "Indonesia": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.06.16–9903.06.17, articles the product of Indonesia, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.45",
+    "rate": 10.0
+   }
+  ],
+  "Iraq": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Iraq, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.46",
+    "rate": 12.5
+   }
+  ],
+  "Israel": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Israel, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.47",
+    "rate": 12.5
+   }
+  ],
+  "Jordan": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.06.20–9903.06.21, articles the product of Jordan, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.50",
+    "rate": 10.0
+   }
+  ],
+  "Kazakhstan": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Kazakhstan, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.51",
+    "rate": 12.5
+   }
+  ],
+  "Kuwait": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Kuwait, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.52",
+    "rate": 12.5
+   }
+  ],
+  "Libya": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Libya, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.53",
+    "rate": 12.5
+   }
+  ],
+  "Malaysia": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.05.99–9903.06.01, articles the product of Malaysia, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.54",
+    "rate": 10.0
+   }
+  ],
+  "Mexico": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.05.94, articles the product of Mexico, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.55",
+    "rate": 10.0
+   }
+  ],
+  "Morocco": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Morocco, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.56",
+    "rate": 12.5
+   }
+  ],
+  "New Zealand": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of New Zealand, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.57",
+    "rate": 12.5
+   }
+  ],
+  "Nicaragua": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.05.95, articles the product of Nicaragua, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.58",
+    "rate": 12.5
+   }
+  ],
+  "Nigeria": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Nigeria, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.59",
+    "rate": 12.5
+   }
+  ],
+  "Norway": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Norway, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.60",
+    "rate": 12.5
+   }
+  ],
+  "Oman": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Oman, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.61",
+    "rate": 12.5
+   }
+  ],
+  "Pakistan": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Pakistan, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.62",
+    "rate": 10.0
+   }
+  ],
+  "Peru": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Peru, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.63",
+    "rate": 12.5
+   }
+  ],
+  "Philippines": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of the Philippines, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.64",
+    "rate": 12.5
+   }
+  ],
+  "Qatar": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Qatar, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.65",
+    "rate": 12.5
+   }
+  ],
+  "Russia": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Russia, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.66",
+    "rate": 12.5
+   }
+  ],
+  "Saudi Arabia": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Saudi Arabia, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.67",
+    "rate": 12.5
+   }
+  ],
+  "Singapore": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Singapore, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.68",
+    "rate": 12.5
+   }
+  ],
+  "South Africa": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of South Africa, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.69",
+    "rate": 12.5
+   }
+  ],
+  "Sri Lanka": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Sri Lanka, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.72",
+    "rate": 10.0
+   }
+  ],
+  "Thailand": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Thailand, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.77",
+    "rate": 12.5
+   }
+  ],
+  "Trinidad and Tobago": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Trinidad and Tobago, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.78",
+    "rate": 10.0
+   }
+  ],
+  "United Arab Emirates": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of the United Arab Emirates, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.80",
+    "rate": 12.5
+   }
+  ],
+  "United Kingdom": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92 and 9903.05.96, articles the product of the United Kingdom, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.81",
+    "rate": 10.0
+   }
+  ],
+  "Uruguay": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Uruguay, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.82",
+    "rate": 12.5
+   }
+  ],
+  "Venezuela": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Venezuela, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.83",
+    "rate": 12.5
+   }
+  ],
+  "Vietnam": [
+   {
+    "desc": "Except for products described in headings 9903.05.85–9903.05.92, articles the product of Vietnam, as provided for in U.S. note 52 to this subchapter",
+    "hts": "9903.05.84",
+    "rate": 12.5
+   }
+  ]
+ },
+ "note": "由 tariff.py fetch 產生。CI 只讀這份 JSON，不打外部 API。",
+ "source": "https://hts.usitc.gov/reststop/exportList"
+}

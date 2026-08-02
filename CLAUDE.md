@@ -58,7 +58,7 @@ python3 news.py export-json     # 匯出 news 表到 data/news.json（進版控�
 python3 news.py import-json [--replace]  # 從 JSON 重建 news 表（CI 用）
 python3 news.py export [--out dist] [--retention]  # 輸出靜態網站（--retention 為 CI 用，見下）
 python3 news.py og              # 重產分享預覽圖 assets/og.png（需 ImageMagick，產完要 commit）
-python3 -m unittest test_news    # 跑回歸測試（CI 也會跑）
+python3 -m unittest test_news test_tariff  # 跑回歸測試（CI 也會跑）
 ```
 
 ## 每批評完的校準粗篩（`news.py calibrate`）
@@ -428,6 +428,43 @@ CI 只負責把 JSON 轉成靜態站並上線。
     hash，搜尋引擎不會當成獨立頁面）。
 - ⚠️ GitHub Pages 免費版一律 public，資料會公開。
 
+## 關稅比較頁（`tariff.py` / `tariff_page.py`）
+
+站上的第二個工具，回答一個問題：**同一件產品換個國家生產，美國關稅差多少**。
+與新聞評分無關，只是共用這個 repo 與部署流程。
+
+起點是 2026 年 7 月的新聞：301 條款在兩週內取代 122 條款成為主要關稅法源
+（7/14 最高法院判 122 違法退還企業 2.6 兆、7/24 換 301 上路），稅率一次擴及
+約 60 國且逐國不同。中小出口商沒有貿易法務團隊，只能人工比對公告。
+
+```bash
+python3 tariff.py fetch                    # 從 USITC 抓取，更新 data/tariff.json
+python3 tariff.py compare 6109.10.00       # CLI 比較（--origin / --all / --limit）
+python3 tariff_page.py dist/tariff.html    # 單獨產生網頁（export 會自動做）
+python3 -m unittest test_tariff            # 16 個測試
+```
+
+- **只採 HTS `9903.05` 系列，這是整個工具最關鍵的規則**（`SERIES_PREFIX`，
+  由 `TestSeriesIsolation` 守著）。第 99 章至少有四套並存的關稅制度：
+  `9903.88`／`9903.91`（2018 年起的對中 301，依產品清單 7.5%~100%）、
+  `9903.01`／`9903.02`（對等關稅）、`9903.05`（強迫勞動 301，逐國單一稅率）。
+  **第一版混在一起取最低值，中國因 `9903.88.15` 的 7.5% 被算成 24.0%、
+  比孟加拉的 26.5% 還便宜——與實際情況（中國 12.5%、孟加拉 10%）完全相反。**
+  一個會讓人賠錢的工具比沒有工具更糟，所以寧可只涵蓋一套制度並在頁面明說範圍。
+  要擴充到其他制度時，必須逐套分開呈現而非合併。
+- **國名用固定句式的正則抓，不維護白名單**（`COUNTRY_PATTERN`）。9903.05 的
+  描述格式高度一致（`articles the product of X, as provided`），第一版用白名單
+  漏掉 40 個國家（阿爾及利亞、安哥拉、阿根廷…），而漏掉的會顯示成「未知」，
+  讓人以為沒有資料。但比對要綁死那個句式——描述裡有大量
+  `Except for products described in headings 9903.05.85–…` 的交叉引用，
+  寬鬆比對會把條號誤判成國名。
+- **資料在本機抓取後存 `data/tariff.json` 進版控，CI 只讀 JSON**。理由有二：
+  USITC 沒有 CORS 標頭（前端直接呼叫會被擋），且外部 API 沒有 SLA——讓部署
+  依賴它等於把別人的故障變成自己的。與 `data/news.json` 同一個模式。
+- **`export` 缺資料時只跳過這一頁而非中止**：新聞站是主體，不該被附屬工具拖累。
+- 只放 8 個常見出口品項的 HS code（`PRESET_PRODUCTS`）而非整份 HTS（數萬筆）：
+  這頁回答的是「移產地划不划算」，不是「查所有商品的稅率」。
+
 ## 已知陷阱
 
 實際踩過而且代價不小的，改動前先看這節：
@@ -499,4 +536,8 @@ CI 只負責把 JSON 轉成靜態站並上線。
 - `data/watch_verify.json` — watch_next 判定結果，進版控（非網站資料，但 db 不進版控）
 - `assets/og.png` — 分享預覽圖，進版控的成品（由 `news.py og` 產生，export 複製上線）
 - `.github/workflows/deploy.yml` — 部署 GitHub Pages
+- `tariff.py` — 關稅比較的 CLI 與 USITC 抓取（見上）
+- `tariff_page.py` — 關稅比較頁的靜態產生器，刻意獨立於 server.py
+- `test_tariff.py` — 關稅工具的回歸測試（16 個）
+- `data/tariff.json` — 進版控的關稅資料（由 tariff.py fetch 產生）
 - `news.db` — SQLite 資料庫（不進版控，可由 import-json 重建）
