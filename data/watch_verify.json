@@ -1134,5 +1134,37 @@
   "note": "伊朗外交部發言人貝卡伊 8/3 具名說明會談結果：雙方即將就一條新海運航線達成諒解，該航道「既不是北線，也不是南線」，旨在同時尊重雙方主權，談判已進入最後階段。但伊朗同時強調此協議與荷莫茲海峽是否重新開放無關，且阿曼官方未評論、細節未公開。",
   "verdict": "hit",
   "verified_date": "2026-08-03"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608040006.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280003.aspx",
+  "note": "8/4 伊朗外交部發言人貝卡伊正式否認與美國進行談判，稱只專注於跟阿曼就荷莫茲海峽管理達成協議。川普稱德黑蘭「表裡不一」、堅稱正在討論，但雙方對談判是否存在的認知相反。當初問的「具體時程或中間成果」在一週後仍不存在。",
+  "verdict": "miss",
+  "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202608040010.aspx",
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280003.aspx",
+  "note": "8/4 油價明確反應和平信號：紐約西德州原油跌 5.1% 收 80.34 美元、布倫特跌 4.7% 收 83.77 美元，市場解讀為對中東供應增加的預期。但同日伊朗否認談判，價格與事實出現落差。",
+  "verdict": "hit",
+  "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608040006.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280251.aspx",
+  "note": "8/4 伊朗確認與阿曼談荷莫茲海峽管理，但同時明確否認與美國談判。阿曼是伊朗的協商對象，卻未促成美伊談判——當初問的是「再度扮演美伊調解管道並促成談判」，這部分沒有發生。",
+  "verdict": "miss",
+  "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202608040010.aspx",
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280251.aspx",
+  "note": "8/4 布倫特原油對區域外交進展明確反應：跌 4.7% 收 83.77 美元，市場因美伊和平信號調整供應預期。",
+  "verdict": "hit",
+  "verified_date": "2026-08-04"
  }
 ]
