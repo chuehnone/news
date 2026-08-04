@@ -632,6 +632,14 @@
   "verified_date": "2026-07-31"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608040336.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202607290004.aspx",
+  "note": "一週後油價回落確實持續且加深：8/5 西德州跌 5.69% 收 75.77 美元、布倫特跌 5.26% 收 79.36 美元，雙雙跌破 80 關卡，主因美伊接近達成重啟荷莫茲海峽協議的預期（卡達證實調停方正協助交換協議草案）。期間未出現因衝突再起而反彈。",
+  "verdict": "hit",
+  "verified_date": "2026-08-05"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
