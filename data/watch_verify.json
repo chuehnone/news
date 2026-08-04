@@ -1152,6 +1152,22 @@
   "verified_date": "2026-08-04"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/08/04/white-house-summons-four-tech-giants-security-testing-ai-control-controversy",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280012.aspx",
+  "note": "8/4 白宮召集 Meta、Anthropic、OpenAI、Google 開閉門會議，但談的是「政府自願性資安測試」而非立法。方向是軟性框架，且白宮未公開評估指標與通報機制。當初問的「是否進入實質立法程序」在一週後仍未發生。",
+  "verdict": "miss",
+  "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/08/04/25-states-sue-trump-tariffs",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280045.aspx",
+  "note": "8/4 報導揭露完整細節：新關稅針對 59 個國家及歐盟，稅率級距為 10%-12.5% 的雙位數，涵蓋美國 99% 以上進口商品。稅率級距與適用範圍均已明確。",
+  "verdict": "hit",
+  "verified_date": "2026-08-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608040006.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202607280251.aspx",
