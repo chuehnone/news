@@ -920,6 +920,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608040271.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607110105.aspx",
+  "note": "8/4 紐時報導伊朗與阿曼協議將收取「服務費」以應對環保與安全維護成本、收入均分，但伊朗官員明確表示「不徵收通行費」。錢實質上照收，但形式刻意不是通行費——依「證據能否直接回答指標問的問題」判為 miss（同 CLAUDE.md 記載的「關稅權重建但非透過立法」案例）。協議尚未簽署。",
+  "verdict": "miss",
+  "verified_date": "2026-08-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607130003.aspx",
