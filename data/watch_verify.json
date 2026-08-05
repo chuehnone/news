@@ -432,6 +432,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608050083.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c05q7n6jn2lo/trad",
+  "note": "8/5 CNN 引述消息來源公布完整數據：薩德消耗近 80%（戰前約 452 枚）、愛國者約 50%（戰前約 2200 枚）、戰斧約 50%、ATACMS 與 PrSM 幾乎耗盡。產能方面五角大廈每月約收到 15 枚新戰斧與 20 枚新愛國者，THAAD 恢復需 3 年以上、其他預計 2027 年中至下半年。庫存與產能擴充進度均已明確。註：五角大廈與白宮公開淡化，稱庫存充裕。",
+  "verdict": "hit",
+  "verified_date": "2026-08-05"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
   "idx": 1,
   "news_url": "https://www.bbc.com/zhongwen/articles/c1jy100x235o/trad",
@@ -637,6 +645,14 @@
   "news_url": "https://www.cna.com.tw/news/afe/202607290004.aspx",
   "note": "一週後油價回落確實持續且加深：8/5 西德州跌 5.69% 收 75.77 美元、布倫特跌 5.26% 收 79.36 美元，雙雙跌破 80 關卡，主因美伊接近達成重啟荷莫茲海峽協議的預期（卡達證實調停方正協助交換協議草案）。期間未出現因衝突再起而反彈。",
   "verdict": "hit",
+  "verified_date": "2026-08-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608040336.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202607290004.aspx",
+  "note": "一週後談判確有進展（卡達 8/5 具名證實卡達、巴基斯坦、阿曼三方調停正協助交換協議草案；川普稱談判一整天），但協議至今未達成，伊朗 8/4 才公開否認與美談判。指標問「具體進展與是否達成停火協議」是複合問題，後半明確未發生，依「證據能否直接回答指標問的問題」判 miss。",
+  "verdict": "miss",
   "verified_date": "2026-08-05"
  },
  {
