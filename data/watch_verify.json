@@ -32,6 +32,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/07/20/eu-forces-google-to-change-android-feature",
+  "note": "17 天後美國仍走自願路線：白宮 8/4 召集四大 AI 廠商談的是「政府自願性資安測試」而非強制監管，且未公開評估指標。歐盟 8/2 取得 AI 法案執法權（罰款最高全球營收 7%）是歐盟自身進展，非其他地區跟進。指標問的「美國與其他地區是否跟進」未發生。",
+  "verdict": "miss",
+  "verified_date": "2026-08-06"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/07/31/tsmc-q2-earnings-call-observations-capex-revised-upwards-second-time-64-billion-boosting-advanced-process-global-expansion",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/07/20/structural-profit",
