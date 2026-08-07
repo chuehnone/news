@@ -65,6 +65,14 @@
  },
  {
   "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/07/27/changxin-memory-chinas-largest-dram-manufacturer-is-listed-for-trading",
+  "note": "8/6 華邦電法說會：CMS 營收增 78%、均價漲逾 100% 且出貨位元反減 10%，Flash 營收增 65%、位元增 156%；客戶恐慌性備貨要求簽至 2029-2030 長約。台廠報價與訂單變化明確。",
+  "verdict": "hit",
+  "verified_date": "2026-08-07"
+ },
+ {
+  "evidence_url": null,
   "idx": 0,
   "news_url": "https://money.udn.com/money/story/5599/9591511",
   "note": "窗口內無OpenAI或投銀正式確認IPO延期與新時程的報導",
@@ -408,6 +416,22 @@
   "verified_date": "2026-07-31"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/30/ai-cyberattacks-concerns-trump-considers-regulations-opposes-restrictions",
+  "note": "一週後美方仍未提出任何 AI 管制的行政命令或法案。白宮 8/4 召集四大廠商談的是「政府自願性資安測試」，且未公開評估指標與通報機制。相對地歐盟 8/2 已取得 AI 法案執法權（罰款最高全球營收 7%）——同期兩地走向完全不同。",
+  "verdict": "miss",
+  "verified_date": "2026-08-06"
+ },
+ {
+  "evidence_url": "https://infosecu.technews.tw/2026/08/06/meta-ai-model-hacks-another-company-during-testing",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/30/ai-cyberattacks-concerns-trump-considers-regulations-opposes-restrictions",
+  "note": "川普 7/30 稱「不想進行限制」，其後 OpenAI、Anthropic、Meta 三家陸續發生模型入侵他人系統事件（Irregular 指 Meta 與 Anthropic 成因完全相同）。白宮 8/4 召集四家公司舉行閉門會議討論政府自願性資安測試——從「不想限制」轉為主動召集，立場確有改變。",
+  "verdict": "hit",
+  "verified_date": "2026-08-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -454,6 +478,14 @@
   "note": "記憶體現貨價與消費電子調價的傳導完整浮現：2026Q2手機記憶體價格季增逾80%，各價位機型成本年增50-70%，中低階已面臨獲利承壓甚至虧損風險",
   "verdict": "hit",
   "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c3ekn91y5j5o/trad",
+  "note": "8/7 為止未見中國對機器人進口禁令的對等反制。同日德媒分析僅指中國『可能』動用稀土出口管制，屬預期而非已發生的措施。",
+  "verdict": "miss",
+  "verified_date": "2026-08-07"
  },
  {
   "evidence_url": null,
@@ -654,6 +686,14 @@
   "note": "一週後油價回落確實持續且加深：8/5 西德州跌 5.69% 收 75.77 美元、布倫特跌 5.26% 收 79.36 美元，雙雙跌破 80 關卡，主因美伊接近達成重啟荷莫茲海峽協議的預期（卡達證實調停方正協助交換協議草案）。期間未出現因衝突再起而反彈。",
   "verdict": "hit",
   "verified_date": "2026-08-05"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202607290004.aspx",
+  "note": "8/7 伊朗國會委員會反而在審議禁止美以船隻通行的法案（違者罰貨值 1/5），封鎖立場未鬆動；油價單日漲逾 3 美元，布蘭特收 82.49。實際通行量亦未見恢復。",
+  "verdict": "miss",
+  "verified_date": "2026-08-07"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608040336.aspx",
@@ -1176,12 +1216,36 @@
   "verified_date": "2026-08-03"
  },
  {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607270241.aspx",
+  "note": "8/7 川普明確表態正參與重開談判、稱海峽由美軍掌控且封鎖持續，即美方對繞過華府的伊阿雙邊機制以維持軍事控制與封鎖作為回應。",
+  "verdict": "hit",
+  "verified_date": "2026-08-07"
+ },
+ {
+  "evidence_url": null,
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607270241.aspx",
+  "note": "同上，8/7 海峽仍未實際恢復通行，僅進入航行路線協商與聯合聲明審視階段。",
+  "verdict": "miss",
+  "verified_date": "2026-08-07"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608040006.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607280003.aspx",
   "note": "8/4 伊朗外交部發言人貝卡伊正式否認與美國進行談判，稱只專注於跟阿曼就荷莫茲海峽管理達成協議。川普稱德黑蘭「表裡不一」、堅稱正在討論，但雙方對談判是否存在的認知相反。當初問的「具體時程或中間成果」在一週後仍不存在。",
   "verdict": "miss",
   "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280003.aspx",
+  "note": "8/7 為止海峽未實際恢復通行。川普稱重開談判可能很快有結果、伊朗與阿曼已談定航行路線，但美方稱封鎖持續、伊方稱開放以美方解除港口封鎖為前提，順序未合攏。談判有進展，通行未恢復。",
+  "verdict": "miss",
+  "verified_date": "2026-08-07"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202608040010.aspx",
@@ -1206,6 +1270,14 @@
   "note": "8/4 報導揭露完整細節：新關稅針對 59 個國家及歐盟，稅率級距為 10%-12.5% 的雙位數，涵蓋美國 99% 以上進口商品。稅率級距與適用範圍均已明確。",
   "verdict": "hit",
   "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280251.aspx",
+  "note": "8/6-8/7 伊朗外交部發言人貝卡伊證實伊朗與阿曼已就通過海峽的航行路線達成共識，且雙方正就共同管理海峽做最後調整、聯合聲明審視中，屬進一步的實質協議進展。",
+  "verdict": "hit",
+  "verified_date": "2026-08-07"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608040006.aspx",
