@@ -416,6 +416,38 @@
   "verified_date": "2026-07-31"
  },
  {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/07/26/qualcomm-is-about-to-raise-prices",
+  "note": "未緩解。今日報導傳 DRAM 短缺已卡住台積電為蘋果生產的 A20 Pro 封裝、價值 10 億美元晶片堆積廠內；WSTS 同步上修記憶體成長至 302%。缺貨情況較 7/26 更嚴重。",
+  "verdict": "miss",
+  "verified_date": "2026-08-07"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/07/27/micron-ceo-sanjay-mehrotras-bad-blood-with-apple-traces-back-years",
+  "note": "旺宏第二季毛利率由 40.8% 跳升至 64.4%、7 月營收年增 180.5%；WSTS 同日將 2026 年記憶體營收成長預估由 249% 上修至 302%。價格持續上漲成立。",
+  "verdict": "hit",
+  "verified_date": "2026-08-07"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/07/27/micron-ceo-sanjay-mehrotras-bad-blood-with-apple-traces-back-years",
+  "note": "旺宏 7 月營收 77.25 億元年增 180.5%、前 7 月年增 137.8%，並加碼 158 億資本支出；南亞科同日決議 5A 新廠上限 3,466 億元並上修今年資本支出至 697 億元。台廠訂單與報價明確走揚。",
+  "verdict": "hit",
+  "verified_date": "2026-08-07"
+ },
+ {
+  "evidence_url": null,
+  "idx": 4,
+  "news_url": "https://technews.tw/2026/07/27/moonshot-ai-kimi-k3-download-worlds-largest-open-source-model",
+  "note": "字節跳動傳擬訓練逾 5 兆參數模型，報導明確對標 Kimi K3 的 2.8 兆與 Qwen 3.8-Max 的 2.4 兆，動機是「與其在現有尺寸追趕不如把參數推到同行數倍」。參數規模競賽確實延續。惟計畫仍在早期、字節未證實。",
+  "verdict": "hit",
+  "verified_date": "2026-08-07"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
   "idx": 0,
   "news_url": "https://technews.tw/2026/07/30/ai-cyberattacks-concerns-trump-considers-regulations-opposes-restrictions",
