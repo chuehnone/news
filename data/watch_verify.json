@@ -1256,6 +1256,14 @@
   "verified_date": "2026-07-30"
  },
  {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607260014.aspx",
+  "note": "指標點名卡達、巴林、科威特三國的立場與防衛部署，今日報導僅涉阿聯譴責伊朗攻擊 ADNOC 油輪，三國均未表態、防衛部署亦無資料，不構成命中。",
+  "verdict": "miss",
+  "verified_date": "2026-08-09"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608030005.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202607270241.aspx",
