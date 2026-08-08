@@ -464,6 +464,14 @@
   "verified_date": "2026-08-06"
  },
  {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/30/us-bans-foreign-robot-imports-taiwan-supply-chain-3-advantages-benefit",
+  "note": "8/8 台廠人形機器人供應鏈盤點中，時碩獲的是中國大陸廠商初期訂單、宇隆僅稱通過重點客戶認證未指明美系，達明在車用與半導體客戶為試用階段。無台廠公布來自美系機器人客戶的具體訂單。凌華預估 2027 年底至 2028 年才進入量產。",
+  "verdict": "miss",
+  "verified_date": "2026-08-08"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
