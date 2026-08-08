@@ -737,6 +737,14 @@
  },
  {
   "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608010054.aspx",
+  "note": "8/7 收盤布蘭特 10 月期貨 83.55 美元、WTI 78.18 美元，未達業者預期的 85 美元以上。荷莫茲協議傳有進展壓抑漲勢。",
+  "verdict": "miss",
+  "verified_date": "2026-08-08"
+ },
+ {
+  "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
   "note": "60天免費期屆滿後未見伊朗公布正式收費規範或費率。實際走向是7/14川普宣布對經海峽貨物徵20%補償費(美方而非伊朗收費)，伊朗端則轉為以攔截、襲擊迫使船隻改道並付費換安全通行，未走向制度化收費",
@@ -1326,5 +1334,21 @@
   "note": "8/4 布倫特原油對區域外交進展明確反應：跌 4.7% 收 83.77 美元，市場因美伊和平信號調整供應預期。",
   "verdict": "hit",
   "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607310271.aspx",
+  "note": "8/7 布蘭特收 83.55 美元，距 90 美元仍有距離，未站穩。",
+  "verdict": "miss",
+  "verified_date": "2026-08-08"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608010011.aspx",
+  "note": "8/7 布蘭特收 83.55 美元，未突破 95 美元。",
+  "verdict": "miss",
+  "verified_date": "2026-08-08"
  }
 ]
