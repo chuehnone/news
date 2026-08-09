@@ -472,6 +472,14 @@
   "verified_date": "2026-08-08"
  },
  {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/30/us-senators-urge-apple-to-abandon-plans-for-chinese-made-chips",
+  "note": "8/9 華爾街日報報導蘋果已讓 iPhone、MacBook 測試長鑫記憶體，但蘋果未回應置評、路透亦表示無法確認報導真實性。參議員致函後蘋果始終未公開回應或證實採購計畫。",
+  "verdict": "miss",
+  "verified_date": "2026-08-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
