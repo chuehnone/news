@@ -665,6 +665,14 @@
  },
  {
   "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cly97n5k6j6o/trad",
+  "note": "8/9 BBC 報導伊朗自 2 月封鎖海峽至今未解，外長阿拉格奇稱全面重開取決於其他條件（含美國賠償、解除制裁、解凍資產等六項要求），革命衛隊明言維持封鎖直到敵人接受所有條件。通行量未恢復。",
+  "verdict": "miss",
+  "verified_date": "2026-08-09"
+ },
+ {
+  "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202607200062.aspx",
   "note": "窗口內無亞利桑那各期廠實際量產時程的報導。加碼投資金額有揭露，但分期量產時間表未見",
@@ -1257,9 +1265,25 @@
  },
  {
   "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607250205.aspx",
+  "note": "8/9 吉贊煉油廠再遭襲後，沙烏地選擇淡化損害、未見報復性軍事行動，亦未援引兩天前簽署的麥加三國防禦協定。15 天窗口內未升級軍事回應。",
+  "verdict": "miss",
+  "verified_date": "2026-08-09"
+ },
+ {
+  "evidence_url": null,
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202607260014.aspx",
   "note": "指標點名卡達、巴林、科威特三國的立場與防衛部署，今日報導僅涉阿聯譴責伊朗攻擊 ADNOC 油輪，三國均未表態、防衛部署亦無資料，不構成命中。",
+  "verdict": "miss",
+  "verified_date": "2026-08-09"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607260036.aspx",
+  "note": "8/9 吉贊煉油廠（日處理 40 萬桶）遭無人機攻擊，沙烏地能源部稱火警已撲滅、未對營運或財務造成重大影響、無人員傷亡，阿美總裁納瑟稱可迅速恢復。無實質產能損失。",
   "verdict": "miss",
   "verified_date": "2026-08-09"
  },
@@ -1342,6 +1366,14 @@
   "note": "8/4 伊朗確認與阿曼談荷莫茲海峽管理，但同時明確否認與美國談判。阿曼是伊朗的協商對象，卻未促成美伊談判——當初問的是「再度扮演美伊調解管道並促成談判」，這部分沒有發生。",
   "verdict": "miss",
   "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": null,
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280251.aspx",
+  "note": "未鬆動且升級。8/9 青年運動以無人機攻擊沙烏地阿美吉贊煉油廠；BBC 另載自 7/20 起青年運動對沙烏地紅海港口實施另一次封鎖。外交接觸未帶來緩解。",
+  "verdict": "miss",
+  "verified_date": "2026-08-09"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202608040010.aspx",
