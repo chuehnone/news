@@ -794,6 +794,22 @@
  {
   "evidence_url": null,
   "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608040010.aspx",
+  "note": "8/11 國際油價漲約5%，西德州82.13美元、布倫特87.72美元，明確回升。",
+  "verdict": "hit",
+  "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608040010.aspx",
+  "note": "8/11 布倫特87.72美元，遠高於80美元，守住。",
+  "verdict": "hit",
+  "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
   "note": "60天免費期屆滿後未見伊朗公布正式收費規範或費率。實際走向是7/14川普宣布對經海峽貨物徵20%補償費(美方而非伊朗收費)，伊朗端則轉為以攔截、襲擊迫使船隻改道並付費換安全通行，未走向制度化收費",
   "verdict": "miss",
@@ -1438,5 +1454,21 @@
   "note": "8/7 布蘭特收 83.55 美元，未突破 95 美元。",
   "verdict": "miss",
   "verified_date": "2026-08-08"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608040006.aspx",
+  "note": "8/11 油價漲5%、布倫特87.72美元，在伊朗否認談判後確實回升。",
+  "verdict": "hit",
+  "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608040301.aspx",
+  "note": "8/5 未達成協議。8/5-8/11 全程停留在「接近達成／進展順利／可能很快」等說法，8/11 談判仍陷停滯，川普另新增戰爭賠償要求使協議更難達成。",
+  "verdict": "miss",
+  "verified_date": "2026-08-11"
  }
 ]
