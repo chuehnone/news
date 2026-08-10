@@ -73,6 +73,14 @@
  },
  {
   "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
+  "note": "8/10 美 FCC 進一步提議回溯禁售配備光達的大疆機型（Air 3S、Mini 5 Pro、Avata 360 等），管制範圍擴及熱成像、噴灑、群飛等技術。台灣方面在此期間未見跟進限制中國製無人機採購或進口的政策動作。",
+  "verdict": "miss",
+  "verified_date": "2026-08-10"
+ },
+ {
+  "evidence_url": null,
   "idx": 0,
   "news_url": "https://money.udn.com/money/story/5599/9591511",
   "note": "窗口內無OpenAI或投銀正式確認IPO延期與新時程的報導",
@@ -448,6 +456,14 @@
   "verified_date": "2026-08-07"
  },
  {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/28/ai-demand-spurs-japan-korea-mlcc-record-monthly-shipments-consumer-order-spillover",
+  "note": "8/10 國巨 7 月營收 161.31 億元創歷史單月新高、年增 51.5%；華新科 44.43 億元創近 8 年新高、年增 42%。華新科總經理曾明燦表示近 2-3 個月接單出貨比超過 1.8（先前 1.4），董事長焦佑衡稱產品漲價勢在必行。訂單與報價雙雙上揚。",
+  "verdict": "hit",
+  "verified_date": "2026-08-10"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
   "idx": 0,
   "news_url": "https://technews.tw/2026/07/30/ai-cyberattacks-concerns-trump-considers-regulations-opposes-restrictions",
@@ -678,6 +694,14 @@
   "note": "8/9 BBC 報導伊朗自 2 月封鎖海峽至今未解，外長阿拉格奇稱全面重開取決於其他條件（含美國賠償、解除制裁、解凍資產等六項要求），革命衛隊明言維持封鎖直到敵人接受所有條件。通行量未恢復。",
   "verdict": "miss",
   "verified_date": "2026-08-09"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/acn/202608010139.aspx",
+  "note": "8/10 SAG 報告顯示 2026 上半年中國廠商占全球人形機器人出貨 97%（智元 8,400 台、宇樹 5,900 台），特斯拉、Figure AI、Agility 等美廠出貨明顯落後。未見台廠或其他非中國廠商公布美系機器人訂單。",
+  "verdict": "miss",
+  "verified_date": "2026-08-10"
  },
  {
   "evidence_url": null,
@@ -1238,6 +1262,14 @@
   "note": "7/28川普證實美伊談判，由阿曼主導、卡達巴基斯坦埃及參與，焦點為重啟荷莫茲通道",
   "verdict": "hit",
   "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607200064.aspx",
+  "note": "8/10 報導顯示 6 名中資股東（合計 17.5%）拒不遵守 7 月 2 日的出售期限，截至 7 月 14 日仍有 3 人未出售，澳洲政府改以禁止投票權因應。股權未獲最終處置，僵局持續。",
+  "verdict": "miss",
+  "verified_date": "2026-08-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/acn/202608010129.aspx",
