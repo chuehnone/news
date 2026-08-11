@@ -704,6 +704,22 @@
   "verified_date": "2026-08-09"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cy74j0rz54go/trad",
+  "note": "封鎖未解除。8/12 美軍持續執行並第三次開火攔截；伊朗新任國安會秘書同日重申美方不撤除封鎖等舉措前海峽不開放。",
+  "verdict": "miss",
+  "verified_date": "2026-08-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608120006.aspx",
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cy74j0rz54go/trad",
+  "note": "海峽未恢復通行。8/12 伊朗最高國安會秘書雷札伊明確表示美國滿足條件前海峽持續關閉，並強調與阿曼的航道協議「與海峽關閉是兩回事」；同日美軍仍在攔截駛往伊朗港口的船隻。",
+  "verdict": "miss",
+  "verified_date": "2026-08-12"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/acn/202608010139.aspx",
@@ -1488,11 +1504,27 @@
   "verified_date": "2026-08-11"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608080008.aspx",
+  "note": "封鎖未解除，反而升級。8/12 美軍第三次強制攔截突破封鎖的商船並開火。",
+  "verdict": "miss",
+  "verified_date": "2026-08-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608110235.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608100314.aspx",
   "note": "8/11 完成定價：每股95美元、實際募得200億美元（超出原訂150億目標三分之一），較前日收盤97.52美元溢價約2.6%，非折價發行。",
   "verdict": "hit",
   "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608110095.aspx",
+  "note": "封鎖未解除。8/12 CENTCOM 公布美軍 MH-60 直升機對巴拿馬籍貨輪 Vela Nova 開火使其失去動力，為 7/14 恢復封鎖以來第三次強制攔截，累計迫使 55 艘船改道、2 艘遭登船檢查。",
+  "verdict": "miss",
+  "verified_date": "2026-08-12"
  }
 ]
