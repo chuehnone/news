@@ -1504,6 +1504,22 @@
   "verified_date": "2026-08-11"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608120163.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608040336.aspx",
+  "note": "未回升。8/11 通行船舶降至 8 艘、創一週新低，倫敦證交所集團記錄 11 次通行亦較前日 14 次下降。",
+  "verdict": "miss",
+  "verified_date": "2026-08-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608120163.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608070018.aspx",
+  "note": "通行船班數未回升。8/11 僅 8 艘、為一週新低，遠低於戰前的每日 130-140 艘。",
+  "verdict": "miss",
+  "verified_date": "2026-08-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202608080008.aspx",
@@ -1518,6 +1534,14 @@
   "note": "8/11 完成定價：每股95美元、實際募得200億美元（超出原訂150億目標三分之一），較前日收盤97.52美元溢價約2.6%，非折價發行。",
   "verdict": "hit",
   "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608120163.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608110095.aspx",
+  "note": "未回升，反而創新低。8/11 Kpler 追蹤荷莫茲通行船舶僅 8 艘，低於 10 天平均 12 艘；戰前每日通常 130-140 艘，目前約為戰前的 6%。",
+  "verdict": "miss",
+  "verified_date": "2026-08-12"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
