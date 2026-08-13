@@ -1512,6 +1512,14 @@
   "verified_date": "2026-08-12"
  },
  {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608050357.aspx",
+  "note": "2026-08-13 報導：截至 2026 Q1 全美 75 個資料中心專案遭在地反對，涉約 1300 億美元投資，爭點含用水、噪音、空品與電價；甲骨文 Project Jupiter 因居民反彈改用燃料電池、Nebius 遷址 Vineland 規劃 328MW 燃料電池。抗議規模確實持續擴大。",
+  "verdict": "hit",
+  "verified_date": "2026-08-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120163.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202608070018.aspx",
