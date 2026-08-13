@@ -1370,6 +1370,14 @@
  {
   "evidence_url": null,
   "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607260016.aspx",
+  "note": "2026-08-14 報導：確診自 7/26 的 3000 餘例升至 4566 例、死亡逾 2128 人，擴散至 6 省。衛生官員稱傳播速度前所未見，前三個月病例數為 2014 年西非疫情同期的 7 倍，成長曲線確實加速。",
+  "verdict": "hit",
+  "verified_date": "2026-08-14"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202607260036.aspx",
   "note": "8/9 吉贊煉油廠（日處理 40 萬桶）遭無人機攻擊，沙烏地能源部稱火警已撲滅、未對營運或財務造成重大影響、無人員傷亡，阿美總裁納瑟稱可迅速恢復。無實質產能損失。",
   "verdict": "miss",
@@ -1526,6 +1534,14 @@
   "note": "通行船班數未回升。8/11 僅 8 艘、為一週新低，遠低於戰前的每日 130-140 艘。",
   "verdict": "miss",
   "verified_date": "2026-08-12"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608070081.aspx",
+  "note": "2026-08-14 布蘭特收 87.07 美元，站上 85。惟需註記：當日是下跌 2.15%（需求疲弱與美庫存增加），僅因葉門襲沙烏地阿美煉油廠的消息限縮跌幅——價位達標，但近期驅動方向已從地緣風險轉為需求面。",
+  "verdict": "hit",
+  "verified_date": "2026-08-14"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
