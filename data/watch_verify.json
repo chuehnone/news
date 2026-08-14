@@ -464,6 +464,14 @@
   "verified_date": "2026-08-10"
  },
  {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/07/28/anthropic-explains-its-position-on-open-weights-models",
+  "note": "2026-08-14 中央社：DoorDash、Airbnb 等企業已採用中國開源模型控制成本；月之暗面與 DeepSeek 藉開源打入全球市場。採用率的實證促使 OpenAI 將 GPT-5.6 Luna 降價 80%、Anthropic 喊停原訂 9 月的 Sonnet 5 漲價，Silicon Data 顯示美國主要模型價格自 7 月中旬下降近 25%。",
+  "verdict": "hit",
+  "verified_date": "2026-08-14"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
   "idx": 0,
   "news_url": "https://technews.tw/2026/07/30/ai-cyberattacks-concerns-trump-considers-regulations-opposes-restrictions",
