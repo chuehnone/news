@@ -45,15 +45,19 @@ python3 news.py pending --json    # 取清單
 2026-08-01 與 08-02 連續兩次踩到：依標題猜 `technews.tw/2026/07/31/qualcomm-...`
 與中央社 `202608020042`，全部 404，每次都要多一輪查詢才拿到真網址。
 
-**BBC 的 WebFetch 會被擋**，改用：
+**抓內文的工具依站別二選一，先看網域再決定，不要先試再說**：
 
-```bash
-python3 fetch_article.py <url>
-```
+| 網域 | 用 | 用錯的下場 |
+|------|-----|-----------|
+| `www.bbc.com` | `python3 fetch_article.py <url>` | WebFetch 回 `unable to fetch` |
+| `technews.tw`（含 `finance.` / `infosecu.` 子網域）、`www.cna.com.tw` | WebFetch | `fetch_article.py` 回**看似成功但無正文**的導覽內容 |
 
-這條規則寫在 `CLAUDE.md:407`，但實測撞牆 25 次只有 1 次真的轉用 fallback
-（累計 65 次失敗、跨 10 個 session）。**在這裡把它當預設路徑，不是例外處理**——
-遇到 `www.bbc.com` 直接用 `fetch_article.py`，不要先試 WebFetch。
+BBC 那條寫在 `CLAUDE.md`，但實測撞牆 25 次只有 1 次真的轉用 fallback
+（累計 65 次失敗、跨 10 個 session）。**在這裡把它當預設路徑，不是例外處理**。
+
+反向同樣要小心（2026-08-17 實測）：`fetch_article.py` 是為 BBC 寫的，
+對 technews 回會員選單與導覽列、對中央社回整頁側欄連結清單，**都不報錯**。
+憑「有輸出」判斷會誤以為抓到內文，實際拿去評分就是憑標題腦補。
 
 ### 步驟 3：watch_next 順手判定
 

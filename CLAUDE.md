@@ -408,7 +408,15 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 - 所有 url 存入與比對前都會經 `normalize_url()` 剝除追蹤參數（utm_*、at_* 等）。
 - `fetch` 會跳過 `news` 表已有的連結；`pending` 表以 url 去重，重跑安全。標題命中 `LOWPRIO_KEYWORDS`（盤勢／天氣／體育／彩券）的項目直接標 `low`，不進預設待評分清單（`pending --all` 可見）。
 - `add` 寫入評分後，會把 `pending` 中相同 url 或相同標題（含「 - 媒體名」後綴）的項目標成 `scored`。
-- WebFetch 被擋的網站（如 BBC）用 `python3 fetch_article.py <url>...` 抓內文。
+- **抓內文的工具依站別二選一，兩者不能互相替代**（2026-08-17 實測）：
+  - `www.bbc.com` → `python3 fetch_article.py <url>...`。WebFetch 對 BBC 一律回
+    `unable to fetch`，不要先試。
+  - `technews.tw` / `finance.technews.tw` / `infosecu.technews.tw` / `www.cna.com.tw`
+    → WebFetch。`fetch_article.py` 對這幾站會回**看似成功但無正文**的內容：
+    technews 回導覽列與會員選單、中央社回整頁側欄連結清單。
+    它不會報錯，所以憑「有輸出」判斷會誤以為抓到了。
+  `fetch_article.py` 是為 BBC 寫的，不是通用 fallback——把它當通用工具用，
+  在 technews 上會白跑一輪才發現要改用 WebFetch。
 - 目前沒有定時排程，`fetch` 由手動（或請 Claude Code）執行。
 
 ## 線上部署（GitHub Pages）
@@ -563,7 +571,8 @@ python3 -m unittest test_tariff            # 16 個測試
   投資觀察不得外洩到靜態站或版控；
   改這幾處的邏輯後務必跑過（CI 也會在建站前跑）。
 - `server.py` — 網頁介面，Python 標準庫實作，無外部依賴。常數一律 import 自 `news.py`
-- `fetch_article.py` — 內文抓取 fallback（BBC 等 WebFetch 被擋的站）
+- `fetch_article.py` — BBC 專用的內文抓取（**不是通用 fallback**，對 technews／中央社
+  會回無正文的導覽內容，見「RSS 自動抓取」）
 - `feeds.txt` — RSS 來源清單
 - `data/news.json` — 進版控的資料來源（由 export-json 產生）
 - `data/watch_verify.json` — watch_next 判定結果，進版控（非網站資料，但 db 不進版控）
