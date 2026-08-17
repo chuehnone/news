@@ -816,6 +816,14 @@
   "verified_date": "2026-08-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202608180011.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202607300016.aspx",
+  "note": "2026-08-18 收盤：費半 +1.64%（+203.96 點）、標普 500 -0.52%（-40.70 點）、道瓊 -0.51%。背離不僅持續且擴大到正負號相反——同日中東地緣風險推升油價與殖利率壓抑大盤，半導體卻獨強。指標問的「差距是否持續擴大」有明確同日對照數據支持。",
+  "verdict": "hit",
+  "verified_date": "2026-08-18"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202608010054.aspx",
