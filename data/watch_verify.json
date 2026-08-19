@@ -712,6 +712,22 @@
   "verified_date": "2026-08-09"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/c70glkrgd1eo/trad",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cp839rnw40po/trad",
+  "note": "8/18 治喪已可判讀：追悼規格給足（七常委全到＋韓正，與李克強、李鵬同級，天安門等地降半旗），但悼詞用語未走改革開放延續性——習近平談的是『提高對各種風險的警惕性』與『不屈不撓的鬥爭精神』，並讚揚江澤民1989年對上海改革派報紙的整肅。學者布朗指當局不允許暗示曾有另一條發展道路的說法公開傳播。",
+  "verdict": "hit",
+  "verified_date": "2026-08-19"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/c70glkrgd1eo/trad",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cp839rnw40po/trad",
+  "note": "8/18 治喪當日證實：經濟學家趙建在微信悼念朱鎔基與改革年代的文章，發布次日即遭刪除，作者自述『改了又改，刪了又刪，還是發不出來』；BBC 並指有關朱鎔基的帖文在網路上受嚴格管控與刪除。管制確實發生。",
+  "verdict": "hit",
+  "verified_date": "2026-08-19"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
   "idx": 1,
   "news_url": "https://www.bbc.com/zhongwen/articles/cy74j0rz54go/trad",
