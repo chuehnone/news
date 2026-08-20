@@ -576,6 +576,9 @@ python3 -m unittest test_tariff            # 16 個測試
 - `feeds.txt` — RSS 來源清單
 - `data/news.json` — 進版控的資料來源（由 export-json 產生）
 - `data/watch_verify.json` — watch_next 判定結果，進版控（非網站資料，但 db 不進版控）
+- `docs/calibrate-protocol.md` — 校準程序的唯一出處，`/update-news` 與
+  `/news-importance-score` 兩個 skill 都指向它。抽出前兩份手抄版已各自漂移，
+  **不要在任一 SKILL.md 內重抄**（同「schema 常數只能有一份」的理由）
 - `assets/og.png` — 分享預覽圖，進版控的成品（由 `news.py og` 產生，export 複製上線）
 - `.github/workflows/deploy.yml` — 部署 GitHub Pages
 - `tariff.py` — 關稅比較的 CLI 與 USITC 抓取（見上）
