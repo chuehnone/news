@@ -80,6 +80,14 @@
   "verified_date": "2026-08-19"
  },
  {
+  "evidence_url": "https://technews.tw/2026/08/21/panama-canal-to-cut-daily-transits-starting-in-september",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/08/12/panama-canal-fees-hit-record-high-as-el-nino-and-iran-war-choke-shipping",
+  "note": "巴拿馬運河管理局 8/20 正式公告：自 9/3 起每日通行船隻從 36 艘減至 34 艘、9/15 起進一步降至 32 艘，理由是聖嬰現象乾旱使水位降低（5-8 月降雨量較歷史平均少 34%）。指標問的減班限制確實祭出。",
+  "verdict": "hit",
+  "verified_date": "2026-08-22"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
