@@ -880,6 +880,14 @@
   "verified_date": "2026-08-11"
  },
  {
+  "evidence_url": "https://technews.tw/2026/08/23/innolux-earnings-call-26q2",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202608090091.aspx",
+  "note": "群創 8/23 法說會揭露：非顯示器營收占比由 2024 上半年 24% 提升至 2026 上半年 42%，消費性顯示器占比由 68% 降至 45%。面板營收占比確實逐季下降，轉型進度有量化證據。（僅群創，友達數字未在本則揭露。）",
+  "verdict": "hit",
+  "verified_date": "2026-08-23"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202608110278.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202608100280.aspx",
