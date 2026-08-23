@@ -1630,5 +1630,29 @@
   "note": "未於 8/19 生效，延期至 8/22。8/21 報導雙方談判代表連續第 3 天在華府會談，川普稱若未達成協議將於美東 8/22 凌晨 12:01 起對約 200 億美元加國商品加徵 50% 關稅——即原訂 8/19 的大限確實再度延期。指標問「如期生效或再度延期」，答案是延期。",
   "verdict": "hit",
   "verified_date": "2026-08-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608230021.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608180298.aspx",
+  "note": "指標前提是「若達成協議」，但 8/22 談判破裂、50% 關稅生效，協議未達成故無從判斷加方的讓步幅度。卡尼僅表示若美國大幅降低關稅、加方願撤銷剩餘報復性關稅並鼓勵各省恢復銷售美國酒精飲料，但那是條件式表態而非實際讓步。",
+  "verdict": "moot",
+  "verified_date": "2026-08-23"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608230021.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608180298.aspx",
+  "note": "美方非但未調降對加鋼鋁、汽車、木材關稅，反而在 8/22 談判破裂後援引 1930 年關稅法第 338 條加徵 50% 關稅，疊加在既有措施之上（含上月才課的 10%）。談判期間曾傳出汽車擬降至 15%、鋼鋁減半的條件，但隨破局未實現。",
+  "verdict": "miss",
+  "verified_date": "2026-08-23"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608230021.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608220029.aspx",
+  "note": "談判在最後一刻破裂，50% 關稅於 8/22 如期生效，涉及約 200 億美元加國商品。指標問「達成協議或關稅如期生效」，答案是後者。",
+  "verdict": "hit",
+  "verified_date": "2026-08-23"
  }
 ]
