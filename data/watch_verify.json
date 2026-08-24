@@ -88,6 +88,14 @@
   "verified_date": "2026-08-22"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cgqd22pp13lo/trad",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/18/shein-reportedly-set-to-list-in-hong-kong-on-aug-28",
+  "note": "掛牌日期改為 9/1 而非傳聞的 8/28。8/24 提交港交所文件：發售近 2.8 億股、每股 47.60 至 49.50 港元、集資最多 138.6 億港元（17.7 億美元，接近原估的 20 億），按區間上限計估值近 270 億美元——落在此前傳聞的 250-280 億美元區間內。",
+  "verdict": "hit",
+  "verified_date": "2026-08-25"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
