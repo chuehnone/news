@@ -536,6 +536,14 @@
   "verified_date": "2026-08-11"
  },
  {
+  "evidence_url": "https://technews.tw/2026/08/25/august-ocean-temperatures-hit-a-new-record-scientists-say-its-the-hottest-in-12000-years",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/08/11/sea-temperature-break-record",
+  "note": "8/25 科技新報引哥白尼資料：8 月下旬全球平均海面溫度達 21°C，創現代觀測紀錄新高，8 月確實延續破紀錄",
+  "verdict": "hit",
+  "verified_date": "2026-08-25"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
