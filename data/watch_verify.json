@@ -1664,11 +1664,35 @@
   "verified_date": "2026-08-23"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608250004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608210003.aspx",
+  "note": "8/24 記者會已召開：貝森特宣布啟動「經濟放逐行動」，確認包含次級制裁——擴大對伊朗相關的次級制裁威脅、鎖定數位資產、科技、黃金、航空、航運5大經濟命脈，並宣告任何代表伊朗協助洗錢的實體將被踢出美元體系。指標問的「是否包含次級制裁」答案是肯定。",
+  "verdict": "hit",
+  "verified_date": "2026-08-25"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608230021.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608220029.aspx",
   "note": "談判在最後一刻破裂，50% 關稅於 8/22 如期生效，涉及約 200 億美元加國商品。指標問「達成協議或關稅如期生效」，答案是後者。",
   "verdict": "hit",
   "verified_date": "2026-08-23"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608250004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608230176.aspx",
+  "note": "選項組合已公布：鎖定數位資產、科技、黃金、航空、航運5大領域，並以「踢出美元體系」為主要工具（即專家分析中的次級制裁路線），未見陸路封鎖或次級關稅。但**未直接觸及中國實體**——僅表述為「任何協助伊朗石油交易的實體」，未點名中國茶壺煉油廠或銀行，川普改採致電各國領袖的施壓方式。",
+  "verdict": "hit",
+  "verified_date": "2026-08-25"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608250004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608240335.aspx",
+  "note": "範圍已公布：5大領域（數位資產、科技、黃金、航空、航運），執行方式為財政部、國務院、美軍團隊與各國對口單位會面，不配合則單邊制裁。但**適用門檻未明確**——「代表伊朗協助洗錢活動的實體」的認定標準與判定程序未說明，指標問的「適用門檻」這半未獲回答。",
+  "verdict": "hit",
+  "verified_date": "2026-08-25"
  }
 ]
