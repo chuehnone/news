@@ -1600,6 +1600,14 @@
   "verified_date": "2026-08-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608300089.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608060038.aspx",
+  "note": "太平洋島國論壇峰會（8/30）顯示三個邦交國之一的帛琉動向：中國因台灣外長林佳龍出席電動巴士捐贈儀式，將帛琉列為旅遊不安全目的地施壓（中國旅客為帛琉最大客源），美方批評此為觀光武器化；帛琉總統惠恕仁公開表態「太平洋是我們的家，不是地緣政治競爭的舞台」。邦交維持但承受經濟施壓，非邦交變動。",
+  "verdict": "hit",
+  "verified_date": "2026-08-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120163.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202608070018.aspx",
