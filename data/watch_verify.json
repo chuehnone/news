@@ -544,6 +544,14 @@
   "verified_date": "2026-08-25"
  },
  {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/08/12/chinese-ai-models-narrow-performance-gap-while-leading-in-cost-per-task",
+  "note": "2026-09-02 報導 Silicon Data LLM Token 支出指數跌破每百萬 1 美元（97 美分）、較夏季高點跌逾 50%，明確列出的壓價因素首項即為中國開源模型的競爭，OpenAI 7 月對 GPT-4o 系列降價亦在其中。9/05 補充機制面證據：微軟採分層模型架構把日常任務移至便宜的開源模型、自研模型使 PowerPoint 晶片成本降約 84%、Dynamics 365 客服成本降 89%；Vercel AI Gateway 的開源模型 token 占比自 4 月 11% 升至 8 月 62%、成本占比不足 9%。閉源業者因成本競爭調降定價已發生且來源明確指向開源競爭。",
+  "verdict": "hit",
+  "verified_date": "2026-09-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
