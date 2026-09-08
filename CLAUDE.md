@@ -596,3 +596,16 @@ python3 -m unittest test_tariff            # 16 個測試
 - `test_tariff.py` — 關稅工具的回歸測試（16 個）
 - `data/tariff.json` — 進版控的關稅資料（由 tariff.py fetch 產生）
 - `news.db` — SQLite 資料庫（不進版控，可由 import-json 重建）
+
+## 獨立子專案的邊界
+
+這個 repo 底下可能存在**自帶 `.git` 的獨立子專案目錄**（已列入 `.gitignore`）。
+它們不是 submodule，本 repo 不追蹤其內容，也不該知道其內部細節。
+
+- **本文件描述的流程只適用於本 repo 的公開新聞專案**。子專案有自己的
+  `CLAUDE.md` 與工作流程，**不要把 `/update-news` 這類含自動 push 與
+  Pages 部署的流程套用過去**——那會把不該公開的內容推上公開站。
+- **子專案的內容一律不得加入本 repo 的版控或匯出產物**
+  （`data/*.json`、`dist/`、`assets/`）。
+- 兩個 repo 目錄疊在一起，**每次 Git 操作都要確認工作目錄**。
+  在子專案目錄裡 `git commit` 而沒指定 `-C`，會落到錯的 repo。

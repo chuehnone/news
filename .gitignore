@@ -6,3 +6,7 @@ dist/
 # 本機筆記：專案的方向決策與操作前提。repo 是 public，
 # 策略思考不需要對外揭露，故只留在本機。
 NOTES.local.md
+# 本機跨工具交接文件，包含未公開的商業方向。
+HANDOFF.local.md
+# 獨立的私有子專案（自帶 .git，不是 submodule），內容不屬於這個 public repo。
+/commercial/
