@@ -1759,6 +1759,53 @@ class TestPositions(CLITestCase):
         self.assertRegex(out, r"基本面\s+命中率 100%")
         self.assertRegex(out, r"結構\s+命中率 0%")
 
+    def test_author_defaults_to_me(self):
+        """沒填 author 就是自己寫的——舊資料與手寫觀點都走這條路徑。"""
+        self.add_position(make_position())
+        out = self.run_cli("positions").stdout
+        self.assertNotIn("[Agent]", out,
+                         "沒標 author 的觀點被當成 agent 寫的，會污染人的命中率")
+
+    def test_agent_authored_position_is_marked(self):
+        """agent 寫的觀點要在列表上看得出來，否則翻舊帳時分不出是誰的判斷。"""
+        self.add_position(make_position(author="agent"))
+        out = self.run_cli("positions").stdout
+        self.assertIn("[Agent]", out)
+
+    def test_invalid_author_is_rejected(self):
+        """author 是統計的分組鍵，自由填寫會讓依作者的命中率失去意義。"""
+        r = self.add_position(make_position(author="claude"), check=False)
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("agent", r.stdout + r.stderr)
+
+    def test_hit_rate_is_reported_per_author(self):
+        """人與 agent 的命中率不可混算——這是這條線的前提問題。
+
+        混在一起那個數字同時含人與模型的判斷：好看不知道是誰準，
+        難看也不知道該檢討誰，等於整條校準線失效。
+        """
+        self.add_position(make_position(ticker="AAA", predictions=[
+            {"kind": "fundamental", "text": "a", "source_hint": "財報毛利率"},
+        ]))
+        self.add_position(make_position(ticker="BBB", author="agent", predictions=[
+            {"kind": "fundamental", "text": "b", "source_hint": "財報營收"},
+        ]))
+        self.run_cli("position-verify", "1", "hit", check=True)
+        self.run_cli("position-verify", "2", "miss", check=True)
+        out = self.run_cli("position-stats").stdout
+        self.assertIn("依作者", out)
+        self.assertRegex(out, r"自己\s+命中率 100%")
+        self.assertRegex(out, r"Agent\s+命中率 0%")
+
+    def test_author_breakdown_hidden_when_only_one_author(self):
+        """只有一方時再列一次同樣的數字只是雜訊，而雜訊會讓人略過整段輸出。"""
+        self.add_position(make_position(predictions=[
+            {"kind": "fundamental", "text": "a", "source_hint": "財報毛利率"},
+        ]))
+        self.run_cli("position-verify", "1", "hit", check=True)
+        out = self.run_cli("position-stats").stdout
+        self.assertNotIn("依作者", out)
+
     def test_reverdict_requires_force(self):
         """事後改判定會讓命中率失去意義，必須明示。"""
         self.add_position(make_position())

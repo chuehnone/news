@@ -48,7 +48,7 @@ python3 news.py watch-verify <url> <idx> <hit|miss|moot> [--note ...] [--evidenc
 python3 news.py watch-stats    # watch_next 命中率統計
 python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
-python3 news.py add-position <file|->   # 新增一次投資觀點（格式見 position-schema）
+python3 news.py add-position <file|->   # 新增一次投資觀點（格式見 position-schema；agent 寫入要填 author）
 python3 news.py positions [標的] [--pending] [-v]  # 列出投資觀點與預測狀態
 python3 news.py position-due [標的]     # 列出到期該判定的預測
 python3 news.py position-verify <預測id> <hit|miss|moot> [--note ...]
@@ -331,6 +331,16 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 - **改判定要 `--force`**：事後改判定會讓命中率失去意義。
 - **`POSITION_MIN_AGE_DAYS` 比新聞的 7 天長**：基本面預測的驗證點（月營收、財報）
   本來就以月為單位，太早看必然是「還沒發生」。
+- **`author` 決定命中率算進誰頭上，兩者不得混算**（2026-09-08 加入）。
+  值域 `POSITION_AUTHORS`（`me` / `agent`），`position-stats` 依它分開列。
+  起因是 `/update-news` 的步驟 5 改由 sub-agent 自動寫入觀點——**這條線原本
+  是要校準「我的判斷準不準」，agent 寫的測的是模型**。混算後那個數字同時
+  含人與模型：好看不知道是誰準，難看也不知道該檢討誰。
+  由 `test_hit_rate_is_reported_per_author` 守著；只有一方有資料時不列出
+  該段（同樣的數字印兩次是雜訊，而常態化的雜訊會讓人略過整段輸出）。
+  預設 `me` 是因為 2026-09-08 前的 21 則全是人寫的，遷移直接套預設即正確。
+  **代價要說明白**：全自動寫入後人的判斷軌跡不會再自動累積（實際上 08-06
+  之後就已經停了）。agent 的產出不取代自己寫觀點，想恢復人的那條線就自己補寫。
 - **資料只存 `news.db`，不進版控、不上靜態站**（`TestPositionsStayLocal` 守著）。
   理由不是技術性的：repo 是 public，而**公開投資判斷會改變書寫方式**——
   會不自覺寫得保守、寫得容易命中，而這條線的全部價值就在於記錄真實的判斷。

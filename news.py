@@ -255,6 +255,14 @@ def migrate(conn):
     if have_p and "source_hint" not in have_p:
         conn.execute("ALTER TABLE predictions ADD COLUMN source_hint TEXT")
 
+    # positions 的 author 於 2026-09-08 加入（sub-agent 開始自動寫入觀點）。
+    # 既有列一律是人寫的，NOT NULL DEFAULT 會把它們填成 'me'，正確。
+    have_o = {r["name"] for r in conn.execute("PRAGMA table_info(positions)")}
+    if have_o and "author" not in have_o:
+        conn.execute(
+            "ALTER TABLE positions ADD COLUMN author TEXT NOT NULL "
+            f"DEFAULT '{DEFAULT_POSITION_AUTHOR}'")
+
     # 別名種子只在表是空的時候灌入。用 INSERT OR IGNORE 逐筆補會讓
     # 「刻意刪掉某個種子別名」在下次連線時復活，等於刪不掉。
     if not conn.execute("SELECT 1 FROM tag_aliases LIMIT 1").fetchone():
@@ -1204,6 +1212,19 @@ VAGUE_SOURCE_HINTS = frozenset({
 # 基本面預測的驗證點（月營收、財報）本來就以月為單位，太早看必然是「還沒發生」。
 POSITION_MIN_AGE_DAYS = 14
 
+# 觀點是誰寫的。命中率**必須依此分開統計**，這是整條線的前提問題而非分類偏好。
+#
+# 這條線的設計目的是校準「我的判斷準不準」（見 CLAUDE.md 的「投資觀察」），
+# 而 2026-09-08 起 /update-news 會讓 sub-agent 自動寫入觀點。兩者混在同一個
+# 命中率裡，那個數字就同時混了人與模型的判斷，**兩邊都無法解讀**：
+# 數字好看不知道是誰準，數字難看也不知道該檢討誰。
+#
+# 預設 'me' 而非 'agent'：舊資料（2026-09-08 前的 21 則）全是人寫的，
+# 遷移時直接套預設值就對了。
+POSITION_AUTHORS = ("me", "agent")
+POSITION_AUTHOR_LABELS = {"me": "自己", "agent": "Agent"}
+DEFAULT_POSITION_AUTHOR = "me"
+
 POSITIONS_SCHEMA = """
 -- 一次「觀點」：某個時點對某個標的的判斷，含推論與依據。
 -- 同一標的可以有多次觀點，形成時間序列——這是刻意的：事後檢討時最想知道的
@@ -1218,6 +1239,8 @@ CREATE TABLE IF NOT EXISTS positions (
     rationale TEXT,
     source_url TEXT,
     tags TEXT,
+    -- 誰寫的（見 POSITION_AUTHORS）。命中率依此分開統計，不得混算。
+    author TEXT NOT NULL DEFAULT 'me',
     created_at TEXT DEFAULT (datetime('now', 'localtime'))
 );
 CREATE INDEX IF NOT EXISTS idx_positions_ticker ON positions(ticker);
@@ -2177,6 +2200,13 @@ def validate_position_payload(data, aliases):
     obs_date = (data.get("obs_date") or "").strip() or today_local().isoformat()
     validate_date_string(obs_date, field="obs_date")
 
+    author = (data.get("author") or "").strip() or DEFAULT_POSITION_AUTHOR
+    if author not in POSITION_AUTHORS:
+        sys.exit(
+            f"author 必須是 {'/'.join(POSITION_AUTHORS)} 之一（收到 {author!r}）。\n"
+            "  agent 自動寫入的觀點必須標成 'agent'——命中率依此分開統計，"
+            "混算會讓人與模型的判斷力都無法解讀。")
+
     preds = data.get("predictions") or []
     if not isinstance(preds, list) or not preds:
         sys.exit("至少要有一條 predictions——觀點沒有可驗證的預測就只是感想")
@@ -2223,6 +2253,7 @@ def validate_position_payload(data, aliases):
         "rationale": (data.get("rationale") or "").strip() or None,
         "source_url": normalize_url(data.get("source_url")) or None,
         "tags": parse_tags(data.get("tags"), aliases),
+        "author": author,
         "predictions": out_preds,
     }
 
@@ -2236,11 +2267,12 @@ def cmd_add_position(args):
 
     cur = conn.execute(
         "INSERT INTO positions "
-        "(ticker, name, market, obs_date, thesis, rationale, source_url, tags) "
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        "(ticker, name, market, obs_date, thesis, rationale, source_url, tags, author) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
         (payload["ticker"], payload["name"], payload["market"], payload["obs_date"],
          payload["thesis"], payload["rationale"], payload["source_url"],
-         json.dumps(payload["tags"], ensure_ascii=False) if payload["tags"] else None),
+         json.dumps(payload["tags"], ensure_ascii=False) if payload["tags"] else None,
+         payload["author"]),
     )
     pid = cur.lastrowid
     conn.executemany(
@@ -2251,8 +2283,9 @@ def cmd_add_position(args):
     )
     conn.commit()
     conn.close()
+    who = POSITION_AUTHOR_LABELS.get(payload["author"], payload["author"])
     print(f"已寫入 #{pid} {payload['ticker']} {payload['obs_date']}"
-          f"（{len(payload['predictions'])} 條預測）")
+          f"（{len(payload['predictions'])} 條預測，作者：{who}）")
     print(f"  {payload['thesis'][:60]}")
 
 
@@ -2290,6 +2323,18 @@ def kind_label_of(kind):
     return {k: label for k, label, _ in PREDICTION_KINDS}.get(kind, kind)
 
 
+def author_of(pos):
+    """觀點的作者，舊資料（欄位不存在或為 NULL）視為自己寫的。
+
+    sqlite3.Row 沒有 .get()，欄位不存在會丟 IndexError——遷移前產生的
+    測試 fixture 或外部工具建的表都可能沒有這欄。
+    """
+    try:
+        return pos["author"] or DEFAULT_POSITION_AUTHOR
+    except (IndexError, KeyError):
+        return DEFAULT_POSITION_AUTHOR
+
+
 def cmd_positions(args):
     """列出投資觀點與其預測狀態。"""
     conn = connect()
@@ -2303,6 +2348,9 @@ def cmd_positions(args):
         head = f"#{pos['id']} {pos['ticker']}"
         if pos["name"]:
             head += f"（{pos['name']}）"
+        # 只標 agent：自己寫的是常態，兩者都標會讓 agent 那個標記失去辨識度。
+        if author_of(pos) == "agent":
+            head += "  [Agent]"
         print(f"{head}  {pos['obs_date']}")
         print(f"  {pos['thesis']}")
         if args.verbose and pos["rationale"]:
@@ -2404,19 +2452,27 @@ def position_accuracy(conn):
     """
     preds = [
         p for p in conn.execute(
-            "SELECT id, kind, verdict FROM predictions WHERE verdict IS NOT NULL")
+            "SELECT p.id, p.kind, p.verdict, o.author FROM predictions p "
+            "JOIN positions o ON o.id = p.position_id WHERE p.verdict IS NOT NULL")
         if p["verdict"] != "void"
     ]
     verified = {(p["id"], 0): p for p in preds}
     kind_by_id = {p["id"]: p["kind"] for p in preds}
+    author_by_id = {p["id"]: p["author"] for p in preds}
     acc = accuracy_by(
         verified,
         key_of=lambda k, _v: k[0],
         group_of=lambda pid: kind_by_id.get(pid),
     )
+    by_author = accuracy_by(
+        verified,
+        key_of=lambda k, _v: k[0],
+        group_of=lambda pid: author_by_id.get(pid),
+    )
     voided = conn.execute(
         "SELECT COUNT(*) FROM predictions WHERE verdict = 'void'").fetchone()[0]
-    return {"overall": acc["overall"], "by_kind": acc["by_group"], "void": voided}
+    return {"overall": acc["overall"], "by_kind": acc["by_group"],
+            "by_author": by_author["by_group"], "void": voided}
 
 
 def cmd_position_stats(_args):
@@ -2465,6 +2521,33 @@ def cmd_position_stats(_args):
         print("\n  兩類要分開看：基本面有客觀數字可查，結構要人判讀事件是否發生。")
         print("  基本面命中但結構落空，代表數字對了但推論的機制沒發生。")
 
+    _print_author_breakdown(acc["by_author"])
+
+
+def _print_author_breakdown(by_author):
+    """依作者（自己／Agent）分開列命中率。
+
+    **只在兩者都有已判定條目時才印**：只有一方時「總命中率」就是那一方的，
+    再列一次同樣的數字只是雜訊，而常態化的雜訊會讓人略過整段輸出。
+    """
+    usable = {
+        a: g for a, g in by_author.items()
+        if g["counts"]["hit"] + g["counts"]["miss"] > 0
+    }
+    if len(usable) < 2:
+        return
+
+    print("\n依作者")
+    for a in POSITION_AUTHORS:
+        if a not in usable:
+            continue
+        g = usable[a]
+        j = g["counts"]["hit"] + g["counts"]["miss"]
+        label = POSITION_AUTHOR_LABELS.get(a, a)
+        print(f"  {label}  命中率 {g['rate']:.0%}（{g['counts']['hit']}/{j}）")
+    print("\n  這兩個數字不可合併看：一個是你的判斷力，一個是模型的。")
+    print("  合併後數字好看不知道是誰準，難看也不知道該檢討誰。")
+
 
 def cmd_position_schema(_args):
     """輸出 add-position 接受的 JSON 格式。
@@ -2481,6 +2564,7 @@ def cmd_position_schema(_args):
   "name":       "台積電",            // 選填
   "market":     "US",               // 選填（US / TW）
   "obs_date":   "{today_local().isoformat()}",       // 選填，預設今天。YYYY-MM-DD 補零
+  "author":     "me",               // 選填，預設 me。sub-agent 自動寫入時填 "agent"
   "thesis":     "一句話的判斷",        // 必填。沒有推論的預測事後無從檢討
   "rationale":  "為什麼這樣想",        // 選填但強烈建議：這是事後檢討時最有價值的欄位
   "source_url": "https://...",      // 選填，觸發這個判斷的資料來源
@@ -2510,6 +2594,11 @@ source_hint（必填）：這條到期時**去哪裡查**。
   等於沒填：財報、新聞、市場數據（CLI 會擋下）
   **寫不出具體來源，代表這條預測現在就該重寫**——那 7 條被廢除的市場類
   預測寫得很工整，問題正是沒人在寫的當下問過「這個數字從哪來」。
+
+author（{'/'.join(POSITION_AUTHORS)}，預設 {DEFAULT_POSITION_AUTHOR}）：這則觀點是誰寫的。
+  **命中率依此分開統計，不得混算。** /update-news 的 sub-agent 自動
+  寫入時一律填 "agent"；你自己寫的不必填。混算後那個數字同時含人與
+  模型的判斷，兩邊都無法解讀——好看不知道是誰準，難看也不知道該檢討誰。
 
 判定值域：{'/'.join(POSITION_VERDICTS)}
   hit  — 明確發生了
