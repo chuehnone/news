@@ -72,6 +72,14 @@
   "verified_date": "2026-08-07"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202609090274.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/08/01/wistron-us-factory",
+  "note": "緯創董事會 9/9 通過對美國子公司 Wistron InfoComm (USA) 增資 1.5 億美元（約 47.2 億台幣）用於德州 Westport 廠業務發展，並在不超過 1.46 億美元額度內進行建築物改良與機器設備採購——投資金額已具體公布。時程部分僅揭露資金用途未給完工日期，屬部分揭露，但指標問的是「具體投資金額與時程是否公布」，金額這一半已明確成立。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/08/19/china-humanoid-robot-market-projected-15-billion-rmb-2026-commercialization-acceptance-begins",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/07/unitree-technology-sets-offering-price-post-issuance-market-cap-291-1-billion-yuan",
@@ -552,6 +560,14 @@
   "verified_date": "2026-09-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/01/strait-of-hormuz-commodity-vessel-transits-stay-in-single-digits",
+  "note": "布蘭特 2026-09-09 突破 100 美元，超過 90 美元門檻。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -918,6 +934,14 @@
   "note": "8/11 簽署具法律效力最終協議：合資公司設於熊本縣合志市，Sony投入約4650億日圓（含資產轉移）、台積電約2820億日圓，Sony為單一控制股東並指派代表董事，2029年量產。",
   "verdict": "hit",
   "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608190006.aspx",
+  "note": "布蘭特於 2026-09-09 突破每桶 100 美元（7 月下旬以來首次），指標問「是否站穩 90 美元以上或突破 95、100 美元」——突破 100 這一項明確成立。「站穩」需再觀察，但指標為擇一條件。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
  },
  {
   "evidence_url": null,
@@ -1688,6 +1712,22 @@
   "verified_date": "2026-08-23"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608190212.aspx",
+  "note": "指標為擇一條件：「隨通行量回升而回落，或維持風險溢價」。實際維持並大幅擴張風險溢價，9/9 布蘭特突破 100 美元。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608200010.aspx",
+  "note": "指標是擇一條件：「隨供給穩定而回落，或維持風險溢價」。實際為後者且大幅擴張——2026-09-09 布蘭特突破 100 美元。（更正：本則同日先被誤判為 miss，原因是只讀到前半的「回落」就下判定，沒讀完後半的「或維持風險溢價」。）",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608250004.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608210003.aspx",
@@ -1734,5 +1774,29 @@
   "note": "美方確實再度加碼且升級了手段：白宮宣布三週內禁止加拿大乳製品、多數酒類與重型機車進口，並取消加拿大企業參與美國政府採購合約資格。指標問的是「是否再度加碼（如擴大品項或提高稅率）」，實際加碼形式比舉例的更重——從關稅升級為直接禁止進口。",
   "verdict": "hit",
   "verified_date": "2026-09-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608290018.aspx",
+  "note": "指標問「布蘭特油價在消息後兩週是否出現實質回落」。8/29 起算兩週內，油價非但未回落，反而在 9/9 突破 100 美元創 7 月下旬以來新高。回落未發生。",
+  "verdict": "miss",
+  "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608310012.aspx",
+  "note": "布蘭特 2026-09-09 突破 100 美元，遠越過 90 美元門檻。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609020004.aspx",
+  "note": "布蘭特 2026-09-09 突破 100 美元，超過 90 美元門檻。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
  }
 ]
