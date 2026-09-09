@@ -1720,11 +1720,19 @@
   "verified_date": "2026-08-25"
  },
  {
-  "evidence_url": null,
+  "evidence_url": "https://technews.tw/2026/09/09/us-banned-dairy-products-alcohol-and-motorcycles-from-canada",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608250031.aspx",
+  "note": "卡尼明確表示目標十年內對其他國家出口翻倍，並正評估與歐盟建立更深層夥伴關係。指標問「是否加速與歐盟或亞洲簽署貿易協定作為分散」——已有加速分散的公開宣示與歐盟方向，但尚未簽署具體協定，屬部分命中，取 hit 因指標問的是「加速」而非「完成簽署」。",
+  "verdict": "hit",
+  "verified_date": "2026-09-09"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/09/09/us-banned-dairy-products-alcohol-and-motorcycles-from-canada",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202608260003.aspx",
-  "note": "2026-09-08 川普在 Truth Social 揚言封殺龐巴迪飛機在美銷售，並要求企業赴美生產，是對加拿大 700 品項報復關稅的再度加碼回應。手段從關稅擴大到產品認證與市場准入。",
+  "note": "美方確實再度加碼且升級了手段：白宮宣布三週內禁止加拿大乳製品、多數酒類與重型機車進口，並取消加拿大企業參與美國政府採購合約資格。指標問的是「是否再度加碼（如擴大品項或提高稅率）」，實際加碼形式比舉例的更重——從關稅升級為直接禁止進口。",
   "verdict": "hit",
-  "verified_date": "2026-09-08"
+  "verified_date": "2026-09-09"
  }
 ]
