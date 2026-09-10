@@ -104,6 +104,14 @@
   "verified_date": "2026-08-25"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609100003.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/09/02/us-10-year-treasury-yield-nears-5-percent-warning-line",
+  "note": "財政部 9/10 宣布執行 60 億美元公債回購，是貝森特擴大回購計畫後首次操作，超過 8 月中宣布的「至少 40 億」翻倍規模。指標問「財政部是否加大回購長債或調整發債結構」——加大回購已實際發生。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -940,6 +948,22 @@
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202608190006.aspx",
   "note": "布蘭特於 2026-09-09 突破每桶 100 美元（7 月下旬以來首次），指標問「是否站穩 90 美元以上或突破 95、100 美元」——突破 100 這一項明確成立。「站穩」需再觀察，但指標為擇一條件。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/09/10/iphone-18-pro-pro-max-price-increase",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609030280.aspx",
+  "note": "iPhone 18 Pro 台灣 44,900 元起、Pro Max 49,900 元起，較去年同容量至少漲 5,000 元；256GB 漲約 12.5%、1TB 漲 24.1%、Pro Max 2TB 漲 21,000 元。美國 256GB 版僅漲約 8-9%。定價與漲幅皆已公布。",
+  "verdict": "hit",
+  "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202609100011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609030316.aspx",
+  "note": "布蘭特 11 月期貨 2026-09-10 收每桶 101.21 美元（漲 3.4%），為 7 月以來首次收在三位數。指標問「是否突破 100 美元」，收盤價成立。",
   "verdict": "hit",
   "verified_date": "2026-09-10"
  },
