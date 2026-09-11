@@ -1480,6 +1480,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609110025.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607230006.aspx",
+  "note": "Anthropic 2026-09 威脅情報報告公開了具體的蒸餾證據：阿里巴巴 5-7 月超過 1 億 5100 萬次互動、來自 3500 多個詐欺帳號、日峰值近 300 萬次，並點名月之暗面與深度求索將用戶對話轉接 Claude 處理後用回應當訓練資料。指標問「蒸餾證據的公開」——括號註明的浮水印只是舉例的形式，實際公開的是可稽核的使用日誌，構成證據。",
+  "verdict": "hit",
+  "verified_date": "2026-09-11"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607230374.aspx",
@@ -1494,6 +1502,14 @@
   "note": "7/30 報導 30 年期公債殖利率突破 5.2%（盤中飆升 11.5 個基點至 5.211%），創 2007 年以來最高，走勢明確且為當日市場主軸。",
   "verdict": "hit",
   "verified_date": "2026-07-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609110025.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607240004.aspx",
+  "note": "Anthropic 公開表示已「瓦解」來自 7 家中國實驗室的攻擊並偵測出 3500 多個詐欺帳號，即為實際執行中的 API 防蒸餾與濫用偵測措施。指標問「OpenAI／Anthropic 的 API 防蒸餾措施」，Anthropic 這半已成立（OpenAI 尚未見對應報告）。",
+  "verdict": "hit",
+  "verified_date": "2026-09-11"
  },
  {
   "evidence_url": null,
