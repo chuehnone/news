@@ -56,12 +56,28 @@
   "verified_date": "2026-08-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609110008.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/23/us-30-year-treasury-yield-logs-longest-5-streak-since-financial-crisis",
+  "note": "美國 30 年期公債殖利率 2026-09-11 升至 5.35%（創 2007 年以來最高），突破指標問的 5.25% 門檻；同日 30 年期新債得標殖利率亦達 5.308%。",
+  "verdict": "hit",
+  "verified_date": "2026-09-11"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/07/23/us-30-year-treasury-yield-logs-longest-5-streak-since-financial-crisis",
   "note": "7/30 FOMC 決議維持 3.5%-3.75%，出現 9:3 罕見分歧（克里夫蘭、明尼阿波利斯、達拉斯主張升息一碼），為 2016 年 9 月以來首見。會議已如期舉行並產出明確政策訊號。",
   "verdict": "hit",
   "verified_date": "2026-07-31"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202609110011.aspx",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/07/23/us-30-year-treasury-yield-logs-longest-5-streak-since-financial-crisis",
+  "note": "財政部已實際調整操作：9/10 標售 220 億美元 30 年期公債並回購約 52 億美元 10 年期及 20 年期長債，為貝森特擴大回購計畫後的連續操作。指標問「發債結構調整」——回購與標售並行即為結構性調整，且 30 年期標售反應不佳（得標殖利率創 2001/8 後新高）已構成後續調整壓力。",
+  "verdict": "hit",
+  "verified_date": "2026-09-11"
  },
  {
   "evidence_url": null,
