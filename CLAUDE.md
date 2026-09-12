@@ -212,7 +212,7 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 - **卡片上只標命中，不標 miss**（`render_card` 的 `hits` 參數）：已判定的則
   僅約佔全站 5%，若把 miss 也標出來，「未判定」與「已驗證未發生」在視覺上
   難以區分，訪客會把前者誤讀成後者。
-  但只標 ✓ 會讓人以為全部命中（實際 37 hit / 68 miss），所以清單下方**必須**
+  但只標 ✓ 會讓人以為全部命中（實際仍有大量 miss），所以清單下方**必須**
   附「已回頭驗證 N 條、上方標示成真的 M 條」——分母含 miss、排除 moot。
   拿掉那一行就變成選擇性揭露，由 `test_hit_summary_states_the_denominator` 守著。
   整體命中率一律看 CLI 的 `watch-stats`，網頁不做統計數字。
@@ -222,11 +222,8 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 
 **2026-07-28 首輪實測（109 條已判定）**：
 
-- 當時的等級梯度是 **A 42%（23/55）> B 33%（12/36）> C 14%（2/14）**，
-  一度被解讀為「高分則的宣稱確實比低分則站得住」。
-  ⚠️ **這個解讀在 2026-08-02 被推翻**（B 反超至 52%），原因是等級與指標型態
-  相關而非判讀能力差異，見下方「等級命中率為何不可直接比較」。
-  當時另一個結論仍成立：`drift` 測到的**絕對門檻鬆動**與相對排序是兩件事。
+- `drift` 測到的**絕對門檻鬆動**與相對排序是兩件事。
+  （等級之間的命中率為何不可直接比較，見下節。）
 - **指標寫法對命中率的影響比等級更大**：機制延續型 48%（16/33）、
   特定事件型 29%（21/72）、來源不涵蓋型僅 15%（2/13）。寫法指引已寫進
   `/news-importance-score` skill 的「怎麼寫可驗證的觀察指標」。
@@ -570,7 +567,7 @@ python3 -m unittest test_tariff            # 16 個測試
   export-json / import-json / export；投資線見 add-position / positions /
   position-due / position-verify / position-stats / position-schema）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
-- `test_news.py` — 回歸測試（標準庫 unittest，143 個）。涵蓋 news_date 格式驗證、
+- `test_news.py` — 回歸測試（標準庫 unittest）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
   標籤正規化與整值比對、schema 常數與函式不得重複定義、
   回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意、
