@@ -20,6 +20,7 @@ add 接受的 JSON 格式與驗證規則：python3 news.py schema
 import argparse
 import json
 import math
+import re
 import sqlite3
 import sys
 import unicodedata
@@ -505,6 +506,7 @@ def cmd_add(args):
     # 只看得到合計值。
     if news_date:
         _warn_if_batch_drifts(conn, news_date)
+    _warn_if_mixed_language(data)
     conn.close()
 
     # 順手同步 data/news.json，否則 db 更新了但進版控的資料沒動，靜態站不會變。
@@ -1208,6 +1210,32 @@ VAGUE_SOURCE_HINTS = frozenset({
     "財報數字", "市場", "股價", "價格", "資料", "公開資訊",
 })
 
+# 中文敘述裡夾雜英文普通名詞的提醒用字（2026-09-12 加入）。
+#
+# 只擋「英文普通名詞」，不擋專有名詞與技術代號——CoWoS、HBM、OpenAI、GDP
+# 本來就該保留原文，把它們一起擋掉會讓提醒變成雜訊而被略過。判準是
+# **這個字有沒有通用的中文說法**：buyer 有（採購方）、CoWoS 沒有。
+#
+# 用黑名單而非「偵測所有英文字再開白名單」，理由同 VAGUE_SOURCE_HINTS：
+# 專有名詞會無止盡地長出新的（每天都有新公司新技術），白名單註定追不完，
+# 而漏擋一個英文普通名詞的代價遠小於每則都誤報。
+#
+# 實測基礎：全庫 1712 則中符合此條件的只有 3 處（Premium／competitor／
+# materials／buyer），且集中在 2026-09-12 一天——問題不是長期積累，
+# 而是批次評分時產出速度會壓過語言一致性的自我檢查。
+# 前面要是中文字，後面是中文字或全形標點——「觀察materials，非行動依據」
+# 的後綴是全形逗號而不是漢字，只看漢字會漏掉句尾與逗號前的情形。
+MIXED_LANGUAGE_PATTERN = r"[一-鿿]([A-Za-z]{3,})(?=[一-鿿，。、；：）」』？！]|$)"
+
+MIXED_LANGUAGE_WORDS = frozenset({
+    "buyer", "seller", "competitor", "materials", "player", "premium",
+    "vendor", "supplier", "customer", "partner", "maker", "driver",
+    "window", "margin", "revenue", "growth", "trend", "signal", "risk",
+    "baseline", "framework", "insight", "evidence", "context", "impact",
+    "outcome", "tradeoff", "bottleneck", "upside", "downside", "catalyst",
+    "narrative", "consensus", "sentiment", "momentum", "exposure",
+})
+
 # 一條投資預測至少要放這麼多天才值得判定。比新聞的 7 天長，因為
 # 基本面預測的驗證點（月營收、財報）本來就以月為單位，太早看必然是「還沒發生」。
 POSITION_MIN_AGE_DAYS = 14
@@ -1650,6 +1678,42 @@ def _warn_if_batch_drifts(conn, on_date):
     print(f"  ⚠️  {on_date} 累計 {rep['n']} 則，S/A 佔比 {rep['batch_rate']:.0%}"
           f"　{ratio}錨點（{rep['baseline']:.0%}）"
           f"　→ python3 news.py calibrate")
+
+
+def find_mixed_language(data):
+    """找出中文敘述裡夾著英文普通名詞的地方，回傳 [(欄位, 那個字)]。
+
+    只在兩側都是中文字時才算——「AI buyer」這種英文詞組內部不該被拆開唸，
+    夾在中文裡的 `對AI晶片buyer是好消息` 才是要擋的。
+    """
+    found = []
+    for field in ("title", "summary", "one_line", "why_important", "affected"):
+        text = data.get(field) or ""
+        for m in re.finditer(MIXED_LANGUAGE_PATTERN, text):
+            if m.group(1).lower() in MIXED_LANGUAGE_WORDS:
+                found.append((field, m.group(1)))
+    for key, _label, _mx in DIMENSIONS:
+        text = (data.get("dimensions", {}).get(key) or {}).get("reason") or ""
+        for m in re.finditer(MIXED_LANGUAGE_PATTERN, text):
+            if m.group(1).lower() in MIXED_LANGUAGE_WORDS:
+                found.append((f"dimensions.{key}.reason", m.group(1)))
+    return found
+
+
+def _warn_if_mixed_language(data):
+    """寫入後提醒中英混雜，只印不擋。
+
+    刻意不阻擋：判準是「有沒有通用中文說法」，那是語感問題不是硬規則，
+    誤判時擋下整筆寫入的代價，遠大於印一行讓人自己決定要不要改。
+    同 `_warn_if_batch_drifts`——這一層的作用是讓人停下來看一眼。
+    """
+    found = find_mixed_language(data)
+    if not found:
+        return
+    pairs = "、".join(f"{field} 的「{word}」" for field, word in found[:4])
+    more = f"（另有 {len(found) - 4} 處）" if len(found) > 4 else ""
+    print(f"  ⚠️  中文敘述裡夾了英文普通名詞：{pairs}{more}"
+          f"　→ 改用中文說法，專有名詞（CoWoS、GDP）不在此限")
 
 
 def dimension_medians(rows):

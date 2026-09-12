@@ -200,6 +200,27 @@ commit <sha> 已 push
 其中 InP 基板那則事後補評是 B58，關鍵訊號（磊晶廠須現金交割）只在內文看得到。
 把自己覺得可能誤判的兩三則列出來，使用者才有機會推翻你的粗篩。
 
+**點名前先查一次實際狀態，名單不要從自己下過的 skip 指令回推**：
+
+```bash
+python3 news.py pending --all --json | python3 -c "
+import json,sys
+today = '$(date +%F)'
+for x in json.load(sys.stdin):
+    if x['status'] == 'skipped' and x.get('published') == today:
+        print(x['id'], x['title'])
+"
+```
+
+（`--json` 的欄位只有 id／source／published／status／title／url，沒有
+`fetched_at`；不加 `published` 條件會回全部歷史的 4700 多則。）
+
+`add` 會自動把已評分的 url 標成 `scored`，所以 skip 名單裡若含已評過的則，
+那次 skip 對它是**空操作**。2026-09-12 就是這樣把 A81 那則（id 12419）
+報成「可能被誤 skip 的邊界案例」，實際上它從頭到尾好好地評在庫裡。
+同「不要憑標題拼湊網址」的道理：**憑自己下過什麼指令去推論結果，
+和憑記憶填網址是同一種錯**。
+
 ---
 
 ## 已知 trap

@@ -2140,3 +2140,80 @@ class TestPositionsStayLocal(CLITestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestMixedLanguageWarning(CLITestCase):
+    """中文敘述裡夾英文普通名詞要提示（2026-09-12 加入）。
+
+    起因是同一天的批次評分連續寫出「貿易competitor」「AI晶片buyer」
+    「觀察materials」三處。全庫 1712 則中符合此條件的只有這幾處，
+    所以問題不是長期積累，而是批次評分時產出速度會壓過語言一致性的
+    自我檢查——正屬「分開做就不會做」，適合在寫入當下印一行。
+
+    這道檢查的價值全在**不誤報**：CoWoS、HBM、GDP、OpenAI 是專有名詞，
+    本來就該保留原文，一起擋掉會讓提醒變成雜訊而被整段略過。
+    """
+
+    def test_warns_on_common_english_noun(self):
+        with load_modules(self.dir, "news") as (news,):
+            data = {"title": "測試", "summary": "x", "affected": "y",
+                    "one_line": "美中關係從貿易competitor滑向軍事對抗。",
+                    "why_important": "對AI晶片buyer是好消息",
+                    "dimensions": {}}
+            found = news.find_mixed_language(data)
+            self.assertEqual(
+                {w for _f, w in found}, {"competitor", "buyer"})
+
+    def test_detects_word_before_fullwidth_punctuation(self):
+        """全形標點前也要抓到——「觀察materials，非」的後綴不是漢字。"""
+        with load_modules(self.dir, "news") as (news,):
+            data = {"title": "測試", "summary": "屬趨勢的觀察materials，非依據",
+                    "one_line": "", "why_important": "", "affected": "",
+                    "dimensions": {}}
+            self.assertEqual(
+                [w for _f, w in news.find_mixed_language(data)], ["materials"])
+
+    def test_proper_nouns_are_not_flagged(self):
+        """專有名詞與技術代號必須放行，否則提醒會變成雜訊被略過。"""
+        with load_modules(self.dir, "news") as (news,):
+            data = {
+                "title": "台積電 CoWoS 產能供不應求",
+                "summary": "而Qualcomm因手機業務衰退，AI需求仍強",
+                "one_line": "把CoWoS月產能自13萬片增至26萬片",
+                "why_important": "為OpenAI建置算力，實質GDP年增與HBM需求同步",
+                "affected": "有IEA與凱投宏觀等機構",
+                "dimensions": {"decision": {"reason": "揭露Claude遭濫用"}},
+            }
+            self.assertEqual(news.find_mixed_language(data), [],
+                             "專有名詞被誤報會讓這道提醒失去可信度")
+
+    def test_checks_dimension_reasons(self):
+        """面向理由也要檢查——三處實際錯誤有一處就發生在這裡。"""
+        with load_modules(self.dir, "news") as (news,):
+            data = {"title": "測試", "summary": "", "one_line": "",
+                    "why_important": "", "affected": "",
+                    "dimensions": {"decision": {"reason": "屬觀察materials而已"}}}
+            found = news.find_mixed_language(data)
+            self.assertEqual(found, [("dimensions.decision.reason",
+                                      "materials")])
+
+    def test_warning_is_advisory_not_blocking(self):
+        """只印不擋：判準是語感問題，誤判時擋下整筆寫入的代價更大。"""
+        with load_modules(self.dir, "news") as (news,):
+            data = {"title": "測試", "summary": "", "one_line": "從貿易buyer看",
+                    "why_important": "", "affected": "", "dimensions": {}}
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                news._warn_if_mixed_language(data)  # 不得拋出
+            self.assertIn("buyer", buf.getvalue())
+
+    def test_clean_entry_prints_nothing(self):
+        """沒問題就完全不印——常態化的提示會被忽略。"""
+        with load_modules(self.dir, "news") as (news,):
+            data = {"title": "台積電CoWoS產能", "summary": "AI需求推升",
+                    "one_line": "瓶頸開始有替代路徑", "why_important": "外溢至同業",
+                    "affected": "投資人", "dimensions": {}}
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                news._warn_if_mixed_language(data)
+            self.assertEqual(buf.getvalue(), "")
