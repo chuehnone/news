@@ -985,6 +985,22 @@
  },
  {
   "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202609030316.aspx",
+  "note": "布倫特已自97漲至104-105美元，但今日各則報導均未見OPEC+增產決策或討論；供給面的變化來自沙國被動減產（8月日產降至600萬桶、30多年新低）而非主動增產。指標問的增產動作未發生。",
+  "verdict": "miss",
+  "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202609040249.aspx",
+  "note": "今日油價資訊充分（布倫特104-105美元、美國柴油破每加侖6美元），但天然氣價格未見報導。這正是 CLAUDE.md 記載的『來源不涵蓋型』指標——feeds（中央社／BBC／科技新報）本來就不報LNG現貨價，無從判斷。",
+  "verdict": "moot",
+  "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607050011.aspx",
   "note": "60天免費期屆滿後未見伊朗公布正式收費規範或費率。實際走向是7/14川普宣布對經海峽貨物徵20%補償費(美方而非伊朗收費)，伊朗端則轉為以攔截、襲擊迫使船隻改道並付費換安全通行，未走向制度化收費",
@@ -1776,6 +1792,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609120043.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608190318.aspx",
+  "note": "今日北韓自元山向東岸外海發射數枚短程彈道飛彈（射程約250公里），且時點正在美韓日『自由刀刃』5天軍演結束之後。指標問軍演縮減後是否停止或減少試射，今日事件直接回答：未停止，仍維持軍演後回應式發射的既有模式。",
+  "verdict": "hit",
+  "verified_date": "2026-09-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202608200010.aspx",
@@ -1854,5 +1878,21 @@
   "note": "布蘭特 2026-09-09 突破 100 美元，超過 90 美元門檻。",
   "verdict": "hit",
   "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609120048.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609030131.aspx",
+  "note": "今日報導伊朗扶持的青年運動再奪摩卡港與裴林島，形成荷莫茲與曼德海峽雙重扼制，沙國8月產量降至30多年新低600萬桶；通行不僅未恢復且替代路線同步受阻。指標問的是「是否有任何恢復」，答案明確為否。",
+  "verdict": "hit",
+  "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609050111.aspx",
+  "note": "今日報導聚焦沙國產量與出口（8月日產降至600萬桶、揚布港出口250萬桶創2013年來最低），但未提及伊朗自身出口量的數字。指標問的是伊朗出口量變化，今日證據無法回答——屬無從判斷而非預測落空。",
+  "verdict": "moot",
+  "verified_date": "2026-09-12"
  }
 ]
