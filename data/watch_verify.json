@@ -1760,6 +1760,22 @@
   "verified_date": "2026-08-12"
  },
  {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608180278.aspx",
+  "note": "9/10 沙烏地東西向輸油管線確實遭無人機攻擊關閉，但沙國外交部指攻擊來自伊拉克境內，非青年運動所為。指標問的是『青年運動是否再攻擊沙國其他石油設施』，攻擊方不同，不構成命中。",
+  "verdict": "miss",
+  "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": null,
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608180278.aspx",
+  "note": "庫內確有布蘭特報價（9/10 管線攻擊後單週漲逾8%、收104.56美元），但該漲幅由9/10東西向管線關閉所驅動，非8/18吉贊煉油廠攻擊的價格反應。以後續事件的漲幅回答此指標會把功勞歸給錯的事件，故記 miss。",
+  "verdict": "miss",
+  "verified_date": "2026-09-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608220029.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608180298.aspx",
