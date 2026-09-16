@@ -96,6 +96,22 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://technews.tw/2026/09/16/smaller-phone-and-laptop-makers-memory",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/08/06/winbond-electronics-warns-memory-shortages-will-worsen-next-year",
+  "note": "SK 海力士執行長公開表示 2027 年將是『產業史上最糟的一年』（供給面），並稱需求恐超過產能至 2030 年後，與華邦電陳沛銘 8/6 的 2027 缺貨更吃緊判斷一致。指標問的正是其他記憶體廠是否提出相同判斷，SK 海力士具名符合。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/09/16/smaller-phone-and-laptop-makers-memory",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/08/06/winbond-electronics-warns-memory-shortages-will-worsen-next-year",
+  "note": "Fairphone、Framework、Jolla 明確將記憶體成本轉嫁消費者並重新設計產品；中階手機記憶體已佔 BOM 約 60%，全球手機出貨預估年減 13.9%。指標問終端裝置廠是否因記憶體成本反映在售價或毛利，售價端已具體發生。伺服器端本則未涵蓋。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/08/19/china-humanoid-robot-market-projected-15-billion-rmb-2026-commercialization-acceptance-begins",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/07/unitree-technology-sets-offering-price-post-issuance-market-cap-291-1-billion-yuan",
