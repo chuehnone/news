@@ -136,6 +136,14 @@
   "verified_date": "2026-08-25"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/09/01/economic-survey",
+  "note": "9/17 理監事會未升息（利率連 10 凍），但確實調整了選擇性信用管制且方向為鬆綁：自然人第 2 戶購屋貸款成數上限由 6 成升至 7 成、9/18 生效，並取消購地貸款限期動工要求。指標問的是是否調整信用管制或升息，前者成立。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609100003.aspx",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/09/02/us-10-year-treasury-yield-nears-5-percent-warning-line",
@@ -1000,6 +1008,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202609010314.aspx",
+  "note": "9/17 理監事會未升息（連 10 凍），但調整了信用管制：自然人第 2 戶房貸成數 6 成→7 成、9/18 上路。指標問是否升息或調整信用管制，後者成立。央行依據是不動產貸款集中度已自 37.61% 降至 34.44%。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/10/iphone-18-pro-pro-max-price-increase",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609030280.aspx",
@@ -1030,6 +1046,30 @@
   "note": "今日油價資訊充分（布倫特104-105美元、美國柴油破每加侖6美元），但天然氣價格未見報導。這正是 CLAUDE.md 記載的『來源不涵蓋型』指標——feeds（中央社／BBC／科技新報）本來就不報LNG現貨價，無從判斷。",
   "verdict": "moot",
   "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609120023.aspx",
+  "note": "9/17 理監事會決議利率連 10 凍（重貼現率維持 2%），並上修 2026 GDP 至 11.48%、CPI 預估 2.03%。基調偏鴿：在聯準會同期升息的背景下仍維持不變。指標問的正是決議與會後聲明的鷹鴿基調，已明確揭曉。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202609120023.aspx",
+  "note": "央行確實未升息並說明了取捨：楊金龍稱考量國內通膨可控與預期經濟成長以「維持金融環境穩定」，並提及國際能源壓力與中東衝突影響；房市方面稱「管制不能硬邦邦，鬆綁若有副作用會回頭」。指標問若不升息央行如何說明通膨與匯率的取捨——通膨與成長的取捨有明確說法，惟匯率一項著墨較少。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202609120023.aspx",
+  "note": "房市選擇性信用管制確實同步調整且方向為鬆綁：自然人第 2 戶購屋貸款成數上限由 6 成升至 7 成、9/18 上路，並取消購地貸款限期動工要求。依據是不動產貸款集中度自 2024/6 高點 37.61% 降至 2026/7 的 34.44%。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
  },
  {
   "evidence_url": null,
