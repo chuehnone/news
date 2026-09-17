@@ -144,6 +144,22 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/09/11/kevin-warsh-challenged-market-us-10-year-treasury-yield-nears-5-ai-bulls-nervous",
+  "note": "聯準會 2026/9/17 升息 1 碼至 3.75%-4.00%，12 位 FOMC 官員一致同意，為 2023 年以來首度升息。指標問的正是 FOMC 是否如市場預期升息一碼，結果相符。（指標寫 9/16，實際決議公布為 9/17，屬同一次會議。）",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170008.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/09/11/kevin-warsh-challenged-market-us-10-year-treasury-yield-nears-5-ai-bulls-nervous",
+  "note": "升息後美國 10 年期公債殖利率突破 5%，創 19 年新高（9/11 該則寫作時為「叩關 5%」尚未突破）。指標問 10 年期是否突破 5%，已發生。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -1926,5 +1942,21 @@
   "note": "今日報導聚焦沙國產量與出口（8月日產降至600萬桶、揚布港出口250萬桶創2013年來最低），但未提及伊朗自身出口量的數字。指標問的是伊朗出口量變化，今日證據無法回答——屬無從判斷而非預測落空。",
   "verdict": "moot",
   "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170012.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609120014.aspx",
+  "note": "9/17 FOMC 升息 1 碼並以 8 月 CPI 年增 3.4% 為據，12 票一致同意優先處理通膨，華許明言物價穩定是首要任務。指標問聯準會是視油價通膨為一次性供給衝擊或需要壓制——決策本身與一致票數顯示採後者，屬明確可答。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170008.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609120014.aspx",
+  "note": "10 年期公債殖利率突破 5% 創 19 年新高、30 年期房貸利率升至 7.02%，指標問的正是兩者的後續走勢，已有明確數據。",
+  "verdict": "hit",
+  "verified_date": "2026-09-17"
  }
 ]
