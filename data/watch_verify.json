@@ -88,6 +88,14 @@
   "verified_date": "2026-08-07"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202609190097.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/30/acer-pc-pricing",
+  "note": "7/30 宏碁稱 Q4 售價將趨於平穩，指標問是否如其所言。9/19 陳俊聖改口第 4 季估漲 5-20%、高峰延至 2027 年中，並確認漲價過快導致需求萎縮已發生。趨於平穩沒有發生，判 miss。",
+  "verdict": "miss",
+  "verified_date": "2026-09-19"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609090274.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/08/01/wistron-us-factory",
@@ -632,6 +640,30 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202609190031.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/04/2026-smartphone-price-increase",
+  "note": "指標問記憶體價格是否見頂（該則寫作時已自 2025 Q4 漲四倍）。9/19 資料顯示 64GB RDIMM 不到一年 450→900 美元、伺服器記憶體 2026 估再漲 200-300%，且 SK 海力士稱 2027 為產業史上最糟。未見頂，仍在上行。",
+  "verdict": "miss",
+  "verified_date": "2026-09-19"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202609190097.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/09/intels-stock-is-rising-as-the-company-looks-primed-to-boost-prices-even-more",
+  "note": "宏碁董事長陳俊聖 9/19 明確表示第 4 季 PC 價格估漲 5% 至 20%，2027 年中達高峰。指標問品牌廠終端機種售價是否調升，宏碁已具名給出幅度。華碩、聯想部分本則未涵蓋。",
+  "verdict": "hit",
+  "verified_date": "2026-09-19"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202609190031.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/09/17/ai-infrastructure-summit-memory-scarcity-focus-hbf-hbc-new-technologies",
+  "note": "指標問記憶體價格是否自 5-7 倍的水準回落或續漲。9/19 資料：64GB RDIMM 不到一年 450→900 美元，伺服器記憶體 2026 年預估再漲 200-300%，並已開始轉嫁至雲端訂閱費（微軟 365 E3 23→26 美元）。未回落而是續漲，「回落」這一支未成立。",
+  "verdict": "miss",
+  "verified_date": "2026-09-19"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -958,6 +990,14 @@
   "note": "2026-08-18 收盤：費半 +1.64%（+203.96 點）、標普 500 -0.52%（-40.70 點）、道瓊 -0.51%。背離不僅持續且擴大到正負號相反——同日中東地緣風險推升油價與殖利率壓抑大盤，半導體卻獨強。指標問的「差距是否持續擴大」有明確同日對照數據支持。",
   "verdict": "hit",
   "verified_date": "2026-08-18"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202609190097.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202607300357.aspx",
+  "note": "宏碁 7/31 稱漲價高峰落在第 3 季，指標問 Q4 售價是否真的停止上漲。9/19 同一位董事長陳俊聖改口：第 4 季 PC 估漲 5-20%，高峰延後至 2027 年中。Q4 不僅未停止上漲，漲幅預估還擴大，指標問的事沒有發生。",
+  "verdict": "miss",
+  "verified_date": "2026-09-19"
  },
  {
   "evidence_url": null,
