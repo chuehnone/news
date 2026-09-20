@@ -55,7 +55,7 @@ python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
 python3 news.py add-position <file|->   # 新增一次投資觀點（格式見 position-schema；agent 寫入要填 author）
 python3 news.py positions [標的] [--pending] [-v]  # 列出投資觀點與預測狀態
-python3 news.py position-due [標的]     # 列出到期該判定的預測（預設全部列出，不截斷）
+python3 news.py position-due [標的] [--all]  # 列出到期該判定的預測（不截斷；--all 含期限未到的）
 python3 news.py position-verify <預測id> <hit|miss|moot> [--note ...]
 python3 news.py position-stats  # 投資預測命中率（依類型分組）
 python3 news.py position-schema # 輸出 add-position 的 JSON 格式
@@ -493,8 +493,19 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
 - **未判定不等於 miss**：新增的預測 `verdict` 為 NULL，不進命中率分母。
   若預設成任何一種判定，命中率會從一開始就被系統性扭曲。
   由 `test_verdict_defaults_to_unjudged` 守著。
-  但未判定也不能無限累積——`position-due` 會把放滿 `POSITION_MIN_AGE_DAYS`（14 天）
-  的列出來，否則不利的預測會默默停在未判定，等於排除在統計外。
+  但未判定也不能無限累積——`position-due` 會把**沒填 `due_date`** 且放滿
+  `POSITION_MIN_AGE_DAYS`（14 天）的列出來，否則不利的預測會默默停在未判定，
+  等於排除在統計外。
+- **填了 `due_date` 但期限未到的預設不列出**（`--all` 可看），只印一行條數。
+  2026-09-20 實測：47 條「到期待判定」裡真正過了 `due_date` 的是 **0 條**，
+  最早的一條還要三週，逐條查完只能全部回報「資料未出生」——而明天跑還是
+  同一批。一張每天都說「47 條待判、0 條可判」的清單看兩週就會被跳過，
+  屆時真正到期的那條也會一起被忽略，正是這個命令要防的事。
+  同 `CALIBRATE_SA_MULTIPLE` 取 2.5x 而非 1.5x：**常態化的提示等於沒有提示**。
+  沒填 `due_date` 的仍靠 min_age 保底（它們沒有別的機制會浮現），
+  而被濾掉的條數**必須印出來**——靜默隱藏就變成另一種漏看。
+  由 `test_due_hides_predictions_whose_deadline_has_not_arrived` 與
+  `test_due_still_lists_undated_predictions_past_min_age` 守著。
   **它預設不截斷**（`--limit` 預設 0），理由同上：這張清單的用途是「把該判的
   全部判掉」，截斷就直接違背它存在的目的。2026-09-20 實測 47 條到期只列出 20 條，
   而且總數印的是 47、下面列 20 條就結束，**中間沒有任何截斷提示**（`positions`

@@ -2768,27 +2768,42 @@ def cmd_positions(args):
 def cmd_position_due(args):
     """列出到期該判定的預測。
 
-    兩種到期：明確標了 due_date 且已過，或放超過 POSITION_MIN_AGE_DAYS。
-    後者是保底——沒填 due_date 的預測若不主動列出，就會永遠停在未判定，
-    而未判定的預測不進命中率，等於默默地把不利的結果排除在統計外。
+    兩種到期：明確標了 due_date 且已過，或**沒填 due_date** 且放超過
+    POSITION_MIN_AGE_DAYS。後者是保底——沒填 due_date 的預測若不主動列出，
+    就會永遠停在未判定，而未判定的預測不進命中率，等於默默地把不利的結果
+    排除在統計外。
+
+    **填了 due_date 但期限未到的，預設不列出**（`--all` 可看）。它們的到期日
+    已經寫明，不需要靠 min_age 保底。2026-09-20 實測：47 條「到期」裡真正
+    過了 due_date 的是 0 條，最早的一條還要三週，逐條查完只能全部回報
+    「資料未出生」——而明天跑還是同一批。一張每天都說「47 條待判、0 條可判」
+    的清單看兩週就會被跳過，屆時真正到期的那條也會一起被忽略，正是這個
+    命令存在要防的事。同 CALIBRATE_SA_MULTIPLE 取 2.5x 而非 1.5x 的理由：
+    **常態化的提示等於沒有提示**。
     """
     conn = connect()
     items = load_positions(conn, args.ticker, pending_only=True)
     conn.close()
     today = today_local().isoformat()
 
-    due = []
+    due, waiting = [], 0
     for pos, preds in items:
         for p in preds:
             if p["verdict"] is not None:
                 continue
             age = _days_between(pos["obs_date"], today)
-            by_date = p["due_date"] and p["due_date"] <= today
-            if by_date or age >= args.min_age:
-                due.append((pos, p, age, bool(by_date)))
+            by_date = bool(p["due_date"]) and p["due_date"] <= today
+            if by_date or (not p["due_date"] and age >= args.min_age):
+                due.append((pos, p, age, by_date))
+            elif p["due_date"] and not args.all:
+                waiting += 1
+            elif p["due_date"]:
+                due.append((pos, p, age, by_date))
 
     if not due:
         print(f"（沒有到期的預測；未滿 {args.min_age} 天且未標到期日的不列出）")
+        if waiting:
+            print(f"　另有 {waiting} 條已寫明到期日但期限未到（--all 可看）。")
         return
 
     due.sort(key=lambda x: (not x[3], -x[2]))
@@ -2799,10 +2814,21 @@ def cmd_position_due(args):
     # 至少還印「另有 N 筆未顯示」），讀的人不會察覺少了 27 條。
     shown = due[:args.limit] if args.limit else due
     print(f"到期待判定 {len(due)} 條")
+    # 被濾掉的條數必須印出來：靜默隱藏正是這個命令要防的病（未判定的預測
+    # 不進命中率分母）。差別只在「期限未到」是有明確理由的等待，而非漏看。
+    if waiting:
+        print(f"（另有 {waiting} 條已寫明到期日但期限未到，--all 可看）")
     print(f"判定後用：news.py position-verify <預測id> "
           f"<{'|'.join(POSITION_VERDICTS)}> [--note ...]\n")
     for pos, p, age, by_date in shown:
-        why = f"到期日 {p['due_date']}" if by_date else f"已放 {age} 天"
+        if by_date:
+            why = f"到期日 {p['due_date']}"
+        elif p["due_date"]:
+            # --all 才看得到的這類：標成「已放 N 天」會讓人以為該判了，
+            # 而它其實還在等自己的期限——這正是原本把兩者混為一談的病。
+            why = f"期限未到，{p['due_date']}"
+        else:
+            why = f"已放 {age} 天"
         print(f"#{p['id']} {pos['ticker']} [{kind_label_of(p['kind'])}] ({why})")
         print(f"   {p['text']}")
         if p["source_hint"]:
@@ -3230,6 +3256,8 @@ def main():
     p_pdue.add_argument(
         "--min-age", type=int, default=POSITION_MIN_AGE_DAYS, dest="min_age",
         help=f"沒標到期日的至少放幾天才列出（預設 {POSITION_MIN_AGE_DAYS}）")
+    p_pdue.add_argument("--all", action="store_true",
+                        help="連「已寫明到期日但期限未到」的也列出")
     p_pdue.add_argument("--limit", type=int, default=0,
                         help="最多列幾條（預設 0＝全部列出）")
 

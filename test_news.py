@@ -1874,6 +1874,53 @@ class TestPositions(CLITestCase):
         out = self.run_cli("position-due", "--limit", "2").stdout
         self.assertIn("還有 3 條未顯示", out)
 
+    def test_due_hides_predictions_whose_deadline_has_not_arrived(self):
+        """寫明到期日、但期限還沒到的，預設不列出。
+
+        2026-09-20 實測：47 條「到期待判定」裡真正過了 due_date 的是 0 條，
+        全部只是滿了 POSITION_MIN_AGE_DAYS，最早的一條還要三週。逐條查完
+        只能全部回報「資料未出生」，而明天跑還是同一批——一張每天都說
+        「47 條待判、0 條可判」的清單看兩週就會被跳過，屆時真正到期的那條
+        也會一起被忽略，正是 position-due 存在要防的事。
+        同 CALIBRATE_SA_MULTIPLE 取 2.5x 而非 1.5x：常態化的提示等於沒提示。
+
+        但**被濾掉的條數必須印出來**，否則靜默隱藏就變成另一種漏看。
+        """
+        today = date.today()
+        old = (today - timedelta(days=60)).isoformat()
+        self.add_position(make_position(
+            ticker="FUTURE", obs_date=old,
+            predictions=[{"kind": "structural", "text": "期限還沒到",
+                          "source_hint": "官方公告",
+                          "due_date": (today + timedelta(days=30)).isoformat()}]))
+        self.add_position(make_position(
+            ticker="ARRIVED", obs_date=old,
+            predictions=[{"kind": "structural", "text": "期限已過",
+                          "source_hint": "官方公告",
+                          "due_date": (today - timedelta(days=1)).isoformat()}]))
+        out = self.run_cli("position-due").stdout
+        self.assertIn("期限已過", out)
+        self.assertNotIn("期限還沒到", out,
+                         "期限未到的不該混進待判定清單")
+        self.assertIn("1 條", out, "被濾掉的條數必須說出來，不能靜默隱藏")
+        self.assertIn("--all", out, "要告訴使用者怎麼看到被濾掉的")
+
+        every = self.run_cli("position-due", "--all").stdout
+        self.assertIn("期限還沒到", every, "--all 要能看到全部")
+        self.assertIn("期限已過", every)
+
+    def test_due_still_lists_undated_predictions_past_min_age(self):
+        """沒填 due_date 的仍要靠 min_age 保底列出——它們沒有別的機制會浮現，
+        不列就會永遠停在未判定，而未判定不進命中率分母。
+        """
+        old = (date.today() - timedelta(days=60)).isoformat()
+        self.add_position(make_position(
+            ticker="UNDATED", obs_date=old,
+            predictions=[{"kind": "structural", "text": "沒填到期日",
+                          "source_hint": "官方公告"}]))
+        out = self.run_cli("position-due").stdout
+        self.assertIn("沒填到期日", out)
+
     def test_due_date_overrides_min_age(self):
         """明確標了到期日就以它為準，不必等滿 min-age。"""
         today = date.today()
