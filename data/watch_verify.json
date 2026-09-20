@@ -632,6 +632,14 @@
   "verified_date": "2026-09-05"
  },
  {
+  "evidence_url": "https://technews.tw/2026/09/20/ai-disrupts-publishing-industry",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/08/29/tech-giants-ai-slop",
+  "note": "歐盟自 2026-08-02 起強制標示機器生成或加工內容，指標問的「是否有司法管轄區要求強制標示」已成真。註：該規定生效日早於本指標寫下的 8/29，故此為指標寫下時已存在但當時未被察覺的事實，非後續新發生的變化。",
+  "verdict": "hit",
+  "verified_date": "2026-09-20"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/01/strait-of-hormuz-commodity-vessel-transits-stay-in-single-digits",
