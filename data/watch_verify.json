@@ -770,6 +770,14 @@
  {
   "evidence_url": null,
   "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cddvzm721vpo/trad",
+  "note": "2026-09-21 麥克倫堡-西帕默瑞尼亞邦選舉後，主流政黨續拒與 AfD 合作，AfD 雖得票第一（37%）仍無法組閣。防火牆在該邦維持。",
+  "verdict": "hit",
+  "verified_date": "2026-09-21"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
   "news_url": "https://www.bbc.com/zhongwen/articles/cedj1qld27yo/trad",
   "note": "窗口內無敬業集團求償金額或提起國際仲裁的報導",
   "verdict": "miss",
@@ -2030,6 +2038,22 @@
   "note": "今日報導聚焦沙國產量與出口（8月日產降至600萬桶、揚布港出口250萬桶創2013年來最低），但未提及伊朗自身出口量的數字。指標問的是伊朗出口量變化，今日證據無法回答——屬無從判斷而非預測落空。",
   "verdict": "moot",
   "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609060031.aspx",
+  "note": "2026-09-21 出口民調：AfD 得 37% 為第一大黨但未過半（社民黨 35.5%、基民黨 5.5%）。指標問的是是否取得過半席次，答案為否，故判 miss。選舉已舉行、前提未消失，不適用 moot。",
+  "verdict": "miss",
+  "verified_date": "2026-09-21"
+ },
+ {
+  "evidence_url": null,
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609060031.aspx",
+  "note": "2026-09-21 麥克倫堡-西帕默瑞尼亞邦選舉：AfD 以 37% 居首（社民黨 35.5%），但因其他主流政黨拒與其合作，報導明確指出 AfD 仍不太可能入主邦政府。防火牆維持。",
+  "verdict": "hit",
+  "verified_date": "2026-09-21"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170012.aspx",
