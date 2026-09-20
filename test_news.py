@@ -624,6 +624,23 @@ class TestTags(CLITestCase):
         self.assertIn("標籤最多", r.stderr + r.stdout)
         self.assertEqual(self.db_count(), 0, "被拒絕的資料不該寫入 db")
 
+    def test_rejects_invalid_section(self):
+        """section 打錯字不能靜默寫入——digest 依 SECTION_ORDER 分節，
+        不在 SECTIONS 內的值會被歸進「其他」節，不報錯但那則就從該去的
+        位置消失了。這是 add 入口最後一個沒驗證的 schema 欄位。"""
+        r = self.add(make_score("a", section="影響未來趨勢"))  # 少一個「的」
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("不是有效值", r.stderr + r.stdout)
+        self.assertEqual(self.db_count(), 0, "被拒絕的資料不該寫入 db")
+
+    def test_allows_absent_section(self):
+        """留空必須放行：2026-07 有 30 則歷史資料沒有 section，擋下來會讓
+        import-json --replace 無法還原它們，而 data/news.json 必須是 db 的
+        完整鏡像（TestExportJsonIsFullMirror 的前提）。"""
+        self.add(make_score("a", section=None))
+        self.run_cli("import-json", "--replace", check=True)
+        self.assertEqual(self.db_count(), 1)
+
     def test_tags_survive_json_roundtrip(self):
         """標籤必須進 data/news.json，否則 CI 從 JSON 重建時會整批消失。"""
         self.add(make_score("a", tags=["台積電", "AI"]))

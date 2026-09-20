@@ -451,6 +451,17 @@ def cmd_add(args):
         total = sum(scores)
     grade = data.get("grade") or grade_of(total)
 
+    # section 是 add 入口最後一個沒驗證的 schema 欄位（news_date、tags 數量、
+    # 面向上限、url 重複都有擋）。打錯字不會報錯，只會在 digest 被歸進「其他」
+    # 節而靜默消失——同「schema 常數只能有一份」要防的那種不報錯的漂移。
+    # 留空是允許的：2026-07 有 30 則歷史資料沒填，擋下來會讓 import-json
+    # --replace 無法還原它們（data/news.json 必須是 db 的完整鏡像）。
+    section = data.get("section")
+    if section is not None and section not in SECTIONS:
+        sys.exit(
+            f"錯誤：section「{section}」不是有效值，可填：{' / '.join(SECTIONS)}"
+            "（留空表示不分類）")
+
     watch = data.get("watch_next")
     if isinstance(watch, list):
         watch = json.dumps(watch, ensure_ascii=False)
@@ -474,7 +485,7 @@ def cmd_add(args):
         "news_date": data.get("news_date"),
         "total_score": total,
         "grade": grade,
-        "section": data.get("section"),
+        "section": section,
         "one_line": data.get("one_line"),
         "why_important": data.get("why_important"),
         "affected": data.get("affected"),
