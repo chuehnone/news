@@ -2217,3 +2217,151 @@ class TestMixedLanguageWarning(CLITestCase):
             with contextlib.redirect_stdout(buf):
                 news._warn_if_mixed_language(data)
             self.assertEqual(buf.getvalue(), "")
+
+
+class TestSecondOpinion(CLITestCase):
+    """第二意見（TypeSafe Jev）是漂移偵測的對照組，必須維持唯讀且不碰門檻。
+
+    存在理由：calibrate 需 10 則以上才檢查，且分不出「標準鬆了」與
+    「當期新聞真的更重要」。一個不知道昨天評了什麼的評分器單則就能給訊號。
+    這幾個測試守著那條線不被誤改成「換掉評分器」。
+    """
+
+    def _answers(self, news, rows, decision_raw, other_raw=3.0):
+        """組一份假的 API 回覆，不打網路。
+
+        second_opinion_report 刻意吃已問好的 answers 而非自己呼叫 API，
+        正是為了讓這件事可測（同 followup_stats 吃 rows 的理由）。
+
+        other_raw 預設 3.0 會讓其他面向映射到 12-15 分，高於 fixture 的人評
+        10 分（差為負）。要檢驗「只有 decision 示警」必須把它設成 0——
+        否則其他面向根本湊不出超標的差距，把 flagged 擴大到五面向也測不出來。
+        """
+        return {
+            r["id"]: {
+                key: {"raw": decision_raw if key == "decision" else other_raw,
+                      "conf": 0.7, "probs": {}}
+                for key, _label, _mx in news.DIMENSIONS
+            }
+            for r in rows
+        }
+
+    def _rows(self, news):
+        conn = sqlite3.connect(self.dir / "news.db")
+        conn.row_factory = sqlite3.Row
+        rows = list(conn.execute("SELECT * FROM news"))
+        conn.close()
+        return rows
+
+    def test_mapping_uses_measured_range_not_full_scale(self):
+        """映射必須對實測分位數，不是 raw/5*滿分。
+
+        迴歸情境：四個面向的實際上限只到 15（滿分 20）、scope 到 22（滿分 25）。
+        線性映射會系統性偏高，而症狀長得跟評分標準漂移一模一樣，於是會被
+        誤讀成「第二意見比較鬆」。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            for key, _label, mx in news.DIMENSIONS:
+                if key not in news.SECOND_OPINION_CRITERIA:
+                    continue
+                top = news.second_opinion_map(key, 5.0)
+                self.assertLess(
+                    top, mx,
+                    f"{key} 的 level 5 映射到 {top}，等於理論滿分 {mx}——"
+                    "那就是線性映射，會系統性偏高")
+                # level 數與刻度數必須一致，否則插值會 IndexError
+                spec = news.SECOND_OPINION_CRITERIA[key]
+                self.assertEqual(len(spec["levels"]), len(spec["criteria"]))
+
+    def test_mapping_is_monotonic(self):
+        """raw 上升時映射值不得下降——刻度若寫亂了排序會失去意義。"""
+        with load_modules(self.dir, "news") as (news,):
+            for key in news.SECOND_OPINION_CRITERIA:
+                vals = [news.second_opinion_map(key, i / 4) for i in range(21)]
+                self.assertEqual(vals, sorted(vals), f"{key} 的映射不是單調遞增")
+
+    def test_only_decision_triggers_alert(self):
+        """只有決策相關性會示警。
+
+        2026-09-20 實測 26 則：只有 decision 的系統性差距（+1.75）大到有意義，
+        而它也正是 CLAUDE.md 記錄的漂移主角（7/25 那批 8 → 12.5）。
+        五個面向都示警會讓警告常態化而被忽略——同 CALIBRATE_SA_MULTIPLE
+        取 2.5x 而非 1.5x 的理由。
+        """
+        # 五個面向的人評都給高分，且第二意見全部回 raw=0（映射到各面向最低分），
+        # 所以每一個面向的差距都遠超門檻。只有 decision 進 flagged 才算通過。
+        self.run_cli("add", "-", stdin=json.dumps(make_score(
+            "全面向皆超標", news_date="2026-01-01", scores=(20, 15, 14, 15, 13))),
+            check=True)
+        with load_modules(self.dir, "news") as (news,):
+            rows = self._rows(news)
+            rep = news.second_opinion_report(
+                rows, self._answers(news, rows, 0.0, other_raw=0.0))
+            self.assertTrue(rep["alert"])
+            # 一則新聞、五個面向都超標，但 flagged 只能有 decision 那一筆
+            self.assertEqual(
+                len(rep["flagged"]), 1,
+                f"flagged 有 {len(rep['flagged'])} 筆——示警範圍被擴大到 decision "
+                "以外的面向了，那會讓警告常態化而被忽略")
+            self.assertEqual(rep["flagged"][0]["human"], 14,
+                             "flagged 的 human 應是 decision 的 14 分")
+
+    def test_no_alert_when_scores_agree(self):
+        """兩邊一致時不得示警——常態化的警告會讓人略過整段輸出。"""
+        self.run_cli("add", "-", stdin=json.dumps(make_score(
+            "一致", news_date="2026-01-01", scores=(10, 10, 8, 10, 9))),
+            check=True)
+        with load_modules(self.dir, "news") as (news,):
+            rows = self._rows(news)
+            # decision raw=3.0 → 映射到 8 分，與人評 8 分相同
+            rep = news.second_opinion_report(rows, self._answers(news, rows, 3.0))
+            self.assertFalse(rep["alert"])
+            self.assertEqual(rep["flagged"], [])
+
+    def test_report_does_not_touch_the_database(self):
+        """唯讀：混入第二個評分者會讓 calibrate / drift 的前後期比較永久失效。"""
+        self.run_cli("add", "-", stdin=json.dumps(make_score(
+            "唯讀", news_date="2026-01-01", scores=(10, 10, 12, 10, 9))),
+            check=True)
+        db = self.dir / "news.db"
+        before = db.read_bytes()
+        with load_modules(self.dir, "news") as (news,):
+            rows = self._rows(news)
+            news.second_opinion_report(rows, self._answers(news, rows, 0.0))
+        self.assertEqual(db.read_bytes(), before, "second_opinion 不得寫入 news.db")
+
+    def test_grade_thresholds_are_untouched(self):
+        """不得為了讓 Jev 的分數落進等級而調門檻。
+
+        Jev 的 score 是機率加權值（Σ level×機率），數學上天生壓縮極端值
+        （實測全距只有人評分的 0.63 倍）。調門檻遷就它會讓前後資料永久不可比
+        ——同 CLAUDE.md「門檻一改，前後資料就永久不可比了」。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            self.assertEqual(
+                news.GRADE_THRESHOLDS,
+                [("S", 85), ("A", 70), ("B", 55), ("C", 40)],
+                "等級門檻被改動了——若是為了配合第二意見的分數分布，"
+                "那會讓錨點期與現在的資料不可比")
+
+    def test_key_is_never_read_from_the_repo(self):
+        """API key 只能從家目錄讀。repo 是 public，放 repo 內就是多一層風險。"""
+        with load_modules(self.dir, "news") as (news,):
+            path = str(news.SECOND_OPINION_KEY_PATH)
+            self.assertTrue(path.startswith(str(Path.home())))
+            self.assertNotIn(str(REPO), path)
+            # 沒有 key 時回 None 而非拋錯——這個命令本來就是選用的
+            self.assertIsNone(news.second_opinion_key(self.dir / "nope"))
+
+    def test_criteria_are_defined_once(self):
+        """criteria 是評分刻度的一部分，不得在 server.py 另存一份。
+
+        同 CLAUDE.md「schema 常數只能有 news.py 一份」：兩份同值時完全不會
+        報錯，只改一邊也不會——網頁只是靜默地按舊刻度畫圖。
+        """
+        text = (REPO / "server.py").read_text(encoding="utf-8")
+        for name in ("SECOND_OPINION_CRITERIA", "SECOND_OPINION_ALERT_GAP",
+                     "SECOND_OPINION_API", "SECOND_OPINION_MODEL"):
+            self.assertNotIn(
+                f"{name} =", text,
+                f"server.py 自己定義了 {name}，必須改成 import 自 news.py")

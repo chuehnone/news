@@ -41,6 +41,7 @@ python3 news.py tag <id> <標籤...>   # 修改某則的標籤（--add 附加、
 python3 news.py alias [別名 正規名]  # 管理標籤別名（不帶參數列出全部、--remove 刪除）
 python3 news.py digest [--date YYYY-MM-DD]  # 輸出當日每日摘要（markdown）
 python3 news.py calibrate [--date YYYY-MM-DD]  # 比對某日評分與錨點期（每批評完必跑，見下）
+python3 news.py second-opinion [--date YYYY-MM-DD] [--limit N]  # 獨立評分器對照（漂移偵測的第二意見，唯讀、需 API key）
 python3 news.py drift [--split YYYY-MM-DD]  # 偵測評分標準漂移（review 的前提，見下）
 python3 news.py review [--window 30] [--since YYYY-MM-DD]  # 評分回顧校準（見下）
 python3 news.py watch [--date YYYY-MM-DD] [--json]  # 列出當天新聞可能命中的舊 watch_next
@@ -100,6 +101,57 @@ python3 -m unittest test_news test_tariff  # 跑回歸測試（CI 也會跑）
 **輔助診斷的實測價值**：7/25 那批五個面向有四個同步上升（決策相關性
 8 → 12.5 最劇烈），只有**事實可信度不動**。這正是「事實可信度是天然對照組」
 的再次驗證——推力來自主觀判斷鬆動，不是來源品質改變。
+
+## 第二意見（`news.py second-opinion`）
+
+`calibrate` 有兩個結構性弱點：需 `CALIBRATE_MIN_BATCH`（10）則以上才檢查，
+且**分不出「標準鬆了」與「當期新聞真的更重要」**（那個區分只能靠 `drift` 的
+主題控制，而 drift 要前後期各 5 則同標籤樣本）。第二意見補的正是這塊——
+一個**不知道昨天評了什麼**的評分器對同一則給出獨立判斷。人評分若系統性高於它，
+那是標準鬆動的訊號，因為新聞真的變重要時兩邊會一起上升。**單則就能看。**
+
+用 TypeSafe 的 Jev（`Score` primitive，回傳機率加權值與 confidence）。
+`~/.typesafe_key` 讀 key，`urllib` 打 HTTP API，**不裝 SDK**（維持零外部依賴）。
+
+- **唯讀，不寫 `news.db`**。混入第二個評分者會讓 `calibrate` / `drift` 的
+  前後期比較永久失效（兩者都假設評分標準前後一致）。由
+  `test_report_does_not_touch_the_database` 守著。
+- **只有決策相關性會示警**（`SECOND_OPINION_ALERT_GAP` = 3.0）。2026-09-20
+  實測錨點期 26 則：只有 decision 的系統性差距（+1.75）大到有意義，而它也正是
+  漂移的主角（7/25 那批 8 → 12.5）。五個面向都示警會讓警告常態化而被忽略——
+  同 `CALIBRATE_SA_MULTIPLE` 取 2.5x 而非 1.5x 的理由。其餘面向仍列出供診斷。
+  由 `test_only_decision_triggers_alert` 守著（該測試讓五個面向的差距**都**超標，
+  只有 decision 進 flagged 才算通過；第一版 fixture 讓其他面向的差為負，
+  擴大示警範圍照樣通過，那條測試當時是空的）。
+- **映射必須對實測分位數，不是 `raw/5*滿分`**（`SECOND_OPINION_CRITERIA` 的
+  `levels`）。實測各面向都沒用到滿分區間：四個面向的實際上限只到 15（滿分 20）、
+  scope 到 22（滿分 25），中位數落在滿分的 55-60%。線性映射會系統性偏高，
+  而症狀長得跟評分標準漂移一模一樣，於是會被誤讀成「第二意見比較鬆」。
+  由 `test_mapping_uses_measured_range_not_full_scale` 守著。
+- **不得為了讓分數落進等級而調 `GRADE_THRESHOLDS`**。Jev 的 score 是
+  Σ(level×機率)，**數學上天生壓縮極端值**（實測全距只有人評分的 0.63 倍，
+  沿用 85/70/55/40 會讓 6 則 A 級全變 B）。調門檻遷就它就是
+  「門檻一改，前後資料就永久不可比」。由 `test_grade_thresholds_are_untouched` 守著。
+- **`criteria` 是評分刻度的一部分，只能有 `news.py` 一份**（同「schema 常數
+  只能有一份」）。level 描述刻意寫**具體情境**而非程度副詞——TypeSafe 文件明說
+  `Describe situations, not degrees`，且每個 level 是獨立評估的（模型看不到
+  level 編號與相鄰 level）。
+- **key 只能放家目錄**（`SECOND_OPINION_KEY_PATH`）。repo 是 public，就算加了
+  `.gitignore`，把憑證放在 repo 內本身就是多一層風險。設定要在**真正的終端機**
+  用 `read -s` 寫入——用 Claude Code 的 `!` 前綴會把 key 寫進對話紀錄。
+
+**2026-09-20 首次實測（錨點期 26 則，餵 title+summary）**：
+
+- **Spearman 等級相關 0.893**，排序高度一致。criteria 是從錨點期反推寫的、
+  不是模型學來的，所以這也表示**這套評分標準是可言說的**——能寫成 6 段文字
+  讓另一個系統重現排序。能寫出來的標準才防得住漂移。
+- `confidence` 最低的兩個面向是 `duration`（0.60）與 `credibility`（0.59），
+  而 `duration` 正是 `review` 實測鑑別力只有 +0.23 的那個面向。**它的不確定性
+  落在已獨立驗證過確實不可靠的地方**，所以 confidence 可能本身就是個校準訊號
+  （目前只是觀察，樣本還不夠下結論）。
+- 成本：26 則約 4 萬 input tokens。
+- **已知不對等**：餵給 API 的是 `title + summary`，而人評分時讀的是內文，
+  且 `summary` 本身是人評分的產物（關鍵事實已被挑好）。這會**低估**它的表現。
 
 ## 評分標準漂移偵測（`news.py drift`）
 
@@ -562,10 +614,10 @@ python3 -m unittest test_tariff            # 16 個測試
 
 ## 架構
 
-- `news.py` — CLI（init / add / list / serve / fetch / pending / calibrate / drift /
-  review / watch / watch-verify / watch-stats / anchors / tags / tag / alias /
-  export-json / import-json / export；投資線見 add-position / positions /
-  position-due / position-verify / position-stats / position-schema）。
+- `news.py` — CLI（init / add / list / serve / fetch / pending / calibrate /
+  second-opinion / drift / review / watch / watch-verify / watch-stats / anchors /
+  tags / tag / alias / export-json / import-json / export；投資線見 add-position /
+  positions / position-due / position-verify / position-stats / position-schema）。
   schema 常數（`DIMENSIONS` / `SECTIONS` / `GRADE_THRESHOLDS` / `GRADES` / `GRADE_LABELS`）定義在此，是唯一出處
 - `test_news.py` — 回歸測試（標準庫 unittest）。涵蓋 news_date 格式驗證、
   保留期分層、匯出／匯入 round-trip 無損、動態站與靜態站的篩選一致性、
@@ -573,6 +625,7 @@ python3 -m unittest test_tariff            # 16 個測試
   回顧校準的三項偏誤修正、watch_next 驗證的候選收窄與 moot 語意、
   卡片只標命中且必附分母、錨點期間不得隨資料滾動、
   calibrate 的基準不得滾動與門檻不得誤報、
+  第二意見須唯讀且只對決策相關性示警、映射不得用理論滿分、
   投資預測必填 source_hint 且市場類不得復活、void 與 moot 的統計處理不同、
   serve 預設不得對外開放且 bind 不得卡在 DNS、fetch 產出過低要提示、
   投資觀察不得外洩到靜態站或版控；

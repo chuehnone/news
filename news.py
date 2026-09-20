@@ -24,6 +24,7 @@ import re
 import sqlite3
 import sys
 import unicodedata
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -1790,6 +1791,319 @@ def cmd_calibrate(args):
         print("     真正的漂移判斷仍以 `news.py drift` 為準。")
 
 
+# ---------------------------------------------------------------------------
+# 第二意見（TypeSafe Jev）：獨立評分器當漂移偵測的對照組
+#
+# 為什麼需要這個：calibrate 拿「本批 S/A 佔比」跟錨點比，有兩個已知弱點——
+# 需要 10 則以上才檢查（CALIBRATE_MIN_BATCH），且**分不出「標準鬆了」與
+# 「當期新聞真的更重要」**（那個區分只能靠 drift 的主題控制，而 drift 要
+# 前後期各 5 則同標籤樣本）。
+#
+# 第二意見補的正是這塊：一個不知道「昨天評了什麼」的評分器，對同一則給出
+# 獨立判斷。人評分若系統性高於它，那是標準鬆動的訊號——因為新聞真的變重要時
+# 兩邊會一起上升。**單則就能看，不需要累積樣本。**
+#
+# 2026-09-20 實測（錨點期 26 則，餵 title+summary）：Spearman 等級相關 0.893，
+# 排序高度一致；但 decision 一項人評分系統性高出 1.75 分，而那正是 CLAUDE.md
+# 記錄的漂移主角（7/25 那批 decision 從 8 衝到 12.5）。所以這個命令
+# **刻意只盯 decision 的差值**，其餘面向僅列出供參考。
+#
+# 刻意不做的事：
+#   - **不寫 news.db**。混入第二個評分者會讓 calibrate / drift 的前後期
+#     比較永久失效（它們假設評分標準前後一致）。
+#   - **不碰 GRADE_THRESHOLDS**。Jev 的 score 是機率加權值（Σ level×機率），
+#     數學上天生會壓縮極端值（實測全距只有人評分的 0.63 倍），套現有門檻會讓
+#     A 級全部消失。要當評分器用必須重標定門檻，而那會讓前後資料不可比。
+#   - **不裝 SDK**。用 urllib 打 HTTP API，維持這個 repo 的零外部依賴。
+SECOND_OPINION_API = "https://api.typesafe.ai/v1/systemone"
+SECOND_OPINION_MODEL = "jev-latest"
+# key 放家目錄而非 repo 內：這個 repo 是 public，就算加了 .gitignore，
+# 把憑證放在 repo 裡本身就是多一層風險。
+SECOND_OPINION_KEY_PATH = Path.home() / ".typesafe_key"
+
+# 人評分高出第二意見這麼多分就示警。decision 滿分 20、錨點期實際範圍 3-15，
+# 而 CLAUDE.md 記錄的漂移是「8 → 12.5」（+4.5）。門檻取 3.0 是因為它能
+# 命中那種量級的鬆動，又放行實測的正常差異（26 則平均差 1.75）。
+SECOND_OPINION_ALERT_GAP = 3.0
+
+# 各面向的 level 描述。刻意寫「具體情境」而非程度副詞——TypeSafe 的 Score
+# primitive 文件明說 Describe situations, not degrees，且每個 level 是獨立
+# 評估的（模型看不到 level 編號與相鄰 level）。
+#
+# levels 是每個 level 對應的原始刻度，**取自錨點期實測分位數而非理論滿分**。
+# 這點很重要：四個面向的實際上限都只到 15（滿分 20）、scope 到 22（滿分 25），
+# 中位數落在滿分的 55-60%。用 raw/5*滿分 做線性映射會系統性偏高，而症狀
+# 會長得跟評分標準漂移一模一樣，於是被誤讀成「第二意見比較鬆」。
+SECOND_OPINION_CRITERIA = {
+    "scope": {
+        "levels": [8, 11, 13, 15, 18, 22],
+        "criteria": [
+            "單一機構或少數人的內部事務，外部幾乎不受影響",
+            "單一產業的局部議題，或發生在遠端國家而對台灣讀者無涉的事件",
+            "單一國家的政策或產業變動，台灣讀者屬旁觀者",
+            "跨國的單一產業戰場，或全台某條供應鏈／某個族群直接受影響",
+            "全台跨產業供應鏈，或牽動數個主要經濟體的產業結構",
+            "全球性事件：牽動國際能源、金融市場或多大洲的民生系統",
+        ],
+    },
+    "duration": {
+        "levels": [5, 9, 11, 12, 13, 15],
+        "criteria": [
+            "當日或數日內結束，之後不會再被提起",
+            "數週內的短期波動，後續報導會迅速降溫",
+            "數月內持續發展，會有零星後續",
+            "橫跨一季以上，後續報導可預期會持續出現",
+            "跨年度的持續議題，影響會延續到明年",
+            "數年以上的結構性變化，或會被當成分水嶺事件回顧",
+        ],
+    },
+    "decision": {
+        "levels": [3, 5, 6, 8, 11, 14],
+        "criteria": [
+            "純資訊或娛樂，讀者不會因此改變任何行為",
+            "僅供理解世界的背景知識，對台灣讀者幾乎無直接決策相關性",
+            "特定職業或投資人有中期參考價值，但不需立即行動",
+            "相關產業從業者或投資人需要調整判斷，一般讀者透過物價等間接受影響",
+            "直接影響投資配置、企業成本規劃或採購時點等具體決策",
+            "讀者當天就需要改變行動：確認名單、避買特定商品、調整行程或防災準備",
+        ],
+    },
+    "structural": {
+        "levels": [3, 9, 11, 12, 14, 15],
+        "criteria": [
+            "單一事件，不揭示任何趨勢或制度性質",
+            "既有趨勢的又一個例子，本身不增添新理解",
+            "既有趨勢的量級升級，值得更新對該趨勢的認知",
+            "揭示某個機制或制度如何運作（或如何失效）",
+            "制度、法源或產業結構出現實質改變",
+            "既有秩序的轉折點：權力結構、技術路線或制度基礎被改寫",
+        ],
+    },
+    "credibility": {
+        "levels": [6, 10, 11, 12, 13, 14],
+        "criteria": [
+            "匿名消息或單一未具名來源，且無任何數據佐證",
+            "有來源但屬轉述或推測，關鍵數字缺漏",
+            "具名來源的說法，但未經第三方驗證",
+            "具名來源加上具體數據，或多家媒體一致報導",
+            "官方發布、正式公告或當事機構自行揭露的數字",
+            "官方原始文件或可查核的統計，含完整數據與方法",
+        ],
+    },
+}
+
+
+def second_opinion_key(path=SECOND_OPINION_KEY_PATH):
+    """讀 API key。找不到時回 None 而非拋錯——沒設定就是沒設定，
+    由呼叫端印出設定方式，這個命令本來就是選用的。"""
+    try:
+        for line in Path(path).read_text().splitlines():
+            if line.startswith("TYPESAFE_API_KEY="):
+                key = line.split("=", 1)[1].strip()
+                return key or None
+    except OSError:
+        return None
+    return None
+
+
+def second_opinion_questions():
+    """組 TypeSafe 的 questions payload。五個面向一次問完——文件說獨立問題
+    要一起送、會平行跑且彼此看不到答案，分次送只是多花錢。"""
+    return {
+        key: {
+            "type": "score",
+            "instructions": (
+                f"這則新聞的「{label}」有多高？"
+                "只判斷這一個面向，不要把其他面向的考量混進來。"
+            ),
+            "criteria": SECOND_OPINION_CRITERIA[key]["criteria"],
+        }
+        for key, label, _mx in DIMENSIONS
+        if key in SECOND_OPINION_CRITERIA
+    }
+
+
+def second_opinion_map(key, raw):
+    """把 0~5 的機率加權值映射回該面向的原始刻度。
+
+    用實測分位數線性插值，不用 raw/5*滿分——理由見 SECOND_OPINION_CRITERIA
+    的註解（實際上限遠低於理論滿分，線性映射會系統性偏高）。
+    """
+    levels = SECOND_OPINION_CRITERIA[key]["levels"]
+    if raw <= 0:
+        return float(levels[0])
+    if raw >= len(levels) - 1:
+        return float(levels[-1])
+    low = int(raw)
+    return levels[low] + (levels[low + 1] - levels[low]) * (raw - low)
+
+
+def second_opinion_ask(key, state, timeout=120):
+    """對一則新聞問五個面向。回傳 {dim: {"raw":…, "conf":…, "probs":…}}。"""
+    body = json.dumps({
+        "state": state,
+        "model": SECOND_OPINION_MODEL,
+        "questions": second_opinion_questions(),
+    }, ensure_ascii=False).encode()
+    req = urllib.request.Request(SECOND_OPINION_API, data=body, headers={
+        "Authorization": f"Bearer {key}",
+        "Content-Type": "application/json",
+    })
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        payload = json.loads(resp.read())
+    out = {}
+    for dim, ans in payload.get("answers", {}).items():
+        out[dim] = {
+            "raw": ans.get("score"),
+            "conf": ans.get("confidence"),
+            "probs": ans.get("probabilities", {}),
+        }
+    return out, payload.get("usage", {})
+
+
+def second_opinion_report(rows, answers):
+    """比對人評分與第二意見。吃已取好的 rows 與已問好的 answers，
+    刻意不自己打 API——這樣測試不需要網路，也讓呼叫端決定取樣範圍
+    （同 followup_stats 吃 rows 的理由）。
+
+    answers 是 {news_id: {dim: {"raw":…, "conf":…}}}。
+
+    回傳 {"n":…, "dims": {dim: {"human":…, "jev":…, "gap":…, "conf":…}},
+          "flagged": [每則 decision 差距超標的], "alert": bool}
+    """
+    paired = [r for r in rows if r["id"] in answers]
+    out = {"n": len(paired), "dims": {}, "flagged": [], "alert": False}
+    if not paired:
+        return out
+
+    for key, _label, _mx in DIMENSIONS:
+        if key not in SECOND_OPINION_CRITERIA:
+            continue
+        pairs = [
+            (r[f"{key}_score"], second_opinion_map(key, answers[r["id"]][key]["raw"]),
+             answers[r["id"]][key].get("conf"))
+            for r in paired
+            if r[f"{key}_score"] is not None
+            and answers[r["id"]].get(key, {}).get("raw") is not None
+        ]
+        if not pairs:
+            continue
+        humans = [p[0] for p in pairs]
+        jevs = [p[1] for p in pairs]
+        confs = [p[2] for p in pairs if p[2] is not None]
+        out["dims"][key] = {
+            "human": median(humans),
+            "jev": median(jevs),
+            "gap": sum(h - j for h, j in zip(humans, jevs)) / len(pairs),
+            "conf": median(confs) if confs else None,
+        }
+
+    # 只有 decision 會示警。其餘面向列出供診斷，但不當警訊——2026-09-20 實測
+    # 只有 decision 的系統性差距（+1.75）大到有意義，而它也正是 CLAUDE.md
+    # 記錄的漂移主角。把五個面向都拿來示警會讓警告常態化而被忽略
+    # （同 CALIBRATE_SA_MULTIPLE 取 2.5x 而非 1.5x 的理由）。
+    for r in paired:
+        a = answers[r["id"]].get("decision", {})
+        if r["decision_score"] is None or a.get("raw") is None:
+            continue
+        gap = r["decision_score"] - second_opinion_map("decision", a["raw"])
+        if gap >= SECOND_OPINION_ALERT_GAP:
+            out["flagged"].append({
+                "id": r["id"], "title": r["title"], "grade": r["grade"],
+                "human": r["decision_score"],
+                "jev": round(second_opinion_map("decision", a["raw"]), 1),
+                "gap": round(gap, 1), "conf": a.get("conf"),
+            })
+    out["flagged"].sort(key=lambda x: -x["gap"])
+    out["alert"] = bool(out["flagged"])
+    return out
+
+
+def cmd_second_opinion(args):
+    """拿獨立評分器（TypeSafe Jev）對照人評分，當漂移偵測的第二意見。
+
+    唯讀：不寫 news.db、不改任何常數。理由見 SECOND_OPINION_CRITERIA 上方。
+    """
+    key = second_opinion_key()
+    if not key:
+        print(f"沒有找到 API key（{SECOND_OPINION_KEY_PATH}）。")
+        print("設定方式（在真正的終端機執行，不要用 Claude Code 的 ! 前綴——")
+        print("那會把 key 寫進對話紀錄）：")
+        print('  read -s K && echo "TYPESAFE_API_KEY=$K" > ~/.typesafe_key'
+              ' && chmod 600 ~/.typesafe_key && unset K')
+        return
+
+    conn = connect()
+    rows = list(conn.execute("SELECT * FROM news"))
+    conn.close()
+    if not rows:
+        print("（資料庫沒有評分紀錄）")
+        return
+
+    on_date = args.date or max(
+        (r["news_date"] for r in rows if r["news_date"]), default=None)
+    batch = [r for r in rows if r["news_date"] == on_date]
+    if args.limit:
+        batch = batch[:args.limit]
+    if not batch:
+        print(f"（{on_date} 沒有評分資料）")
+        return
+
+    print(f"第二意見：{on_date}（{len(batch)} 則）vs {SECOND_OPINION_MODEL}\n")
+    answers, tok_in, tok_out = {}, 0, 0
+    for i, r in enumerate(batch, 1):
+        state = {"標題": r["title"], "摘要": r["summary"], "日期": r["news_date"]}
+        try:
+            ans, usage = second_opinion_ask(key, state)
+        except urllib.error.HTTPError as exc:
+            detail = exc.read().decode(errors="replace")[:200]
+            print(f"  [{i}/{len(batch)}] HTTP {exc.code}：{detail}")
+            if exc.code in (401, 403):
+                print("  認證失敗，停止。")
+                return
+            continue
+        except OSError as exc:
+            print(f"  [{i}/{len(batch)}] {type(exc).__name__}：{exc}")
+            continue
+        answers[r["id"]] = ans
+        tok_in += usage.get("input_tokens", 0)
+        tok_out += usage.get("output_tokens", 0)
+        print(f"  [{i}/{len(batch)}] {r['grade']}{r['total_score']}"
+              f"  {r['title'][:40]}")
+
+    rep = second_opinion_report(batch, answers)
+    if not rep["n"]:
+        print("\n（沒有取得任何第二意見）")
+        return
+
+    print(f"\n  各面向中位數（人評分 → {SECOND_OPINION_MODEL}）")
+    for key_, label, _mx in DIMENSIONS:
+        d = rep["dims"].get(key_)
+        if not d:
+            continue
+        conf = f"conf {d['conf']:.2f}" if d["conf"] is not None else "conf —"
+        mark = "  ← 只有這項會示警" if key_ == "decision" else ""
+        print(f"    {label:<12} {d['human']:>5g} → {d['jev']:>5.1f}"
+              f"   平均差 {d['gap']:+5.2f}   {conf}{mark}")
+
+    print()
+    if rep["alert"]:
+        print(f"  ⚠️  {len(rep['flagged'])} 則的決策相關性比第二意見高出"
+              f" {SECOND_OPINION_ALERT_GAP} 分以上：")
+        for f in rep["flagged"][:args.limit or 10]:
+            print(f"     {f['grade']}{f['id']}  人評 {f['human']}"
+                  f" vs {f['jev']}（+{f['gap']}）  {f['title'][:36]}")
+        print("     回頭核對錨定範例（news.py anchors）再確認這幾則。")
+        print("     第二意見不知道你昨天評了什麼，所以系統性高出是標準鬆動的")
+        print("     訊號——新聞真的變重要時兩邊會一起上升。")
+    else:
+        print("  ✅ 決策相關性沒有系統性高於第二意見。")
+        print("     這補上了 calibrate 分不出「標準鬆了」與「新聞真的更重要」")
+        print("     的弱點，但它只是另一個評分器的意見，不是事實。")
+    if tok_in or tok_out:
+        print(f"\n  tokens in={tok_in} out={tok_out}")
+
+
 def cmd_anchors(_args):
     """重新產生 skill 的「固定錨點」表，用來核對它有沒有跟資料脫節。"""
     conn = connect()
@@ -2808,6 +3122,12 @@ def main():
         "calibrate", help="比對某日評分與錨點期的標準（漂移的日常粗篩）")
     p_cal.add_argument("--date", help="要檢查的日期（預設取最新評分日）")
 
+    p_so = sub.add_parser(
+        "second-opinion",
+        help="拿獨立評分器對照人評分（漂移偵測的第二意見，唯讀、需 API key）")
+    p_so.add_argument("--date", help="要對照的日期（預設取最新評分日）")
+    p_so.add_argument("--limit", type=int, help="最多對照幾則（省 API 呼叫）")
+
     p_watch = sub.add_parser(
         "watch", help="列出當天新聞可能命中的舊 watch_next（批次評分時順手判定）")
     p_watch.add_argument("--date", help="以哪天的新聞回頭比對（預設取最新評分日）")
@@ -2917,6 +3237,7 @@ def main():
         "watch-stats": cmd_watch_stats,
         "anchors": cmd_anchors,
         "calibrate": cmd_calibrate,
+        "second-opinion": cmd_second_opinion,
         "tags": cmd_tags,
         "tag": cmd_tag,
         "alias": cmd_alias,
