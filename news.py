@@ -2795,10 +2795,16 @@ def cmd_position_due(args):
         return
 
     due.sort(key=lambda x: (not x[3], -x[2]))
+    # 預設不截斷：這張清單的用途是「把該判的全部判掉」，而未判定的預測
+    # 不進命中率分母——漏掉一條就是默默把不利的結果排除在統計外，正是
+    # cmd_position_due 存在要防的事。2026-09-20 實測 47 條到期只列出 20 條，
+    # 且總數印的是 47、下面列 20 條就結束，中間沒有任何截斷提示（`positions`
+    # 至少還印「另有 N 筆未顯示」），讀的人不會察覺少了 27 條。
+    shown = due[:args.limit] if args.limit else due
     print(f"到期待判定 {len(due)} 條")
     print(f"判定後用：news.py position-verify <預測id> "
           f"<{'|'.join(POSITION_VERDICTS)}> [--note ...]\n")
-    for pos, p, age, by_date in due[:args.limit]:
+    for pos, p, age, by_date in shown:
         why = f"到期日 {p['due_date']}" if by_date else f"已放 {age} 天"
         print(f"#{p['id']} {pos['ticker']} [{kind_label_of(p['kind'])}] ({why})")
         print(f"   {p['text']}")
@@ -2806,6 +2812,10 @@ def cmd_position_due(args):
             print(f"   查：{p['source_hint']}")
         print(f"   觀點 #{pos['id']}（{pos['obs_date']}）：{pos['thesis'][:50]}")
         print()
+
+    if len(shown) < len(due):
+        print(f"⚠️  還有 {len(due) - len(shown)} 條未顯示（--limit {args.limit}）。"
+              "未判定的預測不進命中率分母，不要讓它們停在這裡。")
 
 
 def cmd_position_verify(args):
@@ -3223,7 +3233,8 @@ def main():
     p_pdue.add_argument(
         "--min-age", type=int, default=POSITION_MIN_AGE_DAYS, dest="min_age",
         help=f"沒標到期日的至少放幾天才列出（預設 {POSITION_MIN_AGE_DAYS}）")
-    p_pdue.add_argument("--limit", type=int, default=20, help="最多列幾條")
+    p_pdue.add_argument("--limit", type=int, default=0,
+                        help="最多列幾條（預設 0＝全部列出）")
 
     p_pv = sub.add_parser("position-verify", help="記錄一條投資預測的判定")
     p_pv.add_argument("pred_id", type=int, help="預測 id（position-due 會顯示）")

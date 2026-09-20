@@ -55,7 +55,7 @@ python3 news.py prune [--days 30]  # 清除 pending 中過期的已處理項目
 python3 news.py schema          # 輸出 add 的 JSON 格式與驗證規則
 python3 news.py add-position <file|->   # 新增一次投資觀點（格式見 position-schema；agent 寫入要填 author）
 python3 news.py positions [標的] [--pending] [-v]  # 列出投資觀點與預測狀態
-python3 news.py position-due [標的]     # 列出到期該判定的預測
+python3 news.py position-due [標的]     # 列出到期該判定的預測（預設全部列出，不截斷）
 python3 news.py position-verify <預測id> <hit|miss|moot> [--note ...]
 python3 news.py position-stats  # 投資預測命中率（依類型分組）
 python3 news.py position-schema # 輸出 add-position 的 JSON 格式
@@ -495,6 +495,12 @@ review 的結論就不可信——所以這是 review 的前提而非補充。
   由 `test_verdict_defaults_to_unjudged` 守著。
   但未判定也不能無限累積——`position-due` 會把放滿 `POSITION_MIN_AGE_DAYS`（14 天）
   的列出來，否則不利的預測會默默停在未判定，等於排除在統計外。
+  **它預設不截斷**（`--limit` 預設 0），理由同上：這張清單的用途是「把該判的
+  全部判掉」，截斷就直接違背它存在的目的。2026-09-20 實測 47 條到期只列出 20 條，
+  而且總數印的是 47、下面列 20 條就結束，**中間沒有任何截斷提示**（`positions`
+  至少還印「另有 N 筆未顯示」）——讀的人不會察覺少了 27 條。指定 `--limit` 時
+  仍會印出還有幾條未顯示，由 `test_due_lists_everything_by_default` 與
+  `test_due_warns_when_limit_truncates` 守著。
 - **改判定要 `--force`**：事後改判定會讓命中率失去意義。
 - **`POSITION_MIN_AGE_DAYS` 比新聞的 7 天長**：基本面預測的驗證點（月營收、財報）
   本來就以月為單位，太早看必然是「還沒發生」。

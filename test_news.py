@@ -1844,6 +1844,36 @@ class TestPositions(CLITestCase):
         self.assertIn("OLD", out)
         self.assertNotIn("NEW", out, "剛寫的預測不該列入待判定")
 
+    def test_due_lists_everything_by_default(self):
+        """到期清單預設不得截斷。這張表的用途是「把該判的全部判掉」，而
+        未判定的預測不進命中率分母——漏掉一條就是默默把不利的結果排除在
+        統計外，正是 position-due 存在要防的事。
+
+        2026-09-20 實測 47 條到期只列出 20 條，且總數印的是 47、下面列 20 條
+        就結束，中間沒有任何截斷提示，讀的人不會察覺少了 27 條。
+        """
+        old = (date.today() - timedelta(days=60)).isoformat()
+        for i in range(25):
+            self.add_position(make_position(
+                ticker=f"T{i}", obs_date=old,
+                predictions=[{"kind": "structural", "text": f"預測{i}",
+                              "source_hint": "官方公告"}]))
+        out = self.run_cli("position-due").stdout
+        self.assertIn("到期待判定 25 條", out)
+        for i in range(25):
+            self.assertIn(f"預測{i}", out, f"第 {i} 條被截斷了")
+
+    def test_due_warns_when_limit_truncates(self):
+        """明確指定 --limit 時仍必須說有幾條沒顯示——靜默截斷是原本的病。"""
+        old = (date.today() - timedelta(days=60)).isoformat()
+        for i in range(5):
+            self.add_position(make_position(
+                ticker=f"T{i}", obs_date=old,
+                predictions=[{"kind": "structural", "text": f"預測{i}",
+                              "source_hint": "官方公告"}]))
+        out = self.run_cli("position-due", "--limit", "2").stdout
+        self.assertIn("還有 3 條未顯示", out)
+
     def test_due_date_overrides_min_age(self):
         """明確標了到期日就以它為準，不必等滿 min-age。"""
         today = date.today()
