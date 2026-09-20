@@ -1893,9 +1893,16 @@ SECOND_OPINION_CRITERIA = {
 }
 
 
-def second_opinion_key(path=SECOND_OPINION_KEY_PATH):
+def second_opinion_key(path=None):
     """讀 API key。找不到時回 None 而非拋錯——沒設定就是沒設定，
-    由呼叫端印出設定方式，這個命令本來就是選用的。"""
+    由呼叫端印出設定方式，這個命令本來就是選用的。
+
+    path 預設用 None 哨兵而非 `path=SECOND_OPINION_KEY_PATH`：後者會在 import
+    時就把值綁死，測試改模組常數對它無效，於是「沒有 key」那條路徑實際上
+    測不到（2026-09-20 就是這樣讓文件寫的「沒 key 會印設定方式」沒被驗證）。
+    """
+    if path is None:
+        path = SECOND_OPINION_KEY_PATH
     try:
         for line in Path(path).read_text().splitlines():
             if line.startswith("TYPESAFE_API_KEY="):

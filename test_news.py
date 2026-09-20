@@ -2353,6 +2353,40 @@ class TestSecondOpinion(CLITestCase):
             # 沒有 key 時回 None 而非拋錯——這個命令本來就是選用的
             self.assertIsNone(news.second_opinion_key(self.dir / "nope"))
 
+    def test_missing_key_prints_setup_instead_of_raising(self):
+        """沒有 key 時要印設定方式而非拋錯。
+
+        這個命令是選用的——沒 key 不該讓別的流程掛掉。
+
+        迴歸情境：second_opinion_key 原本寫成 `path=SECOND_OPINION_KEY_PATH`，
+        預設值在 import 時就綁死，改模組常數對它無效，於是這條路徑實際上
+        測不到，而 CLAUDE.md 已經寫了「沒設好會印出設定方式」。
+        改用 None 哨兵後才真的可測。
+        """
+        with load_modules(self.dir, "news") as (news,):
+            news.SECOND_OPINION_KEY_PATH = self.dir / "definitely-absent"
+            # 刻意不把讀到的值放進 assertion message：斷言失敗時 unittest 會
+            # 把它整串印出來，而這條斷言失敗的情境正是「讀到了真實的 key」——
+            # 2026-09-20 就這樣把使用者的 key 印進了對話紀錄，只能 rotate。
+            # 用 bool 包住，訊息裡永遠不會出現 key 本身。
+            self.assertFalse(
+                bool(news.second_opinion_key()),
+                "改了 SECOND_OPINION_KEY_PATH 卻仍讀到 key（值不印出）——"
+                "預設參數在 import 時被綁死了")
+
+            class Args:
+                date = None
+                limit = 1
+
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                news.cmd_second_opinion(Args())
+            out = buf.getvalue()
+            self.assertIn("沒有找到 API key", out)
+            self.assertIn("read -s", out, "要給出可直接照做的設定指令")
+            # 不得在這條路徑上打 API——沒 key 就不該有任何網路行為
+            self.assertNotIn("tokens in=", out)
+
     def test_criteria_are_defined_once(self):
         """criteria 是評分刻度的一部分，不得在 server.py 另存一份。
 

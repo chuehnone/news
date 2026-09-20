@@ -113,6 +113,30 @@ python3 -m unittest test_news test_tariff  # 跑回歸測試（CI 也會跑）
 用 TypeSafe 的 Jev（`Score` primitive，回傳機率加權值與 confidence）。
 `~/.typesafe_key` 讀 key，`urllib` 打 HTTP API，**不裝 SDK**（維持零外部依賴）。
 
+### 啟用步驟（換機器或重新 clone 後）
+
+**只需要一把 API key，不需要裝任何東西。** repo 內的實作只用標準庫的 `urllib`，
+沒有 pip 套件、也不需要 TypeSafe 的 Claude Code skill（那個 skill 是**寫程式時**
+的參考——教怎麼設計 Score／Choice／Noul 與去讀官方文件，功能寫完後跑不需要它）。
+
+1. 取得 API key（`docs.typesafe.ai`）。
+2. **在真正的終端機**（Terminal.app，不是 Claude Code）執行：
+   ```bash
+   read -s K && echo "TYPESAFE_API_KEY=$K" > ~/.typesafe_key \
+     && chmod 600 ~/.typesafe_key && unset K
+   ```
+   `read -s` 不回顯、不進 shell history。**不要用 Claude Code 的 `!` 前綴**——
+   `!` 跑的指令原文會留在對話紀錄，等於把 key 寫進 transcript。
+3. 驗證：`python3 news.py second-opinion --limit 1`。沒設好時它會印出設定方式
+   而不是拋錯（這個命令是選用的，沒 key 不該讓別的流程掛掉）。
+
+**要改 `criteria` 或擴充到其他 primitive 時**才需要官方文件：
+`docs.typesafe.ai/llms.txt` 是索引，Mintlify 在頁面路徑後加 `.md` 會回
+markdown（例：`docs.typesafe.ai/primitives/score.md`）。TypeSafe 的 Claude Code
+skill（`claude plugin marketplace add typesafe-ai/skills` +
+`claude plugin install typesafe@typesafe-ai`）會把這些指引帶進對話，
+**但它只在開發時有用，不是執行前提**。
+
 - **唯讀，不寫 `news.db`**。混入第二個評分者會讓 `calibrate` / `drift` 的
   前後期比較永久失效（兩者都假設評分標準前後一致）。由
   `test_report_does_not_touch_the_database` 守著。
