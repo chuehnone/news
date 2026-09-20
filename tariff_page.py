@@ -15,6 +15,12 @@ import json
 from html import escape
 from pathlib import Path
 
+# FTA 代碼對照表向 tariff.py 借，不在這裡抄第二份：兩份同值常數改一邊
+# 完全不會報錯，CLI 與網頁就會對同一個國家給出不同的免稅判定。
+# 同 CLAUDE.md「schema 常數只能有一份」——那條規則的守門測試只掃
+# news.py ↔ server.py，涵蓋不到這一對，所以更要靠 import 而非自律。
+from tariff import FTA_CODES
+
 DATA_PATH = Path(__file__).parent / "data" / "tariff.json"
 
 # 常見出口品項的 HS code。刻意只放少數幾個而非整份 HTS（數萬筆）：
@@ -38,13 +44,6 @@ PRESET_PRODUCTS = [
     ("7318.15.20", "鋼鐵螺栓", 0.0,
      "AU,BH,CL,CO,IL,JO,KR,MA,OM,P,PA,PE,S,SG"),
 ]
-
-FTA_CODES = {
-    "AU": "Australia", "BH": "Bahrain", "CL": "Chile", "CO": "Colombia",
-    "IL": "Israel", "JO": "Jordan", "KR": "Korea", "MA": "Morocco",
-    "OM": "Oman", "P": "Panama", "PA": "Panama", "PE": "Peru",
-    "S": "Singapore", "SG": "Singapore", "CA": "Canada", "MX": "Mexico",
-}
 
 # 國名中譯。只放實際會出現的，查不到就顯示原文——寧可顯示英文也不要猜錯。
 ZH = {

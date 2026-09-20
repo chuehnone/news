@@ -13,6 +13,7 @@ import socket
 import socketserver
 import sqlite3
 import subprocess
+from collections import Counter, defaultdict
 # 只需要 timedelta：所有「現在時刻／今天」一律走 news.py 的 now_local()／
 # today_local()（台北時間），不要在這裡改用 datetime.now() 或 date.today()
 from datetime import timedelta
@@ -483,10 +484,7 @@ def grade_counts(rows):
     （加 tag 時就得改兩處，漏掉一處分頁計數就會與實際卡片數不符）。
     傳入「等級以外的條件都套用過」的那份 rows，條件就永遠只有一份。
     """
-    counts = {}
-    for r in rows:
-        counts[r["grade"]] = counts.get(r["grade"], 0) + 1
-    return counts
+    return Counter(r["grade"] for r in rows)
 
 
 def date_counts():
@@ -609,11 +607,13 @@ def build_tag_index(rows):
     先建索引再逐張卡片查，而不是每張卡片重掃一次全部資料——
     後者在數百筆的規模是 O(n²)，靜態站輸出會明顯變慢。
     """
-    index = {}
+    index = defaultdict(list)
     for r in rows:
         for t in tags_of(r):
-            index.setdefault(t, []).append(r)
-    return index
+            index[t].append(r)
+    # 回傳普通 dict：defaultdict 會在讀到不存在的標籤時靜默長出空 list，
+    # 讓「這個標籤沒有關聯新聞」與「查錯標籤」看起來一樣。
+    return dict(index)
 
 
 def related_of(row, index, limit=RELATED_LIMIT):

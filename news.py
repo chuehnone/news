@@ -984,10 +984,7 @@ def tag_counts(rows):
     tags 存成 JSON 字串而非另開關聯表：一則最多 5 個標籤、總量是數百筆的
     規模，SQL 端的 GROUP BY 省下來的時間遠不及多一張表的複雜度。
     """
-    counts = {}
-    for r in rows:
-        for t in tags_of(r):
-            counts[t] = counts.get(t, 0) + 1
+    counts = Counter(t for r in rows for t in tags_of(r))
     return sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
 
 
