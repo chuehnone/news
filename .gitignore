@@ -10,3 +10,11 @@ NOTES.local.md
 HANDOFF.local.md
 # 獨立的私有子專案（自帶 .git，不是 submodule），內容不屬於這個 public repo。
 /commercial/
+
+# API 憑證：key 一律放家目錄（~/.typesafe_key），不該出現在 repo 內。
+# 這幾條是萬一有人為了方便把它複製進來時的防線——repo 是 public，
+# 一旦 push 上去就等於公開，撤回也來不及（GitHub 會留在 fork 與快取裡）。
+*.key
+.typesafe_key
+*_key.txt
+.env

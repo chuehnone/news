@@ -138,7 +138,15 @@ python3 -m unittest test_news test_tariff  # 跑回歸測試（CI 也會跑）
   level 編號與相鄰 level）。
 - **key 只能放家目錄**（`SECOND_OPINION_KEY_PATH`）。repo 是 public，就算加了
   `.gitignore`，把憑證放在 repo 內本身就是多一層風險。設定要在**真正的終端機**
-  用 `read -s` 寫入——用 Claude Code 的 `!` 前綴會把 key 寫進對話紀錄。
+  用 `read -s` 寫入——用 Claude Code 的 `!` 前綴**會把 key 寫進對話紀錄**
+  （`!` 跑的指令原文會留在 transcript，跟直接貼上沒有差別）。
+  `.gitignore` 另有 `*.key` / `.typesafe_key` / `.env` 當萬一複製進 repo 的防線。
+- **`criteria` 留在 public repo 是刻意的**（2026-09-20 確認）。那 30 段情境描述
+  等於把評分判準完整公開，但這個站本來就公開所有評分結果與五面向分數，
+  且 `CLAUDE.md` 早已公開整套方法論（錨點、漂移、命中率）——**標準透明是可信度
+  的一部分**。搬到本機檔的代價更大：CI 跑不到 `TestSecondOpinion`、換機器要重建、
+  且違反「schema 常數只能有一份」。哪天要把評分當差異化資產再重新考慮，
+  屆時該搬的是整套方法論而不只是 criteria。
 
 **2026-09-20 首次實測（錨點期 26 則，餵 title+summary）**：
 
