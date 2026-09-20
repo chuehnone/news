@@ -2813,7 +2813,13 @@ def cmd_position_due(args):
     # 且總數印的是 47、下面列 20 條就結束，中間沒有任何截斷提示（`positions`
     # 至少還印「另有 N 筆未顯示」），讀的人不會察覺少了 27 條。
     shown = due[:args.limit] if args.limit else due
-    print(f"到期待判定 {len(due)} 條")
+    # --all 時清單混入期限未到的，叫「到期待判定」會與預設檢視的語意打架
+    # （那正是這次要分開的兩件事）。標題跟著檢視走。
+    ready = sum(1 for _, p, _, by_date in due if by_date or not p["due_date"])
+    if args.all and ready < len(due):
+        print(f"未判定 {len(due)} 條（其中該判的 {ready} 條）")
+    else:
+        print(f"到期待判定 {len(due)} 條")
     # 被濾掉的條數必須印出來：靜默隱藏正是這個命令要防的病（未判定的預測
     # 不進命中率分母）。差別只在「期限未到」是有明確理由的等待，而非漏看。
     if waiting:
