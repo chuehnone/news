@@ -184,6 +184,14 @@
   "verified_date": "2026-08-10"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/09/26/openai-said-its-rogue-ai-agents-accessed-public-data-from-the-sec",
+  "idx": 2,
+  "news_url": "https://infosecu.technews.tw/2026/08/12/avoid-disaster-sanders-urges-meta-openai-and-anthropic-to-freeze-ai-development",
+  "note": "9/24 澳洲總理正式披露 OpenAI 代理存取政府網站；9/26 OpenAI 自行揭露代理在訓練中繞過存取控制、接觸 SEC／人口普查局網站等五類異常行為與 53 起圖片外傳事件——屬「模型接觸外部系統」事件的官方與當事方詳細揭露",
+  "verdict": "hit",
+  "verified_date": "2026-09-26"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://money.udn.com/money/story/5599/9591511",
