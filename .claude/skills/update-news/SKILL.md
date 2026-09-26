@@ -1,19 +1,12 @@
 ---
 name: update-news
 description: 跑完整的每日新聞批次流程——抓 RSS、批次評分、順手判定 watch_next、處理到期的投資預測，最後 commit + push 觸發靜態站部署。當使用者說「批次更新新聞」、「批次更新新聞和投資」、「批次更新新聞和財務」、「批次更新新聞還有投資分析」、「update-news」、「跑每日批次」時，主動使用這個 skill。
-allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebFetch, Skill
+allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebFetch, Skill, Agent
 ---
 
 # update-news — 每日新聞批次流程
 
-## 為什麼有這個 skill
-
-這套流程 2026-07-29 到 08-03 手打了 11 次，措辭飄過四種變體（「批次更新新聞」
-「批次更新新聞和投資」「批次更新新聞和財務」「批次更新新聞還有投資分析」），
-而且後面幾乎每次都要再補一句 `commit`、`push`。措辭飄代表流程定義只存在腦中，
-每次都要重新猜範圍。這個 skill 把它釘死。
-
-**六步一次跑完，收尾自動 commit + push。**
+**六步一次跑完，收尾自動 commit + push**——上述各種措辭指的都是這整套，不用再問範圍。
 
 ---
 
@@ -51,12 +44,9 @@ python3 news.py pending --json    # 取清單
 2026-08-01 與 08-02 連續兩次踩到：依標題猜 `technews.tw/2026/07/31/qualcomm-...`
 與中央社 `202608020042`，全部 404，每次都要多一輪查詢才拿到真網址。
 
-**這條規則寫了兩處仍在 2026-09-01 與 09-03 各踩一次，failure mode 已經清楚**：
-不是漏看規則，而是**批次組多個 WebFetch 呼叫的當下**才憑印象補 url——
-清單在前一輪的輸出裡、隔了幾個訊息，於是「看起來記得」就直接填了。
-09-01 四則全錯（抓到國樂團團長卸任、TikTok 詐騙、404、能源獎項），
-09-03 兩則全 404。錯的網址**不一定報錯**：中央社的流水號猜錯會回到另一篇
-真實報導，內容完整、看起來就像抓對了，只有比對標題才會發現。
+**這條會在「批次組多個 WebFetch 呼叫的當下」失守**：清單在幾則訊息之前，
+「看起來記得」就直接填了。錯的網址**不一定報錯**——中央社流水號猜錯會回到
+另一篇真實報導，內容完整、像是抓對了，只有比對標題才會發現。
 
 **防範動作：組任何一批 WebFetch 之前，先跑一次只印 id 與 url 的指令**，
 從那份輸出複製貼上，不要從記憶裡打：
@@ -75,8 +65,7 @@ for x in json.load(sys.stdin): print(x['id'], x['url'])
 | `www.bbc.com` | `python3 fetch_article.py <url>` | WebFetch 回 `unable to fetch` |
 | `technews.tw`（含 `finance.` / `infosecu.` 子網域）、`www.cna.com.tw` | WebFetch | `fetch_article.py` 回**看似成功但無正文**的導覽內容 |
 
-BBC 那條寫在 `CLAUDE.md`，但實測撞牆 25 次只有 1 次真的轉用 fallback
-（累計 65 次失敗、跨 10 個 session）。**在這裡把它當預設路徑，不是例外處理**。
+**依網域直接選工具，不是 WebFetch 失敗後才轉 fallback**——後者實測幾乎不會發生。
 
 反向同樣要小心（2026-08-17 實測）：`fetch_article.py` 是為 BBC 寫的，
 對 technews 回會員選單與導覽列、對中央社回整頁側欄連結清單，**都不報錯**。
@@ -190,7 +179,7 @@ push 後 `.github/workflows/deploy.yml` 自動 import-json → export → 部署
 
 ## 收尾回報
 
-跑完回報六個數字，一行帶過即可：
+跑完依下列格式回報每一步的數字：
 
 ```
 fetch N 則新增｜評分 N 則（skip N）｜calibrate S/A N%（N 倍錨點）｜watch 判定 N 條｜position 新增 N 則（agent）／判定 N 條（到期 N 筆）
@@ -220,7 +209,7 @@ for x in json.load(sys.stdin):
 ```
 
 （`--json` 的欄位只有 id／source／published／status／title／url，沒有
-`fetched_at`；不加 `published` 條件會回全部歷史的 4700 多則。）
+`fetched_at`；不加 `published` 條件會回傳全部歷史紀錄。）
 
 `add` 會自動把已評分的 url 標成 `scored`，所以 skip 名單裡若含已評過的則，
 那次 skip 對它是**空操作**。2026-09-12 就是這樣把 A81 那則（id 12419）
@@ -232,7 +221,7 @@ for x in json.load(sys.stdin):
 
 ## 已知 trap
 
-- **BBC fetch 失敗是最高頻的踩雷**（65 次／10 個 session）。見步驟 2。
+- **BBC fetch 失敗是最高頻的踩雷**。見步驟 2。
 - **組任何一批 WebFetch 前，先跑步驟 2 的 id+url 對照指令，從輸出複製貼上。**
   這是本流程最常複發的錯誤（四次），防範靠動作而非記住規則——理由見步驟 2。
 - **同日多批要在 commit message 標批次序號**，否則 log 上分不出來。
