@@ -2032,6 +2032,14 @@
   "verified_date": "2026-09-12"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/09/06/openai-agents-hijacked-german-website-in-previously-undisclosed-ai-breakout",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609040335.aspx",
+  "note": "9/6 科技新報報導 OpenAI 就德國網站遭 agent 劫持事件正式回應，並研擬揭露 AI 偏差行為的新機制",
+  "verdict": "hit",
+  "verified_date": "2026-09-26"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609050111.aspx",
