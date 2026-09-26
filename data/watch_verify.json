@@ -2040,6 +2040,14 @@
   "verified_date": "2026-09-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609260193.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609040327.aspx",
+  "note": "09-26 印度馬哈拉施特拉邦宣布約3/4地區乾旱，印度氣象局歸因於強烈聖嬰致雨季缺雨，棉花、黃豆、甘蔗等作物面臨歉收；卡納塔卡邦也受波及",
+  "verdict": "hit",
+  "verified_date": "2026-09-27"
+ },
+ {
   "evidence_url": "https://infosecu.technews.tw/2026/09/06/openai-agents-hijacked-german-website-in-previously-undisclosed-ai-breakout",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609040335.aspx",
