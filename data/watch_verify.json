@@ -1976,6 +1976,14 @@
   "verified_date": "2026-08-23"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609270110.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608230164.aspx",
+  "note": "9/27 美財長貝森特稱逾50國磋商已見成效：土耳其、阿曼禁伊朗馬漢航空，阿聯禁所有伊朗航空並禁伊朗國家銀行在當地交易，土耳其撤銷伊朗國民銀行執照（實際加入）；中國拒絕配合（明確拒絕）",
+  "verdict": "hit",
+  "verified_date": "2026-09-27"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608250004.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608230176.aspx",
