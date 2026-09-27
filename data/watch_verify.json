@@ -2032,6 +2032,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609280009.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609020004.aspx",
+  "note": "2026-09-28 川普受訪稱週末通過荷莫茲海峽的石油運量逾2000萬桶，為開戰以來最大量，較9/1僅5艘明顯回升（數字為川普說法，未見獨立航運數據）",
+  "verdict": "hit",
+  "verified_date": "2026-09-28"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202609020004.aspx",
