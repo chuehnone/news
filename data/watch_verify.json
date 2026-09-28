@@ -1856,6 +1856,14 @@
   "verified_date": "2026-08-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609280164.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607290006.aspx",
+  "note": "2026-09-28 華爾街日報披露庫存消耗比例（戰斧約1/3、高端愛國者約一半）與各承包商擴產細節",
+  "verdict": "hit",
+  "verified_date": "2026-09-28"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202607310271.aspx",
@@ -1894,6 +1902,14 @@
   "note": "未回升。8/11 通行船舶降至 8 艘、創一週新低，倫敦證交所集團記錄 11 次通行亦較前日 14 次下降。",
   "verdict": "miss",
   "verified_date": "2026-08-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609280164.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608050083.aspx",
+  "note": "2026-09-28 華爾街日報：洛馬將愛國者攔截飛彈產量提高至3倍，波音、L3Harris、諾格興建新組裝線",
+  "verdict": "hit",
+  "verified_date": "2026-09-28"
  },
  {
   "evidence_url": null,
@@ -2166,6 +2182,22 @@
   "note": "2026-09-21 麥克倫堡-西帕默瑞尼亞邦選舉：AfD 以 37% 居首（社民黨 35.5%），但因其他主流政黨拒與其合作，報導明確指出 AfD 仍不太可能入主邦政府。防火牆維持。",
   "verdict": "hit",
   "verified_date": "2026-09-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609280164.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609110015.aspx",
+  "note": "2026-09-28 華爾街日報：洛克希德馬丁在阿肯色州增聘數百人、將愛國者攔截飛彈產量提高至3倍；RTX 3年投入約9億美元擴產",
+  "verdict": "hit",
+  "verified_date": "2026-09-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609280164.aspx",
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609110110.aspx",
+  "note": "2026-09-28 華爾街日報：開戰2個月發射逾1000枚戰斧、耗約1/3戰前庫存與約一半高端愛國者攔截彈；洛馬愛國者產量提高至3倍",
+  "verdict": "hit",
+  "verified_date": "2026-09-28"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170012.aspx",
