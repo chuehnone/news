@@ -2160,6 +2160,14 @@
   "verified_date": "2026-09-26"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609280245.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609050031.aspx",
+  "note": "9/28 中央社報導美國零售柴油價格攀升至新高，川普因此認真考慮禁柴油出口；較 9/5 的 5.85 美元持續走高",
+  "verdict": "hit",
+  "verified_date": "2026-09-29"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609050111.aspx",
