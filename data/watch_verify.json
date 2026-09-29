@@ -32,6 +32,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609290169.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/20/eu-forces-google-to-change-android-feature",
+  "note": "2026-09-29 Google 向歐盟普通法院上訴，挑戰 DMA 開放 Android 功能給 AI 對手（2027 年 7 月）與分享搜尋資料兩項命令",
+  "verdict": "hit",
+  "verified_date": "2026-09-29"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/07/20/eu-forces-google-to-change-android-feature",
@@ -2016,6 +2024,22 @@
   "verified_date": "2026-09-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609290172.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608170294.aspx",
+  "note": "美伊斡旋轉由卡達承接：9/21 伊朗經卡達傳達條件，9/29 伊朗外長證實卡達斡旋代表轉達立場",
+  "verdict": "hit",
+  "verified_date": "2026-09-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609290172.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608180008.aspx",
+  "note": "9/21 起伊朗透過卡達向美方傳達重開荷莫茲條件，9/29 外長阿拉奇證實卡達斡旋代表轉達立場、等待美方回應",
+  "verdict": "hit",
+  "verified_date": "2026-09-29"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202608180278.aspx",
@@ -2270,5 +2294,13 @@
   "note": "10 年期公債殖利率突破 5% 創 19 年新高、30 年期房貸利率升至 7.02%，指標問的正是兩者的後續走勢，已有明確數據。",
   "verdict": "hit",
   "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609280009.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609210004.aspx",
+  "note": "川普公開拒絕德黑蘭重開荷莫茲的停火提案，並稱預期經卡達調解重啟間接會談；伊朗外長 9/29 表示仍在等美方正式答覆",
+  "verdict": "hit",
+  "verified_date": "2026-09-29"
  }
 ]
