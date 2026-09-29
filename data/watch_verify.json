@@ -608,6 +608,14 @@
   "verified_date": "2026-08-07"
  },
  {
+  "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/27/sega-cheng-20260727-1",
+  "note": "奈及利亞、巴西、印尼等全球南方企業 67% token 流量已轉向中國模型",
+  "verdict": "hit",
+  "verified_date": "2026-09-29"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://technews.tw/2026/07/28/ai-demand-spurs-japan-korea-mlcc-record-monthly-shipments-consumer-order-spillover",
@@ -656,6 +664,14 @@
   "verified_date": "2026-08-10"
  },
  {
+  "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/08/03/potential-us-ban-on-chinese-ai-models-could-cost-american-businesses-us12b-a-year",
+  "note": "未下降：9 月中 OpenRouter 上中國模型佔 token 用量 57-67%，Vercel 由 1 月 11% 升到 8 月 55%",
+  "verdict": "miss",
+  "verified_date": "2026-09-29"
+ },
+ {
   "evidence_url": "https://ccc.technews.tw/2026/08/11/memory-demand-not-cooling-down-samsung-ck-chen-mobile-phone-prices-pressure-1-2-years",
   "idx": 1,
   "news_url": "https://technews.tw/2026/08/03/xiaomi-raises-prices-on-multiple-smartphones-by-rmb-300-500",
@@ -678,6 +694,14 @@
   "note": "2026-09-02 報導 Silicon Data LLM Token 支出指數跌破每百萬 1 美元（97 美分）、較夏季高點跌逾 50%，明確列出的壓價因素首項即為中國開源模型的競爭，OpenAI 7 月對 GPT-4o 系列降價亦在其中。9/05 補充機制面證據：微軟採分層模型架構把日常任務移至便宜的開源模型、自研模型使 PowerPoint 晶片成本降約 84%、Dynamics 365 客服成本降 89%；Vercel AI Gateway 的開源模型 token 占比自 4 月 11% 升至 8 月 62%、成本占比不足 9%。閉源業者因成本競爭調降定價已發生且來源明確指向開源競爭。",
   "verdict": "hit",
   "verified_date": "2026-09-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/09/29/anthropics-ipo-prospectus-shows-sweeping-ai-vision-surging-costs",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/08/21/anthropic-challenges-historys-largest-ipo-fundraising-surpass-spacex",
+  "note": "S-1 遲至 9/28 才遞交，未在 8 月底前提交",
+  "verdict": "miss",
+  "verified_date": "2026-09-29"
  },
  {
   "evidence_url": "https://technews.tw/2026/09/20/ai-disrupts-publishing-industry",
@@ -1728,6 +1752,14 @@
   "verified_date": "2026-09-11"
  },
  {
+  "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607240004.aspx",
+  "note": "海外採用持續擴大：OpenRouter 57-67%、Vercel 55%、全球南方企業 67% token 流量轉向中國模型",
+  "verdict": "hit",
+  "verified_date": "2026-09-29"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202607250205.aspx",
@@ -1976,6 +2008,14 @@
   "verified_date": "2026-08-12"
  },
  {
+  "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608140330.aspx",
+  "note": "未減少：Vercel 上中國模型份額由 1 月 11% 升到 8 月 55%，企業以低價中國模型處理例行任務",
+  "verdict": "miss",
+  "verified_date": "2026-09-29"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202608180278.aspx",
@@ -2094,6 +2134,14 @@
   "note": "美方確實再度加碼且升級了手段：白宮宣布三週內禁止加拿大乳製品、多數酒類與重型機車進口，並取消加拿大企業參與美國政府採購合約資格。指標問的是「是否再度加碼（如擴大品項或提高稅率）」，實際加碼形式比舉例的更重——從關稅升級為直接禁止進口。",
   "verdict": "hit",
   "verified_date": "2026-09-09"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/09/29/anthropics-ipo-prospectus-shows-sweeping-ai-vision-surging-costs",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608260008.aspx",
+  "note": "Anthropic 9/28 遞交 S-1，揭露 2025 年營收約 46 億美元、營業虧損逾 80 億美元",
+  "verdict": "hit",
+  "verified_date": "2026-09-29"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
