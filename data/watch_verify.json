@@ -2040,6 +2040,14 @@
   "verified_date": "2026-08-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609300217.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608130224.aspx",
+  "note": "五角大廈 9/30 宣布正式結束堅定決心行動、美軍撤離阿比爾基地，如期完成",
+  "verdict": "hit",
+  "verified_date": "2026-09-30"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202608140330.aspx",
