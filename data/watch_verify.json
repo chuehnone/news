@@ -1216,6 +1216,14 @@
   "verified_date": "2026-09-12"
  },
  {
+  "evidence_url": "https://technews.tw/2026/09/30/6g-moda",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609100328.aspx",
+  "note": "9/30 數發部表示 6G 釋照時程、頻段與方式仍在評估，市場流傳方案非最終政策，未公布具體預算與時程",
+  "verdict": "miss",
+  "verified_date": "2026-09-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609300037.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/afe/202609110007.aspx",
