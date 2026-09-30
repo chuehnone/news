@@ -168,6 +168,14 @@
   "verified_date": "2026-08-25"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609300037.aspx",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/08/18/trump-approval-rating-new-low-33-rising-oil-prices-protracted-war",
+  "note": "9/30：美汽油自開戰漲近 5 成至每加侖約 4.45 美元，政府再擬出借 4000 萬桶戰略儲油壓抑油價",
+  "verdict": "hit",
+  "verified_date": "2026-09-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/08/31/scott-bessent-says-abenomics-may-be-reaching-its-end",
@@ -1206,6 +1214,14 @@
   "note": "今日油價資訊充分（布倫特104-105美元、美國柴油破每加侖6美元），但天然氣價格未見報導。這正是 CLAUDE.md 記載的『來源不涵蓋型』指標——feeds（中央社／BBC／科技新報）本來就不報LNG現貨價，無從判斷。",
   "verdict": "moot",
   "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609300037.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202609110007.aspx",
+  "note": "9/30 美國能源部擬從 SPR 出借最多 4000 萬桶給業者（IEA 協議美方最後一批），SPR 降至 1982 年來最低",
+  "verdict": "hit",
+  "verified_date": "2026-09-30"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
