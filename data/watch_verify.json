@@ -160,6 +160,14 @@
   "verified_date": "2026-08-22"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/01/microns-gross-margin-surged-to-86-8-in-the-fourth-quarter-of-2026",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/08/17/david-tepper-bought-more",
+  "note": "美光 FY26Q4 營收年增 379%、毛利率 86.8% 創新高，下季財測 600-630 億美元續升；與減碼判斷相反",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cgqd22pp13lo/trad",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/18/shein-reportedly-set-to-list-in-hong-kong-on-aug-28",
@@ -600,6 +608,14 @@
   "verified_date": "2026-08-07"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/01/microns-gross-margin-surged-to-86-8-in-the-fourth-quarter-of-2026",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/07/27/apple-presses-for-20-percent-cut-in-iphone-18-oled-panel-prices-on-chipflation",
+  "note": "美光 FY26Q4 毛利率較前年同期提升 42.1 個百分點、下季財測續升，反映記憶體價格持續上漲（由毛利推得，非直接報價數據）",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://technews.tw/2026/07/27/micron-ceo-sanjay-mehrotras-bad-blood-with-apple-traces-back-years",
@@ -742,6 +758,14 @@
   "note": "指標問記憶體價格是否見頂（該則寫作時已自 2025 Q4 漲四倍）。9/19 資料顯示 64GB RDIMM 不到一年 450→900 美元、伺服器記憶體 2026 估再漲 200-300%，且 SK 海力士稱 2027 為產業史上最糟。未見頂，仍在上行。",
   "verdict": "miss",
   "verified_date": "2026-09-19"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/01/how-does-ai-change-labor-demand-evidence-from-41-countries",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/09/06/ai-knowledge-deepens-replacement-concerns",
+  "note": "史丹佛與倫敦國王學院 41 國研究：美國 22-25 歲高 AI 暴露職位新人就業比預期低 19%，初級職位五年減 3%",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609190097.aspx",
@@ -1134,6 +1158,14 @@
   "note": "8/11 布倫特87.72美元，遠高於80美元，守住。",
   "verdict": "hit",
   "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610010012.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202608040010.aspx",
+  "note": "2026-10-01 中央社報導荷莫茲海峽石油流量已恢復至接近戰前水準",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
