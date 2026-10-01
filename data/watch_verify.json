@@ -1305,6 +1305,22 @@
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202608190303.aspx",
+  "note": "央行9/17鬆綁第2戶貸款成數至7成，總裁稱管制不能硬邦邦，背景為不動產放款集中度降至20年新低、房市降溫",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610010251.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202608210264.aspx",
+  "note": "9月（鬼月後）六都建物移轉17,945棟，年增11.6%、月增14.1%，僅台南衰退",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202609010314.aspx",
   "note": "9/17 理監事會未升息（連 10 凍），但調整了信用管制：自然人第 2 戶房貸成數 6 成→7 成、9/18 上路。指標問是否升息或調整信用管制，後者成立。央行依據是不動產貸款集中度已自 37.61% 降至 34.44%。",
@@ -1382,6 +1398,14 @@
   "note": "房市選擇性信用管制確實同步調整且方向為鬆綁：自然人第 2 戶購屋貸款成數上限由 6 成升至 7 成、9/18 上路，並取消購地貸款限期動工要求。依據是不動產貸款集中度自 2024/6 高點 37.61% 降至 2026/7 的 34.44%。",
   "verdict": "hit",
   "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609120029.aspx",
+  "note": "9/17理監事會鬆綁選擇性信用管制：自然人第2戶貸款成數上限由6成調升至7成、取消購地貸款限期動工；理由為不動產放款集中度已降至34.44%",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": null,
