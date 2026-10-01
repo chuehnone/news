@@ -88,6 +88,22 @@
   "verified_date": "2026-09-11"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/01/us-judge-accepts-paramounts-warner-bros-buyout-settlement",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/24/eu-conditionally-clears-paramount-bid-for-warner-bros",
+  "note": "加州聯邦地院法官簽署同意令，批准和解、放行收購",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/01/us-judge-accepts-paramounts-warner-bros-buyout-settlement",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/07/24/eu-conditionally-clears-paramount-bid-for-warner-bros",
+  "note": "12 州訴訟以和解結案：5 年內每年 30 部院線片、額外 3 億美元製作、CBS/CNN 監督委員會",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": null,
   "idx": 3,
   "news_url": "https://finance.technews.tw/2026/07/27/changxin-memory-chinas-largest-dram-manufacturer-is-listed-for-trading",
@@ -1630,6 +1646,14 @@
   "note": "布蘭特站上並突破 80/90：7/19逼近86、7/20破90、7/22突破111美元；7/29回落至84.09美元仍在80以上",
   "verdict": "hit",
   "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/01/us-judge-accepts-paramounts-warner-bros-buyout-settlement",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607140004.aspx",
+  "note": "未核發禁制令：加州聯邦法官 10/1 簽署同意令批准派拉蒙與 12 州的和解，訴訟以和解收場",
+  "verdict": "miss",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": null,
