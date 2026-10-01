@@ -160,6 +160,14 @@
   "verified_date": "2026-08-19"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/01/galaxy-s26-a-series-raise-prices",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/08/08/ai-ram-hbm",
+  "note": "三星 10/1 調漲 Galaxy S26 全系列與 A 系列在台售價，明言主因為記憶體成本攀升",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/08/japan-dilemma-save-yen",
@@ -184,6 +192,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/01/galaxy-s26-a-series-raise-prices",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/08/18/2q26-top-5-nand-flash-brands-revenue-up-77-qoq-micron-rises-to-third",
+  "note": "三星 10/1 起 S26 與 A 系列漲價 1,000-8,000 元，歸因記憶體成本，屬成本反映到售價",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cgqd22pp13lo/trad",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/18/shein-reportedly-set-to-list-in-hong-kong-on-aug-28",
@@ -198,6 +214,14 @@
   "note": "9/30：美汽油自開戰漲近 5 成至每加侖約 4.45 美元，政府再擬出借 4000 萬桶戰略儲油壓抑油價",
   "verdict": "hit",
   "verified_date": "2026-09-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610010043.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/26/south-koreas-investment-commitments-delay-us-anger",
+  "note": "韓美 10/1 公布三項戰略投資：德州燃氣電廠 223 億美元、1200 億美元核電框架（8 座機組）、阿拉斯加 LNG；公布時間晚於 9 月且為能源而非半導體項目",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
@@ -262,6 +286,22 @@
   "note": "8/10 美 FCC 進一步提議回溯禁售配備光達的大疆機型（Air 3S、Mini 5 Pro、Avata 360 等），管制範圍擴及熱成像、噴灑、群飛等技術。台灣方面在此期間未見跟進限制中國製無人機採購或進口的政策動作。",
   "verdict": "miss",
   "verified_date": "2026-08-10"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/01/google-edges-up-after-revealing-long-awaited-gemini-4-argon",
+  "idx": 1,
+  "news_url": "https://infosecu.technews.tw/2026/08/04/white-house-summons-four-tech-giants-security-testing-ai-control-controversy",
+  "note": "截至 10/1 Google 發布 Gemini 4 時仍稱參與美國政府『自願性』預先審查流程，未見轉為強制要求",
+  "verdict": "miss",
+  "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/01/google-edges-up-after-revealing-long-awaited-gemini-4-argon",
+  "idx": 2,
+  "news_url": "https://infosecu.technews.tw/2026/08/06/meta-ai-model-hacks-another-company-during-testing",
+  "note": "截至 10/1 Google 發布 Gemini 4 時仍稱參與美國政府『自願性』預先審查流程，未見轉為強制要求",
+  "verdict": "miss",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": "https://infosecu.technews.tw/2026/09/26/openai-said-its-rogue-ai-agents-accessed-public-data-from-the-sec",
@@ -1200,6 +1240,14 @@
   "verified_date": "2026-08-23"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/01/galaxy-s26-a-series-raise-prices",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202608100154.aspx",
+  "note": "三星 10/1 調漲旗艦 S26 全系列售價（Ultra 1TB 漲 8,000 元）；小米未見報導",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202608110278.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202608100280.aspx",
@@ -2054,6 +2102,14 @@
   "note": "通行船班數未回升。8/11 僅 8 艘、為一週新低，遠低於戰前的每日 130-140 艘。",
   "verdict": "miss",
   "verified_date": "2026-08-12"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/01/google-edges-up-after-revealing-long-awaited-gemini-4-argon",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608070049.aspx",
+  "note": "截至 10/1 Google 發布 Gemini 4 時仍稱參與美國政府『自願性』預先審查流程，未見轉為強制要求",
+  "verdict": "miss",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": null,
