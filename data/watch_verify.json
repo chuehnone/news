@@ -1232,6 +1232,22 @@
   "verified_date": "2026-08-08"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610010292.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608030279.aspx",
+  "note": "9月PMI 63.4%較8月升0.9個百分點，8月為62.5%，維持60%以上",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610010292.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202608030279.aspx",
+  "note": "9月整體PMI 63.4%高於電子暨光學業62.6%，化學生技、醫療、原物料訂單升溫，非電子產業已跟上並出現輪動",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202608040010.aspx",
