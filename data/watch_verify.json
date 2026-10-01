@@ -656,6 +656,14 @@
   "verified_date": "2026-07-31"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610010213.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/26/qualcomm-is-about-to-raise-prices",
+  "note": "三星 10/1 起在台調漲 S 系列手機與平板售價（手機 +3,000-5,000 元）",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://technews.tw/2026/07/26/qualcomm-is-about-to-raise-prices",
@@ -710,6 +718,14 @@
   "note": "8/10 國巨 7 月營收 161.31 億元創歷史單月新高、年增 51.5%；華新科 44.43 億元創近 8 年新高、年增 42%。華新科總經理曾明燦表示近 2-3 個月接單出貨比超過 1.8（先前 1.4），董事長焦佑衡稱產品漲價勢在必行。訂單與報價雙雙上揚。",
   "verdict": "hit",
   "verified_date": "2026-08-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610010213.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/07/28/ai-demand-spurs-japan-korea-mlcc-record-monthly-shipments-consumer-order-spillover",
+  "note": "三星手機平板 10/1 漲價，明言因 AI 推高記憶體價格，零組件成本轉嫁終端售價",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": null,
@@ -792,12 +808,28 @@
   "verified_date": "2026-09-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610010183.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/08/23/south-korea-s-chip-boom-is-incredible",
+  "note": "韓國 9 月半導體出口年增逾 262%，未從近 200% 的高基期回落，反而續升",
+  "verdict": "miss",
+  "verified_date": "2026-10-01"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/20/ai-disrupts-publishing-industry",
   "idx": 2,
   "news_url": "https://technews.tw/2026/08/29/tech-giants-ai-slop",
   "note": "歐盟自 2026-08-02 起強制標示機器生成或加工內容，指標問的「是否有司法管轄區要求強制標示」已成真。註：該規定生效日早於本指標寫下的 8/29，故此為指標寫下時已存在但當時未被察覺的事實，非後續新發生的變化。",
   "verdict": "hit",
   "verified_date": "2026-09-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610010213.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/01/qualcomm-raising-chip-prices",
+  "note": "10/1 台灣三星 S 系列手機再調漲 3,000-5,000 元、平板亦漲，主管歸因記憶體成本",
+  "verdict": "hit",
+  "verified_date": "2026-10-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
