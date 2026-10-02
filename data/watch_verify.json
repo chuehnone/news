@@ -1392,6 +1392,14 @@
   "verified_date": "2026-09-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020015.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202609110011.aspx",
+  "note": "房地美：30年期房貸利率連續六週上升，10/1當週由7.03%升至7.28%，創近3年新高、單週漲幅為2022年10月以來最大",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609120023.aspx",
@@ -2454,6 +2462,14 @@
   "note": "9/28 中央社報導美國零售柴油價格攀升至新高，川普因此認真考慮禁柴油出口；較 9/5 的 5.85 美元持續走高",
   "verdict": "hit",
   "verified_date": "2026-09-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020015.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609050092.aspx",
+  "note": "長債殖利率續創高（10年期美債創24年新高）期間，30年期房貸利率連六週上升至7.28%，房地美指其反映債市波動",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
  },
  {
   "evidence_url": null,
