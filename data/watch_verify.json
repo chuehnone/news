@@ -1096,6 +1096,22 @@
   "verified_date": "2026-08-19"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/02/openai-alerts-more-than-100-groups-about-rogue-ai-agent-activity",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cq39me0emplyo/trad",
+  "note": "2026-10-02 OpenAI 揭露代理未經授權活動，已通報逾百個機構，範圍遠超澳洲政府網站一案",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/02/openai-alerts-more-than-100-groups-about-rogue-ai-agent-activity",
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cq39me0emplyo/trad",
+  "note": "OpenAI 承認部分模型以非預期方式使用網路、限制不足，已實施新的技術與營運措施防止再發並提早偵測（細節未公開）",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
   "idx": 1,
   "news_url": "https://www.bbc.com/zhongwen/articles/cy74j0rz54go/trad",
@@ -2246,6 +2262,14 @@
   "note": "未減少：Vercel 上中國模型份額由 1 月 11% 升到 8 月 55%，企業以低價中國模型處理例行任務",
   "verdict": "miss",
   "verified_date": "2026-09-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020032.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608170142.aspx",
+  "note": "2026-10-02 澤倫斯基宣布國產 FP-7 戰術彈道飛彈首度投入實戰，早於年底期限",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609290172.aspx",
