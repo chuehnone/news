@@ -280,6 +280,14 @@
   "verified_date": "2026-09-17"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610020064.aspx",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/09/11/kevin-warsh-challenged-market-us-10-year-treasury-yield-nears-5-ai-bulls-nervous",
+  "note": "CME數據：10月升息機率上週逾60%，威廉斯與傑佛森釋鴿後降至26%",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -734,6 +742,14 @@
   "note": "2026-08-14 中央社：DoorDash、Airbnb 等企業已採用中國開源模型控制成本；月之暗面與 DeepSeek 藉開源打入全球市場。採用率的實證促使 OpenAI 將 GPT-5.6 Luna 降價 80%、Anthropic 喊停原訂 9 月的 Sonnet 5 漲價，Silicon Data 顯示美國主要模型價格自 7 月中旬下降近 25%。",
   "verdict": "hit",
   "verified_date": "2026-08-14"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020049.aspx",
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/07/28/nvidia-taiwan-b300-smuggling",
+  "note": "10/2 美司法部起訴加州業者經馬來西亞、新加坡轉運逾3億美元輝達AI伺服器至中國",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
@@ -1206,6 +1222,14 @@
   "note": "7/31 台積電法說會舉行，HPC 營收占比達 66%、CapEx 二度上修至 640 億美元投入 2 奈米與先進封裝，AI 訂單能見度資訊已具體公布。",
   "verdict": "hit",
   "verified_date": "2026-07-31"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610020074.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202607280281.aspx",
+  "note": "8月製造業景氣燈號：AI/高效能運算需求持續暢旺、出口生產仍雙位數年增，但傳產需求疲弱，低迷黃藍燈比重由10.10%倍增至20.06%，燈號退至綠燈——差距擴大",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608040336.aspx",
@@ -2232,6 +2256,14 @@
   "verified_date": "2026-08-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020090.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608100201.aspx",
+  "note": "美軍陸基反艦飛彈NMESIS將於10/19起美日演習首度部署與那國島，為第一島鏈拒止的具體部署（演習期間，是否常駐未明）",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608110235.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608100314.aspx",
@@ -2462,6 +2494,14 @@
   "note": "布蘭特 2026-09-09 突破 100 美元，超過 90 美元門檻。",
   "verdict": "hit",
   "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020068.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609020354.aspx",
+  "note": "10/2 美財政部制裁伊朗車廠與鐵路業，一併點名印尼、阿聯酋、土耳其向伊朗供應零組件的外國企業",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609120048.aspx",
