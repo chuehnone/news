@@ -680,6 +680,14 @@
   "verified_date": "2026-08-07"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/02/samsung-hopes-to-rejoin-qualcomms-supply-chain-by-leveraging-its-2nm-technology",
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/07/26/qualcomm-is-about-to-raise-prices",
+  "note": "產能端有明確走勢：台積電 2026 年五座 2 奈米廠放量、年底月產能估 12 萬片，2026-2028 年 CAGR 估 70%，高通 Snapdragon 8 Elite 全系列確定採用。報價端本則未提及。",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/01/microns-gross-margin-surged-to-86-8-in-the-fourth-quarter-of-2026",
   "idx": 2,
   "news_url": "https://technews.tw/2026/07/27/apple-presses-for-20-percent-cut-in-iphone-18-oled-panel-prices-on-chipflation",
