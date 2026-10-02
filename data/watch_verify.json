@@ -1040,6 +1040,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/02/eu-monitoring-system-counter-china-dumping",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cgrkrk4yvxpo/trad",
+  "note": "歐盟把進口監測機制改為防堵中國傾銷的預警系統，2026 年迄今已啟動 27 起貿易防衛案，並預計 12 月推出新貿易防禦工具——中國出口激增確實引發歐方反傾銷行動擴大",
+  "verdict": "hit",
+  "verified_date": "2026-10-02"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.bbc.com/zhongwen/articles/cj9g4pj4n0go/trad",
