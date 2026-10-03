@@ -2120,6 +2120,14 @@
   "verified_date": "2026-08-04"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/03/nvidia-64-gb-dgx-spark",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280029.aspx",
+  "note": "輝達 DGX Spark 128GB 因記憶體成本三度調價（3,999→4,999 美元，現貨破 6,000），並推出記憶體減半的 64GB 版本守價位——記憶體短缺持續推升終端售價的直接實例",
+  "verdict": "hit",
+  "verified_date": "2026-10-03"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/08/04/25-states-sue-trump-tariffs",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607280045.aspx",
