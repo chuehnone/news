@@ -2176,6 +2176,14 @@
   "verified_date": "2026-08-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030091.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280371.aspx",
+  "note": "2026-10-03 中央社報導 FAA 審查 737 MAX 軟體問題時說明，使用相同軟體的 MAX 7 已於 8 月獲認證（MAX 10 預估 10 月底）。認證進度有明確結果；實際交付時程報導未提。",
+  "verdict": "hit",
+  "verified_date": "2026-10-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280164.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202607290006.aspx",
