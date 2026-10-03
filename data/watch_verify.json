@@ -2040,6 +2040,14 @@
   "verified_date": "2026-08-09"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030073.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607260004.aspx",
+  "note": "10/3 投票前夕美國以安全疑慮暫停在巴西的領事服務，巴西聯邦警察搜查未發現具體威脅，執政工黨主席稱前所未見並質疑是川普影響巴西輿論的手段——直接構成選前的外部介入爭議",
+  "verdict": "hit",
+  "verified_date": "2026-10-03"
+ },
+ {
   "evidence_url": null,
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202607260014.aspx",
