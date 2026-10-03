@@ -2352,6 +2352,14 @@
   "verified_date": "2026-09-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608180278.aspx",
+  "note": "沙烏地已對青年運動發動大規模空襲：單日94次、新一輪戰事累計1350次，並計劃數週內發動地面攻勢（10-03 中央社），走的是報復攻勢而非恢復停火談判",
+  "verdict": "hit",
+  "verified_date": "2026-10-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608220029.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608180298.aspx",
