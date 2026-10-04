@@ -2128,6 +2128,14 @@
   "verified_date": "2026-08-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607280013.aspx",
+  "note": "10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/03/nvidia-64-gb-dgx-spark",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202607280029.aspx",
@@ -2272,6 +2280,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608070081.aspx",
+  "note": "10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202608070081.aspx",
@@ -2286,6 +2302,22 @@
   "note": "封鎖未解除，反而升級。8/12 美軍第三次強制攔截突破封鎖的商船並開火。",
   "verdict": "miss",
   "verified_date": "2026-08-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608090135.aspx",
+  "note": "10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610040061.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608090135.aspx",
+  "note": "持續攻擊：8/14、8/18 吉贊煉油廠，9/20 揚布阿美設施，10/04 利雅德附近阿美設施（皆為青年運動宣稱）",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610020090.aspx",
@@ -2326,6 +2358,22 @@
   "note": "五角大廈 9/30 宣布正式結束堅定決心行動、美軍撤離阿比爾基地，如期完成",
   "verdict": "hit",
   "verified_date": "2026-09-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202608180278.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608140008.aspx",
+  "note": "8/18 青年運動宣稱再以多架無人機攻擊吉贊阿美煉油廠，在一個月內（沙方未證實）",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608140008.aspx",
+  "note": "10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
  },
  {
   "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
@@ -2640,12 +2688,36 @@
   "verified_date": "2026-09-17"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200006.aspx",
+  "note": "10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復；衝突持續升級，10/04 青年運動再襲利雅德附近阿美設施",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200043.aspx",
+  "note": "由攔截轉為跨境打擊：10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280009.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609210004.aspx",
   "note": "川普公開拒絕德黑蘭重開荷莫茲的停火提案，並稱預期經卡達調解重啟間接會談；伊朗外長 9/29 表示仍在等美方正式答覆",
   "verdict": "hit",
   "verified_date": "2026-09-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609210008.aspx",
+  "note": "10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復",
+  "verdict": "hit",
+  "verified_date": "2026-10-04"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610040004.aspx",
