@@ -2392,6 +2392,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610050303.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608100206.aspx",
+  "note": "2026-10-05 台灣出現 AI 合成的高雄大樹光電場災情照，經濟部出面駁斥，屬同類災害照片偽造案例",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608110235.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608100314.aspx",
