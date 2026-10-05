@@ -1000,6 +1000,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050290.aspx",
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c4g63djrgy8o/trad",
+  "note": "10/5 沙國聯軍約100架次空襲掩護葉門政府軍反攻沙那並奪曼德海峽旁杜巴布地區",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.bbc.com/zhongwen/articles/cddvzm721vpo/trad",
@@ -1222,6 +1230,14 @@
   "note": "緯創董事長林憲銘 8/1 公開說明轉美建廠考量：達拉斯地區可能有 3-4 座廠、面臨龐大資本支出；坦承對美墨關係判斷錯誤，USMCA 遭推翻致緯穎墨國廠須繳巨額稅款；並指台灣土地與電力取得困難是推力。美國製造的成本結構已有具名說明。",
   "verdict": "hit",
   "verified_date": "2026-08-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050301.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202607240010.aspx",
+  "note": "G7與IEA於10/2協調釋出1億桶柴油與原油；IEA成員國累計釋出3.25億桶",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/07/31/amazon-cloud-performance-shines-apple-revenue-slows-awaiting-siri-ai",
@@ -1624,6 +1640,14 @@
   "verified_date": "2026-07-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050312.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607050087.aspx",
+  "note": "10/5 烏方對俄多城煉油廠打擊宣稱癱瘓51%產能，普丁承認影響，打擊規模持續擴大",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/07/31/microsoft-market-cap-surges-14-5-trillion-breaking-nvidia-record-largest-single-day-gain",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607060371.aspx",
@@ -1862,6 +1886,14 @@
   "note": "布蘭特站上並突破 80/90：7/19逼近86、7/20破90、7/22突破111美元；7/29回落至84.09美元仍在80以上",
   "verdict": "hit",
   "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050301.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607130012.aspx",
+  "note": "G7與IEA於10/2協調釋出1億桶柴油與原油；IEA成員國累計釋出3.25億桶",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/01/us-judge-accepts-paramounts-warner-bros-buyout-settlement",
@@ -2624,6 +2656,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050312.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609020014.aspx",
+  "note": "10/5 烏國防部稱俄51%煉油產能遭打擊，普丁罕見承認部分達成、GDP減約1%",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610020068.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609020354.aspx",
@@ -2696,6 +2736,14 @@
   "verified_date": "2026-09-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050290.aspx",
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609110004.aspx",
+  "note": "沙國聯軍以約100架次空襲支援葉門政府軍，奪取俯瞰曼德海峽的杜巴布地區（政府軍說法，胡塞否認）",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280164.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202609110015.aspx",
@@ -2726,6 +2774,14 @@
   "note": "10 年期公債殖利率突破 5% 創 19 年新高、30 年期房貸利率升至 7.02%，指標問的正是兩者的後續走勢，已有明確數據。",
   "verdict": "hit",
   "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050301.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609120048.aspx",
+  "note": "出現協同釋儲：G7與IEA於10/2協調釋出1億桶柴油與原油",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
