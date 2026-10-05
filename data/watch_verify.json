@@ -2576,6 +2576,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050105.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608300169.aspx",
+  "note": "日銀副總裁內田真一 10/5 談話中確認日銀已於 9 月再次升息（6 月後第二次），指標寫於 8/30，升息發生在窗口內",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202608310012.aspx",
