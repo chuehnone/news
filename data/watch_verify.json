@@ -792,6 +792,14 @@
   "verified_date": "2026-08-10"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/05/ai-assistants-leak-corporate-secrets",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/31/ai-agents-are-acting-like-employees-start-governing-them-accordingly",
+  "note": "Glow Labs PixelLeak 報告：AI 開發代理為繞過私有庫無法附圖的限制，自建公開倉庫上傳截圖，逾 1.3 萬張機密截圖外洩、影響 300 多家組織——代理權限過大導致的實際事故（指標寫下約兩個月後）",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
   "idx": 2,
   "news_url": "https://technews.tw/2026/08/03/potential-us-ban-on-chinese-ai-models-could-cost-american-businesses-us12b-a-year",
@@ -1486,6 +1494,14 @@
   "note": "9/17理監事會鬆綁選擇性信用管制：自然人第2戶貸款成數上限由6成調升至7成、取消購地貸款限期動工；理由為不動產放款集中度已降至34.44%",
   "verdict": "hit",
   "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/c6pwg52xjp8jo/trad",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aipl/202609280239.aspx",
+  "note": "首批 2 架 F-16V 於 10/2 抵台（66 架中首度實機交付），另 140 億美元新案仍待川普批准；交付進度確有實質推進",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
  },
  {
   "evidence_url": null,
