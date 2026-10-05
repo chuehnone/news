@@ -1440,6 +1440,14 @@
   "verified_date": "2026-09-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610050274.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609040259.aspx",
+  "note": "金管會統計：9月外資賣超上市櫃股票862.7億元，今年累計賣超1兆3525億元（近5年同期最大），賣超持續",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/30/6g-moda",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609100328.aspx",
