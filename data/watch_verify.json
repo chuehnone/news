@@ -1456,6 +1456,14 @@
   "verified_date": "2026-09-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610050206.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609110011.aspx",
+  "note": "CNBC（10/5 中央社轉述）：美國10年期公債殖利率已穩居5%以上，前11個月淨利息支出1.05兆美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610020015.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/afe/202609110011.aspx",
