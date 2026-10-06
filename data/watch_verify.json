@@ -872,6 +872,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610060228.aspx",
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/08/26/cia-chief-suprisingly-visit-moscow-by-c-17",
+  "note": "10/6 逾 650 架烏克蘭無人機夜襲莫斯科方向、莫斯科州 2 死 9 傷，對莫斯科的打擊已恢復",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/20/ai-disrupts-publishing-industry",
   "idx": 2,
   "news_url": "https://technews.tw/2026/08/29/tech-giants-ai-slop",
@@ -932,6 +940,14 @@
   "idx": 1,
   "news_url": "https://technews.tw/2026/09/26/us-5-25-billion-grid-upgrade-23gw-transmission-capacity",
   "note": "10/5 甲骨文威斯康辛 Project Lighthouse 輸電設施待審、全面供電恐延至 2028 年後；新墨西哥 Project Jupiter 發出不可抗力通知。資料中心因電力受限延宕的具體案例",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/06/bmws-e2bn-investment-in-german-car-production-explained",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/27/china-shock-2-0-germany-export-slowdown-widening-trade-deficit-china-analysis",
+  "note": "BMW 宣布 2027 年底前在德國裁減 8,000 個行政職（對 8.5 萬名正職中約 4 萬人提出自願離職），德國車廠裁員確實持續",
   "verdict": "hit",
   "verified_date": "2026-10-06"
  },
@@ -2526,6 +2542,14 @@
   "note": "9/21 起伊朗透過卡達向美方傳達重開荷莫茲條件，9/29 外長阿拉奇證實卡達斡旋代表轉達立場、等待美方回應",
   "verdict": "hit",
   "verified_date": "2026-09-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610060228.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608180255.aspx",
+  "note": "10/6 莫斯科市長稱單夜逾 650 架烏克蘭無人機飛往莫斯科，單次規模持續突破 600 架",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
  },
  {
   "evidence_url": null,
