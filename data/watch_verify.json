@@ -2488,6 +2488,14 @@
   "verified_date": "2026-08-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610060295.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608110233.aspx",
+  "note": "民主剛果境外已有烏干達 20 例、法國 1 例，10/6 肯亞再添境外移入",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609300217.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608130224.aspx",
@@ -2792,6 +2800,14 @@
   "verified_date": "2026-09-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610060347.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609050031.aspx",
+  "note": "10/6 英國柴油創新高，報導指俄國燃料設施遭烏克蘭攻擊後實施出口限制，是推升柴油價格的原因之一",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610020015.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609050092.aspx",
@@ -2880,6 +2896,14 @@
   "verified_date": "2026-10-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610060295.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200009.aspx",
+  "note": "10/6 肯亞出現首起伊波拉境外移入病例；非烏干達、盧安達，但屬跨國境病例",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609200043.aspx",
@@ -2916,6 +2940,14 @@
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609270119.aspx",
   "note": "10/5 利雅德傳出巨大爆炸聲，青年運動聲稱以無人機與飛彈攻擊利雅德哈立德國王國際機場等目標；目標確已擴及首都，但實際損害未獲沙方證實",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610060295.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280223.aspx",
+  "note": "10/6 肯亞確認首例境外移入（自民主剛果返國），為疫情第四個受影響國家",
   "verdict": "hit",
   "verified_date": "2026-10-06"
  }
