@@ -752,6 +752,14 @@
   "verified_date": "2026-08-14"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/06/openai-details-its-text-watermarking-approach-in-response-to-the-eu-ai-act",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/28/eu-rules-require-ai-generated-content-to-be-labeled",
+  "note": "2026-10-06 OpenAI 的 ChatGPT／Codex 文字浮水印只對歐盟用戶推出，官方明說初期不打算全球預設啟用；API 開發者全球可選用但預設關閉。最主要的 AI 業者選擇只在歐盟套用標示。",
+  "verdict": "miss",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610020049.aspx",
   "idx": 3,
   "news_url": "https://technews.tw/2026/07/28/nvidia-taiwan-b300-smuggling",
@@ -2542,6 +2550,14 @@
   "note": "指標為擇一條件：「隨通行量回升而回落，或維持風險溢價」。實際維持並大幅擴張風險溢價，9/9 布蘭特突破 100 美元。",
   "verdict": "hit",
   "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/06/trump-pressures-south-korea-invest-natural-gas",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608190282.aspx",
+  "note": "2026-10-06 韓國對美 3,500 億美元投資換降稅框架出現落地障礙：川普片面把阿拉斯加 LNG 列入投資清單並揚言加倍關稅，韓方表示該案仍在內部評估、獲利與虧損分擔未解決。性質是項目選定爭議而非日本那樣的司法撤銷，但同屬投資換關稅安排的落地障礙。",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609120043.aspx",
