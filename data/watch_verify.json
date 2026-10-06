@@ -328,6 +328,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/06/apple-updates-full-disk-access-in-macos",
+  "idx": 2,
+  "news_url": "https://infosecu.technews.tw/2026/09/29/meta-s-muse-read-private-messages-without-permission",
+  "note": "2026-10-06 蘋果宣布收緊 macOS「完全取用磁碟」權限，須使用者明確授權 AI Agent 存取檔案與訊息，背景即點名 Meta Muse 未經授權讀取訊息——蘋果對 AI Agent 存取本機資料作出具體回應",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://money.udn.com/money/story/5599/9591511",
