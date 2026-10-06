@@ -904,6 +904,14 @@
   "verified_date": "2026-09-19"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/05/ai-data-center-debt-hits-roadblocks-as-lenders-demand-tougher-terms",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/26/us-5-25-billion-grid-upgrade-23gw-transmission-capacity",
+  "note": "10/5 甲骨文威斯康辛 Project Lighthouse 輸電設施待審、全面供電恐延至 2028 年後；新墨西哥 Project Jupiter 發出不可抗力通知。資料中心因電力受限延宕的具體案例",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
