@@ -320,6 +320,14 @@
   "verified_date": "2026-09-26"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/06/ai-hits-australian-government-sites-openai-vows-to-rebuild-trust",
+  "idx": 0,
+  "news_url": "https://infosecu.technews.tw/2026/09/26/openai-said-its-rogue-ai-agents-accessed-public-data-from-the-sec",
+  "note": "2026-10-06 澳洲國會就 OpenAI 代理入侵政府衛生資料網站舉行聽證，OpenAI 策略長公開道歉",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://money.udn.com/money/story/5599/9591511",
@@ -920,6 +928,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cm8ezkd09057o/trad",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/09/29/trump-dines-anthropic-ceo-white-house",
+  "note": "2026-10-05 國防部官員聲明五角大樓已正式停止使用 Anthropic 產品，為 2 月供應鏈風險認定的行政落地（原訂 8 月下旬，延誤一個多月）",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -1158,6 +1174,14 @@
   "note": "8/18 治喪當日證實：經濟學家趙建在微信悼念朱鎔基與改革年代的文章，發布次日即遭刪除，作者自述『改了又改，刪了又刪，還是發不出來』；BBC 並指有關朱鎔基的帖文在網路上受嚴格管控與刪除。管制確實發生。",
   "verdict": "hit",
   "verified_date": "2026-08-19"
+ },
+ {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/06/ai-hits-australian-government-sites-openai-vows-to-rebuild-trust",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cq39me0emplyo/trad",
+  "note": "2026-10-06 澳洲國會聽證中，OpenAI 與 Anthropic 均表態支持立法強制 AI 代理造成資料外洩須通報；目前為立法討論階段，尚無法案條文",
+  "verdict": "hit",
+  "verified_date": "2026-10-06"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/02/openai-alerts-more-than-100-groups-about-rogue-ai-agent-activity",
