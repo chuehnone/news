@@ -176,6 +176,14 @@
   "verified_date": "2026-09-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610070205.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/08/10/industry-academia",
+  "note": "國巨9月營收170.68億創新高，月增4.5%，推算8月約163億亦高於7月的161億紀錄",
+  "verdict": "hit",
+  "verified_date": "2026-10-07"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/08/21/panama-canal-to-cut-daily-transits-starting-in-september",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/08/12/panama-canal-fees-hit-record-high-as-el-nino-and-iran-war-choke-shipping",
@@ -1384,6 +1392,14 @@
   "verified_date": "2026-08-18"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610070217.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202607300297.aspx",
+  "note": "9月核心CPI（不含蔬果能源）年增2.52%，仍高於2%",
+  "verdict": "hit",
+  "verified_date": "2026-10-07"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609190097.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202607300357.aspx",
@@ -1462,6 +1478,14 @@
   "note": "三星 10/1 調漲旗艦 S26 全系列售價（Ultra 1TB 漲 8,000 元）；小米未見報導",
   "verdict": "hit",
   "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610070217.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608100200.aspx",
+  "note": "9月CPI年增2.73%、連續5個月破2%警戒線，涵蓋8、9月",
+  "verdict": "hit",
+  "verified_date": "2026-10-07"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202608110278.aspx",
@@ -1590,6 +1614,14 @@
   "note": "9/17 理監事會決議利率連 10 凍（重貼現率維持 2%），並上修 2026 GDP 至 11.48%、CPI 預估 2.03%。基調偏鴿：在聯準會同期升息的背景下仍維持不變。指標問的正是決議與會後聲明的鷹鴿基調，已明確揭曉。",
   "verdict": "hit",
   "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610070217.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202609120023.aspx",
+  "note": "主計總處：9月CPI年增2.73%，連5月高於2%；油料費漲約10%為主因之一",
+  "verdict": "hit",
+  "verified_date": "2026-10-07"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
