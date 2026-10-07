@@ -2192,6 +2192,14 @@
   "verified_date": "2026-08-14"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610060295.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607260016.aspx",
+  "note": "2026-10-06 報導：肯亞確認首例伊波拉境外移入（患者自民主剛果返國後死亡），肯亞為第四個受影響國家，跨國境病例已出現。",
+  "verdict": "hit",
+  "verified_date": "2026-10-07"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202607260036.aspx",
