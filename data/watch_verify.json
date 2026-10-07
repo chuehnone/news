@@ -336,6 +336,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610070126.aspx",
+  "idx": 1,
+  "news_url": "https://infosecu.technews.tw/2026/09/30/palo-alto-networks-nikesh-arora-is-building-a-defense-against-the-dark-side-of-ai",
+  "note": "2026-10-07 中央社：新韓、國民等 7 家以上韓國金融機構遭疑似中國開發的 AI 滲透測試系統 ARTEX 攻擊，警方成立 28 人專案小組，屬實際發生的 AI 輔助攻擊事件",
+  "verdict": "hit",
+  "verified_date": "2026-10-07"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://money.udn.com/money/story/5599/9591511",
