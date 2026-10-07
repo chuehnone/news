@@ -2864,6 +2864,14 @@
   "verified_date": "2026-09-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610060356.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609110135.aspx",
+  "note": "2026-10-06 葉門激戰：青年運動一天約160人死亡，主要死於沙烏地空襲；沙烏地另研議未來數週發動新一波攻勢。空襲強度與殺傷明顯升高。",
+  "verdict": "hit",
+  "verified_date": "2026-10-07"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170012.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609120014.aspx",
