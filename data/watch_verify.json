@@ -656,6 +656,14 @@
   "verified_date": "2026-07-29"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/07/openai-releases-new-mathematical-results-produced-by-an-internal-frontier-model",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/07/21/jacobian-conjecture-claude-math-problem",
+  "note": "2026-10-07 OpenAI 在 GitHub 釋出內部模型產出的 722 份數學論文手稿、372 項成果，涵蓋百餘道長期未解難題；9 月已宣布解題。AI 原創數學成果確實大量出現。",
+  "verdict": "hit",
+  "verified_date": "2026-10-07"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/07/31/tsmc-q2-earnings-call-observations-capex-revised-upwards-second-time-64-billion-boosting-advanced-process-global-expansion",
   "idx": 0,
   "news_url": "https://technews.tw/2026/07/21/tsmc-raise-chipmaking-prices",
