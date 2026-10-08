@@ -3040,6 +3040,14 @@
   "verified_date": "2026-10-08"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610080040.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609260181.aspx",
+  "note": "2026-10-08 Axios 引述美國官員：五角大廈已指示中央司令部完成重啟對伊朗大規模作戰的準備，美以消息人士認為可能在 11/3 期中選舉或 10/27 以色列大選前後；川普尚未拍板，屬備戰動向而非實際空襲",
+  "verdict": "hit",
+  "verified_date": "2026-10-08"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610040004.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609270058.aspx",
