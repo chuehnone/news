@@ -3000,6 +3000,14 @@
   "verified_date": "2026-10-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610090004.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200006.aspx",
+  "note": "10/8 利雅德機場再遇襲後，漢莎集團暫停利雅德航班至10/16，印度靛藍、印度航空、阿卡薩取消往返航班（航線調整成立；保險費率無資料）",
+  "verdict": "hit",
+  "verified_date": "2026-10-09"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610080009.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609200008.aspx",
@@ -3030,6 +3038,14 @@
   "note": "由攔截轉為跨境打擊：10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復",
   "verdict": "hit",
   "verified_date": "2026-10-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610090004.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200043.aspx",
+  "note": "10/8 利雅德機場遇襲後，漢莎、靛藍、印度航空、阿卡薩暫停或取消利雅德航班，FlightRadar24 顯示多個國際航班取消",
+  "verdict": "hit",
+  "verified_date": "2026-10-09"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280009.aspx",
