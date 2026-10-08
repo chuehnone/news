@@ -1000,6 +1000,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/08/samsung-is-reportedly-making-30-fewer-phones-because-selling-them-isnt-paying-off-anymore",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/01/galaxy-s26-a-series-raise-prices",
+  "note": "10/8 市調數據：LPDDR5X 12GB 第二季約 145-146 美元、年增 175%，第三季估再季增約 20%、逼近 180 美元；三星上半年手機記憶體採購成本年增 211%，報價續漲並導致三星傳砍 Q4 手機產量",
+  "verdict": "hit",
+  "verified_date": "2026-10-08"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
