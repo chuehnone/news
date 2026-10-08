@@ -264,6 +264,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610080228.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/09/09/2608-export",
+  "note": "財政部 10/8 公布 9 月出口 872.2 億美元、年增 60.9%，連 35 紅，突破 34 個月紀錄（10 月數據尚未公布，9 月已足以回答「突破紀錄」）",
+  "verdict": "hit",
+  "verified_date": "2026-10-08"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
   "idx": 3,
   "news_url": "https://finance.technews.tw/2026/09/09/japan-q2-growth-misses-forecasts-on-weaker-spending-investment",
