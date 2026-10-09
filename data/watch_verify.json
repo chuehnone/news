@@ -984,6 +984,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/09/solidigm-taps-pti-and-pegatron-for-outsourcing",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/28/sk-hynix-japan-memory-plant-tohoku-groundwork-underway",
+  "note": "10/09 報導：企業級SSD多數新增供給已被客戶預訂，集邦預估第四季漲勢加快，短缺與漲價延續",
+  "verdict": "hit",
+  "verified_date": "2026-10-09"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/07/new-developments-in-the-micron-taiwan-strike-case",
   "idx": 0,
   "news_url": "https://technews.tw/2026/09/29/memory-winbond",
@@ -3062,6 +3070,14 @@
   "note": "10/03 青年運動稱24小時遭沙烏地空襲94次、新一輪累計1350次，沙國並計劃發動地面攻勢——已對葉門發動大規模空中報復",
   "verdict": "hit",
   "verified_date": "2026-10-04"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/09/solidigm-taps-pti-and-pegatron-for-outsourcing",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609260100.aspx",
+  "note": "10/09 科技新報引集邦：今年企業級SSD位元需求年增逾八成、新增供給多已被預訂，第四季企業級SSD價格漲勢可望加快",
+  "verdict": "hit",
+  "verified_date": "2026-10-09"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610080009.aspx",
