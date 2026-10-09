@@ -1024,6 +1024,22 @@
   "verified_date": "2026-10-08"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/09/oracle-trucks-gas-ai-data-center-progress-natural-gas-pipeline-delays",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/01/project-star-5-gw-data-center-6-47-gw-power-plant-earliest-power-2029",
+  "note": "甲骨文新墨西哥州 Project Jupiter（2.45 GW）由 Bloom Energy 燃料電池現地供電，且在管線完工前以卡車供氣；德州為 OpenAI 興建的資料中心也採現地供氣過渡",
+  "verdict": "hit",
+  "verified_date": "2026-10-09"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/09/oracle-trucks-gas-ai-data-center-progress-natural-gas-pipeline-delays",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/01/project-star-5-gw-data-center-6-47-gw-power-plant-earliest-power-2029",
+  "note": "2026-10-09 報導指燃氣渦輪交期約 3 年，部分大型機組超過 5 年",
+  "verdict": "hit",
+  "verified_date": "2026-10-09"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
