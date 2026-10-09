@@ -936,6 +936,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610090028.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/02/nanya-technology-august-revenue",
+  "note": "10/09 中央社：美光、南亞科、華邦電、旺宏在台擴產總額逾 6,744 億元，南亞科新廠資本支出約 160 億美元，擴產發生在獲利創高期間。",
+  "verdict": "hit",
+  "verified_date": "2026-10-09"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609190031.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/04/2026-smartphone-price-increase",
