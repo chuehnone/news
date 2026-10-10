@@ -248,6 +248,22 @@
   "verified_date": "2026-09-17"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/10/strike-risk-looms-at-micron-taiwan",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/09/01/micron-taiwan-announced-that-it-will-announce-its-highest-performance-bonus-in-history-this-october",
+  "note": "桃園美光工會與資方談判破局；台中工會待 10/22 第二次調解",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/10/strike-risk-looms-at-micron-taiwan",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/09/01/micron-taiwan-announced-that-it-will-announce-its-highest-performance-bonus-in-history-this-october",
+  "note": "公司宣布感謝獎金後，桃園工會仍啟動罷工權投票（財訊 10/10）",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/09/01/us-japan-finance-ministers-talks-satsuki-katayama-no-interest-rate-hike-discussion",
@@ -262,6 +278,14 @@
   "note": "財政部 9/10 宣布執行 60 億美元公債回購，是貝森特擴大回購計畫後首次操作，超過 8 月中宣布的「至少 40 億」翻倍規模。指標問「財政部是否加大回購長債或調整發債結構」——加大回購已實際發生。",
   "verdict": "hit",
   "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/10/strike-risk-looms-at-micron-taiwan",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/09/04/the-labor-and-management-parties-held-their-first-mediation",
+  "note": "桃園美光工會與資方談判破局，已啟動投票以取得合法罷工權（財訊 10/10）",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610080228.aspx",
@@ -2734,6 +2758,30 @@
   "note": "指標為擇一條件：「隨通行量回升而回落，或維持風險溢價」。實際維持並大幅擴張風險溢價，9/9 布蘭特突破 100 美元。",
   "verdict": "hit",
   "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100092.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608190251.aspx",
+  "note": "52 天後美國擴大制裁 ICC，日相高市僅表示憂慮、將與美方交涉，未升級為正式抗議或實質反制",
+  "verdict": "miss",
+  "verified_date": "2026-10-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100092.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608190251.aspx",
+  "note": "10/9 美國宣布將 ICC 機構本身列為制裁對象（180 天寬限期），由制裁個別官員擴大到整個機構",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100092.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608190251.aspx",
+  "note": "10/9 日英法德義加荷丹 8 國外長發表聯合聲明強烈反對美國制裁 ICC；屬聯合表態，尚無法律反制措施",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/06/trump-pressures-south-korea-invest-natural-gas",
