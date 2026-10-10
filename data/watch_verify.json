@@ -1440,6 +1440,14 @@
   "verified_date": "2026-07-31"
  },
  {
+  "evidence_url": "https://technews.tw/2026/09/29/third-nuclear-restart-approved-taipower-safety-operations",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202607260024.aspx",
+  "note": "政策走向已有實質進展：核安會 9/24 核定核三再運轉計畫，11/28 舉行核電公投，10/10 國慶演說改口不因意識形態排除能源選項。",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610020074.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/afe/202607280281.aspx",
@@ -1622,6 +1630,14 @@
   "note": "9/17 理監事會未升息（連 10 凍），但調整了信用管制：自然人第 2 戶房貸成數 6 成→7 成、9/18 上路。指標問是否升息或調整信用管制，後者成立。央行依據是不動產貸款集中度已自 37.61% 降至 34.44%。",
   "verdict": "hit",
   "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/09/29/third-nuclear-restart-approved-taipower-safety-operations",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609020317.aspx",
+  "note": "核安會 9/24 核定核三再運轉計畫；條件為台電完成自主安全檢查、老化與耐震評估後提交安全技術報告，經濟部估最快 2028 年恢復運轉。",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
  },
  {
   "evidence_url": "https://technews.tw/2026/09/10/iphone-18-pro-pro-max-price-increase",
