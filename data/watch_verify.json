@@ -536,6 +536,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100167.aspx",
+  "idx": 2,
+  "news_url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1iOGxuUHJfbFB6RzdXLWZnN0pBb3JPWlV2a0YxOTg2aUxvaHI3b2hDOGgyTzZRXzZFcDFhbHdidWVVdW90UDZ5X1BENVlWR1BneVE0VFJtNUFJYnhmR3c",
+  "note": "仁愛暗沙10/8水砲阻撓醫療後送；南鑰島9/28與10/10兩度出現中國母船率二十餘艘舢舨，菲方驅離並指為海上民兵行動",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
   "idx": 4,
   "news_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0zNWZ1bWhmTWJJYjdlamVwT0dWWm9sdlRUR0RkTDRpNDlFT1ZNd2tSUndvT0hYYVZ0eENzNEpqWmFZSHhzQ0lZR1VLM000M2hNZW9BdWtEdndYeE1yQVE2X1lYRVZOeEJQR2dzb2lPRUU",
@@ -1110,6 +1118,14 @@
   "note": "記憶體現貨價與消費電子調價的傳導完整浮現：2026Q2手機記憶體價格季增逾80%，各價位機型成本年增50-70%，中低階已面臨獲利承壓甚至虧損風險",
   "verdict": "hit",
   "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100167.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c1jy6kjn762o/trad",
+  "note": "摩擦頻率與強度維持高檔：南鑰島中國母船9/28、10/10兩度帶舢舨出現遭驅離，菲方定性為海上民兵行動；10/8仁愛暗沙水砲事件",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
  },
  {
   "evidence_url": null,
@@ -1840,6 +1856,14 @@
   "verified_date": "2026-10-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100171.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607060334.aspx",
+  "note": "解除武裝談判有具體進展：哈瑪斯7月選出新領袖哈雅後宣布放棄武裝，川普稱重大突破；以色列要求逐一查核，執行仍未落實",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/07/31/microsoft-market-cap-surges-14-5-trillion-breaking-nvidia-record-largest-single-day-gain",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202607060371.aspx",
@@ -2030,6 +2054,14 @@
   "note": "8/4 紐時報導伊朗與阿曼協議將收取「服務費」以應對環保與安全維護成本、收入均分，但伊朗官員明確表示「不徵收通行費」。錢實質上照收，但形式刻意不是通行費——依「證據能否直接回答指標問的問題」判為 miss（同 CLAUDE.md 記載的「關稅權重建但非透過立法」案例）。協議尚未簽署。",
   "verdict": "miss",
   "verified_date": "2026-08-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100171.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607120200.aspx",
+  "note": "重建資金未到位：川普1月承諾注資和平理事會100億美元、波灣國家亦承諾援助，但截至10/10無已知資金流向加薩重建；9月僅提出24.5億美元、6個月的復興計畫",
+  "verdict": "miss",
+  "verified_date": "2026-10-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
@@ -2560,6 +2592,14 @@
   "verified_date": "2026-08-14"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100167.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608070105.aspx",
+  "note": "10/8 中國海警在仁愛暗沙附近對菲方醫療後送任務啟動水砲",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202608080008.aspx",
@@ -2590,6 +2630,22 @@
   "note": "持續攻擊：8/14、8/18 吉贊煉油廠，9/20 揚布阿美設施，10/04 利雅德附近阿美設施（皆為青年運動宣稱）",
   "verdict": "hit",
   "verified_date": "2026-10-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100171.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608090196.aspx",
+  "note": "10/10 法新社盤點：哈瑪斯7月宣布放棄武裝，但遲未履行解除武裝承諾，尼坦雅胡要求逐一查核繳除所有武器，未見任何實際武器交出",
+  "verdict": "miss",
+  "verified_date": "2026-10-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100171.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608090196.aspx",
+  "note": "停火滿一年未破裂：以色列前線一年未遭哈瑪斯火箭攻擊，美軍與盟友設指揮所監視停火；以軍仍每日空襲（停火後約1450人死亡），但停火框架維持",
+  "verdict": "miss",
+  "verified_date": "2026-10-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610020090.aspx",
@@ -2686,6 +2742,14 @@
   "note": "美伊斡旋轉由卡達承接：9/21 伊朗經卡達傳達條件，9/29 伊朗外長證實卡達斡旋代表轉達立場",
   "verdict": "hit",
   "verified_date": "2026-09-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100171.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608170310.aspx",
+  "note": "以色列未讓步：拒絕在哈瑪斯解除武裝前開始撤軍，實際控制範圍反而從協議允許的53%擴大到約七成",
+  "verdict": "miss",
+  "verified_date": "2026-10-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609290172.aspx",
@@ -3158,6 +3222,14 @@
   "note": "10/09 科技新報引集邦：今年企業級SSD位元需求年增逾八成、新增供給多已被預訂，第四季企業級SSD價格漲勢可望加快",
   "verdict": "hit",
   "verified_date": "2026-10-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610100167.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609260104.aspx",
+  "note": "對峙持續：菲方10/8指控中國海警在仁愛暗沙附近以水砲阻撓醫療後送，原本數小時的任務延長至近10小時",
+  "verdict": "hit",
+  "verified_date": "2026-10-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610080009.aspx",
