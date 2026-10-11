@@ -1072,6 +1072,14 @@
   "verified_date": "2026-10-09"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/11/cxmt-dram-memory-4f%c2%b2-ddr5",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/02/cxmt-invests-rmb-34-9-billion-heavily-in-rd-and-packagingtesting",
+  "note": "10/11 長鑫宣布 4F² DRAM 架構進展，預計年底推出 DDR5 RDIMM，屬製程進度公告的延續",
+  "verdict": "hit",
+  "verified_date": "2026-10-11"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -3286,5 +3294,21 @@
   "note": "10/6 肯亞確認首例境外移入（自民主剛果返國），為疫情第四個受影響國家",
   "verdict": "hit",
   "verified_date": "2026-10-06"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
+  "note": "10/11 中央社：航商陸續重返紅海、部分評估去程繞行回程走蘇伊士；亞歐即期運價走弱、SCFI 歐線數月連跌後小漲，直接回答調度與運費變化",
+  "verdict": "hit",
+  "verified_date": "2026-10-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610050045.aspx",
+  "note": "10/11 中央社：全球貨櫃航商陸續重返紅海、加速復航，改道好望角的情況減少",
+  "verdict": "hit",
+  "verified_date": "2026-10-11"
  }
 ]
