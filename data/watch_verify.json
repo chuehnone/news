@@ -3168,6 +3168,14 @@
   "verified_date": "2026-10-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610110157.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200002.aspx",
+  "note": "五大電視網（含未被禁的ABC、CBS、NBC、Fox News）為聲援CNN共同暫停白宮共訊聯訪數天（中央社 2026-10-11）",
+  "verdict": "hit",
+  "verified_date": "2026-10-11"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202609200006.aspx",
@@ -3182,6 +3190,14 @@
   "note": "10/8 利雅德機場再遇襲後，漢莎集團暫停利雅德航班至10/16，印度靛藍、印度航空、阿卡薩取消往返航班（航線調整成立；保險費率無資料）",
   "verdict": "hit",
   "verified_date": "2026-10-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610110157.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200007.aspx",
+  "note": "ABC、CBS、CNN、NBC、Fox News五大電視網為聲援CNN，連續數天共同暫停白宮共訊聯訪；司法部隨後以反托拉斯法調查此集體抵制（中央社 2026-10-11）",
+  "verdict": "hit",
+  "verified_date": "2026-10-11"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610080009.aspx",
@@ -3308,6 +3324,14 @@
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610050045.aspx",
   "note": "10/11 中央社：全球貨櫃航商陸續重返紅海、加速復航，改道好望角的情況減少",
+  "verdict": "hit",
+  "verified_date": "2026-10-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610110160.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610050045.aspx",
+  "note": "10/10 利雅德哈立德國王國際機場遭飛彈攻擊12死309傷，沙國聯軍指控青年運動所為；青年運動並警告沙國其他機場都可能成為目標",
   "verdict": "hit",
   "verified_date": "2026-10-11"
  }
