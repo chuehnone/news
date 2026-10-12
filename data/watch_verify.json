@@ -976,6 +976,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/01/top-5-enterprise-ssd-revenue-doubles-37-59-billion-2q26-price-volume-boost",
+  "note": "日經：7-9 月 SSD（NAND）合約價季增 20%、連六季上漲創新高",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610090028.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/02/nanya-technology-august-revenue",
@@ -1024,6 +1032,14 @@
   "verified_date": "2026-09-19"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/26/dell-highlights-hdd-shortage-hard-drive-supply-remains-tight",
+  "note": "7-9 月 SSD 合約價季增 20%、HDD 合約價季增 10-15%，皆連六季上漲創新高，企業級 SSD 優先供應 AI",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/05/ai-data-center-debt-hits-roadblocks-as-lenders-demand-tougher-terms",
   "idx": 1,
   "news_url": "https://technews.tw/2026/09/26/us-5-25-billion-grid-upgrade-23gw-transmission-capacity",
@@ -1062,6 +1078,14 @@
   "note": "10/7 美光桃園工會公布罷工投票：2,012 人投票、1,994 票同意，取得罷工與糾察線權，並要求美國董事會 10/8-9 會議前回應分潤訴求",
   "verdict": "hit",
   "verified_date": "2026-10-07"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/09/29/revenue-per-unit-of-memory-wafer-surpasses-tsmcs-3nm-logic-process",
+  "note": "通用型 TLC 256GB/512GB SSD 合約價 7-9 月季增 20%、年增約 303%，消費級 NAND 續漲",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cm8ezkd09057o/trad",
@@ -1118,6 +1142,14 @@
   "note": "10/11 長鑫宣布 4F² DRAM 架構進展，預計年底推出 DDR5 RDIMM，屬製程進度公告的延續",
   "verdict": "hit",
   "verified_date": "2026-10-11"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/02/toshiba-data-center-hdd",
+  "note": "SSD 合約價連六季上漲，廠商與雲端業者簽長約使通用型 SSD 缺貨常態化",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
@@ -1804,6 +1836,14 @@
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/afe/202609190097.aspx",
   "note": "IDC：Q3 全球 PC 出貨年減 20.1%、Omdia 年減 21.2%，主因 DRAM/SSD 占成本由 15% 升至近 40% 推高售價",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609300196.aspx",
+  "note": "7-9 月 SSD（NAND）合約價季增 20%、年增約 303%，連六季上漲（只涵蓋 NAND 端，DRAM 另見其他報導）",
   "verdict": "hit",
   "verified_date": "2026-10-12"
  },
@@ -2590,6 +2630,14 @@
   "note": "8/11 油價漲5%、布倫特87.72美元，在伊朗否認談判後確實回升。",
   "verdict": "hit",
   "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/12/yandex-ukraine-strikes-data-centre-in-third-attack-on-russian-tech-giant",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608040032.aspx",
+  "note": "10/8-10/11 烏克蘭無人機連續擊中 Yandex 三座資料中心，兩座完全停擺、Yandex Cloud 至少 84 項服務離線",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
  },
  {
   "evidence_url": null,
