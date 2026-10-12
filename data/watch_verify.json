@@ -800,6 +800,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610120308.aspx",
+  "idx": 4,
+  "news_url": "https://technews.tw/2026/07/26/qualcomm-is-about-to-raise-prices",
+  "note": "第3季全球手機出貨年減20%（Counterpoint），廠商因零組件成本上升調漲售價，需求明顯下滑；小米、OPPO、vivo 年減逾2成",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/01/microns-gross-margin-surged-to-86-8-in-the-fourth-quarter-of-2026",
   "idx": 2,
   "news_url": "https://technews.tw/2026/07/27/apple-presses-for-20-percent-cut-in-iphone-18-oled-panel-prices-on-chipflation",
@@ -1038,6 +1046,14 @@
   "note": "10/09 中央社：美光、南亞科、華邦電、旺宏在台擴產總額逾 6,744 億元，南亞科新廠資本支出約 160 億美元，擴產發生在獲利創高期間。",
   "verdict": "hit",
   "verified_date": "2026-10-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610120308.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/09/04/2026-smartphone-price-increase",
+  "note": "Counterpoint 初估第3季全球手機出貨年減20%、2012年來同季新低，明指記憶體漲價推高成本、廠商漲價減量",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609190031.aspx",
@@ -2870,6 +2886,14 @@
   "note": "8/11 完成定價：每股95美元、實際募得200億美元（超出原訂150億目標三分之一），較前日收盤97.52美元溢價約2.6%，非折價發行。",
   "verdict": "hit",
   "verified_date": "2026-08-11"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/13/microsoft-maia-300-to-begin-production-deployments-in-2027",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608100331.aspx",
+  "note": "Maia 300 於10月12日才發表，未如期在9月發表",
+  "verdict": "miss",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120163.aspx",
