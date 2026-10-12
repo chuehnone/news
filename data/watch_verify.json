@@ -336,6 +336,22 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610120243.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/01/pwcs-huge-survey-of-50000-workers-says-ai-is-splitting-employees-into-4-distinct-groups",
+  "note": "IMF大樣本研究（7億筆職缺）：AI較能發揮的職業對AI技能的需求約為其他職業2倍，為技能落差的後續數據；未涉培訓投入",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610120243.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/01/pwcs-huge-survey-of-50000-workers-says-ai-is-splitting-employees-into-4-distinct-groups",
+  "note": "IMF分析全球約7億筆職缺：AI較能發揮的職業（如程式開發）招聘需求自2024-25年起降約10%，企業招聘減少的趨勢延續",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -2054,6 +2070,14 @@
   "note": "AI資本支出增速的警訊明確浮現：7/28科技業發債預估由2500億增至4000億美元、雲端商債券利差擴大至121個基點、蘋果以不自建策略market cap超車重資本投入同業",
   "verdict": "hit",
   "verified_date": "2026-07-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610120243.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607060371.aspx",
+  "note": "IMF：AI較能發揮的職業（含程式開發）職缺需求降約10%，薪資尚未見明確影響——職缺與薪資兩項數據皆有",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
  },
  {
   "evidence_url": null,
