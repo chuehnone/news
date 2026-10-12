@@ -328,6 +328,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/12/why-is-amazon-betting-on-gold-circuit",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/09/29/golden-image-private-equity-funds-invest-nt1-589-billion-in-amazon",
+  "note": "10/12 報導：AI 伺服器 PCB 上游 CCL（M8 以上）供給嚴重落後、交期至少 3 個月，低介電玻纖布產能跟不上；PCB 廠今年大幅上修資本支出投入擴產與製程升級",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -1030,6 +1038,14 @@
   "note": "10/09 報導：企業級SSD多數新增供給已被客戶預訂，集邦預估第四季漲勢加快，短缺與漲價延續",
   "verdict": "hit",
   "verified_date": "2026-10-09"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/12/tesla-optimus-ramps-up-mass-production-dexterity-task-versatility-key-commercialization-challenges",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/29/china-accounts-for-78-of-humanoid-robot-h1-shipments",
+  "note": "10/12 拓墣引 The Information：Optimus 週產量由 Q2 數十台升至 8 月數百台，目標年底週產能逾 1,000 台（非官方數字）",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/07/new-developments-in-the-micron-taiwan-strike-case",
@@ -3318,6 +3334,14 @@
   "note": "10/11 中央社：航商陸續重返紅海、部分評估去程繞行回程走蘇伊士；亞歐即期運價走弱、SCFI 歐線數月連跌後小漲，直接回答調度與運費變化",
   "verdict": "hit",
   "verified_date": "2026-10-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610120003.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610040061.aspx",
+  "note": "青年運動 10/8、10/10、10/11 連續攻擊利雅德機場（10/10 至少 12 死 309 傷），並宣示持續鎖定沙國交通樞紐；攻擊頻率與目標範圍擴大至本土交通設施",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
