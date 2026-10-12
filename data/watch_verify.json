@@ -552,6 +552,14 @@
   "verified_date": "2026-10-10"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/12/soaring-memory-prices-drove-a-119-surge-in-global-semiconductor-revenue",
+  "idx": 1,
+  "news_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0zNWZ1bWhmTWJJYjdlamVwT0dWWm9sdlRUR0RkTDRpNDlFT1ZNd2tSUndvT0hYYVZ0eENzNEpqWmFZSHhzQ0lZR1VLM000M2hNZW9BdWtEdndYeE1yQVE2X1lYRVZOeEJQR2dzb2lPRUU",
+  "note": "伯恩斯坦：Q3 記憶體（DRAM＋NAND）合約價季增近 20%，預期 Q4 續漲（DRAM 部分；HBM 未單獨報）",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
   "idx": 4,
   "news_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE0zNWZ1bWhmTWJJYjdlamVwT0dWWm9sdlRUR0RkTDRpNDlFT1ZNd2tSUndvT0hYYVZ0eENzNEpqWmFZSHhzQ0lZR1VLM000M2hNZW9BdWtEdndYeE1yQVE2X1lYRVZOeEJQR2dzb2lPRUU",
@@ -856,6 +864,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/12/soaring-memory-prices-drove-a-119-surge-in-global-semiconductor-revenue",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
+  "note": "伯恩斯坦：Q3 記憶體合約價季增近 20%，漲幅較 Q2 放緩但仍遠高於歷史常態——漲勢延續、幅度趨緩",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
   "idx": 0,
   "news_url": "https://technews.tw/2026/07/30/ai-cyberattacks-concerns-trump-considers-regulations-opposes-restrictions",
@@ -928,6 +944,14 @@
   "verified_date": "2026-09-05"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/12/soaring-memory-prices-drove-a-119-surge-in-global-semiconductor-revenue",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/08/17/samsung-2026-h1-exports-china-us",
+  "note": "伯恩斯坦：2026Q3 記憶體（DRAM＋NAND）合約價季增近 20%，預期 Q4 續漲、短缺延續至 2027。續漲，未見頂",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/29/anthropics-ipo-prospectus-shows-sweeping-ai-vision-surging-costs",
   "idx": 0,
   "news_url": "https://technews.tw/2026/08/21/anthropic-challenges-historys-largest-ipo-fundraising-surpass-spacex",
@@ -984,6 +1008,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/12/soaring-memory-prices-drove-a-119-surge-in-global-semiconductor-revenue",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/02/nanya-technology-august-revenue",
+  "note": "指標問 DRAM 合約價是否見頂。伯恩斯坦：Q3 記憶體（含 DRAM）合約價季增近 20%，預期 Q4 續漲。未見頂（同 9/19 判例）",
+  "verdict": "miss",
+  "verified_date": "2026-10-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610090028.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/02/nanya-technology-august-revenue",
@@ -1014,6 +1046,14 @@
   "note": "宏碁董事長陳俊聖 9/19 明確表示第 4 季 PC 價格估漲 5% 至 20%，2027 年中達高峰。指標問品牌廠終端機種售價是否調升，宏碁已具名給出幅度。華碩、聯想部分本則未涵蓋。",
   "verdict": "hit",
   "verified_date": "2026-09-19"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/12/soaring-memory-prices-drove-a-119-surge-in-global-semiconductor-revenue",
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/09/09/intels-stock-is-rising-as-the-company-looks-primed-to-boost-prices-even-more",
+  "note": "伯恩斯坦：Q3 記憶體合約價季增近 20%，預期 Q4 續漲，高記憶體成本持續壓迫非 AI 下游，合約價走勢支撐成本上升",
+  "verdict": "hit",
+  "verified_date": "2026-10-12"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/12/pc-shipments-tumble-over-20-percent-in-3q26-as-chip-shortages-bite",
@@ -1726,6 +1766,14 @@
   "note": "iPhone 18 Pro 台灣 44,900 元起、Pro Max 49,900 元起，較去年同容量至少漲 5,000 元；256GB 漲約 12.5%、1TB 漲 24.1%、Pro Max 2TB 漲 21,000 元。美國 256GB 版僅漲約 8-9%。定價與漲幅皆已公布。",
   "verdict": "hit",
   "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/12/soaring-memory-prices-drove-a-119-surge-in-global-semiconductor-revenue",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202609030280.aspx",
+  "note": "指標問記憶體合約價是否見頂。伯恩斯坦：Q3 合約價季增近 20%，預期 Q4 續漲、短缺延續至 2027。未見頂",
+  "verdict": "miss",
+  "verified_date": "2026-10-12"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609100011.aspx",
