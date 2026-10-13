@@ -1544,6 +1544,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130221.aspx",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cwzd6164jv6ro/trad",
+  "note": "軍紀措施部分成立：美軍 10/9 起 30 天反省期與宵禁，日美高層已開始協商有效對策；地位協定本身未見新動作",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
   "idx": 1,
   "news_url": "https://www.bbc.com/zhongwen/articles/cy74j0rz54go/trad",
@@ -3622,6 +3630,14 @@
   "note": "青年運動 10/8、10/10、10/11 連續攻擊利雅德機場（10/10 至少 12 死 309 傷），並宣示持續鎖定沙國交通樞紐；攻擊頻率與目標範圍擴大至本土交通設施",
   "verdict": "hit",
   "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130221.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610040095.aspx",
+  "note": "駐沖繩美軍 10/9 起實施 30 天反省期，禁止午夜至清晨 5 點離開基地，屬外出限制措施",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130028.aspx",
