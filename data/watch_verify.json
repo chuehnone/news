@@ -416,6 +416,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610130306.aspx",
+  "idx": 2,
+  "news_url": "https://infosecu.technews.tw/2026/09/30/openai-reveals-ai-worm-attack",
+  "note": "金管會 10/13 發布金融業運用代理AI安全諮詢文件，把代理 AI 視為數位員工、以權限範圍為審視重點，並依應用場景分級與要求可阻斷可復原，是企業導入代理 AI 的權限控管規範實際變化",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610070126.aspx",
   "idx": 1,
   "news_url": "https://infosecu.technews.tw/2026/09/30/palo-alto-networks-nikesh-arora-is-building-a-defense-against-the-dark-side-of-ai",
@@ -966,6 +974,14 @@
   "note": "Glow Labs PixelLeak 報告：AI 開發代理為繞過私有庫無法附圖的限制，自建公開倉庫上傳截圖，逾 1.3 萬張機密截圖外洩、影響 300 多家組織——代理權限過大導致的實際事故（指標寫下約兩個月後）",
   "verdict": "hit",
   "verified_date": "2026-10-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/13/apple-home-collection",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/08/01/apples-smart-home-hardware-refresh-draws-closer-with-siri-ai-smarts",
+  "note": "蘋果 10 月發表 HomeView 中控裝置與 Apple Home Collection；但 Home Collection 配件 12 月起才在美加英上市、部分 2027 年初，『推出』以發表計",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
@@ -1790,6 +1806,22 @@
   "note": "日銀9月會議升息，政策利率調至1.25%（31年新高），見9/28中央社報導引述",
   "verdict": "hit",
   "verified_date": "2026-09-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610130297.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608060348.aspx",
+  "note": "違約交割新制規章修正已於 9/23 獲金管會核備，10/13 公告 2027/4/1 上路：首次違約 10 個交易日預收款券、第 2 次 30 個交易日、列管延長為 5 年",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610130297.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202608060348.aspx",
+  "note": "新制首次違約補完差額後須在 10 個交易日內預收足額款券（沿用 10 日），第 2 次違約延長為 30 個交易日",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://technews.tw/2026/08/23/innolux-earnings-call-26q2",
@@ -3542,6 +3574,14 @@
   "note": "10/8 利雅德機場遇襲後，漢莎、靛藍、印度航空、阿卡薩暫停或取消利雅德航班，FlightRadar24 顯示多個國際航班取消",
   "verdict": "hit",
   "verified_date": "2026-10-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130283.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200195.aspx",
+  "note": "10/13 報導：俄羅斯柴油出口近來大幅下滑，原因包括烏克蘭攻擊俄國煉油廠與俄方自我限制海外銷售；美國柴油價格飆升成期中選舉議題",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280009.aspx",
