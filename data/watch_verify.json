@@ -1136,6 +1136,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130276.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/11/biren-posts-2000-year-over-year-revenue-growth",
+  "note": "IDC：2026H1 中國 AI 加速器總出貨 200.8 萬顆，輝達 67.8 萬顆（年減 44%），國產合計約 133 萬顆；追蹤的 11 家中國廠商有 9 家出貨年增。",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609190031.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/09/17/ai-infrastructure-summit-memory-scarcity-focus-hbf-hbc-new-technologies",
@@ -1192,6 +1200,14 @@
   "verified_date": "2026-10-07"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130276.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/29/nvidia-influence-trump-ai-policy",
+  "note": "IDC 公布華為 28%、平頭哥 7%、寒武紀 5%、崑崙芯 4%、海光 3% 的 2026H1 出貨市占，屬國產 AI 晶片出貨的後續報導。",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
   "idx": 0,
   "news_url": "https://technews.tw/2026/09/29/revenue-per-unit-of-memory-wafer-surpasses-tsmcs-3nm-logic-process",
@@ -1230,6 +1246,14 @@
   "note": "IDC／Omdia：Q3 PC 出貨年減逾 20%，記憶體漲價推高售價、通路對高價疑慮，屬終端需求轉弱的量化證據",
   "verdict": "hit",
   "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130276.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/01/huawei-ai-chip-china-sales-surpass-nvidia",
+  "note": "IDC 數據：華為 2026H1 中國資料中心 AI 加速器出貨 57.2 萬顆（前一年逾 30 萬）、市占 28%；但同時顯示輝達仍以 34% 領先，與華為宣稱已超越不符。超節點部署無新數據。",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/09/oracle-trucks-gas-ai-data-center-progress-natural-gas-pipeline-delays",
