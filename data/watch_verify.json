@@ -352,6 +352,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/c9p8gv3dnjmgo/trad",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/06/trump-plans-to-ease-restrictions-on-the-use-of-dyed-diesel",
+  "note": "BBC Verify 以數據比較：烏克蘭襲俄煉油廠確實大幅減少全球柴油出口，但伊朗戰爭造成的海灣供應下降幅度更大",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -990,6 +998,14 @@
   "note": "韓國 9 月半導體出口年增逾 262%，未從近 200% 的高基期回落，反而續升",
   "verdict": "miss",
   "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/13/once-wall-streets-darling-cerebras-stock-is-struggling",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/08/25/nvidia-groq-3-lpx-mass-production-nebius-adopts-ai-cloud",
+  "note": "SemiAnalysis 指 OpenAI 新模型推論改用 NVIDIA GPU，Cerebras（246 億美元未交訂單中約 200 億來自 OpenAI）股價跌破 IPO 價，客戶面受壓",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610060228.aspx",
@@ -3144,6 +3160,14 @@
   "verified_date": "2026-09-09"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130028.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608250350.aspx",
+  "note": "克宮發言人培斯科夫拒絕澤倫斯基的 60 天全面停火方案，稱俄方不要停火而要長久和平——俄方已明確表態（否定）",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/09/us-banned-dairy-products-alcohol-and-motorcycles-from-canada",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202608260003.aspx",
@@ -3504,12 +3528,28 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609300076.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280016.aspx",
+  "note": "9/30 聯合國軍已認定地雷為北韓所埋；10/13 中央社再述首爾與聯合國聯合調查認定由北韓埋設，平壤否認",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610060295.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202609280223.aspx",
   "note": "10/6 肯亞確認首例境外移入（自民主剛果返國），為疫情第四個受影響國家",
   "verdict": "hit",
   "verified_date": "2026-10-06"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130027.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609300257.aspx",
+  "note": "10/13 北韓試射戰術彈道飛彈，部分飛行逾 900 公里，發生在 11 月 APEC 之前",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
@@ -3520,12 +3560,28 @@
   "verified_date": "2026-10-11"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130027.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610030021.aspx",
+  "note": "地雷事件後兩韓相繼試射升級飛彈；金與正痛斥南韓要求道歉並拒絕醫療設備提議，摩擦持續",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610120003.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610040061.aspx",
   "note": "青年運動 10/8、10/10、10/11 連續攻擊利雅德機場（10/10 至少 12 死 309 傷），並宣示持續鎖定沙國交通樞紐；攻擊頻率與目標範圍擴大至本土交通設施",
   "verdict": "hit",
   "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130028.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610040189.aspx",
+  "note": "川普宣布能源停火後，澤倫斯基稱俄空襲仍擊中至少 6 個能源目標（含天然氣設施與加油站）",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
@@ -3542,5 +3598,13 @@
   "note": "10/10 利雅德哈立德國王國際機場遭飛彈攻擊12死309傷，沙國聯軍指控青年運動所為；青年運動並警告沙國其他機場都可能成為目標",
   "verdict": "hit",
   "verified_date": "2026-10-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130028.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610050312.aspx",
+  "note": "能源停火宣布後，烏克蘭稱當晚未攻擊俄煉油廠並表示願接受能源停火——打擊暫停，機制出現轉折",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  }
 ]
