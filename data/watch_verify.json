@@ -3728,11 +3728,35 @@
   "verified_date": "2026-10-11"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130333.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610050308.aspx",
+  "note": "頻率上升（一週內第二起致命沉船）；歸責走向：保加利亞稱結果對俄有利但未明確指控，范德賴恩稱黑海成俄方升級的另一前線",
+  "verdict": "hit",
+  "verified_date": "2026-10-14"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130028.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610050312.aspx",
   "note": "能源停火宣布後，烏克蘭稱當晚未攻擊俄煉油廠並表示願接受能源停火——打擊暫停，機制出現轉折",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130333.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610060209.aspx",
+  "note": "10/13 保加利亞總理拉德夫與北約秘書長呂特通話請求強化海空監控，呂特表示北約將視需要調整東翼部署；保國並召見俄大使",
+  "verdict": "hit",
+  "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130333.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610060209.aspx",
+  "note": "10/13 一夜兩艘貨船在保加利亞外海遭無人機攻擊、一艘沉沒 11 人失蹤，為一週內第二起致命沉船",
+  "verdict": "hit",
+  "verified_date": "2026-10-14"
  }
 ]
