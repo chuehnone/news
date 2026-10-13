@@ -232,6 +232,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610130137.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/08/28/ai-supports-global-economy",
+  "note": "IMF 10/13 GFSR 明確警告 AI 投資與獲利若轉弱可能引發市場修正，並稱越來越多證據顯示 AI 可能以較低投資實現或效益不如預期，措辭由支撐成長轉向示警",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/08/31/scott-bessent-says-abenomics-may-be-reaching-its-end",
@@ -470,6 +478,22 @@
   "note": "7/28台股重挫2030點(史上第三大跌點)，金管會公布整戶擔保維持率175.12%、遠高於130%追繳門檻，證交所稱融資斷頭風險可控——斷頭壓力有明確的量化追蹤",
   "verdict": "hit",
   "verified_date": "2026-07-28"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cmeweg5eg7ljo/trad",
+  "idx": 2,
+  "news_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1UWDNZYU9DRzRHRVhpOTkyU0VGTUlkOWU3RWU3RXNpWWx5cjJ1RVdBbnlaaUZ5aTBxTDlENzl4T2x6SDNVQzItUHA3MGtpejhP0gFWQVVfeXFMT1dIZm5sTEFkamFBU0R5N2pqSnRkbFc0bDlmS0lRUm5qR3E2c21MWGpNYnNxQ0tDRnUtdjVYSlFnanlseERjX0w3TWp4WkctUGljbW1SOVE",
+  "note": "美國國務院發言人 10 月公開表示持續關注中國在台灣以東海域活動，批評其具破壞性並呼籲北京停止對台施壓",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cmeweg5eg7ljo/trad",
+  "idx": 4,
+  "news_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1UWDNZYU9DRzRHRVhpOTkyU0VGTUlkOWU3RWU3RXNpWWx5cjJ1RVdBbnlaaUZ5aTBxTDlENzl4T2x6SDNVQzItUHA3MGtpejhP0gFWQVVfeXFMT1dIZm5sTEFkamFBU0R5N2pqSnRkbFc0bDlmS0lRUm5qR3E2c21MWGpNYnNxQ0tDRnUtdjVYSlFnanlseERjX0w3TWp4WkctUGljbW1SOVE",
+  "note": "中國外交部 10/12 回應台灣東部海警、科研船、民兵船編隊時稱中國在台灣以東擁有專屬經濟區和大陸架，活動屬主權權利和管轄權範圍",
+  "verdict": "hit",
+  "verified_date": "2026-10-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607200016.aspx",
