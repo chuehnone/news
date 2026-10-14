@@ -1304,12 +1304,28 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/14/nvidia-details-open-designs-for-ai-power-cooling-and-networking",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/05/800-vdc-mainstream-ai-power-delta-liteon-ocp-2026",
+  "note": "2026-10 OCP Global Summit：輝達更新 MGX 1.2（液冷 5,000A 匯流排），Visionbay K-1 平台採用輝達 800VDC 參考架構（結合 Vertiv）為 Vera Rubin 部署做準備；另與 AMD/Google/Meta 共同發布涵蓋供電架構的開放資料中心規格 v0.7。輝達有明確表態；雲端業者是否個別表態採用 800VDC，報導未明說。",
+  "verdict": "hit",
+  "verified_date": "2026-10-14"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/13/cxmt-breakthrough-sends-samsung-sk-hynix-tumbling",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/05/memory-boom-to-last-3-4-years-chinas-technological-catch-up-a-key-variable",
   "note": "10/13 長鑫宣布年底推出 4F² 架構伺服器級 DDR5 RDIMM，屬新產品進展（量產與客戶驗證仍待確認）",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/14/character-ai-files-for-bankruptcy",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/08/openais-chatgpt-for-teens-poses-unacceptable-risk",
+  "note": "Character.AI 於 10/12 聲請破產，法院文件列潛在訴訟負債為原因之一，公司表示要透過破產程序解決法律索賠；報導並提到肯塔基州檢察長本月初控告其聊天機器人鼓勵用戶自殘。屬兒少保護訴訟的實質進展。",
+  "verdict": "hit",
+  "verified_date": "2026-10-14"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
