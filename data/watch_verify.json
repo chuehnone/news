@@ -1288,6 +1288,14 @@
   "verified_date": "2026-10-09"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/14/chinese-ai-companies-buy-1-million-nvidia-gaming-and-workstation-gpus-in-a-single-year",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/01/tencent-7-billion-lease-100000-ai-chips-oracle",
+  "note": "10/14 FT：字節跳動與阿里巴巴也在尋求與騰訊類似的海外 GPU 租用安排",
+  "verdict": "hit",
+  "verified_date": "2026-10-14"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/11/cxmt-dram-memory-4f%c2%b2-ddr5",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/02/cxmt-invests-rmb-34-9-billion-heavily-in-rd-and-packagingtesting",
@@ -2078,6 +2086,14 @@
   "note": "10/13 中油聲明：配合政府穩定物價政策，主要油氣產品持續凍漲或緩漲",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/14/u-s-defense-startups-flock-to-taiwan-to-build-china-free-drones",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610060035.aspx",
+  "note": "10/14 WSJ：台船選定美國新創 HavocAI 合作爭取海軍無人艇案，美國國防新創在美方牽線下來台尋找非紅無人機合作夥伴",
+  "verdict": "hit",
+  "verified_date": "2026-10-14"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c6pwg52xjp8jo/trad",
