@@ -1960,6 +1960,22 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610150280.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608180330.aspx",
+  "note": "前8月增額5714億元，已達全年5000億目標的114.28%，提前達成（金管會2026-10-15）；未見上調目標",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610150280.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608180330.aspx",
+  "note": "上半年增4026億（月均約671億），7-8月合計增約1688億（月均約844億），7月單月1327億，速度維持且高於上半年",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202608190006.aspx",
