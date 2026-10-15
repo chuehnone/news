@@ -3504,6 +3504,14 @@
   "verified_date": "2026-09-21"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/15/issuance",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609100003.aspx",
+  "note": "10/7 盤中 10 年期美債殖利率升至 5.362%，為 2002 年以來新高，已突破 5%（距指標寫下約 27 天）",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610080009.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609100268.aspx",
