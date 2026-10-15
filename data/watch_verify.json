@@ -208,6 +208,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/15/coreweave-shares-tumble-as-bond-yields-near-15-percent-on-concern-about-ai-borrowing-binge",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/08/18/ai-like-a-debt-machine",
+  "note": "2026-10-14 CoreWeave 2031/2032 年到期債券殖利率升至約 14.8-14.9%（票面 9.6-9.75%），利差顯著擴大，股價同日 -15%",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cgqd22pp13lo/trad",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/18/shein-reportedly-set-to-list-in-hong-kong-on-aug-28",
@@ -1318,6 +1326,14 @@
   "note": "2026-10 OCP Global Summit：輝達更新 MGX 1.2（液冷 5,000A 匯流排），Visionbay K-1 平台採用輝達 800VDC 參考架構（結合 Vertiv）為 Vera Rubin 部署做準備；另與 AMD/Google/Meta 共同發布涵蓋供電架構的開放資料中心規格 v0.7。輝達有明確表態；雲端業者是否個別表態採用 800VDC，報導未明說。",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/15/coreweave-shares-tumble-as-bond-yields-near-15-percent-on-concern-about-ai-borrowing-binge",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/05/ai-data-center-debt-hits-roadblocks-as-lenders-demand-tougher-terms",
+  "note": "CoreWeave 債券殖利率逼近 15%、S&P 評 B+，AI 資料中心業者的債務融資成本明顯上升",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/13/cxmt-breakthrough-sends-samsung-sk-hynix-tumbling",
@@ -3736,6 +3752,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610150023.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610040184.aspx",
+  "note": "褐皮書報導引路透/益普索民調：生活成本是選民最關切議題",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130028.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610040189.aspx",
@@ -3776,6 +3800,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610150023.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610060119.aspx",
+  "note": "9 月 CPI 3.7%、柴油成本推升物價；路透/益普索民調顯示生活成本為選民首要關切",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130333.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610060209.aspx",
@@ -3790,5 +3822,13 @@
   "note": "10/13 一夜兩艘貨船在保加利亞外海遭無人機攻擊、一艘沉沒 11 人失蹤，為一週內第二起致命沉船",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610150027.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610090050.aspx",
+  "note": "10/14 烏軍指 SpaceX 未預告限制軍用星鏈高速移動時運作；馬斯克稱星盾屬美國政府、限制由美軍與川普決定，星鏈權限確有變動",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
  }
 ]
