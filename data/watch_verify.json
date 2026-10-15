@@ -120,6 +120,14 @@
   "verified_date": "2026-09-19"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/15/tsmcs-third-quarter-eps-hit-a-new-high-of-nt29-43",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/31/tsmc-q2-earnings-call-observations-capex-revised-upwards-second-time-64-billion-boosting-advanced-process-global-expansion",
+  "note": "Q3 財報毛利率 66.4%，低於 67%（雖在 65-67% 財測區間內）",
+  "verdict": "miss",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609090274.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/08/01/wistron-us-factory",
@@ -382,6 +390,14 @@
   "note": "BBC Verify 以數據比較：烏克蘭襲俄煉油廠確實大幅減少全球柴油出口，但伊朗戰爭造成的海灣供應下降幅度更大",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/15/tsmcs-revenue-growth-rate-for-the-full-year-of-2026-is-expected-to-reach-approximately-44",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/07/tsmcs-investment-in-arizona-creates-the-largest-impact-in-us-history",
+  "note": "10/15 法說會：亞利桑那第二座晶圓廠機台移入中，2027 Q3 量產，略領先原定時程；另評估德州擴產",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
  },
  {
   "evidence_url": null,
