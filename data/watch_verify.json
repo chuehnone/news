@@ -368,6 +368,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/15/fed-beige-book-shows-intensifying-price-growth-in-some-areas",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/02/fed-officials-hawkish-signals-interest-rates-rise-50-basis-points",
+  "note": "9月CPI年增3.7%高於預期後，市場估10/27-28升息機率回升至約37%（10/2時曾因鴿派發言大減）——預期確實隨數據移動，方向轉鷹",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c9p8gv3dnjmgo/trad",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/06/trump-plans-to-ease-restrictions-on-the-use-of-dyed-diesel",
@@ -2078,6 +2086,14 @@
   "note": "IDC：Q3 全球 PC 出貨年減 20.1%、Omdia 年減 21.2%，主因 DRAM/SSD 占成本由 15% 升至近 40% 推高售價",
   "verdict": "hit",
   "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/15/fed-beige-book-shows-intensifying-price-growth-in-some-areas",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202609290284.aspx",
+  "note": "10/15褐皮書：柴油價格被提及21次（前期2次），達拉斯聯儲稱柴油上漲最明顯、衝擊貨運農業航空——直接回答柴油後續走勢（持續上漲）",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610120178.aspx",
