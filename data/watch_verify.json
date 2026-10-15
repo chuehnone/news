@@ -312,6 +312,14 @@
   "verified_date": "2026-10-10"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/15/tsmc-will-begin-adopting-high-na-euv-in-2030",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/09/08/intel-and-asml-have-manufactured-more-than-one-million-wafers",
+  "note": "10/15 法說會魏哲家表示 2030 年才採用 High-NA，即使競爭對手更早導入也不會處於劣勢，未因競爭壓力提前",
+  "verdict": "miss",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610080228.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/09/09/2608-export",
@@ -1280,6 +1288,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610140108.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/01/cameco-could-benefit-if-south-korea-invests-in-ap1000-reactors",
+  "note": "承購方出現進展：中油承諾每年 600 萬公噸、約占未來 20 年產量 30%，並投入最高 44 億美元股本",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/08/samsung-is-reportedly-making-30-fewer-phones-because-selling-them-isnt-paying-off-anymore",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/01/galaxy-s26-a-series-raise-prices",
@@ -1366,6 +1382,14 @@
   "note": "10/13 長鑫宣布年底推出 4F² 架構伺服器級 DDR5 RDIMM，屬新產品進展（量產與客戶驗證仍待確認）",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610150156.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/06/trump-pressures-south-korea-invest-natural-gas",
+  "note": "10/14 川普單方面宣布韓國投資 500 億美元，韓媒稱韓國政府尚未決定、須先確認商業可行性，維持商業評估立場",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/14/character-ai-files-for-bankruptcy",
@@ -3760,6 +3784,22 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610140108.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610010020.aspx",
+  "note": "經濟部 10/14 證實中油每年採購 600 萬公噸阿拉斯加 LNG，投資最高 44 億美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610140108.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610010043.aspx",
+  "note": "承購方出現進展：中油承諾每年 600 萬公噸並投入最高 44 億美元股本；韓國仍未決定",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
@@ -3774,6 +3814,14 @@
   "note": "地雷事件後兩韓相繼試射升級飛彈；金與正痛斥南韓要求道歉並拒絕醫療設備提議，摩擦持續",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610140108.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610030046.aspx",
+  "note": "台灣態度從未表態轉為經濟部證實中油承諾採購與投資；日本部分則是出資 GF 晶圓廠，非 LNG",
+  "verdict": "hit",
+  "verified_date": "2026-10-15"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610120003.aspx",
