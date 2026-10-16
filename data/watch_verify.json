@@ -3472,6 +3472,14 @@
   "verified_date": "2026-09-09"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160044.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608250206.aspx",
+  "note": "歐盟與北京達成協議，將明年中國油電混合車（PHEV）銷歐量限於35萬輛，不到今年預計交車量一半，即對中國PHEV設定配額（POLITICO經中央社 2026-10-16）",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130028.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202608250350.aspx",
