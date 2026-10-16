@@ -400,6 +400,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610160035.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/07/global-hedge-fund-founder-warns-ai-bubble-bursting",
+  "note": "10/15 美債殖利率逾 5%、升息預期推升 AI 基建融資成本，前 20 大 AI/半導體股一週蒸發逾 1 兆美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/tsmcs-revenue-growth-rate-for-the-full-year-of-2026-is-expected-to-reach-approximately-44",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/07/tsmcs-investment-in-arizona-creates-the-largest-impact-in-us-history",
@@ -1404,6 +1412,22 @@
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/06/eu-china-to-hold-key-trade-talks-on-8th",
   "note": "歐中 10/9 達成多項初步成果與共同諒解，含調控中國輸歐油電混合車數量（可能削減一半以上），范德賴恩 10/15 向峰會說明",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/16/investors-temper-anthropic-ipo-valuation-expectations-over-revenue-growth-slowdown",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/06/microsoft-meta-cut-claude-usage",
+  "note": "10/14 上市前業績會：Q3 營收 168 億美元、季增 45%、調整後獲利（路透引述知情人士）",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/16/meta-introduces-muse-spark-open",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/06/microsoft-meta-cut-claude-usage",
+  "note": "10/15 Meta 釋出 Muse Spark Open 權重（8,160 億參數），Muse 系列正式對外推出",
   "verdict": "hit",
   "verified_date": "2026-10-16"
  },
