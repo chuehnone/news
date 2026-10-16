@@ -3840,6 +3840,14 @@
   "verified_date": "2026-10-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160314.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609250243.aspx",
+  "note": "2026-10-16 法德就歐盟汽車產業達成協議，對「歐洲製造」零組件與公共採購限於歐盟國家（加英國）取得共識，『歐洲製造』規範在歐盟兩大國層級實質推進；尚待歐盟立法",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/09/solidigm-taps-pti-and-pegatron-for-outsourcing",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609260100.aspx",
