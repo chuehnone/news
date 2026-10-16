@@ -416,6 +416,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/16/taiwan-moea-texas-ai-supply-chain-4-billion-investment-per-park",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/08/minister-taiwan-firms-us-investment-market-proximity-define-market-next-decade",
+  "note": "10/16 經濟部具體化園區協助：與電電公會合作、業者出資政府協助，先在德州設園區，單一園區 20-40 億美元且不只一座。融資與保險配套未見。",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
