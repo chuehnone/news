@@ -1312,6 +1312,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160009.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/01/googles-early-attempt-to-pay-websites-for-ai-answers-is-struggling",
+  "note": "CNN、FT 等加入 Google AI 新聞授權計畫（逾400家），同時出版業者加大對 AI 未授權訓練的法律行動",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130276.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/01/huawei-ai-chip-china-sales-surpass-nvidia",
@@ -1376,6 +1384,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/05/eu-china-to-hold-beijing-talks-to-avert-trade-war",
+  "note": "北京談判後雙方 10/9 達成初步成果，具體項目為中國輸歐油電混合車數量調控",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/13/cxmt-breakthrough-sends-samsung-sk-hynix-tumbling",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/05/memory-boom-to-last-3-4-years-chinas-technological-catch-up-a-key-variable",
@@ -1384,12 +1400,36 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/06/eu-china-to-hold-key-trade-talks-on-8th",
+  "note": "歐中 10/9 達成多項初步成果與共同諒解，含調控中國輸歐油電混合車數量（可能削減一半以上），范德賴恩 10/15 向峰會說明",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610150156.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/06/trump-pressures-south-korea-invest-natural-gas",
   "note": "10/14 川普單方面宣布韓國投資 500 億美元，韓媒稱韓國政府尚未決定、須先確認商業可行性，維持商業評估立場",
   "verdict": "hit",
   "verified_date": "2026-10-15"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/16/getty-images-plans-bankruptcy-restructuring",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/08/getty-images-faces-delisting-amid-ai-image-impact",
+  "note": "10/12 Getty 宣布以預先協商的第11章程序重組約21億美元債務並私有化，股東料歸零",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160009.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/08/getty-images-faces-delisting-amid-ai-image-impact",
+  "note": "CNN、金融時報、Axios 加入 Google AI 新聞計畫授權內容並收授權費，全球逾400家出版業者參與",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/14/character-ai-files-for-bankruptcy",
@@ -1710,6 +1750,14 @@
   "note": "8/10 SAG 報告顯示 2026 上半年中國廠商占全球人形機器人出貨 97%（智元 8,400 台、宇樹 5,900 台），特斯拉、Figure AI、Agility 等美廠出貨明顯落後。未見台廠或其他非中國廠商公布美系機器人訂單。",
   "verdict": "miss",
   "verified_date": "2026-08-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/acn/202610080321.aspx",
+  "note": "談判結果是調控中國輸歐油電混合車數量（可能減半以上），屬插電混合車的具體動作",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
  },
  {
   "evidence_url": null,
@@ -2944,6 +2992,14 @@
   "verified_date": "2026-10-03"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160003.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607290006.aspx",
+  "note": "10/15 CNN 報導：澤倫斯基9月稱將取得授權生產愛國者，但川普未表態、授權無下文，烏軍攔截彈已耗盡",
+  "verdict": "miss",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280164.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202607290006.aspx",
@@ -3784,12 +3840,28 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160013.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280223.aspx",
+  "note": "疫情擴散至第8省（北烏班吉），累計逾9000例，較 9/28 的8千例持續增加",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610060295.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202609280223.aspx",
   "note": "10/6 肯亞確認首例境外移入（自民主剛果返國），為疫情第四個受影響國家",
   "verdict": "hit",
   "verified_date": "2026-10-06"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609290062.aspx",
+  "note": "俄無人機（北約消息）擊中羅馬尼亞領海內商船；羅總統拒絕證實來源，應對仍保守",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130027.aspx",
@@ -3838,6 +3910,14 @@
   "note": "台灣態度從未表態轉為經濟部證實中油承諾採購與投資；日本部分則是出資 GF 晶圓廠，非 LNG",
   "verdict": "hit",
   "verified_date": "2026-10-15"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610030158.aspx",
+  "note": "10天內羅、保沿岸至少7艘船遭無人機擊中，其中一艘在羅馬尼亞領海內，北約消息稱來自俄國",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610120003.aspx",
@@ -3926,6 +4006,46 @@
   "note": "10/13 一夜兩艘貨船在保加利亞外海遭無人機攻擊、一艘沉沒 11 人失蹤，為一週內第二起致命沉船",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160013.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610060295.aspx",
+  "note": "肯亞 10/15 宣布第2例，患者為首例確診者的近親，即接觸者續發病例",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160004.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610060356.aspx",
+  "note": "10/15 沙國稱攔截青年運動射向沙國南部與海米斯穆謝特的無人機",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070014.aspx",
+  "note": "青年運動拿下紅海沿岸大片區域並攻擊亞丁總統府；沙國稱邀其赴阿曼會談遭拒",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070187.aspx",
+  "note": "10/15 青年運動續向沙國南部發射無人機遭攔截，攻擊持續",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160004.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070187.aspx",
+  "note": "報導指青年運動最近幾週拿下紅海沿岸大片區域，政府軍反擊未扭轉戰局",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610150027.aspx",
