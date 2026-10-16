@@ -1400,6 +1400,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/16/asml-calls-us-restrictions-on-duv-sales-to-china-counterproductive-stance-reflects-strategic-dilemma-amid-pressure",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/05/china-stockpiles-asml-lithography-tools-spurring-us-calls-for-complete-export-ban",
+  "note": "ASML 第三季財報後預估中國約佔 2026 年營收 20%，財務長 Dassen 公開表示 MATCH Act 擴大 DUV 管制會加速中國自研",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/05/eu-china-to-hold-beijing-talks-to-avert-trade-war",
@@ -1420,6 +1428,14 @@
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/06/eu-china-to-hold-key-trade-talks-on-8th",
   "note": "歐中 10/9 達成多項初步成果與共同諒解，含調控中國輸歐油電混合車數量（可能削減一半以上），范德賴恩 10/15 向峰會說明",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/16/bloomberg-eu-mulling-new-trade-tools-could-fully-block-chinese-imports-if-necessary",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/06/eu-china-to-hold-key-trade-talks-on-8th",
+  "note": "10/15 歐盟領袖要求執委會年底前提案，建立必要時可全面阻止中國商品進口的新貿易權限（彭博）",
   "verdict": "hit",
   "verified_date": "2026-10-16"
  },
@@ -3846,6 +3862,14 @@
   "note": "10/8 青年運動宣稱以彈道飛彈、巡弋飛彈與無人機對利雅德機場及拉比格煉油廠發動多波攻擊，攻勢加大",
   "verdict": "hit",
   "verified_date": "2026-10-08"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cqx2vky9ky0no/trad",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609260125.aspx",
+  "note": "BBC Verify 引 UKMTO：10/5-11 遇襲船隻 12 艘創戰爭以來單週新高，業界數據顯示經海峽運油的復甦勢頭因襲擊增加而放緩",
+  "verdict": "hit",
+  "verified_date": "2026-10-16"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610080040.aspx",
