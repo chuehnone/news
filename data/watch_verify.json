@@ -1288,6 +1288,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/17/morgan-stanley-memory-and-ai-supply-chain-outlook",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/29/revenue-per-unit-of-memory-wafer-surpasses-tsmcs-3nm-logic-process",
+  "note": "大摩10/17報告：整體DRAM資本支出2026年預估980億美元（年增82%），2027年1500-1600億美元，擴產支出大幅上升（券商估計值）",
+  "verdict": "hit",
+  "verified_date": "2026-10-17"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cm8ezkd09057o/trad",
   "idx": 0,
   "news_url": "https://technews.tw/2026/09/29/trump-dines-anthropic-ceo-white-house",
