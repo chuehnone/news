@@ -2112,6 +2112,14 @@
   "verified_date": "2026-09-17"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/17/behind-tsmcs-impressive-financial-report-key-concerns-have-emerged-that-have-drawn-market-attention",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609020289.aspx",
+  "note": "10-15 法說會後報導仍為 2026 年資本支出 600-640 億美元，與 8 月董事會核定時相同，未再上修",
+  "verdict": "miss",
+  "verified_date": "2026-10-17"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/29/third-nuclear-restart-approved-taipower-safety-operations",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609020317.aspx",
@@ -2286,6 +2294,14 @@
   "note": "10/14 WSJ：台船選定美國新創 HavocAI 合作爭取海軍無人艇案，美國國防新創在美方牽線下來台尋找非紅無人機合作夥伴",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/17/behind-tsmcs-impressive-financial-report-key-concerns-have-emerged-that-have-drawn-market-attention",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610080157.aspx",
+  "note": "10-15 法說會後報導 2026 年資本支出維持 600-640 億美元，未上修",
+  "verdict": "miss",
+  "verified_date": "2026-10-17"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c6pwg52xjp8jo/trad",
@@ -4134,5 +4150,13 @@
   "note": "10/14 烏軍指 SpaceX 未預告限制軍用星鏈高速移動時運作；馬斯克稱星盾屬美國政府、限制由美軍與川普決定，星鏈權限確有變動",
   "verdict": "hit",
   "verified_date": "2026-10-15"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610170025.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610090152.aspx",
+  "note": "10-17 中央社引印尼衛生部：全國7省累計通報28萬3270例急性呼吸道感染，並報導馬來西亞、東帝汶部分學校停課",
+  "verdict": "hit",
+  "verified_date": "2026-10-17"
  }
 ]
