@@ -1768,6 +1768,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/crz98g94n9k5o/trad",
+  "note": "10/17 規模升到內政部估55萬人，暴力升級為縱火市府、多城搶劫、400人被捕",
+  "verdict": "hit",
+  "verified_date": "2026-10-18"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130221.aspx",
   "idx": 1,
   "news_url": "https://www.bbc.com/zhongwen/articles/cwzd6164jv6ro/trad",
@@ -4120,12 +4128,36 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070013.aspx",
+  "note": "10/17 運動擴大到大學生與生活成本訴求，工會號召參與，規模從25萬升到內政部估55萬",
+  "verdict": "hit",
+  "verified_date": "2026-10-18"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160004.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610070014.aspx",
   "note": "青年運動拿下紅海沿岸大片區域並攻擊亞丁總統府；沙國稱邀其赴阿曼會談遭拒",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070159.aspx",
+  "note": "10/17 全國示威訴求已延伸到大學生，工會也號召參與；內政部估55萬人",
+  "verdict": "hit",
+  "verified_date": "2026-10-18"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610170171.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070159.aspx",
+  "note": "10/17 報導法國公債遭資金撤離、借貸成本升至逾20年新高，總理勒克努憂心引爆動亂",
+  "verdict": "hit",
+  "verified_date": "2026-10-18"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160004.aspx",
