@@ -3208,6 +3208,14 @@
   "verified_date": "2026-08-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610180035.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608090003.aspx",
+  "note": "2026-10-17 羅馬尼亞 F-16 在黑海蘇利納外海擊落 2 架侵入領空的天竺葵系列無人機；報導並指北約今年稍早已在羅馬尼亞領空擊落 4 架入侵無人機，同類事件持續發生",
+  "verdict": "hit",
+  "verified_date": "2026-10-18"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610080009.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608090135.aspx",
