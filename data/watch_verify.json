@@ -1280,6 +1280,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610180135.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/29/offshore-wind-phase-2-contract-dispute-fuwei-95-billion-penalty",
+  "note": "10-18 經濟部說明：風機安裝由台電應富崴請求接管，首批3部已於10/16安裝完成、累計4部，後續依氣候滾動調整，以完工併網為首要目標",
+  "verdict": "hit",
+  "verified_date": "2026-10-18"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
   "idx": 0,
   "news_url": "https://technews.tw/2026/09/29/revenue-per-unit-of-memory-wafer-surpasses-tsmcs-3nm-logic-process",
