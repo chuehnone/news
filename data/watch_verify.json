@@ -3288,6 +3288,14 @@
   "verified_date": "2026-08-11"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610180188.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608100330.aspx",
+  "note": "10/17-18 烏克蘭對俄發動今年最大規模無人機攻擊之一，擊中聖彼得堡石油碼頭（年處理1250萬公噸），俄方稱一夜擊落1015架，深入俄境的能源工業目標攻擊持續",
+  "verdict": "hit",
+  "verified_date": "2026-10-19"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/13/microsoft-maia-300-to-begin-production-deployments-in-2027",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608100331.aspx",
@@ -4206,5 +4214,13 @@
   "note": "10-17 中央社引印尼衛生部：全國7省累計通報28萬3270例急性呼吸道感染，並報導馬來西亞、東帝汶部分學校停課",
   "verdict": "hit",
   "verified_date": "2026-10-17"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610180188.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610100198.aspx",
+  "note": "通話後強度上升：10/17-18 烏克蘭不顧川普要求發動今年最大規模無人機攻擊之一（俄稱擊落1015架），同期澤倫斯基稱俄軍在能源停火後仍蓄意攻擊",
+  "verdict": "hit",
+  "verified_date": "2026-10-19"
  }
 ]
