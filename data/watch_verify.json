@@ -416,6 +416,14 @@
   "verified_date": "2026-10-19"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610190276.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/06/schneider-electric-to-acquire-ptc",
+  "note": "10/19輝達宣布擴大與西門子合作，以埃蘭根工廠打造全AI驅動自主製造工廠並推向全球，屬工業自動化同業的工業AI合作動作（非併購）",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c9p8gv3dnjmgo/trad",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/06/trump-plans-to-ease-restrictions-on-the-use-of-dyed-diesel",
@@ -4008,6 +4016,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610190277.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280016.aspx",
+  "note": "南韓以警告廣播與鳴槍示警回應北韓邊境工事（北韓稱8/1至10/17共2870次廣播、201槍），並呼籲平壤暫停邊境防禦工事",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610190248.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609280101.aspx",
@@ -4038,6 +4054,14 @@
   "note": "俄無人機（北約消息）擊中羅馬尼亞領海內商船；羅總統拒絕證實來源，應對仍保守",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610190277.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609300076.aspx",
+  "note": "南韓軍方10/5稱北韓今年派多達7000名工人在邊境埋雷設圍籬、越界約50起；金與正10/19稱考慮在邊界部署更多戰術武器，邊境要塞化持續",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130027.aspx",
@@ -4278,6 +4302,14 @@
   "note": "通話後強度上升：10/17-18 烏克蘭不顧川普要求發動今年最大規模無人機攻擊之一（俄稱擊落1015架），同期澤倫斯基稱俄軍在能源停火後仍蓄意攻擊",
   "verdict": "hit",
   "verified_date": "2026-10-19"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200007.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610110166.aspx",
+  "note": "10/19川普再批澤倫斯基，稱「是時候讓其他人代表烏克蘭進行談判」「我們給了烏克蘭很多，他們卻什麼也沒給美國」，美方施壓換人談判的立場延續並具體化",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
