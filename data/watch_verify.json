@@ -392,6 +392,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/19/french-debt-woes-add-to-eu-economic-concerns",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/06/euro-slides-to-17-month-low-against-dollar",
+  "note": "10/19 報導：法國公債殖利率本月觸及24年高點，法德10年期利差大幅攀升，延續10/06的拋售走勢",
+  "verdict": "hit",
+  "verified_date": "2026-10-19"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c9p8gv3dnjmgo/trad",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/06/trump-plans-to-ease-restrictions-on-the-use-of-dyed-diesel",
