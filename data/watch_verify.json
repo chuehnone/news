@@ -1440,6 +1440,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610190265.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/05/bi-see-deepseek-gain",
+  "note": "10/19 美國國土安全部下令聯邦文職機關移除 DeepSeek 產品及採用該模型的第三方服務，並禁止採購——美方對中國模型的禁用措施實際推進",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/16/asml-calls-us-restrictions-on-duv-sales-to-china-counterproductive-stance-reflects-strategic-dilemma-amid-pressure",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/05/china-stockpiles-asml-lithography-tools-spurring-us-calls-for-complete-export-ban",
@@ -1758,6 +1766,14 @@
   "note": "8/9 BBC 報導伊朗自 2 月封鎖海峽至今未解，外長阿拉格奇稱全面重開取決於其他條件（含美國賠償、解除制裁、解凍資產等六項要求），革命衛隊明言維持封鎖直到敵人接受所有條件。通行量未恢復。",
   "verdict": "miss",
   "verified_date": "2026-08-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610190260.aspx",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cm2jgxzwe7go/trad",
+  "note": "10/19 法新社報導法國生活成本動亂之際，雷朋在總統大選民調中聲勢看漲；馬克宏依法不得再參選。僅回答民調走勢，接班布局未見新資訊",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c70glkrgd1eo/trad",
@@ -3990,6 +4006,14 @@
   "note": "9/30 聯合國軍已認定地雷為北韓所埋；10/13 中央社再述首爾與聯合國聯合調查認定由北韓埋設，平壤否認",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610190248.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280101.aspx",
+  "note": "10/18 立陶宛維爾紐斯星鏈基地台遭縱火，官方稱與保加利亞（10/10）、波蘭（9月）星鏈設施縱火同屬俄方破壞行動——一個月內三國出現同型事件",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160013.aspx",
