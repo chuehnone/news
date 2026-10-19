@@ -240,6 +240,22 @@
   "verified_date": "2026-09-30"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/19/china-domestic-demand-recovery-remains-slow",
+  "note": "Q3 GDP 年增 4.5%，高於 Q2 的 4.3%，未跌破",
+  "verdict": "miss",
+  "verified_date": "2026-10-19"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/08/19/china-domestic-demand-recovery-remains-slow",
+  "note": "至 10/19 政策為定向信貸、首套房貸利息補貼與基建，分析師指北京不願發消費券，未見現金補貼類『投資於人』政策",
+  "verdict": "miss",
+  "verified_date": "2026-10-19"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610010043.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/26/south-koreas-investment-commitments-delay-us-anger",
@@ -4104,6 +4120,14 @@
   "verified_date": "2026-10-11"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610190209.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610050073.aspx",
+  "note": "稅改大綱已由內閣敲定：2027/4 起食品稅率 8%→1% 為期兩年；財源爭議轉向國債，高市不否認發行但稱不依賴赤字國債",
+  "verdict": "hit",
+  "verified_date": "2026-10-19"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130333.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610050308.aspx",
@@ -4228,6 +4252,14 @@
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610100198.aspx",
   "note": "通話後強度上升：10/17-18 烏克蘭不顧川普要求發動今年最大規模無人機攻擊之一（俄稱擊落1015架），同期澤倫斯基稱俄軍在能源停火後仍蓄意攻擊",
+  "verdict": "hit",
+  "verified_date": "2026-10-19"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130026.aspx",
+  "note": "Q3 GDP 4.5% 公布：出口增 28.4% 撐成長，固定資產投資 -7.2%、9月社零 +1.1%，結構為外熱內冷",
   "verdict": "hit",
   "verified_date": "2026-10-19"
  }
