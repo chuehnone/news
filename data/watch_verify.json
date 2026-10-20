@@ -264,6 +264,14 @@
   "verified_date": "2026-10-19"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/20/september-export-orders-reach-114-billion",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/20/july-export-orders-record-high-97-94-billion-61-9-growth-18-consecutive-months",
+  "note": "10/20 經濟部公布 9 月外銷訂單 1,142.1 億美元，首破千億並創單月新高，年增 62.4%",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/20/apple-and-tesla-are-using-chinese-memory-chips-as-leverage-to-pressure-south-korean-companies-to-lower-prices",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/25/cxmts-2027-production-capacity-sold-out",
@@ -286,6 +294,22 @@
   "note": "IMF 10/13 GFSR 明確警告 AI 投資與獲利若轉弱可能引發市場修正，並稱越來越多證據顯示 AI 可能以較低投資實現或效益不如預期，措辭由支撐成長轉向示警",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610200191.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/29/ipp",
+  "note": "9/18 首次調解後雙方發布聯合聲明、同意 10/22 續談並承諾不秋後算帳，調解未破裂",
+  "verdict": "miss",
+  "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610200191.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/08/29/ipp",
+  "note": "至 10/20 桃園廠工會仍呼籲美光提出具體分潤制方案並決定 10/22 聲援罷工，顯示美光在 9/18 調解前後均未提出利潤分享方案",
+  "verdict": "miss",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
