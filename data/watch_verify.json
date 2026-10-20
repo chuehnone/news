@@ -144,6 +144,14 @@
   "verified_date": "2026-09-28"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/20/apple-and-tesla-are-using-chinese-memory-chips-as-leverage-to-pressure-south-korean-companies-to-lower-prices",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/08/04/hp-asus-acer-adopt-cxmt-memory-chips",
+  "note": "10/20 朝鮮日報引 TrendForce：長鑫月產能約 30 萬片",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/16/smaller-phone-and-laptop-makers-memory",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/08/06/winbond-electronics-warns-memory-shortages-will-worsen-next-year",
@@ -254,6 +262,14 @@
   "note": "至 10/19 政策為定向信貸、首套房貸利息補貼與基建，分析師指北京不願發消費券，未見現金補貼類『投資於人』政策",
   "verdict": "miss",
   "verified_date": "2026-10-19"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/20/apple-and-tesla-are-using-chinese-memory-chips-as-leverage-to-pressure-south-korean-companies-to-lower-prices",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/25/cxmts-2027-production-capacity-sold-out",
+  "note": "10/20 朝鮮日報引 TrendForce：長鑫目前營運 3 座 12 吋廠，月產能約 30 萬片",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610010043.aspx",
@@ -1246,6 +1262,14 @@
   "note": "IDC：2026H1 中國 AI 加速器總出貨 200.8 萬顆，輝達 67.8 萬顆（年減 44%），國產合計約 133 萬顆；追蹤的 11 家中國廠商有 9 家出貨年增。",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/20/apple-and-tesla-are-using-chinese-memory-chips-as-leverage-to-pressure-south-korean-companies-to-lower-prices",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/11/changxin-memory-initiates-active-capacity-expansion",
+  "note": "10/20 朝鮮日報引 TrendForce：長鑫月產能已約 30 萬片，與宣稱的推進目標相符",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609190031.aspx",
@@ -3928,6 +3952,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200008.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200206.aspx",
+  "note": "10/19 中央社：法國抗議訴求含燃油價格高漲與生活成本，出現縱火打劫，政府實施宵禁，屬黃背心式的生活成本抗爭",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280009.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609210004.aspx",
@@ -4088,6 +4120,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200008.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610020024.aspx",
+  "note": "10/19 中央社：學生抗議已擴大為社會大眾的生活成本抗爭（未提及法國工會正式加入，以其他族群擴大判定）",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
@@ -4174,6 +4214,14 @@
   "note": "稅改大綱已由內閣敲定：2027/4 起食品稅率 8%→1% 為期兩年；財源爭議轉向國債，高市不否認發行但稱不依賴赤字國債",
   "verdict": "hit",
   "verified_date": "2026-10-19"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200008.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610050212.aspx",
+  "note": "10/19 抗議演變成近年最嚴重街頭暴力，巴黎、里昂、里爾局部宵禁，至少 3000 家商店受損，總理不排除緊急狀態",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130333.aspx",
@@ -4278,6 +4326,14 @@
   "note": "報導指青年運動最近幾週拿下紅海沿岸大片區域，政府軍反擊未扭轉戰局",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200008.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610080013.aspx",
+  "note": "10/19 中央社：抗議從學生要求改善校舍與師資，擴大到社會大眾抗議生活成本、燃油價格與公共服務",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610150027.aspx",
