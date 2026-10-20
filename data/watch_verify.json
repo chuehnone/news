@@ -488,6 +488,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610200365.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/08/malaysia-builds-a-new-silicon-island-to-house-its-ai-ambitions",
+  "note": "金居10/20拍板在檳城設新廠，投資80-100億台幣、年產能3萬噸HVLP4銅箔",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/16/taiwan-moea-texas-ai-supply-chain-4-billion-investment-per-park",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/08/minister-taiwan-firms-us-investment-market-proximity-define-market-next-decade",
@@ -2472,6 +2480,14 @@
   "verified_date": "2026-10-17"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200383.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202610130019.aspx",
+  "note": "路透10/20：運費逼近紀錄，中油上週改買6船阿芙拉型油輪貨物取代每月2-3船VLCC，台塑化稱非洲與美國原油運不過來",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c6pwg52xjp8jo/trad",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aipl/202609280239.aspx",
@@ -3320,6 +3336,14 @@
   "verified_date": "2026-08-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210006.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608060359.aspx",
+  "note": "巴基斯坦陸軍參謀長穆尼爾10/20訪德黑蘭，推動新一輪美伊和平協議斡旋",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120163.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202608070018.aspx",
@@ -4112,6 +4136,14 @@
   "verified_date": "2026-10-08"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210006.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609270002.aspx",
+  "note": "巴基斯坦陸軍參謀長穆尼爾10/20訪伊朗斡旋；伊朗提7項條件（全面停火、解凍資產、解除石油制裁），並稱美方建立信任前不談判",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610040004.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609270058.aspx",
@@ -4448,6 +4480,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200383.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610080137.aspx",
+  "note": "路透10/20：油輪即期運費10月初創歷史新高，約80艘VLCC被中東接駁運油占用",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610150027.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610090050.aspx",
@@ -4470,6 +4510,14 @@
   "note": "通話後強度上升：10/17-18 烏克蘭不顧川普要求發動今年最大規模無人機攻擊之一（俄稱擊落1015架），同期澤倫斯基稱俄軍在能源停火後仍蓄意攻擊",
   "verdict": "hit",
   "verified_date": "2026-10-19"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200363.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610110008.aspx",
+  "note": "英國國防部10/20聲明青年運動持續攻擊沙烏地並將利雅德機場列為目標，英國應沙國請求派颱風戰機協防",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200007.aspx",
