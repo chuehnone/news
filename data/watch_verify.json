@@ -4008,6 +4008,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200321.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200012.aspx",
+  "note": "10/20 法國10年期殖利率4.94%，法德利差逾150基點，創2012年1月以來新高，利差擴大並站上新區間",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609200043.aspx",
@@ -4166,6 +4174,14 @@
   "note": "俄無人機（北約消息）擊中羅馬尼亞領海內商船；羅總統拒絕證實來源，應對仍保守",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200321.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609290333.aspx",
+  "note": "10/20 法德10年期利差擴大到逾150基點，創14年新高，延續擴大走勢",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610190277.aspx",
