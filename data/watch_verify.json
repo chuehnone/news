@@ -1592,6 +1592,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": null,
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/06/nittobo-t-glass-lines-running-at-full-capacity",
+  "note": "10/20 中央社（202610200310，同場TPCA採訪，未另評分）：臻鼎董座沈慶芳稱上游材料緊缺未舒緩、高階產品同樣吃緊，大部分成本可轉嫁客戶，「供應商不漲價要什麼時候漲」。PCB／載板廠以轉嫁報價反映材料缺貨。",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610150156.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/06/trump-pressures-south-korea-invest-natural-gas",
@@ -2254,6 +2262,14 @@
   "note": "9月（鬼月後）六都建物移轉17,945棟，年增11.6%、月增14.1%，僅台南衰退",
   "verdict": "hit",
   "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610200293.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608210289.aspx",
+  "note": "10/20 財政部預告修正遺贈稅法施行細則：涉擬制遺產者全體納稅義務人共同申報、稽徵機關分別發單並以各自遺產或受贈財產為限、受贈人以公同共有遺產抵繳須全體繼承人簽章同意、配偶給付延期不得逾5年追繳期限。子法規修訂內容與適用範圍已公布（預告階段）。",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
