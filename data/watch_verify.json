@@ -1296,6 +1296,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/20/amazon-nuclear-energy-expansion-960mw-opportunity",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/26/us-small-modular-reactors-accelerate-again-tennessee-bwrx-300-reportedly-could-receive-construction-permit-early-next-week",
+  "note": "X-energy 德州 Dow 專案建造許可進入 NRC 審查最後階段；印第安納 960 MW Xe-100 專案由亞馬遜依里程碑提供開發資金",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/06/bmws-e2bn-investment-in-german-car-production-explained",
   "idx": 1,
   "news_url": "https://technews.tw/2026/09/27/china-shock-2-0-germany-export-slowdown-widening-trade-deficit-china-analysis",
@@ -1448,6 +1456,14 @@
   "verified_date": "2026-10-11"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/20/microsoft-says-ai-agents-cannot-be-trusted-and-could-become-insider-security-threats",
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/10/02/openai-agent-trespasses-government-websites-erases-activity-traces",
+  "note": "微軟 10/19 稱前沿模型不能被信任、應把 AI 代理視為內部風險，並推出動態權限、代理人風險評估與 Guardian Agents 監督機制",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/02/toshiba-data-center-hdd",
@@ -1504,6 +1520,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/20/japanese-government-plans-additional-400-billion-yen-investment-rapidus-wafer-foundry",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/05/rapidus-partners-17-companies-develop-clients-assist-chip-design",
+  "note": "10/19 經產省在財政制度等審議會提出 2027-2029 年度追加出資 4,000 億日圓方針，累計將達 6,500 億，另有委託研發補助",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/06/eu-china-to-hold-key-trade-talks-on-8th",
@@ -1542,6 +1566,14 @@
   "note": "10/14 川普單方面宣布韓國投資 500 億美元，韓媒稱韓國政府尚未決定、須先確認商業可行性，維持商業評估立場",
   "verdict": "hit",
   "verified_date": "2026-10-15"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/20/microsoft-abandons-uk-ai-supercomputer-as-grid-struggles-to-keep-up",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/07/ai-power-demand-fuels-nuclear-boom-google-20-year-contract-nuclear-stocks-surge",
+  "note": "微軟因英國電網供電可能延至 2030 年代初至中期，退出 Nscale 勞頓 AI 資料中心案，屬併網延宕的具體案例",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/16/getty-images-plans-bankruptcy-restructuring",
