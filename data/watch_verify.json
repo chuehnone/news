@@ -472,6 +472,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200106.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/12/why-frances-debt-woes-have-not-spooked-europe",
+  "note": "10/17 起法國暴動後，FT 報 10 年債殖利率單日升 0.14 個百分點至 4.93%，法德利差擴大至 1.47 個百分點，為歐債危機以來最大，殖利率高於義大利與希臘（2026-10-20 中央社）",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -4248,6 +4256,14 @@
   "verified_date": "2026-10-19"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200106.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610050212.aspx",
+  "note": "10/17 起法國暴動後，FT 報 10 年債殖利率單日升 0.14 個百分點至 4.93%，法德利差擴大至 1.47 個百分點，為歐債危機以來最大，殖利率高於義大利與希臘（2026-10-20 中央社）",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200008.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610050212.aspx",
@@ -4358,6 +4374,14 @@
   "note": "報導指青年運動最近幾週拿下紅海沿岸大片區域，政府軍反擊未扭轉戰局",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610200106.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610080013.aspx",
+  "note": "10/17 起法國暴動後，FT 報 10 年債殖利率單日升 0.14 個百分點至 4.93%，法德利差擴大至 1.47 個百分點，為歐債危機以來最大，殖利率高於義大利與希臘（2026-10-20 中央社）",
+  "verdict": "hit",
+  "verified_date": "2026-10-20"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200008.aspx",
