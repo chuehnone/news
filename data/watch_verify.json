@@ -4240,6 +4240,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210042.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280245.aspx",
+  "note": "期中選舉前兩週（10/20）報導指美國柴油價格已創歷史新高，並促成 80 億美元農業紓困",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160011.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609290062.aspx",
@@ -4294,6 +4302,14 @@
   "note": "10/19 中央社：學生抗議已擴大為社會大眾的生活成本抗爭（未提及法國工會正式加入，以其他族群擴大判定）",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210086.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610020090.aspx",
+  "note": "利劍27（10/19-29）期間，日本時報報導美方正在與那國島部署 NMESIS；撤離安排尚未報導，部署部分已證實",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
@@ -4574,5 +4590,37 @@
   "note": "Q3 GDP 4.5% 公布：出口增 28.4% 撐成長，固定資產投資 -7.2%、9月社零 +1.1%，結構為外熱內冷",
   "verdict": "hit",
   "verified_date": "2026-10-19"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210042.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130108.aspx",
+  "note": "10/20 川普宣布 80 億美元農業紓困，原因為美伊戰爭使經荷莫茲運輸的肥料價格飆升、柴油創新高——能源向肥料與農業成本傳導已見報",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210105.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140012.aspx",
+  "note": "10/20 澤倫斯基稱美方已恢復飛彈預警情報，美方否認改變機制，爭議有明確後續說法",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210105.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140014.aspx",
+  "note": "10/20 澤倫斯基在挪威會晤魏科夫後稱美方已恢復提供俄飛彈襲擊預警情報（上週似一度中斷），美方否認曾改變分享機制——雙方說法的後續發展已出現",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/experts-expect-fed-to-hold-rates-steady-in-october",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150023.aspx",
+  "note": "10/21 路透調查：通膨居高不下，PCE 至少 2028 年才回 2%；同日報導柴油價格創歷史新高——通膨與柴油續處高檔",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
  }
 ]
