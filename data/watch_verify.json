@@ -1632,6 +1632,22 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610210036.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/07/new-developments-in-the-micron-taiwan-strike-case",
+  "note": "10/21 工會宣布 10/22 罷工一天（警告性、事前宣告，放棄突襲），選在台中工會第二次調解當天",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/ait/202610210039.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/08/amazon-more-layoffs",
+  "note": "高通 11 月起全球績效型裁員，同時加速布局 AI 資料中心，延續大型科技公司裁員與 AI 投入並行的趨勢",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/16/getty-images-plans-bankruptcy-restructuring",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/08/getty-images-faces-delisting-amid-ai-image-impact",
@@ -1654,6 +1670,14 @@
   "note": "Character.AI 於 10/12 聲請破產，法院文件列潛在訴訟負債為原因之一，公司表示要透過破產程序解決法律索賠；報導並提到肯塔基州檢察長本月初控告其聊天機器人鼓勵用戶自殘。屬兒少保護訴訟的實質進展。",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/21/run-pytorch-code-natively-on-tpus",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/12/amazon-in-talks-to-buy-ai-startup-decart-for-around-7-billion",
+  "note": "Google 10/21 開源 TorchTPU 讓 PyTorch 直接跑 TPU；亞馬遜 10/19 推 TorchNeuron 移植至 Trainium——自研晶片的軟體生態後續動作",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/21/anthropic-s-1-shows-red-hot-growth-risks-and-massive-computing-costs",
