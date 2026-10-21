@@ -1304,6 +1304,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/psmc-2026-q3-financial-report",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/10/psmc-2026-aug-revenue",
+  "note": "10/21 力積電 Q3 法說：8 吋與 12 吋代工價格較 Q2 調漲約 10%~15%，毛利率由 Q2 的 28% 升至 48%，2027 年車用代工擬再漲 10%~20%",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130276.aspx",
   "idx": 1,
   "news_url": "https://technews.tw/2026/09/11/biren-posts-2000-year-over-year-revenue-growth",
@@ -2518,6 +2526,14 @@
   "note": "10-15 法說會後報導 2026 年資本支出維持 600-640 億美元，未上修",
   "verdict": "miss",
   "verified_date": "2026-10-17"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610210163.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610120094.aspx",
+  "note": "10/21 公平會在 10/27 期限前作出審議結果：決議禁止結合（非附負擔通過），理由為限制競爭不利益大於整體經濟利益，Uber 股權連結為爭點",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200383.aspx",
