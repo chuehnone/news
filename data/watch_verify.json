@@ -2280,6 +2280,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610210261.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608180284.aspx",
+  "note": "收購期間已延長至11月5日（公平會審查未完成），10月6日截止的前提消失；截至10/21仍待應賣達39%",
+  "verdict": "moot",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610150280.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202608180330.aspx",
