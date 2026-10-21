@@ -1152,6 +1152,14 @@
   "verified_date": "2026-08-11"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/08/11/ocp-apac-summit-2026-tsmc",
+  "note": "10/21 欣興在輝達產能預約協議支持下擴充 KF 載板，2027Q2 起增產、2028 年中滿載",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/08/25/august-ocean-temperatures-hit-a-new-record-scientists-say-its-the-hottest-in-12000-years",
   "idx": 0,
   "news_url": "https://technews.tw/2026/08/11/sea-temperature-break-record",
@@ -1342,6 +1350,22 @@
   "note": "7-9 月 SSD 合約價季增 20%、HDD 合約價季增 10-15%，皆連六季上漲創新高，企業級 SSD 優先供應 AI",
   "verdict": "hit",
   "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/09/26/tower-semiconductor-plans-4bn-japan-chip-hub",
+  "note": "10/21 輝達與矽品擴充 CPO 光學引擎產能，2027 年中達 15 倍、2028 年底再翻倍",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/26/tower-semiconductor-plans-4bn-japan-chip-hub",
+  "note": "10/21 矽品與輝達合作在台灣擴充 CPO 光學引擎製造產能",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/05/ai-data-center-debt-hits-roadblocks-as-lenders-demand-tougher-terms",
@@ -1694,6 +1718,22 @@
   "note": "10/20 華爾街日報報導 Anthropic IPO 公開說明書草稿：2026 上半年營收 163 億美元，約兩成營收來自兩家客戶",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/14/csp-capital-expenditure-projected-exceed-1-5-trillion-2027-ai-server-volume-price-surge-drive-90-annual-output-value-growth",
+  "note": "10/21 輝達的產能預付款擴及載板（揖斐電、欣興）、測試（京元電）與光學引擎（矽品）",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/15/lightmatter-ocp-global-summit-2026-new-product",
+  "note": "10/21 封測廠矽品取得輝達 CPO 光學引擎擴產合作，2027 年中產能 15 倍",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
@@ -2488,6 +2528,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202609260030.aspx",
+  "note": "10/21 輝達以產能預約協議支援欣興在台擴充 KF 載板，並目標三年內載板總產能 2.5 倍（只回答擴產，報價未見）",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/fed-beige-book-shows-intensifying-price-growth-in-some-areas",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202609290284.aspx",
@@ -2550,6 +2598,38 @@
   "note": "路透10/20：運費逼近紀錄，中油上週改買6船阿芙拉型油輪貨物取代每月2-3船VLCC，台塑化稱非洲與美國原油運不過來",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610130188.aspx",
+  "note": "10/21 輝達公告京元電美國測試廠目標 2027 年 4 月大規模量產",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610130188.aspx",
+  "note": "10/21 輝達與台灣封測廠矽品簽產能擴充合作（CPO 光學引擎），屬 AI 晶片客戶的產能協議",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610130315.aspx",
+  "note": "10/21 京元電在輝達 11 億美元預付款下於美國建 AI 測試廠，輝達測試總產能 2026-27 年翻倍",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/ahel/202610010239.aspx",
+  "note": "10/21 石油工會：中油利息支出估 125 億元，追加預算編撥補 1014 億、增資 2338 億",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c6pwg52xjp8jo/trad",
@@ -3936,6 +4016,22 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210347.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609050101.aspx",
+  "note": "10/21 運河管理局：曾增至每日 41 艘，本月因旱象降回 32 艘，未進一步低於 32 艘",
+  "verdict": "miss",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210347.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609050101.aspx",
+  "note": "10/21 運河管理局：聖嬰致兩座人工湖水位大降，本月被迫把通行量降回 32 艘",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609050111.aspx",
@@ -4238,6 +4334,14 @@
   "note": "南韓以警告廣播與鳴槍示警回應北韓邊境工事（北韓稱8/1至10/17共2870次廣播、201槍），並呼籲平壤暫停邊境防禦工事",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610210343.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280096.aspx",
+  "note": "10/21 卡達與土耳其、巴基斯坦、印尼簽巴德爾國防合作備忘錄",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610190248.aspx",
