@@ -480,6 +480,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/elon-musk-says-tesla-spacex-merger-being-considered",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/07/spacex-looks-to-raise-40bn-to-buy-nvidia-chips-in-financing-led-by-apollo",
+  "note": "10/20 SpaceX Q3 財報：AI 業務（出租資料中心算力給 Anthropic、Alphabet 等）營收年增 830% 至約 75.6 億美元，Q4 資本支出預估 350-400 億美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/tsmcs-revenue-growth-rate-for-the-full-year-of-2026-is-expected-to-reach-approximately-44",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/07/tsmcs-investment-in-arizona-creates-the-largest-impact-in-us-history",
@@ -1646,6 +1654,14 @@
   "note": "Character.AI 於 10/12 聲請破產，法院文件列潛在訴訟負債為原因之一，公司表示要透過破產程序解決法律索賠；報導並提到肯塔基州檢察長本月初控告其聊天機器人鼓勵用戶自殘。屬兒少保護訴訟的實質進展。",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/anthropic-s-1-shows-red-hot-growth-risks-and-massive-computing-costs",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/13/anthropic-invests-100m-to-train-fdes-and-seeks-these-5-key-attributes",
+  "note": "10/20 華爾街日報報導 Anthropic IPO 公開說明書草稿：2026 上半年營收 163 億美元，約兩成營收來自兩家客戶",
+  "verdict": "hit",
+  "verified_date": "2026-10-21"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
