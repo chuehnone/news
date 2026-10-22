@@ -4750,5 +4750,13 @@
   "note": "10/21 路透調查：通膨居高不下，PCE 至少 2028 年才回 2%；同日報導柴油價格創歷史新高——通膨與柴油續處高檔",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/22/eu-china-hybrid-quota-talks-supply-chain-transformation-opportunity",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
+  "note": "10/22 TrendForce 報導：中歐在貿易投資磋商機制下達成混動車共識諒解，中國每年對歐出口上限35萬輛、年增6%，最快12/1生效——管制已從彭博傳聞推進到雙方共識的具體條款",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  }
 ]
