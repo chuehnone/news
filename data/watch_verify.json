@@ -304,6 +304,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220037.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/08/29/ipp",
+  "note": "10/22 桃園工會 11 名幹部實際罷工 24 小時（22 日 9 時至 23 日 9 時），罷工確實發生",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610200191.aspx",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/08/29/ipp",
@@ -424,6 +432,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/22/tesla-2026q3-fianacial-report",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/09/30/spacex-and-tesla-team-up-for-200-gw-of-annual-solar-capacity",
+  "note": "Q3 資本支出 47.3 億美元（上季 57.9 億），現金流正 15.3 億美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610120243.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/01/pwcs-huge-survey-of-50000-workers-says-ai-is-splitting-employees-into-4-distinct-groups",
@@ -510,6 +526,14 @@
   "note": "10/16 經濟部具體化園區協助：與電電公會合作、業者出資政府協助，先在德州設園區，單一園區 20-40 億美元且不只一座。融資與保險配套未見。",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220037.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/10/strike-risk-looms-at-micron-taiwan",
+  "note": "後續協商：10/21 協商未達共識，11 名幹部 10/22 罷工 1 天，工會將對公司方案做意向投票",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200106.aspx",
@@ -1536,6 +1560,14 @@
   "verified_date": "2026-10-11"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/22/tesla-targets-shipping-optimus-to-customers-by-the-end-of-2027",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/02/elon-musk-tesla-ai5-chip",
+  "note": "AI5 預計 2027 年 4 月整合進 Optimus；佛利蒙目標每週 2 萬台、奧斯汀第二條產線目標年產 1,000 萬台",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://infosecu.technews.tw/2026/10/20/microsoft-says-ai-agents-cannot-be-trusted-and-could-become-insider-security-threats",
   "idx": 3,
   "news_url": "https://technews.tw/2026/10/02/openai-agent-trespasses-government-websites-erases-activity-traces",
@@ -1608,6 +1640,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/22/tesla-2026q3-fianacial-report",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/05/tesla-q3-deliveries-beat-expectations-shares-climb-full-year-growth-rebound",
+  "note": "Q3 財報：毛利率 18% 升至 19.6%，營收 280 億美元與去年持平，公司歸因於汽車平均售價下降與電池供應吃緊",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/06/eu-china-to-hold-key-trade-talks-on-8th",
@@ -1664,6 +1704,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220037.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/07/new-developments-in-the-micron-taiwan-strike-case",
+  "note": "10/21 台灣美光董事長盧東暉與桃園工會協商分潤制度未達共識，工會幹部罷工 1 天；台中工會已簽勞資協議",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210036.aspx",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/07/new-developments-in-the-micron-taiwan-strike-case",
@@ -1712,6 +1760,22 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/22/tesla-targets-shipping-optimus-to-customers-by-the-end-of-2027",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/12/tesla-optimus-ramps-up-mass-production-dexterity-task-versatility-key-commercialization-challenges",
+  "note": "10/21 Optimus 在佛利蒙進入早期量產，2027 年底前交付工業客戶，提升到每週 2 萬台至少需一年",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/22/fiberglass-cloth-ccl-shortage-pressure-intensifies-price-hikes-november",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/12/why-is-amazon-betting-on-gold-circuit",
+  "note": "供應鏈稱玻纖布與 CCL 最快 11 月漲 10-15%，薄布最缺；中國巨石新產能以 7628 厚布為主、2027 年量產",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/anthropic-s-1-shows-red-hot-growth-risks-and-massive-computing-costs",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/13/anthropic-invests-100m-to-train-fdes-and-seeks-these-5-key-attributes",
@@ -1728,10 +1792,26 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/22/micron-officially-skips-the-4f%c2%b2-dram-circuit-cell-architecture",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/15/changxin-memory-plans-to-launch-4f%c2%b2-architecture-dram-to-challenge-the-three-major-manufacturers",
+  "note": "美光公開宣布跳過 4F²、延伸 6F² 並轉向 3D DRAM，1-delta 節點 2027 下半年量產；三星、SK 海力士仍在 0a/0b 節點研發 4F² VCT",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/15/lightmatter-ocp-global-summit-2026-new-product",
   "note": "10/21 封測廠矽品取得輝達 CPO 光學引擎擴產合作，2027 年中產能 15 倍",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/22/triple-shock-creates-a-perfect-storm-sp-warns-of-a-food-crisis-by-2027",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/15/un-pushes-hormuz-fertilizer-transport-deal-warns-food-crisis",
+  "note": "標普全球警告 2027 年糧食危機；IMF 預測食品價格今年升約 5%、2027 年再升 2.4%",
   "verdict": "hit",
   "verified_date": "2026-10-22"
  },
@@ -3768,6 +3848,14 @@
   "verified_date": "2026-08-23"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/22/triple-shock-creates-a-perfect-storm-sp-warns-of-a-food-crisis-by-2027",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608180336.aspx",
+  "note": "至 10 月下旬未回落：標普指荷莫茲受阻持續造成肥料供應緊縮，IMF 預測 2026 年全球肥料價格上漲 10%",
+  "verdict": "miss",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202608190212.aspx",
@@ -4214,6 +4302,14 @@
   "note": "10/8 利雅德機場遇襲後，漢莎、靛藍、印度航空、阿卡薩暫停或取消利雅德航班，FlightRadar24 顯示多個國際航班取消",
   "verdict": "hit",
   "verified_date": "2026-10-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610220019.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609200043.aspx",
+  "note": "10/21 美國國務院下令駐沙烏地使館非緊急人員及眷屬撤離，路透引 4 名官員稱駐波灣其他使團也將下令家屬離境，撤離層級已從安全警示升到下令撤離",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130283.aspx",
