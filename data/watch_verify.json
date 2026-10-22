@@ -400,6 +400,14 @@
   "verified_date": "2026-09-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220217.aspx",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/09/10/government-tiered-management-electricity-demand-price-adjustments-balance-price-stability-power-supply-security",
+  "note": "10/22 台電：燃料成本較戰前增逾1600億元、累虧3712億元，711億元撥補後仍有800多億元差額。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/09/11/kevin-warsh-challenged-market-us-10-year-treasury-yield-nears-5-ai-bulls-nervous",
@@ -992,6 +1000,14 @@
   "verified_date": "2026-07-31"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/22/vantage-heron-1gw-sst-capacity-deal",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/25/amd-helios-246kw-ai-rack-power-architecture-upgrade",
+  "note": "客戶採用有具體進展：Vantage 取得逾 1 GW 的 800 VDC 固態變壓器產能導入資料中心園區（10/22）。實際導入時程未揭露。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610010213.aspx",
   "idx": 1,
   "news_url": "https://technews.tw/2026/07/26/qualcomm-is-about-to-raise-prices",
@@ -1238,6 +1254,14 @@
   "note": "10/6 逾 650 架烏克蘭無人機夜襲莫斯科方向、莫斯科州 2 死 9 傷，對莫斯科的打擊已恢復",
   "verdict": "hit",
   "verified_date": "2026-10-06"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/22/vantage-heron-1gw-sst-capacity-deal",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/08/26/vdc-ai-delta-gpu",
+  "note": "資料中心業者 Vantage 具名宣布取得逾 1 GW Heron Link SST 產能，導入旗下超大規模資料中心園區（800 VDC 架構）。Vantage 是託管型資料中心業者而非雲端服務商，但服務對象為超大規模雲端客戶。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://technews.tw/2026/09/20/ai-disrupts-publishing-industry",
@@ -1784,10 +1808,34 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/22/vantage-heron-1gw-sst-capacity-deal",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/13/nvidia-amd-ai-server-rack-specs-emerge-800vdc-power-liquid-cooling-opportunities",
+  "note": "10/22 Vantage 與 Heron 簽署逾 1 GW SST 產能協議，800 VDC 架構導入其資料中心園區，屬資料中心業者採用 800 VDC 的公開案例；合約金額與交付時程未揭露。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/14/csp-capital-expenditure-projected-exceed-1-5-trillion-2027-ai-server-volume-price-surge-drive-90-annual-output-value-growth",
   "note": "10/21 輝達的產能預付款擴及載板（揖斐電、欣興）、測試（京元電）與光學引擎（矽品）",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/22/vantage-heron-1gw-sst-capacity-deal",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/14/delta-electronics-800-vdc-sst-debut-sofc-pilot-production-starts-year-end",
+  "note": "10/22 國際資料中心業者 Vantage 與 Heron Power 簽約，取得逾 1 GW 固態變壓器產能（中壓 AC 直轉 800 VDC），規劃導入旗下超大規模資料中心園區。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/22/vantage-heron-1gw-sst-capacity-deal",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/14/delta-electronics-800-vdc-sst-debut-sofc-pilot-production-starts-year-end",
+  "note": "電力電子廠 Heron Power（輝達 800 VDC MGX 生態系夥伴）拿下 Vantage 逾 1 GW 的 SST 產能協議，是其他電源廠在 SST／800 VDC 的具體競爭動態。",
   "verdict": "hit",
   "verified_date": "2026-10-22"
  },
@@ -2280,6 +2328,14 @@
   "verified_date": "2026-09-19"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220248.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202607310288.aspx",
+  "note": "10/22 報導：10月電價暫時凍漲，未調漲。指標問的調漲未發生。",
+  "verdict": "miss",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202608010054.aspx",
@@ -2398,6 +2454,22 @@
   "note": "10/13 新台幣貶破 32 元關卡，最低 32.044 元，未站穩 31 元",
   "verdict": "miss",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220248.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608170272.aspx",
+  "note": "10/22 報導：10月電價暫時凍漲。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220217.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202608170272.aspx",
+  "note": "10/22 台電：3至8月天然氣成本較美伊戰爭前增約711億元，若氣價維持每立方公尺23元至年底，全年虧損估超過700億元（前8月虧203億元），下半年虧損隨氣價續增。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210261.aspx",
@@ -2528,6 +2600,22 @@
   "verified_date": "2026-10-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220248.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609060014.aspx",
+  "note": "審議結果為凍漲：10/22 報導確認10月電價暫時凍漲，12月走勢取決於711億元撥補。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220217.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202609060014.aspx",
+  "note": "10/22 台電：目前累虧3712億元，年底若無撥補恐破4200億元；711億元撥補即使通過仍有800多億元差額。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/30/6g-moda",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609100328.aspx",
@@ -2640,12 +2728,28 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220217.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609300207.aspx",
+  "note": "10/22 台電：711億元撥補待立院審查，取得後仍有800多億元缺口；過去113、114年各增資1000億、1500億元。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610130019.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610010130.aspx",
   "note": "10/13 中油聲明：配合政府穩定物價政策，主要油氣產品持續凍漲或緩漲",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220217.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202610040104.aspx",
+  "note": "10/22 台電：與中東戰爭前相比今年燃料成本增逾1600億元，目前累虧3712億元，若無撥補年底恐破4200億元。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/14/u-s-defense-startups-flock-to-taiwan-to-build-china-free-drones",
@@ -3350,6 +3454,14 @@
   "note": "8/9 吉贊煉油廠（日處理 40 萬桶）遭無人機攻擊，沙烏地能源部稱火警已撲滅、未對營運或財務造成重大影響、無人員傷亡，阿美總裁納瑟稱可迅速恢復。無實質產能損失。",
   "verdict": "miss",
   "verified_date": "2026-08-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610220171.aspx",
+  "idx": 4,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607260108.aspx",
+  "note": "人員往來明顯受影響：1至8月訪日中國旅客約290萬人次、年減56%，第2季中國旅客消費年減48%（10/22 日經報導）。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608030005.aspx",
@@ -4414,6 +4526,14 @@
   "note": "10/5 利雅德傳出巨大爆炸聲，青年運動聲稱以無人機與飛彈攻擊利雅德哈立德國王國際機場等目標；目標確已擴及首都，但實際損害未獲沙方證實",
   "verdict": "hit",
   "verified_date": "2026-10-06"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/22/chinese-customers-are-abandoning-huaweis-ascend-and-rushing-to-buy-rtx-pro-5500",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609270203.aspx",
+  "note": "路透報導（10/22 科技新報轉述）：中國客戶對輝達 RTX PRO 5500 訂單逾600萬組，字節、阿里、騰訊已下訂逾300萬組。屬媒體報導，非企業或官方正式證實。",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609300076.aspx",
