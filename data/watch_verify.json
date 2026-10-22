@@ -2528,6 +2528,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610220312.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608210264.aspx",
+  "note": "央行10/22公布：青安占比7月45.05%→8月41.88%→9月43.1%，占比變化有月度數據可追；但青安3.0單獨效果央行稱因9月逢鬼月需拉長觀察，承作條件本身未見新報導",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610010251.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/afe/202608210264.aspx",
