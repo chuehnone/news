@@ -328,6 +328,14 @@
   "verified_date": "2026-09-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/31/warsh-makes-the-case-for-higher-rates-and-raises-the-bar-for-standing-pat",
+  "note": "9月FOMC實際升息1碼，票數為12位官員一致同意",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/09/01/economic-survey",
@@ -2336,6 +2344,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608010021.aspx",
+  "note": "異議轉為實際升息：9/17 FOMC 升息1碼且全票通過",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202608010054.aspx",
@@ -3600,6 +3616,14 @@
   "verified_date": "2026-09-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607300011.aspx",
+  "note": "9月FOMC實際升息1碼（12位官員一致同意）",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202607310271.aspx",
@@ -4024,6 +4048,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608200018.aspx",
+  "note": "9月FOMC升息1碼；反對票由7月的3票降為0（12位一致同意）",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608250004.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608210003.aspx",
@@ -4136,6 +4168,14 @@
   "verified_date": "2026-09-10"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/09/11/ecb-lifts-borrowing-costs-amid-energy-shock-opens-door-for-more-hikes",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609010337.aspx",
+  "note": "ECB 9月會議升息1碼，存款利率升至2.5%，為今年第二度升息",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280009.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609020004.aspx",
@@ -4174,6 +4214,14 @@
   "note": "今日報導伊朗扶持的青年運動再奪摩卡港與裴林島，形成荷莫茲與曼德海峽雙重扼制，沙國8月產量降至30多年新低600萬桶；通行不僅未恢復且替代路線同步受阻。指標問的是「是否有任何恢復」，答案明確為否。",
   "verdict": "hit",
   "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609040323.aspx",
+  "note": "FOMC 9/17 升息1碼至3.75%-4.00%，2023年以來首度升息",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609260193.aspx",
@@ -4262,6 +4310,14 @@
   "note": "2026-09-21 麥克倫堡-西帕默瑞尼亞邦選舉：AfD 以 37% 居首（社民黨 35.5%），但因其他主流政黨拒與其合作，報導明確指出 AfD 仍不太可能入主邦政府。防火牆維持。",
   "verdict": "hit",
   "verified_date": "2026-09-21"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/09/11/ecb-lifts-borrowing-costs-amid-energy-shock-opens-door-for-more-hikes",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609070298.aspx",
+  "note": "ECB 當週會議實際升息1碼至2.5%",
+  "verdict": "hit",
+  "verified_date": "2026-10-22"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/15/issuance",
