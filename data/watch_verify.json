@@ -2096,6 +2096,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610220069.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cly7z85pgpeo/trad",
+  "note": "10/22 克宮才表示普丁同意最快 11 月重啟美國斡旋的三方和談，澤倫斯基盼不晚於 11 月初舉行；10 月前並未實際召開。",
+  "verdict": "miss",
+  "verified_date": "2026-10-22"
+ },
+ {
   "evidence_url": null,
   "idx": 1,
   "news_url": "https://www.bbc.com/zhongwen/articles/cly97n5k6j6o/trad",
