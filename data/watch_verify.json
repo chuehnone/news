@@ -584,6 +584,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/10/13/alphabet-expands-ai-investment",
+  "note": "Meta 10/21 宣布發行新類別股票籌資投入資料中心與 AI，並稱未來幾年可能需籌數千億美元；Meta 申報文件指 Alphabet 等對手大舉發債",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -5024,6 +5032,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610090064.aspx",
+  "note": "10/22 Meta 財報自由現金流大減、宣布發新股籌資投入 AI，股價跌 7%、市值蒸發約 1240 億美元；分析師稱投資人對整個 AI 生態系打上問號，質疑已擴散到大型科技股",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610170025.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610090152.aspx",
@@ -5056,6 +5072,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610120280.aspx",
+  "note": "Meta 第三季財報顯示自由現金流大減，融資方式改為發行新類別股票支應資料中心與 AI 支出",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610130026.aspx",
@@ -5070,6 +5094,14 @@
   "note": "10/20 川普宣布 80 億美元農業紓困，原因為美伊戰爭使經荷莫茲運輸的肥料價格飆升、柴油創新高——能源向肥料與農業成本傳導已見報",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130137.aspx",
+  "note": "10/22 科技巨頭財報引發資本支出擔憂，Nasdaq 跌 2.6%、費半重挫近 7%、Meta 跌 7%，為數月來最大賣壓",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610210105.aspx",
