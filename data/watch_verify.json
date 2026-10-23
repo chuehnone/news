@@ -5152,12 +5152,28 @@
   "verified_date": "2026-10-23"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610240010.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140337.aspx",
+  "note": "星鏈支援出現可證實的調整：10/23 澤倫斯基向 ABC 證實服務仍受限，WSJ 報導馬斯克下令降速、川普致電要求處理。情報分享部分本則未涉及",
+  "verdict": "hit",
+  "verified_date": "2026-10-24"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/experts-expect-fed-to-hold-rates-steady-in-october",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610150023.aspx",
   "note": "10/21 路透調查：通膨居高不下，PCE 至少 2028 年才回 2%；同日報導柴油價格創歷史新高——通膨與柴油續處高檔",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610240010.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150027.aspx",
+  "note": "10/23 澤倫斯基稱星鏈有在運作但仍受限制（未完全恢復）；WSJ 報導川普致電馬斯克抱怨速度仍限在約每小時 100 英里，川普稱若未解決會找馬斯克談——限制部分放寬但未解除",
+  "verdict": "hit",
+  "verified_date": "2026-10-24"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/22/eu-china-hybrid-quota-talks-supply-chain-transformation-opportunity",
