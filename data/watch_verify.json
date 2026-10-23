@@ -576,6 +576,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610230158.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/10/strike-risk-looms-at-micron-taiwan",
+  "note": "美光 10/22 記者會公開調整後獎酬制度：新增季度分潤獎金、結構性調薪、調升輪班津貼、增 3 天有薪假、勞退提撥提高至 10%",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200106.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/12/why-frances-debt-woes-have-not-spooked-europe",
@@ -2256,6 +2264,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610230157.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/acn/202610080321.aspx",
+  "note": "Volvo Cars 10/23 宣布全球裁員約 2,500 人（瑞典約 2,000），歸因美國關稅與中國競爭",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202607200062.aspx",
@@ -2598,6 +2614,14 @@
   "note": "10/20 財政部預告修正遺贈稅法施行細則：涉擬制遺產者全體納稅義務人共同申報、稽徵機關分別發單並以各自遺產或受贈財產為限、受贈人以公同共有遺產抵繳須全體繼承人簽章同意、配偶給付延期不得逾5年追繳期限。子法規修訂內容與適用範圍已公布（預告階段）。",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610230161.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608240252.aspx",
+  "note": "主計總處：9 月失業率 3.36%，較 8 月降 0.05 個百分點，終止連續 3 個月走揚（即 8 月續升、9 月回落）",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
