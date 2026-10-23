@@ -528,6 +528,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610230007.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/08/hurricane-isaias-develops-as-us-oil-producers-shut-in-output",
+  "note": "中東因素持續主導：10/22 青年運動襲沙烏地，布蘭特漲 4% 收 113.17 美元，為 5/4 以來最高；颶風因素未再出現於後續報導",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610200365.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/08/malaysia-builds-a-new-silicon-island-to-house-its-ai-ambitions",
@@ -4536,6 +4544,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/23/sk-hynix-cancel-solidigm-us-ipo-shareholder-opposition-regulatory-concerns",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609260100.aspx",
+  "note": "10/23 SK 海力士申報取消 Solidigm 美國 IPO 與 Pre-IPO 程序，前提消失；此前僅有彭博報導選定高盛、大摩，未見正式遞件",
+  "verdict": "moot",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/09/solidigm-taps-pti-and-pegatron-for-outsourcing",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609260100.aspx",
@@ -5030,6 +5046,14 @@
   "note": "10/20 澤倫斯基在挪威會晤魏科夫後稱美方已恢復提供俄飛彈襲擊預警情報（上週似一度中斷），美方否認曾改變分享機制——雙方說法的後續發展已出現",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160115.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140277.aspx",
+  "note": "10/14 後青年運動持續攻擊沙烏地：法新社報 10 月利雅德機場遭襲 20 次（10/16）、10/22 再襲沙國推升布蘭特至 113 美元。各報導未逐一註明是否為彈道飛彈",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/21/experts-expect-fed-to-hold-rates-steady-in-october",
