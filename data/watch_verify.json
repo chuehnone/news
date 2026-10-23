@@ -216,6 +216,22 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610230034.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/08/17/japan-q2-gdp-growth-unexpectedly-slows-complicating-boj-rate-hike",
+  "note": "前提是升息預期落空，但日銀 9 月中旬已升息，前提消失",
+  "verdict": "moot",
+  "verified_date": "2026-10-23"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610230034.aspx",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/08/17/japan-q2-gdp-growth-unexpectedly-slows-complicating-boj-rate-hike",
+  "note": "總務省公布 9 月 CPI 時指出，政府的汽油及電費補助緩和了能源價格上漲，補貼延續到下半年",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/01/galaxy-s26-a-series-raise-prices",
   "idx": 3,
   "news_url": "https://finance.technews.tw/2026/08/18/2q26-top-5-nand-flash-brands-revenue-up-77-qoq-micron-rises-to-third",
@@ -2168,6 +2184,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/23/human-receives-ai-designed-virus-for-the-first-time",
+  "idx": 3,
+  "news_url": "https://www.bbc.com/zhongwen/articles/crrvndrv1pyo/trad",
+  "note": "10/23 Radical Numerics 的 AI 設計噬菌體首次用於人體，但走恩慈療法（單一病例），不是臨床試驗；指標問的是進入臨床試驗",
+  "verdict": "miss",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
   "idx": 0,
   "news_url": "https://www.bbc.com/zhongwen/articles/crz98g94n9k5o/trad",
@@ -3920,6 +3944,14 @@
   "verified_date": "2026-09-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610230034.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608170127.aspx",
+  "note": "日銀 9 月中旬升息，未因 GDP 放緩轉鴿",
+  "verdict": "miss",
+  "verified_date": "2026-10-23"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610020032.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608170142.aspx",
@@ -4638,6 +4670,14 @@
   "note": "南韓以警告廣播與鳴槍示警回應北韓邊境工事（北韓稱8/1至10/17共2870次廣播、201槍），並呼籲平壤暫停邊境防禦工事",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610230034.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
+  "note": "日本 9 月核心 CPI 年增 2.1%，高於 8 月 1.7% 並超出日銀 2% 目標，支持原文的升息壓力判斷",
+  "verdict": "hit",
+  "verified_date": "2026-10-23"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610210343.aspx",
