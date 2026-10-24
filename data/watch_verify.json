@@ -5064,6 +5064,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610240117.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070297.aspx",
+  "note": "2026-10-20 GMO 網路公司雲端服務遭植入惡意程式並遭勒索，逾 70 間金融業者帳戶可能遭不當操作",
+  "verdict": "hit",
+  "verified_date": "2026-10-24"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200106.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610080013.aspx",
