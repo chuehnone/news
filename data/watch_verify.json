@@ -1896,6 +1896,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/24/us-invests-389-million-boost-power-semiconductors-ai-data-centers-nuclear-fusion-applications",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/15/globalfoundries-selected-to-operate-two-new-semiconductor-fabs-in-new-york-under-landmark-u-s-japan-initiative",
+  "note": "2026-10-24 美國商務部依晶片法案與 4 家企業簽意向書（含垂直 GaN 業者 Vertical Semiconductor），補助以政府取得少數、無表決權股權為條件。屬政府持股參與半導體業的新增案例；仍為意向書，尚未最終核定。",
+  "verdict": "hit",
+  "verified_date": "2026-10-24"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/15/lightmatter-ocp-global-summit-2026-new-product",
