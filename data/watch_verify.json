@@ -4424,6 +4424,22 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610240046.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609080004.aspx",
+  "note": "10/23 中央社報導川普 9 月威脅禁止龐巴迪進入美國市場一事本週已撤回，FAA 撤銷認證的前提消失",
+  "verdict": "moot",
+  "verified_date": "2026-10-24"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610240046.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609080004.aspx",
+  "note": "美方已撤回封殺龐巴迪的威脅，加拿大對等認證反制的前提消失",
+  "verdict": "moot",
+  "verified_date": "2026-10-24"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/issuance",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609100003.aspx",
