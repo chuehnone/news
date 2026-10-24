@@ -1912,6 +1912,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/24/nvidia-names-4-supply-chain-boost-production-shipments-kyec-unimicron-spil",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/16/nvidia-cpo-technology-breakthrough-and-ecosystem",
+  "note": "輝達 10/21 柏林 GTC 點名台廠：矽品 CPO 光引擎產能 2027 年中增至 15 倍、2028 年底 30 倍；欣興載板、京元電測試同列擴產名單。",
+  "verdict": "hit",
+  "verified_date": "2026-10-24"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -2590,6 +2598,14 @@
   "note": "央行9/17鬆綁第2戶貸款成數至7成，總裁稱管制不能硬邦邦，背景為不動產放款集中度降至20年新低、房市降溫",
   "verdict": "hit",
   "verified_date": "2026-10-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610240025.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202608200337.aspx",
+  "note": "工研院院長張培仁 10/24 公布具體進度與時程：稀土實驗線年產約 5,000 公斤，示範工廠目標 2028 年底完成、2030 年底達年產 500 噸、供應台灣 50% 需求。",
+  "verdict": "hit",
+  "verified_date": "2026-10-24"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610220312.aspx",
