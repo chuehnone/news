@@ -5120,6 +5120,14 @@
   "verified_date": "2026-10-17"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610250004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610100117.aspx",
+  "note": "10/24 青年運動稱攻擊揚布阿美設施、拉比格煉油廠與東西向輸油管，聯軍稱攔截朝揚布發射的飛彈",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610180188.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610100198.aspx",
@@ -5200,6 +5208,14 @@
   "verified_date": "2026-10-23"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610250005.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140301.aspx",
+  "note": "馬斯克10/24在X承認自上週起限速，理由是民用星鏈不得用於攻擊性無人機襲擊；烏克蘭政府稱星鏈與星盾已恢復穩定連線",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610240010.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610140337.aspx",
@@ -5224,11 +5240,35 @@
   "verified_date": "2026-10-24"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610250004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150257.aspx",
+  "note": "10/24 青年運動再攻揚布阿美設施、拉比格煉油廠與東西向輸油管，交戰持續擴及能源設施",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/22/eu-china-hybrid-quota-talks-supply-chain-transformation-opportunity",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
   "note": "10/22 TrendForce 報導：中歐在貿易投資磋商機制下達成混動車共識諒解，中國每年對歐出口上限35萬輛、年增6%，最快12/1生效——管制已從彭博傳聞推進到雙方共識的具體條款",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610230249.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610170013.aspx",
+  "note": "10/23 烏克蘭國防部消息人士稱星盾軍事通訊仍有訊號中斷",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610250003.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610170171.aspx",
+  "note": "10/24 新一波抗議，內政部估全國41萬人、工會估80萬人，近千人被捕，規模較10/13的16萬人擴大，已成延續數週的運動",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
  }
 ]
