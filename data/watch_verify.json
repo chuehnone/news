@@ -5192,6 +5192,14 @@
   "verified_date": "2026-10-23"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610160011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130168.aspx",
+  "note": "10/15 兩艘化學品船在羅馬尼亞蘇利納運河口附近遭無人機擊中，其中一艘在羅馬尼亞領海內，7名船員失蹤",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610210105.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610140012.aspx",
