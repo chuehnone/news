@@ -288,6 +288,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/25/nanya-2028",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/08/20/memory-supply-will-remain-insufficient-in-2027",
+  "note": "2026-10-25 科技新報轉載商周：據賽亞調研，長鑫今年三座新廠陸續量產，年底月產能達30萬片，明年上海新廠加入後達36萬片。直接回答長鑫產能擴張進展；良率未見報導。",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/20/apple-and-tesla-are-using-chinese-memory-chips-as-leverage-to-pressure-south-korean-companies-to-lower-prices",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/25/cxmts-2027-production-capacity-sold-out",
