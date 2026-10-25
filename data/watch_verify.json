@@ -608,6 +608,22 @@
   "verified_date": "2026-10-23"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610250194.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/14/european-luxurys-350-billion-blowout",
+  "note": "10/25 金融時報報導：愛馬仕與開雲本月公布的財報都遜於先前已大幅下修的市場預期，第三季數據已公布且疲弱。",
+  "verdict": "hit",
+  "verified_date": "2026-10-26"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610250194.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/14/european-luxurys-350-billion-blowout",
+  "note": "10/25 報導：過去6個月中國單月零售銷售平均成長不到0.5%，伯恩斯坦分析師指中國高端消費復甦已停滯。",
+  "verdict": "hit",
+  "verified_date": "2026-10-26"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -4734,6 +4750,14 @@
   "note": "巴基斯坦陸軍參謀長穆尼爾10/20訪伊朗斡旋；伊朗提7項條件（全面停火、解凍資產、解除石油制裁），並稱美方建立信任前不談判",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610260003.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609270008.aspx",
+  "note": "10/25 馬查多返國報導指出，代理總統羅德里格斯的代理期已超出最初授權，但目前沒有預定舉行任何選舉；9/27 後約一個月仍無大選時程。",
+  "verdict": "miss",
+  "verified_date": "2026-10-26"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610040004.aspx",
