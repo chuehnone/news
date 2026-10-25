@@ -4408,6 +4408,14 @@
   "verified_date": "2026-09-12"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609050197.aspx",
+  "note": "9/5 後火勢擴大：10/12 報導為 11 年來最猛烈野火；10/18 起火點達 1,104 處，霾害觸發東協最高級警戒（10/16）",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610090152.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609050197.aspx",
@@ -5168,6 +5176,14 @@
   "verified_date": "2026-10-23"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610120287.aspx",
+  "note": "10/25 報導：林業部投入 61 架飛機救災、南蘇門答臘投放約 2.4 噸乾冰、衛生部動員逾 2,100 名醫護並配送 300 萬個口罩",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610130026.aspx",
@@ -5216,6 +5232,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140269.aspx",
+  "note": "10/25 報導：8/11 至 10/17 印尼全國 2,458 個國內定期航班受霧霾影響，南蘇門答臘機場能見度問題",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160115.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610140277.aspx",
@@ -5254,6 +5278,22 @@
   "note": "10/23 澤倫斯基稱星鏈有在運作但仍受限制（未完全恢復）；WSJ 報導川普致電馬斯克抱怨速度仍限在約每小時 100 英里，川普稱若未解決會找馬斯克談——限制部分放寬但未解除",
   "verdict": "hit",
   "verified_date": "2026-10-24"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150210.aspx",
+  "note": "10/25 報導：起火點從 10/17 的 270 處增至 10/18 的 1,104 處；航班影響自 8/11 延續至 10/17，逾 27 萬人急性呼吸道症狀",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150210.aspx",
+  "note": "10/15 之後：新加坡向 7 家印尼企業發出通知並依《跨境霧霾污染法》展開調查（10/16 首報、10/25 確認調查）；印尼暫緩馬來西亞的協助提議",
+  "verdict": "hit",
+  "verified_date": "2026-10-25"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610250004.aspx",
