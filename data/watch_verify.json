@@ -624,6 +624,14 @@
   "verified_date": "2026-10-26"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610260083.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/17/sk-hynix-explicitly-denied-using-conditions-in-exchange-for-the-us-allowing-the-import-of-equipment-from-its-dalian-china-plant",
+  "note": "SK海力士 10/23 表示因市場波動暫緩 Solidigm 在美國的上市計畫（中央社 10/26 報導），IPO 計畫有明確的後續進度：延後。",
+  "verdict": "hit",
+  "verified_date": "2026-10-26"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
