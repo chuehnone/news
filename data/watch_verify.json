@@ -4944,6 +4944,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610260188.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610030128.aspx",
+  "note": "歐盟 11/1 起對境外直寄包裹按品項收 2 歐元常態處理費（7 月已先徵 3 歐元臨時關稅），屬其他市場對低價跨境小包管理的後續措施；收費決定時點未查證，此處依實施公告判定",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160011.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610030158.aspx",
@@ -5134,6 +5142,14 @@
   "note": "2026-10-20 GMO 網路公司雲端服務遭植入惡意程式並遭勒索，逾 70 間金融業者帳戶可能遭不當操作",
   "verdict": "hit",
   "verified_date": "2026-10-24"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610260227.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070297.aspx",
+  "note": "10/26 日相高市召開網安閣僚會議，下令一週內完成緊急對策，含供應鏈監測網與「存取無害化」（主動網路防禦）選項，直接對應日本資安政策推進",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200106.aspx",
