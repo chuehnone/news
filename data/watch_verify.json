@@ -1840,6 +1840,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/27/broadcom-anthropic-deal",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/08/broadcom-reportedly-raising-30-billion-to-fund-openai-custom-ai-chip-procurement",
+  "note": "10/27 博通與美銀、黑石、花旗、大摩以 SPV 籌 630 億美元購買博通晶片再租給 Anthropic，博通提供殘值擔保，是 OpenAI 案之後又一起供應商融資取得算力的案例",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/16/getty-images-plans-bankruptcy-restructuring",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/08/getty-images-faces-delisting-amid-ai-image-impact",
@@ -2920,6 +2928,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/27/broadcom-anthropic-deal",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610020035.aspx",
+  "note": "10/27 博通以殘值支持擔保 630 億美元融資，資金用於 Anthropic 採購博通晶片，屬晶片廠對模型公司的供應商融資新案例",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610220217.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/afe/202610040104.aspx",
@@ -3006,6 +3022,14 @@
   "note": "首批 2 架 F-16V 於 10/2 抵台（66 架中首度實機交付），另 140 億美元新案仍待川普批准；交付進度確有實質推進",
   "verdict": "hit",
   "verified_date": "2026-10-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/27/broadcom-anthropic-deal",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/ait/202610080026.aspx",
+  "note": "10/27 博通協同四家金融機構以 SPV 債務融資 630 億美元採購晶片租給 Anthropic，案例數與規模持續增加",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
  },
  {
   "evidence_url": null,
