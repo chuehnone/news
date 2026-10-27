@@ -1712,6 +1712,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/27/u-s-bill-names-n-korea-iran-among-countries-of-concern-in-ai-cybersecurity-initiative",
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/10/05/bi-see-deepseek-gain",
+  "note": "10/26 美國兩黨眾議員提出 AI 網路安全防禦法案，要求 NIST 定義 AI 蒸餾攻擊並制定防範標準，點名中國等關注國家——蒸餾議題出現具體立法行動（僅提案，尚在委員會）",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/16/asml-calls-us-restrictions-on-duv-sales-to-china-counterproductive-stance-reflects-strategic-dilemma-amid-pressure",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/05/china-stockpiles-asml-lithography-tools-spurring-us-calls-for-complete-export-ban",
@@ -2070,6 +2078,14 @@
   "note": "10/5 沙國聯軍約100架次空襲掩護葉門政府軍反攻沙那並奪曼德海峽旁杜巴布地區",
   "verdict": "hit",
   "verified_date": "2026-10-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610270028.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c6lyq5d3g9j8o/trad",
+  "note": "10/27 五角大廈指定維吉尼亞級核潛艦科羅拉多號為首艘進駐西澳史特林號基地的輪調潛艦，預計 2027 年底抵達；馬勒斯稱美方人員已進駐基地——AUKUS 潛艦與基地使用實際推進",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
  },
  {
   "evidence_url": null,
@@ -4216,6 +4232,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610270012.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608200335.aspx",
+  "note": "10/26 捷克海關數據：非歐盟低價進口申報從 6 月 1,360 萬件降至 7 月 360 萬、9 月 260 萬件，8-9 月未回升而是續降（數據為捷克，非立陶宛）",
+  "verdict": "miss",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608250004.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608210003.aspx",
@@ -4374,6 +4398,14 @@
   "note": "今日報導伊朗扶持的青年運動再奪摩卡港與裴林島，形成荷莫茲與曼德海峽雙重扼制，沙國8月產量降至30多年新低600萬桶；通行不僅未恢復且替代路線同步受阻。指標問的是「是否有任何恢復」，答案明確為否。",
   "verdict": "hit",
   "verified_date": "2026-09-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610270028.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609030146.aspx",
+  "note": "10/27 五角大廈公布首艘輪調潛艦預計 2027 年底抵達西澳，指標問的『明年是否如期抵達』要到 2027 年才能判斷，時候未到",
+  "verdict": "moot",
+  "verified_date": "2026-10-27"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
