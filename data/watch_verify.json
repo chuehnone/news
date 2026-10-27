@@ -168,6 +168,14 @@
   "verified_date": "2026-09-17"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/27/macronixs-third-quarter-financial-report-hit-a-record-high",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/07/macronixs-july-revenue-increased-by-over-180-year-on-year",
+  "note": "旺宏 2026Q3 法說：單季毛利率 70.5%（上季 64.4%），高於 60%",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/08/19/china-humanoid-robot-market-projected-15-billion-rmb-2026-commercialization-acceptance-begins",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/07/unitree-technology-sets-offering-price-post-issuance-market-cap-291-1-billion-yuan",
