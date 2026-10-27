@@ -120,6 +120,14 @@
   "verified_date": "2026-09-19"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610270266.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/07/31/south-korean-stocks",
+  "note": "央行9月金融概況：融資月底餘額由8月7589億元升至9月8343億元，創歷史新高，融資已止跌回升",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/tsmcs-third-quarter-eps-hit-a-new-high-of-nt29-43",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/07/31/tsmc-q2-earnings-call-observations-capex-revised-upwards-second-time-64-billion-boosting-advanced-process-global-expansion",
@@ -2504,6 +2512,14 @@
   "verified_date": "2026-09-19"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610270266.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202607300373.aspx",
+  "note": "融資餘額未降至4500億以下，反而8月底7589億、9月底8343億創新高",
+  "verdict": "miss",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610220248.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202607310288.aspx",
@@ -4430,6 +4446,14 @@
   "note": "布蘭特 2026-09-09 突破 100 美元，遠越過 90 美元門檻。",
   "verdict": "hit",
   "verified_date": "2026-09-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610270215.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608310317.aspx",
+  "note": "確診由8/31約6000例升至10/27累計10060例；致死率由48%升至約48.6%",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/11/ecb-lifts-borrowing-costs-amid-energy-shock-opens-door-for-more-hikes",
