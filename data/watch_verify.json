@@ -1592,6 +1592,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610270179.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/30/hbm-is-the-key-towards-samsungs-foundry-recovery",
+  "note": "10/27 智原取得美國客戶2奈米GAA雲端AI專案（數千萬美元），由三星晶圓代工生產；客戶未具名",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/12/pc-shipments-tumble-over-20-percent-in-3q26-as-chip-shortages-bite",
   "idx": 0,
   "news_url": "https://technews.tw/2026/09/30/japan-pc-shipments-plunge-40percent",
@@ -1622,6 +1630,14 @@
   "note": "IDC／Omdia：Q3 PC 出貨年減逾 20%，記憶體漲價推高售價、通路對高價疑慮，屬終端需求轉弱的量化證據",
   "verdict": "hit",
   "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/27/semiconductor-power-consumption-doubles-electricity-demand-soars-taipower-10-year-supply-plan",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/01/gong-ming-hsin-taiwan-add-25-new-large-gas-fired-power-units-next-decade",
+  "note": "10/27 台電：台中新燃氣1、2號機與興達新燃氣2、3號機將加入供電合計5.2GW；2028-29為新舊機組銜接關鍵期",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160009.aspx",
@@ -1886,6 +1902,14 @@
   "note": "Google 10/21 開源 TorchTPU 讓 PyTorch 直接跑 TPU；亞馬遜 10/19 推 TorchNeuron 移植至 Trainium——自研晶片的軟體生態後續動作",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610270179.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/12/samsungs-foundry-business-cant-catch-up-with-tsmc",
+  "note": "10/27 智原取得美國客戶2奈米雲端AI專案，由三星代工，2027上半年起認列；量產進度未提",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/22/tesla-targets-shipping-optimus-to-customers-by-the-end-of-2027",
@@ -2912,6 +2936,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/27/semiconductor-power-consumption-doubles-electricity-demand-soars-taipower-10-year-supply-plan",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202609300136.aspx",
+  "note": "10/27 台電提出供電餘裕官方說法：2028-29銜接期夜間備用仍逾3GW，2030年後備用容量率穩定15%以上；資料中心用電申請部分未見新資訊",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609300196.aspx",
@@ -2968,6 +3000,14 @@
   "verified_date": "2026-10-17"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/27/semiconductor-power-consumption-doubles-electricity-demand-soars-taipower-10-year-supply-plan",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202610080304.aspx",
+  "note": "10/27 台電更新中部供電說法：台中新燃氣1、2號機將加入供電，7-10月備轉容量率維持10%以上，中長期推動台中燃氣機組更新擴建",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210163.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610120094.aspx",
@@ -3014,6 +3054,14 @@
   "note": "10/21 京元電在輝達 11 億美元預付款下於美國建 AI 測試廠，輝達測試總產能 2026-27 年翻倍",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610270193.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610140320.aspx",
+  "note": "10/27 國泰世華銀宣布布局企業穩定幣收款結算，規劃與VASP合作；屬規劃宣布，尚未上線、未公布時程",
+  "verdict": "hit",
+  "verified_date": "2026-10-27"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
