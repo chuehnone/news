@@ -3096,6 +3096,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610280090.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610190241.aspx",
+  "note": "10/28 法國參議院以 229 比 105 票通過示威者賠償法案（最高賠 1 萬歐元、可扣社福），前一晚另通過社群平台 24 小時下架令，屬政府在安全措施上的具體回應；內政部長努涅斯仍在任並為法案辯護",
+  "verdict": "hit",
+  "verified_date": "2026-10-28"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/ahel/202610010239.aspx",
@@ -5390,6 +5398,14 @@
   "note": "10/19川普再批澤倫斯基，稱「是時候讓其他人代表烏克蘭進行談判」「我們給了烏克蘭很多，他們卻什麼也沒給美國」，美方施壓換人談判的立場延續並具體化",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/21/to-replace-starlink-europe-will-have-to-reawaken-its-animal-spirits",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610120196.aspx",
+  "note": "德國電信、Orange、Telefónica、Vodafone 簽意向書聯手競標歐盟 MSS 頻譜提供手機直連衛星（10/21 報導，10/28 中央社再提）；中華電 10/28 也提出亞洲低軌衛星聯盟構想。電信業以結盟回應衛星直連",
+  "verdict": "hit",
+  "verified_date": "2026-10-28"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
