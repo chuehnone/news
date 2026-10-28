@@ -4168,6 +4168,14 @@
   "verified_date": "2026-10-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610260247.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608140304.aspx",
+  "note": "Anthropic 10 月公開 S-1：10/20 報導 S-1 揭露上半年虧損 807 億美元等財務數字，10/26 中央社報導公開遞件、那斯達克代碼 ANT。指標問的「10 月公開遞件並揭露實際財務數字」兩件都已發生。",
+  "verdict": "hit",
+  "verified_date": "2026-10-28"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/29/us-china-ai-rivalry",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202608140330.aspx",
