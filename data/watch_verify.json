@@ -1976,6 +1976,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/28/chinese-big-tech-in-a-rush-lets-sign-long-term-dram-contracts",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/14/memory-stocks-plunge-musk-slams-pricing-as-extortion-praises-micron",
+  "note": "阿里、騰訊、字節向三星與 SK 海力士提出最長 10 年 LTA；SK 海力士 Q3 稱已與 14 家大客戶簽 LTA，鎖定 2027-28 年逾半產能",
+  "verdict": "hit",
+  "verified_date": "2026-10-28"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/22/micron-officially-skips-the-4f%c2%b2-dram-circuit-cell-architecture",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/15/changxin-memory-plans-to-launch-4f%c2%b2-architecture-dram-to-challenge-the-three-major-manufacturers",
@@ -2126,6 +2134,14 @@
   "note": "10/5 沙國聯軍約100架次空襲掩護葉門政府軍反攻沙那並奪曼德海峽旁杜巴布地區",
   "verdict": "hit",
   "verified_date": "2026-10-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610280013.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c615j9n1xlkpo/trad",
+  "note": "10/27 大選出口民調：尼坦雅胡陣營 50 席、反對派 52-53 席，聯合黨由上屆 32 席降至預估 24-25 席，選情明顯轉弱",
+  "verdict": "hit",
+  "verified_date": "2026-10-28"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610270028.aspx",
