@@ -1648,6 +1648,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/28/cathedral-got-into-anthropic-in-12-hours",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/01/google-unveils-gemini-4-argon",
+  "note": "10/26 華郵報導資安新創 Cathedral 在 Anthropic 授權測試下，用 AI 代理程式 12 小時內找出第三方行政／銷售軟體漏洞並進入內部系統，是 AI 用於漏洞發現的實際案例",
+  "verdict": "hit",
+  "verified_date": "2026-10-28"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160009.aspx",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/01/googles-early-attempt-to-pay-websites-for-ai-answers-is-struggling",
