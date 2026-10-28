@@ -4904,6 +4904,14 @@
   "verified_date": "2026-10-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610280326.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609260104.aspx",
+  "note": "10/28 菲日防長會談聯合聲明：阿武隈級護衛艦移交取得實質進展，目標除役後儘早移交首艘，並提供訓練與維護合作",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610080009.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609260125.aspx",
@@ -5166,6 +5174,14 @@
   "note": "川普宣布能源停火後，澤倫斯基稱俄空襲仍擊中至少 6 個能源目標（含天然氣設施與加油站）",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610280331.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610050006.aspx",
+  "note": "10/28 報導：多個工會發起 11/5 大罷工，抗爭已與工會罷工合流",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
@@ -5560,6 +5576,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610280339.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160314.aspx",
+  "note": "日方回應：10/28 日德會談後高市稱產業支援政策須以互惠兼顧彼此利益，被認為針對日本被排除在『歐洲製造』汽車優惠外；中、韓回應未見報導",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610230249.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610170013.aspx",
@@ -5576,11 +5600,27 @@
   "verified_date": "2026-10-25"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610280331.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
+  "note": "10/28 報導：上週末遊行未再出現 10/17 那種動亂劫掠，黃背心號召 10/31 再動員、多個工會發起 11/5 大罷工，轉向週期性動員與大罷工",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610260101.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610190277.aspx",
   "note": "10/26 中央社：北韓致函安理會、邊境疑似部署自走砲後，南韓統一部稱信函只是重申既有立場、不評論砲兵部署，並提議對話——回應方式為低調、不升級並維持對話提議",
   "verdict": "hit",
   "verified_date": "2026-10-26"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610280331.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610200321.aspx",
+  "note": "穆迪 10/23 決定不調降法國信評，維持 Aa3（中央社 10/28 引世界報分析）；其他信評機構跟進部分未見報導",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  }
 ]
