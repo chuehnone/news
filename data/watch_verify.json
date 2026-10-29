@@ -3176,6 +3176,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/29/find-x10-oppo",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202610170118.aspx",
+  "note": "10/29 OPPO 台灣總經理表示記憶體漲價壓力恐延續至 2028，Find X10 起售價漲近五成，並預期手機銷量持平或小幅萎縮、均價上升，直接回答記憶體成本對手機終端需求的影響",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610280090.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610190241.aspx",
