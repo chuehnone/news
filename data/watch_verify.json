@@ -3216,6 +3216,22 @@
   "verified_date": "2026-10-28"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/23/php-loopholes-aws",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610220383.aspx",
+  "note": "10/23 AWS 蜜罐偵測到 PHP2Shell 在公開修補前已遭攻擊；10/29 資安署轉述情資，美日韓台 25 部防火牆與網通設備疑遭入侵。已有實際遭利用與入侵的報導。",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/29/php-impact-nearly-800-agency-systems-patched-vulnerabilities-22-websites-closed",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610220383.aspx",
+  "note": "10/29 資安署公布近 300 個政府機關、約 800 筆網站或系統受影響，已修補 460 筆，22 個老舊網站先行關閉。",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/ahel/202610010239.aspx",
