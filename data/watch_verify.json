@@ -480,6 +480,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/09/27/fed-hikes-rates-3-key-indicators-to-watch",
+  "note": "10/28 FOMC 維持 3.75%-4.00% 不變，聲明稱仍需更多數據以持續對抗通膨。",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/12/why-is-amazon-betting-on-gold-circuit",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/09/29/golden-image-private-equity-funds-invest-nt1-589-billion-in-amazon",
@@ -3016,6 +3024,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610020064.aspx",
+  "note": "10/28 FOMC 決議維持 3.75%-4.00% 不變，10:2，兩票主張升息 1 碼。",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610220217.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/afe/202610040104.aspx",
@@ -3030,6 +3046,14 @@
   "note": "10/14 WSJ：台船選定美國新創 HavocAI 合作爭取海軍無人艇案，美國國防新創在美方牽線下來台尋找非紅無人機合作夥伴",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610080010.aspx",
+  "note": "10/28 FOMC 以 10:2 維持利率 3.75%-4.00% 不變。",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/17/behind-tsmcs-impressive-financial-report-key-concerns-have-emerged-that-have-drawn-market-attention",
@@ -4752,6 +4776,30 @@
   "verified_date": "2026-10-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
+  "note": "10/28 FOMC 維持 3.75%-4.00% 不變，未再升息；10 月會議不發布點陣圖，終端利率預估無從比對。",
+  "verdict": "miss",
+  "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609170008.aspx",
+  "note": "10/28 FOMC 以 10:2 維持 3.75%-4.00% 不變，未再升息 1 碼；指標問的是是否如預期再升息，結果相反。",
+  "verdict": "miss",
+  "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609170012.aspx",
+  "note": "10/28 FOMC 出現 2 張異議票（理事庫克、克里夫蘭聯準銀行總裁哈曼克主張立即升息 1 碼），9 月的全數一致已打破。",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610110157.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609200002.aspx",
@@ -5070,6 +5118,14 @@
   "note": "10/13 北韓試射戰術彈道飛彈，部分飛行逾 900 公里，發生在 11 月 APEC 之前",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609300362.aspx",
+  "note": "10/28 FOMC 暫停升息，維持 3.75%-4.00%；指引為仍需更多數據以持續對抗通膨，華許稱通膨依然過高。",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610140108.aspx",
@@ -5528,6 +5584,14 @@
   "verified_date": "2026-10-24"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150023.aspx",
+  "note": "10/28 FOMC 維持 3.75%-4.00% 不變；華許稱通膨依然過高、決定不受政治因素影響。",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/experts-expect-fed-to-hold-rates-steady-in-october",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610150023.aspx",
@@ -5574,6 +5638,14 @@
   "note": "10/22 TrendForce 報導：中歐在貿易投資磋商機制下達成混動車共識諒解，中國每年對歐出口上限35萬輛、年增6%，最快12/1生效——管制已從彭博傳聞推進到雙方共識的具體條款",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160265.aspx",
+  "note": "10/28 FOMC 維持 3.75%-4.00%，聲明稱仍需更多數據以持續對抗通膨；10:2，兩票主張升息。",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610280339.aspx",
