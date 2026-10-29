@@ -1792,6 +1792,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/29/macbook-neo-raise-prices",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/05/panel-prices-in-2026-october-h1",
+  "note": "記憶體等零組件成本上漲傳導到筆電售價：MacBook Neo 半年漲價兩次累計約 20%",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/20/japanese-government-plans-additional-400-billion-yen-investment-rapidus-wafer-foundry",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/05/rapidus-partners-17-companies-develop-clients-assist-chip-design",
@@ -1912,6 +1920,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/29/ai-inference-drives-cpu-ddr5-demand-high-capacity-mlcc-shortage-extends-h1-2027",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/08/murata-plans-to-expand-mlcc-material-production",
+  "note": "TrendForce 10/29 報告：AI 推論帶動 CPU、DDR5 與高容 MLCC 用量倍增，Vera Rubin 與 MI450 拉貨使 2027Q1-Q2 為短缺高峰",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/14/character-ai-files-for-bankruptcy",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/08/openais-chatgpt-for-teens-poses-unacceptable-risk",
@@ -1990,6 +2006,14 @@
   "note": "電力電子廠 Heron Power（輝達 800 VDC MGX 生態系夥伴）拿下 Vantage 逾 1 GW 的 SST 產能協議，是其他電源廠在 SST／800 VDC 的具體競爭動態。",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/29/ai-inference-drives-cpu-ddr5-demand-high-capacity-mlcc-shortage-extends-h1-2027",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/14/demand-surges-murata-expand-mlcc-factory-evaluate-accelerated-investment",
+  "note": "TrendForce 10/29：高容 MLCC 缺口延續至 2027 上半年，賣方掌定價權，11 月啟動 2027Q1 議價；消費規中低容現貨價 10 月上旬跌約 5%",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/28/chinese-big-tech-in-a-rush-lets-sign-long-term-dram-contracts",
@@ -3054,6 +3078,22 @@
   "note": "10/14 WSJ：台船選定美國新創 HavocAI 合作爭取海軍無人艇案，美國國防新創在美方牽線下來台尋找非紅無人機合作夥伴",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/29/macbook-neo-raise-prices",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202610070138.aspx",
+  "note": "台灣 MacBook Neo 規格未變，3 月至 10 月兩度調價累計漲約 20%，外媒指記憶體等零組件短缺",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/29/ai-inference-drives-cpu-ddr5-demand-high-capacity-mlcc-shortage-extends-h1-2027",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610070205.aspx",
+  "note": "TrendForce 10/29：AI 需求外溢到 CPU 電源模組、DDR5 與 MLCC，缺口並擴散到光通訊模組的通訊用 MLCC",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
@@ -5494,6 +5534,14 @@
   "note": "10/19川普再批澤倫斯基，稱「是時候讓其他人代表烏克蘭進行談判」「我們給了烏克蘭很多，他們卻什麼也沒給美國」，美方施壓換人談判的立場延續並具體化",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290095.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610120163.aspx",
+  "note": "10/28 日美同意在日本設立 AIM-120 AMRAAM 聯合生產設施並共享技術（超級充電行動），屬新的外國軍工合作案",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/21/to-replace-starlink-europe-will-have-to-reawaken-its-animal-spirits",
