@@ -5520,6 +5520,14 @@
   "verified_date": "2026-10-25"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/29/macbook-neo-raise-prices",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610120308.aspx",
+  "note": "MacBook Neo 台灣售價半年內調漲兩次，規格不變，一般價累計漲約 20%、教育價漲 29.6%。外媒歸因於記憶體等零組件短缺，傳導到 PC 零售價已具體發生。",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610130026.aspx",
