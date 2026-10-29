@@ -5216,6 +5216,14 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610290375.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609300363.aspx",
+  "note": "10/29 歐洲央行維持利率 2.5% 不變，未如 9 月底預期再升息；聲明改稱融資環境已緊縮、可能影響通膨與成長，雖然歐元區通膨在 3 年高點。",
+  "verdict": "miss",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610140108.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610010020.aspx",
