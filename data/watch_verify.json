@@ -2400,6 +2400,14 @@
   "verified_date": "2026-08-10"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cwkg5e249vmko/trad",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/acn/202608250369.aspx",
+  "note": "BBC 10/29：印藏邊境警察部隊總監稱中國軍隊自 7 月起在阿魯納恰爾邦多處與印軍對峙，並在印方認知的實控線內 6-7 公里處搭帳篷，對峙仍持續；印度外交部稱中國軍隊偏離巡邏模式時局勢不時受擾",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/acn/202610080321.aspx",
@@ -3934,6 +3942,14 @@
   "note": "2026-09-28 華爾街日報披露庫存消耗比例（戰斧約1/3、高端愛國者約一半）與各承包商擴產細節",
   "verdict": "hit",
   "verified_date": "2026-09-28"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610290017.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607290251.aspx",
+  "note": "賓士 Q3 財報：前 9 個月在中國交車 29.7 萬輛、年減 29%，約 2023 年同期一半；中國佔全球銷量比重從約三分之一降至約五分之一",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
