@@ -3128,6 +3128,22 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/29/ase-technology-holding-co-ltd-reported-a-record-high-third-quarter-profit-with-eps-of-nt6-13-2",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610120178.aspx",
+  "note": "10/29 法說將 2026 年 LEAP 營收預測由 37 億美元上調至逾 40 億美元，維持 2027 年翻倍；指引有上修。第 4 季整體營收指引內文未見",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/29/ase-technology-holding-co-ltd-reported-a-record-high-third-quarter-profit-with-eps-of-nt6-13-2",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610120178.aspx",
+  "note": "10/29 法說稱 CoWoS 全流程 2027 年估破 10 億美元，受廠房空間限制 2027 年需求將遠高於可交付產能，產能吃緊延續",
+  "verdict": "hit",
+  "verified_date": "2026-10-29"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610250119.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610120276.aspx",
