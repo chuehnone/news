@@ -2128,6 +2128,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/30/us-japan-agreed-on-assmebling-aim-120s-in-japan",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/12/anduril-unveiled-new-low-cost-steelfin-interceptor",
+  "note": "2026-10-30 美日敲定在日本設 AIM-120 最終組裝廠，報導明言背景是俄烏戰爭與中東持續消耗飛彈庫存；AIM-120 亦為 NASAMS 攔截彈，雙方並同意分享標準三型 Block IIA 攔截彈增產技術資訊。庫存短缺的報導延續並轉為盟國產能擴充。",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610270179.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/12/samsungs-foundry-business-cant-catch-up-with-tsmc",
@@ -2254,6 +2262,14 @@
   "note": "標普全球警告 2027 年糧食危機；IMF 預測食品價格今年升約 5%、2027 年再升 2.4%",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/30/google-s-ai-mode-does-not-drive-traffic",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/16/google-ai-search-major-redesign",
+  "note": "2026-10-30 Reddit 執行長在財報會議表示 Google AI 模式與 AI 摘要使搜尋導流失效，第三季搜尋轉介明顯下滑，10 月起平均每週減少逾 100 萬次轉址。Reddit 是內容平台而非傳統新聞出版商，但屬依賴搜尋導流的內容網站，直接回答「回報 AI 搜尋導流量變化」。",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/24/nvidia-names-4-supply-chain-boost-production-shipments-kyec-unimicron-spil",
