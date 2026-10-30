@@ -640,6 +640,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610300055.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/13/alphabet-expands-ai-investment",
+  "note": "Alphabet Q3 單季資本支出逾 500 億美元、自由現金流負 91 億美元，股價重挫逾 12%",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/13/alphabet-expands-ai-investment",
@@ -806,6 +814,22 @@
   "note": "2026-10-07 中央社：新韓、國民等 7 家以上韓國金融機構遭疑似中國開發的 AI 滲透測試系統 ARTEX 攻擊，警方成立 28 人專案小組，屬實際發生的 AI 輔助攻擊事件",
   "verdict": "hit",
   "verified_date": "2026-10-07"
+ },
+ {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/30/a-defense-contractor-gave-their-personal-ai-agent-access-to-a-secure-pentagon-system",
+  "idx": 1,
+  "news_url": "https://infosecu.technews.tw/2026/10/06/ai-hits-australian-government-sites-openai-vows-to-rebuild-trust",
+  "note": "WIRED 報導美國國防部 NIPRNet 系統被承包商接上個人 Claude Code 代理約兩個月才被發現並修補（埃森哲否認、國防部未置評）",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/30/a-defense-contractor-gave-their-personal-ai-agent-access-to-a-secure-pentagon-system",
+  "idx": 0,
+  "news_url": "https://infosecu.technews.tw/2026/10/20/microsoft-says-ai-agents-cannot-be-trusted-and-could-become-insider-security-threats",
+  "note": "WIRED 報導承包商的 Claude Code 代理存取五角大廈安全系統兩個月，可能外傳憑證與網路架構圖",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": null,
@@ -1582,6 +1606,14 @@
   "note": "指標問記憶體價格是否自 5-7 倍的水準回落或續漲。9/19 資料：64GB RDIMM 不到一年 450→900 美元，伺服器記憶體 2026 年預估再漲 200-300%，並已開始轉嫁至雲端訂閱費（微軟 365 E3 23→26 美元）。未回落而是續漲，「回落」這一支未成立。",
   "verdict": "miss",
   "verified_date": "2026-09-19"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610300055.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/21/why-google-willing-share-geminis-computing-power",
+  "note": "Alphabet Q3 自由現金流負 91 億美元，持續為負",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/12/ssd-prices-rise-for-sixth-straight-quarter-hit-record-high",
@@ -5654,6 +5686,14 @@
   "note": "10/26 日相高市召開網安閣僚會議，下令一週內完成緊急對策，含供應鏈監測網與「存取無害化」（主動網路防禦）選項，直接對應日本資安政策推進",
   "verdict": "hit",
   "verified_date": "2026-10-27"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/30/us-fcc-moves-to-ban-china-labs-from-testing-electronics-for-us-market",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610080012.aspx",
+  "note": "10/30 報導 FCC 已投票通過，禁中國等未簽互認協議國家實驗室檢測輸美電子產品，預計 2028 年 12 月生效（路透）",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200106.aspx",
