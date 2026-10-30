@@ -4440,6 +4440,14 @@
   "verified_date": "2026-08-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300260.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608080202.aspx",
+  "note": "10/29-30 俄軍以彈道飛彈與無人機攻擊第聶伯羅彼得羅夫斯克州電網，設備嚴重受損、逾20萬人無電，電網營運商下令緊急斷電；入冬前電力基礎設施持續受損",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610180035.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202608090003.aspx",
