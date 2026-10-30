@@ -296,6 +296,14 @@
   "verified_date": "2026-09-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610300104.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/08/19/apple-eu-app-store-oct",
+  "note": "台灣 10/31 起只把標準佣金由 30% 降到 26%（同日本、巴西），是公平會承諾措施；沒有替代分發、替代付款、核心技術佣金這套歐盟架構。降佣不等於擴及類似架構。",
+  "verdict": "miss",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/08/19/china-domestic-demand-recovery-remains-slow",
