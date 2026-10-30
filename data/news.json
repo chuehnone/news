@@ -96574,5 +96574,29 @@
   "url": "https://www.cna.com.tw/news/aopl/202610300278.aspx",
   "watch_next": "[\"歐洲央行後續利率決策與成長、通膨數據的互動\", \"能源價格對歐元區第4季成長的影響\"]",
   "why_important": "在能源價格高漲與歐洲央行維持利率不變的背景下，成長仍優於預期，降低了短期衰退疑慮；但報導未提供各國拆分與成長來源。"
+ },
+ {
+  "affected": "聯發科投資人、台灣 IC 設計與先進封裝供應鏈、與 Broadcom／Marvell 競爭的 ASIC 業者",
+  "credibility_reason": "執行長在法說會公開說明，有具體數字；客戶未具名，效能宣稱為公司自評。",
+  "credibility_score": 11,
+  "decision_reason": "主要影響聯發科及供應鏈的投資判斷，一般讀者不需改變行動。",
+  "decision_score": 6,
+  "duration_reason": "新客戶 2028 年起貢獻、第三代 2029 年量產，是數月到數年的布局。",
+  "duration_score": 11,
+  "grade": "C",
+  "news_date": "2026-10-30",
+  "one_line": "同一場法說會的補充資訊；第二家非中國雲端客戶讓聯發科的 ASIC 業務從單一客戶依賴走向多客戶，但貢獻要到 2028 年。",
+  "scope_reason": "影響 IC 設計與 AI 晶片產業，主要是單一公司的業務進展。",
+  "scope_score": 13,
+  "section": "影響未來的趨勢",
+  "structural_reason": "反映台灣 IC 設計業切入雲端 ASIC、客戶多元化的產業趨勢。",
+  "structural_score": 11,
+  "summary": "聯發科執行長蔡力行在第三季法說會表示，2026 年雲端 ASIC 營收目標上調至 25 億美元，第四季佔單季營收約 30%。公司確認取得第二家雲端 ASIC 客戶，非來自中國，設計已展開，預計 2028 年起貢獻營收。2027 年營業利益率目標超過 20%，第三代 ASIC 預計 2029 年晚期量產。",
+  "tags": "[\"聯發科\", \"ASIC\", \"AI晶片\"]",
+  "title": "聯發科 2026 年 ASIC 營收將達 25 億美元，確認已取得第二家雲端 ASIC 客戶",
+  "total_score": 52,
+  "url": "https://finance.technews.tw/2026/10/30/mediateks-asic-revenue-will-reach-2-5-billion-in-2026",
+  "watch_next": "[\"聯發科雲端 ASIC 營收佔比在後續季度法說會的變化\", \"聯發科第二家雲端 ASIC 客戶身分是否在後續報導中曝光\", \"其他台灣 IC 設計業者（如世芯、創意）在雲端 ASIC 市場的接單動向\"]",
+  "why_important": "雲端 ASIC 市場長期由 Broadcom、Marvell 主導。聯發科確認第二家非中國客戶，代表台灣 IC 設計業在這個市場取得的不是一次性訂單。不過新客戶的營收要到 2028 年才開始，客戶也沒有具名，短期影響有限。"
  }
 ]

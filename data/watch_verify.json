@@ -2928,6 +2928,14 @@
   "verified_date": "2026-10-07"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/mediateks-asic-revenue-will-reach-2-5-billion-in-2026",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608100270.aspx",
+  "note": "10/30 法說會蔡力行表示第一代雲端 ASIC 已進入量產，2026 年 ASIC 營收目標 25 億美元、第四季佔單季營收約 30%",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202608110278.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202608100280.aspx",
@@ -3054,6 +3062,14 @@
   "note": "存款比率由7月的40.3%續降至9月底39.3%，為2022年4月以來新低",
   "verdict": "hit",
   "verified_date": "2026-10-25"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/mediateks-asic-revenue-will-reach-2-5-billion-in-2026",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202608310310.aspx",
+  "note": "10/30 法說會（60 天後）對 NVLink Fusion 只稱獲數家潛在客戶正面回饋，未揭露任何實際採用的客戶案例",
+  "verdict": "miss",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/30/mediateks-third-quarter-eps-reached-nt17-5-with-a-gross-margin-of-46-3",
