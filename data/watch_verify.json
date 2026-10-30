@@ -736,6 +736,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/30/ai-demand-triggers-massive-pcb-shortage-for-pc-makers-as-order-books-full-until-2030",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/20/tpca-show-2026",
+  "note": "PCB交期拉長一倍、最長30個月，現在下單恐2028年末出貨；CCL供應商訂單排到2030年",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/22/meta-reports-third-quarter-2026-results",
@@ -1728,6 +1736,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/spacexs-largest-3-billion-a-month-customer-b-is-anthropic",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/30/anthropics-ipo-prospectus-reportedly-shows-84-5b-to-spacex-in-compute-agreements",
+  "note": "SpaceX申報揭露客戶B占Q3營收34.5%、前兩大合計51.1%，彭博稱客戶B為Anthropic",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610270179.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/30/hbm-is-the-key-towards-samsungs-foundry-recovery",
@@ -2110,6 +2126,14 @@
   "note": "供應鏈稱玻纖布與 CCL 最快 11 月漲 10-15%，薄布最缺；中國巨石新產能以 7628 厚布為主、2027 年量產",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/30/ai-demand-triggers-massive-pcb-shortage-for-pc-makers-as-order-books-full-until-2030",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/12/why-is-amazon-betting-on-gold-circuit",
+  "note": "欣興規劃未來三年產能擴大2.5倍，主要CCL供應商計畫2028年前產能擴大三倍",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/21/anthropic-s-1-shows-red-hot-growth-risks-and-massive-computing-costs",
@@ -3374,6 +3398,14 @@
   "note": "10/28 法國參議院以 229 比 105 票通過示威者賠償法案（最高賠 1 萬歐元、可扣社福），前一晚另通過社群平台 24 小時下架令，屬政府在安全措施上的具體回應；內政部長努涅斯仍在任並為法案辯護",
   "verdict": "hit",
   "verified_date": "2026-10-28"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/30/ai-demand-triggers-massive-pcb-shortage-for-pc-makers-as-order-books-full-until-2030",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610200135.aspx",
+  "note": "日經亞洲：CCL成本自7月至少增12倍，主要CCL供應商訂單排到2030年，PCB交期最長30個月",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://infosecu.technews.tw/2026/10/23/php-loopholes-aws",
@@ -5320,6 +5352,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
+  "note": "日銀10/30會議以8比1維持利率1.25%不變，未升息",
+  "verdict": "miss",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610230034.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
@@ -5864,6 +5904,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140220.aspx",
+  "note": "日銀10/30維持利率不變（暫停），韓央行10/22連兩次升息後喊暫停",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610140269.aspx",
@@ -5952,6 +6000,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160199.aspx",
+  "note": "Fed與歐洲央行本週維持利率、日銀10/30亦維持不變，未見同步升息",
+  "verdict": "miss",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610160265.aspx",
@@ -6006,5 +6062,45 @@
   "note": "穆迪 10/23 決定不調降法國信評，維持 Aa3（中央社 10/28 引世界報分析）；其他信評機構跟進部分未見報導",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610210282.aspx",
+  "note": "WSJ：烏軍星鏈24日全面恢復",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610220247.aspx",
+  "note": "日銀10/30以8比1維持利率1.25%，並宣告核心CPI已大致達成2%目標；外界預期12月升息",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610230011.aspx",
+  "note": "WSJ：烏軍星鏈10/14遭限速斷線約10天，川普21日致電馬斯克後24日全面恢復",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610230249.aspx",
+  "note": "WSJ：美國施壓下烏軍暫停攻擊俄煉油廠，報導稱已動搖烏方對美國的信任",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610240112.aspx",
+  "note": "星鏈24日全面恢復後，烏軍在美國施壓下非正式暫停攻擊俄煉油廠至期中選舉後",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  }
 ]
