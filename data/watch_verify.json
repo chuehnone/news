@@ -120,6 +120,22 @@
   "verified_date": "2026-09-19"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/31/amazon-cloud-performance-shines-apple-revenue-slows-awaiting-siri-ai",
+  "note": "AWS Q3 營收年增 39%，高於 35%",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/07/31/amazon-cloud-performance-shines-apple-revenue-slows-awaiting-siri-ai",
+  "note": "2026 年資本支出預估約 2,200 億美元，過去 12 個月累計現金流出 424 億美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610270266.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/07/31/south-korean-stocks",
@@ -624,12 +640,28 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/13/alphabet-expands-ai-investment",
+  "note": "亞馬遜表示 2027 年資本支出將較 2026 年（約 2,200 億美元）顯著增加",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
   "idx": 3,
   "news_url": "https://finance.technews.tw/2026/10/13/alphabet-expands-ai-investment",
   "note": "Meta 10/21 宣布發行新類別股票籌資投入資料中心與 AI，並稱未來幾年可能需籌數千億美元；Meta 申報文件指 Alphabet 等對手大舉發債",
   "verdict": "hit",
   "verified_date": "2026-10-23"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/microsoft-expects-to-raise-25-billion-in-us-bond-sale",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/13/tech-giants-data-center-costs",
+  "note": "微軟約 250 億美元公司債、訂單逾 1,000 億美元（知情人士，最終金額未定）",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://infosecu.technews.tw/2026/10/30/new-york-bans-ai-chatbots-from-romantic-roleplay-with-children",
@@ -656,12 +688,52 @@
   "verified_date": "2026-10-26"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/15/jpmorgan-chase-reveals-fund-transfers-by-major-manufacturers",
+  "note": "亞馬遜 Q3 現金流轉為淨流出、預告 2027 資本支出顯著增加",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/microsoft-expects-to-raise-25-billion-in-us-bond-sale",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/15/jpmorgan-chase-reveals-fund-transfers-by-major-manufacturers",
+  "note": "微軟發行約 250 億美元投資等級公司債用於 AI 基建，2017 年以來首次在美發債",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610260083.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/17/sk-hynix-explicitly-denied-using-conditions-in-exchange-for-the-us-allowing-the-import-of-equipment-from-its-dalian-china-plant",
   "note": "SK海力士 10/23 表示因市場波動暫緩 Solidigm 在美國的上市計畫（中央社 10/26 報導），IPO 計畫有明確的後續進度：延後。",
   "verdict": "hit",
   "verified_date": "2026-10-26"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/microsoft-expects-to-raise-25-billion-in-us-bond-sale",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/19/the-four-major-tech-giants-have-spent-over-1-12-trillion-on-ai",
+  "note": "亞馬遜過去 12 個月現金流出 424 億美元；微軟發債約 250 億美元支應 AI 基建",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/20/amazons-ai-infrastructure-spending-soars-resulting-in-negative-cash-flow",
+  "note": "Q3 財報：單季資本支出 772.6 億美元、過去 12 個月現金流出 424 億美元；Jassy 預告 2027 年資本支出較 2026 年顯著增加",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/22/meta-reports-third-quarter-2026-results",
+  "note": "亞馬遜 Q3 資本支出 772.6 億美元、過去 12 個月現金流出 424 億美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": null,
@@ -1928,6 +2000,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/08/amazon-more-layoffs",
+  "note": "Q3 財報揭露資本支出 772.6 億美元、AWS 營業利益年增 55% 至 177.7 億美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/27/broadcom-anthropic-deal",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/08/broadcom-reportedly-raising-30-billion-to-fund-openai-custom-ai-chip-procurement",
@@ -2094,6 +2174,14 @@
   "note": "輝達 10/21 柏林 GTC 點名台廠：矽品 CPO 光引擎產能 2027 年中增至 15 倍、2028 年底 30 倍；欣興載板、京元電測試同列擴產名單。",
   "verdict": "hit",
   "verified_date": "2026-10-24"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/21/amazons-purchase-of-nvidia-ai-rack-systems-fills-its-warehouse",
+  "note": "Q3 資本支出 772.6 億美元高於預期約 200 億，過去 12 個月現金流出 424 億美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
@@ -3268,6 +3356,22 @@
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610220383.aspx",
   "note": "10/29 資安署公布近 300 個政府機關、約 800 筆網站或系統受影響，已修補 460 筆，22 個老舊網站先行關閉。",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
+  "note": "亞馬遜預告 2027 年資本支出較 2026 年顯著增加（方向為上調）",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/microsoft-expects-to-raise-25-billion-in-us-bond-sale",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
+  "note": "微軟 250 億美元公司債超額認購逾三倍，顯示債市對 AI 融資的胃口仍強",
   "verdict": "hit",
   "verified_date": "2026-10-30"
  },
