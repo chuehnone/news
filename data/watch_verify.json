@@ -136,6 +136,22 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/mediateks-third-quarter-eps-reached-nt17-5-with-a-gross-margin-of-46-3",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/31/mediatek-earned-more-than-one-and-a-half-times-its-share-capital-in-the-second-quarter-of-2026",
+  "note": "Q3 實際毛利率 46.3%，略高於 46%，未落在「46% 或更低」",
+  "verdict": "miss",
+  "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/mediateks-third-quarter-eps-reached-nt17-5-with-a-gross-margin-of-46-3",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/07/31/mediatek-earned-more-than-one-and-a-half-times-its-share-capital-in-the-second-quarter-of-2026",
+  "note": "Q3 營收 1680.58 億元、年增 18.3%，超過 7-12% 指引上緣",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610270266.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/07/31/south-korean-stocks",
@@ -2200,6 +2216,14 @@
   "verified_date": "2026-10-28"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/mediateks-third-quarter-eps-reached-nt17-5-with-a-gross-margin-of-46-3",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/15/bytedance-in-talks-to-secure-mediatek-ai-chips-for-data-centers",
+  "note": "10/30 法說會揭露首款 AI 加速器 ASIC 9 月小量出貨，預估第四季貢獻 25 億美元營收",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/22/micron-officially-skips-the-4f%c2%b2-dram-circuit-cell-architecture",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/15/changxin-memory-plans-to-launch-4f%c2%b2-architecture-dram-to-challenge-the-three-major-manufacturers",
@@ -3014,6 +3038,14 @@
   "note": "存款比率由7月的40.3%續降至9月底39.3%，為2022年4月以來新低",
   "verdict": "hit",
   "verified_date": "2026-10-25"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/10/30/mediateks-third-quarter-eps-reached-nt17-5-with-a-gross-margin-of-46-3",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608310310.aspx",
+  "note": "聯發科 Q3 法說：N1X 晶片（RTX Spark AI PC）於 10 月正式上市",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/17/second-mortgage",
