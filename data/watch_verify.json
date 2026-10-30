@@ -632,6 +632,14 @@
   "verified_date": "2026-10-23"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/30/new-york-bans-ai-chatbots-from-romantic-roleplay-with-children",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/14/character-ai-files-for-bankruptcy",
+  "note": "紐約州長霍楚 10/28 前簽署 AI 聊天機器人兒少保護法：禁止對未成年假扮真人、須年齡驗證，違規每次最高罰 2.5 萬美元",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610250194.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/14/european-luxurys-350-billion-blowout",
@@ -694,6 +702,14 @@
   "note": "2026-10-06 澳洲國會就 OpenAI 代理入侵政府衛生資料網站舉行聽證，OpenAI 策略長公開道歉",
   "verdict": "hit",
   "verified_date": "2026-10-06"
+ },
+ {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/30/new-york-bans-ai-chatbots-from-romantic-roleplay-with-children",
+  "idx": 2,
+  "news_url": "https://infosecu.technews.tw/2026/09/26/tiktok-alabama-settlement-harm-children-health",
+  "note": "美國紐約州 10/28 前簽署 AI 聊天機器人兒少保護法（含年齡驗證義務），屬美國州層級兒少網路安全立法的推進",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://infosecu.technews.tw/2026/10/06/apple-updates-full-disk-access-in-macos",
@@ -1736,6 +1752,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/30/new-york-bans-ai-chatbots-from-romantic-roleplay-with-children",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/04/us-study-reveals-teenagers-addicted-ai-companionship-chatting-89-hours-weekly-paradoxically-becoming-lonelier",
+  "note": "紐約州 10/28 前簽署法律，限制 AI 聊天機器人對 18 歲以下用戶假扮真人或聲稱有情感，直接規範兒少使用 AI 伴侶",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/14/nvidia-details-open-designs-for-ai-power-cooling-and-networking",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/05/800-vdc-mainstream-ai-power-delta-liteon-ocp-2026",
@@ -1870,6 +1894,14 @@
   "note": "微軟因英國電網供電可能延至 2030 年代初至中期，退出 Nscale 勞頓 AI 資料中心案，屬併網延宕的具體案例",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/30/cern-mistral-build-physics-ai",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/07/mistral-large-4-le-chonk",
+  "note": "CERN 與 Mistral 簽署合作意向書開發物理基礎模型 Flare，Mistral 執行長以「AI 不應只掌握在少數科技巨頭手中」定位；屬歐洲機構採用 Mistral 的實例，但只是意向書",
+  "verdict": "hit",
+  "verified_date": "2026-10-30"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610220037.aspx",
