@@ -2216,6 +2216,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://technews.tw/2026/10/31/murata-invest-6-3bn-in-capacitor-production",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/14/demand-surges-murata-expand-mlcc-factory-evaluate-accelerated-investment",
+  "note": "村田 10/30 公布五年 1 兆日圓投資計畫（年均約 2,000 億日圓），岡山兩座新廠 2028、2030 年完工，另有島根新據點與泰國 2030 年新廠房",
+  "verdict": "hit",
+  "verified_date": "2026-10-31"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/29/ai-inference-drives-cpu-ddr5-demand-high-capacity-mlcc-shortage-extends-h1-2027",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/14/demand-surges-murata-expand-mlcc-factory-evaluate-accelerated-investment",
