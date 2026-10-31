@@ -2288,6 +2288,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202610310009.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/24/nvidia-names-4-supply-chain-boost-production-shipments-kyec-unimicron-spil",
+  "note": "10/30 英特爾財報會議：陳立武稱伺服器 CPU 需求強，但受限於 EMIB 封裝所需高階有機基材短缺與以色列廠事故，瓶頸落在封裝基材環節。",
+  "verdict": "hit",
+  "verified_date": "2026-10-31"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -3478,6 +3486,14 @@
   "note": "日經亞洲：CCL成本自7月至少增12倍，主要CCL供應商訂單排到2030年，PCB交期最長30個月",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/31/nvidia-love-ptfe",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610200135.aspx",
+  "note": "10/31 今周刊（科技新報轉載）：輝達 OCP 展出考慮用 PTFE 的 NVLink 交換器板，可能用於 Rubin Ultra 交換器板或正交背板，合作業者多為中國板廠，台灣僅台虹、台郡。導入仍在評估階段，但進度有具體報導。",
+  "verdict": "hit",
+  "verified_date": "2026-10-31"
  },
  {
   "evidence_url": "https://infosecu.technews.tw/2026/10/23/php-loopholes-aws",
@@ -6134,6 +6150,14 @@
   "note": "10/26 中央社：北韓致函安理會、邊境疑似部署自走砲後，南韓統一部稱信函只是重申既有立場、不評論砲兵部署，並提議對話——回應方式為低調、不升級並維持對話提議",
   "verdict": "hit",
   "verified_date": "2026-10-26"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610310010.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610200044.aspx",
+  "note": "10/30 中央社：美伊戰爭對全球能源成本的衝擊已削弱選民對共和黨候選人的支持、拉低川普支持率（記者分析）；10/27 亦有「川普任內油價比拜登時期還貴」報導。",
+  "verdict": "hit",
+  "verified_date": "2026-10-31"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610280331.aspx",
