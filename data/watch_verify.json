@@ -1608,6 +1608,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610310054.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/09/us-banned-dairy-products-alcohol-and-motorcycles-from-canada",
+  "note": "10/31 蒙特婁峰會後歐加簽署數位貿易協議，並協議協調關稅等經濟安全措施，屬實質進展；『準會員』內容仍待確定",
+  "verdict": "hit",
+  "verified_date": "2026-10-31"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/psmc-2026-q3-financial-report",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/10/psmc-2026-aug-revenue",
@@ -4824,6 +4832,14 @@
   "verified_date": "2026-08-23"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610310054.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608230005.aspx",
+  "note": "10/31 歐盟與加拿大成立新聯盟，簽署數位貿易協議與歐洲投資銀行支持加拿大關鍵礦產的協定，范德賴恩稱加拿大將成為首個『準會員』，加拿大與歐盟的合作確實加速",
+  "verdict": "hit",
+  "verified_date": "2026-10-31"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609270110.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608230164.aspx",
@@ -5758,6 +5774,14 @@
   "note": "10/15 沙國稱攔截青年運動射向沙國南部與海米斯穆謝特的無人機",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610310054.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070005.aspx",
+  "note": "10/31 加拿大與歐盟簽署數位貿易協議與歐洲投資銀行關鍵礦產協定",
+  "verdict": "hit",
+  "verified_date": "2026-10-31"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
