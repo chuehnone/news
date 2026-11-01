@@ -568,6 +568,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/01/macronix-q3-profit-hits-record-as-gross-margin-tops-70",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/05/winbond-electronics-september-revenue-increased-by-over-250-year-on-year",
+  "note": "旺宏 10/27 法說會：新增產能以 NAND Flash（eMMC）為主，明年以 96 層製程為主力，新產能效益預計 2027 下半年顯現",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/19/french-debt-woes-add-to-eu-economic-concerns",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/06/euro-slides-to-17-month-low-against-dollar",
@@ -646,6 +654,14 @@
   "note": "後續協商：10/21 協商未達共識，11 名幹部 10/22 罷工 1 天，工會將對公司方案做意向投票",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/10/strike-risk-looms-at-micron-taiwan",
+  "note": "台中工會 10/21 與美光簽約，並撤回原定 10/22 的第二次調解，調解沒有發生",
+  "verdict": "moot",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610230158.aspx",
@@ -2304,6 +2320,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/21/micron-taiwan-memory-industry-association-and-micron-taiwan-reach-several-consensuses",
+  "note": "美光 10/22 線上記者會對外公布台中協議重點：每季分潤、IPP 上限 250%、勞退提撥 10%、多 3 天有薪假",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610310009.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/24/nvidia-names-4-supply-chain-boost-production-shipments-kyec-unimicron-spil",
@@ -3510,6 +3534,22 @@
   "note": "10/31 今周刊（科技新報轉載）：輝達 OCP 展出考慮用 PTFE 的 NVLink 交換器板，可能用於 Rubin Ultra 交換器板或正交背板，合作業者多為中國板廠，台灣僅台虹、台郡。導入仍在評估階段，但進度有具體報導。",
   "verdict": "hit",
   "verified_date": "2026-10-31"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610200191.aspx",
+  "note": "美光 10/22 線上記者會公布與台中工會的協議：每季分潤（半現金半股票）、IPP 上限 200%→250%、勞退提撥 8%→10%、每年多 3 天有薪假",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610210036.aspx",
+  "note": "罷工當天（10/22）美光召開線上記者會，公布含每季分潤的獎酬方案（台中協議重點）；桃園工會仍主張營業利益 15% 分潤",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://infosecu.technews.tw/2026/10/23/php-loopholes-aws",
