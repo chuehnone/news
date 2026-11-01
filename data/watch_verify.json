@@ -1856,6 +1856,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010160.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/01/ai-fuels-south-korea-september-exports-record-semiconductor-exports-top-60-billion",
+  "note": "韓國10月半導體出口年增259.4%至564.4億美元，與9月約263%相當，高成長延續",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610140108.aspx",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/01/cameco-could-benefit-if-south-korea-invests-in-ap1000-reactors",
@@ -5728,6 +5736,14 @@
   "verified_date": "2026-10-15"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010160.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610010183.aspx",
+  "note": "10月半導體出口年增259.4%，與9月逾262%幾乎持平，未見明顯放緩；整體出口增幅更由83.5%擴大到93.7%",
+  "verdict": "miss",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200008.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610020024.aspx",
@@ -6336,6 +6352,14 @@
   "verified_date": "2026-10-25"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/c8vgxe1nq7w7o/trad",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610180005.aspx",
+  "note": "10/31德國法蘭克福、柏林、科隆、漢堡爆發生活成本抗議並演變成暴力，抗議擴散到德國；跨國協調或大罷工未見證據",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610280331.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
@@ -6358,6 +6382,22 @@
   "note": "10/26 中央社：北韓致函安理會、邊境疑似部署自走砲後，南韓統一部稱信函只是重申既有立場、不評論砲兵部署，並提議對話——回應方式為低調、不升級並維持對話提議",
   "verdict": "hit",
   "verified_date": "2026-10-26"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/c8vgxe1nq7w7o/trad",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610200008.aspx",
+  "note": "10/31德國多城爆發青年主導的生活成本抗議並演變成暴力",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/c8vgxe1nq7w7o/trad",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610200011.aspx",
+  "note": "10/31抗議擴散到德國四大城市，同日法國逾32萬人示威",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610310010.aspx",
@@ -6444,6 +6484,14 @@
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610250003.aspx",
   "note": "10/31連續第3個週末全國抗議，當局稱約32萬人（10/24為41萬），學生與工會持續動員，規模略降",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/c8vgxe1nq7w7o/trad",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610250008.aspx",
+  "note": "10/31德國法蘭克福等四城爆發生活成本抗議，擴散到德國",
   "verdict": "hit",
   "verified_date": "2026-11-01"
  }
