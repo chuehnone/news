@@ -4992,6 +4992,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010009.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609020367.aspx",
+  "note": "10/31亞特蘭大G20外長會議仍未發聯合公報，改以主席聲明總結",
+  "verdict": "miss",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609120048.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202609030131.aspx",
@@ -6232,11 +6240,43 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010003.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610230271.aspx",
+  "note": "停火實際於10/27生效（早於原訂），期間運入糧食與藥品",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010003.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610230271.aspx",
+  "note": "烏俄官員均表示停火期間未發生違反情事，俄方確認停火執行",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010003.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610240004.aspx",
+  "note": "奧列什基停火10/27生效至11/1，烏俄官員均稱無違反，已清除道路地雷並運入糧食與藥品，居民撤至烏控區",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610240112.aspx",
   "note": "星鏈24日全面恢復後，烏軍在美國施壓下非正式暫停攻擊俄煉油廠至期中選舉後",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010004.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610250003.aspx",
+  "note": "10/31連續第3個週末全國抗議，當局稱約32萬人（10/24為41萬），學生與工會持續動員，規模略降",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  }
 ]
