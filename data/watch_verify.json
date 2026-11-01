@@ -3576,6 +3576,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010080.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610150310.aspx",
+  "note": "金管會 11/1 公布：保險業 9 月獲利月減 522 億元，主因美債殖利率大幅彈升，壽險業 FVTPL 債券產生未實現損失",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/29/find-x10-oppo",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/afe/202610170118.aspx",
@@ -6016,6 +6024,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010079.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610090040.aspx",
+  "note": "法案已進入眾院財務金融委員會審議，執政黨拚 11/6 眾院表決、12/12 前完成立法；在野黨要求首相出席答詢，參院執政黨仍差 4 席",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610150027.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610090050.aspx",
@@ -6062,6 +6078,14 @@
   "note": "英國國防部10/20聲明青年運動持續攻擊沙烏地並將利雅德機場列為目標，英國應沙國請求派颱風戰機協防",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610110016.aspx",
+  "note": "美方施壓有具體後續：WSJ 稱烏軍因美方施壓非正式暫停攻擊俄煉油廠；11/1 報導川普數週來持續施壓並將柴油漲價歸咎於此",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200007.aspx",
@@ -6256,6 +6280,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010082.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160053.aspx",
+  "note": "頻率出現先停後恢復：WSJ 報導烏軍在美方施壓下非正式暫停（10/30），俄方同日稱攻擊已恢復，11/1 克斯托沃煉油廠遇襲",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610160199.aspx",
@@ -6302,6 +6334,14 @@
   "note": "10/28 報導：上週末遊行未再出現 10/17 那種動亂劫掠，黃背心號召 10/31 再動員、多個工會發起 11/5 大罷工，轉向週期性動員與大罷工",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611010082.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610180119.aspx",
+  "note": "俄方 10/30 稱烏克蘭暫停數天後恢復攻擊煉油廠；11/1 下諾夫哥羅德州克斯托沃煉油廠遭逾百架無人機攻擊",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610260101.aspx",
