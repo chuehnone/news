@@ -536,6 +536,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/09/30/apples-new-ceo-is-considering-layoffs-to-balance-the-pressure",
+  "note": "中央社 11/01：三星在台調漲 A 系列與 S26 Ultra 售價，歸因 AI 對記憶體的需求",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/22/tesla-2026q3-fianacial-report",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/09/30/spacex-and-tesla-team-up-for-200-gw-of-annual-solar-capacity",
@@ -750,6 +758,14 @@
   "note": "微軟發行約 250 億美元投資等級公司債用於 AI 基建，2017 年以來首次在美發債",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/17/morgan-stanley-memory-and-ai-supply-chain-outlook",
+  "note": "中央社 11/01：TrendForce 指記憶體占 iPhone Pro 256GB BOM 由約 10% 升至 2026Q3 約 34%，三星、Apple 在台售價上調，傳導至手機售價已發生",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610260083.aspx",
@@ -1304,6 +1320,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/07/27/apple-presses-for-20-percent-cut-in-iphone-18-oled-panel-prices-on-chipflation",
+  "note": "中央社 11/01：iPhone 18 Pro 與 Pro Max 在台售價較前代高 5000 元以上，iPhone Air 1TB 調漲 11000 元（指 Pro 系列，非標準版）",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/01/microns-gross-margin-surged-to-86-8-in-the-fourth-quarter-of-2026",
   "idx": 2,
   "news_url": "https://technews.tw/2026/07/27/apple-presses-for-20-percent-cut-in-iphone-18-oled-panel-prices-on-chipflation",
@@ -1390,6 +1414,14 @@
   "note": "伯恩斯坦：Q3 記憶體合約價季增近 20%，漲幅較 Q2 放緩但仍遠高於歷史常態——漲勢延續、幅度趨緩",
   "verdict": "hit",
   "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/07/29/dram-becomes-the-costliest-component-in-flagship-smartphones",
+  "note": "中央社 11/01：iPhone 18 Pro 系列 +5000 元以上、三星 A 系列 +500-3000 元、S26 Ultra 1TB +8000 元",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/08/06/eu-ai-act-enforcement-officially-takes-effect",
@@ -1632,6 +1664,14 @@
   "verified_date": "2026-10-31"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/10/iphone-18-pro-pro-max-price-increase",
+  "note": "中央社 11/01：三星 Galaxy S26 Ultra 16GB/1TB 由 59900 調至 67900 元（+8000），與 iPhone 18 Pro 的 +5000 元以上同量級；Google 未提及",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/psmc-2026-q3-financial-report",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/10/psmc-2026-aug-revenue",
@@ -1766,6 +1806,14 @@
   "note": "通用型 TLC 256GB/512GB SSD 合約價 7-9 月季增 20%、年增約 303%，消費級 NAND 續漲",
   "verdict": "hit",
   "verified_date": "2026-10-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/29/revenue-per-unit-of-memory-wafer-surpasses-tsmcs-3nm-logic-process",
+  "note": "中央社 11/01：手機品牌因記憶體成本調整售價（三星 A 系列、S26 Ultra）；OPPO 稱在售機型暫無漲價計畫。PC 端本文未涉及",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/17/morgan-stanley-memory-and-ai-supply-chain-outlook",
@@ -1936,6 +1984,14 @@
   "verified_date": "2026-10-14"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/05/ai-agent-wave-memory-crisis",
+  "note": "中央社 11/01：三星 A 系列調漲 500-3000 元、S26 Ultra 1TB 由 59900 調至 67900 元，業者歸因於 AI 推升記憶體成本",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/coreweave-shares-tumble-as-bond-yields-near-15-percent-on-concern-about-ai-borrowing-binge",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/05/ai-data-center-debt-hits-roadblocks-as-lenders-demand-tougher-terms",
@@ -2062,6 +2118,14 @@
   "note": "微軟因英國電網供電可能延至 2030 年代初至中期，退出 Nscale 勞頓 AI 資料中心案，屬併網延宕的具體案例",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/07/memory-ow-end-smartphone",
+  "note": "中央社 11/01：三星以調漲售價因應（A 系列 +500-3000 元、S26 Ultra 1TB +8000 元）；業者稱 6000 元以下機種幾乎消失",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/30/cern-mistral-build-physics-ai",
@@ -2310,6 +2374,14 @@
   "note": "輝達 10/21 柏林 GTC 點名台廠：矽品 CPO 光引擎產能 2027 年中增至 15 倍、2028 年底 30 倍；欣興載板、京元電測試同列擴產名單。",
   "verdict": "hit",
   "verified_date": "2026-10-24"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/16/smartphone-memory-huaqiangbei",
+  "note": "中央社 11/01：三星在台調漲 A 系列與 S26 Ultra 售價，iPhone 18 Pro 系列較前代高 5000 元以上",
+  "verdict": "hit",
+  "verified_date": "2026-11-01"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
