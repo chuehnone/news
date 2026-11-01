@@ -2408,6 +2408,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/02/changxin-memory-responds-directly-to-microns-accusations",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/22/micron-officially-skips-the-4f%c2%b2-dram-circuit-cell-architecture",
+  "note": "11/02 長鑫投資者關係記錄證實第六代 4F² DRAM 已通過工程樣品驗證，首款產品年底前送樣，並規劃 4F²+混合鍵合的 DDR5 RDIMM 伺服器模組，直接回答伺服器 DRAM 進展",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610310009.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/24/nvidia-names-4-supply-chain-boost-production-shipments-kyec-unimicron-spil",
@@ -6472,6 +6480,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020005.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610240036.aspx",
+  "note": "11/01 聯邦法官葛利生駁回司法部要求阻止阿拉斯加選舉認證的訴訟，稱訴求實務上不可行",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610240112.aspx",
@@ -6494,5 +6510,13 @@
   "note": "10/31德國法蘭克福等四城爆發生活成本抗議，擴散到德國",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020004.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610250035.aspx",
+  "note": "11/01 決選出口民調：代理總統約托娃約51%領先蓋洛夫43-45%，可望勝出；官方結果11/02出爐",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
  }
 ]
