@@ -896,6 +896,14 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/02/is-metas-muse-the-start-of-the-business-to-agent-era",
+  "idx": 0,
+  "news_url": "https://infosecu.technews.tw/2026/10/11/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in",
+  "note": "亞馬遜從 10 月封鎖 Meta Muse 轉為預期與外部購物代理合作，主要電商的放行政策出現演變",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://infosecu.technews.tw/2026/10/30/a-defense-contractor-gave-their-personal-ai-agent-access-to-a-secure-pentagon-system",
   "idx": 0,
   "news_url": "https://infosecu.technews.tw/2026/10/20/microsoft-says-ai-agents-cannot-be-trusted-and-could-become-insider-security-threats",
@@ -3670,6 +3678,22 @@
   "note": "罷工當天（10/22）美光召開線上記者會，公布含每季分潤的獎酬方案（台中協議重點）；桃園工會仍主張營業利益 15% 分潤",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/02/is-metas-muse-the-start-of-the-business-to-agent-era",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610220158.aspx",
+  "note": "亞馬遜 10 月以偏好自家 Alexa 為由封鎖 Meta Muse，11 月初改口預期將與外部代理合作，立場出現變化",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/02/is-metas-muse-the-start-of-the-business-to-agent-era",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202610220158.aspx",
+  "note": "祖克柏在財報會議稱美加逾 1,000 萬人啟用 Muse、逾四分之一用於購物；但 DoorDash 等企業稱代理訂單僅數百筆，使用規模有具體更新",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
  },
  {
   "evidence_url": "https://infosecu.technews.tw/2026/10/23/php-loopholes-aws",
