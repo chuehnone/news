@@ -6312,6 +6312,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020243.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130133.aspx",
+  "note": "11/2 瑞典連鎖超市 ICA 與 Coop 通報多家門市冷藏冷凍系統夜間被調至攝氏 50 度，至少一家歸咎網攻（Coop 6 家門市受影響），與法國事件手法相同。",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610130137.aspx",
