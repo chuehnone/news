@@ -784,6 +784,14 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/02/samsung-to-fully-exit-8-inch-foundry-business-by-2030",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/19/global-mature-process-wafer-foundry-capacity-utilization-reached-91-in-the-fourth-quarter",
+  "note": "11/2 韓媒 The Elec：三星通知客戶 2030 年底前全面停止 8 吋代工產線，今年起不接 8 吋新產品，為首次明確時間表",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/30/microsoft-expects-to-raise-25-billion-in-us-bond-sale",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/19/the-four-major-tech-giants-have-spent-over-1-12-trillion-on-ai",
@@ -3518,6 +3526,14 @@
   "note": "台灣 MacBook Neo 規格未變，3 月至 10 月兩度調價累計漲約 20%，外媒指記憶體等零組件短缺",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/02/taiwan-and-japan-eye-trade-deal-akin-to-taipei-london-pact",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610070186.aspx",
+  "note": "11/2 日經亞洲引述兩名知情人士：日本正與台灣磋商類英台 ETPA 的全面性經濟協議，草案涵蓋五大領域，最快年底簽署；台日官方未回應，屬媒體報導的談判",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/29/ai-inference-drives-cpu-ddr5-demand-high-capacity-mlcc-shortage-extends-h1-2027",
