@@ -3352,6 +3352,14 @@
   "verified_date": "2026-10-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030006.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609050175.aspx",
+  "note": "2026-11-02 美國貿易代表葛里爾宣布 AGOA 自 2027-01-01 起排除南非與盧安達；同篇指 AGOA 有效期延至 2028 年底、每年檢視資格。延續與調整兩項都有直接證據。",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610220248.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609060014.aspx",
