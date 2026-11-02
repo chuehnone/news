@@ -4504,6 +4504,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/02/sp-global-revises-metas-outlook-to-negative-on-ai-spending",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607300013.aspx",
+  "note": "Meta 第三季自由現金流為負 21.2 億美元（標普下調展望報導引路透數字），既未轉正，也不是正的個位數億美元，而是轉為負值。",
+  "verdict": "miss",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202607310271.aspx",
