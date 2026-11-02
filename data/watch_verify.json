@@ -2072,6 +2072,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020189.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/05/jgsdf-showed-latest-type25-hyper-velocity-gliding-projectile-launcher-for-the-first-time",
+  "note": "11/2 路透：日本研議 2027 年起 5 年國防支出提高到 70-80 兆日圓，年底修訂安保三文件；研議中、尚未定案",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/13/cxmt-breakthrough-sends-samsung-sk-hynix-tumbling",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/05/memory-boom-to-last-3-4-years-chinas-technological-catch-up-a-key-variable",
@@ -2808,6 +2816,14 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cxzd63n7e631o/trad",
+  "note": "11/2 中央社：選前汽油 4.17、柴油 6.30 美元，PCE 3.6%，金融時報調查 56% 選民稱川普執政後財務變差",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
   "idx": 1,
   "news_url": "https://www.bbc.com/zhongwen/articles/cy74j0rz54go/trad",
@@ -3532,6 +3548,14 @@
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610070186.aspx",
   "note": "11/2 日經亞洲引述兩名知情人士：日本正與台灣磋商類英台 ETPA 的全面性經濟協議，草案涵蓋五大領域，最快年底簽署；台日官方未回應，屬媒體報導的談判",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/02/north-america-ai-data-center-orders-up-shihlin-electric-t4-plant-next-year-transformer-capacity-30-increase",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610070200.aspx",
+  "note": "11/2 科技新報：士電 T4 新廠鎖定美國 AI 資料中心，2027 年 9 月投產、整體變壓器產能約增三分之一",
   "verdict": "hit",
   "verified_date": "2026-11-02"
  },
@@ -5848,6 +5872,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610020340.aspx",
+  "note": "11/2 中央社：川普政府豁免環境與航運法規，並鼓勵各州暫停徵收州燃料消費稅",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610110047.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
@@ -6208,6 +6240,22 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020189.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610110179.aspx",
+  "note": "11/2 路透：日本研議下一期 5 年國防支出提高到 70-80 兆日圓，大量採購無人機；研議中、尚未定案",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020189.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610120078.aspx",
+  "note": "11/2 路透引知情人士：日本研議 2027 年 4 月起 5 年國防建設支出提高到 70-80 兆日圓（現行約 43 兆），年底修訂安保三文件；屬研議中、尚未定案",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610290095.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610120163.aspx",
@@ -6304,6 +6352,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140230.aspx",
+  "note": "11/2 中央社引金融時報：56% 選民稱財務變差，Bordoff 指高能源價格是選民最關切的生活負擔，油價已是期中選舉主要議題",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610140269.aspx",
@@ -6326,6 +6382,14 @@
   "note": "馬斯克10/24在X承認自上週起限速，理由是民用星鏈不得用於攻擊性無人機襲擊；烏克蘭政府稱星鏈與星盾已恢復穩定連線",
   "verdict": "hit",
   "verified_date": "2026-10-25"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140319.aspx",
+  "note": "11/2 中央社：美國柴油 6.30 美元（9 月紀錄 6.53），政府鼓勵各州暫停燃料稅；埃克森美孚與雪佛龍 10/30 警告柴油危機可能持續",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610240010.aspx",
@@ -6440,6 +6504,14 @@
   "verified_date": "2026-10-25"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610170053.aspx",
+  "note": "11/2 中央社：選前川普政府豁免環境與航運法規、鼓勵各州暫停燃料稅、豁免俄柴油制裁，3 艘油輪選後卸 14 萬公噸柴油；油價仍居高",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610250003.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610170171.aspx",
@@ -6470,6 +6542,14 @@
   "note": "俄方 10/30 稱烏克蘭暫停數天後恢復攻擊煉油廠；11/1 下諾夫哥羅德州克斯托沃煉油廠遭逾百架無人機攻擊",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610190006.aspx",
+  "note": "11/2 中央社：選前 AAA 汽油 11/1 每加侖 4.17 美元、柴油漲逾 70% 至 6.30 美元，川普任內汽油均價料創新高",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610260101.aspx",
@@ -6510,6 +6590,14 @@
   "note": "穆迪 10/23 決定不調降法國信評，維持 Aa3（中央社 10/28 引世界報分析）；其他信評機構跟進部分未見報導",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611020189.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610210086.aspx",
+  "note": "11/2 路透：日本研議 5 年國防支出提高到 70-80 兆日圓，為現行約 1.6-1.9 倍；研議中、尚未定案",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
