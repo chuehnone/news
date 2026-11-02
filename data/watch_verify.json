@@ -888,6 +888,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/11/02/ai-hackers-trigger-black-october-new-normal-cybersecurity-stocks-decline",
+  "idx": 1,
+  "news_url": "https://infosecu.technews.tw/2026/10/11/poetry-is-the-new-ai-security-threat-as-poellm-malware-infects-3k-servers",
+  "note": "11/02 MoneyDJ 報導列舉 10 月發生 LiteLLM 供應鏈攻擊",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://infosecu.technews.tw/2026/10/30/a-defense-contractor-gave-their-personal-ai-agent-access-to-a-secure-pentagon-system",
   "idx": 0,
   "news_url": "https://infosecu.technews.tw/2026/10/20/microsoft-says-ai-agents-cannot-be-trusted-and-could-become-insider-security-threats",
@@ -2208,6 +2216,14 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/02/openai-adds-stricter-limits-for-teens-asking-about-firearms",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/08/openais-chatgpt-for-teens-poses-unacceptable-risk",
+  "note": "OpenAI 10/30 宣布青少年帳號因反覆討論暴力遭暫停時會通知家長，屬家長通知機制的調整（自傷對話通知家長的批評仍未見回應）",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/14/character-ai-files-for-bankruptcy",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/08/openais-chatgpt-for-teens-poses-unacceptable-risk",
@@ -2342,6 +2358,14 @@
   "note": "美光公開宣布跳過 4F²、延伸 6F² 並轉向 3D DRAM，1-delta 節點 2027 下半年量產；三星、SK 海力士仍在 0a/0b 節點研發 4F² VCT",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/02/openai-adds-stricter-limits-for-teens-asking-about-firearms",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/15/eight-us-states-sue-openai-endangering-children",
+  "note": "OpenAI 10/30 宣布改良年齡預測並新增家長通知，屬年齡驗證與家長控制的產品調整",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/24/us-invests-389-million-boost-power-semiconductors-ai-data-centers-nuclear-fusion-applications",
@@ -6262,6 +6286,14 @@
   "note": "星鏈支援出現可證實的調整：10/23 澤倫斯基向 ABC 證實服務仍受限，WSJ 報導馬斯克下令降速、川普致電要求處理。情報分享部分本則未涉及",
   "verdict": "hit",
   "verified_date": "2026-10-24"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/02/openai-adds-stricter-limits-for-teens-asking-about-firearms",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150007.aspx",
+  "note": "OpenAI 10/30 宣布改良年齡預測系統、符合條件帳號自動轉入青少年版，並新增暫停時通知家長",
+  "verdict": "hit",
+  "verified_date": "2026-11-02"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
