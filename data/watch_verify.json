@@ -744,6 +744,14 @@
   "verified_date": "2026-10-26"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/03/apple-forecasts-margin-drop-in-holiday-quarter-as-rising-memory-costs-bite",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/15/apple-joins-nvidia-in-the-5-trillion-valuation-club",
+  "note": "蘋果 11/3 財報：iPhone 18 Pro 系列上市初期需求強勁且定價較高，第 4 季營收年增 12% 至 1,144.8 億美元，優於預期",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/15/jpmorgan-chase-reveals-fund-transfers-by-major-manufacturers",
@@ -3118,6 +3126,14 @@
   "note": "群創 8/23 法說會揭露：非顯示器營收占比由 2024 上半年 24% 提升至 2026 上半年 42%，消費性顯示器占比由 68% 降至 45%。面板營收占比確實逐季下降，轉型進度有量化證據。（僅群創，友達數字未在本則揭露。）",
   "verdict": "hit",
   "verified_date": "2026-08-23"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/03/apple-forecasts-margin-drop-in-holiday-quarter-as-rising-memory-costs-bite",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202608100154.aspx",
+  "note": "蘋果 11/3 財報報導：推出 iPhone 18 Pro 時，同步將 iPhone 17 售價調漲 100 美元，舊機型不降反升",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/01/galaxy-s26-a-series-raise-prices",
