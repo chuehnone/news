@@ -1712,6 +1712,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/03/memory-mac-ipad-in-short-supply",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/10/iphone-duo-2",
+  "note": "截至 10/29 部分 iPhone Duo 新訂單預估交貨延至 2027 年 1 月下旬，供貨明顯吃緊",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/psmc-2026-q3-financial-report",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/10/psmc-2026-aug-revenue",
@@ -2830,6 +2838,14 @@
   "note": "五中全會（10/29）公報確認中央政治局此前對張又俠等33人作出的開除黨籍處分",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/03/memory-mac-ipad-in-short-supply",
+  "idx": 2,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cx27x8yxzmmo/trad",
+  "note": "11/03 蘋果財報會議證實 Mac、iPad 供應受限至少到年底；M5 Ultra Mac Studio 部分配置交期 7-8 週、512GB RAM 選配 10-12 週",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
