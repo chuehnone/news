@@ -3720,6 +3720,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611030293.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610140320.aspx",
+  "note": "11/3 金管會宣布將預告「穩定幣發行許可及管理辦法」草案，預告期40天，初期限銀行或金融業合資發行",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610270193.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610140320.aspx",
@@ -3728,12 +3736,28 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611030261.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610150287.aspx",
+  "note": "11/3 新台幣收32.76元、盤中32.86元，已貶破32.5元；央行盤中與尾盤調節",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611010080.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610150310.aspx",
   "note": "金管會 11/1 公布：保險業 9 月獲利月減 522 億元，主因美債殖利率大幅彈升，壽險業 FVTPL 債券產生未實現損失",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611030293.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610160252.aspx",
+  "note": "11/3 金管會稱正訂定虛擬資產服務法9部子法，其中穩定幣發行許可及管理辦法草案將預告，最快明年第1季上路",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/29/find-x10-oppo",
@@ -3776,12 +3800,28 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611030261.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610200226.aspx",
+  "note": "11/3 外資匯出潮再現，新台幣收32.76元貶1.68角，匯市成交52.755億美元為史上第4大量",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610210036.aspx",
   "note": "罷工當天（10/22）美光召開線上記者會，公布含每季分潤的獎酬方案（台中協議重點）；桃園工會仍主張營業利益 15% 分潤",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611030293.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610210309.aspx",
+  "note": "11/3 金管會將預告穩定幣發行許可及管理辦法草案（預告40天），虛擬資產服務法子法最快明年第1季上路",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/02/is-metas-muse-the-start-of-the-business-to-agent-era",
@@ -3838,6 +3878,22 @@
   "note": "11/01 中央社報導高雄專區截至9月底累計服務277家、管理資產約1218億元（8月底為1074億元），管理規模確有後續公布；進駐機構數本則未更新",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611030261.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610270124.aspx",
+  "note": "11/3 外資賣超台股1073億元連4賣、累計逾3600億元，新台幣貶1.68角至32.76元創逾1年半新低",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611030293.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610270239.aspx",
+  "note": "11/3 穩定幣發行條文以子法草案形式預告（預告40天），發行人限銀行或金融業持股逾51%的合資公司",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
@@ -5888,6 +5944,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030286.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609300226.aspx",
+  "note": "11/3 卡達斡旋人員赴德黑蘭談協議草案；伊朗高官稱終戰協議仍遙遠、須先滿足荷莫茲條件，川普稱德黑蘭想儘快達成協議",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130027.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609300257.aspx",
@@ -6344,6 +6408,14 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030286.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610120005.aspx",
+  "note": "11/3 卡達斡旋人員赴德黑蘭，就過去8天持續協商的美伊協議草案會談，間接談判已恢復",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611020189.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610120078.aspx",
@@ -6726,6 +6798,14 @@
   "note": "穆迪 10/23 決定不調降法國信評，維持 Aa3（中央社 10/28 引世界報分析）；其他信評機構跟進部分未見報導",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030258.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610200352.aspx",
+  "note": "11/3 德國汽車零件商舍弗勒宣布歐洲裁員3460人、關閉5據點（4個在德國），法新社指主要競爭來自中國製造商",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611020189.aspx",
