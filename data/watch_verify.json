@@ -5288,6 +5288,22 @@
   "verified_date": "2026-11-03"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cw99z83yxg4jo/trad",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609040278.aspx",
+  "note": "BBC 11/3 引 FEC 與 Open Secrets：馬斯克捐款近 5 億美元，主要流向 America PAC 與參議院領導基金；America PAC 在德州參議院選戰投入逾 4500 萬美元，密歇根、俄亥俄各約 1000 萬美元",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cw99z83yxg4jo/trad",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609040278.aspx",
+  "note": "BBC 11/3：加密貨幣業者 Ripple 與 Coinbase 合捐 6300 萬美元給推動加密產業利益的超級 PAC，屬科技相關業者的定向捐助",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609040323.aspx",
