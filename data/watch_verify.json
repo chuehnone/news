@@ -5624,6 +5624,14 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040011.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609190255.aspx",
+  "note": "議會以 16 贊成、0 反對批准協議，自治政府立場未變；10 月僅有方向黨口頭質疑補償，未見反對行動。",
+  "verdict": "miss",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610110157.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609200002.aspx",
@@ -6464,6 +6472,14 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130020.aspx",
+  "note": "11/3 格陵蘭議會批准三方安全協議：16 票贊成、7 票棄權、0 票反對。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cqdjv2vw9n4po/trad",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610130026.aspx",
@@ -6790,6 +6806,14 @@
   "note": "10/30 中央社：美伊戰爭對全球能源成本的衝擊已削弱選民對共和黨候選人的支持、拉低川普支持率（記者分析）；10/27 亦有「川普任內油價比拜登時期還貴」報導。",
   "verdict": "hit",
   "verified_date": "2026-10-31"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040009.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610200120.aspx",
+  "note": "路透報導：10/27 大選後尼坦雅胡失去執政多數，組閣談判預期曠日廢時。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610280331.aspx",
