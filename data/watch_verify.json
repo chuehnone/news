@@ -5272,6 +5272,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030020.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609030299.aspx",
+  "note": "11/2 布拉格市法院一審判楊藝明（即楊一鳴，光明日報駐布拉格記者）無罪當庭釋放：法官認定其為中國情報人員已獲證實，但不足證明具直接具體危害意圖；檢方已上訴，判決未定讞。",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609040323.aspx",
