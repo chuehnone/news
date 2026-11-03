@@ -2448,6 +2448,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/11/03/ai-apps-deepfake-sexual-exploitation-features",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/20/apple-strengthens-app-store-rules-against-ai-generated-deepfakes",
+  "note": "WIRED 調查後 Apple 移除 19 款深偽 App、Meta 封鎖數百個 App 與廣告資產，Google Play 截至 9 月仍有 27 款",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/21/amazons-purchase-of-nvidia-ai-rack-systems-fills-its-warehouse",
@@ -5936,6 +5944,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/03/musk-stance-shift-terafab-tsmc-renegotiates-cooperation",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610030173.aspx",
+  "note": "至 11/03 仍無正式協議；台積電 10/15 法說會堅持自營，未出現代工以外的新型態合作，重談僅為外媒傳聞",
+  "verdict": "miss",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610120003.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610040061.aspx",
@@ -6134,6 +6150,14 @@
   "note": "報導指青年運動最近幾週拿下紅海沿岸大片區域，政府軍反擊未扭轉戰局",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/10/21/musk-once-wanted-to-acquire-tsmcs-wafer-fab-in-order-to-acquire-terafab",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070235.aspx",
+  "note": "10/15 法說會魏哲家證實與 Terafab 接觸，並表態晶圓廠必須由台積電營運（10/21、11/03 報導引述）",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610240117.aspx",
