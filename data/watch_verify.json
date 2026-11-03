@@ -192,6 +192,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/03/winbond-electronics-gross-margin-surged-to-70-6-in-the-third-quarter-of-2026",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/06/winbond-electronics-warns-memory-shortages-will-worsen-next-year",
+  "note": "2026Q3 財報：營收季增 37.6%、客製化記憶體美金混合 ASP 單季漲近 60%、產能利用率 100%，均價延續漲勢，未見鬆動",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/16/smaller-phone-and-laptop-makers-memory",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/08/06/winbond-electronics-warns-memory-shortages-will-worsen-next-year",
