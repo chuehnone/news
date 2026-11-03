@@ -6392,6 +6392,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030028.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140016.aspx",
+  "note": "11/2 比利時、愛沙尼亞、芬蘭、愛爾蘭、盧森堡、荷蘭、瑞典多家超市冰箱與冷凍櫃遭遠端調高溫度，承接 10 月法國首波攻擊；報導未指明設備廠牌",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610140220.aspx",
@@ -6590,6 +6598,14 @@
   "note": "俄方 10/30 稱烏克蘭暫停數天後恢復攻擊煉油廠；11/1 下諾夫哥羅德州克斯托沃煉油廠遭逾百架無人機攻擊",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030043.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610180165.aspx",
+  "note": "11/2 美國官員稱美軍近幾週對伊朗進行一連串有限秘密攻擊（最新為葛希姆島）；伊朗外交部稱終戰協議決定權在美方，最高領袖表示美方重啟戰火將報復，雙方威脅升溫",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
