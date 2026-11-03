@@ -6568,6 +6568,22 @@
   "verified_date": "2026-10-25"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030194.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160011.aspx",
+  "note": "10/15 後羅保沿岸持續遇襲：10 月 HS Dignity 在保加利亞外海遇襲 11 死、Contship Jet 在保加利亞外海 25 公里遭擊沉，Ambrey 稱攻擊遍及兩個北約國經濟海域",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030194.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160011.aspx",
+  "note": "羅馬尼亞沿岸部署 F-16 巡邏並於 10 月下旬在領海上空擊落 2 架俄無人機；保加利亞正式請求北約部署戰機與反無人機系統",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/22/eu-china-hybrid-quota-talks-supply-chain-transformation-opportunity",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
@@ -6814,5 +6830,13 @@
   "note": "11/01 決選出口民調：代理總統約托娃約51%領先蓋洛夫43-45%，可望勝出；官方結果11/02出爐",
   "verdict": "hit",
   "verified_date": "2026-11-02"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611030194.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610250152.aspx",
+  "note": "頻率部分：近幾週十多艘商船遇襲、至少 30 船員罹難失蹤，聯合戰爭委員會將整個黑海列高風險；航商改道部分本則未報導",
+  "verdict": "hit",
+  "verified_date": "2026-11-03"
  }
 ]
