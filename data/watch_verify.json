@@ -1568,6 +1568,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/04/nvidia-orders-data-centre-clients-to-reduce-china-exposure",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/08/19/research-memory-shortage-q2-global-tablet-shipments-12-3-yoy-drop",
+  "note": "2026-11 蘋果財報會議上執行長特納斯公開將硬體定價壓力歸因於記憶體價格",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/29/anthropics-ipo-prospectus-shows-sweeping-ai-vision-surging-costs",
   "idx": 0,
   "news_url": "https://technews.tw/2026/08/21/anthropic-challenges-historys-largest-ipo-fundraising-surpass-spacex",
@@ -1926,6 +1934,14 @@
   "note": "承購方出現進展：中油承諾每年 600 萬公噸、約占未來 20 年產量 30%，並投入最高 44 億美元股本",
   "verdict": "hit",
   "verified_date": "2026-10-15"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/04/nvidia-orders-data-centre-clients-to-reduce-china-exposure",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/01/galaxy-s26-a-series-raise-prices",
+  "note": "2026-11 蘋果財報：執行長特納斯稱記憶體價格前所未見並造成硬體定價壓力，報導指蘋果硬體全線變貴（Apple 部分命中；小米、華碩未見）",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/08/samsung-is-reportedly-making-30-fewer-phones-because-selling-them-isnt-paying-off-anymore",
