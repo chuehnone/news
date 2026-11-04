@@ -2888,6 +2888,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cxyvrz6qrm2lo/trad",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cqkgke5j6yego/trad",
+  "note": "選民調查：79%稱通膨造成困難，逾六成歸咎川普，物價是敗選主因之一。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/23/human-receives-ai-designed-virus-for-the-first-time",
   "idx": 3,
   "news_url": "https://www.bbc.com/zhongwen/articles/crrvndrv1pyo/trad",
@@ -5096,6 +5104,14 @@
   "verified_date": "2026-09-29"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/ckreyrxvg3xyo/trad",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608160203.aspx",
+  "note": "民主黨贏得參眾兩院控制權。席次數字待查，控制權已確定。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610230034.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608170127.aspx",
@@ -5454,6 +5470,14 @@
   "note": "10/31亞特蘭大G20外長會議仍未發聯合公報，改以主席聲明總結",
   "verdict": "miss",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/ckreyrxvg3xyo/trad",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609030129.aspx",
+  "note": "BBC 報導選前一天美國再次空襲伊朗一座島嶼，選前沒有明顯降溫。",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609120048.aspx",
