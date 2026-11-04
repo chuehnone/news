@@ -1696,6 +1696,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/04/samsung-and-lg-navigate-china-lcd-dilemma",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/07/panel-prices-in-2026-september-h1",
+  "note": "11/4 報導：京東方、TCL 華星、惠科（合計約全球 70% 供應）已對 65、75、85 吋電視面板提出漲價要求，LG 警告 2027Q1 起漲價壓力升高。第四季電視面板價格沒有轉為下跌。",
+  "verdict": "miss",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202609190097.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/09/09/intels-stock-is-rising-as-the-company-looks-primed-to-boost-prices-even-more",
@@ -5614,6 +5622,14 @@
   "note": "10 年期公債殖利率突破 5% 創 19 年新高、30 年期房貸利率升至 7.02%，指標問的正是兩者的後續走勢，已有明確數據。",
   "verdict": "hit",
   "verified_date": "2026-09-17"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040092.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609120043.aspx",
+  "note": "11/4 南韓國防部稱北韓向東部外海發射不明飛行物，外界認為是過去一個月內第 4 次飛彈試射，試射頻率明顯升高。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610050301.aspx",
