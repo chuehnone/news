@@ -848,6 +848,22 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/04/tech-giants-off-balance-sheet-ai-commitments-surge",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/29/oracle-investor-day",
+  "note": "11/4 報導五巨頭 AI 表外承諾 3.2 兆美元，其中約 40% 為尚未起租的租賃，融資方式明顯轉向表外租賃與長約。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/04/tech-giants-off-balance-sheet-ai-commitments-surge",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/29/oracle-investor-day",
+  "note": "11/4 報導 Alphabet 與亞馬遜 10 月下旬財報表態擴大投資後股價大跌、CoreWeave 公司債 10 月大跌，資本支出回報疑慮的報導增加。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -2542,6 +2558,14 @@
   "note": "10/30 英特爾財報會議：陳立武稱伺服器 CPU 需求強，但受限於 EMIB 封裝所需高階有機基材短缺與以色列廠事故，瓶頸落在封裝基材環節。",
   "verdict": "hit",
   "verified_date": "2026-10-31"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040197.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
+  "note": "11/4 黃循財回應印尼削減天然氣出口一說，稱供應受商業合約保障；兩國外長同意成立聯合工作小組。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
@@ -6792,6 +6816,14 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040197.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610180063.aspx",
+  "note": "11/4 新加坡與印尼外長 10 月底同意成立聯合工作小組，調查涉嫌與火災有關的企業並追查金流；新加坡同日緊急三讀修法，可限制涉案企業金融往來。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611010082.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610180119.aspx",
@@ -6982,5 +7014,13 @@
   "note": "頻率部分：近幾週十多艘商船遇襲、至少 30 船員罹難失蹤，聯合戰爭委員會將整個黑海列高風險；航商改道部分本則未報導",
   "verdict": "hit",
   "verified_date": "2026-11-03"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040197.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610260005.aspx",
+  "note": "11/4 新加坡緊急三讀修正跨境煙霾污染法案（法律面），兩國外長已同意成立聯合工作小組追查涉案企業（外交面）。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
  }
 ]
