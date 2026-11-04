@@ -1680,6 +1680,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/intel-releases-version-0-9-of-the-intel-14a-process-pdk",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/09/02/intels-david-zinsner-says-14a-improving-fastest-since-2012-node",
+  "note": "PDK 0.9 發布時英特爾只稱初期良率在預期範圍內，未公開具體良率數據",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/12/soaring-memory-prices-drove-a-119-surge-in-global-semiconductor-revenue",
   "idx": 1,
   "news_url": "https://technews.tw/2026/09/02/nanya-technology-august-revenue",
@@ -5400,6 +5408,14 @@
   "verified_date": "2026-10-05"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/exorbitant-political-donations-may-fail-to-dispel-voters-concerns-about-data-centers-and-could-hinder-the-development-of-ai",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608300187.aspx",
+  "note": "CNBC 民調（科技新報轉述）：56% 選民稱資料中心發展是影響投票的關鍵或重大因素，民主黨同時奪下參眾兩院；此為選民自述，非因果估計",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609090311.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202608310012.aspx",
@@ -5414,6 +5430,14 @@
   "note": "確診由8/31約6000例升至10/27累計10060例；致死率由48%升至約48.6%",
   "verdict": "hit",
   "verified_date": "2026-10-27"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/exorbitant-political-donations-may-fail-to-dispel-voters-concerns-about-data-centers-and-could-hinder-the-development-of-ai",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609010006.aspx",
+  "note": "CNBC 民調（科技新報轉述）：56% 選民稱資料中心發展是影響投票的關鍵或重大因素；此為選民自述，非因果估計",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/11/ecb-lifts-borrowing-costs-amid-energy-shock-opens-door-for-more-hikes",
@@ -6958,6 +6982,14 @@
   "note": "11/2 美國官員稱美軍近幾週對伊朗進行一連串有限秘密攻擊（最新為葛希姆島）；伊朗外交部稱終戰協議決定權在美方，最高領袖表示美方重啟戰火將報復，雙方威脅升溫",
   "verdict": "hit",
   "verified_date": "2026-11-03"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/05/samsung-electronics-accepts-tsmc-nvhbm-base-die-production-strategic-retreat-dual-track-capacity-concerns",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610180176.aspx",
+  "note": "TrendForce 分析：三星接受 NVHBM 基礎晶粒由台積電代工，標準型 HBM 與 AMD 等客製案仍走三星一站式模式",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
