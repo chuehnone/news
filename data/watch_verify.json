@@ -2568,6 +2568,14 @@
   "verified_date": "2026-11-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/27/oil-prices-higher-than-under-biden-trump-faces-midterm-election-headwinds",
+  "note": "11/4 中央社引路透：民主黨掌控參眾兩院，選民不滿川普經濟治理，也反對 2 月對伊朗開戰推升油價；物價與油價議題直接反映在選舉結果。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -6264,6 +6272,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610060119.aspx",
+  "note": "11/4 中央社引路透：民主黨同時取得參議院與眾議院過半，翻轉 6 席原屬共和黨的參院席次，雖失守密西根與明尼蘇達仍確保參院多數。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610150023.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610060119.aspx",
@@ -6478,6 +6494,14 @@
   "note": "美方施壓有具體後續：WSJ 稱烏軍因美方施壓非正式暫停攻擊俄煉油廠；11/1 報導川普數週來持續施壓並將柴油漲價歸咎於此",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610110156.aspx",
+  "note": "11/4 中央社引路透：民主黨同時取得參議院與眾議院過半，翻轉 6 席原屬共和黨的參院席次，雖失守密西根與明尼蘇達仍確保參院多數。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200007.aspx",
@@ -6888,6 +6912,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610200044.aspx",
+  "note": "11/4 中央社引路透：民主黨同時取得參議院與眾議院過半，翻轉 6 席原屬共和黨的參院席次，雖失守密西根與明尼蘇達仍確保參院多數。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610310010.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610200044.aspx",
@@ -7032,10 +7064,26 @@
   "verified_date": "2026-11-03"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610250167.aspx",
+  "note": "11/4 中央社引路透：民主黨同時取得參議院與眾議院過半，翻轉 6 席原屬共和黨的參院席次，雖失守密西根與明尼蘇達仍確保參院多數。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611040197.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610260005.aspx",
   "note": "11/4 新加坡緊急三讀修正跨境煙霾污染法案（法律面），兩國外長已同意成立聯合工作小組追查涉案企業（外交面）。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610280033.aspx",
+  "note": "11/4 中央社引路透：民主黨同時取得參議院與眾議院過半，翻轉 6 席原屬共和黨的參院席次，雖失守密西根與明尼蘇達仍確保參院多數。",
   "verdict": "hit",
   "verified_date": "2026-11-04"
  }
