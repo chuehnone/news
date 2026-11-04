@@ -504,6 +504,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040354.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/09/11/ecb-lifts-borrowing-costs-amid-energy-shock-opens-door-for-more-hikes",
+  "note": "9月升息後的下次會議（10月底）ECB維持基準利率不變，只保留12月升息可能",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609170006.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/09/11/kevin-warsh-challenged-market-us-10-year-treasury-yield-nears-5-ai-bulls-nervous",
@@ -5400,6 +5408,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020242.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609010337.aspx",
+  "note": "歐元區9月通膨升至3.8%，高於8月的3.3%",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280009.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609020004.aspx",
@@ -5592,6 +5608,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020242.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609070298.aspx",
+  "note": "歐元區9月通膨3.8%，延續3%以上",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610240046.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609080004.aspx",
@@ -5718,6 +5742,14 @@
   "note": "議會以 16 贊成、0 反對批准協議，自治政府立場未變；10 月僅有方向黨口頭質疑補償，未見反對行動。",
   "verdict": "miss",
   "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040354.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609190260.aspx",
+  "note": "9月通膨3.8%、10月4.0%，能源通膨10月達20.8%，回升主要來自能源項目",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610110157.aspx",
@@ -6110,6 +6142,30 @@
   "note": "利劍27（10/19-29）期間，日本時報報導美方正在與那國島部署 NMESIS；撤離安排尚未報導，部署部分已證實",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040354.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610020242.aspx",
+  "note": "ECB 10月底會議維持基準利率不變，但未排除12月再度升息；分析師預期12月升息",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040354.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610020242.aspx",
+  "note": "10月核心通膨維持2.5%未上升，整體升至4.0%幾乎全來自能源（20.8%），能源尚未外溢到核心",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040354.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610020242.aspx",
+  "note": "中東戰爭推升能源成本，10月能源通膨從18.9%升至20.8%，帶動整體通膨升至4.0%",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
