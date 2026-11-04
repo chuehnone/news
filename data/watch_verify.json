@@ -528,6 +528,14 @@
   "verified_date": "2026-10-02"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/04/oracle-rallies-6-percent-as-20-billion-stock-and-bond-sale-clears-funding-overhang",
+  "idx": 3,
+  "news_url": "https://finance.technews.tw/2026/09/11/oracle-announces-q1-results-driven-by-triple-digit-growth-in-cloud-infrastructure-revenues",
+  "note": "甲骨文完成 200 億美元籌資定價：股債各 100 億美元，新債票面利率 7%–8.65%，並承諾 2030 會計年度前額外籌資限於此範圍，直接回答發債規模與融資成本。",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/09/27/fed-hikes-rates-3-key-indicators-to-watch",
