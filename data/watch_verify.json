@@ -3640,6 +3640,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611030261.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610050274.aspx",
+  "note": "11/3 外資連4賣，新台幣貶1.68角收32.76元創逾1年半新低，央行盤中與尾盤進場調節",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/14/u-s-defense-startups-flock-to-taiwan-to-build-china-free-drones",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610060035.aspx",
@@ -3870,6 +3878,14 @@
   "note": "罷工當天（10/22）美光召開線上記者會，公布含每季分潤的獎酬方案（台中協議重點）；桃園工會仍主張營業利益 15% 分潤",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611040186.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610210261.aspx",
+  "note": "11/4 台灣大宣布應賣已達精誠已發行股份40.89%，於11/5截止前跨越39%門檻，公平會亦不禁止結合",
+  "verdict": "hit",
+  "verified_date": "2026-11-04"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611030293.aspx",
