@@ -648,6 +648,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/umc-has-maintained-its-position-above-25-billion-yuan-for-the-third-consecutive-month",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/06/umcs-september-revenue-hit-a-record-high",
+  "note": "10 月合併營收 252 億元，年增 18.33%，低於 20%。指標要求 10 月與第四季都維持年增 20% 以上，10 月已未達。",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610160035.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/07/global-hedge-fund-founder-warns-ai-bubble-bursting",
