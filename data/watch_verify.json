@@ -4040,6 +4040,14 @@
   "verified_date": "2026-11-03"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050221.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202610200293.aspx",
+  "note": "CPI 累計漲 11.91% 達 10% 門檻，遺產稅免稅額估由 1333 萬元調至 1492 萬元，財政部預計年底前公告。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610210036.aspx",
@@ -4134,6 +4142,22 @@
   "note": "11/3 穩定幣發行條文以子法草案形式預告（預告40天），發行人限銀行或金融業持股逾51%的合資公司",
   "verdict": "hit",
   "verified_date": "2026-11-03"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050267.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610270266.aspx",
+  "note": "金管會 11/5 公開信用交易整戶擔保維持率 167.42%、距 130% 追繳門檻仍有距離，並重申市場失靈時才介入，是對融資風險的直接監理表態。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050258.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610290316.aspx",
+  "note": "新台幣 11 月前 4 個交易日貶 3.98 角，盤中觸及 32.985 元；央行喊話出口商結售，並同意放寬每日賣匯限額。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
@@ -7240,6 +7264,22 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050214.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610210105.aspx",
+  "note": "法新社報導三方談判代表準備於 11/10-11 在阿布達比會面，為今年 2 月以來首次；尚未舉行。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050214.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610210164.aspx",
+  "note": "法新社報導三方談判代表準備於 11/10-11 在阿布達比會面，已有具體日期與地點；尚未舉行。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610210282.aspx",
@@ -7382,6 +7422,14 @@
   "note": "11/4 中央社引路透：民主黨同時取得參議院與眾議院過半，翻轉 6 席原屬共和黨的參院席次，雖失守密西根與明尼蘇達仍確保參院多數。",
   "verdict": "hit",
   "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050231.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610290126.aspx",
+  "note": "南韓軍方證實 11/4 再度試射，為 1 個月內第 4 度；北韓稱試射新型防空飛彈並舉行巡弋飛彈演習，本則未見升級到中長程或核試。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611050111.aspx",
