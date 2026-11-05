@@ -2544,6 +2544,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611060006.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/13/china-ai-chip-shortage-and-nvidia-production-expansion",
+  "note": "CNBC 引述知情人士：月之暗面洽租歐洲資料中心的 Blackwell 算力，白宮 7 月也指其經泰國設施遠端使用。屬匿名報導，成交未確認。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/22/vantage-heron-1gw-sst-capacity-deal",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/13/nvidia-amd-ai-server-rack-specs-emerge-800vdc-power-liquid-cooling-opportunities",
@@ -2558,6 +2566,14 @@
   "note": "Vertiv 與英飛凌三年協議涵蓋 800 VDC 的矽與碳化矽元件；光寶科 8 月宣布 800 VDC 電源採用 Wolfspeed SiC MOSFET",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611060006.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/14/chinese-ai-companies-buy-1-million-nvidia-gaming-and-workstation-gpus-in-a-single-year",
+  "note": "CNBC 引述知情人士：月之暗面洽租歐洲新興雲端業者的 Blackwell 算力，叢集至少 8000 GPU。屬匿名報導，成交未確認。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
@@ -7550,6 +7566,14 @@
   "note": "南韓軍方證實 11/4 再度試射，為 1 個月內第 4 度；北韓稱試射新型防空飛彈並舉行巡弋飛彈演習，本則未見升級到中長程或核試。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050348.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610300100.aspx",
+  "note": "法新社：比利時、愛沙尼亞、芬蘭、愛爾蘭、義大利、盧森堡、荷蘭、葡萄牙、瑞典超市本週通報冷藏系統遭網攻。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611050111.aspx",
