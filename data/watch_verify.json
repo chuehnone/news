@@ -576,6 +576,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/spacex-ai-chip-financing",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/09/30/spacex-and-tesla-team-up-for-200-gw-of-annual-solar-capacity",
+  "note": "後續案例：SpaceX 約 400 億美元 AI 晶片融資，採表外架構；交易仍在洽談",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/22/tesla-2026q3-fianacial-report",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/09/30/spacex-and-tesla-team-up-for-200-gw-of-annual-solar-capacity",
@@ -646,6 +654,14 @@
   "note": "10/15 美債殖利率逾 5%、升息預期推升 AI 基建融資成本，前 20 大 AI/半導體股一週蒸發逾 1 兆美元",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/spacex-ai-chip-financing",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/07/spacex-looks-to-raise-40bn-to-buy-nvidia-chips-in-financing-led-by-apollo",
+  "note": "11/05 報導揭露融資結構：含 83 億美元優先擔保貸款與多個債券分層，阿波羅為主要債券投資人，PIMCO 參與",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/21/elon-musk-says-tesla-spacex-merger-being-considered",
@@ -886,6 +902,14 @@
   "note": "11/4 報導 Alphabet 與亞馬遜 10 月下旬財報表態擴大投資後股價大跌、CoreWeave 公司債 10 月大跌，資本支出回報疑慮的報導增加。",
   "verdict": "hit",
   "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/05/satellite-images-show-what-may-be-behind-microsoft-ai-buildout-delays",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/30/microsoft-earnings-report-data-center-lifespan-extended",
+  "note": "財報後新增證據：Aterio 影像顯示 Horizon 4 恐趕不上年底交屋，微軟取消 Nscale 合作案，Currence 估今年容量 30-50% 可能延後",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": null,
@@ -2152,6 +2176,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/05/satellite-images-show-what-may-be-behind-microsoft-ai-buildout-delays",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/05/ai-data-center-debt-hits-roadblocks-as-lenders-demand-tougher-terms",
+  "note": "11/05 報導：德州 IREN 專案缺發電機與冷卻設備，紐澤西 DataOne 專案因許可受阻，約 140 MW 可能延至 2027 年",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/coreweave-shares-tumble-as-bond-yields-near-15-percent-on-concern-about-ai-borrowing-binge",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/05/ai-data-center-debt-hits-roadblocks-as-lenders-demand-tougher-terms",
@@ -2344,6 +2376,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/spacex-ai-chip-financing",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/08/broadcom-reportedly-raising-30-billion-to-fund-openai-custom-ai-chip-procurement",
+  "note": "SpaceX 約 400 億美元 GPU 融資由阿波羅擔任主要債券投資人，PIMCO 參與；交易仍在洽談",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/16/getty-images-plans-bankruptcy-restructuring",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/08/getty-images-faces-delisting-amid-ai-image-impact",
@@ -2446,6 +2486,14 @@
   "note": "10/22 Vantage 與 Heron 簽署逾 1 GW SST 產能協議，800 VDC 架構導入其資料中心園區，屬資料中心業者採用 800 VDC 的公開案例；合約金額與交付時程未揭露。",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/05/major-power-suppliers-vie-800v-critical-materials-vertiv-infineon-three-year-deal",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/13/sic-substrates-12-inch-taiwan-firms-target-ai-power-advanced-packaging-communication-opportunities",
+  "note": "Vertiv 與英飛凌三年協議涵蓋 800 VDC 的矽與碳化矽元件；光寶科 8 月宣布 800 VDC 電源採用 Wolfspeed SiC MOSFET",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
