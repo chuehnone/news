@@ -2800,6 +2800,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050034.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/c6pwg52xjp8jo/trad",
+  "note": "截至 11 月 4 日報導，140 億美元對台軍售仍待批准；韋德寧預期川普今年底前不太可能推動。",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.bbc.com/zhongwen/articles/cddvzm721vpo/trad",
@@ -4086,6 +4094,22 @@
   "note": "10/21 石油工會：中油利息支出估 125 億元，追加預算編撥補 1014 億、增資 2338 億",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050034.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aipl/202608210016.aspx",
+  "note": "截至 11 月 4 日報導，140 億美元對台軍售仍待批准；韋德寧預期川普今年底前不太可能推動。",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050034.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aipl/202608220012.aspx",
+  "note": "截至 11 月 4 日報導，140 億美元對台軍售仍待批准；韋德寧預期川普今年底前不太可能推動。",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c6pwg52xjp8jo/trad",
@@ -6624,6 +6648,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050043.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610080378.aspx",
+  "note": "泰國國安會秘書長表示，5 名遭中國通緝的維吾爾人若遇引渡請求，由外交部確認逮捕令後交司法處理。這是遣返案件的後續動作，但對象不是白兆東本人。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611010079.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610090040.aspx",
@@ -7222,6 +7254,22 @@
   "note": "11/01 聯邦法官葛利生駁回司法部要求阻止阿拉斯加選舉認證的訴訟，稱訴求實務上不可行",
   "verdict": "hit",
   "verified_date": "2026-11-02"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050023.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610240046.aspx",
+  "note": "卡尼稱白宮已在語言要求與貿易自主權上讓步，協議談判有進展；這是加方單方說法，且未涉及關稅清單調整。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050039.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610240095.aspx",
+  "note": "共和黨眾議員馬西告訴 CNN，計畫在國會下週復會後推動彈劾表決；尚未表決，但推動進度有具體動作。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300092.aspx",
