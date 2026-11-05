@@ -888,10 +888,34 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050289.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/24/price-free-nhi-premiums-seniors-65-low-income-subsidies-dentures-lenses-gone-senior-benefits-healthcare-gap-vulnerable",
+  "note": "三大製藥公協會11/5聯合聲明，要求先評估財源與長期財務影響，討論已延續。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/05/qualcomm-announces-fourth-quarter-and-fiscal-2026-results",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/28/qualcomm-cut-jobs-worldwide",
   "note": "FY26Q4 手機晶片營收年減 26% 至 51.4 億美元，總營收年減 7%，手機占比降至約 49%",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/05/trendforce-2027-annual-forecast-foundry-and-price",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/28/umcs-third-quarter-revenue-hit-a-record-high-of-nt74-24-billion",
+  "note": "TrendForce預估力積電2027年12吋利用率接近滿載，8吋部分業者接近滿載；屬研調預估，中芯未提及。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/05/trendforce-2027-annual-forecast-foundry-and-price",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/28/umcs-third-quarter-revenue-hit-a-record-high-of-nt74-24-billion",
+  "note": "TrendForce稱8吋漲價較易被接受，12吋成熟製程漲價成效仍有變數；已有調漲報導。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
  },
@@ -3840,6 +3864,22 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050301.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610070217.aspx",
+  "note": "10月CPI年增2.33%，續高於2%；核心CPI年增2.23%。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050301.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610070301.aspx",
+  "note": "10月進口物價（新台幣計價）年增33.32%，民國66年以來最大；CPI由2.74%收斂至2.33%，主計總處稱沒有輸入性通膨。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610080010.aspx",
@@ -3990,6 +4030,14 @@
   "note": "11/3 金管會稱正訂定虛擬資產服務法9部子法，其中穩定幣發行許可及管理辦法草案將預告，最快明年第1季上路",
   "verdict": "hit",
   "verified_date": "2026-11-03"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050297.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610160271.aspx",
+  "note": "10月新台幣單月重貶6.26角，央行進場調節，外匯存底月減43.08億美元。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/29/find-x10-oppo",
@@ -4148,6 +4196,14 @@
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610270266.aspx",
   "note": "金管會 11/5 公開信用交易整戶擔保維持率 167.42%、距 130% 追繳門檻仍有距離，並重申市場失靈時才介入，是對融資風險的直接監理表態。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050301.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610280125.aspx",
+  "note": "10月CPI年增2.33%，已連續6個月超過2%。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
  },
