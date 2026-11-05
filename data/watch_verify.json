@@ -992,6 +992,22 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050098.aspx",
+  "idx": 0,
+  "news_url": "https://infosecu.technews.tw/2026/10/06/south-korea-financial-industry-cyberattacks-lee-jae-myung-hackers-ai",
+  "note": "韓聯社統計：9/30 至 11/3 共 37 家通報 40 起，外洩約 47.3 萬筆，較 10/14 的 16 家、10 萬筆增加。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050098.aspx",
+  "idx": 1,
+  "news_url": "https://infosecu.technews.tw/2026/10/06/south-korea-financial-industry-cyberattacks-lee-jae-myung-hackers-ai",
+  "note": "金融當局召開資安體系革新座談會，將做漏洞檢查與制度改善，並表示重大疏失追究執行長在內的經營團隊責任。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://infosecu.technews.tw/2026/11/02/ai-hackers-trigger-black-october-new-normal-cybersecurity-stocks-decline",
   "idx": 1,
   "news_url": "https://infosecu.technews.tw/2026/10/11/poetry-is-the-new-ai-security-threat-as-poellm-malware-infects-3k-servers",
@@ -1014,6 +1030,14 @@
   "note": "WIRED 報導承包商的 Claude Code 代理存取五角大廈安全系統兩個月，可能外傳憑證與網路架構圖",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050098.aspx",
+  "idx": 0,
+  "news_url": "https://infosecu.technews.tw/2026/10/28/south-korean-financial-industry-another-cybersecurity-incident-3-firms-data-breaches",
+  "note": "截至 11/3 共 37 家公司通報 40 起事件，通報家數持續增加。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": null,
@@ -3880,6 +3904,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050065.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610130037.aspx",
+  "note": "11/3 新台幣重貶 1.68 角，11/5 盤中貶至 32.965 元，中央社稱熱錢持續出逃；11/4 外資賣超 1498 億元。賣超與貶值從 10/13 延續到 11/5。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/21/nvidia-invests-heavily-in-its-supply-chain-strategy",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610130188.aspx",
@@ -3918,6 +3950,14 @@
   "note": "10/27 國泰世華銀宣布布局企業穩定幣收款結算，規劃與VASP合作；屬規劃宣布，尚未上線、未公布時程",
   "verdict": "hit",
   "verified_date": "2026-10-27"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050065.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610150182.aspx",
+  "note": "11/5 中央社稱熱錢持續出逃，新台幣盤中貶至 32.965 元，外資匯出與貶值同向延續。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611030261.aspx",
@@ -7334,5 +7374,13 @@
   "note": "11/4 中央社引路透：民主黨同時取得參議院與眾議院過半，翻轉 6 席原屬共和黨的參院席次，雖失守密西根與明尼蘇達仍確保參院多數。",
   "verdict": "hit",
   "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050111.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610300142.aspx",
+  "note": "韓國將派海上巡邏機與爆裂物處理小組，把清海部隊護航範圍擴及荷莫茲海峽附近海域，行動限於阿曼以南公海。這是盟國行動的調整。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  }
 ]
