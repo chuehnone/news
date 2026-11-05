@@ -2536,6 +2536,14 @@
   "verified_date": "2026-10-21"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050329.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/13/china-ai-chip-shortage-and-nvidia-production-expansion",
+  "note": "路透引述知情人士：北京暫緩大量進口許可，只放行部分，幾家大型網路企業各取得約 1 萬顆，約 60 萬顆待運。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/22/vantage-heron-1gw-sst-capacity-deal",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/13/nvidia-amd-ai-server-rack-specs-emerge-800vdc-power-liquid-cooling-opportunities",
@@ -2726,6 +2734,14 @@
   "note": "11/4 中央社引路透：民主黨掌控參眾兩院，選民不滿川普經濟治理，也反對 2 月對伊朗開戰推升油價；物價與油價議題直接反映在選舉結果。",
   "verdict": "hit",
   "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050331.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/28/global-inflation-may-persist-through-2027",
+  "note": "英國央行 11/5 升息並預估通膨 2027 年中達 5% 左右，直接回應通膨預期上修。Fed、歐洲央行本則未驗證。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
@@ -4000,10 +4016,26 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050332.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610150068.aspx",
+  "note": "上市融資餘額連 5 日下降至 5764.09 億元，較 10/6 減 9.6%，報導指引發斷頭壓力。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611050065.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610150182.aspx",
   "note": "11/5 中央社稱熱錢持續出逃，新台幣盤中貶至 32.965 元，外資匯出與貶值同向延續。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050332.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202610150182.aspx",
+  "note": "上市融資餘額連 5 日下降至 5764.09 億元，較 10/6 減 9.6%，報導指引發斷頭壓力。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
  },
@@ -4022,6 +4054,14 @@
   "note": "金管會 11/1 公布：保險業 9 月獲利月減 522 億元，主因美債殖利率大幅彈升，壽險業 FVTPL 債券產生未實現損失",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050332.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610150359.aspx",
+  "note": "上市融資餘額較 10/6 減 612.48 億元、減幅 9.6%，小於同期指數跌幅 16.8%，去化速度慢於指數。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611030293.aspx",
@@ -4102,6 +4142,14 @@
   "note": "罷工當天（10/22）美光召開線上記者會，公布含每季分潤的獎酬方案（台中協議重點）；桃園工會仍主張營業利益 15% 分潤",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611050331.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610210179.aspx",
+  "note": "11/5 英國央行以 8 比 1 升息 1 碼至 4%，理由是能源漲價構成通膨壓力。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611040186.aspx",
@@ -4192,6 +4240,14 @@
   "verified_date": "2026-11-03"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050332.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610270266.aspx",
+  "note": "上市融資餘額連 5 日下降至 5764.09 億元，較 10/6 減 9.6%，報導指引發斷頭壓力。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611050267.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610270266.aspx",
@@ -4204,6 +4260,14 @@
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610280125.aspx",
   "note": "10月CPI年增2.33%，已連續6個月超過2%。",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611050332.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202610280198.aspx",
+  "note": "上市融資餘額連 5 日下降至 5764.09 億元，較 10/6 減 9.6%，報導指引發斷頭壓力。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
  },
