@@ -408,6 +408,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/ymtc-puts-its-ipo-plans-on-hold-as-market-conditions-weaken",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/08/31/can-micron-hold-off-the-chinese-memory-chip-push",
+  "note": "IPO 流程暫停，知情人士稱可能延至 2027 上半年，尚未完成募資",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/08/31/scott-bessent-says-abenomics-may-be-reaching-its-end",
@@ -854,6 +862,14 @@
   "note": "亞馬遜 Q3 資本支出 772.6 億美元、過去 12 個月現金流出 424 億美元",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/qualcomm-announces-fourth-quarter-and-fiscal-2026-results",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/28/qualcomm-cut-jobs-worldwide",
+  "note": "FY26Q4 手機晶片營收年減 26% 至 51.4 億美元，總營收年減 7%，手機占比降至約 49%",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/04/tech-giants-off-balance-sheet-ai-commitments-surge",
@@ -1624,6 +1640,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/computer-science-programs-lose-students-as-ai-replaces-jobs",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/08/24/university-stem-major-preferences-5-year-change-ee-hot-cs-cold-tsing-hua-professor-student-trend-concerns",
+  "note": "NSC 初步秋季數據：資工本科新生跌逾 12%、研究生跌逾 10%，兩年累計減 18.4% 與 27.1%",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/13/once-wall-streets-darling-cerebras-stock-is-struggling",
   "idx": 1,
   "news_url": "https://technews.tw/2026/08/25/nvidia-groq-3-lpx-mass-production-nebius-adopts-ai-cloud",
@@ -1646,6 +1670,14 @@
   "note": "資料中心業者 Vantage 具名宣布取得逾 1 GW Heron Link SST 產能，導入旗下超大規模資料中心園區（800 VDC 架構）。Vantage 是託管型資料中心業者而非雲端服務商，但服務對象為超大規模雲端客戶。",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/ymtc-puts-its-ipo-plans-on-hold-as-market-conditions-weaken",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/08/26/ymtc-targets-nand-leadership-by-end-of-2027",
+  "note": "原定 10 月底至 11 月初配售，路透取得內部通知稱 IPO 全面暫停，上交所仍為問詢階段，未核准也未募資",
+  "verdict": "miss",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": "https://technews.tw/2026/09/20/ai-disrupts-publishing-industry",
@@ -4022,6 +4054,14 @@
   "note": "10/27 博通協同四家金融機構以 SPV 債務融資 630 億美元採購晶片租給 Anthropic，案例數與規模持續增加",
   "verdict": "hit",
   "verified_date": "2026-10-27"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/05/qualcomm-announces-fourth-quarter-and-fiscal-2026-results",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/ait/202610210039.aspx",
+  "note": "高通手機晶片營收年減 26%，Counterpoint 稱 Q3 全球手機出貨年減 20%，路透歸因記憶體漲價擠壓",
+  "verdict": "hit",
+  "verified_date": "2026-11-05"
  },
  {
   "evidence_url": null,
