@@ -560,6 +560,14 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/06/tsmc-45b-texas-2-advanced-fabs-mass-production-2029",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/09/28/world-advanced-technologies-in-partnership-with-nxp-and-vsmc-opens-12-inch-fab-in-singapore",
+  "note": "魏哲家表示已派團隊赴德州評估；450 億美元兩座先進晶圓廠的投資案屬傳聞，台積電不評論。動向成立，確認事實僅到評估階段。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/12/why-is-amazon-betting-on-gold-circuit",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/09/29/golden-image-private-equity-funds-invest-nt1-589-billion-in-amazon",
