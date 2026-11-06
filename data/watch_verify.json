@@ -904,6 +904,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/06/ai-backlash-could-threaten-anthropic-ipo-timing",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/23/openai-nears-30-billion-funding-round-at-1-25-trillion-valuation",
+  "note": "11/5 AI 股拋售後，路透與 WSJ 引述消息人士稱 Anthropic IPO 的 1.5 兆美元估值恐難獲接受，OpenAI 也只募得 110 億美元；股市疑慮已直接壓到 AI 公司的募資條件。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611050289.aspx",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/24/price-free-nhi-premiums-seniors-65-low-income-subsidies-dentures-lenses-gone-senior-benefits-healthcare-gap-vulnerable",
@@ -3086,6 +3094,14 @@
   "note": "8/18 治喪當日證實：經濟學家趙建在微信悼念朱鎔基與改革年代的文章，發布次日即遭刪除，作者自述『改了又改，刪了又刪，還是發不出來』；BBC 並指有關朱鎔基的帖文在網路上受嚴格管控與刪除。管制確實發生。",
   "verdict": "hit",
   "verified_date": "2026-08-19"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cw62yyejjrlro/trad",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cp8l0jk3ygmo/trad",
+  "note": "2026-11-06 初級法院宣判，區錦新四罪成立，判囚12年6個月；審理全程閉門，宣判前一天才公告。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://infosecu.technews.tw/2026/10/06/ai-hits-australian-government-sites-openai-vows-to-rebuild-trust",
