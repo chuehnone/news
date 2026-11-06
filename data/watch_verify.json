@@ -2808,6 +2808,14 @@
   "verified_date": "2026-11-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611060230.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/21/samsung-electronics-foreign-ownership-declined",
+  "note": "台股部分有直接證據：外資自 10/6 起連 21 個交易日減碼台積電 24.6 萬張、聯發科 5.91 萬張，11 月前 5 個交易日賣超 5244 億元。方向是持續賣超。本判定未涵蓋韓股。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/02/changxin-memory-responds-directly-to-microns-accusations",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/22/micron-officially-skips-the-4f%c2%b2-dram-circuit-cell-architecture",
