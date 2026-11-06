@@ -760,6 +760,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611060031.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/13/alphabet-expands-ai-investment",
+  "note": "11/3 全美 41 項資料中心地方公投有 40 項不利，Google、OpenAI 隨後承諾自付能源與基礎設施成本，社區反對與電力爭議確有後續。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610230057.aspx",
   "idx": 3,
   "news_url": "https://finance.technews.tw/2026/10/13/alphabet-expands-ai-investment",
@@ -2150,6 +2158,14 @@
   "note": "CNN、FT 等加入 Google AI 新聞授權計畫（逾400家），同時出版業者加大對 AI 未授權訓練的法律行動",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611060031.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/01/how-america-should-power-the-ai-revolution",
+  "note": "Ballotpedia 統計 11/3 全美 41 項資料中心地方公投提案有 40 項結果不利，是地方反對的直接案例。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130276.aspx",
