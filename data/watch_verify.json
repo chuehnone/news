@@ -712,6 +712,22 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/06/phison-releases-third-quarter-financial-results-and-october-revenue",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/08/phisons-september-revenue-increased-by-370-year-on-year",
+  "note": "群聯 10 月營收年增 346%、月增 3%。只回答月營收走向，本則未見 NAND 與 SSD 報價。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/06/phison-releases-third-quarter-financial-results-and-october-revenue",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/08/phisons-september-revenue-increased-by-370-year-on-year",
+  "note": "群聯第三季 AI 生態系模組營收占總營收 50% 以上。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610220037.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/10/strike-risk-looms-at-micron-taiwan",
@@ -918,6 +934,14 @@
   "note": "三大製藥公協會11/5聯合聲明，要求先評估財源與長期財務影響，討論已延續。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/06/phison-releases-third-quarter-financial-results-and-october-revenue",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/27/macronixs-third-quarter-financial-report-hit-a-record-high",
+  "note": "群聯 10 月營收年增 346%、第三季毛利率 59.7%；華邦電 10 月營收月增 3.9%、年增 257%。華邦電毛利率未見。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/05/qualcomm-announces-fourth-quarter-and-fiscal-2026-results",
@@ -2526,6 +2550,14 @@
   "note": "2026-10-30 美日敲定在日本設 AIM-120 最終組裝廠，報導明言背景是俄烏戰爭與中東持續消耗飛彈庫存；AIM-120 亦為 NASAMS 攔截彈，雙方並同意分享標準三型 Block IIA 攔截彈增產技術資訊。庫存短缺的報導延續並轉為盟國產能擴充。",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/06/wec-2344-202610-financial-report",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/12/nanya-technology-2026-q3-financial-report",
+  "note": "華邦電 10 月營收 293.61 億元，月增 3.9%、年增 257%。只有華邦電，未含南亞科。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610270179.aspx",
@@ -4214,6 +4246,14 @@
   "note": "10/29 OPPO 台灣總經理表示記憶體漲價壓力恐延續至 2028，Find X10 起售價漲近五成，並預期手機銷量持平或小幅萎縮、均價上升，直接回答記憶體成本對手機終端需求的影響",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/06/taiwan-stocks-plunge-confidence-crisis-national-stabilization-fund-10th-historic-intervention",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610190072.aspx",
+  "note": "國安基金說明：10 月外資賣超 9,943.16 億元創單月新高，11 月迄今再賣超 5,244 億元。只回答賣超規模，本則未見持股比例。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610280090.aspx",
@@ -6496,6 +6536,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cqr7ydkrnpxno/trad",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609280045.aspx",
+  "note": "BBC 11/6：140 億美元對台軍售案仍卡在川普手中，未見送國會知會。",
+  "verdict": "miss",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609280068.aspx",
@@ -7464,6 +7512,14 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611060213.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610190209.aspx",
+  "note": "11/6 眾議院表決通過，送參議院審議；政府力拚 12/12 會期結束前成立，但執政黨在參議院未過半。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610260101.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610190277.aspx",
@@ -7702,6 +7758,14 @@
   "note": "南韓軍方證實 11/4 再度試射，為 1 個月內第 4 度；北韓稱試射新型防空飛彈並舉行巡弋飛彈演習，本則未見升級到中長程或核試。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.bbc.com/zhongwen/articles/cqr7ydkrnpxno/trad",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610290150.aspx",
+  "note": "BBC：民主黨在參眾兩院同時翻盤，共和黨失去兩院。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611050348.aspx",
