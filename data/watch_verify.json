@@ -2768,6 +2768,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/06/openai-responds-post-us-election-calls-new-rules-ai-data-center-grid-costs",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/21/nimby-to-popular-trump-data-center-profit-sharing-residents",
+  "note": "OpenAI（承諾簽署方之一）11/5 公布全國社區協議，承諾自付電費與供電基礎設施成本並提供財務擔保，是承諾的具體執行與加碼",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/02/changxin-memory-responds-directly-to-microns-accusations",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/22/micron-officially-skips-the-4f%c2%b2-dram-circuit-cell-architecture",
@@ -5062,6 +5070,14 @@
   "note": "人員往來明顯受影響：1至8月訪日中國旅客約290萬人次、年減56%，第2季中國旅客消費年減48%（10/22 日經報導）。",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611060147.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202607270204.aspx",
+  "note": "高市 11/6 答詢確認食品消費稅降至 1% 與就業者負擔減輕支援金同步推動，對象約 3 成勞工仍研議中",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608030005.aspx",
