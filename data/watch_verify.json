@@ -824,6 +824,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/06/tsmc-45b-texas-2-advanced-fabs-mass-production-2029",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/15/tsmcs-revenue-growth-rate-for-the-full-year-of-2026-is-expected-to-reach-approximately-44",
+  "note": "亞利桑那第二廠已完成建設，進入機台移入與安裝，預計2027年第3季量產",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611010029.aspx",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/17/morgan-stanley-memory-and-ai-supply-chain-outlook",
@@ -2624,6 +2632,14 @@
   "verified_date": "2026-10-28"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/06/tsmc-45b-texas-2-advanced-fabs-mass-production-2029",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/14/semi-america-president-semicon-west",
+  "note": "報導更新亞利桑那第二廠移機階段與2027年第3季量產時程；本條只驗證台積電部分，未涵蓋供應鏈",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/30/mediateks-third-quarter-eps-reached-nt17-5-with-a-gross-margin-of-46-3",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/15/bytedance-in-talks-to-secure-mediatek-ai-chips-for-data-centers",
@@ -3944,6 +3960,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/06/tsmc-45b-texas-2-advanced-fabs-mass-production-2029",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610090086.aspx",
+  "note": "魏哲家稱已派團隊赴德州評估，並有450億美元德州案傳聞；投資案本身未證實",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210163.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610120094.aspx",
@@ -4294,6 +4318,14 @@
   "note": "新台幣 11 月前 4 個交易日貶 3.98 角，盤中觸及 32.985 元；央行喊話出口商結售，並同意放寬每日賣匯限額。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611060016.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610310011.aspx",
+  "note": "11/5 費半跌12.25%，為2020年3月後最大單日跌幅，AI晶片股同步重挫，中央社有報導",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
