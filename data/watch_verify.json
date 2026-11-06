@@ -5456,6 +5456,14 @@
   "verified_date": "2026-10-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202609040323.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608070332.aspx",
+  "note": "8 月非農初值新增 16.2 萬，後於 10/2 下修至 13.3 萬，都不是負值。",
+  "verdict": "miss",
+  "verified_date": "2026-11-07"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202608080008.aspx",
@@ -6062,6 +6070,14 @@
   "note": "FOMC 9/17 升息1碼至3.75%-4.00%，2023年以來首度升息",
   "verdict": "hit",
   "verified_date": "2026-10-22"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202610020333.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609040323.aspx",
+  "note": "10/2 報告把 8 月由 16.2 萬下修至 13.3 萬。11/6 報告再把 8、9 月合計上修 8.4 萬，後續修正方向不一致。",
+  "verdict": "hit",
+  "verified_date": "2026-11-07"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609260193.aspx",
@@ -6734,6 +6750,14 @@
   "note": "中東戰爭推升能源成本，10月能源通膨從18.9%升至20.8%，帶動整體通膨升至4.0%",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611060360.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610020333.aspx",
+  "note": "10 月非農新增 16.5 萬、失業率降至 4.1%，9 月由 2.9 萬上修為 6 萬，轉弱沒有延續。",
+  "verdict": "miss",
+  "verified_date": "2026-11-07"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611020171.aspx",
