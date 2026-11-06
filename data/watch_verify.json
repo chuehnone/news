@@ -2704,6 +2704,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/06/independent-assessment-of-ai-rd-acceleration-at-anthropic-in-october-2026",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/16/anthropic-just-opened-its-doors-to-outside-safety-watchdogs-heres-how-it-will-work",
+  "note": "METR 於 11 月 5 日發布為期 11 週、結合內部資料與未公開模型表現的評估，報導載明 Anthropic 要求大幅刪減內容。報導未逐字寫出與 10 月公布的進駐制度的關係，判定依據是評估方式相符。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/30/google-s-ai-mode-does-not-drive-traffic",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/16/google-ai-search-major-redesign",
