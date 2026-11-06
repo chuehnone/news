@@ -3744,6 +3744,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/06/accton-2345-202610-financial-report",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202609070294.aspx",
+  "note": "智邦 8 月突破 400 億後，10 月 446.63 億、月增 10.6%，推算 9 月約 404 億，連三個月站穩 400 億以上。",
+  "verdict": "hit",
+  "verified_date": "2026-11-06"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/09/30/6g-moda",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609100328.aspx",
