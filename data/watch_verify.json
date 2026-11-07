@@ -2848,6 +2848,14 @@
   "verified_date": "2026-11-04"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/07/anthropic-2-trillion-market-cap-biggest-ipo-challenge-wall-street-nervous",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/27/broadcom-anthropic-deal",
+  "note": "11/07 商周彙整引述 WSJ 指相互投資被批評為循環融資，Sapphire 的達斯比作電信泡沫、稱局面像紙牌屋；信評面已有標普 10/31 調降 Meta 展望。本條問的是評論與信評反應，兩者都直接出現。",
+  "verdict": "hit",
+  "verified_date": "2026-11-07"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
   "idx": 0,
   "news_url": "https://technews.tw/2026/10/27/oil-prices-higher-than-under-biden-trump-faces-midterm-election-headwinds",
