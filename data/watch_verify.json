@@ -2640,6 +2640,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611070185.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/13/sic-substrates-12-inch-taiwan-firms-target-ai-power-advanced-packaging-communication-opportunities",
+  "note": "安森美取消捷克 20 億美元碳化矽擴廠；捷媒分析指中國供應商挾補貼與低電價，以遠低於西方的價格搶占市場",
+  "verdict": "hit",
+  "verified_date": "2026-11-07"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611060006.aspx",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/14/chinese-ai-companies-buy-1-million-nvidia-gaming-and-workstation-gpus-in-a-single-year",
