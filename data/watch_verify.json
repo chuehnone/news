@@ -6440,6 +6440,14 @@
   "verified_date": "2026-09-29"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611070011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609210007.aspx",
+  "note": "釜山協議已延長。專電寫習近平9月訪華府後延至明年1月，同日中央社綜合外電寫2027年1月10日。範圍未見細節。",
+  "verdict": "hit",
+  "verified_date": "2026-11-07"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610030008.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609210008.aspx",
@@ -6630,6 +6638,14 @@
   "note": "期中選舉前兩週（10/20）報導指美國柴油價格已創歷史新高，並促成 80 億美元農業紓困",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611070011.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609290032.aspx",
+  "note": "只回答後半：2026-11-06 貝森特公開要求全面及立即執行釜山承諾並表示關切，葛里爾點名稀土。美方公開評價已轉為施壓。許可核發量本則未提。",
+  "verdict": "hit",
+  "verified_date": "2026-11-07"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610160011.aspx",
