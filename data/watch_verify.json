@@ -3976,6 +3976,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611070037.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610050265.aspx",
+  "note": "9 月底比率 321%，10 月底降至 292%（1 兆 7426 億美元）。比率沒有持續上升。",
+  "verdict": "miss",
+  "verified_date": "2026-11-07"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611030261.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610050274.aspx",
@@ -4270,6 +4278,14 @@
   "note": "10/29 OPPO 台灣總經理表示記憶體漲價壓力恐延續至 2028，Find X10 起售價漲近五成，並預期手機銷量持平或小幅萎縮、均價上升，直接回答記憶體成本對手機終端需求的影響",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611060293.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610190072.aspx",
+  "note": "金管會 11/6 宣布 11/9 起實施 5 項措施，含盤中借券賣出上限由 30% 降為 3%、最低融券保證金由 90% 提高到 130%。",
+  "verdict": "hit",
+  "verified_date": "2026-11-07"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/06/taiwan-stocks-plunge-confidence-crisis-national-stabilization-fund-10th-historic-intervention",
@@ -7014,6 +7030,14 @@
   "note": "青年運動拿下紅海沿岸大片區域並攻擊亞丁總統府；沙國稱邀其赴阿曼會談遭拒",
   "verdict": "hit",
   "verified_date": "2026-10-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611070041.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070041.aspx",
+  "note": "11/6 海地證實黑幫頭目桑蒂爾遭無人機攻擊後身亡。聯合國支持部隊遭伏擊後，約 2000 名薩爾瓦多軍人上月起部署。",
+  "verdict": "hit",
+  "verified_date": "2026-11-07"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
