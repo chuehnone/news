@@ -3568,6 +3568,14 @@
   "verified_date": "2026-11-08"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611080101.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/afe/202608090123.aspx",
+  "note": "2026-11-08 金管會第3季統計：美國曝險11.7兆、占35.59%創新高，連46季居首；未見因中東與利率風險而下調，占比反而續升。",
+  "verdict": "miss",
+  "verified_date": "2026-11-09"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/11/03/apple-forecasts-margin-drop-in-holiday-quarter-as-rising-memory-costs-bite",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202608100154.aspx",
