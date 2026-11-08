@@ -5656,6 +5656,14 @@
   "verified_date": "2026-10-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611080144.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202608120010.aspx",
+  "note": "11/7 美軍再度對突破伊朗封鎖的商船開火（聖克里斯多福及尼維斯籍貨輪遭癱瘓）",
+  "verdict": "hit",
+  "verified_date": "2026-11-08"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202609300217.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202608130224.aspx",
@@ -7240,6 +7248,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611080144.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610110066.aspx",
+  "note": "11/7 美軍軍機朝企圖突破封鎖駛離阿曼灣的聖克里斯多福及尼維斯籍貨輪船尾開火，使其癱瘓",
+  "verdict": "hit",
+  "verified_date": "2026-11-08"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610110156.aspx",
@@ -7918,6 +7934,14 @@
   "note": "韓國將派海上巡邏機與爆裂物處理小組，把清海部隊護航範圍擴及荷莫茲海峽附近海域，行動限於阿曼以南公海。這是盟國行動的調整。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611080173.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610310004.aspx",
+  "note": "11/8 青年運動再朝利雅德射 2 枚巡弋飛彈，遭攔截後碎片擊中阿美利雅德行政大樓；東部省達蘭亦發警報，攻擊持續針對城市與能源企業",
+  "verdict": "hit",
+  "verified_date": "2026-11-08"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611070063.aspx",
