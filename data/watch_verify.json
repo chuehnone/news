@@ -2880,6 +2880,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/08/materials-suppliers-rush-to-develop-glass-free-ptfe-laminates",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/31/nvidia-love-ptfe",
+  "note": "11/8 財訊報導：台虹已預訂設備、規劃 2027 年初月產 10 萬張 PTFE CCL；華通、臻鼎、台光電、景碩等具名說明評估與驗證立場。",
+  "verdict": "hit",
+  "verified_date": "2026-11-08"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -3790,6 +3798,14 @@
   "note": "金管會統計：9月外資賣超上市櫃股票862.7億元，今年累計賣超1兆3525億元（近5年同期最大），賣超持續",
   "verdict": "hit",
   "verified_date": "2026-10-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/08/materials-suppliers-rush-to-develop-glass-free-ptfe-laminates",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202609050016.aspx",
+  "note": "9/5 時 CCL 從 M8 進入 M9；11/8 台光電董事長表示 M9 已量產、M10 預計 2027 年放量、M11 持續開發，規格持續跳級。",
+  "verdict": "hit",
+  "verified_date": "2026-11-08"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611030006.aspx",
@@ -7838,6 +7854,14 @@
   "note": "11/4 新加坡緊急三讀修正跨境煙霾污染法案（法律面），兩國外長已同意成立聯合工作小組追查涉案企業（外交面）。",
   "verdict": "hit",
   "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611080008.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610260160.aspx",
+  "note": "大選結果：10/30 官方結果尼坦雅胡陣營 53 席未過半；組閣進度：11/7 總統赫佐格宣布優先授權艾森科特籌組新政府。",
+  "verdict": "hit",
+  "verified_date": "2026-11-08"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
