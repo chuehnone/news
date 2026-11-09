@@ -832,6 +832,14 @@
   "verified_date": "2026-10-26"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/09/elon-musk-claims-softbank-is-defaulting-on-turbine-orders",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/14/softbank-junk-bond-sale-raises-stakes-for-ceo-sons-all-in-ai-bet",
+  "note": "11/9 路透：軟銀 CDS 利差 11/6 升至 466 基點，為 2022 年 10 月以來最高。指標問的信用利差走勢有具體數字可答。",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/11/03/apple-forecasts-margin-drop-in-holiday-quarter-as-rising-memory-costs-bite",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/15/apple-joins-nvidia-in-the-5-trillion-valuation-club",
@@ -918,6 +926,14 @@
   "note": "PCB交期拉長一倍、最長30個月，現在下單恐2028年末出貨；CCL供應商訂單排到2030年",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/09/elon-musk-claims-softbank-is-defaulting-on-turbine-orders",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/21/nvidia-guarantees-ai-data-centers-stabilize-gpu-sales",
+  "note": "11/9：ING 尋求出售含新墨西哥州 Stargate 相關 2,500 萬美元債權在內的資料中心貸款；甲骨文曾對該專案開發商發不可抗力通知、尋求延後付租。融資與承租進度均有具體新進展。",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/10/30/amazon-cash-burn-pressure-intensifies-capex-expected-rise-next-year-stock-drops-after-hours",
