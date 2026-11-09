@@ -1800,6 +1800,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/09/china-again-extends-suspension-of-additional-24-tariffs-on-us-goods",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/08/25/bloomberg-us-china-7-5-overcapacity-tariff-trump-xi-meeting",
+  "note": "休兵在 9 月川習會後延至 2027/1/10，未在 11/10 跳升；中國國務院關稅稅則委員會 11/9 公告自 11/10 起再暫停 24% 加徵 2 個月、保留 10%。指標問是否延長，答案是延長。",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/13/once-wall-streets-darling-cerebras-stock-is-struggling",
   "idx": 1,
   "news_url": "https://technews.tw/2026/08/25/nvidia-groq-3-lpx-mass-production-nebius-adopts-ai-cloud",
