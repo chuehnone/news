@@ -2824,6 +2824,22 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/09/terafab-is-now-aiming-for-a-memory-production-capacity-of-around-700000-wafers-per-month",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/21/musk-asml-terafab",
+  "note": "11-09 報導：馬斯克 11-06 在 Baron 年會稱 2027 年 5-6 月完成首顆 SRAM 測試晶片、2028 Q3 啟動量產；設備到位部分無新消息",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/09/terafab-is-now-aiming-for-a-memory-production-capacity-of-around-700000-wafers-per-month",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/21/musk-once-wanted-to-acquire-tsmcs-wafer-fab-in-order-to-acquire-terafab",
+  "note": "11-09 揭露製程分工：英特爾協助邏輯晶片、朝 2nm／1.4nm 協調（二手轉述）；投資金額與廠址只見 Terafab 整體規劃，非英特爾合作條件",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/11/06/openai-responds-post-us-election-calls-new-rules-ai-data-center-grid-costs",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/21/nimby-to-popular-trump-data-center-profit-sharing-residents",
@@ -2886,6 +2902,22 @@
   "note": "英國央行 11/5 升息並預估通膨 2027 年中達 5% 左右，直接回應通膨預期上修。Fed、歐洲央行本則未驗證。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/09/there-is-no-end-in-sight-for-the-gpu-supply-problem",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/29/macbook-neo-raise-prices",
+  "note": "11-09 彙整報導：摩根大通預估 2026 年底 DRAM 價格較 2024 年漲 400%，RTX 5090 售價 4,920 美元（建議售價 1,999），遊戲主機與筆電價格同步走高",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/09/there-is-no-end-in-sight-for-the-gpu-supply-problem",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/29/macbook-neo-raise-prices",
+  "note": "11-09 報導引《經濟學人》2026 年報告：主機與筆電漲價，PC 出貨量出現少見下滑（二手轉述）",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
  },
  {
   "evidence_url": "https://technews.tw/2026/11/08/materials-suppliers-rush-to-develop-glass-free-ptfe-laminates",
@@ -7128,6 +7160,14 @@
   "verified_date": "2026-10-16"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/09/terafab-is-now-aiming-for-a-memory-production-capacity-of-around-700000-wafers-per-month",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070235.aspx",
+  "note": "11-09 日經（經 Wccftech 轉述）：英特爾協助 Terafab 邏輯晶片，雙方朝 2 奈米及 1.4 奈米協調",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/21/musk-once-wanted-to-acquire-tsmcs-wafer-fab-in-order-to-acquire-terafab",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610070235.aspx",
@@ -7190,6 +7230,14 @@
   "note": "泰國國安會秘書長表示，5 名遭中國通緝的維吾爾人若遇引渡請求，由外交部確認逮捕令後交司法處理。這是遣返案件的後續動作，但對象不是白兆東本人。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611090016.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610090005.aspx",
+  "note": "至 11-08 封鎖未鬆動，反而擴大：中央司令部稱海上封鎖已阻止逾 250 億美元原油出口，並另設特遣部隊阻斷陸路與裏海",
+  "verdict": "miss",
+  "verified_date": "2026-11-09"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611010079.aspx",
@@ -7678,6 +7726,14 @@
   "note": "10/26 中央社：北韓致函安理會、邊境疑似部署自走砲後，南韓統一部稱信函只是重申既有立場、不評論砲兵部署，並提議對話——回應方式為低調、不升級並維持對話提議",
   "verdict": "hit",
   "verified_date": "2026-10-26"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611090024.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610200007.aspx",
+  "note": "11-08 川普表示 APEC 深圳峰會（18-19 日）將與普丁、習近平舉行一場會面，議題含結束伊朗戰爭與非核化；三方會談的安排已排定並公布議程範圍（中俄未證實）",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c8vgxe1nq7w7o/trad",
