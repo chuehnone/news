@@ -3296,6 +3296,14 @@
   "verified_date": "2026-10-18"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611090129.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cwzd6164jv6ro/trad",
+  "note": "沖繩縣知事要求全面檢討地位協定，並要求依 2013 年協議儘速歸還沖繩商業中心的美軍占用土地",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130221.aspx",
   "idx": 1,
   "news_url": "https://www.bbc.com/zhongwen/articles/cwzd6164jv6ro/trad",
@@ -4174,6 +4182,14 @@
   "note": "10-15 法說會後報導 2026 年資本支出維持 600-640 億美元，未上修",
   "verdict": "miss",
   "verified_date": "2026-10-17"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/09/october-exports-hit-record-high-of-96760-million",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610080228.aspx",
+  "note": "10 月出口 967.6 億美元年增 58.9% 延續年增；資通與視聽 476 億美元年增 72.9%、電子零組件 326.8 億美元年增 61.4%，兩者合計約占出口 83%",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/27/semiconductor-power-consumption-doubles-electricity-demand-soars-taipower-10-year-supply-plan",
@@ -6976,6 +6992,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611090129.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610040095.aspx",
+  "note": "沖繩縣知事古謝玄太 11/9 要求全面檢討日美地位協定，具體列出起訴前移交嫌犯、美軍適用日本航空法；縣議會決議本則未提及",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610130221.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610040095.aspx",
@@ -7150,6 +7174,14 @@
   "note": "11/6 海地證實黑幫頭目桑蒂爾遭無人機攻擊後身亡。聯合國支持部隊遭伏擊後，約 2000 名薩爾瓦多軍人上月起部署。",
   "verdict": "hit",
   "verified_date": "2026-11-07"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611090129.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610070129.aspx",
+  "note": "日美 11/6 就防止駐沖繩美軍犯罪措施達成共識（含就日本法律制度展開磋商），美方將宵禁延長至 12/7；地位協定本身未修改",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610180010.aspx",
@@ -7462,6 +7494,22 @@
   "note": "10/15 兩艘化學品船在羅馬尼亞蘇利納運河口附近遭無人機擊中，其中一艘在羅馬尼亞領海內，7名船員失蹤",
   "verdict": "hit",
   "verified_date": "2026-10-25"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611090129.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130221.aspx",
+  "note": "美方將部分駐沖繩美軍的 30 天宵禁延長至 12/7，屬外出規範的具體調整；飲酒規範本則未提及",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611090129.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130221.aspx",
+  "note": "沖繩縣知事在東京記者會要求全面檢討地位協定與歸還基地占用土地，屬地方政治動作",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610210105.aspx",
