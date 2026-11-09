@@ -4240,6 +4240,14 @@
   "verified_date": "2026-10-25"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611090238.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610120294.aspx",
+  "note": "11/9 景碩2908萬元違約交割，為今年上市公司第15起（10/12 致茂為第13起），案件數持續累積",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610200383.aspx",
   "idx": 3,
   "news_url": "https://www.cna.com.tw/news/afe/202610130019.aspx",
@@ -4614,6 +4622,14 @@
   "note": "新台幣 11 月前 4 個交易日貶 3.98 角，盤中觸及 32.985 元；央行喊話出口商結售，並同意放寬每日賣匯限額。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611090240.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610300234.aspx",
+  "note": "11/9 經濟部公布截至10月已媒合89家業者約1842噸，並具體說明增產4400公噸/月、台糖12月起增700噸、福壽1200餘公噸重新上架，以增產與進口補足缺口",
+  "verdict": "hit",
+  "verified_date": "2026-11-09"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611060016.aspx",
