@@ -1096,6 +1096,14 @@
   "verified_date": "2026-10-07"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100055.aspx",
+  "idx": 0,
+  "news_url": "https://infosecu.technews.tw/2026/10/06/ai-hits-australian-government-sites-openai-vows-to-rebuild-trust",
+  "note": "11/10 澳洲政府宣布採納入侵事件全部建議，AI 業者發生不當行為或資安事件須強制通報，並將設新監管機構",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://infosecu.technews.tw/2026/10/30/a-defense-contractor-gave-their-personal-ai-agent-access-to-a-secure-pentagon-system",
   "idx": 1,
   "news_url": "https://infosecu.technews.tw/2026/10/06/ai-hits-australian-government-sites-openai-vows-to-rebuild-trust",
@@ -1768,6 +1776,14 @@
   "verified_date": "2026-09-05"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/10/ai-data-center-complaints-rise-fuel-cells-peacemaker",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/08/13/ai-data-center-resident-backlash-intensifies-fuel-cells-solution",
+  "note": "甲骨文新墨西哥州 Project Jupiter 改採 Bloom 燃料電池供電（最高 2.45 GW），Google 規劃懷俄明州 702 MW 燃料電池設施",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/12/soaring-memory-prices-drove-a-119-surge-in-global-semiconductor-revenue",
   "idx": 1,
   "news_url": "https://technews.tw/2026/08/17/samsung-2026-h1-exports-china-us",
@@ -1918,6 +1934,14 @@
   "note": "指標問記憶體價格是否見頂（該則寫作時已自 2025 Q4 漲四倍）。9/19 資料顯示 64GB RDIMM 不到一年 450→900 美元、伺服器記憶體 2026 估再漲 200-300%，且 SK 海力士稱 2027 為產業史上最糟。未見頂，仍在上行。",
   "verdict": "miss",
   "verified_date": "2026-09-19"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/10/anthropic-introduces-claude-fable-5-2-and-claude-mythos-5-2",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/09/05/nvidia-earnings-new-signal-ai-giants-open-source-models",
+  "note": "11/9 Anthropic 前沿模型 Fable 5.2 API 較前代降價 20%",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/01/how-does-ai-change-labor-demand-evidence-from-41-countries",
@@ -2216,6 +2240,14 @@
   "verified_date": "2026-10-27"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/10/anthropic-introduces-claude-fable-5-2-and-claude-mythos-5-2",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/01/google-unveils-gemini-4-argon",
+  "note": "11/9 Anthropic Fable 5.2 與 Mythos 5.2 較前代降價 20%（每百萬輸入／輸出 token 8／40 美元）",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://infosecu.technews.tw/2026/10/28/cathedral-got-into-anthropic-in-12-hours",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/01/google-unveils-gemini-4-argon",
@@ -2288,6 +2320,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100055.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/02/openai-agent-trespasses-government-websites-erases-activity-traces",
+  "note": "11/10 澳洲宣布 AI 業者強制防護規定（不當行為須通報、前沿模型獨立風險評估），直接回應 OpenAI 代理入侵衛生入口網站事件",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://infosecu.technews.tw/2026/10/20/microsoft-says-ai-agents-cannot-be-trusted-and-could-become-insider-security-threats",
   "idx": 3,
   "news_url": "https://technews.tw/2026/10/02/openai-agent-trespasses-government-websites-erases-activity-traces",
@@ -2342,6 +2382,14 @@
   "note": "CoreWeave 債券殖利率逼近 15%、S&P 評 B+，AI 資料中心業者的債務融資成本明顯上升",
   "verdict": "hit",
   "verified_date": "2026-10-15"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/10/anthropic-introduces-claude-fable-5-2-and-claude-mythos-5-2",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/05/ai-infers-the-rate-of-cost-decline",
+  "note": "11/9 Anthropic 新模型 API 降價 20%，並提高付費訂閱者使用額度",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610190265.aspx",
@@ -2960,6 +3008,14 @@
   "verified_date": "2026-11-08"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/10/ai-data-center-complaints-rise-fuel-cells-peacemaker",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/11/03/bloom-energy-partners-california-resources-1gw-fuel-cell-carbon-capture-opportunity",
+  "note": "甲骨文 Project Jupiter 改採表後燃料電池、Google 懷俄明燃料電池設施，自建電源趨勢延續",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
   "idx": 0,
   "news_url": "https://udn.com/news/story/7238/9624933",
@@ -3230,6 +3286,14 @@
   "note": "10/19 法新社報導法國生活成本動亂之際，雷朋在總統大選民調中聲勢看漲；馬克宏依法不得再參選。僅回答民調走勢，接班布局未見新資訊",
   "verdict": "hit",
   "verified_date": "2026-10-20"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100039.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cmkgk61rgzj4o/trad",
+  "note": "11/9 法國外長巴霍證實由伊朗革命衛隊發動，巴黎檢方已對 IRGC 旗下 Shahid Kaveh 網路單位負責人展開司法調查",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/c70glkrgd1eo/trad",
@@ -4350,6 +4414,14 @@
   "note": "上市融資餘額連 5 日下降至 5764.09 億元，較 10/6 減 9.6%，報導指引發斷頭壓力。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/10/ai-data-center-complaints-rise-fuel-cells-peacemaker",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610150208.aspx",
+  "note": "甲骨文 Project Jupiter 改用 Bloom 燃料電池、Google 懷俄明 702 MW、NTT DATA 與 Bloom 合計 900 MW，資料中心燃料電池採用持續擴大",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611030261.aspx",
@@ -7542,6 +7614,14 @@
   "note": "沖繩縣知事在東京記者會要求全面檢討地位協定與歸還基地占用土地，屬地方政治動作",
   "verdict": "hit",
   "verified_date": "2026-11-09"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100055.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610130320.aspx",
+  "note": "11/10 澳洲要求前沿模型接受獨立風險評估、模型失控或不當行為須立即通報",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610210105.aspx",
