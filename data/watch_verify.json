@@ -8192,11 +8192,27 @@
   "verified_date": "2026-11-08"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100112.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610310010.aspx",
+  "note": "11/10 川普稱伊朗戰爭基本結束、目前無須升高軍事行動但上膛待命，並暫緩軍事打擊；選後實際動向為降溫、維持海上封鎖，未啟動停火談判",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611070063.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610310086.aspx",
   "note": "美軍 11/2 執行防禦性打擊，11/6 再對伊朗防空系統發動有限度打擊；指標問是否恢復打擊，答案是恢復，且未改為延長停火。",
   "verdict": "hit",
   "verified_date": "2026-11-07"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100112.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611030008.aspx",
+  "note": "11/10 報導美國對伊朗海上封鎖延續，卡達、沙烏地等波灣國家希望維持封鎖現狀；伊朗稱荷莫茲海峽葛希姆島遇襲",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  }
 ]
