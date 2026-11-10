@@ -952,6 +952,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100366.aspx",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/21/experts-expect-fed-to-hold-rates-steady-in-october",
+  "note": "10月能源價格漲勢趨緩，整體CPI月增由9月0.6%降至0.4%，能源與CPI同向連動；核心0.3%未隨能源降溫。",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/09/elon-musk-claims-softbank-is-defaulting-on-turbine-orders",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/21/nvidia-guarantees-ai-data-centers-stabilize-gpu-sales",
@@ -7744,6 +7752,14 @@
   "verified_date": "2026-10-24"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100366.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610140339.aspx",
+  "note": "10月CPI能源漲勢明顯趨緩，核心月增0.3%高於預期，休閒娛樂與醫療照護續漲；能源降溫、核心未降，分歧延續。",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/11/02/openai-adds-stricter-limits-for-teens-asking-about-firearms",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610150007.aspx",
@@ -7846,6 +7862,14 @@
   "note": "頻率出現先停後恢復：WSJ 報導烏軍在美方施壓下非正式暫停（10/30），俄方同日稱攻擊已恢復，11/1 克斯托沃煉油廠遇襲",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100366.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160199.aspx",
+  "note": "10月CPI月增0.4%、核心0.3%，核心高於預期，彭博指聯準會可能按步調於12月升息。只答到CPI，PCE未見。",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
@@ -8176,6 +8200,14 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100366.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610250050.aspx",
+  "note": "10月能源價格漲勢趨緩，整體CPI月增由0.6%降至0.4%；但核心0.3%高於預期，通膨壓力已不只來自能源。",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611030194.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610250152.aspx",
@@ -8214,6 +8246,14 @@
   "note": "11/4 中央社引路透：民主黨同時取得參議院與眾議院過半，翻轉 6 席原屬共和黨的參院席次，雖失守密西根與明尼蘇達仍確保參院多數。",
   "verdict": "hit",
   "verified_date": "2026-11-04"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100366.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
+  "note": "10月CPI月增0.4%（9月0.6%），核心CPI月增0.3%且高於預期；整體放緩但核心仍有黏性。",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611050231.aspx",
