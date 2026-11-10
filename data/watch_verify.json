@@ -648,6 +648,14 @@
   "verified_date": "2026-10-19"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100128.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/06/googles-sergey-brin-has-now-donated-more-than-100-million-to-oppose-californias-billionaire-tax",
+  "note": "公投結果為否決；報導未列具體得票差距",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610190276.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/06/schneider-electric-to-acquire-ptc",
@@ -950,6 +958,14 @@
   "note": "亞馬遜 Q3 資本支出 772.6 億美元、過去 12 個月現金流出 424 億美元",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100128.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/22/meta-reports-third-quarter-revenue-beat-and-issues-strong-guidance",
+  "note": "第40號提案遭選民否決（美聯社判定）；因提案未通過，後續法律挑戰不會發生",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/06/ai-backlash-could-threaten-anthropic-ipo-timing",
@@ -7736,6 +7752,22 @@
   "verified_date": "2026-10-24"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100128.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150183.aspx",
+  "note": "公投結果為否決；報導未列得票率，只有美聯社判定與選民調查分布",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100128.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610150183.aspx",
+  "note": "反對陣營投入逾4億美元、布林捐逾1億；民調由溫和支持轉為反對（引述衛報、華爾街日報）",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/25/indonesia-slash-and-burn-fires-send-toxic-haze-across-borders",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610150210.aspx",
@@ -8006,6 +8038,14 @@
   "note": "WSJ：烏軍星鏈24日全面恢復",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100128.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610220105.aspx",
+  "note": "第40號提案遭否決，美聯社判定反對陣營已獲足夠票數",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
