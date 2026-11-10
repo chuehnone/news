@@ -3992,6 +3992,14 @@
   "verified_date": "2026-11-08"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611100306.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/afe/202609050024.aspx",
+  "note": "11/10 中央社：長榮航第三季貨運營收年增 34.5%、前三季年增 27%、10 月貨運營收年增 46.17%；華航 10 月貨運收入年增 48.05%。兩家貨運營收成長在 9 月之後延續。",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611030006.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202609050175.aspx",
@@ -4670,6 +4678,14 @@
   "note": "11/01 中央社報導高雄專區截至9月底累計服務277家、管理資產約1218億元（8月底為1074億元），管理規模確有後續公布；進駐機構數本則未更新",
   "verdict": "hit",
   "verified_date": "2026-11-01"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611100306.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610250131.aspx",
+  "note": "11/10 中央社：長榮航 10 月客運營收年增 13.27%、貨運營收年增 46.17%；華航 10 月貨運收入年增 48.05%。指標問的客運與貨運成長變化已可在月營收觀察到，且貨運成長明顯高於客運。",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611030261.aspx",
