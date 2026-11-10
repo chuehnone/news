@@ -104,6 +104,14 @@
   "verified_date": "2026-10-01"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/ahel/202611100153.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/07/25/delivery-law-to-raise-per-order-costs-by-30-to-50percent",
+  "note": "兩大平台漲幅與生效時間都已公布：Uber Eats 調高商家服務費 2.5-3 個百分點、Uber One 月費 120→199 元（8/15 中央社報導）；foodpanda 11/10 宣布一般用戶 11/15 起每筆平台費 +4-6 元、pandapro 12/1 起 +2-4 元",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": null,
   "idx": 3,
   "news_url": "https://finance.technews.tw/2026/07/27/changxin-memory-chinas-largest-dram-manufacturer-is-listed-for-trading",
