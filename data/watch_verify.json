@@ -4776,6 +4776,14 @@
   "verified_date": "2026-11-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611110004.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202611020117.aspx",
+  "note": "10 月 CPI 月增 0.4%、核心 0.3% 均高於預期；理事華勒稱 12 月應考慮升息 2 碼，高盛資管認為升息週期可能延續至 2027 年，2 年期殖利率升逾 20 個基點",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/ahel/202610010239.aspx",
@@ -8318,5 +8326,29 @@
   "note": "11/10 報導美國對伊朗海上封鎖延續，卡達、沙烏地等波灣國家希望維持封鎖現狀；伊朗稱荷莫茲海峽葛希姆島遇襲",
   "verdict": "hit",
   "verified_date": "2026-11-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611040027.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611030013.aspx",
+  "note": "11/3 第二波攻擊擴及德國、羅馬尼亞與英國，歐盟受害國增至約 10 國；11/10 ENISA 訪問稿稱 10-11 月至少 12 個歐洲國家超市遭攻擊",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100039.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611030013.aspx",
+  "note": "法國外長 11/9 證實攻擊由伊朗革命衛隊發動，巴黎檢方對 IRGC 網路單位 Shahid Kaveh 負責人立案，手法為遠端啟動無限期除霜並停用超溫警示；具體設備廠商未公布",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611100039.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611040027.aspx",
+  "note": "法國政府 11/9 認定伊朗革命衛隊負責，並召見伊朗大使、矢言歐盟層級制裁；推翻羅馬尼亞資安局長「非國家級行為者」的初判",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
  }
 ]
