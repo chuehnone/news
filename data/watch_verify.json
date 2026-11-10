@@ -616,6 +616,14 @@
   "verified_date": "2026-10-12"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/10/china-builds-giant-ai-data-center",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/01/vicor-raises-guidance-for-second-time-in-two-weeks",
+  "note": "11/10 報導中國 Galaxy 資料中心測試機房採用 800V 高壓直流供電（SST 直轉），為高壓直流架構的實際採用案例",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/fed-beige-book-shows-intensifying-price-growth-in-some-areas",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/02/fed-officials-hawkish-signals-interest-rates-rise-50-basis-points",
@@ -4398,6 +4406,14 @@
   "note": "10月新台幣單月重貶6.26角，央行進場調節，外匯存底月減43.08億美元。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/10/china-builds-giant-ai-data-center",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610170022.aspx",
+  "note": "11/10 SemiAnalysis 報告：內蒙古烏蘭察布 Galaxy 新建園區的 5MW 測試機房以固態變壓器把 10kV 交流直接轉 800V 直流供機架，液冷與氣冷共用水循環，屬新建資料中心導入 800VDC 與液冷的實例",
+  "verdict": "hit",
+  "verified_date": "2026-11-10"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/29/find-x10-oppo",
