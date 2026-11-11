@@ -864,6 +864,14 @@
   "verified_date": "2026-10-26"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/11/openai-posts-steep-losses-even-as-quarterly-revenue-rises-to-10-billion",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/14/softbank-junk-bond-sale-raises-stakes-for-ceo-sons-all-in-ai-bet",
+  "note": "OpenAI 新一輪募資未達300億美元目標的一半，仍在尋求新投資人",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/09/elon-musk-claims-softbank-is-defaulting-on-turbine-orders",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/14/softbank-junk-bond-sale-raises-stakes-for-ceo-sons-all-in-ai-bet",
@@ -4216,6 +4224,14 @@
   "verified_date": "2026-10-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611110159.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610010272.aspx",
+  "note": "11/11 立法院財政委員會照行政院版初審通過，無須黨團協商",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/10/27/broadcom-anthropic-deal",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610020035.aspx",
@@ -4792,6 +4808,22 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611110169.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610280341.aspx",
+  "note": "11/11 國發會主委在立院說明：主權基金初期規模擬以新台幣300億元為基準，資金來源研議外匯存底有償撥用、特別公債、公司債及保險業與四大基金",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611110169.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610280341.aspx",
+  "note": "11/11 國發會表示資金來源研議央行外匯存底有償撥用，外匯存底已正式列入規劃討論",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611060199.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/afe/202610290316.aspx",
@@ -4862,6 +4894,14 @@
   "note": "首批 2 架 F-16V 於 10/2 抵台（66 架中首度實機交付），另 140 億美元新案仍待川普批准；交付進度確有實質推進",
   "verdict": "hit",
   "verified_date": "2026-10-05"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/11/openai-posts-steep-losses-even-as-quarterly-revenue-rises-to-10-billion",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/ait/202610020016.aspx",
+  "note": "OpenAI 向投資人揭露第三季營收約100億美元、經調整營業虧損109億美元",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/27/broadcom-anthropic-deal",
@@ -7534,6 +7574,14 @@
   "note": "10-17 中央社引印尼衛生部：全國7省累計通報28萬3270例急性呼吸道感染，並報導馬來西亞、東帝汶部分學校停課",
   "verdict": "hit",
   "verified_date": "2026-10-17"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/11/openai-posts-steep-losses-even-as-quarterly-revenue-rises-to-10-billion",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610090229.aspx",
+  "note": "11/11 報導 OpenAI 規劃明年上市，新一輪募資未達目標一半",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610250004.aspx",
