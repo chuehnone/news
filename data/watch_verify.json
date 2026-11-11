@@ -608,6 +608,14 @@
   "verified_date": "2026-10-22"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/11/amd-revenue-surpasses-intel-first-time-ai-determines-outcome",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/01/amds-zen-6-architecture-venice-epyc-processors-have-sold-out-for-2027",
+  "note": "AMD 法說後，蘇姿丰估 2027 年伺服器 CPU 營收成長一倍、資料中心 AI 業務占比將超過 80%",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610120243.aspx",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/10/01/pwcs-huge-survey-of-50000-workers-says-ai-is-splitting-employees-into-4-distinct-groups",
@@ -1006,6 +1014,14 @@
   "note": "群聯 10 月營收年增 346%、第三季毛利率 59.7%；華邦電 10 月營收月增 3.9%、年增 257%。華邦電毛利率未見。",
   "verdict": "hit",
   "verified_date": "2026-11-06"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/11/amd-revenue-surpasses-intel-first-time-ai-determines-outcome",
+  "idx": 1,
+  "news_url": "https://finance.technews.tw/2026/10/28/amd-invests-1-billion-in-meta-equity-offering",
+  "note": "AMD 第三季資料中心營收 85.46 億美元、年增 97%；MI455X 與 Helios 機櫃系統已開始出貨",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/05/qualcomm-announces-fourth-quarter-and-fiscal-2026-results",
@@ -2968,6 +2984,14 @@
   "verified_date": "2026-11-06"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/11/amd-revenue-surpasses-intel-first-time-ai-determines-outcome",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/10/22/2027-server-cpu-shipments-40-percent-growth-arm-based-market-share-expansion",
+  "note": "第三季財報：AMD 資料中心營收年增 97%、英特爾資料中心與 AI 業務年增 78% 達 73 億美元（為部門數字，非純 CPU）",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/02/changxin-memory-responds-directly-to-microns-accusations",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/22/micron-officially-skips-the-4f%c2%b2-dram-circuit-cell-architecture",
@@ -3040,12 +3064,28 @@
   "verified_date": "2026-11-08"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/10/furukawa-electric-expands-copper-foil-capacity-in-taiwan-and-japan",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/11/02/mitsui-kinzoku-accelerates-capacity-expansion-for-ai-data-center-copper-foil",
+  "note": "古河電工 11/9 宣布擴充台灣、日本銅箔產能，屬其他銅箔廠跟進擴產",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/11/10/ai-data-center-complaints-rise-fuel-cells-peacemaker",
   "idx": 1,
   "news_url": "https://technews.tw/2026/11/03/bloom-energy-partners-california-resources-1gw-fuel-cell-carbon-capture-opportunity",
   "note": "甲骨文 Project Jupiter 改採表後燃料電池、Google 懷俄明燃料電池設施，自建電源趨勢延續",
   "verdict": "hit",
   "verified_date": "2026-11-10"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611110020.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/11/04/wingtech-rejects-allegations-in-nexperias-2-billion-lawsuit",
+  "note": "安世仍按國界一分為二、雙方訴訟中；聞泰拒絕法院指定人員方案，安世擴大馬來西亞產能取代中國封裝但仍不足",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
@@ -4598,6 +4638,14 @@
   "note": "CPI 累計漲 11.91% 達 10% 門檻，遺產稅免稅額估由 1333 萬元調至 1492 萬元，財政部預計年底前公告。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/11/mitsui-kinzoku-fy2026-q2-results-fy2026-forecast",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202610200365.aspx",
+  "note": "三井金屬 11/10 宣布投資約1,900億日圓在馬來西亞興建銅箔新廠",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
