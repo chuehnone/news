@@ -7960,6 +7960,14 @@
   "verified_date": "2026-11-03"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611110336.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160013.aspx",
+  "note": "11/11 民主剛果累計 11042 例、共 8 省；鄰國烏干達、肯亞、奈及利亞有病例，肯亞累計 9 例且最後一名病患出院、啟動 42 天倒數",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/22/eu-china-hybrid-quota-talks-supply-chain-transformation-opportunity",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610160015.aspx",
@@ -8056,6 +8064,14 @@
   "verified_date": "2026-11-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611110336.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610180087.aspx",
+  "note": "11/11 累計 11042 例，疫情由伊圖里省擴及另外 7 省（共 8 省），多數集中伊圖里與北基伍",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611010082.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610180119.aspx",
@@ -8086,6 +8102,14 @@
   "note": "11/2 中央社：選前 AAA 汽油 11/1 每加侖 4.17 美元、柴油漲逾 70% 至 6.30 美元，川普任內汽油均價料創新高",
   "verdict": "hit",
   "verified_date": "2026-11-02"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611110339.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610190028.aspx",
+  "note": "11/10-11 立陶宛多地空襲警報升至紅色、北約戰機 2 度升空發射飛彈未擊落、維爾紐斯與考納斯機場暫停運作，總統稱戰爭持續就會再發生",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611060213.aspx",
@@ -8350,6 +8374,14 @@
   "note": "大選結果：10/30 官方結果尼坦雅胡陣營 53 席未過半；組閣進度：11/7 總統赫佐格宣布優先授權艾森科特籌組新政府。",
   "verdict": "hit",
   "verified_date": "2026-11-08"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611110336.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610270215.aspx",
+  "note": "11/11 民主剛果公布累計 11042 例感染、5387 例死亡（致死率約 49%），10/27 為破萬例，約兩週增 1000 例",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
