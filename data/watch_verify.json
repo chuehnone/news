@@ -1216,6 +1216,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611110270.aspx",
+  "idx": 2,
+  "news_url": "https://infosecu.technews.tw/2026/10/29/91app-security-incident-20261029",
+  "note": "2026-11-11 數發部緊急記者會：已接獲10多家企業通報個資外洩受害（5、6家規模較大），多與AI自動化攻擊有關，攻擊包含結合ARTEX滲透測試工具；數產署（主管數位經濟業者）介入行政檢查，並表示平台業者是下一步稽核重點。受害企業未具名，故無法逐家確認是否皆為電商或SaaS。",
+  "verdict": "hit",
+  "verified_date": "2026-11-11"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://money.udn.com/money/story/5599/9591511",
