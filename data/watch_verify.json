@@ -1088,6 +1088,22 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/12/micron-labor-dispute",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
+  "note": "11/12 桃園工會承認未達四大訴求、退出協商，未再度罷工；協商進展已有明確結果",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/12/micron-labor-dispute",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/11/03/the-labor-management-agreement-signed-at-micron-technologys-taichung-plant-is-legally-sound",
+  "note": "兩者皆未發生：11/12 桃園工會未達成協議，也未升高為罷工等爭議行為，而是退出協商、改向執政黨陳情",
+  "verdict": "miss",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -4720,6 +4736,14 @@
   "verified_date": "2026-11-01"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/12/micron-labor-dispute",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610210036.aspx",
+  "note": "未擴大為多日罷工，也未達成協議；11/12 桃園工會退出協商",
+  "verdict": "miss",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611050331.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/afe/202610210179.aspx",
@@ -4910,6 +4934,14 @@
   "note": "10 月 CPI 月增 0.4%、核心 0.3% 均高於預期；理事華勒稱 12 月應考慮升息 2 碼，高盛資管認為升息週期可能延續至 2027 年，2 年期殖利率升逾 20 個基點",
   "verdict": "hit",
   "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/12/micron-labor-dispute",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202611050330.aspx",
+  "note": "11/12 桃園工會公開信宣布退出協商、轉向民進黨中央黨部陳情，未再發動罷工；協商走向已可判定",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610210290.aspx",
