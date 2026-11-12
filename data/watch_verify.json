@@ -3512,6 +3512,14 @@
   "verified_date": "2026-10-18"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120366.aspx",
+  "idx": 0,
+  "news_url": "https://www.bbc.com/zhongwen/articles/cv8ez8w9edzxo/trad",
+  "note": "西班牙國會 11/12 通過限制驅逐房客與提升住房負擔能力的措施，是對住房訴求的具體政策回應。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611090129.aspx",
   "idx": 0,
   "news_url": "https://www.bbc.com/zhongwen/articles/cwzd6164jv6ro/trad",
@@ -7048,6 +7056,14 @@
   "verified_date": "2026-10-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120366.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609270058.aspx",
+  "note": "住房抗議在西班牙擴大為全國罷工，11/12 國會通過限制驅逐與提升負擔能力的措施（但否決租約自動續約）。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610060010.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609270119.aspx",
@@ -7336,6 +7352,14 @@
   "verified_date": "2026-11-03"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120366.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610040004.aspx",
+  "note": "11/12 中央社：西班牙經數週抗議、多城市連續數週搭抗議營地，並發起全國大罷工，動員明顯擴大。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610120003.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610040061.aspx",
@@ -7446,6 +7470,14 @@
   "note": "能源停火宣布後，烏克蘭稱當晚未攻擊俄煉油廠並表示願接受能源停火——打擊暫停，機制出現轉折",
   "verdict": "hit",
   "verified_date": "2026-10-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120365.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610060091.aspx",
+  "note": "川普 11/12 發文：墨西哥若不阻止移民隊伍抵達邊界，對墨關稅將加倍，美方直接把邊境議題連結到關稅。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
@@ -8216,6 +8248,14 @@
   "verified_date": "2026-11-06"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120366.aspx",
+  "idx": 3,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610190260.aspx",
+  "note": "西班牙的生活成本與住房抗議擴大為全國大罷工（11/12 中央社）。只驗證了西班牙，義大利、葡萄牙未查。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610260101.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610190277.aspx",
@@ -8408,6 +8448,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120366.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610240204.aspx",
+  "note": "11/12 中央社：生活成本抗議擴大為全國大罷工，國會隨後通過住房保障措施。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611010004.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610250003.aspx",
@@ -8560,6 +8608,14 @@
   "verified_date": "2026-11-07"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120366.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611020024.aspx",
+  "note": "西班牙國會 11/12 通過居住保障措施（限制驅逐、提升負擔能力），屬生活成本與住房的政策回應。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611100112.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202611030008.aspx",
@@ -8622,5 +8678,13 @@
   "note": "阿布達比會談於 11/10-11 舉行兩天，雙方同意大規模換俘，美特使隨後分晤普丁與澤倫斯基",
   "verdict": "hit",
   "verified_date": "2026-11-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120378.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611060026.aspx",
+  "note": "新加坡內政部 11/12 公布：2025-02 起調查 Megaspeed 不實申報；2026-02 認定黃樂證據不足但提供不實資訊，予以警告並禁止入境。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
  }
 ]
