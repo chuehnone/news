@@ -3072,6 +3072,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611120204.aspx",
+  "idx": 3,
+  "news_url": "https://technews.tw/2026/10/29/ai-boom-soaring-costs-pc-production-return-china",
+  "note": "鴻海第3季電腦終端產品占比由 Q2 的 15% 降至 12%，公司稱受記憶體供應影響；雲端網路產品升至 54%",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/11/09/there-is-no-end-in-sight-for-the-gpu-supply-problem",
   "idx": 1,
   "news_url": "https://technews.tw/2026/10/29/macbook-neo-raise-prices",
