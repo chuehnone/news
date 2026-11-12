@@ -1104,6 +1104,14 @@
   "verified_date": "2026-11-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611120309.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/11/05/taiwan-stock-market-plunges-8000-points-one-month-twse-urges-return-to-fundamentals-rational-judgment",
+  "note": "金管會 11/12 公布截至 11/11 整戶擔保維持率 179.76%，較 11/5 的 167.42% 回升，斷頭賣壓未擴大；本則未提融資餘額數字，判定依據為維持率與斷頭部分。",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": null,
   "idx": 2,
   "news_url": "https://infosecu.technews.tw/2026/07/25/drones-laws",
@@ -4934,6 +4942,14 @@
   "note": "10 月 CPI 月增 0.4%、核心 0.3% 均高於預期；理事華勒稱 12 月應考慮升息 2 碼，高盛資管認為升息週期可能延續至 2027 年，2 年期殖利率升逾 20 個基點",
   "verdict": "hit",
   "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611120309.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202611050267.aspx",
+  "note": "金管會 11/12 公布截至 11/11 信用交易整戶擔保維持率 179.76%，較 11/5 的 167.42% 回升、遠高於 130% 追繳門檻；11/9 起限空措施後台股 4 天漲 8.54%，斷頭賣壓未擴大。",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/12/micron-labor-dispute",
