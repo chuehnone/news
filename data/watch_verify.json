@@ -1208,6 +1208,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://infosecu.technews.tw/2026/10/29/91app-security-incident-20261029",
+  "idx": 0,
+  "news_url": "https://infosecu.technews.tw/2026/10/23/91app-ky-20261022",
+  "note": "10/29 91APP 公布調查結果：最大影響 1,329 個品牌、約 480 萬名消費者，於預告的下週內公布",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611050098.aspx",
   "idx": 0,
   "news_url": "https://infosecu.technews.tw/2026/10/28/south-korean-financial-industry-another-cybersecurity-incident-3-firms-data-breaches",
@@ -3352,6 +3360,14 @@
   "verified_date": "2026-07-28"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611110327.aspx",
+  "idx": 1,
+  "news_url": "https://www.bbc.com/zhongwen/articles/ckreyrxvg3xyo/trad",
+  "note": "阿布達比會談舉行兩天、同意大規模換俘，美特使隨後赴莫斯科與都柏林",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610220069.aspx",
   "idx": 0,
   "news_url": "https://www.bbc.com/zhongwen/articles/cly7z85pgpeo/trad",
@@ -4406,6 +4422,14 @@
   "note": "10/29 法說稱 CoWoS 全流程 2027 年估破 10 億美元，受廠房空間限制 2027 年需求將遠高於可交付產能，產能吃緊延續",
   "verdict": "hit",
   "verified_date": "2026-10-29"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611120043.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/afe/202610120197.aspx",
+  "note": "南亞 11/11 董事會通過 115.3 億元興建玻纖布 5 廠，並規劃在彰濱擴建 CCL 產能",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610250119.aspx",
@@ -6616,6 +6640,14 @@
   "verified_date": "2026-10-24"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120040.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609090309.aspx",
+  "note": "美國國務院 11/11 通話摘要確認川普將赴深圳出席 APEC 峰會",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/15/issuance",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202609100003.aspx",
@@ -8384,6 +8416,14 @@
   "verified_date": "2026-11-12"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611110327.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610270284.aspx",
+  "note": "11/10-11 阿布達比會談舉行，進展為大規模換俘，美特使續赴莫斯科",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611040164.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610280033.aspx",
@@ -8480,11 +8520,43 @@
   "verified_date": "2026-11-11"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120061.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611040017.aspx",
+  "note": "阿布達比會談只達成換俘；未見停火條件、領土或安全保障的結果，歐盟官員稱和平進程幾乎沒有實質進展",
+  "verdict": "miss",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611100039.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202611040027.aspx",
   "note": "法國政府 11/9 認定伊朗革命衛隊負責，並召見伊朗大使、矢言歐盟層級制裁；推翻羅馬尼亞資安局長「非國家級行為者」的初判",
   "verdict": "hit",
   "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120068.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611050326.aspx",
+  "note": "潘尼亞 11/6 遭彈劾，目前羈押候審",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611120068.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611050326.aspx",
+  "note": "巴拉圭央行以存款保障基金向 181 萬餘名合格存戶部分退款，高階主管與股東不在理賠範圍",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611110327.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611060018.aspx",
+  "note": "阿布達比會談於 11/10-11 舉行兩天，雙方同意大規模換俘，美特使隨後分晤普丁與澤倫斯基",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
  }
 ]
