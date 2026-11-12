@@ -944,6 +944,14 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/12/msci-to-drop-strategy-from-global-indexes-putting-billions-in-fund-inflows-at-risk",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/19/strategy-faces-risk-of-msci-delisting",
+  "note": "MSCI 11/11 宣布將 Strategy、Metaplanet 等「非經營性公司」移出指數，12/1 生效",
+  "verdict": "hit",
+  "verified_date": "2026-11-12"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/30/microsoft-expects-to-raise-25-billion-in-us-bond-sale",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/19/the-four-major-tech-giants-have-spent-over-1-12-trillion-on-ai",
