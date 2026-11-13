@@ -904,6 +904,14 @@
   "verified_date": "2026-10-30"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611130329.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/15/tsmc-will-begin-adopting-high-na-euv-in-2030",
+  "note": "11/13 精材公告與台積電簽產能外包協議至2033年底，於台積電中科廠建置CoWoS後段oS模組產線，第一期2029年量產，並發行150億元可轉債支應建置。（CoPoS 部分本則未提及）",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://technews.tw/2026/11/06/tsmc-45b-texas-2-advanced-fabs-mass-production-2029",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/15/tsmcs-revenue-growth-rate-for-the-full-year-of-2026-is-expected-to-reach-approximately-44",
@@ -1062,6 +1070,14 @@
   "note": "TrendForce稱8吋漲價較易被接受，12吋成熟製程漲價成效仍有變數；已有調漲報導。",
   "verdict": "hit",
   "verified_date": "2026-11-05"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611130329.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/29/ase-technology-holding-co-ltd-reported-a-record-high-third-quarter-profit-with-eps-of-nt6-13-2",
+  "note": "11/13 精材公告與台積電簽產能外包協議至2033年底，於台積電中科廠建置CoWoS後段oS模組產線，第一期2029年量產，並發行150億元可轉債支應建置。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/04/tech-giants-off-balance-sheet-ai-commitments-surge",
@@ -3014,6 +3030,14 @@
   "note": "Q3 資本支出 772.6 億美元高於預期約 200 億，過去 12 個月現金流出 424 億美元",
   "verdict": "hit",
   "verified_date": "2026-10-30"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611130329.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/21/canon-lithography-equipment-production-expansion-50-demand-surge",
+  "note": "11/13 精材公告與台積電簽產能外包協議至2033年底，於台積電中科廠建置CoWoS後段oS模組產線，第一期2029年量產，並發行150億元可轉債支應建置。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
@@ -7678,6 +7702,14 @@
   "note": "路透10/20：油輪即期運費10月初創歷史新高，約80艘VLCC被中東接駁運油占用",
   "verdict": "hit",
   "verified_date": "2026-10-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611130329.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610080370.aspx",
+  "note": "11/13 精材公告與台積電簽產能外包協議至2033年底，於台積電中科廠建置CoWoS後段oS模組產線，第一期2029年量產，並發行150億元可轉債支應建置。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611050043.aspx",
