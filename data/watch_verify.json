@@ -8686,5 +8686,13 @@
   "note": "新加坡內政部 11/12 公布：2025-02 起調查 Megaspeed 不實申報；2026-02 認定黃樂證據不足但提供不實資訊，予以警告並禁止入境。",
   "verdict": "hit",
   "verified_date": "2026-11-13"
+ },
+ {
+  "evidence_url": "https://finance.technews.tw/2026/11/13/jensen-huang-has-agreed-to-attend-a-closed-door-hearing-before-the-u-s-congress-next-week",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611070086.aspx",
+  "note": "眾院外委會主席馬斯特證實，黃仁勳在議員以傳票相威脅後，同意 11 月下旬出席閉門聽證；屬國會以傳票壓力要求 AI 企業高層作證，當事人同意出席。注意：起因是 Megaspeed 出口管制案，而非新國會的 AI 法案議程",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
  }
 ]
