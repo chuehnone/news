@@ -8648,6 +8648,14 @@
   "verified_date": "2026-11-07"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130008.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611010041.aspx",
+  "note": "中央社 11/13 引兩名美國官員：司法部展開多項調查，其中兩項針對 Megaspeed 與美超微、黃樂的關聯；11/12 彭博另報曼哈頓聯邦檢察官調查黃樂涉走私美超微產品。來源為匿名官員與知情人士，調查啟動時點未公開",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611120366.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202611020024.aspx",
