@@ -1088,6 +1088,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130115.aspx",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/30/senior-executives-of-clients-who-have-close-ties-with-huang-jen-hsun-are-suspected-of-being-communist-spies",
+  "note": "3 名共和黨籍眾院高層要求黃仁勳出席 11/18 閉門簡報會說明與黃樂的關係，眾院外委會主席馬斯特稱幕僚已與輝達討論出席時間",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/12/micron-labor-dispute",
   "idx": 0,
   "news_url": "https://finance.technews.tw/2026/11/01/taiwan-semiconductor-industry-first-legal-strike-11-protestors-micron-negotiations-stalled",
@@ -2406,6 +2414,14 @@
   "note": "10/14 FT：字節跳動與阿里巴巴也在尋求與騰訊類似的海外 GPU 租用安排",
   "verdict": "hit",
   "verified_date": "2026-10-14"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130126.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/02/china-chip-smuggling-cases-expose-nvidias-blind-spots",
+  "note": "起訴案持續出現：新加坡 11/13 再依 CDSA 起訴 1 男 2 公司（917 台伺服器、41 筆交易），該伺服器詐欺案累計 5 人 6 公司遭起訴",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
  },
  {
   "evidence_url": "https://technews.tw/2026/10/11/cxmt-dram-memory-4f%c2%b2-ddr5",
@@ -8544,6 +8560,22 @@
   "verified_date": "2026-11-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130129.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610280177.aspx",
+  "note": "11/13 東南亞轉運查緝持續：馬來西亞 MITI 調查 Megaspeed 子公司 Speedmatrix 晶片是否再出口；新加坡同日再起訴 1 男 2 公司，伺服器詐欺案累計 5 人 6 公司遭起訴",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130129.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610280177.aspx",
+  "note": "11/13 MITI 聲明表明取捨：歡迎資料中心投資、運入晶片免許可，但自 2025-07 起轉出須依戰略貿易法取得許可，不容許利用大馬規避管制，並考慮採取進一步措施",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611100366.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
@@ -8566,6 +8598,14 @@
   "note": "BBC：民主黨在參眾兩院同時翻盤，共和黨失去兩院。",
   "verdict": "hit",
   "verified_date": "2026-11-06"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130115.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610290352.aspx",
+  "note": "國會議員已要求聽證：3 名共和黨籍眾院高層要求黃仁勳出席 11/18 閉門簡報會，黃仁勳預計感恩節前赴國會說明",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611050348.aspx",
@@ -8612,6 +8652,14 @@
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202611020024.aspx",
   "note": "西班牙國會 11/12 通過居住保障措施（限制驅逐、提升負擔能力），屬生活成本與住房的政策回應。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130129.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611020305.aspx",
+  "note": "11/13 馬來西亞 MITI 表示正調查 Megaspeed 子公司 Speedmatrix 晶片是否再出口，並澄清從未認定 Megaspeed 無違規；新加坡 2025-02 起已調查 Megaspeed",
   "verdict": "hit",
   "verified_date": "2026-11-13"
  },
@@ -8684,6 +8732,14 @@
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202611060026.aspx",
   "note": "新加坡內政部 11/12 公布：2025-02 起調查 Megaspeed 不實申報；2026-02 認定黃樂證據不足但提供不實資訊，予以警告並禁止入境。",
+  "verdict": "hit",
+  "verified_date": "2026-11-13"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130115.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611070020.aspx",
+  "note": "11/13 議長強生稱國會對限制 AI 晶片出口中國形成共識，研議納入國防授權法案，另有 4 項法案推動；白宮討論是否撤換商務部長盧特尼克（路透匿名消息）",
   "verdict": "hit",
   "verified_date": "2026-11-13"
  },
