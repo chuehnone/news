@@ -2216,6 +2216,14 @@
   "verified_date": "2026-10-20"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611140008.aspx",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/09/26/white-house-trump-xi-fact-sheet-us-china-economic-trade-progress-taiwan-not-mentioned",
+  "note": "2026-11-13 USTR、財政部與中方舉行首次美中貿易委員會正式會議；機制 9 月啟動，白宮稱已就各 300 億美元非敏感商品優惠關稅建議達成共識並成立農業市場准入工作小組",
+  "verdict": "hit",
+  "verified_date": "2026-11-14"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/10/06/bmws-e2bn-investment-in-german-car-production-explained",
   "idx": 1,
   "news_url": "https://technews.tw/2026/09/27/china-shock-2-0-germany-export-slowdown-widening-trade-deficit-china-analysis",
