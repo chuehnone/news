@@ -3144,6 +3144,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611140223.aspx",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/10/28/tech-giants-vie-nuclear-power-us-5-billion-loan-expand-supply",
+  "note": "公投意見發表會正方陳中舜主張重啟核電的時間可趕上AI浪潮",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611120204.aspx",
   "idx": 3,
   "news_url": "https://technews.tw/2026/10/29/ai-boom-soaring-costs-pc-production-return-china",
@@ -4998,6 +5006,14 @@
   "note": "10 月 CPI 月增 0.4%、核心 0.3% 均高於預期；理事華勒稱 12 月應考慮升息 2 碼，高盛資管認為升息週期可能延續至 2027 年，2 年期殖利率升逾 20 個基點",
   "verdict": "hit",
   "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/afe/202611140223.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/afe/202611040294.aspx",
+  "note": "11/14 第2場意見發表會：經濟部次長稱核三再運轉計畫已於9/24完成審查、無須以公投處理；正方稱重啟1.5至3年可完成",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611120309.aspx",
@@ -8288,6 +8304,14 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611150003.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610190019.aspx",
+  "note": "白宮已證實川普將在深圳 APEC 期間出席美中俄三方會談",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611110339.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610190028.aspx",
@@ -8568,6 +8592,14 @@
   "verified_date": "2026-11-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611150003.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610260115.aspx",
+  "note": "白宮證實川普將出席 APEC 期間與習近平、普丁的首次三方會談，白宮發言人並說明將討論減少全球核武",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611080008.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610260160.aspx",
@@ -8664,6 +8696,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611140221.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610300326.aspx",
+  "note": "談判有新進展：美方提出頓巴斯換北約的交換條件，俄方提出北約撤回1997年範圍等條件",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611080173.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610310004.aspx",
@@ -8734,6 +8774,22 @@
   "note": "法國外長 11/9 證實攻擊由伊朗革命衛隊發動，巴黎檢方對 IRGC 網路單位 Shahid Kaveh 負責人立案，手法為遠端啟動無限期除霜並停用超溫警示；具體設備廠商未公布",
   "verdict": "hit",
   "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611140221.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611030018.aspx",
+  "note": "阿布達比會談後，澤倫斯基稱美方首度提出撤出頓巴斯換取加入北約；紐時引俄方文件，莫斯科要求北約軍力撤回1997年範圍",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611140221.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611030036.aspx",
+  "note": "談判有新進展：美方提出頓巴斯換北約的交換條件，美特使阿布達比會談後分別會晤普丁與澤倫斯基",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611120061.aspx",
