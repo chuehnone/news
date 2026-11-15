@@ -8448,6 +8448,14 @@
   "verified_date": "2026-11-10"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611150177.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610220118.aspx",
+  "note": "11/15 GasBuddy：美國柴油均價降至每加侖5.998美元，2個月來首度跌破6美元，自9/22歷史高點6.519美元回落；報導未提取暖油價格",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610300099.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202610220247.aspx",
