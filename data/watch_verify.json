@@ -8592,6 +8592,22 @@
   "verified_date": "2026-11-04"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/acn/202611150030.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610260115.aspx",
+  "note": "中國外交部 11/4 首度表示就中俄美元首會晤「與相關方保持溝通」，11/10 郭嘉昆重複同一說法並稱無可提供資訊；至 11/15 美俄均已證實，中國仍是唯一未證實的一方。表態軌跡可直接觀察。",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/acn/202611150030.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610260115.aspx",
+  "note": "白宮 11/13 宣布川普 19 日下午在深圳與習近平舉行雙邊會談及工作午餐，並舉行三方會談；克宮 11/14 證實。普習雙邊會未見於此報導，以川習會的實際安排判定。",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611150003.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610260115.aspx",
