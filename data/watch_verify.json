@@ -8664,6 +8664,14 @@
   "verified_date": "2026-11-13"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611150074.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610280256.aspx",
+  "note": "11/15 中央社：金融保安院 11/9 遭駭，推估 48 家公司約 130 個檔案外洩，攻擊並擴及中小企業中央會、仁濟大學、韓國造幣公社等非金融機構，屬外洩規模的後續更新",
+  "verdict": "hit",
+  "verified_date": "2026-11-15"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611100366.aspx",
   "idx": 1,
   "news_url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
