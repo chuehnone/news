@@ -992,6 +992,14 @@
   "verified_date": "2026-11-11"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/16/us-october-ppi-6-5-percent-yoy-near-four-year-high-persistent-inflation-pressure",
+  "idx": 2,
+  "news_url": "https://finance.technews.tw/2026/10/21/experts-expect-fed-to-hold-rates-steady-in-october",
+  "note": "10 月 PPI 年增 6.5% 後，市場篤定 12 月至少升息 1 碼並保留 2 碼可能；高盛預估明年 3 月、德銀預估 12 月與明年 1、3 月各升 1 碼",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": "https://finance.technews.tw/2026/11/09/elon-musk-claims-softbank-is-defaulting-on-turbine-orders",
   "idx": 1,
   "news_url": "https://finance.technews.tw/2026/10/21/nvidia-guarantees-ai-data-centers-stabilize-gpu-sales",
@@ -3120,6 +3128,14 @@
   "verified_date": "2026-11-02"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/16/you-can-now-tempt-fate-and-give-your-banking-information-to-chatgpt",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/10/22/muse-agents-reach-over-10-million-users-in-the-us-and-canada",
+  "note": "OpenAI 11/13 推出 ChatGPT Wallet，AI 代理 dots 可代為下單付款（限美國 Pro 用戶）",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202610310009.aspx",
   "idx": 2,
   "news_url": "https://technews.tw/2026/10/24/nvidia-names-4-supply-chain-boost-production-shipments-kyec-unimicron-spil",
@@ -3216,12 +3232,36 @@
   "verified_date": "2026-11-10"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/16/top-chinese-frontier-ai-models-carry-the-fingerprint-of-export-controlled-nvidia-blackwell-gpus",
+  "idx": 2,
+  "news_url": "https://technews.tw/2026/11/03/nvidia-reportedly-presses-cloud-providers-to-reduce-china-exposure",
+  "note": "Unemployment Labs 研究稱六款中國開放權重模型帶 Blackwell 訓練指紋，指向中國業者仍取得受管制算力；無法區分走私或租用海外雲端",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611160027.aspx",
+  "idx": 1,
+  "news_url": "https://technews.tw/2026/11/03/sluggish-consumption-reveals-the-truth-bank-of-japan-points-to-declining-birthrate-as-the-root-of-a-domestic-demand-crisis",
+  "note": "日本 Q3 GDP 初值：民間實質消費季減 0.3%，連兩季下滑，內需疲弱延續（但當期主因歸於中東通膨與日圓貶值）",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/afe/202611110020.aspx",
   "idx": 1,
   "news_url": "https://technews.tw/2026/11/04/wingtech-rejects-allegations-in-nexperias-2-billion-lawsuit",
   "note": "安世仍按國界一分為二、雙方訴訟中；聞泰拒絕法院指定人員方案，安世擴大馬來西亞產能取代中國封裝但仍不足",
   "verdict": "hit",
   "verified_date": "2026-11-11"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/16/malaysia-plans-new-law-using-data-center-power-consumption-to-catch-ai-gpu-smugglers",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/11/05/google-invests-15-billion-malaysia-anwar-elevate-southeast-asian-digital-powerhouse",
+  "note": "用電爭議的後續：政府以預留容量全額計費回應閒置電力問題，並要求申報用電（擬議）",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202607250213.aspx",
@@ -8232,6 +8272,14 @@
   "verified_date": "2026-10-29"
  },
  {
+  "evidence_url": "https://finance.technews.tw/2026/11/16/us-october-ppi-6-5-percent-yoy-near-four-year-high-persistent-inflation-pressure",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610160265.aspx",
+  "note": "10 月 PPI 年增 6.5%、近四年高；市場預期 12 月至少升息 1 碼，10 年期美債回升至 5.1% 以上",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202610280339.aspx",
   "idx": 2,
   "news_url": "https://www.cna.com.tw/news/aopl/202610160314.aspx",
@@ -8864,6 +8912,14 @@
   "verified_date": "2026-11-11"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/16/malaysia-plans-new-law-using-data-center-power-consumption-to-catch-ai-gpu-smugglers",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611040372.aspx",
+  "note": "馬來西亞擬立法要求資料中心申報用電，預留容量須全額付費（擬議，尚未立法；未涉用水）",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611120068.aspx",
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202611050326.aspx",
@@ -8910,5 +8966,13 @@
   "note": "眾院外委會主席馬斯特證實，黃仁勳在議員以傳票相威脅後，同意 11 月下旬出席閉門聽證；屬國會以傳票壓力要求 AI 企業高層作證，當事人同意出席。注意：起因是 Megaspeed 出口管制案，而非新國會的 AI 法案議程",
   "verdict": "hit",
   "verified_date": "2026-11-13"
+ },
+ {
+  "evidence_url": "https://technews.tw/2026/11/16/malaysia-plans-new-law-using-data-center-power-consumption-to-catch-ai-gpu-smugglers",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202611080100.aspx",
+  "note": "馬來西亞貿工部長宣布擬立法：資料中心須申報用電，預留電力容量未用滿也須全額付費（擬議，尚未立法）",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
  }
 ]
