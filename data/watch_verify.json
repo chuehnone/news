@@ -6784,6 +6784,14 @@
   "verified_date": "2026-10-09"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611160060.aspx",
+  "idx": 1,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609060006.aspx",
+  "note": "2026-11-16 CCW 會議：美俄以仍反對具約束力協議，美國改提不具約束力指引加5年談判，立場未改變；印度表態未報導",
+  "verdict": "miss",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": null,
   "idx": 0,
   "news_url": "https://www.cna.com.tw/news/aopl/202609060031.aspx",
@@ -6798,6 +6806,14 @@
   "note": "2026-09-21 麥克倫堡-西帕默瑞尼亞邦選舉：AfD 以 37% 居首（社民黨 35.5%），但因其他主流政黨拒與其合作，報導明確指出 AfD 仍不太可能入主邦政府。防火牆維持。",
   "verdict": "hit",
   "verified_date": "2026-09-21"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611160060.aspx",
+  "idx": 2,
+  "news_url": "https://www.cna.com.tw/news/aopl/202609070292.aspx",
+  "note": "2026-11-16 CCW 日內瓦會議報導：以色列與美俄同列反對具法律約束力協議的一方；中國、土耳其的表態報導未提及",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
  },
  {
   "evidence_url": "https://finance.technews.tw/2026/09/11/ecb-lifts-borrowing-costs-amid-energy-shock-opens-door-for-more-hikes",
