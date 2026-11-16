@@ -1104,6 +1104,14 @@
   "verified_date": "2026-11-05"
  },
  {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611130008.aspx",
+  "idx": 0,
+  "news_url": "https://finance.technews.tw/2026/10/30/senior-executives-of-clients-who-have-close-ties-with-huang-jen-hsun-are-suspected-of-being-communist-spies",
+  "note": "11/13 兩名美國官員透露司法部展開多項調查，其中兩項針對 Megaspeed、美超微與黃樂的關聯；11/15 財長貝森特公開指輝達往來公司是中國利益集團的空殼公司",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611130115.aspx",
   "idx": 2,
   "news_url": "https://finance.technews.tw/2026/10/30/senior-executives-of-clients-who-have-close-ties-with-huang-jen-hsun-are-suspected-of-being-communist-spies",
@@ -7854,6 +7862,14 @@
   "note": "11/2 路透：日本研議下一期 5 年國防支出提高到 70-80 兆日圓，大量採購無人機；研議中、尚未定案",
   "verdict": "hit",
   "verified_date": "2026-11-02"
+ },
+ {
+  "evidence_url": "https://www.cna.com.tw/news/aopl/202611160007.aspx",
+  "idx": 0,
+  "news_url": "https://www.cna.com.tw/news/aopl/202610110196.aspx",
+  "note": "11/14 愛沙尼亞國安局指 GRU 指使 8 名拉脫維亞人企圖縱火引爆無人機廠 Threod Systems，人員被拘留，是 8 月以來第二起針對國防企業的攻擊",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
  },
  {
   "evidence_url": "https://www.cna.com.tw/news/aopl/202611030286.aspx",
