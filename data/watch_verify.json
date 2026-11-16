@@ -2304,6 +2304,14 @@
   "verified_date": "2026-10-17"
  },
  {
+  "evidence_url": "https://technews.tw/2026/11/16/spacex-pulls-off-first-ever-spaceship-catch",
+  "idx": 0,
+  "news_url": "https://technews.tw/2026/09/29/spacex-starship-first-orbit-satellite-deploy-engine-issues",
+  "note": "星艦第 15 次試飛入軌約 22 小時、繞地 14 圈並部署 26 顆 Starlink 衛星，太空船返回時由星際基地機械臂首度捕捉，二節回收已實際完成",
+  "verdict": "hit",
+  "verified_date": "2026-11-16"
+ },
+ {
   "evidence_url": "https://www.bbc.com/zhongwen/articles/cm8ezkd09057o/trad",
   "idx": 0,
   "news_url": "https://technews.tw/2026/09/29/trump-dines-anthropic-ceo-white-house",
